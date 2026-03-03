@@ -1,0 +1,9 @@
+# ninja log v6
+13	813	7938887893549997	AttendanceSystem_autogen/timestamp	68bfdd85153a6cdd
+13	813	7938887893549997	AttendanceSystem_autogen/mocs_compilation.cpp	68bfdd85153a6cdd
+13	813	7938887893549997	D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceSystem_autogen/timestamp	68bfdd85153a6cdd
+13	813	7938887893549997	D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceSystem_autogen/mocs_compilation.cpp	68bfdd85153a6cdd
+821	2240	7938887894622014	CMakeFiles/AttendanceSystem.dir/AttendanceSystem_autogen/mocs_compilation.cpp.obj	d6064f463a56b740
+832	2247	7938887894747446	CMakeFiles/AttendanceSystem.dir/main.cpp.obj	fcdc1d1741e0ed2b
+846	2312	7938887894875986	CMakeFiles/AttendanceSystem.dir/mainwindow.cpp.obj	63d3e06197bf585a
+2314	2526	7938887909552119	AttendanceSystem.exe	2b89233d7c5f2f69
