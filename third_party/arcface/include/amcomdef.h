@@ -1,11 +1,17 @@
-#ifndef __AMCOMDEF_H__
+﻿#ifndef __AMCOMDEF_H__
 #define __AMCOMDEF_H__
 
 
 #if	defined(WINCE) || defined(WIN32)
 
 #ifndef _WCHAR_T_DEFINED
+//非法tyoedef
+//typedef unsigned short wchar_t;
+// 仅在非C++/非Windows环境下才定义（防止SDK其他逻辑报错）
+#if !defined(__cplusplus) && !defined(_WIN32)
 typedef unsigned short wchar_t;
+#endif
+
 #define _WCHAR_T_DEFINED
 #endif//#ifndef _WCHAR_T_DEFINED
 

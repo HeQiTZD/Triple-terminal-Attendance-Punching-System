@@ -764,6 +764,14 @@ AttendanceSystem_autogen/timestamp: \
 	D:/QTproject/AttendanceSystem/CameraCapture/videoframecapture.h \
 	D:/QTproject/AttendanceSystem/CameraCapture/videoframeconverter.cpp \
 	D:/QTproject/AttendanceSystem/CameraCapture/videoframeconverter.h \
+	D:/QTproject/AttendanceSystem/FaceRecognition/arcfaceengine.cpp \
+	D:/QTproject/AttendanceSystem/FaceRecognition/arcfaceengine.h \
+	D:/QTproject/AttendanceSystem/FaceRecognition/facefeaturedb.cpp \
+	D:/QTproject/AttendanceSystem/FaceRecognition/facefeaturedb.h \
+	D:/QTproject/AttendanceSystem/FaceRecognition/facerecognition.cpp \
+	D:/QTproject/AttendanceSystem/FaceRecognition/facerecognition.h \
+	D:/QTproject/AttendanceSystem/FaceRecognition/facerecognizer.cpp \
+	D:/QTproject/AttendanceSystem/FaceRecognition/facerecognizer.h \
 	D:/QTproject/AttendanceSystem/LocalStorage/localstorage.cpp \
 	D:/QTproject/AttendanceSystem/LocalStorage/localstorage.h \
 	D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/.qtc/package-manager/auto-setup.cmake \
@@ -775,5 +783,6 @@ AttendanceSystem_autogen/timestamp: \
 	D:/QTproject/AttendanceSystem/main.cpp \
 	D:/QTproject/AttendanceSystem/mainwindow.cpp \
 	D:/QTproject/AttendanceSystem/mainwindow.h \
+	D:/QTproject/AttendanceSystem/third_party/arcface/include/merror.h \
 	D:/QTproject/AttendanceSystem/mainwindow.ui \
 	C:/Qt/Tools/CMake_64/bin/cmake.exe

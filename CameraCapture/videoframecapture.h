@@ -8,6 +8,7 @@
 #include <QVideoFrameFormat>
 #include <QDebug>
 #include <QVideoSink>
+
 #include "cameracapture.h"
 
 class VideoFrameCapture : public QObject

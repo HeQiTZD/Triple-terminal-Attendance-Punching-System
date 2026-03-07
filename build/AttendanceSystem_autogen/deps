@@ -771,6 +771,14 @@ AttendanceSystem_autogen/timestamp: \
 	D:/QTproject/AttendanceSystem/CameraCapture/videoframecapture.h \
 	D:/QTproject/AttendanceSystem/CameraCapture/videoframeconverter.cpp \
 	D:/QTproject/AttendanceSystem/CameraCapture/videoframeconverter.h \
+	D:/QTproject/AttendanceSystem/FaceRecognition/arcfaceengine.cpp \
+	D:/QTproject/AttendanceSystem/FaceRecognition/arcfaceengine.h \
+	D:/QTproject/AttendanceSystem/FaceRecognition/facefeaturedb.cpp \
+	D:/QTproject/AttendanceSystem/FaceRecognition/facefeaturedb.h \
+	D:/QTproject/AttendanceSystem/FaceRecognition/facerecognition.cpp \
+	D:/QTproject/AttendanceSystem/FaceRecognition/facerecognition.h \
+	D:/QTproject/AttendanceSystem/FaceRecognition/facerecognizer.cpp \
+	D:/QTproject/AttendanceSystem/FaceRecognition/facerecognizer.h \
 	D:/QTproject/AttendanceSystem/LocalStorage/localstorage.cpp \
 	D:/QTproject/AttendanceSystem/LocalStorage/localstorage.h \
 	D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/moc_predefs.h \

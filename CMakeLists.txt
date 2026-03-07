@@ -35,6 +35,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         FaceRecognition/arcfaceengine.h FaceRecognition/arcfaceengine.cpp
         FaceRecognition/facefeaturedb.h FaceRecognition/facefeaturedb.cpp
         FaceRecognition/facerecognizer.h FaceRecognition/facerecognizer.cpp
+        third_party/arcface/include/merror.h
 
 
     )
@@ -50,12 +51,20 @@ else()
     endif()
 endif()
 
+set(ARCFACE_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/third_party/arcface/include)
+set(ARCFACE_LIB_DIR ${CMAKE_SOURCE_DIR}/third_party/arcface/lib)
+
+target_include_directories(AttendanceSystem PRIVATE
+    ${ARCFACE_INCLUDE_DIR}
+)
+
 target_link_libraries(AttendanceSystem PRIVATE 
     Qt${QT_VERSION_MAJOR}::Widgets
     Qt${QT_VERSION_MAJOR}::Network
     Qt${QT_VERSION_MAJOR}::Sql
     Qt${QT_VERSION_MAJOR}::Multimedia
     Qt${QT_VERSION_MAJOR}::MultimediaWidgets
+    ${ARCFACE_LIB_DIR}/libarcsoft_face_engine.lib
 )
 
 if(QT_VERSION_MAJOR EQUAL 6)
