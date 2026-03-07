@@ -3,12 +3,9 @@
 
 #include <QObject>
 #include <QCamera>
-#include <QVideoWidget>
 #include <QMediaDevices>
-#include <QWidget>
 #include <QCameraDevice>
-#include <QMediaCaptureSession>
-#include <QVBoxLayout>
+#include <QDebug>
 class CameraCapture : public QObject
 {
     Q_OBJECT
@@ -17,13 +14,15 @@ public:
     CameraCapture();
     ~CameraCapture();
 
-    void initCamera();//初始化摄像头
+    bool initCamera();//初始化摄像头
+    void clearCamera();//释放摄像头实例
 
 private:
-    QWidget* cameraWidget;
-    QCamera* camera;
-    QVideoWidget* videoWidget;
+    QCamera* camera=nullptr;
     QList<QCameraDevice> cameras;
+
+public:
+    QCamera* getCamera() const;
 };
 
 #endif // CAMERACAPTURE_H

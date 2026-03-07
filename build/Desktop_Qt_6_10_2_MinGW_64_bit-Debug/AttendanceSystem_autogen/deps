@@ -181,6 +181,9 @@ AttendanceSystem_autogen/timestamp: \
 	C:/Qt/6.10.2/mingw_64/include/QtMultimedia/QCameraDevice \
 	C:/Qt/6.10.2/mingw_64/include/QtMultimedia/QMediaCaptureSession \
 	C:/Qt/6.10.2/mingw_64/include/QtMultimedia/QMediaDevices \
+	C:/Qt/6.10.2/mingw_64/include/QtMultimedia/QVideoFrame \
+	C:/Qt/6.10.2/mingw_64/include/QtMultimedia/QVideoFrameFormat \
+	C:/Qt/6.10.2/mingw_64/include/QtMultimedia/QVideoSink \
 	C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qcamera.h \
 	C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qcameradevice.h \
 	C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qmediacapturesession.h \
@@ -191,6 +194,7 @@ AttendanceSystem_autogen/timestamp: \
 	C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qtvideo.h \
 	C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qvideoframe.h \
 	C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qvideoframeformat.h \
+	C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qvideosink.h \
 	C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/QVideoWidget \
 	C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/qtmultimediawidgetsexports.h \
 	C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/qtmultimediawidgetsglobal.h \
@@ -205,12 +209,6 @@ AttendanceSystem_autogen/timestamp: \
 	C:/Qt/6.10.2/mingw_64/include/QtSql/qtsqlexports.h \
 	C:/Qt/6.10.2/mingw_64/include/QtSql/qtsqlglobal.h \
 	C:/Qt/6.10.2/mingw_64/include/QtWidgets/QMainWindow \
-	C:/Qt/6.10.2/mingw_64/include/QtWidgets/QVBoxLayout \
-	C:/Qt/6.10.2/mingw_64/include/QtWidgets/QWidget \
-	C:/Qt/6.10.2/mingw_64/include/QtWidgets/qboxlayout.h \
-	C:/Qt/6.10.2/mingw_64/include/QtWidgets/qgridlayout.h \
-	C:/Qt/6.10.2/mingw_64/include/QtWidgets/qlayout.h \
-	C:/Qt/6.10.2/mingw_64/include/QtWidgets/qlayoutitem.h \
 	C:/Qt/6.10.2/mingw_64/include/QtWidgets/qmainwindow.h \
 	C:/Qt/6.10.2/mingw_64/include/QtWidgets/qsizepolicy.h \
 	C:/Qt/6.10.2/mingw_64/include/QtWidgets/qtabwidget.h \
@@ -764,6 +762,8 @@ AttendanceSystem_autogen/timestamp: \
 	D:/QTproject/AttendanceSystem/CameraCapture/cameracapture.h \
 	D:/QTproject/AttendanceSystem/CameraCapture/videoframecapture.cpp \
 	D:/QTproject/AttendanceSystem/CameraCapture/videoframecapture.h \
+	D:/QTproject/AttendanceSystem/CameraCapture/videoframeconverter.cpp \
+	D:/QTproject/AttendanceSystem/CameraCapture/videoframeconverter.h \
 	D:/QTproject/AttendanceSystem/LocalStorage/localstorage.cpp \
 	D:/QTproject/AttendanceSystem/LocalStorage/localstorage.h \
 	D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/.qtc/package-manager/auto-setup.cmake \

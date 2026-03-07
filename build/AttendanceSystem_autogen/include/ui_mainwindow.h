@@ -11,8 +11,8 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
@@ -22,7 +22,7 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QMenuBar *menubar;
+    QGridLayout *gridLayout;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -32,11 +32,9 @@ public:
         MainWindow->resize(800, 600);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
+        gridLayout = new QGridLayout(centralwidget);
+        gridLayout->setObjectName("gridLayout");
         MainWindow->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(MainWindow);
-        menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 17));
-        MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
         MainWindow->setStatusBar(statusbar);

@@ -143,11 +143,9 @@ D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/MA724YNRNK/moc_came
   C:/Qt/6.10.2/mingw_64/include/QtGui/qwindowdefs_win.h \
   C:/Qt/6.10.2/mingw_64/include/QtMultimedia/QCamera \
   C:/Qt/6.10.2/mingw_64/include/QtMultimedia/QCameraDevice \
-  C:/Qt/6.10.2/mingw_64/include/QtMultimedia/QImageCapture \
   C:/Qt/6.10.2/mingw_64/include/QtMultimedia/QMediaDevices \
   C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qcamera.h \
   C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qcameradevice.h \
-  C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qimagecapture.h \
   C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qmediadevices.h \
   C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qtmultimedia-config.h \
   C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qtmultimediaexports.h \

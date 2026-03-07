@@ -474,6 +474,36 @@
 			null
 		],
 		[
+			"D:/QTproject/AttendanceSystem/CameraCapture/videoframeconverter.h",
+			"MU",
+			"MA724YNRNK/moc_videoframeconverter.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/FaceRecognition/arcfaceengine.h",
+			"MU",
+			"GOHCDVBBAV/moc_arcfaceengine.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/FaceRecognition/facefeaturedb.h",
+			"MU",
+			"GOHCDVBBAV/moc_facefeaturedb.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/FaceRecognition/facerecognition.h",
+			"MU",
+			"GOHCDVBBAV/moc_facerecognition.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/FaceRecognition/facerecognizer.h",
+			"MU",
+			"GOHCDVBBAV/moc_facerecognizer.cpp",
+			null
+		],
+		[
 			"D:/QTproject/AttendanceSystem/LocalStorage/localstorage.h",
 			"MU",
 			"S44JC2R4SP/moc_localstorage.cpp",
@@ -571,6 +601,31 @@
 		],
 		[
 			"D:/QTproject/AttendanceSystem/CameraCapture/videoframecapture.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/CameraCapture/videoframeconverter.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/FaceRecognition/arcfaceengine.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/FaceRecognition/facefeaturedb.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/FaceRecognition/facerecognition.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/FaceRecognition/facerecognizer.cpp",
 			"MU",
 			null
 		],

@@ -30,6 +30,11 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         LocalStorage/localstorage.h LocalStorage/localstorage.cpp
         CameraCapture/cameracapture.h CameraCapture/cameracapture.cpp
         CameraCapture/videoframecapture.h CameraCapture/videoframecapture.cpp
+        CameraCapture/videoframeconverter.h CameraCapture/videoframeconverter.cpp
+        FaceRecognition/facerecognition.h FaceRecognition/facerecognition.cpp
+        FaceRecognition/arcfaceengine.h FaceRecognition/arcfaceengine.cpp
+        FaceRecognition/facefeaturedb.h FaceRecognition/facefeaturedb.cpp
+        FaceRecognition/facerecognizer.h FaceRecognition/facerecognizer.cpp
 
 
     )

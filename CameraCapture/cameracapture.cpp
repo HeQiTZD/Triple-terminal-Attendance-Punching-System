@@ -2,49 +2,50 @@
 
 CameraCapture::CameraCapture() {
 
-    //扫描可用摄像头
-    cameras=QMediaDevices::videoInputs();
+    cameras=QMediaDevices::videoInputs();//扫描可用摄像头
 }
 
 CameraCapture::~CameraCapture()
 {
-    delete cameraWidget;
-    delete camera;
-    delete videoWidget;
+    clearCamera();
 }
 
-void CameraCapture::initCamera()
-{
-    cameraWidget=new QWidget();
-    QVBoxLayout* VLayout=new QVBoxLayout(cameraWidget);
-    cameraWidget->setLayout(VLayout);
-    //窗口属性设置
-    cameraWidget->setWindowTitle("摄像头测试");
-    cameraWidget->setMinimumSize(400,400);
 
-    //扫描可用摄像头
+//初始化摄像头
+bool CameraCapture::initCamera()
+{
+    //是否存在可用摄像头
     if(cameras.isEmpty()){
         qDebug()<<"无可用摄像头";
-        return;
+        return false;
     }
 
-    QCameraDevice firstCamera=cameras[0];
+    //是否存在摄像头实例
+    clearCamera();
+
+    //实例化摄像头
+    const QCameraDevice firstCamera=cameras[0];
     camera=new QCamera(firstCamera);
-
-     //创建捕获会话
-     QMediaCaptureSession* captureSession=new QMediaCaptureSession(this);
-     captureSession->setCamera(camera);
-
-    videoWidget=new QVideoWidget(cameraWidget);
-    VLayout->addWidget(videoWidget);
-    videoWidget->setMinimumSize(400,400);
-
-    captureSession->setVideoOutput(videoWidget);
-
-    cameraWidget->show();
-    camera->start();
+    if(!camera){
+        return false;
+    }
+    return true;
 }
 
-// {
+//释放摄像头实例
+void CameraCapture::clearCamera()
+{
+    if(camera){
+        if(camera->isActive()){
+            camera->stop();
+        }
+        delete camera;
+        camera=nullptr;
+    }
+}
 
-// }
+//获取摄像头实例
+QCamera* CameraCapture::getCamera() const
+{
+    return camera;
+}

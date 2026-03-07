@@ -467,6 +467,12 @@
 			null
 		],
 		[
+			"D:/QTproject/AttendanceSystem/CameraCapture/videoframeconverter.h",
+			"MU",
+			"MA724YNRNK/moc_videoframeconverter.cpp",
+			null
+		],
+		[
 			"D:/QTproject/AttendanceSystem/LocalStorage/localstorage.h",
 			"MU",
 			"S44JC2R4SP/moc_localstorage.cpp",
@@ -564,6 +570,11 @@
 		],
 		[
 			"D:/QTproject/AttendanceSystem/CameraCapture/videoframecapture.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/CameraCapture/videoframeconverter.cpp",
 			"MU",
 			null
 		],
