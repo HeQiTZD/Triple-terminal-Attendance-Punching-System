@@ -788,5 +788,6 @@ AttendanceSystem_autogen/timestamp: \
 	D:/QTproject/AttendanceSystem/main.cpp \
 	D:/QTproject/AttendanceSystem/mainwindow.cpp \
 	D:/QTproject/AttendanceSystem/mainwindow.h \
+	D:/QTproject/AttendanceSystem/third_party/arcface/include/merror.h \
 	D:/QTproject/AttendanceSystem/mainwindow.ui \
 	C:/Program\ Files/CMake/bin/cmake.exe

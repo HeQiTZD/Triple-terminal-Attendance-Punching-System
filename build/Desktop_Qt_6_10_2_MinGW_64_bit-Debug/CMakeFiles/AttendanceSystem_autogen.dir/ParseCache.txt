@@ -1553,6 +1553,7 @@ D:/QTproject/AttendanceSystem/mainwindow.h
  mdp:C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h
  mdp:D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceSystem_autogen/moc_predefs.h
  mdp:D:/QTproject/AttendanceSystem/mainwindow.h
+D:/QTproject/AttendanceSystem/third_party/arcface/include/merror.h
 D:/QTproject/AttendanceSystem/CameraCapture/cameracapture.cpp
 D:/QTproject/AttendanceSystem/FaceRecognition/facerecognizer.cpp
 D:/QTproject/AttendanceSystem/CameraCapture/videoframecapture.cpp
@@ -1564,4 +1565,3 @@ D:/QTproject/AttendanceSystem/LocalStorage/localstorage.cpp
 D:/QTproject/AttendanceSystem/main.cpp
 D:/QTproject/AttendanceSystem/mainwindow.cpp
  uic:./ui_mainwindow.h
-D:/QTproject/AttendanceSystem/third_party/arcface/include/merror.h

@@ -3,15 +3,19 @@
 #include <QImage>
 #include "CameraCapture/videoframecapture.h"
 #include "FaceRecognition/arcfaceengine.h"
+
 #ifdef Q_OS_WIN
 #include <windows.h>
+#include <QObject>
+#include <QTimer>
 #endif
 
 int main(int argc, char *argv[])
 {
 #ifdef Q_OS_WIN
-    SetConsoleOutputCP(65001);
-    SetConsoleCP(65001);
+    // 仅需设置 Windows 控制台编码
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
 #endif
 
     QApplication a(argc, argv);
@@ -20,14 +24,27 @@ int main(int argc, char *argv[])
     //w.show();
 
     VideoFrameCapture video1;
-    arcfaceengine arcFaceEnging;
+    arcfaceengine* engine=arcfaceengine::instance();
     video1.captureFrame();
 
-    QString appid="JBT9EUHsd8RVuvbgwNLNFP1Qg57ZBq3vQUbhnxUPL1br";
-    QString Key="SdZeXr84tegSkhumqMeP7T7z4QU5GYpYCMTX5QxDzaR";
+    QString appid="JBT9EUHsd8RVuvbgwNLNFP1ezsdtsuUenhD6gjSkoKhG";
+    QString Key="4szkxxMUBVRLirbAsTMzT9u2b5R9w5umHiucbPvTy91Z";
 
-    arcFaceEnging.initialize(appid,Key);
-    arcFaceEnging.detectFace(video1.getCurrentFrame());
+    engine->initialize(appid,Key);
+
+    QTimer* capTimer = new QTimer();
+    capTimer->setInterval(2000);
+    capTimer->start();
+
+    QObject::connect(capTimer,&QTimer::timeout,&w,[&]() {
+        QImage image=video1.getCurrentFrame();
+        QVector<arcfaceengine::FaceInfo> faceInfo = engine->detectFace(image);
+        if(!faceInfo.isEmpty()){
+        static arcfaceengine::FaceFeature feature1 = engine->extractFeature(image,faceInfo[0]);
+        arcfaceengine::FaceFeature feature2 = engine->extractFeature(image,faceInfo[0]);
+        engine->compareFeatures(feature1,feature2);
+        }
+    });
 
     return a.exec();
 }

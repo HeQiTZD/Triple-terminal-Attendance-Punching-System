@@ -507,6 +507,12 @@
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
 			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/third_party/arcface/include/merror.h",
+			"MU",
+			"ZD7C3D5HSQ/moc_merror.cpp",
+			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -538,6 +544,7 @@
 	],
 	"MOC_INCLUDES" : 
 	[
+		"D:/QTproject/AttendanceSystem/third_party/arcface/include",
 		"C:/Qt/6.10.2/mingw_64/include/QtCore",
 		"C:/Qt/6.10.2/mingw_64/include",
 		"C:/Qt/6.10.2/mingw_64/mkspecs/win32-g++",

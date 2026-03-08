@@ -36,10 +36,10 @@ QImage VideoFrameConverter::convertToQImage(const QVideoFrame frame)
     QImage::Format imageFormat = QVideoFrameFormat::imageFormatFromPixelFormat(pixelFormat);
 
     // 输出帧信息用于调试
-    qDebug() << "视频帧格式:" << pixelFormat 
-             << "尺寸:" << cloneFrame.width() << "x" << cloneFrame.height()
-             << "字节数:" << cloneFrame.mappedBytes(0)
-             << "行字节数:" << cloneFrame.bytesPerLine(0);
+    // qDebug() << "视频帧格式:" << pixelFormat
+    //          << "尺寸:" << cloneFrame.width() << "x" << cloneFrame.height()
+    //          << "字节数:" << cloneFrame.mappedBytes(0)
+    //          << "行字节数:" << cloneFrame.bytesPerLine(0);
 
     // 步骤4：根据格式选择转换方式
     if (imageFormat != QImage::Format_Invalid) {
@@ -60,7 +60,7 @@ QImage VideoFrameConverter::convertToQImage(const QVideoFrame frame)
         qDebug() << "直接转换成功:" << image.width() << "x" << image.height();
     } else {
         // Qt不原生支持该格式，需要手动转换
-        qWarning() << "不支持的像素格式，尝试手动转换";
+        //qWarning() << "不支持的像素格式，尝试手动转换";
         
         switch (pixelFormat) {
         case QVideoFrameFormat::Format_YUV420P:
@@ -182,7 +182,7 @@ QImage VideoFrameConverter::convertYUVToRGB(const QVideoFrame &frame)
         }
     }
 
-    qDebug() << "YUV转换成功:" << image.width() << "x" << image.height();
+    //qDebug() << "YUV转换成功:" << image.width() << "x" << image.height();
     return image;
 }
 
@@ -240,6 +240,6 @@ QImage VideoFrameConverter::convertYUYVToRGB(const QVideoFrame &frame)
         }
     }
 
-    qDebug() << "YUYV转换成功:" << image.width() << "x" << image.height();
+    //qDebug() << "YUYV转换成功:" << image.width() << "x" << image.height();
     return image;
 }
