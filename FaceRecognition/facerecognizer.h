@@ -1,14 +1,6 @@
 ﻿#ifndef FACERECOGNIZER_H
 #define FACERECOGNIZER_H
 
-#include <QObject>
-#include <QImage>
-#include <QRect>
-#include <QVector>
-#include <QPair>
-#include <QString>
-#include <QMutex>
-
 // 视频采集相关
 #include "../CameraCapture/videoframecapture.h"
 #include "../CameraCapture/videoframeconverter.h"
@@ -19,28 +11,35 @@
 #include "facedatabasemanager.h"
 
 // Qt 相关
-#include <QDateTime>
-#include <QMap>
-#include <QMutexLocker>
 #include <QCamera>
 #include <QDebug>
+#include <QObject>
+#include <QImage>
+#include <QVector>
+#include <QPair>
+#include <QString>
+#include <QMutex>
 
 class FaceRecognizer : public QObject
 {
     Q_OBJECT
     
+public:
     FaceRecognizer();
+    ~FaceRecognizer();
 
+private:
     //初始化人脸识别配置
-    bool init();
+    void init();
 
     void WanZhengYeWuLiuCheng(QImage image);//人脸识别整体流程
 
 private:
-    QCamera* camera;//摄像头实例
-    arcfaceengine* arcEngine;//人脸功能实例
-    VideoFrameCapture* videoCapture;//捕获实例
-    FaceDatabaseManager* Database;//内存加载特征，特征对比实例
+    QCamera* camera = nullptr;//摄像头实例
+    arcfaceengine* arcEngine = nullptr;//人脸功能实例
+    VideoFrameCapture* videoCapture = nullptr;//捕获实例
+    FaceDatabaseManager* dataBase = nullptr;//内存加载特征，特征对比实例
+    CameraCapture* cameraCapture = nullptr;//摄像头管理类实例
 
 private:
     QVector<arcfaceengine::FaceInfo> m_FaceInfo;//人脸检测信息
@@ -51,6 +50,9 @@ public:
     QVector<arcfaceengine::FaceInfo> getFaceInfo();
     arcfaceengine::FaceFeature getFaceFeature();
     QPair<QString, float> getbestMatch();
+
+private:
+    QMutex m_mutex;
 };
 
 #endif // FACERECOGNIZER_H

@@ -42,6 +42,14 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         third_party/arcface/include/merror.h
         FaceRecognition/facedatabasemanager.h FaceRecognition/facedatabasemanager.cpp
         FaceRecognition/facerecognizer.h FaceRecognition/facerecognizer.cpp
+        FaceRecognition/facefeatureextractor.h FaceRecognition/facefeatureextractor.cpp
+        NetworkClient/networkclient.h NetworkClient/networkclient.cpp
+        NetworkClient/connectionmanager.h NetworkClient/connectionmanager.cpp
+        NetworkClient/heartbeatmanager.h NetworkClient/heartbeatmanager.cpp
+        NetworkClient/messagewriter.h NetworkClient/messagewriter.cpp
+        NetworkClient/messagereader.h NetworkClient/messagereader.cpp
+        NetworkClient/messagequeue.h NetworkClient/messagequeue.cpp
+        NetworkClient/protocol.h NetworkClient/protocol.cpp
 
 
     )

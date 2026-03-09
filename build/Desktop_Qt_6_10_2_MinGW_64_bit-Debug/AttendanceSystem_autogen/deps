@@ -1,10 +1,15 @@
 AttendanceSystem_autogen/timestamp: \
+	C:/Qt/6.10.2/mingw_64/include/QtCore/QByteArray \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QCoreApplication \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QDateTime \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QDebug \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QDir \
+	C:/Qt/6.10.2/mingw_64/include/QtCore/QMutex \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QObject \
+	C:/Qt/6.10.2/mingw_64/include/QtCore/QPair \
+	C:/Qt/6.10.2/mingw_64/include/QtCore/QRect \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QString \
+	C:/Qt/6.10.2/mingw_64/include/QtCore/QVector \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/q17memory.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/q20functional.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/q20iterator.h \
@@ -86,6 +91,7 @@ AttendanceSystem_autogen/timestamp: \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qmetaobject.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qmetatype.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qminmax.h \
+	C:/Qt/6.10.2/mingw_64/include/QtCore/qmutex.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qnamespace.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qnativeinterface.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qnumeric.h \
@@ -139,6 +145,7 @@ AttendanceSystem_autogen/timestamp: \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qtnoop.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qtpreprocessorsupport.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qtresource.h \
+	C:/Qt/6.10.2/mingw_64/include/QtCore/qtsan_impl.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qttranslation.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qttypetraits.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qtversion.h \
@@ -148,9 +155,11 @@ AttendanceSystem_autogen/timestamp: \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qutf8stringview.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qvariant.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qvarlengtharray.h \
+	C:/Qt/6.10.2/mingw_64/include/QtCore/qvector.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qversiontagging.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qxptype_traits.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qyieldcpu.h \
+	C:/Qt/6.10.2/mingw_64/include/QtGui/QImage \
 	C:/Qt/6.10.2/mingw_64/include/QtGui/qaction.h \
 	C:/Qt/6.10.2/mingw_64/include/QtGui/qbitmap.h \
 	C:/Qt/6.10.2/mingw_64/include/QtGui/qbrush.h \
@@ -766,14 +775,28 @@ AttendanceSystem_autogen/timestamp: \
 	D:/QTproject/AttendanceSystem/CameraCapture/videoframeconverter.h \
 	D:/QTproject/AttendanceSystem/FaceRecognition/arcfaceengine.cpp \
 	D:/QTproject/AttendanceSystem/FaceRecognition/arcfaceengine.h \
-	D:/QTproject/AttendanceSystem/FaceRecognition/facefeaturedb.cpp \
-	D:/QTproject/AttendanceSystem/FaceRecognition/facefeaturedb.h \
-	D:/QTproject/AttendanceSystem/FaceRecognition/facerecognition.cpp \
-	D:/QTproject/AttendanceSystem/FaceRecognition/facerecognition.h \
+	D:/QTproject/AttendanceSystem/FaceRecognition/facedatabasemanager.cpp \
+	D:/QTproject/AttendanceSystem/FaceRecognition/facedatabasemanager.h \
+	D:/QTproject/AttendanceSystem/FaceRecognition/facefeatureextractor.cpp \
+	D:/QTproject/AttendanceSystem/FaceRecognition/facefeatureextractor.h \
 	D:/QTproject/AttendanceSystem/FaceRecognition/facerecognizer.cpp \
 	D:/QTproject/AttendanceSystem/FaceRecognition/facerecognizer.h \
 	D:/QTproject/AttendanceSystem/LocalStorage/localstorage.cpp \
 	D:/QTproject/AttendanceSystem/LocalStorage/localstorage.h \
+	D:/QTproject/AttendanceSystem/NetworkClient/connectionmanager.cpp \
+	D:/QTproject/AttendanceSystem/NetworkClient/connectionmanager.h \
+	D:/QTproject/AttendanceSystem/NetworkClient/heartbeatmanager.cpp \
+	D:/QTproject/AttendanceSystem/NetworkClient/heartbeatmanager.h \
+	D:/QTproject/AttendanceSystem/NetworkClient/messagequeue.cpp \
+	D:/QTproject/AttendanceSystem/NetworkClient/messagequeue.h \
+	D:/QTproject/AttendanceSystem/NetworkClient/messagereader.cpp \
+	D:/QTproject/AttendanceSystem/NetworkClient/messagereader.h \
+	D:/QTproject/AttendanceSystem/NetworkClient/messagewriter.cpp \
+	D:/QTproject/AttendanceSystem/NetworkClient/messagewriter.h \
+	D:/QTproject/AttendanceSystem/NetworkClient/networkclient.cpp \
+	D:/QTproject/AttendanceSystem/NetworkClient/networkclient.h \
+	D:/QTproject/AttendanceSystem/NetworkClient/protocol.cpp \
+	D:/QTproject/AttendanceSystem/NetworkClient/protocol.h \
 	D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/.qtc/package-manager/auto-setup.cmake \
 	D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/.qtc/package-manager/maintenance_tool_provider.cmake \
 	D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceSystem_autogen/moc_predefs.h \
@@ -783,6 +806,9 @@ AttendanceSystem_autogen/timestamp: \
 	D:/QTproject/AttendanceSystem/main.cpp \
 	D:/QTproject/AttendanceSystem/mainwindow.cpp \
 	D:/QTproject/AttendanceSystem/mainwindow.h \
+	D:/QTproject/AttendanceSystem/third_party/arcface/include/amcomdef.h \
+	D:/QTproject/AttendanceSystem/third_party/arcface/include/arcsoft_face_sdk.h \
+	D:/QTproject/AttendanceSystem/third_party/arcface/include/asvloffscreen.h \
 	D:/QTproject/AttendanceSystem/third_party/arcface/include/merror.h \
 	D:/QTproject/AttendanceSystem/mainwindow.ui \
 	C:/Qt/Tools/CMake_64/bin/cmake.exe

@@ -2,53 +2,86 @@
 
 FaceRecognizer::FaceRecognizer()
 {
-    connect(videoCapture,&VideoFrameCapture::frameCaptured,this,&FaceRecognizer::WanZhengYeWuLiuCheng);
+    
 }
 
-bool FaceRecognizer::init()
+FaceRecognizer::~FaceRecognizer()
 {
+    if(videoCapture){
+        delete videoCapture;
+        videoCapture = nullptr;
+    }
+    if(cameraCapture){
+        delete cameraCapture;
+        cameraCapture = nullptr;
+    }
+}
+
+void FaceRecognizer::init()
+{
+    //创建videoCapture实例
+    videoCapture = new VideoFrameCapture();
+
+    connect(videoCapture,&VideoFrameCapture::frameCaptured,this,&FaceRecognizer::WanZhengYeWuLiuCheng);
+    
     //引擎初始化
     arcEngine = arcfaceengine::instance();
     QString appid="JBT9EUHsd8RVuvbgwNLNFP1ezsdtsuUenhD6gjSkoKhG";
     QString Key="4szkxxMUBVRLirbAsTMzT9u2b5R9w5umHiucbPvTy91Z";
-    arcEngine->initialize(appid,Key);
+    if (!arcEngine->initialize(appid, Key)) {
+        qDebug() << "ArcFace 引擎初始化失败";
+        return;
+    }
 
     //加载特征到内存
-    Database = FaceDatabaseManager::instance();
-    Database->loadFromDatabase();
+    dataBase = FaceDatabaseManager::instance();
+    dataBase->loadFromDatabase();
 
     //摄像头初始化
-    CameraCapture cameraCapture;
-    cameraCapture.initCamera();
-    camera = cameraCapture.getCamera();
+    cameraCapture = new CameraCapture();
+     if (!cameraCapture->initCamera()) {
+        qDebug() << "摄像头初始化失败";
+        return;
+    }
+    camera = cameraCapture->getCamera();
+
+    //启动摄像头,开启视频帧捕获处理
+    videoCapture->captureFrame(camera);
+    
 }
 
 void FaceRecognizer::WanZhengYeWuLiuCheng(QImage image)
 {
-    //启动摄像头,开启视频帧捕获处理
-    videoCapture->captureFrame(camera);
+    QMutexLocker locker(&m_mutex); // 保护成员变量
 
     //人脸检测
     m_FaceInfo = arcEngine->detectFace(image);
+    if(m_FaceInfo.isEmpty()){
+        qDebug()<<"人脸数量为0";
+        return;
+    }
 
     //特征提取
     m_FaceFeature = arcEngine->extractFeature(image,m_FaceInfo[0]);
 
     //特征对比
-    m_bestMatch = Database->findBestMatch(m_FaceFeature);
+    m_bestMatch = dataBase->findBestMatch(m_FaceFeature);
 }
 
 QVector<arcfaceengine::FaceInfo> FaceRecognizer::getFaceInfo()
 {
+    QMutexLocker locker(&m_mutex);
     return m_FaceInfo;
 }
 
 arcfaceengine::FaceFeature FaceRecognizer::getFaceFeature()
 {
+    QMutexLocker locker(&m_mutex);
     return m_FaceFeature;
 }
 
 QPair<QString, float> FaceRecognizer::getbestMatch()
 {
+    QMutexLocker locker(&m_mutex);
     return m_bestMatch;
 }

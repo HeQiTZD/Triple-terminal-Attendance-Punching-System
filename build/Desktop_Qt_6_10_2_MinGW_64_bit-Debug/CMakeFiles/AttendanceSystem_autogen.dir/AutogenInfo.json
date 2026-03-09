@@ -492,6 +492,12 @@
 			null
 		],
 		[
+			"D:/QTproject/AttendanceSystem/FaceRecognition/facefeatureextractor.h",
+			"MU",
+			"GOHCDVBBAV/moc_facefeatureextractor.cpp",
+			null
+		],
+		[
 			"D:/QTproject/AttendanceSystem/FaceRecognition/facerecognizer.h",
 			"MU",
 			"GOHCDVBBAV/moc_facerecognizer.cpp",
@@ -501,6 +507,48 @@
 			"D:/QTproject/AttendanceSystem/LocalStorage/localstorage.h",
 			"MU",
 			"S44JC2R4SP/moc_localstorage.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/NetworkClient/connectionmanager.h",
+			"MU",
+			"26RFHC3MAC/moc_connectionmanager.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/NetworkClient/heartbeatmanager.h",
+			"MU",
+			"26RFHC3MAC/moc_heartbeatmanager.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/NetworkClient/messagequeue.h",
+			"MU",
+			"26RFHC3MAC/moc_messagequeue.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/NetworkClient/messagereader.h",
+			"MU",
+			"26RFHC3MAC/moc_messagereader.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/NetworkClient/messagewriter.h",
+			"MU",
+			"26RFHC3MAC/moc_messagewriter.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/NetworkClient/networkclient.h",
+			"MU",
+			"26RFHC3MAC/moc_networkclient.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/NetworkClient/protocol.h",
+			"MU",
+			"26RFHC3MAC/moc_protocol.cpp",
 			null
 		],
 		[
@@ -621,12 +669,52 @@
 			null
 		],
 		[
+			"D:/QTproject/AttendanceSystem/FaceRecognition/facefeatureextractor.cpp",
+			"MU",
+			null
+		],
+		[
 			"D:/QTproject/AttendanceSystem/FaceRecognition/facerecognizer.cpp",
 			"MU",
 			null
 		],
 		[
 			"D:/QTproject/AttendanceSystem/LocalStorage/localstorage.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/NetworkClient/connectionmanager.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/NetworkClient/heartbeatmanager.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/NetworkClient/messagequeue.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/NetworkClient/messagereader.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/NetworkClient/messagewriter.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/NetworkClient/networkclient.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/NetworkClient/protocol.cpp",
 			"MU",
 			null
 		],
