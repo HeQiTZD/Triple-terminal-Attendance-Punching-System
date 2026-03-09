@@ -16,6 +16,8 @@ public:
 
     bool initCamera();//初始化摄像头
     void clearCamera();//释放摄像头实例
+    void startCamera();//启动摄像头
+    void stopCamera();//停止摄像头
 
 private:
     QCamera* camera=nullptr;

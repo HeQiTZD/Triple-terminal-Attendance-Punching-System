@@ -1,4 +1,4 @@
-﻿#ifndef VIDEOFRAMECAPTURE_H
+#ifndef VIDEOFRAMECAPTURE_H
 #define VIDEOFRAMECAPTURE_H
 
 #include <QObject>
@@ -17,7 +17,7 @@ class VideoFrameCapture : public QObject
 
 public:
     VideoFrameCapture();
-    void captureFrame();
+    void captureFrame(QCamera *camera);
 
 private:
     void setCamera();

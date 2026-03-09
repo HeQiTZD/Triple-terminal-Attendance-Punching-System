@@ -44,6 +44,26 @@ void CameraCapture::clearCamera()
     }
 }
 
+//开启摄像头
+void CameraCapture::startCamera()
+{
+    if(camera){
+        if(!camera->isActive()){
+            camera->start();
+        }
+    }
+}
+
+//关闭摄像头
+void CameraCapture::stopCamera()
+{
+    if(camera){
+        if(camera->isActive()){
+            camera->stop();
+        }
+    }
+}
+
 //获取摄像头实例
 QCamera* CameraCapture::getCamera() const
 {

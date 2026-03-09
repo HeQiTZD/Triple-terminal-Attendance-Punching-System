@@ -1,13 +1,13 @@
 # ninja log v6
-18	298	7946562241044409	AttendanceSystem_autogen/timestamp	68bfdd85153a6cdd
-3178	3541	7946562272647639	AttendanceSystem.exe	72edfe60ead7d54b
-18	298	7946562241044409	AttendanceSystem_autogen/mocs_compilation.cpp	68bfdd85153a6cdd
-311	2046	7946562243968604	CMakeFiles/AttendanceSystem.dir/mainwindow.cpp.obj	b61e15ec632f999e
-18	298	7946562241044409	D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceSystem_autogen/timestamp	68bfdd85153a6cdd
+23	291	7946567637826073	AttendanceSystem_autogen/timestamp	68bfdd85153a6cdd
+2891	3265	7946567666507153	AttendanceSystem.exe	72edfe60ead7d54b
+23	291	7946567637826073	AttendanceSystem_autogen/mocs_compilation.cpp	68bfdd85153a6cdd
+302	1740	7946567640616972	CMakeFiles/AttendanceSystem.dir/mainwindow.cpp.obj	b61e15ec632f999e
+23	291	7946567637826073	D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceSystem_autogen/timestamp	68bfdd85153a6cdd
 1039	3546	7945934128932366	CMakeFiles/AttendanceSystem.dir/AttendanceSystem_autogen/mocs_compilation.cpp.obj	719d855886b7d161
-18	298	7946562241044409	D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceSystem_autogen/mocs_compilation.cpp	68bfdd85153a6cdd
+23	291	7946567637826073	D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceSystem_autogen/mocs_compilation.cpp	68bfdd85153a6cdd
 1156	1258	7945934130096776	CMakeFiles/AttendanceSystem.dir/FaceRecognition/facerecognizer.cpp.obj	a14f2a39b6d5f662
-299	3178	7946562243859252	CMakeFiles/AttendanceSystem.dir/main.cpp.obj	72ae45ab048809e3
+292	2891	7946567640514097	CMakeFiles/AttendanceSystem.dir/main.cpp.obj	72ae45ab048809e3
 58	68	7945934117563486	clean	577b940aee94fbd7
 1072	3179	7945934129252285	CMakeFiles/AttendanceSystem.dir/LocalStorage/localstorage.cpp.obj	e5fe528e2ac5367f
 916	1021	7942986665731630	CMakeFiles/AttendanceSystem.dir/LocalStorage/test_localstorage.cpp.obj	f8b4084919bb3f19
@@ -18,10 +18,3 @@
 1118	1239	7945934129716651	CMakeFiles/AttendanceSystem.dir/FaceRecognition/facerecognition.cpp.obj	3af47a6a9c0074d3
 1144	1246	7945934129975608	CMakeFiles/AttendanceSystem.dir/FaceRecognition/facefeaturedb.cpp.obj	1a8609393fb23caa
 322	2051	7946562244094345	CMakeFiles/AttendanceSystem.dir/FaceRecognition/arcfaceengine.cpp.obj	411496222226cb3d
-23	291	7946567637826073	AttendanceSystem_autogen/timestamp	68bfdd85153a6cdd
-23	291	7946567637826073	AttendanceSystem_autogen/mocs_compilation.cpp	68bfdd85153a6cdd
-23	291	7946567637826073	D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceSystem_autogen/timestamp	68bfdd85153a6cdd
-23	291	7946567637826073	D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceSystem_autogen/mocs_compilation.cpp	68bfdd85153a6cdd
-302	1740	7946567640616972	CMakeFiles/AttendanceSystem.dir/mainwindow.cpp.obj	b61e15ec632f999e
-292	2891	7946567640514097	CMakeFiles/AttendanceSystem.dir/main.cpp.obj	72ae45ab048809e3
-2891	3265	7946567666507153	AttendanceSystem.exe	72edfe60ead7d54b

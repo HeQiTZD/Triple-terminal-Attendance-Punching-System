@@ -43,8 +43,9 @@ bool LocalStorage::connectDatabse()
     //创建人员表
     QString createPersonTable = "CREATE TABLE IF NOT EXISTS Person(" 
                               "employee_id TEXT NOT NULL PRIMARY KEY," 
-                              "name TEXT NOT NULL," 
-                              "face_feature BLOB NOT NULL," 
+                              "name TEXT NOT NULL,"
+                              "face_feature BLOB NOT NULL,"
+                              "face_feature_size INTEGER NOT NULL,"
                               "last_updated DATETIME DEFAULT CURRENT_TIMESTAMP" 
                               ");";
     if(!query.exec(createPersonTable)){
@@ -62,13 +63,14 @@ bool LocalStorage::connectDatabse()
 
     //创建打卡记录表
     QString createRecordTable = "CREATE TABLE IF NOT EXISTS AttendanceRecord(" 
+                              "id INTEGER PRIMARY KEY AUTOINCREMENT,"
                               "employee_id TEXT NOT NULL," 
                               "check_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP," 
                               "status TEXT NOT NULL DEFAULT '正常'," 
                               "uploaded INTEGER NOT NULL DEFAULT 0," 
                               "upload_time DATETIME," 
-                              "FOREIGN KEY (employee_id) REFERENCES Person(employee_id) ON DELETE CASCADE," 
-                              "CONSTRAINT ck_attendance_status CHECK (status IN ('正常','异常'))" 
+                              "FOREIGN KEY (employee_id) REFERENCES Person(employee_id) ON DELETE CASCADE,"
+                              "CONSTRAINT ck_attendance_status CHECK (status IN ('正常','迟到','早退','缺勤'))"
                               ");";
     if(!query.exec(createRecordTable)){
         qDebug()<<"创建AttendanceRecord表失败"<<query.lastError().text();

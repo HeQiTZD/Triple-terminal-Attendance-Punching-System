@@ -7,8 +7,9 @@ VideoFrameCapture::VideoFrameCapture() {
 
 }
 
-void VideoFrameCapture::captureFrame()
+void VideoFrameCapture::captureFrame(QCamera *camera)
 {
+    this->camera=camera;
     setCamera();
     if(camera && videoSink){
         if(!camera->isActive()){
@@ -17,6 +18,7 @@ void VideoFrameCapture::captureFrame()
     }
 }
 
+//设置捕获，接收视频帧
 void VideoFrameCapture::setCamera()
 {
     //清理之前的设置
@@ -36,8 +38,6 @@ void VideoFrameCapture::setCamera()
     //     videoSink=nullptr;
     // }
 
-    cameraCaptrue.initCamera();
-    camera=cameraCaptrue.getCamera();
     if(camera){
         //创建媒体捕获会话
         captureSession = new QMediaCaptureSession();
@@ -61,11 +61,13 @@ void VideoFrameCapture::setCamera()
     }
 }
 
+//对外接口：已处理的视频帧
 QImage VideoFrameCapture::getCurrentFrame() const
 {
     return currentFrame;
 }
 
+//处理视频帧
 void VideoFrameCapture::processFrame(const QVideoFrame &frame)
 {
     QImage image = VideoFrameConverter::convertToQImage(frame);

@@ -486,15 +486,9 @@
 			null
 		],
 		[
-			"D:/QTproject/AttendanceSystem/FaceRecognition/facefeaturedb.h",
+			"D:/QTproject/AttendanceSystem/FaceRecognition/facedatabasemanager.h",
 			"MU",
-			"GOHCDVBBAV/moc_facefeaturedb.cpp",
-			null
-		],
-		[
-			"D:/QTproject/AttendanceSystem/FaceRecognition/facerecognition.h",
-			"MU",
-			"GOHCDVBBAV/moc_facerecognition.cpp",
+			"GOHCDVBBAV/moc_facedatabasemanager.cpp",
 			null
 		],
 		[
@@ -622,12 +616,7 @@
 			null
 		],
 		[
-			"D:/QTproject/AttendanceSystem/FaceRecognition/facefeaturedb.cpp",
-			"MU",
-			null
-		],
-		[
-			"D:/QTproject/AttendanceSystem/FaceRecognition/facerecognition.cpp",
+			"D:/QTproject/AttendanceSystem/FaceRecognition/facedatabasemanager.cpp",
 			"MU",
 			null
 		],
