@@ -41,7 +41,7 @@ namespace Protocol
     struct PersonData{
         QString employeeId;
         QString name;
-        QByteArray faceFeature;
+        QByteArray faceFeature;//二进制数据（faceFeature）必须转为文本才能在JSON中传输
         int featureSize;
 
         QJsonObject toJson() const;

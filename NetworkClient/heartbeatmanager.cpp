@@ -1,3 +1,4 @@
 ﻿#include "heartbeatmanager.h"
+#include <qobject.h>
 
-Heartbeatmanager::Heartbeatmanager() {}
+Heartbeatmanager::Heartbeatmanager(QObject *parent) {}
