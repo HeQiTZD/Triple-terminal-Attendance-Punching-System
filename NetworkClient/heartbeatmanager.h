@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QTimer>
 #include <qtcpsocket.h>
+#include "protocol.h"
+#include <QJsonDocument>
 
 class Heartbeatmanager : public QObject
 {
@@ -15,9 +17,10 @@ public:
     void setSocket(QTcpSocket *socket);
 
     //启动/停止心跳
-    void statr(int intervalMs = 3000);
+    void start(int intervalMs = 3000);
     void stop();
-    bool isRunning() const;
+    bool isRunning() const;//状态查询
+    QByteArray buildHeartbeatData();
 
 signals:
     void heartbeattimeout(); //心跳超时，需要重连
@@ -28,9 +31,9 @@ private slots:
 
 private:
     QTcpSocket* m_socket;
-    QTimer* m_timer;
-    QTimer* m_timeroutTimer;//检测相应超时
-    bool m_waitingResponse;
+    QTimer* m_timer;//心跳发送定时器
+    QTimer* m_timeroutTimer;//超时检测定时器
+    bool m_waitingResponse;//标记是否正在等待响应
 
 };
 
