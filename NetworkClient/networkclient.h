@@ -27,7 +27,7 @@ public:
     bool isConnected() const;
 
     //业务接口
-    bool syncPersonData();
+    bool syncPersonData();//同步人员数据
     bool uploadAttendance(const Protocol::AttendanceRecord &record);
     bool uploadAttendanceBatch(const QVector<Protocol::AttendanceRecord> &rocord);
     void reportDeviceStatus(const QJsonObject &status);
