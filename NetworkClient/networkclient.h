@@ -12,7 +12,7 @@
 #include "messagequeue.h"
 #include <QDebug>
 
-
+#include "../LocalStorage/localstorage.h"
 
 class Networkclient : public QObject
 {

@@ -7,8 +7,8 @@
 21	266	7945797474897264	D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/mocs_compilation.cpp	f3ffef90e67b1d3f
 1132	4785	7945796640449282	CMakeFiles/AttendanceSystem.dir/main.cpp.obj	d141059ee06f9b2
 268	1809	7945797477357421	CMakeFiles/AttendanceSystem.dir/mainwindow.cpp.obj	a47c38d77529ea1c
-15	874	7950977975244230	build.ninja	23f5dadbfcd9c397
-15	874	7950977975010516	D:/QTproject/AttendanceSystem/build/cmake_install.cmake	23f5dadbfcd9c397
+15	874	7953508804564224	build.ninja	23f5dadbfcd9c397
+15	874	7953508804472624	D:/QTproject/AttendanceSystem/build/cmake_install.cmake	23f5dadbfcd9c397
 1155	3696	7945796640679740	CMakeFiles/AttendanceSystem.dir/LocalStorage/localstorage.cpp.obj	6db20429a3850273
 1166	3608	7945796640788229	CMakeFiles/AttendanceSystem.dir/CameraCapture/cameracapture.cpp.obj	3185b550161e8fa5
 1179	3752	7945796640926743	CMakeFiles/AttendanceSystem.dir/CameraCapture/videoframecapture.cpp.obj	c68295abaa10b6

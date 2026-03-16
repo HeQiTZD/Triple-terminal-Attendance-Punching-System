@@ -28,7 +28,7 @@ namespace Protocol
     //打卡记录
     struct AttendanceRecord{
         QString employeeId;
-        QString checktTme;
+        QString checktTime;
         QString status;
 
         //网络传输需要文本格式，JSON是通用标准

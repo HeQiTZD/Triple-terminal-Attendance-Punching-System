@@ -283,6 +283,18 @@ void Networkclient::handlePersonSynResponse(const QJsonObject &message)
 
     qDebug()<<"Networkclient：收到人员数据："<<persons.size()<<"条";
 
+    //增加，调用LocalStorage进行同步
+    bool synSuccess = LocalStorage::instance()->syncPersons(persons);
+
+    if(synSuccess){
+        //同步成功，重新加载内存特征库
+        FaceDatabaseManager::instance()->loadFromDatabase();
+        emit personDataReceived(persons);
+    }else{
+        //同步失败，记录错误，不发射成信号
+        qWarning()<<"人员数据同步到本地数据库失败";
+    }
+
     emit personDataReceived(persons);
 }
 

@@ -66,6 +66,25 @@ void FaceRecognizer::WanZhengYeWuLiuCheng(QImage image)
 
     //特征对比
     m_bestMatch = dataBase->findBestMatch(m_FaceFeature);
+
+    //新增，识别成功且相似度达标，保存打卡记录
+    if(m_bestMatch.second>0.8f){
+        QString employeeId = m_bestMatch.first;
+        QString status = "正常";
+
+        //保存到本地数据库
+        bool saved = LocalStorage::instance()->addAttendanceRecord(employeeId,status);
+
+        if(saved){
+            //尝试上传
+            Protocol::AttendanceRecord record;
+            record.employeeId = employeeId;
+            record.checktTime = QDateTime::currentDateTime().toString(Qt::ISODate);
+            record.status = status;
+
+            Networkclient::instance()->uploadAttendance(record);
+        }
+    }
 }
 
 QVector<arcfaceengine::FaceInfo> FaceRecognizer::getFaceInfo()

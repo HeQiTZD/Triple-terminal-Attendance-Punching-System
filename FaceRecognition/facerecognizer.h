@@ -20,6 +20,8 @@
 #include <QString>
 #include <QMutex>
 
+#include "../LocalStorage/localstorage.h"
+
 class FaceRecognizer : public QObject
 {
     Q_OBJECT

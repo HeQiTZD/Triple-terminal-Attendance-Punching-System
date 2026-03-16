@@ -40,3 +40,16 @@
 907	4005	7947602756359297	CMakeFiles/AttendanceSystem.dir/AttendanceSystem_autogen/mocs_compilation.cpp.obj	719d855886b7d161
 918	4600	7947602756480634	CMakeFiles/AttendanceSystem.dir/main.cpp.obj	72ae45ab048809e3
 4600	5031	7947602793296623	AttendanceSystem.exe	d9cece56f542be8e
+26	1703	7952838139084399	AttendanceSystem_autogen/timestamp	68bfdd85153a6cdd
+26	1703	7952838139084399	AttendanceSystem_autogen/mocs_compilation.cpp	68bfdd85153a6cdd
+26	1703	7952838139084399	D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceSystem_autogen/timestamp	68bfdd85153a6cdd
+26	1703	7952838139084399	D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceSystem_autogen/mocs_compilation.cpp	68bfdd85153a6cdd
+1723	5987	7952838140685146	CMakeFiles/AttendanceSystem.dir/mainwindow.cpp.obj	b61e15ec632f999e
+1764	5993	7952838141084894	CMakeFiles/AttendanceSystem.dir/NetworkClient/connectionmanager.cpp.obj	2f62d208fbba5595
+1779	6006	7952838141230866	CMakeFiles/AttendanceSystem.dir/NetworkClient/heartbeatmanager.cpp.obj	9440a3b0a7cee
+1794	6013	7952838141383784	CMakeFiles/AttendanceSystem.dir/NetworkClient/messagewriter.cpp.obj	74e4834a8e4cb10f
+1808	6018	7952838141532383	CMakeFiles/AttendanceSystem.dir/NetworkClient/messagereader.cpp.obj	3d056a1d50087c93
+1824	6022	7952838141690761	CMakeFiles/AttendanceSystem.dir/NetworkClient/messagequeue.cpp.obj	838945e7f6331b5e
+1749	6046	7952838140927190	CMakeFiles/AttendanceSystem.dir/NetworkClient/networkclient.cpp.obj	90bcf36667a266cb
+1736	6047	7952838140809077	CMakeFiles/AttendanceSystem.dir/LocalStorage/localstorage.cpp.obj	e5fe528e2ac5367f
+1705	6194	7952838140501809	CMakeFiles/AttendanceSystem.dir/AttendanceSystem_autogen/mocs_compilation.cpp.obj	719d855886b7d161
