@@ -7,8 +7,6 @@
 #include "UI/setwindow.h"
 #include "LocalStorage/localstorage.h"
 
-#include "text.h"
-
 #include <QMainWindow>
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -37,6 +35,9 @@ private:
 
     //页面信息展示
     void InfoWidget();
+
+    //开启人脸检测
+    void FaceFeatureStart();
 
 private:
     LocalStorage* m_db;

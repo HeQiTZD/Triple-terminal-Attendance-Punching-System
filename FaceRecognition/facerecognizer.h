@@ -33,7 +33,7 @@ public:
     //初始化人脸识别配置
     void init();
 
-private:
+public slots:
     void WanZhengYeWuLiuCheng(QImage image);//人脸识别整体流程
 
 private:

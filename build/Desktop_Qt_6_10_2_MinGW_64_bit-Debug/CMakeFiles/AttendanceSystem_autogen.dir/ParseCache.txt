@@ -1283,11 +1283,11 @@ D:/QTproject/AttendanceSystem/FaceRecognition/facerecognizer.h
  mdp:D:/QTproject/AttendanceSystem/third_party/arcface/include/arcsoft_face_sdk.h
  mdp:D:/QTproject/AttendanceSystem/third_party/arcface/include/asvloffscreen.h
  mdp:D:/QTproject/AttendanceSystem/third_party/arcface/include/merror.h
-D:/QTproject/AttendanceSystem/NetworkClient/connectionmanager.cpp
 D:/QTproject/AttendanceSystem/FaceRecognition/facefeaturedb.h
+D:/QTproject/AttendanceSystem/NetworkClient/connectionmanager.cpp
+D:/QTproject/AttendanceSystem/FaceRecognition/arcfaceengine.h
 D:/QTproject/AttendanceSystem/UI/setwindow.cpp
  uic:ui_setwindow.h
-D:/QTproject/AttendanceSystem/FaceRecognition/arcfaceengine.h
 D:/QTproject/AttendanceSystem/CameraCapture/videoframeconverter.h
 D:/QTproject/AttendanceSystem/LocalStorage/localstorage.h
  mmc:Q_OBJECT

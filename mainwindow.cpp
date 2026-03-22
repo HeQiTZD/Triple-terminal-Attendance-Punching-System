@@ -67,4 +67,13 @@ void MainWindow::InfoWidget()
     m_VideoWidget = m_VideoFrameCapture->getVideoWidget();
     ui->cameraDisplay->setLayout(new QVBoxLayout());
     ui->cameraDisplay->layout()->addWidget(m_VideoWidget);
+
+
 }
+
+void MainWindow::FaceFeatureStart()
+{
+    connect(m_VideoFrameCapture,&VideoFrameCapture::frameCaptured,m_FaceRecognizer,&FaceRecognizer::WanZhengYeWuLiuCheng);
+
+}
+
