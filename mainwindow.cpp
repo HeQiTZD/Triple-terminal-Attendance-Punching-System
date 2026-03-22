@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     //初始化
     init();
+    InfoWidget();
 }
 
 MainWindow::~MainWindow()
@@ -59,4 +60,11 @@ void MainWindow::init()
     };
     m_VideoFrameCapture = new VideoFrameCapture();
     m_VideoFrameCapture->captureFrame(m_CameraCapture->getCamera());
+}
+
+void MainWindow::InfoWidget()
+{
+    m_VideoWidget = m_VideoFrameCapture->getVideoWidget();
+    ui->cameraDisplay->setLayout(new QVBoxLayout());
+    ui->cameraDisplay->layout()->addWidget(m_VideoWidget);
 }

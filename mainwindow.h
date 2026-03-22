@@ -7,6 +7,8 @@
 #include "UI/setwindow.h"
 #include "LocalStorage/localstorage.h"
 
+#include "text.h"
+
 #include <QMainWindow>
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -27,11 +29,14 @@ private:
 
 private slots:
     // void onRecognitionResult();//识别结果并更新UI
-    // void updateCameraDisplay();//更新摄像头画面
     // void onSettingButtonClicked();//打开设置窗口
 
 private:
-    void init();//初始化
+    //初始化
+    void init();
+
+    //页面信息展示
+    void InfoWidget();
 
 private:
     LocalStorage* m_db;
@@ -39,5 +44,6 @@ private:
     Networkclient* networkClient;
     CameraCapture* m_CameraCapture;
     VideoFrameCapture* m_VideoFrameCapture;
+    QVideoWidget* m_VideoWidget;
 };
 #endif // MAINWINDOW_H

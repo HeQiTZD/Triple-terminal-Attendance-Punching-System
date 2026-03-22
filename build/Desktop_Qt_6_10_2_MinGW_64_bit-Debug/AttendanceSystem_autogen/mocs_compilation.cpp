@@ -12,3 +12,4 @@
 #include "26RFHC3MAC/moc_networkclient.cpp"
 #include "KRKR4BN5RM/moc_setwindow.cpp"
 #include "EWIEGA46WW/moc_mainwindow.cpp"
+#include "EWIEGA46WW/moc_text.cpp"

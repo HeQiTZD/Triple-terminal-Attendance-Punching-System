@@ -15,8 +15,6 @@ FaceRecognizer::~FaceRecognizer()
 
 void FaceRecognizer::init()
 {
-    connect(videoCapture,&VideoFrameCapture::frameCaptured,this,&FaceRecognizer::WanZhengYeWuLiuCheng);
-    
     //引擎初始化
     arcEngine = arcfaceengine::instance();
     QString appid="JBT9EUHsd8RVuvbgwNLNFP1ezsdtsuUenhD6gjSkoKhG";

@@ -51,6 +51,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         NetworkClient/messagequeue.h NetworkClient/messagequeue.cpp
         NetworkClient/protocol.h NetworkClient/protocol.cpp
         UI/setwindow.h UI/setwindow.cpp UI/setwindow.ui
+        text.h text.cpp
 
 
 

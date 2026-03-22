@@ -564,6 +564,12 @@
 			null
 		],
 		[
+			"D:/QTproject/AttendanceSystem/text.h",
+			"MU",
+			"EWIEGA46WW/moc_text.cpp",
+			null
+		],
+		[
 			"D:/QTproject/AttendanceSystem/third_party/arcface/include/merror.h",
 			"MU",
 			"ZD7C3D5HSQ/moc_merror.cpp",
@@ -726,7 +732,8 @@
 		],
 		[ "D:/QTproject/AttendanceSystem/UI/setwindow.cpp", "MU", null ],
 		[ "D:/QTproject/AttendanceSystem/main.cpp", "MU", null ],
-		[ "D:/QTproject/AttendanceSystem/mainwindow.cpp", "MU", null ]
+		[ "D:/QTproject/AttendanceSystem/mainwindow.cpp", "MU", null ],
+		[ "D:/QTproject/AttendanceSystem/text.cpp", "MU", null ]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],

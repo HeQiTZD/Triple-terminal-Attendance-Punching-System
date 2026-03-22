@@ -41,6 +41,12 @@ QImage VideoFrameCapture::getCurrentFrame() const
     return currentFrame;
 }
 
+//对外接口：图像预览窗口
+QVideoWidget *VideoFrameCapture::getVideoWidget() const
+{
+    return videoWidget;
+}
+
 //处理视频帧
 void VideoFrameCapture::processFrame(const QVideoFrame &frame)
 {

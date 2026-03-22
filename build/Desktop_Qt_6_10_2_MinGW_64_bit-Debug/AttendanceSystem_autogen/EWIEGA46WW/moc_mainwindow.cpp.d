@@ -510,6 +510,7 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   D:/QTproject/AttendanceSystem/NetworkClient/networkclient.h \
   D:/QTproject/AttendanceSystem/NetworkClient/protocol.h \
   D:/QTproject/AttendanceSystem/UI/setwindow.h \
+  D:/QTproject/AttendanceSystem/text.h \
   D:/QTproject/AttendanceSystem/third_party/arcface/include/amcomdef.h \
   D:/QTproject/AttendanceSystem/third_party/arcface/include/arcsoft_face_sdk.h \
   D:/QTproject/AttendanceSystem/third_party/arcface/include/asvloffscreen.h \
