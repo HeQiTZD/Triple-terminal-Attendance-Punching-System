@@ -13,6 +13,7 @@
 #include <QDebug>
 
 #include "../LocalStorage/localstorage.h"
+#include "../FaceRecognition/facedatabasemanager.h"
 
 class Networkclient : public QObject
 {

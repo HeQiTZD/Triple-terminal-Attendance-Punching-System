@@ -6,157 +6,244 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>970</width>
-    <height>815</height>
+    <width>1299</width>
+    <height>892</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>人脸识别考勤系统</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="widget_2" native="true">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>238</width>
-      <height>569</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,2,4">
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_4">
+   <layout class="QVBoxLayout" name="verticalLayout_main">
+    <item>
+     <widget class="QWidget" name="topWidget" native="true">
+      <layout class="QHBoxLayout" name="horizontalLayout_top">
        <item>
-        <widget class="QLabel" name="label_2">
+        <widget class="QLabel" name="timeLabel">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
-          <string>当前时间展示</string>
+          <string>当前时间：2024-01-01 12:00:00</string>
          </property>
         </widget>
        </item>
        <item>
-        <spacer name="horizontalSpacer">
+        <spacer name="horizontalSpacer_top">
          <property name="orientation">
           <enum>Qt::Orientation::Horizontal</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>168</width>
+           <width>40</width>
            <height>20</height>
           </size>
          </property>
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QLabel" name="networkStatusLabel">
+         <property name="styleSheet">
+          <string notr="true">color: green;</string>
+         </property>
+         <property name="text">
+          <string>网络状态：●</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="deviceStatusLabel">
+         <property name="styleSheet">
+          <string notr="true">color: green;</string>
+         </property>
+         <property name="text">
+          <string>设备状态：●</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="settingButton">
          <property name="text">
           <string>设置</string>
          </property>
+         <property name="icon">
+          <iconset theme="configure"/>
+         </property>
         </widget>
        </item>
       </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_5">
-       <item>
-        <spacer name="horizontalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Orientation::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QWidget" name="widget" native="true">
-         <layout class="QVBoxLayout" name="verticalLayout">
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout">
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_center" stretch="1,2">
+      <item>
+       <widget class="QWidget" name="leftWidget" native="true">
+        <layout class="QVBoxLayout" name="verticalLayout_left">
+         <item>
+          <widget class="QGroupBox" name="infoGroupBox">
+           <property name="title">
+            <string>员工信息</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_info">
             <item>
-             <widget class="QLabel" name="label_3">
+             <layout class="QHBoxLayout" name="horizontalLayout_employeeId">
+              <item>
+               <widget class="QLabel" name="employeeIdLabel">
+                <property name="text">
+                 <string>员工号：</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="employeeIdEdit">
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_name">
+              <item>
+               <widget class="QLabel" name="nameLabel">
+                <property name="text">
+                 <string>姓名：</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="nameEdit">
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_status">
+              <item>
+               <widget class="QLabel" name="statusLabel">
+                <property name="text">
+                 <string>打卡状态：</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="statusEdit">
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_time">
+              <item>
+               <widget class="QLabel" name="checkTimeLabel">
+                <property name="text">
+                 <string>打卡时间：</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="checkTimeEdit">
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="faceImageGroupBox">
+           <property name="title">
+            <string>识别到的人脸</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_face">
+            <item>
+             <widget class="QLabel" name="faceImageLabel">
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>200</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: lightgray; border: 1px solid gray;</string>
+              </property>
               <property name="text">
-               <string>  员工号：</string>
+               <string>暂无人脸识别</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignCenter</set>
               </property>
              </widget>
             </item>
-            <item>
-             <widget class="QLineEdit" name="lineEdit"/>
-            </item>
            </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
-            <item>
-             <widget class="QLabel" name="label">
-              <property name="text">
-               <string>员工姓名：</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="lineEdit_2"/>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_3">
-            <item>
-             <widget class="QLabel" name="label_4">
-              <property name="text">
-               <string>打卡状态：</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="lineEdit_3"/>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Orientation::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_6">
-       <property name="text">
-        <string>打卡图片展示</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>254</x>
-      <y>10</y>
-      <width>108</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>摄像头实时显示画面</string>
-    </property>
-   </widget>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="rightWidget" native="true">
+        <layout class="QVBoxLayout" name="verticalLayout_right">
+         <item>
+          <widget class="QLabel" name="cameraLabel">
+           <property name="text">
+            <string>摄像头实时画面</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="cameraDisplay">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>640</width>
+             <height>480</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: black; color: white; border: 2px solid gray;</string>
+           </property>
+           <property name="text">
+            <string>摄像头画面显示区域</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="styleSheet">
+    <string notr="true">QStatusBar { background-color: #f0f0f0; }</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SetWindow</class>
+ <widget class="QWidget" name="SetWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>700</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>700</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>系统设置</string>
+  </property>
+  <layout class="QHBoxLayout" name="mainLayout" stretch="0,1">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QWidget" name="navWidget" native="true">
+     <property name="minimumSize">
+      <size>
+       <width>150</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>150</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <layout class="QVBoxLayout" name="navLayout">
+      <property name="spacing">
+       <number>5</number>
+      </property>
+      <property name="leftMargin">
+       <number>10</number>
+      </property>
+      <property name="topMargin">
+       <number>20</number>
+      </property>
+      <property name="rightMargin">
+       <number>10</number>
+      </property>
+      <property name="bottomMargin">
+       <number>20</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="btnNetwork">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>45</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>网络连接</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+        <property name="autoExclusive">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnFace">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>45</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>人脸识别</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="autoExclusive">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnAttendance">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>45</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>考勤规则</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="autoExclusive">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnStorage">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>45</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>存储设置</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="autoExclusive">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="navSpacer">
+        <property name="orientation">
+         <enum>Qt::Orientation::Vertical</enum>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="contentWidget" native="true">
+     <layout class="QVBoxLayout" name="contentLayout">
+      <property name="spacing">
+       <number>15</number>
+      </property>
+      <property name="leftMargin">
+       <number>30</number>
+      </property>
+      <property name="topMargin">
+       <number>20</number>
+      </property>
+      <property name="rightMargin">
+       <number>30</number>
+      </property>
+      <property name="bottomMargin">
+       <number>20</number>
+      </property>
+      <item>
+       <widget class="QScrollArea" name="scrollArea">
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="scrollContent">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>488</width>
+           <height>900</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="scrollLayout">
+          <property name="spacing">
+           <number>20</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>20</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QGroupBox" name="networkGroup">
+            <property name="title">
+             <string>网络连接设置</string>
+            </property>
+            <layout class="QVBoxLayout" name="networkLayout">
+             <property name="spacing">
+              <number>15</number>
+             </property>
+             <item>
+              <layout class="QHBoxLayout" name="ipLayout">
+               <item>
+                <widget class="QLabel" name="ipLabel">
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>服务器地址</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEditIP">
+                 <property name="placeholderText">
+                  <string>例如: 192.168.1.100</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="portLabel">
+                 <property name="text">
+                  <string>端口</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="spinBoxPort">
+                 <property name="minimumSize">
+                  <size>
+                   <width>80</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="minimum">
+                  <number>1</number>
+                 </property>
+                 <property name="maximum">
+                  <number>65535</number>
+                 </property>
+                 <property name="value">
+                  <number>8080</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="timeoutLayout">
+               <item>
+                <widget class="QLabel" name="timeoutLabel">
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>连接超时</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="spinBoxTimeout">
+                 <property name="suffix">
+                  <string> 秒</string>
+                 </property>
+                 <property name="minimum">
+                  <number>5</number>
+                 </property>
+                 <property name="maximum">
+                  <number>60</number>
+                 </property>
+                 <property name="value">
+                  <number>30</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="timeoutSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="testLayout">
+               <item>
+                <widget class="QPushButton" name="btnTestConnection">
+                 <property name="text">
+                  <string>测试连接</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelConnectionStatus">
+                 <property name="text">
+                  <string>未连接</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="testSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="faceGroup">
+            <property name="title">
+             <string>人脸识别设置</string>
+            </property>
+            <layout class="QVBoxLayout" name="faceLayout">
+             <property name="spacing">
+              <number>15</number>
+             </property>
+             <item>
+              <layout class="QHBoxLayout" name="thresholdLayout">
+               <item>
+                <widget class="QLabel" name="thresholdLabel">
+                 <property name="minimumSize">
+                  <size>
+                   <width>120</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>相似度阈值</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSlider" name="sliderThreshold">
+                 <property name="minimumSize">
+                  <size>
+                   <width>200</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="minimum">
+                  <number>50</number>
+                 </property>
+                 <property name="maximum">
+                  <number>99</number>
+                 </property>
+                 <property name="value">
+                  <number>80</number>
+                 </property>
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelThresholdValue">
+                 <property name="minimumSize">
+                  <size>
+                   <width>50</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>80%</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="maxFaceLayout">
+               <item>
+                <widget class="QLabel" name="maxFaceLabel">
+                 <property name="minimumSize">
+                  <size>
+                   <width>120</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>最大检测人脸数</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="spinBoxMaxFace">
+                 <property name="minimum">
+                  <number>1</number>
+                 </property>
+                 <property name="maximum">
+                  <number>10</number>
+                 </property>
+                 <property name="value">
+                  <number>5</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="maxFaceSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="recognizeTimeoutLayout">
+               <item>
+                <widget class="QLabel" name="recognizeTimeoutLabel">
+                 <property name="minimumSize">
+                  <size>
+                   <width>120</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>识别超时时间</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="spinBoxRecognizeTimeout">
+                 <property name="suffix">
+                  <string> 秒</string>
+                 </property>
+                 <property name="minimum">
+                  <number>3</number>
+                 </property>
+                 <property name="maximum">
+                  <number>30</number>
+                 </property>
+                 <property name="value">
+                  <number>10</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="recognizeTimeoutSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="attendanceGroup">
+            <property name="title">
+             <string>考勤规则设置</string>
+            </property>
+            <layout class="QVBoxLayout" name="attendanceLayout">
+             <property name="spacing">
+              <number>15</number>
+             </property>
+             <item>
+              <layout class="QHBoxLayout" name="workTimeLayout">
+               <item>
+                <widget class="QLabel" name="workStartLabel">
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>上班时间</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QTimeEdit" name="timeEditWorkStart">
+                 <property name="displayFormat">
+                  <string>HH:mm</string>
+                 </property>
+                 <property name="time">
+                  <time>
+                   <hour>9</hour>
+                   <minute>0</minute>
+                   <second>0</second>
+                  </time>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="workEndLabel">
+                 <property name="text">
+                  <string>下班时间</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QTimeEdit" name="timeEditWorkEnd">
+                 <property name="displayFormat">
+                  <string>HH:mm</string>
+                 </property>
+                 <property name="time">
+                  <time>
+                   <hour>18</hour>
+                   <minute>0</minute>
+                   <second>0</second>
+                  </time>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="workTimeSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="lateLayout">
+               <item>
+                <widget class="QLabel" name="lateLabel">
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>迟到允许</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="spinBoxLate">
+                 <property name="suffix">
+                  <string> 分钟</string>
+                 </property>
+                 <property name="minimum">
+                  <number>0</number>
+                 </property>
+                 <property name="maximum">
+                  <number>60</number>
+                 </property>
+                 <property name="value">
+                  <number>15</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="lateSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="earlyLayout">
+               <item>
+                <widget class="QLabel" name="earlyLabel">
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>早退允许</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="spinBoxEarly">
+                 <property name="suffix">
+                  <string> 分钟</string>
+                 </property>
+                 <property name="minimum">
+                  <number>0</number>
+                 </property>
+                 <property name="maximum">
+                  <number>60</number>
+                 </property>
+                 <property name="value">
+                  <number>15</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="earlySpacer">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="storageGroup">
+            <property name="title">
+             <string>存储设置</string>
+            </property>
+            <layout class="QVBoxLayout" name="storageLayout">
+             <property name="spacing">
+              <number>15</number>
+             </property>
+             <item>
+              <layout class="QHBoxLayout" name="dbPathLayout">
+               <item>
+                <widget class="QLabel" name="dbPathLabel">
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>数据库路径</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEditDbPath">
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                 <property name="placeholderText">
+                  <string>请选择数据库文件路径</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btnBrowseDb">
+                 <property name="text">
+                  <string>浏览...</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="logPathLayout">
+               <item>
+                <widget class="QLabel" name="logPathLabel">
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>日志路径</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEditLogPath">
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                 <property name="placeholderText">
+                  <string>请选择日志文件保存路径</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btnBrowseLog">
+                 <property name="text">
+                  <string>浏览...</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="cachePathLayout">
+               <item>
+                <widget class="QLabel" name="cachePathLabel">
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>缓存目录</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEditCachePath">
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                 <property name="placeholderText">
+                  <string>请选择图片缓存目录</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btnBrowseCache">
+                 <property name="text">
+                  <string>浏览...</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <spacer name="bottomSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="buttonLayout">
+        <item>
+         <widget class="QPushButton" name="btnRestore">
+          <property name="text">
+           <string>恢复默认</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="buttonSpacer">
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnCancel">
+          <property name="text">
+           <string>取消</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnSave">
+          <property name="text">
+           <string>保存设置</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

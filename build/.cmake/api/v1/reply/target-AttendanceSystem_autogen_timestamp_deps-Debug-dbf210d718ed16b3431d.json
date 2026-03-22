@@ -30,15 +30,11 @@
 		},
 		{
 			"backtrace" : 0,
-			"id" : "Qt6::Core::@6890427a1f51a3e7e1df"
-		},
-		{
-			"backtrace" : 0,
 			"id" : "Qt6::uic::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 0,
-			"id" : "Qt6::Widgets::@6890427a1f51a3e7e1df"
+			"id" : "Qt6::Core::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 0,
@@ -46,7 +42,7 @@
 		},
 		{
 			"backtrace" : 0,
-			"id" : "Qt6::Sql::@6890427a1f51a3e7e1df"
+			"id" : "Qt6::Widgets::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 0,
@@ -55,6 +51,10 @@
 		{
 			"backtrace" : 0,
 			"id" : "Qt6::MultimediaWidgets::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "Qt6::Sql::@6890427a1f51a3e7e1df"
 		}
 	],
 	"paths" : 

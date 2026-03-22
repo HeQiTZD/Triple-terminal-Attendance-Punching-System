@@ -11,10 +11,6 @@ FaceRecognizer::~FaceRecognizer()
         delete videoCapture;
         videoCapture = nullptr;
     }
-    if(cameraCapture){
-        delete cameraCapture;
-        cameraCapture = nullptr;
-    }
 }
 
 void FaceRecognizer::init()
@@ -36,18 +32,6 @@ void FaceRecognizer::init()
     //加载特征到内存
     dataBase = FaceDatabaseManager::instance();
     dataBase->loadFromDatabase();
-
-    //摄像头初始化
-    cameraCapture = new CameraCapture();
-     if (!cameraCapture->initCamera()) {
-        qDebug() << "摄像头初始化失败";
-        return;
-    }
-    camera = cameraCapture->getCamera();
-
-    //启动摄像头,开启视频帧捕获处理
-    videoCapture->captureFrame(camera);
-    
 }
 
 void FaceRecognizer::WanZhengYeWuLiuCheng(QImage image)

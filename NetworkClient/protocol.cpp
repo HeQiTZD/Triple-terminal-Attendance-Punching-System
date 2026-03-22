@@ -6,7 +6,7 @@ QJsonObject Protocol::AttendanceRecord::toJson() const
 {
     QJsonObject obj;
     obj["employeeId"] = employeeId;
-    obj["checktTme"] = checktTme;
+    obj["checktTime"] = checktTime;
     obj["status"] = status;
     return obj;
 }
@@ -15,7 +15,7 @@ Protocol::AttendanceRecord Protocol::AttendanceRecord::fromJson(const QJsonObjec
 {
     AttendanceRecord record;
     record.employeeId = obj["employeeId"].toString();
-    record.checktTme = obj["checktTme"].toString();
+    record.checktTime = obj["checktTme"].toString();
     record.status = obj["status"].toString();
     return record;
 }
@@ -58,4 +58,20 @@ QString Protocol::messageTypeToString(MessageType type)
     case DEVICE_STATUS: return "DEVICE_STATUS";
     default: return "UNKNOWN";
     }
+}
+
+//解析消息类型
+Protocol::MessageType Protocol::parseMessageType(const QJsonObject &message)
+{
+    static const QMap<QString,MessageType> typeMap = {
+        {"HEARTBEAT",HEARTBEAT},
+        {"SYNC_PERSON_REQUEST",SYNC_PERSON_REQUEST},
+        {"SYNC_PERSON_RESPONSE",SYNC_PERSON_RESPONSE},
+        {"UPLOAD_ATTENDANCE",UPLOAD_ATTENDANCE},
+        {"UPLOAD_RESPONSE",UPLOAD_RESPONSE},
+        {"DEVICE_STATUS",DEVICE_STATUS},
+    };
+
+    QString typeStr = message["type"].toString();
+    return typeMap.value(typeStr,MessageType(999));//999 无效类型标识符
 }

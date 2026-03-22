@@ -10,7 +10,6 @@ CameraCapture::~CameraCapture()
     clearCamera();
 }
 
-
 //初始化摄像头
 bool CameraCapture::initCamera()
 {

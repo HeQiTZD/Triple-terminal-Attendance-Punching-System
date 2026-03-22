@@ -1,8 +1,6 @@
 ﻿#include "videoframecapture.h"
 #include "videoframeconverter.h"
 
-#include <QWidget>
-#include <QVBoxLayout>
 VideoFrameCapture::VideoFrameCapture() {
 
 }
@@ -21,37 +19,14 @@ void VideoFrameCapture::captureFrame(QCamera *camera)
 //设置捕获，接收视频帧
 void VideoFrameCapture::setCamera()
 {
-    //清理之前的设置
-    // if(camera){
-    //     if(camera->isActive()){
-    //         camera->stop();
-    //     }
-    //     delete camera;
-    //     camera=nullptr;
-    // }
-    // if(captureSession){
-    //     delete captureSession;
-    //     captureSession=nullptr;
-    // }
-    // if(videoSink){
-    //     delete videoSink;
-    //     videoSink=nullptr;
-    // }
-
     if(camera){
         //创建媒体捕获会话
         captureSession = new QMediaCaptureSession();
         captureSession->setCamera(camera);
 
 
-        //测试
-        QVBoxLayout* layout=new QVBoxLayout();
-        QWidget* widget=new QWidget();
-        videoWidget=new QVideoWidget(widget);
-        widget->setLayout(layout);
-        layout->addWidget(videoWidget);
+        videoWidget=new QVideoWidget();
         captureSession->setVideoOutput(videoWidget);
-        widget->show();
 
         //创建视频接收器
         videoSink = videoWidget->videoSink();

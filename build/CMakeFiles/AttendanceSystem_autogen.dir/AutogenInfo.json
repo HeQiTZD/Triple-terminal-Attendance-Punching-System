@@ -545,6 +545,12 @@
 			null
 		],
 		[
+			"D:/QTproject/AttendanceSystem/UI/setwindow.h",
+			"MU",
+			"KRKR4BN5RM/moc_setwindow.cpp",
+			null
+		],
+		[
 			"D:/QTproject/AttendanceSystem/mainwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
@@ -711,6 +717,7 @@
 			"MU",
 			null
 		],
+		[ "D:/QTproject/AttendanceSystem/UI/setwindow.cpp", "MU", null ],
 		[ "D:/QTproject/AttendanceSystem/main.cpp", "MU", null ],
 		[ "D:/QTproject/AttendanceSystem/mainwindow.cpp", "MU", null ]
 	],

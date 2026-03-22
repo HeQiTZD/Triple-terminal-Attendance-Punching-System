@@ -21,6 +21,7 @@
 #include <QMutex>
 
 #include "../LocalStorage/localstorage.h"
+#include "../NetworkClient/networkclient.h"
 
 class FaceRecognizer : public QObject
 {
@@ -29,19 +30,16 @@ class FaceRecognizer : public QObject
 public:
     FaceRecognizer();
     ~FaceRecognizer();
-
-private:
     //初始化人脸识别配置
     void init();
 
+private:
     void WanZhengYeWuLiuCheng(QImage image);//人脸识别整体流程
 
 private:
-    QCamera* camera = nullptr;//摄像头实例
     arcfaceengine* arcEngine = nullptr;//人脸功能实例
     VideoFrameCapture* videoCapture = nullptr;//捕获实例
     FaceDatabaseManager* dataBase = nullptr;//内存加载特征，特征对比实例
-    CameraCapture* cameraCapture = nullptr;//摄像头管理类实例
 
 private:
     QVector<arcfaceengine::FaceInfo> m_FaceInfo;//人脸检测信息

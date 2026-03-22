@@ -1,8 +1,6 @@
 ﻿#include "mainwindow.h"
 #include <QApplication>
 #include <QImage>
-#include "CameraCapture/videoframecapture.h"
-#include "FaceRecognition/arcfaceengine.h"
 
 #ifdef Q_OS_WIN
 #include <windows.h>
@@ -19,9 +17,12 @@ int main(int argc, char *argv[])
 #endif
 
     QApplication a(argc, argv);
-    MainWindow w;
+     MainWindow w;
 
-    //w.show();
+     w.show();
+
+    // SetWindow w;
+    // w.show();
 
     return a.exec();
 }

@@ -1,4 +1,4 @@
-#ifndef VIDEOFRAMECAPTURE_H
+﻿#ifndef VIDEOFRAMECAPTURE_H
 #define VIDEOFRAMECAPTURE_H
 
 #include <QObject>
@@ -28,7 +28,7 @@ public:
 private:
     QMediaCaptureSession *captureSession;//媒体捕获会话
     QVideoSink *videoSink;//视频接收器
-    QCamera *camera;//摄像头实例
+    QCamera* camera;//摄像头实例
     QImage currentFrame;//当前捕获的视频帧
     QVideoWidget* videoWidget;//预览控件，返回捕获帧实例
     CameraCapture cameraCaptrue;//摄像头类的实例化

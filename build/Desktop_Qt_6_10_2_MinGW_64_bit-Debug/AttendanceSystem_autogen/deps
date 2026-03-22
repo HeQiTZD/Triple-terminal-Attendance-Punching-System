@@ -242,6 +242,7 @@ AttendanceSystem_autogen/timestamp: \
 	C:/Qt/6.10.2/mingw_64/include/QtSql/qtsqlexports.h \
 	C:/Qt/6.10.2/mingw_64/include/QtSql/qtsqlglobal.h \
 	C:/Qt/6.10.2/mingw_64/include/QtWidgets/QMainWindow \
+	C:/Qt/6.10.2/mingw_64/include/QtWidgets/QWidget \
 	C:/Qt/6.10.2/mingw_64/include/QtWidgets/qmainwindow.h \
 	C:/Qt/6.10.2/mingw_64/include/QtWidgets/qsizepolicy.h \
 	C:/Qt/6.10.2/mingw_64/include/QtWidgets/qtabwidget.h \
@@ -821,6 +822,8 @@ AttendanceSystem_autogen/timestamp: \
 	D:/QTproject/AttendanceSystem/NetworkClient/networkclient.h \
 	D:/QTproject/AttendanceSystem/NetworkClient/protocol.cpp \
 	D:/QTproject/AttendanceSystem/NetworkClient/protocol.h \
+	D:/QTproject/AttendanceSystem/UI/setwindow.cpp \
+	D:/QTproject/AttendanceSystem/UI/setwindow.h \
 	D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/.qtc/package-manager/auto-setup.cmake \
 	D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/.qtc/package-manager/maintenance_tool_provider.cmake \
 	D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceSystem_autogen/moc_predefs.h \
@@ -834,5 +837,6 @@ AttendanceSystem_autogen/timestamp: \
 	D:/QTproject/AttendanceSystem/third_party/arcface/include/arcsoft_face_sdk.h \
 	D:/QTproject/AttendanceSystem/third_party/arcface/include/asvloffscreen.h \
 	D:/QTproject/AttendanceSystem/third_party/arcface/include/merror.h \
+	D:/QTproject/AttendanceSystem/UI/setwindow.ui \
 	D:/QTproject/AttendanceSystem/mainwindow.ui \
 	C:/Qt/Tools/CMake_64/bin/cmake.exe

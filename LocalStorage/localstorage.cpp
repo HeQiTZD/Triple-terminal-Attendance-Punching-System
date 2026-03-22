@@ -27,6 +27,7 @@ LocalStorage::~LocalStorage()
     }
 }
 
+//创建数据库
 bool LocalStorage::connectDatabse()
 {
     //检查数据库目录是否存在，不存在则创建
@@ -298,9 +299,8 @@ bool LocalStorage::markAsUploaded(int recordId)
 
 }
 
-
 //批量标记已上传
-    bool LocalStorage::markBatchAsUploaded(const QVector<int> &recordIds)
+bool LocalStorage::markBatchAsUploaded(const QVector<int> &recordIds)
 {
     QMutexLocker locker(&s_mutex);
 
@@ -317,12 +317,10 @@ bool LocalStorage::markAsUploaded(int recordId)
         return false;
     }
 
-    QVector<int> records;
-
     QSqlQuery query(m_db);
     query.prepare("update AttendanceRecord set uploaded = 1,upload_time = datetime('now')" "where id = :id ");
 
-    for(const int &recordId:records){
+    for(const int &recordId:recordIds){
         query.bindValue(":id",recordId);
         if(!query.exec()){
             qWarning()<<"批量标记失败，ID："<<recordId;
@@ -339,7 +337,7 @@ bool LocalStorage::markAsUploaded(int recordId)
         return false;
     }
 
-    qDebug()<<"打卡记录批量上传成功，共："<<records.size()<<"条";
+    qDebug()<<"打卡记录批量上传成功，共："<<recordIds.size()<<"条";
     return true;
 
 }
