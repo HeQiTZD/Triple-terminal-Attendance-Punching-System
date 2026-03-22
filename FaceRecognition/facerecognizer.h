@@ -38,7 +38,7 @@ private:
 
 private:
     arcfaceengine* arcEngine = nullptr;//人脸功能实例
-    VideoFrameCapture* videoCapture = nullptr;//捕获实例
+    VideoFrameCapture* videoCapture = nullptr;//捕获实例,通过其他路径传入
     FaceDatabaseManager* dataBase = nullptr;//内存加载特征，特征对比实例
 
 private:

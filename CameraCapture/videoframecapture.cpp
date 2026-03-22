@@ -24,7 +24,6 @@ void VideoFrameCapture::setCamera()
         captureSession = new QMediaCaptureSession();
         captureSession->setCamera(camera);
 
-
         videoWidget=new QVideoWidget();
         captureSession->setVideoOutput(videoWidget);
 

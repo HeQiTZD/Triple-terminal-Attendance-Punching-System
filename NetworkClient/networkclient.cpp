@@ -105,6 +105,7 @@ void Networkclient::reportDeviceStatus(const QJsonObject &status)
     }
 }
 
+//连接成功处理
 void Networkclient::onConnectionConnected()
 {
     qDebug()<<"Networkclient:连接成功，初始化模块";
@@ -159,7 +160,6 @@ void Networkclient::onConnectionDisconnected()
     emit disconnected();
     emit networkStateChanged(false);
 }
-
 
 //状态变化处理
 void Networkclient::onConnectionStateChanged(bool isOnline)

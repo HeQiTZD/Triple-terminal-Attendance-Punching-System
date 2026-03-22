@@ -53,6 +53,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         UI/setwindow.h UI/setwindow.cpp UI/setwindow.ui
 
 
+
     )
 else()
     if(ANDROID)

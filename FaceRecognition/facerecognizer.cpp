@@ -15,9 +15,6 @@ FaceRecognizer::~FaceRecognizer()
 
 void FaceRecognizer::init()
 {
-    //创建videoCapture实例
-    videoCapture = new VideoFrameCapture();
-
     connect(videoCapture,&VideoFrameCapture::frameCaptured,this,&FaceRecognizer::WanZhengYeWuLiuCheng);
     
     //引擎初始化
