@@ -1,13 +1,18 @@
-﻿#include "mainwindow.h"
+#include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "FaceRecognition/facerecognizer.h"
 #include "NetworkClient/networkclient.h"
+#include "Config/configmanager.h"
+#include <QCloseEvent>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     ,m_timeTimer(nullptr)
 {
     ui->setupUi(this);
+
+    //从配置恢复窗口大小
+    restoreWindowSize();
 
     //初始化
     init();
@@ -73,9 +78,12 @@ void MainWindow::init()
     connect(networkClient, &Networkclient::networkStateChanged, this, [=](bool isOnline){
         qDebug() << "网络状态变化:" << (isOnline ? "在线" : "离线");
     });
-    //连接服务器 (从配置中读取IP和端口，这里使用默认值示例)
-    QString serverIp = "127.0.0.1";  // 可以从配置文件读取
-    quint16 serverPort = 8080;        // 可以从配置文件读取
+    //连接服务器 (从配置中读取IP和端口)
+    ConfigManager* config = ConfigManager::instance();
+    QString serverIp = config->getServerIP();
+    quint16 serverPort = static_cast<quint16>(config->getServerPort());
+    qDebug() << "从配置文件读取服务器地址:" << serverIp << ":" << serverPort;
+
     if(networkClient->connectToServer(serverIp, serverPort)){
         qDebug() << "正在连接服务器...";
     } else {
@@ -150,7 +158,8 @@ void MainWindow::initNetWorkStatus()
 void MainWindow::onRecognitionSuccess(const QString &employeeId,
                                       const QString &name,
                                       const QString &status,
-                                      const QString &checkTime)
+                                      const QString &checkTime,
+                                      const QImage &faceImage)
 {
     // 更新员工号
     ui->employeeIdEdit->setText(employeeId);
@@ -163,6 +172,16 @@ void MainWindow::onRecognitionSuccess(const QString &employeeId,
 
     // 更新打卡时间
     ui->checkTimeEdit->setText(checkTime);
+
+    // 显示人脸识别图像
+    if(!faceImage.isNull()){
+        // 将QImage转换为QPixmap并显示在faceImageLabel中
+        QPixmap pixmap = QPixmap::fromImage(faceImage);
+        // 缩放图像以适应标签大小，保持宽高比
+        pixmap = pixmap.scaled(ui->faceImageLabel->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+        ui->faceImageLabel->setPixmap(pixmap);
+        ui->faceImageLabel->setAlignment(Qt::AlignCenter);
+    }
 
     // 在状态栏显示识别成功信息
     ui->statusbar->showMessage(QString("识别成功 - 员工:%1 时间:%2").arg(employeeId, checkTime), 5000);
@@ -217,4 +236,46 @@ void MainWindow::onNetworkStateChanged(bool isOnline)
 void MainWindow::onSetPushButten()
 {
     setwindow.show();
+}
+
+//从配置恢复窗口大小
+void MainWindow::restoreWindowSize()
+{
+    ConfigManager* config = ConfigManager::instance();
+    int width = config->getMainWindowWidth();
+    int height = config->getMainWindowHeight();
+
+    //确保尺寸在合理范围内
+    if (width < 800) width = 800;
+    if (height < 600) height = 600;
+    if (width > 1920) width = 1920;
+    if (height > 1080) height = 1080;
+
+    this->resize(width, height);
+    qDebug() << "恢复窗口大小:" << width << "x" << height;
+}
+
+//保存窗口大小到配置
+void MainWindow::saveWindowSize()
+{
+    ConfigManager* config = ConfigManager::instance();
+    config->setMainWindowWidth(this->width());
+    config->setMainWindowHeight(this->height());
+    config->saveConfig();
+    qDebug() << "保存窗口大小:" << this->width() << "x" << this->height();
+}
+
+//窗口大小改变事件
+void MainWindow::resizeEvent(QResizeEvent *event)
+{
+    QMainWindow::resizeEvent(event);
+    //可以在这里实时保存，或者只在关闭时保存
+}
+
+//窗口关闭事件
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    //保存窗口大小
+    saveWindowSize();
+    event->accept();
 }

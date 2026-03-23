@@ -35,7 +35,8 @@ private slots:
     void onRecognitionSuccess(const QString &employeeId,
                               const QString &name,
                               const QString &status,
-                              const QString &checkTime);
+                              const QString &checkTime,
+                              const QImage &faceImage);
     // void onSettingButtonClicked();//打开设置窗口
 
     //处理保存打卡记录请求（主线程执行数据库操作）
@@ -65,6 +66,17 @@ private:
 
     //初始化网络状态显示
     void initNetWorkStatus();
+
+    //从配置恢复窗口大小
+    void restoreWindowSize();
+    //保存窗口大小到配置
+    void saveWindowSize();
+
+protected:
+    //窗口大小改变事件
+    void resizeEvent(QResizeEvent *event) override;
+    //窗口关闭事件
+    void closeEvent(QCloseEvent *event) override;
 
 private:
     LocalStorage* m_db;

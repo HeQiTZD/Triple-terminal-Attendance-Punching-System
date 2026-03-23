@@ -1,4 +1,4 @@
-﻿#ifndef FACERECOGNIZER_H
+#ifndef FACERECOGNIZER_H
 #define FACERECOGNIZER_H
 
 // 视频采集相关
@@ -50,7 +50,8 @@ signals:
     void recognitionSuccess(const QString &employeeId,
                             const QString &name,
                             const QString &status,
-                            const QString &checkTime);
+                            const QString &checkTime,
+                            const QImage &faceImage);
     // 识别失败信号
     void recognitionFailed(const QString &reason);
 

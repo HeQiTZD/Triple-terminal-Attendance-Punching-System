@@ -1,4 +1,5 @@
 #include "localstorage.h"
+#include "../Config/configmanager.h"
 
 //静态成员初始化
 LocalStorage* LocalStorage::s_instance = nullptr;
@@ -30,18 +31,31 @@ LocalStorage::~LocalStorage()
 //创建数据库
 bool LocalStorage::connectDatabse()
 {
-    //检查数据库目录是否存在，不存在则创建
-    QString appDir=QCoreApplication::applicationDirPath();
-    QDir dataDir(appDir);
-    if(dataDir.mkpath(appDir+"/data")){
-        qDebug()<<"目录创建成功或已存在";
-    }else {
-        qDebug() << "目录创建失败";
-        return false;
+    //从配置管理器获取数据库路径
+    ConfigManager* config = ConfigManager::instance();
+    QString dbFilePath = config->getDatabasePath();
+    
+    //如果配置中没有设置数据库路径，使用默认路径
+    if(dbFilePath.isEmpty()){
+        dbFilePath = ConfigManager::getDefaultDatabasePath();
+        config->setDatabasePath(dbFilePath);
+        config->saveConfig();
     }
-
-    QString dbFilePath=appDir+"/data/attendance.db";
-    qDebug()<<"数据库路径"+dbFilePath;
+    
+    qDebug()<<"数据库路径:"<<dbFilePath;
+    
+    //检查数据库目录是否存在，不存在则创建
+    QFileInfo dbFileInfo(dbFilePath);
+    QString dbDir = dbFileInfo.path();
+    QDir dataDir;
+    if(!dataDir.exists(dbDir)){
+        if(dataDir.mkpath(dbDir)){
+            qDebug()<<"数据库目录创建成功:"<<dbDir;
+        }else {
+            qDebug() << "数据库目录创建失败:"<<dbDir;
+            return false;
+        }
+    }
 
     //连接数据库（文件不存在则自动创建）
     m_db = QSqlDatabase::addDatabase("QSQLITE");

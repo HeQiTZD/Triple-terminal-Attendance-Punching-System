@@ -558,6 +558,12 @@
 			null
 		],
 		[
+			"D:/QTproject/AttendanceSystem/config/configmanager.h",
+			"MU",
+			"IJHAR2IVER/moc_configmanager.cpp",
+			null
+		],
+		[
 			"D:/QTproject/AttendanceSystem/mainwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
@@ -725,6 +731,7 @@
 			null
 		],
 		[ "D:/QTproject/AttendanceSystem/UI/setwindow.cpp", "MU", null ],
+		[ "D:/QTproject/AttendanceSystem/config/configmanager.cpp", "MU", null ],
 		[ "D:/QTproject/AttendanceSystem/main.cpp", "MU", null ],
 		[ "D:/QTproject/AttendanceSystem/mainwindow.cpp", "MU", null ]
 	],

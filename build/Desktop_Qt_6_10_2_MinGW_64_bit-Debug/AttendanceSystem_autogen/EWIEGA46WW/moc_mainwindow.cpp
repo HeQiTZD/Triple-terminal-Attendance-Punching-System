@@ -45,6 +45,8 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "name",
         "status",
         "checkTime",
+        "QImage",
+        "faceImage",
         "onSaveAttendanceRequest",
         "updateTimeDisplay",
         "onNetworkStateChanged",
@@ -54,21 +56,22 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
 
     QtMocHelpers::UintData qt_methods {
         // Slot 'onRecognitionSuccess'
-        QtMocHelpers::SlotData<void(const QString &, const QString &, const QString &, const QString &)>(1, 2, QMC::AccessPrivate, QMetaType::Void, {{
+        QtMocHelpers::SlotData<void(const QString &, const QString &, const QString &, const QString &, const QImage &)>(1, 2, QMC::AccessPrivate, QMetaType::Void, {{
             { QMetaType::QString, 3 }, { QMetaType::QString, 4 }, { QMetaType::QString, 5 }, { QMetaType::QString, 6 },
+            { 0x80000000 | 7, 8 },
         }}),
         // Slot 'onSaveAttendanceRequest'
-        QtMocHelpers::SlotData<void(const QString &, const QString &)>(7, 2, QMC::AccessPrivate, QMetaType::Void, {{
+        QtMocHelpers::SlotData<void(const QString &, const QString &)>(9, 2, QMC::AccessPrivate, QMetaType::Void, {{
             { QMetaType::QString, 3 }, { QMetaType::QString, 5 },
         }}),
         // Slot 'updateTimeDisplay'
-        QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onNetworkStateChanged'
-        QtMocHelpers::SlotData<void(bool)>(9, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Bool, 10 },
+        QtMocHelpers::SlotData<void(bool)>(11, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Bool, 12 },
         }}),
         // Slot 'onSetPushButten'
-        QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(13, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -92,7 +95,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     auto *_t = static_cast<MainWindow *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->onRecognitionSuccess((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[4]))); break;
+        case 0: _t->onRecognitionSuccess((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[4])),(*reinterpret_cast<std::add_pointer_t<QImage>>(_a[5]))); break;
         case 1: _t->onSaveAttendanceRequest((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2]))); break;
         case 2: _t->updateTimeDisplay(); break;
         case 3: _t->onNetworkStateChanged((*reinterpret_cast<std::add_pointer_t<bool>>(_a[1]))); break;

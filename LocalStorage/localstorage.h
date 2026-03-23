@@ -1,4 +1,4 @@
-﻿#ifndef LOCALSTORAGE_H
+#ifndef LOCALSTORAGE_H
 #define LOCALSTORAGE_H
 
 #include <QObject>

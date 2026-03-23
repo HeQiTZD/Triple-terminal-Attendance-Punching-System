@@ -16,10 +16,10 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QScrollArea>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSpinBox>
+#include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QTimeEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -39,9 +39,9 @@ public:
     QSpacerItem *navSpacer;
     QWidget *contentWidget;
     QVBoxLayout *contentLayout;
-    QScrollArea *scrollArea;
-    QWidget *scrollContent;
-    QVBoxLayout *scrollLayout;
+    QStackedWidget *stackedWidget;
+    QWidget *pageNetwork;
+    QVBoxLayout *networkPageLayout;
     QGroupBox *networkGroup;
     QVBoxLayout *networkLayout;
     QHBoxLayout *ipLayout;
@@ -57,6 +57,9 @@ public:
     QPushButton *btnTestConnection;
     QLabel *labelConnectionStatus;
     QSpacerItem *testSpacer;
+    QSpacerItem *networkSpacer;
+    QWidget *pageFace;
+    QVBoxLayout *facePageLayout;
     QGroupBox *faceGroup;
     QVBoxLayout *faceLayout;
     QHBoxLayout *thresholdLayout;
@@ -71,6 +74,17 @@ public:
     QLabel *recognizeTimeoutLabel;
     QSpinBox *spinBoxRecognizeTimeout;
     QSpacerItem *recognizeTimeoutSpacer;
+    QGroupBox *arcfaceGroup;
+    QVBoxLayout *arcfaceLayout;
+    QHBoxLayout *appIdLayout;
+    QLabel *appIdLabel;
+    QLineEdit *lineEditAppId;
+    QHBoxLayout *sdkKeyLayout;
+    QLabel *sdkKeyLabel;
+    QLineEdit *lineEditSdkKey;
+    QSpacerItem *faceSpacer;
+    QWidget *pageAttendance;
+    QVBoxLayout *attendancePageLayout;
     QGroupBox *attendanceGroup;
     QVBoxLayout *attendanceLayout;
     QHBoxLayout *workTimeLayout;
@@ -87,6 +101,9 @@ public:
     QLabel *earlyLabel;
     QSpinBox *spinBoxEarly;
     QSpacerItem *earlySpacer;
+    QSpacerItem *attendanceSpacer;
+    QWidget *pageStorage;
+    QVBoxLayout *storagePageLayout;
     QGroupBox *storageGroup;
     QVBoxLayout *storageLayout;
     QHBoxLayout *dbPathLayout;
@@ -97,11 +114,7 @@ public:
     QLabel *logPathLabel;
     QLineEdit *lineEditLogPath;
     QPushButton *btnBrowseLog;
-    QHBoxLayout *cachePathLayout;
-    QLabel *cachePathLabel;
-    QLineEdit *lineEditCachePath;
-    QPushButton *btnBrowseCache;
-    QSpacerItem *bottomSpacer;
+    QSpacerItem *storageSpacer;
     QHBoxLayout *buttonLayout;
     QPushButton *btnRestore;
     QSpacerItem *buttonSpacer;
@@ -172,18 +185,15 @@ public:
         contentLayout->setSpacing(15);
         contentLayout->setObjectName("contentLayout");
         contentLayout->setContentsMargins(30, 20, 30, 20);
-        scrollArea = new QScrollArea(contentWidget);
-        scrollArea->setObjectName("scrollArea");
-        scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
-        scrollArea->setWidgetResizable(true);
-        scrollContent = new QWidget();
-        scrollContent->setObjectName("scrollContent");
-        scrollContent->setGeometry(QRect(0, 0, 488, 900));
-        scrollLayout = new QVBoxLayout(scrollContent);
-        scrollLayout->setSpacing(20);
-        scrollLayout->setObjectName("scrollLayout");
-        scrollLayout->setContentsMargins(0, 0, 20, 0);
-        networkGroup = new QGroupBox(scrollContent);
+        stackedWidget = new QStackedWidget(contentWidget);
+        stackedWidget->setObjectName("stackedWidget");
+        pageNetwork = new QWidget();
+        pageNetwork->setObjectName("pageNetwork");
+        networkPageLayout = new QVBoxLayout(pageNetwork);
+        networkPageLayout->setSpacing(20);
+        networkPageLayout->setObjectName("networkPageLayout");
+        networkPageLayout->setContentsMargins(0, 0, 0, 0);
+        networkGroup = new QGroupBox(pageNetwork);
         networkGroup->setObjectName("networkGroup");
         networkLayout = new QVBoxLayout(networkGroup);
         networkLayout->setSpacing(15);
@@ -261,9 +271,20 @@ public:
         networkLayout->addLayout(testLayout);
 
 
-        scrollLayout->addWidget(networkGroup);
+        networkPageLayout->addWidget(networkGroup);
 
-        faceGroup = new QGroupBox(scrollContent);
+        networkSpacer = new QSpacerItem(0, 0, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+
+        networkPageLayout->addItem(networkSpacer);
+
+        stackedWidget->addWidget(pageNetwork);
+        pageFace = new QWidget();
+        pageFace->setObjectName("pageFace");
+        facePageLayout = new QVBoxLayout(pageFace);
+        facePageLayout->setSpacing(20);
+        facePageLayout->setObjectName("facePageLayout");
+        facePageLayout->setContentsMargins(0, 0, 0, 0);
+        faceGroup = new QGroupBox(pageFace);
         faceGroup->setObjectName("faceGroup");
         faceLayout = new QVBoxLayout(faceGroup);
         faceLayout->setSpacing(15);
@@ -343,9 +364,60 @@ public:
         faceLayout->addLayout(recognizeTimeoutLayout);
 
 
-        scrollLayout->addWidget(faceGroup);
+        facePageLayout->addWidget(faceGroup);
 
-        attendanceGroup = new QGroupBox(scrollContent);
+        arcfaceGroup = new QGroupBox(pageFace);
+        arcfaceGroup->setObjectName("arcfaceGroup");
+        arcfaceLayout = new QVBoxLayout(arcfaceGroup);
+        arcfaceLayout->setSpacing(15);
+        arcfaceLayout->setObjectName("arcfaceLayout");
+        appIdLayout = new QHBoxLayout();
+        appIdLayout->setObjectName("appIdLayout");
+        appIdLabel = new QLabel(arcfaceGroup);
+        appIdLabel->setObjectName("appIdLabel");
+        appIdLabel->setMinimumSize(QSize(120, 0));
+
+        appIdLayout->addWidget(appIdLabel);
+
+        lineEditAppId = new QLineEdit(arcfaceGroup);
+        lineEditAppId->setObjectName("lineEditAppId");
+
+        appIdLayout->addWidget(lineEditAppId);
+
+
+        arcfaceLayout->addLayout(appIdLayout);
+
+        sdkKeyLayout = new QHBoxLayout();
+        sdkKeyLayout->setObjectName("sdkKeyLayout");
+        sdkKeyLabel = new QLabel(arcfaceGroup);
+        sdkKeyLabel->setObjectName("sdkKeyLabel");
+        sdkKeyLabel->setMinimumSize(QSize(120, 0));
+
+        sdkKeyLayout->addWidget(sdkKeyLabel);
+
+        lineEditSdkKey = new QLineEdit(arcfaceGroup);
+        lineEditSdkKey->setObjectName("lineEditSdkKey");
+
+        sdkKeyLayout->addWidget(lineEditSdkKey);
+
+
+        arcfaceLayout->addLayout(sdkKeyLayout);
+
+
+        facePageLayout->addWidget(arcfaceGroup);
+
+        faceSpacer = new QSpacerItem(0, 0, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+
+        facePageLayout->addItem(faceSpacer);
+
+        stackedWidget->addWidget(pageFace);
+        pageAttendance = new QWidget();
+        pageAttendance->setObjectName("pageAttendance");
+        attendancePageLayout = new QVBoxLayout(pageAttendance);
+        attendancePageLayout->setSpacing(20);
+        attendancePageLayout->setObjectName("attendancePageLayout");
+        attendancePageLayout->setContentsMargins(0, 0, 0, 0);
+        attendanceGroup = new QGroupBox(pageAttendance);
         attendanceGroup->setObjectName("attendanceGroup");
         attendanceLayout = new QVBoxLayout(attendanceGroup);
         attendanceLayout->setSpacing(15);
@@ -429,9 +501,20 @@ public:
         attendanceLayout->addLayout(earlyLayout);
 
 
-        scrollLayout->addWidget(attendanceGroup);
+        attendancePageLayout->addWidget(attendanceGroup);
 
-        storageGroup = new QGroupBox(scrollContent);
+        attendanceSpacer = new QSpacerItem(0, 0, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+
+        attendancePageLayout->addItem(attendanceSpacer);
+
+        stackedWidget->addWidget(pageAttendance);
+        pageStorage = new QWidget();
+        pageStorage->setObjectName("pageStorage");
+        storagePageLayout = new QVBoxLayout(pageStorage);
+        storagePageLayout->setSpacing(20);
+        storagePageLayout->setObjectName("storagePageLayout");
+        storagePageLayout->setContentsMargins(0, 0, 0, 0);
+        storageGroup = new QGroupBox(pageStorage);
         storageGroup->setObjectName("storageGroup");
         storageLayout = new QVBoxLayout(storageGroup);
         storageLayout->setSpacing(15);
@@ -480,38 +563,16 @@ public:
 
         storageLayout->addLayout(logPathLayout);
 
-        cachePathLayout = new QHBoxLayout();
-        cachePathLayout->setObjectName("cachePathLayout");
-        cachePathLabel = new QLabel(storageGroup);
-        cachePathLabel->setObjectName("cachePathLabel");
-        cachePathLabel->setMinimumSize(QSize(100, 0));
 
-        cachePathLayout->addWidget(cachePathLabel);
+        storagePageLayout->addWidget(storageGroup);
 
-        lineEditCachePath = new QLineEdit(storageGroup);
-        lineEditCachePath->setObjectName("lineEditCachePath");
-        lineEditCachePath->setReadOnly(true);
+        storageSpacer = new QSpacerItem(0, 0, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
-        cachePathLayout->addWidget(lineEditCachePath);
+        storagePageLayout->addItem(storageSpacer);
 
-        btnBrowseCache = new QPushButton(storageGroup);
-        btnBrowseCache->setObjectName("btnBrowseCache");
+        stackedWidget->addWidget(pageStorage);
 
-        cachePathLayout->addWidget(btnBrowseCache);
-
-
-        storageLayout->addLayout(cachePathLayout);
-
-
-        scrollLayout->addWidget(storageGroup);
-
-        bottomSpacer = new QSpacerItem(0, 0, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
-
-        scrollLayout->addItem(bottomSpacer);
-
-        scrollArea->setWidget(scrollContent);
-
-        contentLayout->addWidget(scrollArea);
+        contentLayout->addWidget(stackedWidget);
 
         buttonLayout = new QHBoxLayout();
         buttonLayout->setObjectName("buttonLayout");
@@ -544,6 +605,9 @@ public:
 
         retranslateUi(SetWindow);
 
+        stackedWidget->setCurrentIndex(0);
+
+
         QMetaObject::connectSlotsByName(SetWindow);
     } // setupUi
 
@@ -568,6 +632,11 @@ public:
         maxFaceLabel->setText(QCoreApplication::translate("SetWindow", "\346\234\200\345\244\247\346\243\200\346\265\213\344\272\272\350\204\270\346\225\260", nullptr));
         recognizeTimeoutLabel->setText(QCoreApplication::translate("SetWindow", "\350\257\206\345\210\253\350\266\205\346\227\266\346\227\266\351\227\264", nullptr));
         spinBoxRecognizeTimeout->setSuffix(QCoreApplication::translate("SetWindow", " \347\247\222", nullptr));
+        arcfaceGroup->setTitle(QCoreApplication::translate("SetWindow", "ArcFace SDK\351\205\215\347\275\256", nullptr));
+        appIdLabel->setText(QCoreApplication::translate("SetWindow", "App ID", nullptr));
+        lineEditAppId->setPlaceholderText(QCoreApplication::translate("SetWindow", "\350\257\267\350\276\223\345\205\245ArcFace App ID", nullptr));
+        sdkKeyLabel->setText(QCoreApplication::translate("SetWindow", "SDK Key", nullptr));
+        lineEditSdkKey->setPlaceholderText(QCoreApplication::translate("SetWindow", "\350\257\267\350\276\223\345\205\245ArcFace SDK Key", nullptr));
         attendanceGroup->setTitle(QCoreApplication::translate("SetWindow", "\350\200\203\345\213\244\350\247\204\345\210\231\350\256\276\347\275\256", nullptr));
         workStartLabel->setText(QCoreApplication::translate("SetWindow", "\344\270\212\347\217\255\346\227\266\351\227\264", nullptr));
         timeEditWorkStart->setDisplayFormat(QCoreApplication::translate("SetWindow", "HH:mm", nullptr));
@@ -584,9 +653,6 @@ public:
         logPathLabel->setText(QCoreApplication::translate("SetWindow", "\346\227\245\345\277\227\350\267\257\345\276\204", nullptr));
         lineEditLogPath->setPlaceholderText(QCoreApplication::translate("SetWindow", "\350\257\267\351\200\211\346\213\251\346\227\245\345\277\227\346\226\207\344\273\266\344\277\235\345\255\230\350\267\257\345\276\204", nullptr));
         btnBrowseLog->setText(QCoreApplication::translate("SetWindow", "\346\265\217\350\247\210...", nullptr));
-        cachePathLabel->setText(QCoreApplication::translate("SetWindow", "\347\274\223\345\255\230\347\233\256\345\275\225", nullptr));
-        lineEditCachePath->setPlaceholderText(QCoreApplication::translate("SetWindow", "\350\257\267\351\200\211\346\213\251\345\233\276\347\211\207\347\274\223\345\255\230\347\233\256\345\275\225", nullptr));
-        btnBrowseCache->setText(QCoreApplication::translate("SetWindow", "\346\265\217\350\247\210...", nullptr));
         btnRestore->setText(QCoreApplication::translate("SetWindow", "\346\201\242\345\244\215\351\273\230\350\256\244", nullptr));
         btnCancel->setText(QCoreApplication::translate("SetWindow", "\345\217\226\346\266\210", nullptr));
         btnSave->setText(QCoreApplication::translate("SetWindow", "\344\277\235\345\255\230\350\256\276\347\275\256", nullptr));

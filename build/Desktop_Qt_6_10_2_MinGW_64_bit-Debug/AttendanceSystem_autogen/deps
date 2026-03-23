@@ -12,6 +12,7 @@ AttendanceSystem_autogen/timestamp: \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QPair \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QQueue \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QRect \
+	C:/Qt/6.10.2/mingw_64/include/QtCore/QSettings \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QString \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QThread \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QTime \
@@ -124,6 +125,7 @@ AttendanceSystem_autogen/timestamp: \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qscopedpointer.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qscopeguard.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qset.h \
+	C:/Qt/6.10.2/mingw_64/include/QtCore/qsettings.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qshareddata.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qshareddata_impl.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qsharedpointer.h \
@@ -840,6 +842,8 @@ AttendanceSystem_autogen/timestamp: \
 	D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake \
 	D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeRCCompiler.cmake \
 	D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeSystem.cmake \
+	D:/QTproject/AttendanceSystem/config/configmanager.cpp \
+	D:/QTproject/AttendanceSystem/config/configmanager.h \
 	D:/QTproject/AttendanceSystem/main.cpp \
 	D:/QTproject/AttendanceSystem/mainwindow.cpp \
 	D:/QTproject/AttendanceSystem/mainwindow.h \

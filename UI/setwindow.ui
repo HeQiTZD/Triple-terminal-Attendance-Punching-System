@@ -173,23 +173,13 @@
        <number>20</number>
       </property>
       <item>
-       <widget class="QScrollArea" name="scrollArea">
-        <property name="horizontalScrollBarPolicy">
-         <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+       <widget class="QStackedWidget" name="stackedWidget">
+        <property name="currentIndex">
+         <number>0</number>
         </property>
-        <property name="widgetResizable">
-         <bool>true</bool>
-        </property>
-        <widget class="QWidget" name="scrollContent">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>488</width>
-           <height>900</height>
-          </rect>
-         </property>
-         <layout class="QVBoxLayout" name="scrollLayout">
+        <!-- 网络连接设置页面 -->
+        <widget class="QWidget" name="pageNetwork">
+         <layout class="QVBoxLayout" name="networkPageLayout">
           <property name="spacing">
            <number>20</number>
           </property>
@@ -200,7 +190,7 @@
            <number>0</number>
           </property>
           <property name="rightMargin">
-           <number>20</number>
+           <number>0</number>
           </property>
           <property name="bottomMargin">
            <number>0</number>
@@ -332,6 +322,33 @@
             </layout>
            </widget>
           </item>
+          <item>
+           <spacer name="networkSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+        <!-- 人脸识别设置页面 -->
+        <widget class="QWidget" name="pageFace">
+         <layout class="QVBoxLayout" name="facePageLayout">
+          <property name="spacing">
+           <number>20</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item>
            <widget class="QGroupBox" name="faceGroup">
             <property name="title">
@@ -476,6 +493,93 @@
             </layout>
            </widget>
           </item>
+          <item>
+           <widget class="QGroupBox" name="arcfaceGroup">
+            <property name="title">
+             <string>ArcFace SDK配置</string>
+            </property>
+            <layout class="QVBoxLayout" name="arcfaceLayout">
+             <property name="spacing">
+              <number>15</number>
+             </property>
+             <item>
+              <layout class="QHBoxLayout" name="appIdLayout">
+               <item>
+                <widget class="QLabel" name="appIdLabel">
+                 <property name="minimumSize">
+                  <size>
+                   <width>120</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>App ID</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEditAppId">
+                 <property name="placeholderText">
+                  <string>请输入ArcFace App ID</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="sdkKeyLayout">
+               <item>
+                <widget class="QLabel" name="sdkKeyLabel">
+                 <property name="minimumSize">
+                  <size>
+                   <width>120</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>SDK Key</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEditSdkKey">
+                 <property name="placeholderText">
+                  <string>请输入ArcFace SDK Key</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <spacer name="faceSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+        <!-- 考勤规则设置页面 -->
+        <widget class="QWidget" name="pageAttendance">
+         <layout class="QVBoxLayout" name="attendancePageLayout">
+          <property name="spacing">
+           <number>20</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item>
            <widget class="QGroupBox" name="attendanceGroup">
             <property name="title">
@@ -628,6 +732,33 @@
            </widget>
           </item>
           <item>
+           <spacer name="attendanceSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+        <!-- 存储设置页面 -->
+        <widget class="QWidget" name="pageStorage">
+         <layout class="QVBoxLayout" name="storagePageLayout">
+          <property name="spacing">
+           <number>20</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
            <widget class="QGroupBox" name="storageGroup">
             <property name="title">
              <string>存储设置</string>
@@ -704,45 +835,11 @@
                </item>
               </layout>
              </item>
-             <item>
-              <layout class="QHBoxLayout" name="cachePathLayout">
-               <item>
-                <widget class="QLabel" name="cachePathLabel">
-                 <property name="minimumSize">
-                  <size>
-                   <width>100</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                 <property name="text">
-                  <string>缓存目录</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLineEdit" name="lineEditCachePath">
-                 <property name="readOnly">
-                  <bool>true</bool>
-                 </property>
-                 <property name="placeholderText">
-                  <string>请选择图片缓存目录</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QPushButton" name="btnBrowseCache">
-                 <property name="text">
-                  <string>浏览...</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
             </layout>
            </widget>
           </item>
           <item>
-           <spacer name="bottomSpacer">
+           <spacer name="storageSpacer">
             <property name="orientation">
              <enum>Qt::Orientation::Vertical</enum>
             </property>

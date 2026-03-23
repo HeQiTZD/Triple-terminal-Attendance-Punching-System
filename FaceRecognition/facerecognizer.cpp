@@ -1,4 +1,5 @@
 ﻿#include "facerecognizer.h"
+#include "../Config/configmanager.h"
 
 FaceRecognizer::FaceRecognizer()
 {
@@ -25,9 +26,13 @@ void FaceRecognizer::init()
 {
     //引擎初始化
     arcEngine = arcfaceengine::instance();
-    QString appid="JBT9EUHsd8RVuvbgwNLNFP1ezsdtsuUenhD6gjSkoKhG";
-    QString Key="4szkxxMUBVRLirbAsTMzT9u2b5R9w5umHiucbPvTy91Z";
-    if (!arcEngine->initialize(appid, Key)) {
+
+    //从配置文件读取AppID和SDK Key
+    ConfigManager* config = ConfigManager::instance();
+    QString appid = config->getAppId();
+    QString sdkKey = config->getSdkKey();
+
+    if (!arcEngine->initialize(appid, sdkKey)) {
         qDebug() << "ArcFace 引擎初始化失败";
         return;
     }
@@ -134,9 +139,13 @@ void FaceRecognizer::perfromRecognition(QImage &image)
     //特征比对
     m_bestMatch = dataBase->findBestMatch(m_FaceFeature);
 
+    //从配置文件读取相似度阈值（转换为0-1范围）
+    ConfigManager* config = ConfigManager::instance();
+    float threshold = config->getFaceThreshold() / 100.0f;
+
     //相似度检查
-    if(m_bestMatch.second < 0.8f){
-        qDebug() << "识别失败：相似度不足" << m_bestMatch.second;
+    if(m_bestMatch.second < threshold){
+        qDebug() << "识别失败：相似度不足" << m_bestMatch.second << "阈值:" << threshold;
         emit recognitionFailed("未匹配到人员");
         setState(RecognitionState::IDLE);  // 失败，回到空闲
         return;
@@ -146,10 +155,21 @@ void FaceRecognizer::perfromRecognition(QImage &image)
     QString status = "正常";
     QString checkTime = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
 
+    // 裁剪人脸区域图像用于显示
+    QImage faceImage;
+    if(!m_FaceInfo.isEmpty()){
+        QRect faceRect = m_FaceInfo[0].rect;
+        // 确保矩形在图像范围内
+        faceRect = faceRect.intersected(image.rect());
+        if(!faceRect.isEmpty()){
+            faceImage = image.copy(faceRect);
+        }
+    }
+
     // 检查是否重复识别
     if(isSamePerson(employeeId)){
         qDebug() << "同一人脸，跳过重复识别：" << employeeId;
-        emit recognitionSuccess(employeeId, employeeId, status, checkTime);
+        emit recognitionSuccess(employeeId, employeeId, status, checkTime, faceImage);
         setState(RecognitionState::RECOGNIZED);
         return;
     }
@@ -161,7 +181,7 @@ void FaceRecognizer::perfromRecognition(QImage &image)
     m_recognitionTime = QDateTime::currentDateTime();
 
     // 发射识别成功信号（用于UI更新）
-    emit recognitionSuccess(employeeId, employeeId, status, checkTime);
+    emit recognitionSuccess(employeeId, employeeId, status, checkTime, faceImage);
 
     // 切换到已识别状态，启动冷却
     setState(RecognitionState::RECOGNIZED);

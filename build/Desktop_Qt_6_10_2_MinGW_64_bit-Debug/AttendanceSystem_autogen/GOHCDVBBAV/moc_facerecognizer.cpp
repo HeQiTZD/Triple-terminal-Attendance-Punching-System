@@ -45,30 +45,32 @@ template <> constexpr inline auto FaceRecognizer::qt_create_metaobjectdata<qt_me
         "name",
         "status",
         "checkTime",
+        "QImage",
+        "faceImage",
         "recognitionFailed",
         "reason",
         "requestSaveAttendance",
         "WanZhengYeWuLiuCheng",
-        "QImage",
         "image"
     };
 
     QtMocHelpers::UintData qt_methods {
         // Signal 'recognitionSuccess'
-        QtMocHelpers::SignalData<void(const QString &, const QString &, const QString &, const QString &)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
+        QtMocHelpers::SignalData<void(const QString &, const QString &, const QString &, const QString &, const QImage &)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::QString, 3 }, { QMetaType::QString, 4 }, { QMetaType::QString, 5 }, { QMetaType::QString, 6 },
+            { 0x80000000 | 7, 8 },
         }}),
         // Signal 'recognitionFailed'
-        QtMocHelpers::SignalData<void(const QString &)>(7, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 8 },
+        QtMocHelpers::SignalData<void(const QString &)>(9, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 10 },
         }}),
         // Signal 'requestSaveAttendance'
-        QtMocHelpers::SignalData<void(const QString &, const QString &)>(9, 2, QMC::AccessPublic, QMetaType::Void, {{
+        QtMocHelpers::SignalData<void(const QString &, const QString &)>(11, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::QString, 3 }, { QMetaType::QString, 5 },
         }}),
         // Slot 'WanZhengYeWuLiuCheng'
-        QtMocHelpers::SlotData<void(QImage)>(10, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { 0x80000000 | 11, 12 },
+        QtMocHelpers::SlotData<void(QImage)>(12, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 7, 13 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -93,7 +95,7 @@ void FaceRecognizer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
     auto *_t = static_cast<FaceRecognizer *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->recognitionSuccess((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[4]))); break;
+        case 0: _t->recognitionSuccess((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[4])),(*reinterpret_cast<std::add_pointer_t<QImage>>(_a[5]))); break;
         case 1: _t->recognitionFailed((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
         case 2: _t->requestSaveAttendance((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2]))); break;
         case 3: _t->WanZhengYeWuLiuCheng((*reinterpret_cast<std::add_pointer_t<QImage>>(_a[1]))); break;
@@ -101,7 +103,7 @@ void FaceRecognizer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
-        if (QtMocHelpers::indexOfMethod<void (FaceRecognizer::*)(const QString & , const QString & , const QString & , const QString & )>(_a, &FaceRecognizer::recognitionSuccess, 0))
+        if (QtMocHelpers::indexOfMethod<void (FaceRecognizer::*)(const QString & , const QString & , const QString & , const QString & , const QImage & )>(_a, &FaceRecognizer::recognitionSuccess, 0))
             return;
         if (QtMocHelpers::indexOfMethod<void (FaceRecognizer::*)(const QString & )>(_a, &FaceRecognizer::recognitionFailed, 1))
             return;
@@ -142,9 +144,9 @@ int FaceRecognizer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void FaceRecognizer::recognitionSuccess(const QString & _t1, const QString & _t2, const QString & _t3, const QString & _t4)
+void FaceRecognizer::recognitionSuccess(const QString & _t1, const QString & _t2, const QString & _t3, const QString & _t4, const QImage & _t5)
 {
-    QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1, _t2, _t3, _t4);
+    QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1, _t2, _t3, _t4, _t5);
 }
 
 // SIGNAL 1
