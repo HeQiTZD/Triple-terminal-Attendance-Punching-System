@@ -4359,6 +4359,8 @@ D:/QTproject/AttendanceSystem/NetworkClient/networkclient.h
  mdp:D:/QTproject/AttendanceSystem/third_party/arcface/include/merror.h
 D:/QTproject/AttendanceSystem/UI/setwindow.h
  mmc:Q_OBJECT
+ mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QString
+ mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QTime
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/q17memory.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/q20functional.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/q20iterator.h
@@ -4382,6 +4384,7 @@ D:/QTproject/AttendanceSystem/UI/setwindow.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qbytearrayalgorithms.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qbytearraylist.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qbytearrayview.h
+ mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qcalendar.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qchar.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qcheckedint_impl.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qcompare.h
@@ -4396,6 +4399,7 @@ D:/QTproject/AttendanceSystem/UI/setwindow.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qcontiguouscache.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qdarwinhelpers.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qdatastream.h
+ mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qdatetime.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qdebug.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qendian.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qexceptionhandling.h
@@ -4415,6 +4419,7 @@ D:/QTproject/AttendanceSystem/UI/setwindow.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qlatin1stringview.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qline.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qlist.h
+ mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qlocale.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qlogging.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qmalloc.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qmap.h
@@ -4750,6 +4755,7 @@ D:/QTproject/AttendanceSystem/mainwindow.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QRect
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QString
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QThread
+ mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QTime
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QTimer
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QVector
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QObject
