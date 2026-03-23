@@ -1,4 +1,4 @@
-﻿#include "localstorage.h"
+#include "localstorage.h"
 
 //静态成员初始化
 LocalStorage* LocalStorage::s_instance = nullptr;
@@ -44,7 +44,7 @@ bool LocalStorage::connectDatabse()
     qDebug()<<"数据库路径"+dbFilePath;
 
     //连接数据库（文件不存在则自动创建）
-    QSqlDatabase m_db=QSqlDatabase::addDatabase("QSQLITE");
+    m_db = QSqlDatabase::addDatabase("QSQLITE");
     m_db.setDatabaseName(dbFilePath);//为刚刚创建的数据库连接对象 m_db 指定要连接的数据库文件的具体路径。
 
     if(!m_db.open()){

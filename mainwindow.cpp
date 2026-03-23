@@ -5,16 +5,46 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    ,m_timeTimer(nullptr)
 {
     ui->setupUi(this);
 
     //初始化
     init();
     InfoWidget();
+    FaceFeatureStart();
+
+    // 初始化时间显示
+    initTimeDisplay();
+
+    //初始化网络状态
+    initNetWorkStatus();
+
+    //连接信号与槽
+    connect(ui->settingButton,&QPushButton::clicked,this,&MainWindow::onSetPushButten);
 }
 
 MainWindow::~MainWindow()
 {
+    // 停止时间更新定时器
+    if (m_timeTimer) {
+        m_timeTimer->stop();
+        delete m_timeTimer;
+    }
+
+    // 停止人脸识别线程
+    if (m_faceThread) {
+        //终止人脸线程事件循环的调用，向线程发送 “退出请求
+        //必须配合 wait() 使用，确保线程真正结束，避免资源泄漏
+        m_faceThread->quit();
+        m_faceThread->wait();
+    }
+
+    // 停止网络线程
+    if (m_networkThread) {
+        m_networkThread->quit();
+        m_networkThread->wait();
+    }
     delete ui;
 }
 
@@ -60,20 +90,131 @@ void MainWindow::init()
     };
     m_VideoFrameCapture = new VideoFrameCapture();
     m_VideoFrameCapture->captureFrame(m_CameraCapture->getCamera());
+
+    //多线程 - 将人脸识别移到独立线程
+    m_faceThread = new QThread(this);
+    m_FaceRecognizer->moveToThread(m_faceThread);
+    m_faceThread->start();
+
+    m_networkThread = new QThread(this);
+    networkClient->moveToThread(m_networkThread);
+    m_networkThread->start();
 }
 
+//显示摄像头画面
 void MainWindow::InfoWidget()
 {
     m_VideoWidget = m_VideoFrameCapture->getVideoWidget();
     ui->cameraDisplay->setLayout(new QVBoxLayout());
     ui->cameraDisplay->layout()->addWidget(m_VideoWidget);
-
-
 }
 
+//开启人脸识别
 void MainWindow::FaceFeatureStart()
 {
-    connect(m_VideoFrameCapture,&VideoFrameCapture::frameCaptured,m_FaceRecognizer,&FaceRecognizer::WanZhengYeWuLiuCheng);
+    // 连接视频帧捕获到人脸识别器
+    connect(m_VideoFrameCapture, &VideoFrameCapture::frameCaptured,
+            m_FaceRecognizer, &FaceRecognizer::WanZhengYeWuLiuCheng);
 
+    // 连接识别成功信号到UI更新槽
+    connect(m_FaceRecognizer, &FaceRecognizer::recognitionSuccess,
+            this, &MainWindow::onRecognitionSuccess);
+
+    // 连接识别失败信号（可选，用于调试）
+    connect(m_FaceRecognizer, &FaceRecognizer::recognitionFailed,
+            this, [=](const QString &reason){
+        qDebug() << "识别失败:" << reason;
+    });
+
+    //连接数据库保存请求信号
+    connect(m_FaceRecognizer,&FaceRecognizer::requestSaveAttendance,this,&MainWindow::onSaveAttendanceRequest,Qt::QueuedConnection);
 }
 
+//时间初始化
+void MainWindow::initTimeDisplay()
+{
+    m_timeTimer = new QTimer();
+    connect(m_timeTimer,&QTimer::timeout,this,&MainWindow::updateTimeDisplay);
+    updateTimeDisplay();
+    m_timeTimer->start(1000);
+}
+
+//网络状态初始化
+void MainWindow::initNetWorkStatus()
+{
+    connect(networkClient,&Networkclient::networkStateChanged,this,&MainWindow::onNetworkStateChanged);
+    onNetworkStateChanged(false);
+}
+
+//识别成功更新UI
+void MainWindow::onRecognitionSuccess(const QString &employeeId,
+                                      const QString &name,
+                                      const QString &status,
+                                      const QString &checkTime)
+{
+    // 更新员工号
+    ui->employeeIdEdit->setText(employeeId);
+
+    // 更新姓名
+    ui->nameEdit->setText(name);
+
+    // 更新打卡状态
+    ui->statusEdit->setText(status);
+
+    // 更新打卡时间
+    ui->checkTimeEdit->setText(checkTime);
+
+    // 在状态栏显示识别成功信息
+    ui->statusbar->showMessage(QString("识别成功 - 员工:%1 时间:%2").arg(employeeId, checkTime), 5000);
+
+    qDebug() << "识别成功 - 员工:" << employeeId
+             << "状态:" << status
+             << "时间:" << checkTime;
+}
+
+//处理保存打卡记录请求
+void MainWindow::onSaveAttendanceRequest(const QString &employeeId, const QString &status)
+{
+    bool saved = m_db->addAttendanceRecord(employeeId,status);
+
+    if(saved){
+        qDebug() << "打卡记录已保存:" << employeeId;
+
+        // 上传到服务器
+        Protocol::AttendanceRecord record;
+        record.employeeId = employeeId;
+        record.checktTime = QDateTime::currentDateTime().toString(Qt::ISODate);
+        record.status = status;
+        networkClient->uploadAttendance(record);
+
+        // 更新状态栏
+        ui->statusbar->showMessage(QString("打卡成功 - 员工:%1").arg(employeeId), 3000);
+    }else{
+        qWarning() << "保存打卡记录失败:" << employeeId;
+        ui->statusbar->showMessage(QString("打卡失败 - 员工:%1").arg(employeeId), 3000);
+    }
+}
+
+//更新时间显示
+void MainWindow::updateTimeDisplay()
+{
+    QDateTime currenTime = QDateTime::currentDateTime();
+    QString timeString = currenTime.toString("yyyy-MM-dd hh:mm:ss");
+    ui->timeLabel->setText(timeString);
+}
+
+void MainWindow::onNetworkStateChanged(bool isOnline)
+{
+    if(isOnline){
+        ui->networkStatusLabel->setText("● 在线");
+        ui->networkStatusLabel->setStyleSheet("color:green;font-weight:bold;");
+    }else{
+        ui->networkStatusLabel->setText("● 离线");
+        ui->networkStatusLabel->setStyleSheet("color:red;font-weight:bold;");
+    }
+}
+
+void MainWindow::onSetPushButten()
+{
+    setwindow.show();
+}

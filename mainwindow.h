@@ -6,8 +6,13 @@
 #include "FaceRecognition/facerecognizer.h"
 #include "UI/setwindow.h"
 #include "LocalStorage/localstorage.h"
+#include "UI/setwindow.h"
 
 #include <QMainWindow>
+#include <QThread>
+
+#include <QTimer>
+#include <QDateTime>
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -26,8 +31,24 @@ private:
     Ui::MainWindow *ui;
 
 private slots:
-    // void onRecognitionResult();//识别结果并更新UI
+    // 识别成功槽函数 - 更新UI显示
+    void onRecognitionSuccess(const QString &employeeId,
+                              const QString &name,
+                              const QString &status,
+                              const QString &checkTime);
     // void onSettingButtonClicked();//打开设置窗口
+
+    //处理保存打卡记录请求（主线程执行数据库操作）
+    void onSaveAttendanceRequest(const QString &employeeId,const QString &status);
+
+    //更新时间显示槽函数
+    void updateTimeDisplay();
+
+    //更新网络状态显示
+    void onNetworkStateChanged(bool isOnline);
+
+    //打开设置窗口
+    void onSetPushButten();
 
 private:
     //初始化
@@ -39,6 +60,12 @@ private:
     //开启人脸检测
     void FaceFeatureStart();
 
+    //初始化时间显示
+    void initTimeDisplay();
+
+    //初始化网络状态显示
+    void initNetWorkStatus();
+
 private:
     LocalStorage* m_db;
     FaceRecognizer* m_FaceRecognizer;
@@ -46,5 +73,9 @@ private:
     CameraCapture* m_CameraCapture;
     VideoFrameCapture* m_VideoFrameCapture;
     QVideoWidget* m_VideoWidget;
+    QThread* m_faceThread;
+    QThread* m_networkThread;
+    QTimer* m_timeTimer;
+    SetWindow setwindow;
 };
 #endif // MAINWINDOW_H

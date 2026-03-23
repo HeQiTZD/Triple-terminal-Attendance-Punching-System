@@ -19,9 +19,18 @@
 #include <QPair>
 #include <QString>
 #include <QMutex>
+#include <QDateTime>
+#include <QTimer>
 
 #include "../LocalStorage/localstorage.h"
 #include "../NetworkClient/networkclient.h"
+
+enum class RecognitionState{
+    IDLE,      // 空闲，等待检测
+    DETECTING, // 正在识别中
+    RECOGNIZED,// 已识别，冷却中
+    LOST       // 人脸丢失，等待重置
+};
 
 class FaceRecognizer : public QObject
 {
@@ -36,10 +45,45 @@ public:
 public slots:
     void WanZhengYeWuLiuCheng(QImage image);//人脸识别整体流程
 
+signals:
+    // 识别成功信号 - 只通知，不保存
+    void recognitionSuccess(const QString &employeeId,
+                            const QString &name,
+                            const QString &status,
+                            const QString &checkTime);
+    // 识别失败信号
+    void recognitionFailed(const QString &reason);
+
+    //请求保存打卡记录（由主线程处理）
+    void requestSaveAttendance(const QString &employeeId,const QString &status);
+
+private:
+    //状态处理函数
+    void handleIdleState(QImage &image);
+    void handleDetectingState();
+    void handleRecognizedState(QImage &image);
+    void handleLostState();
+
+    //执行识别
+    void perfromRecognition(QImage &image);
+    //切换状态
+    void setState(RecognitionState newState);
+    //检查是否是同一人脸（简单实现）
+    bool isSamePerson(const QString &employeeId);
+
 private:
     arcfaceengine* arcEngine = nullptr;//人脸功能实例
     VideoFrameCapture* videoCapture = nullptr;//捕获实例,通过其他路径传入
     FaceDatabaseManager* dataBase = nullptr;//内存加载特征，特征对比实例
+
+private:
+    //状态机相关
+    RecognitionState m_currentState = RecognitionState::LOST;
+    QString m_lastRecognizedId;// 上次识别的人员ID
+    QDateTime m_recognitionTime;// 上次识别时间
+    QTimer* m_cooldownTimer = nullptr;// 冷却定时器
+    const int COOLDOWN_MS = 3000;// 冷却时间3秒
+    const int LOST_TIMEOUT_MS = 3000;// 人脸丢失检测间隔
 
 private:
     QVector<arcfaceengine::FaceInfo> m_FaceInfo;//人脸检测信息

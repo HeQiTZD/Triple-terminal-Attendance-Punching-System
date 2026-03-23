@@ -55,16 +55,6 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="deviceStatusLabel">
-         <property name="styleSheet">
-          <string notr="true">color: green;</string>
-         </property>
-         <property name="text">
-          <string>设备状态：●</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QPushButton" name="settingButton">
          <property name="text">
           <string>设置</string>

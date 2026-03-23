@@ -35,7 +35,6 @@ public:
     QLabel *timeLabel;
     QSpacerItem *horizontalSpacer_top;
     QLabel *networkStatusLabel;
-    QLabel *deviceStatusLabel;
     QPushButton *settingButton;
     QHBoxLayout *horizontalLayout_center;
     QWidget *leftWidget;
@@ -94,12 +93,6 @@ public:
         networkStatusLabel->setStyleSheet(QString::fromUtf8("color: green;"));
 
         horizontalLayout_top->addWidget(networkStatusLabel);
-
-        deviceStatusLabel = new QLabel(topWidget);
-        deviceStatusLabel->setObjectName("deviceStatusLabel");
-        deviceStatusLabel->setStyleSheet(QString::fromUtf8("color: green;"));
-
-        horizontalLayout_top->addWidget(deviceStatusLabel);
 
         settingButton = new QPushButton(topWidget);
         settingButton->setObjectName("settingButton");
@@ -253,7 +246,6 @@ public:
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "\344\272\272\350\204\270\350\257\206\345\210\253\350\200\203\345\213\244\347\263\273\347\273\237", nullptr));
         timeLabel->setText(QCoreApplication::translate("MainWindow", "\345\275\223\345\211\215\346\227\266\351\227\264\357\274\2322024-01-01 12:00:00", nullptr));
         networkStatusLabel->setText(QCoreApplication::translate("MainWindow", "\347\275\221\347\273\234\347\212\266\346\200\201\357\274\232\342\227\217", nullptr));
-        deviceStatusLabel->setText(QCoreApplication::translate("MainWindow", "\350\256\276\345\244\207\347\212\266\346\200\201\357\274\232\342\227\217", nullptr));
         settingButton->setText(QCoreApplication::translate("MainWindow", "\350\256\276\347\275\256", nullptr));
         infoGroupBox->setTitle(QCoreApplication::translate("MainWindow", "\345\221\230\345\267\245\344\277\241\346\201\257", nullptr));
         employeeIdLabel->setText(QCoreApplication::translate("MainWindow", "\345\221\230\345\267\245\345\217\267\357\274\232", nullptr));

@@ -1,4 +1,4 @@
-﻿#include "protocol.h"
+#include "protocol.h"
 
 //Protocol::Protocol() {}
 
@@ -15,7 +15,7 @@ Protocol::AttendanceRecord Protocol::AttendanceRecord::fromJson(const QJsonObjec
 {
     AttendanceRecord record;
     record.employeeId = obj["employeeId"].toString();
-    record.checktTime = obj["checktTme"].toString();
+    record.checktTime = obj["checktTime"].toString();
     record.status = obj["status"].toString();
     return record;
 }
