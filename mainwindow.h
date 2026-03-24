@@ -84,7 +84,7 @@ private:
     Networkclient* networkClient;
     CameraCapture* m_CameraCapture;
     VideoFrameCapture* m_VideoFrameCapture;
-    QVideoWidget* m_VideoWidget;
+    QWidget* m_VideoWidget;
     QThread* m_faceThread;
     QThread* m_networkThread;
     QTimer* m_timeTimer;

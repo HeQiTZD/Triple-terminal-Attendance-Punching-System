@@ -230,10 +230,6 @@ AttendanceSystem_autogen/timestamp: \
 	C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qvideoframe.h \
 	C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qvideoframeformat.h \
 	C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qvideosink.h \
-	C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/QVideoWidget \
-	C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/qtmultimediawidgetsexports.h \
-	C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/qtmultimediawidgetsglobal.h \
-	C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/qvideowidget.h \
 	C:/Qt/6.10.2/mingw_64/include/QtNetwork/QTcpSocket \
 	C:/Qt/6.10.2/mingw_64/include/QtNetwork/qabstractsocket.h \
 	C:/Qt/6.10.2/mingw_64/include/QtNetwork/qhostaddress.h \

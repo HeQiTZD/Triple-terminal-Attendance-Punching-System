@@ -24,12 +24,11 @@ void VideoFrameCapture::setCamera()
         captureSession = new QMediaCaptureSession();
         captureSession->setCamera(camera);
 
-        // 使用自定义的视频控件替代 QVideoWidget
+        // 创建自定义视频控件（用于显示视频帧和人脸框）
         videoWidget=new FaceVideoWidget();
-        captureSession->setVideoOutput(videoWidget);
 
-        //创建视频接收器
-        videoSink = videoWidget->videoSink();
+        // 创建独立的视频接收器（不再使用 setVideoOutput，避免硬件渲染层覆盖 QPainter 绘制）
+        videoSink = new QVideoSink(this);
         captureSession->setVideoSink(videoSink);
 
         connect(videoSink,&QVideoSink::videoFrameChanged,this,&VideoFrameCapture::processFrame);
@@ -43,7 +42,7 @@ QImage VideoFrameCapture::getCurrentFrame() const
 }
 
 //对外接口：图像预览窗口
-QVideoWidget *VideoFrameCapture::getVideoWidget() const
+QWidget *VideoFrameCapture::getVideoWidget() const
 {
     return videoWidget;
 }

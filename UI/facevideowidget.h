@@ -1,7 +1,7 @@
 ﻿#ifndef FACEVIDEOWIDGET_H
 #define FACEVIDEOWIDGET_H
 
-#include <QVideoWidget>
+#include <QWidget>
 #include <QImage>
 #include <QRect>
 #include <QVector>
@@ -15,7 +15,7 @@ struct FaceRectInfo{
     bool recognized;//是否识别
 };
 
-class FaceVideoWidget : public QVideoWidget
+class FaceVideoWidget : public QWidget
 {
     Q_OBJECT
 public:
@@ -32,7 +32,7 @@ public:
 
 protected:
     // 重写绘制事件，在视频上绘制人脸框
-    void paintEvent(QPaintEvent *event);
+    void paintEvent(QPaintEvent *event) override;
 
 private:
     QImage m_currentFrame;//当前帧图像

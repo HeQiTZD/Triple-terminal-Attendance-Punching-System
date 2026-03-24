@@ -4,7 +4,6 @@
 #include <QObject>
 #include <QMediaCaptureSession>
 #include <QVideoFrame>
-#include <QVideoWidget>
 #include <QVideoFrameFormat>
 #include <QDebug>
 #include <QVideoSink>
@@ -24,7 +23,7 @@ private:
 
 public:
     QImage getCurrentFrame() const;//对外提供捕获的视频帧接口
-    QVideoWidget* getVideoWidget() const;//对外提供摄像头预览接口
+    QWidget* getVideoWidget() const;//对外提供摄像头预览接口
 
 private:
     QMediaCaptureSession *captureSession;//媒体捕获会话

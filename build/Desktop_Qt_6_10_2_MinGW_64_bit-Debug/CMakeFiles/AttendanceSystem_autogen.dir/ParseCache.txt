@@ -559,10 +559,7 @@ D:/QTproject/AttendanceSystem/CameraCapture/videoframecapture.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qvideoframe.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qvideoframeformat.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qvideosink.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/QVideoWidget
- mdp:C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/qtmultimediawidgetsexports.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/qtmultimediawidgetsglobal.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/qvideowidget.h
+ mdp:C:/Qt/6.10.2/mingw_64/include/QtWidgets/QWidget
  mdp:C:/Qt/6.10.2/mingw_64/include/QtWidgets/qsizepolicy.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtWidgets/qtwidgets-config.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtWidgets/qtwidgetsexports.h
@@ -1014,10 +1011,6 @@ D:/QTproject/AttendanceSystem/FaceRecognition/facerecognizer.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qvideoframe.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qvideoframeformat.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qvideosink.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/QVideoWidget
- mdp:C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/qtmultimediawidgetsexports.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/qtmultimediawidgetsglobal.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/qvideowidget.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtNetwork/QTcpSocket
  mdp:C:/Qt/6.10.2/mingw_64/include/QtNetwork/qabstractsocket.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtNetwork/qhostaddress.h
@@ -1034,6 +1027,7 @@ D:/QTproject/AttendanceSystem/FaceRecognition/facerecognizer.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtSql/qtsql-config.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtSql/qtsqlexports.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtSql/qtsqlglobal.h
+ mdp:C:/Qt/6.10.2/mingw_64/include/QtWidgets/QWidget
  mdp:C:/Qt/6.10.2/mingw_64/include/QtWidgets/qsizepolicy.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtWidgets/qtwidgets-config.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtWidgets/qtwidgetsexports.h
@@ -4988,10 +4982,6 @@ D:/QTproject/AttendanceSystem/mainwindow.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qvideoframe.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qvideoframeformat.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qvideosink.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/QVideoWidget
- mdp:C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/qtmultimediawidgetsexports.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/qtmultimediawidgetsglobal.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/qvideowidget.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtNetwork/QTcpSocket
  mdp:C:/Qt/6.10.2/mingw_64/include/QtNetwork/qabstractsocket.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtNetwork/qhostaddress.h
@@ -5818,10 +5808,7 @@ D:/QTproject/AttendanceSystem/UI/facevideowidget.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtGui/qtransform.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtGui/qwindowdefs.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtGui/qwindowdefs_win.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/QVideoWidget
- mdp:C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/qtmultimediawidgetsexports.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/qtmultimediawidgetsglobal.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/qvideowidget.h
+ mdp:C:/Qt/6.10.2/mingw_64/include/QtWidgets/QWidget
  mdp:C:/Qt/6.10.2/mingw_64/include/QtWidgets/qsizepolicy.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtWidgets/qtwidgets-config.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtWidgets/qtwidgetsexports.h

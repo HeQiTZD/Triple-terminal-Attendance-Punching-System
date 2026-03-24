@@ -227,10 +227,6 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qvideoframe.h \
   C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qvideoframeformat.h \
   C:/Qt/6.10.2/mingw_64/include/QtMultimedia/qvideosink.h \
-  C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/QVideoWidget \
-  C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/qtmultimediawidgetsexports.h \
-  C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/qtmultimediawidgetsglobal.h \
-  C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets/qvideowidget.h \
   C:/Qt/6.10.2/mingw_64/include/QtNetwork/QTcpSocket \
   C:/Qt/6.10.2/mingw_64/include/QtNetwork/qabstractsocket.h \
   C:/Qt/6.10.2/mingw_64/include/QtNetwork/qhostaddress.h \
@@ -247,6 +243,7 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtSql/qtsql-config.h \
   C:/Qt/6.10.2/mingw_64/include/QtSql/qtsqlexports.h \
   C:/Qt/6.10.2/mingw_64/include/QtSql/qtsqlglobal.h \
+  C:/Qt/6.10.2/mingw_64/include/QtWidgets/QWidget \
   C:/Qt/6.10.2/mingw_64/include/QtWidgets/qsizepolicy.h \
   C:/Qt/6.10.2/mingw_64/include/QtWidgets/qtwidgets-config.h \
   C:/Qt/6.10.2/mingw_64/include/QtWidgets/qtwidgetsexports.h \
