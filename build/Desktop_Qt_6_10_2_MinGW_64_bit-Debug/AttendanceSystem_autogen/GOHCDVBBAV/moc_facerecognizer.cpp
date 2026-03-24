@@ -8,6 +8,7 @@
 
 #include "../../../../FaceRecognition/facerecognizer.h"
 #include <QtCore/qmetatype.h>
+#include <QtCore/QList>
 
 #include <QtCore/qtmochelpers.h>
 
@@ -50,6 +51,9 @@ template <> constexpr inline auto FaceRecognizer::qt_create_metaobjectdata<qt_me
         "recognitionFailed",
         "reason",
         "requestSaveAttendance",
+        "faceDetected",
+        "QList<arcfaceengine::FaceInfo>",
+        "faceInfos",
         "WanZhengYeWuLiuCheng",
         "image"
     };
@@ -68,9 +72,13 @@ template <> constexpr inline auto FaceRecognizer::qt_create_metaobjectdata<qt_me
         QtMocHelpers::SignalData<void(const QString &, const QString &)>(11, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::QString, 3 }, { QMetaType::QString, 5 },
         }}),
+        // Signal 'faceDetected'
+        QtMocHelpers::SignalData<void(const QVector<arcfaceengine::FaceInfo> &)>(12, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 13, 14 },
+        }}),
         // Slot 'WanZhengYeWuLiuCheng'
-        QtMocHelpers::SlotData<void(QImage)>(12, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { 0x80000000 | 7, 13 },
+        QtMocHelpers::SlotData<void(QImage)>(15, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 7, 16 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -98,7 +106,8 @@ void FaceRecognizer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 0: _t->recognitionSuccess((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[4])),(*reinterpret_cast<std::add_pointer_t<QImage>>(_a[5]))); break;
         case 1: _t->recognitionFailed((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
         case 2: _t->requestSaveAttendance((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2]))); break;
-        case 3: _t->WanZhengYeWuLiuCheng((*reinterpret_cast<std::add_pointer_t<QImage>>(_a[1]))); break;
+        case 3: _t->faceDetected((*reinterpret_cast<std::add_pointer_t<QList<arcfaceengine::FaceInfo>>>(_a[1]))); break;
+        case 4: _t->WanZhengYeWuLiuCheng((*reinterpret_cast<std::add_pointer_t<QImage>>(_a[1]))); break;
         default: ;
         }
     }
@@ -108,6 +117,8 @@ void FaceRecognizer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         if (QtMocHelpers::indexOfMethod<void (FaceRecognizer::*)(const QString & )>(_a, &FaceRecognizer::recognitionFailed, 1))
             return;
         if (QtMocHelpers::indexOfMethod<void (FaceRecognizer::*)(const QString & , const QString & )>(_a, &FaceRecognizer::requestSaveAttendance, 2))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (FaceRecognizer::*)(const QVector<arcfaceengine::FaceInfo> & )>(_a, &FaceRecognizer::faceDetected, 3))
             return;
     }
 }
@@ -131,14 +142,14 @@ int FaceRecognizer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 5;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 5)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 4;
+        _id -= 5;
     }
     return _id;
 }
@@ -159,5 +170,11 @@ void FaceRecognizer::recognitionFailed(const QString & _t1)
 void FaceRecognizer::requestSaveAttendance(const QString & _t1, const QString & _t2)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 2, nullptr, _t1, _t2);
+}
+
+// SIGNAL 3
+void FaceRecognizer::faceDetected(const QVector<arcfaceengine::FaceInfo> & _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 3, nullptr, _t1);
 }
 QT_WARNING_POP

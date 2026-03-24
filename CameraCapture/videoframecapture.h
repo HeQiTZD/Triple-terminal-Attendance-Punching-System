@@ -10,7 +10,7 @@
 #include <QVideoSink>
 
 #include "cameracapture.h"
-
+#include "../UI/facevideowidget.h"
 class VideoFrameCapture : public QObject
 {
     Q_OBJECT
@@ -31,7 +31,7 @@ private:
     QVideoSink *videoSink;//视频接收器
     QCamera* camera;//摄像头实例
     QImage currentFrame;//当前捕获的视频帧
-    QVideoWidget* videoWidget;//预览控件，返回捕获帧实例
+    FaceVideoWidget* videoWidget;//预览控件，返回捕获帧实例
     CameraCapture cameraCaptrue;//摄像头类的实例化
 
 private slots:

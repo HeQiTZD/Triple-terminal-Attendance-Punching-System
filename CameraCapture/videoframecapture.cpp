@@ -24,7 +24,8 @@ void VideoFrameCapture::setCamera()
         captureSession = new QMediaCaptureSession();
         captureSession->setCamera(camera);
 
-        videoWidget=new QVideoWidget();
+        // 使用自定义的视频控件替代 QVideoWidget
+        videoWidget=new FaceVideoWidget();
         captureSession->setVideoOutput(videoWidget);
 
         //创建视频接收器

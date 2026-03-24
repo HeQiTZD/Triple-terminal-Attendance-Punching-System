@@ -473,6 +473,12 @@
 			null
 		],
 		[
+			"D:/QTproject/AttendanceSystem/Config/configmanager.h",
+			"MU",
+			"IJHAR2IVER/moc_configmanager.cpp",
+			null
+		],
+		[
 			"D:/QTproject/AttendanceSystem/FaceRecognition/arcfaceengine.h",
 			"MU",
 			"GOHCDVBBAV/moc_arcfaceengine.cpp",
@@ -542,6 +548,12 @@
 			"D:/QTproject/AttendanceSystem/NetworkClient/protocol.h",
 			"MU",
 			"26RFHC3MAC/moc_protocol.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/UI/facevideowidget.h",
+			"MU",
+			"KRKR4BN5RM/moc_facevideowidget.cpp",
 			null
 		],
 		[
@@ -657,6 +669,7 @@
 			"MU",
 			null
 		],
+		[ "D:/QTproject/AttendanceSystem/Config/configmanager.cpp", "MU", null ],
 		[
 			"D:/QTproject/AttendanceSystem/FaceRecognition/arcfaceengine.cpp",
 			"MU",
@@ -717,6 +730,7 @@
 			"MU",
 			null
 		],
+		[ "D:/QTproject/AttendanceSystem/UI/facevideowidget.cpp", "MU", null ],
 		[ "D:/QTproject/AttendanceSystem/UI/setwindow.cpp", "MU", null ],
 		[ "D:/QTproject/AttendanceSystem/main.cpp", "MU", null ],
 		[ "D:/QTproject/AttendanceSystem/mainwindow.cpp", "MU", null ]

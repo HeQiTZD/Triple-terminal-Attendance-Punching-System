@@ -182,6 +182,7 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtCore/qxptype_traits.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qyieldcpu.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/QImage \
+  C:/Qt/6.10.2/mingw_64/include/QtGui/QPainter \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qaction.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qbitmap.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qbrush.h \
@@ -195,13 +196,16 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtGui/qimage.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qkeysequence.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qpaintdevice.h \
+  C:/Qt/6.10.2/mingw_64/include/QtGui/qpainter.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qpalette.h \
+  C:/Qt/6.10.2/mingw_64/include/QtGui/qpen.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qpixelformat.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qpixmap.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qpolygon.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qregion.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qrgb.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qrgba64.h \
+  C:/Qt/6.10.2/mingw_64/include/QtGui/qtextoption.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qtgui-config.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qtguiexports.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qtguiglobal.h \
@@ -519,6 +523,7 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   D:/QTproject/AttendanceSystem/NetworkClient/messagewriter.h \
   D:/QTproject/AttendanceSystem/NetworkClient/networkclient.h \
   D:/QTproject/AttendanceSystem/NetworkClient/protocol.h \
+  D:/QTproject/AttendanceSystem/UI/facevideowidget.h \
   D:/QTproject/AttendanceSystem/UI/setwindow.h \
   D:/QTproject/AttendanceSystem/third_party/arcface/include/amcomdef.h \
   D:/QTproject/AttendanceSystem/third_party/arcface/include/arcsoft_face_sdk.h \

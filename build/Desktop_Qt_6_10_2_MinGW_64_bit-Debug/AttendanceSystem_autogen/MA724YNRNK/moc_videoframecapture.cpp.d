@@ -1,7 +1,10 @@
 D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceSystem_autogen/MA724YNRNK/moc_videoframecapture.cpp: D:/QTproject/AttendanceSystem/CameraCapture/videoframecapture.h \
   D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceSystem_autogen/moc_predefs.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QDebug \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/QMutex \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QObject \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/QRect \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/QVector \
   C:/Qt/6.10.2/mingw_64/include/QtCore/q17memory.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/q20functional.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/q20iterator.h \
@@ -39,6 +42,7 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtCore/qcontiguouscache.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qdarwinhelpers.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qdatastream.h \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/qdeadlinetimer.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qdebug.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qendian.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qexceptionhandling.h \
@@ -66,6 +70,7 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtCore/qmetacontainer.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qmetatype.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qminmax.h \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/qmutex.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qnamespace.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qnumeric.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qobject.h \
@@ -117,6 +122,7 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtCore/qtnoop.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qtpreprocessorsupport.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qtresource.h \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/qtsan_impl.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qttranslation.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qttypetraits.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qtversion.h \
@@ -126,9 +132,12 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtCore/qutf8stringview.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qvariant.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qvarlengtharray.h \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/qvector.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qversiontagging.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qxptype_traits.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qyieldcpu.h \
+  C:/Qt/6.10.2/mingw_64/include/QtGui/QImage \
+  C:/Qt/6.10.2/mingw_64/include/QtGui/QPainter \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qaction.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qbitmap.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qbrush.h \
@@ -142,13 +151,16 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtGui/qimage.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qkeysequence.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qpaintdevice.h \
+  C:/Qt/6.10.2/mingw_64/include/QtGui/qpainter.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qpalette.h \
+  C:/Qt/6.10.2/mingw_64/include/QtGui/qpen.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qpixelformat.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qpixmap.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qpolygon.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qregion.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qrgb.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qrgba64.h \
+  C:/Qt/6.10.2/mingw_64/include/QtGui/qtextoption.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qtgui-config.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qtguiexports.h \
   C:/Qt/6.10.2/mingw_64/include/QtGui/qtguiglobal.h \
@@ -395,4 +407,5 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/time.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
-  D:/QTproject/AttendanceSystem/CameraCapture/cameracapture.h
+  D:/QTproject/AttendanceSystem/CameraCapture/cameracapture.h \
+  D:/QTproject/AttendanceSystem/UI/facevideowidget.h

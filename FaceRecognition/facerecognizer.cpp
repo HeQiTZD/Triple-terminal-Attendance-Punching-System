@@ -78,6 +78,11 @@ void FaceRecognizer::WanZhengYeWuLiuCheng(QImage image)
 void FaceRecognizer::handleIdleState(QImage &image)
 {
     m_FaceInfo = arcEngine->detectFace(image);
+
+    // 发射人脸检测信号
+    emit faceDetected(m_FaceInfo);
+
+    m_FaceInfo = arcEngine->detectFace(image);
     if(m_FaceInfo.isEmpty()){
         // 没有检测到人脸，保持IDLE状态
         return;
@@ -103,6 +108,9 @@ void FaceRecognizer::handleDetectingState()
 void FaceRecognizer::handleRecognizedState(QImage &image)
 {
     auto faceInfo = arcEngine->detectFace(image);
+
+    // 发射人脸检测信号
+    emit faceDetected(faceInfo);
 
     if(faceInfo.isEmpty()){
         // 人脸已离开

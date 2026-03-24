@@ -1,4 +1,4 @@
-#ifndef FACERECOGNIZER_H
+﻿#ifndef FACERECOGNIZER_H
 #define FACERECOGNIZER_H
 
 // 视频采集相关
@@ -57,6 +57,9 @@ signals:
 
     //请求保存打卡记录（由主线程处理）
     void requestSaveAttendance(const QString &employeeId,const QString &status);
+
+    // 人脸检测信号（用于绘制人脸框）
+    void faceDetected(const QVector<arcfaceengine::FaceInfo> &faceInfos);
 
 private:
     //状态处理函数

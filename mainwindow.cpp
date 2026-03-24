@@ -1,8 +1,10 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "FaceRecognition/facerecognizer.h"
+#include "FaceRecognition/arcfaceengine.h"
 #include "NetworkClient/networkclient.h"
 #include "Config/configmanager.h"
+#include "UI/facevideowidget.h"
 #include <QCloseEvent>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -136,6 +138,31 @@ void MainWindow::FaceFeatureStart()
 
     //连接数据库保存请求信号
     connect(m_FaceRecognizer,&FaceRecognizer::requestSaveAttendance,this,&MainWindow::onSaveAttendanceRequest,Qt::QueuedConnection);
+
+    connect(m_FaceRecognizer,&FaceRecognizer::faceDetected,this,[=](const QVector<arcfaceengine::FaceInfo> &faceInfos){
+        QVector<FaceRectInfo> rectinfos;
+        for(const auto &info : faceInfos){
+            FaceRectInfo rectInfo;
+            rectInfo.rect = info.rect;
+            rectInfo.name = "";
+            rectInfo.recognized = (m_FaceRecognizer->getbestMatch().second>0.8);
+            rectinfos.append(rectInfo);
+        }
+
+        // 更新自定义视频控件的人脸框
+        FaceVideoWidget* faceWidget = qobject_cast<FaceVideoWidget*>(m_VideoWidget);
+        if(faceWidget){
+            faceWidget->setFaceRects(rectinfos);
+        }
+    });
+
+    // 连接视频帧信号，更新当前帧
+    connect(m_VideoFrameCapture,&VideoFrameCapture::frameCaptured,this,[=](const QImage &frame){
+        FaceVideoWidget* faceWidget = qobject_cast<FaceVideoWidget*> (m_VideoWidget);
+        if(faceWidget){
+            faceWidget->setCurrentFrame(frame);
+        }
+    });
 }
 
 //时间初始化

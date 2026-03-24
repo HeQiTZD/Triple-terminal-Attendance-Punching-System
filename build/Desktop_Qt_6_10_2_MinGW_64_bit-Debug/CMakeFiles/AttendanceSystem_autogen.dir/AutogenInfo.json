@@ -552,6 +552,12 @@
 			null
 		],
 		[
+			"D:/QTproject/AttendanceSystem/UI/facevideowidget.h",
+			"MU",
+			"KRKR4BN5RM/moc_facevideowidget.cpp",
+			null
+		],
+		[
 			"D:/QTproject/AttendanceSystem/UI/setwindow.h",
 			"MU",
 			"KRKR4BN5RM/moc_setwindow.cpp",
@@ -730,6 +736,7 @@
 			"MU",
 			null
 		],
+		[ "D:/QTproject/AttendanceSystem/UI/facevideowidget.cpp", "MU", null ],
 		[ "D:/QTproject/AttendanceSystem/UI/setwindow.cpp", "MU", null ],
 		[ "D:/QTproject/AttendanceSystem/config/configmanager.cpp", "MU", null ],
 		[ "D:/QTproject/AttendanceSystem/main.cpp", "MU", null ],
