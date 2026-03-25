@@ -70,27 +70,37 @@ void MainWindow::init()
 
     //网络客户端
     networkClient = Networkclient::instance();
-    //连接网络状态信号
+    
+    //多线程 - 将网络客户端移到独立线程（必须在连接信号之前）
+    m_networkThread = new QThread(this);
+    networkClient->moveToThread(m_networkThread);
+    m_networkThread->start();
+    
+    //连接网络状态信号（使用Qt::QueuedConnection确保跨线程安全）
     connect(networkClient, &Networkclient::connected, this, [=](){
         qDebug() << "网络已连接";
-    });
+    }, Qt::QueuedConnection);
     connect(networkClient, &Networkclient::disconnected, this, [=](){
         qDebug() << "网络已断开";
-    });
+    }, Qt::QueuedConnection);
     connect(networkClient, &Networkclient::networkStateChanged, this, [=](bool isOnline){
         qDebug() << "网络状态变化:" << (isOnline ? "在线" : "离线");
-    });
+    }, Qt::QueuedConnection);
+    
     //连接服务器 (从配置中读取IP和端口)
     ConfigManager* config = ConfigManager::instance();
     QString serverIp = config->getServerIP();
     quint16 serverPort = static_cast<quint16>(config->getServerPort());
     qDebug() << "从配置文件读取服务器地址:" << serverIp << ":" << serverPort;
 
-    if(networkClient->connectToServer(serverIp, serverPort)){
-        qDebug() << "正在连接服务器...";
-    } else {
-        qWarning() << "连接服务器失败";
-    }
+    //使用Qt::QueuedConnection异步调用连接（因为networkClient已在另一个线程）
+    QMetaObject::invokeMethod(networkClient, [=](){
+        if(networkClient->connectToServer(serverIp, serverPort)){
+            qDebug() << "正在连接服务器...";
+        } else {
+            qWarning() << "连接服务器失败";
+        }
+    }, Qt::QueuedConnection);
 
     //摄像头初始化
     m_CameraCapture = new CameraCapture();
@@ -105,10 +115,6 @@ void MainWindow::init()
     m_faceThread = new QThread(this);
     m_FaceRecognizer->moveToThread(m_faceThread);
     m_faceThread->start();
-
-    m_networkThread = new QThread(this);
-    networkClient->moveToThread(m_networkThread);
-    m_networkThread->start();
 }
 
 //显示摄像头画面

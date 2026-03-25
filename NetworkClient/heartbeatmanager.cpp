@@ -51,7 +51,7 @@ void Heartbeatmanager::start(int intervalMs)
         stop();
     }
 
-    m_waitingResponse = true;
+    m_waitingResponse = false;
     m_timer->setInterval(intervalMs);
     m_timer->start();
 
@@ -87,27 +87,34 @@ QByteArray Heartbeatmanager::buildHeartbeatData()
 void Heartbeatmanager::onTimeout()
 {
     if(!m_socket || m_socket->state() != QAbstractSocket::ConnectedState){
-        //sokect 未连接，不发送
+        //socket 未连接，不发送
         return;
     }
 
     if(m_waitingResponse){
         //上一次心跳还未收到响应，视为超时
+        qWarning()<<"Heartbeatmanager: 心跳超时，上一次心跳未收到响应";
         emit heartbeattimeout();
         m_waitingResponse = false;
         return;
     }
 
     //构建心跳数据
-    //根据protocol.h协议格式
     QByteArray heartbeatData = buildHeartbeatData();
 
-    //标记未等待响应
-    m_waitingResponse = false;
+    //标记为等待响应状态
+    m_waitingResponse = true;
 
     //启动超时检测（5秒）
     m_timeroutTimer->start(5000);
 
     //通过信号发送出数据，由外部发送
     emit sendHeartbeat(heartbeatData);
+}
+
+void Heartbeatmanager::onHeartbeatResponse()
+{
+    //收到心跳响应，重置等待状态
+    m_waitingResponse = false;
+    m_timeroutTimer->stop();
 }

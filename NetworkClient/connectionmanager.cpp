@@ -44,7 +44,7 @@ void Connectionmanager::disconnect()
 
 bool Connectionmanager::isConnect()
 {
-    return m_socket->state();
+    return m_socket->state() == QAbstractSocket::ConnectedState;
 }
 
 QTcpSocket *Connectionmanager::socket() const

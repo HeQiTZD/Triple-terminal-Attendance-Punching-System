@@ -1,7 +1,11 @@
 ﻿#include "setwindow.h"
 #include "ui_setwindow.h"
 #include "../Config/configmanager.h"
+#include "../NetworkClient/networkclient.h"
 #include <QMessageBox>
+#include <QTcpSocket>
+#include <QTimer>
+#include <QElapsedTimer>
 
 SetWindow::SetWindow(QWidget *parent)
     : QWidget(parent)
@@ -33,6 +37,9 @@ void SetWindow::setupConnections()
 
     // 阈值滑块信号连接
     connect(ui->sliderThreshold, &QSlider::valueChanged, this, &SetWindow::onSliderThresholdChanged);
+    
+    // 连接测试按钮信号连接
+    connect(ui->btnTestConnection, &QPushButton::clicked, this, &SetWindow::onBtnTestConnectionClicked);
 }
 
 void SetWindow::onNavButtonClicked()
@@ -421,4 +428,112 @@ void SetWindow::saveToConfig()
 
     // 保存到文件
     config->saveConfig();
+}
+
+// 连接测试按钮槽函数
+void SetWindow::onBtnTestConnectionClicked()
+{
+    // 获取当前UI中的服务器地址和端口
+    QString serverIP = ui->lineEditIP->text();
+    int serverPort = ui->spinBoxPort->value();
+    
+    if (serverIP.isEmpty()) {
+        QMessageBox::warning(this, "连接测试", "请输入服务器IP地址");
+        return;
+    }
+    
+    // 禁用测试按钮，防止重复点击
+    ui->btnTestConnection->setEnabled(false);
+    ui->btnTestConnection->setText("测试中...");
+    ui->labelConnectionStatus->setText("正在连接...");
+    ui->labelConnectionStatus->setStyleSheet("color: orange;");
+    
+    // 创建测试socket
+    QTcpSocket *testSocket = new QTcpSocket(this);
+    
+    // 记录开始时间
+    QElapsedTimer *timer = new QElapsedTimer();
+    timer->start();
+    
+    // 连接成功处理
+    connect(testSocket, &QTcpSocket::connected, this, [=]() {
+        int elapsed = timer->elapsed();
+        delete timer;
+        
+        ui->labelConnectionStatus->setText("✓ 连接成功");
+        ui->labelConnectionStatus->setStyleSheet("color: green; font-weight: bold;");
+        
+        QString info = QString("服务器地址: %1:%2\n连接状态: 正常\n响应时间: %3ms")
+            .arg(serverIP)
+            .arg(serverPort)
+            .arg(elapsed);
+        
+        QMessageBox::information(this, "连接测试成功", info);
+        
+        testSocket->disconnectFromHost();
+        testSocket->deleteLater();
+        
+        // 恢复按钮状态
+        ui->btnTestConnection->setEnabled(true);
+        ui->btnTestConnection->setText("测试连接");
+    });
+    
+    // 连接错误处理
+    connect(testSocket, QOverload<QAbstractSocket::SocketError>::of(&QTcpSocket::errorOccurred),
+            this, [=](QAbstractSocket::SocketError error) {
+        delete timer;
+        
+        ui->labelConnectionStatus->setText("✗ 连接失败");
+        ui->labelConnectionStatus->setStyleSheet("color: red; font-weight: bold;");
+        
+        QString errorMsg;
+        switch (error) {
+        case QAbstractSocket::ConnectionRefusedError:
+            errorMsg = "连接被拒绝，请检查：\n1. 服务器是否运行\n2. 端口是否正确";
+            break;
+        case QAbstractSocket::HostNotFoundError:
+            errorMsg = "无法找到服务器地址，请检查IP地址是否正确";
+            break;
+        case QAbstractSocket::NetworkError:
+            errorMsg = "网络错误，请检查网络连接";
+            break;
+        case QAbstractSocket::SocketTimeoutError:
+            errorMsg = "连接超时，请检查：\n1. 服务器是否运行\n2. 防火墙设置";
+            break;
+        default:
+            errorMsg = QString("连接失败: %1").arg(testSocket->errorString());
+        }
+        
+        QMessageBox::critical(this, "连接测试失败", errorMsg);
+        
+        testSocket->deleteLater();
+        
+        // 恢复按钮状态
+        ui->btnTestConnection->setEnabled(true);
+        ui->btnTestConnection->setText("测试连接");
+    });
+    
+    // 尝试连接
+    testSocket->connectToHost(serverIP, static_cast<quint16>(serverPort));
+    
+    // 使用定时器检查连接超时
+    QTimer::singleShot(5000, this, [=]() {
+        // 如果socket还存在且未连接，则判定为超时
+        if (testSocket && testSocket->state() != QAbstractSocket::ConnectedState) {
+            delete timer;
+            
+            testSocket->abort();
+            testSocket->deleteLater();
+            
+            ui->labelConnectionStatus->setText("✗ 连接超时");
+            ui->labelConnectionStatus->setStyleSheet("color: red; font-weight: bold;");
+            
+            QMessageBox::critical(this, "连接测试失败", 
+                "连接超时（5秒），请检查：\n1. 服务器是否运行\n2. IP地址和端口是否正确\n3. 防火墙设置");
+            
+            // 恢复按钮状态
+            ui->btnTestConnection->setEnabled(true);
+            ui->btnTestConnection->setText("测试连接");
+        }
+    });
 }

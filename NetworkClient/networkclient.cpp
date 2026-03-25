@@ -143,11 +143,23 @@ void Networkclient::onConnectionDisconnected()
 {
     qDebug()<<"Networkclient:连接断开，清理资源";
 
+    //停止心跳
     m_heartbeat->stop();
 
+    //停止消息接收并断开信号
     if(m_ready){
         m_ready->stop();
+        //断开m_ready与当前对象的所有信号连接
+        m_ready->disconnect(this);
     }
+    
+    //断开writer信号
+    if(m_writer){
+        m_writer->disconnect(this);
+    }
+    
+    //断开心跳信号（保留与ConnectionManager的连接，但断开与当前对象的连接）
+    FaceDatabaseManager::disconnect(m_heartbeat, &Heartbeatmanager::heartbeattimeout, this, &Networkclient::onHeartbeatTimeout);
 
     //清理writer/ready(下次连接重新创建)
     delete m_writer;
@@ -194,7 +206,8 @@ void Networkclient::onMessageReceived(const QJsonObject &message)
         handleUploadResponse(message);
         break;
     case Protocol::HEARTBEAT:
-        qDebug()<<"Networkclient:收到服务器心跳";
+        qDebug()<<"Networkclient:收到服务器心跳响应";
+        m_heartbeat->onHeartbeatResponse();
         break;
     default:
         qWarning()<<"Networkclient：未知消息"<<Protocol::messageTypeToString(type);

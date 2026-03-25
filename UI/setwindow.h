@@ -87,6 +87,8 @@ private slots:
     void onBtnSaveClicked();
     // 阈值滑块值变化槽函数
     void onSliderThresholdChanged(int value);
+    // 连接测试按钮槽函数
+    void onBtnTestConnectionClicked();
 
 private:
     void setupConnections();

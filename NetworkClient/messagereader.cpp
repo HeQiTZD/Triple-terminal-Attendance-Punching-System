@@ -1,12 +1,12 @@
 ﻿#include "messagereader.h"
 
 Messagereader::Messagereader(QTcpSocket *socket,QObject *parent):
-    m_socket(socket),
-    QObject(parent)
+    QObject(parent),
+    m_socket(socket)
 {
     //参数校验
     if(!m_socket){
-        qWarning()<<"socket为空";
+        qWarning()<<"Messagereader: socket为空";
     }
 }
 
@@ -34,6 +34,11 @@ void Messagereader::stop()
 
 void Messagereader::onReadyRead()
 {
+    //检查socket是否有效
+    if(!m_socket || m_socket->state() != QAbstractSocket::ConnectedState){
+        return;
+    }
+    
     //读取所有可用数据到缓冲区
     QByteArray newData = m_socket->readAll();
     m_buffer.append(newData);

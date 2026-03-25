@@ -1,4 +1,4 @@
-﻿#ifndef HEARTBEATMANAGER_H
+#ifndef HEARTBEATMANAGER_H
 #define HEARTBEATMANAGER_H
 
 #include <QObject>
@@ -21,6 +21,9 @@ public:
     void stop();
     bool isRunning() const;//状态查询
     QByteArray buildHeartbeatData();
+    
+    //收到心跳响应后调用，重置等待状态
+    void onHeartbeatResponse();
 
 signals:
     void heartbeattimeout(); //心跳超时，需要重连
