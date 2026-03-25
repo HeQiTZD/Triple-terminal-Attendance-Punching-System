@@ -1,4 +1,4 @@
-﻿#include "mainwindow.h"
+#include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "FaceRecognition/facerecognizer.h"
 #include "FaceRecognition/arcfaceengine.h"
@@ -275,11 +275,11 @@ void MainWindow::updateTimeDisplay()
 void MainWindow::onNetworkStateChanged(bool isOnline)
 {
     if(isOnline){
-        ui->networkStatusLabel->setText("● 在线");
-        ui->networkStatusLabel->setStyleSheet("color:green;font-weight:bold;");
+        ui->networkStatusLabel->setText("🟢 在线");
+        ui->networkStatusLabel->setStyleSheet("color:#27ae60;font-weight:500;");
     }else{
-        ui->networkStatusLabel->setText("● 离线");
-        ui->networkStatusLabel->setStyleSheet("color:red;font-weight:bold;");
+        ui->networkStatusLabel->setText("🔴 离线");
+        ui->networkStatusLabel->setStyleSheet("color:#e74c3c;font-weight:500;");
     }
 }
 
@@ -301,10 +301,10 @@ void MainWindow::onMaximizeButtonClicked()
 {
     if (isMaximized()) {
         showNormal();
-        ui->maximizeButton->setText("□");
+        ui->maximizeButton->setText("⬜");
     } else {
         showMaximized();
-        ui->maximizeButton->setText("❐");
+        ui->maximizeButton->setText("⬝");
     }
 }
 

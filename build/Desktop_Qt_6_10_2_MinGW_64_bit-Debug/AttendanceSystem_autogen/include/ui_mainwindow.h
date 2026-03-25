@@ -250,9 +250,9 @@ public:
         timeLabel->setText(QCoreApplication::translate("MainWindow", "\345\275\223\345\211\215\346\227\266\351\227\264\357\274\2322024-01-01 12:00:00", nullptr));
         networkStatusLabel->setText(QCoreApplication::translate("MainWindow", "\347\275\221\347\273\234\347\212\266\346\200\201\357\274\232\342\227\217", nullptr));
         settingButton->setText(QCoreApplication::translate("MainWindow", "\350\256\276\347\275\256", nullptr));
-        minimizeButton->setText(QCoreApplication::translate("MainWindow", "\342\200\224", nullptr));
-        maximizeButton->setText(QCoreApplication::translate("MainWindow", "\342\226\241", nullptr));
-        closeButton->setText(QCoreApplication::translate("MainWindow", "\303\227", nullptr));
+        minimizeButton->setText(QCoreApplication::translate("MainWindow", "\342\210\222", nullptr));
+        maximizeButton->setText(QCoreApplication::translate("MainWindow", "\342\254\234", nullptr));
+        closeButton->setText(QCoreApplication::translate("MainWindow", "\342\234\225", nullptr));
         infoGroupBox->setTitle(QString());
         employeeIdLabel->setText(QCoreApplication::translate("MainWindow", "\345\221\230\345\267\245\345\217\267\357\274\232", nullptr));
         nameLabel->setText(QCoreApplication::translate("MainWindow", "\345\247\223\345\220\215\357\274\232", nullptr));

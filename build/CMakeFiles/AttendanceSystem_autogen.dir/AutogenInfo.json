@@ -446,7 +446,8 @@
 		"C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6MultimediaWidgets/Qt6MultimediaWidgetsTargets.cmake",
 		"C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6MultimediaWidgets/Qt6MultimediaWidgetsTargets-relwithdebinfo.cmake",
 		"C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6MultimediaWidgets/Qt6MultimediaWidgetsAdditionalTargetInfo.cmake",
-		"C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6MultimediaWidgets/Qt6MultimediaWidgetsVersionlessAliasTargets.cmake"
+		"C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6MultimediaWidgets/Qt6MultimediaWidgetsVersionlessAliasTargets.cmake",
+		"D:/QTproject/AttendanceSystem/resources/resources.qrc"
 	],
 	"CMAKE_SOURCE_DIR" : "D:/QTproject/AttendanceSystem",
 	"CROSS_CONFIG" : false,

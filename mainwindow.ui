@@ -70,7 +70,7 @@
           <string notr="true">QPushButton { font-weight: bold; }</string>
          </property>
          <property name="text">
-          <string>—</string>
+          <string>−</string>
          </property>
         </widget>
        </item>
@@ -80,7 +80,7 @@
           <string notr="true">QPushButton { font-weight: bold; }</string>
          </property>
          <property name="text">
-          <string>□</string>
+          <string>⬜</string>
          </property>
         </widget>
        </item>
@@ -90,7 +90,7 @@
           <string notr="true">QPushButton { font-weight: bold; color: red; }</string>
          </property>
          <property name="text">
-          <string>×</string>
+          <string>✕</string>
          </property>
         </widget>
        </item>

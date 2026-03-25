@@ -865,6 +865,7 @@ AttendanceSystem_autogen/timestamp: \
 	D:/QTproject/AttendanceSystem/main.cpp \
 	D:/QTproject/AttendanceSystem/mainwindow.cpp \
 	D:/QTproject/AttendanceSystem/mainwindow.h \
+	D:/QTproject/AttendanceSystem/resources/resources.qrc \
 	D:/QTproject/AttendanceSystem/third_party/arcface/include/amcomdef.h \
 	D:/QTproject/AttendanceSystem/third_party/arcface/include/arcsoft_face_sdk.h \
 	D:/QTproject/AttendanceSystem/third_party/arcface/include/asvloffscreen.h \

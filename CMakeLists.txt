@@ -1,4 +1,4 @@
-﻿cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.16)
 
 project(AttendanceSystem VERSION 0.1 LANGUAGES CXX)
 
@@ -53,6 +53,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         UI/setwindow.h UI/setwindow.cpp UI/setwindow.ui
         Config/configmanager.h Config/configmanager.cpp
         UI/facevideowidget.h UI/facevideowidget.cpp
+        resources/resources.qrc
 
 
 
