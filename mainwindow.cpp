@@ -1,4 +1,4 @@
-﻿#include "mainwindow.h"
+#include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "FaceRecognition/facerecognizer.h"
 #include "FaceRecognition/arcfaceengine.h"
@@ -77,15 +77,7 @@ void MainWindow::init()
     m_networkThread->start();
     
     //连接网络状态信号（使用Qt::QueuedConnection确保跨线程安全）
-    connect(networkClient, &Networkclient::connected, this, [=](){
-        qDebug() << "网络已连接";
-    }, Qt::QueuedConnection);
-    connect(networkClient, &Networkclient::disconnected, this, [=](){
-        qDebug() << "网络已断开";
-    }, Qt::QueuedConnection);
-    connect(networkClient, &Networkclient::networkStateChanged, this, [=](bool isOnline){
-        qDebug() << "网络状态变化:" << (isOnline ? "在线" : "离线");
-    }, Qt::QueuedConnection);
+    //注意：networkStateChanged的连接在initNetWorkStatus()中进行，避免重复连接
     
     //连接服务器 (从配置中读取IP和端口)
     ConfigManager* config = ConfigManager::instance();
@@ -183,7 +175,19 @@ void MainWindow::initTimeDisplay()
 //网络状态初始化
 void MainWindow::initNetWorkStatus()
 {
-    connect(networkClient,&Networkclient::networkStateChanged,this,&MainWindow::onNetworkStateChanged);
+    //使用Qt::QueuedConnection确保跨线程安全（networkClient在另一个线程）
+    connect(networkClient, &Networkclient::networkStateChanged, 
+            this, &MainWindow::onNetworkStateChanged, Qt::QueuedConnection);
+    
+    //使用Qt::QueuedConnection连接connected和disconnected信号
+    connect(networkClient, &Networkclient::connected, this, [=](){
+        qDebug() << "网络已连接";
+    }, Qt::QueuedConnection);
+    connect(networkClient, &Networkclient::disconnected, this, [=](){
+        qDebug() << "网络已断开";
+    }, Qt::QueuedConnection);
+    
+    //初始状态设为离线
     onNetworkStateChanged(false);
 }
 

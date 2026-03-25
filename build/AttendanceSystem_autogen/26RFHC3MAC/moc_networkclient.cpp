@@ -57,7 +57,9 @@ template <> constexpr inline auto Networkclient::qt_create_metaobjectdata<qt_met
         "onMessageReceived",
         "QJsonObject",
         "onHeartbeatTimeout",
-        "onSendError"
+        "onSendError",
+        "onSendHeartbeat",
+        "data"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -93,6 +95,10 @@ template <> constexpr inline auto Networkclient::qt_create_metaobjectdata<qt_met
         QtMocHelpers::SlotData<void()>(17, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onSendError'
         QtMocHelpers::SlotData<void()>(18, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onSendHeartbeat'
+        QtMocHelpers::SlotData<void(const QByteArray &)>(19, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::QByteArray, 20 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -127,6 +133,7 @@ void Networkclient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 8: _t->onMessageReceived((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
         case 9: _t->onHeartbeatTimeout(); break;
         case 10: _t->onSendError(); break;
+        case 11: _t->onSendHeartbeat((*reinterpret_cast<std::add_pointer_t<QByteArray>>(_a[1]))); break;
         default: ;
         }
     }
@@ -163,14 +170,14 @@ int Networkclient::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 11)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 12;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 11)
+        if (_id < 12)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 11;
+        _id -= 12;
     }
     return _id;
 }

@@ -53,6 +53,7 @@ private slots:
     void onMessageReceived(const QJsonObject &message);//处理接收消息
     void onHeartbeatTimeout();//处理心跳超时
     void onSendError();//处理发送错误
+    void onSendHeartbeat(const QByteArray &data);//处理心跳发送
 
 private:
     explicit Networkclient(QObject *parent = nullptr);

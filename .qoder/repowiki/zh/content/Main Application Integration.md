@@ -17,7 +17,16 @@
 - [arcfaceengine.cpp](file://FaceRecognition/arcfaceengine.cpp)
 - [facerecognizer.h](file://FaceRecognition/facerecognizer.h)
 - [facerecognizer.cpp](file://FaceRecognition/facerecognizer.cpp)
+- [networkclient.h](file://NetworkClient/networkclient.h)
+- [networkclient.cpp](file://NetworkClient/networkclient.cpp)
 </cite>
+
+## 更新摘要
+**所做更改**
+- 更新了多线程架构部分，反映网络客户端和人脸识别模块已移动到独立线程
+- 新增了线程管理和跨线程通信的详细说明
+- 更新了架构图以体现新的线程分离设计
+- 增强了性能考虑章节，重点说明多线程带来的UI响应性改善
 
 ## 目录
 1. [项目概述](#项目概述)
@@ -51,7 +60,7 @@ AttendanceCheckClient是一个基于Qt框架的局域网智能考勤系统打卡
 
 ## 项目结构
 
-项目采用模块化设计，按照功能领域进行组织：
+项目采用模块化设计，按照功能领域进行组织，并实现了多线程架构改进：
 
 ```mermaid
 graph TB
@@ -66,17 +75,20 @@ subgraph "摄像头模块"
 CameraCapture[CameraCapture]
 VideoFrameCapture[VideoFrameCapture]
 end
-subgraph "人脸识别"
-ArcFaceEngine[ArcFaceEngine]
+subgraph "人脸识别线程"
 FaceRecognizer[FaceRecognizer]
+ArcFaceEngine[ArcFaceEngine]
 FaceDatabaseManager[FaceDatabaseManager]
+FaceThread[QThread]
+end
+subgraph "网络线程"
+NetworkClient[NetworkClient]
+HeartbeatManager[HeartbeatManager]
+ConnectionManager[ConnectionManager]
+NetworkThread[QThread]
 end
 subgraph "存储模块"
 LocalStorage[LocalStorage]
-end
-subgraph "网络模块"
-NetworkClient[NetworkClient]
-HeartbeatManager[HeartbeatManager]
 end
 subgraph "UI模块"
 SetWindow[SetWindow]
@@ -85,18 +97,23 @@ end
 Main --> MainWindow
 MainWindow --> ConfigManager
 MainWindow --> CameraCapture
-MainWindow --> FaceRecognizer
-MainWindow --> LocalStorage
-MainWindow --> NetworkClient
-FaceRecognizer --> ArcFaceEngine
-FaceRecognizer --> FaceDatabaseManager
+MainWindow --> FaceThread
+MainWindow --> NetworkThread
+FaceThread --> FaceRecognizer
+FaceThread --> ArcFaceEngine
+FaceThread --> FaceDatabaseManager
+NetworkThread --> NetworkClient
+NetworkThread --> HeartbeatManager
+NetworkThread --> ConnectionManager
+FaceRecognizer --> LocalStorage
+NetworkClient --> LocalStorage
 CameraCapture --> VideoFrameCapture
-NetworkClient --> HeartbeatManager
 ```
 
 **图表来源**
 - [main.cpp:12-45](file://main.cpp#L12-L45)
-- [mainwindow.h:22-94](file://mainwindow.h#L22-L94)
+- [mainwindow.h:82-94](file://mainwindow.h#L82-L94)
+- [mainwindow.cpp:74-118](file://mainwindow.cpp#L74-L118)
 
 **章节来源**
 - [CMakeLists.txt:19-58](file://CMakeLists.txt#L19-L58)
@@ -109,9 +126,9 @@ NetworkClient --> HeartbeatManager
 ### 主窗口管理器
 MainWindow作为应用的核心控制器，负责协调各个子系统的初始化和交互，包括：
 - 摄像头初始化和视频流显示
-- 人脸识别引擎的启动和配置
+- **多线程管理**：将人脸识别和网络客户端分别移动到独立线程
+- **跨线程通信**：使用Qt::QueuedConnection确保线程间安全通信
 - 数据库连接和本地存储
-- 网络客户端的连接和状态监控
 - UI界面的布局和事件处理
 
 ### 配置管理系统
@@ -124,7 +141,7 @@ ConfigManager提供统一的配置管理服务，支持网络设置、人脸识�
 
 ## 架构概览
 
-系统采用分层架构设计，各层职责明确，耦合度低：
+系统采用分层架构设计，各层职责明确，耦合度低，并实现了多线程分离：
 
 ```mermaid
 graph TB
@@ -146,32 +163,40 @@ CameraCapture[摄像头捕获]
 ArcFaceEngine[ArcFace引擎]
 SQLite[SQLite数据库]
 end
+subgraph "线程管理层"
+FaceThread[人脸识别线程]
+NetworkThread[网络线程]
+MainThread[主线程]
+end
 subgraph "外部接口"
 ManagementServer[管理端服务器]
 ArcSoftSDK[ArcSoft SDK]
 end
 UI --> MainWindow
 SetWindow --> MainWindow
-MainWindow --> FaceRecognizer
-MainWindow --> LocalStorage
-MainWindow --> NetworkClient
-MainWindow --> ConfigManager
-FaceRecognizer --> ArcFaceEngine
-FaceRecognizer --> CameraCapture
-LocalStorage --> SQLite
+MainWindow --> FaceThread
+MainWindow --> NetworkThread
+FaceThread --> FaceRecognizer
+FaceThread --> ArcFaceEngine
+FaceThread --> LocalStorage
+NetworkThread --> NetworkClient
+NetworkThread --> HeartbeatManager
+NetworkThread --> ConnectionManager
+FaceRecognizer --> LocalStorage
 NetworkClient --> ManagementServer
 ArcFaceEngine --> ArcSoftSDK
 ```
 
 **图表来源**
-- [mainwindow.h:82-91](file://mainwindow.h#L82-L91)
+- [mainwindow.h:82-94](file://mainwindow.h#L82-L94)
 - [facerecognizer.h:35-107](file://facerecognizer.h#L35-L107)
+- [networkclient.h:18-76](file://networkclient.h#L18-L76)
 
 ## 详细组件分析
 
 ### 主窗口组件分析
 
-MainWindow是整个应用的核心控制器，负责协调各个子系统的初始化和运行。
+MainWindow是整个应用的核心控制器，负责协调各个子系统的初始化和运行，并实现了多线程架构改进。
 
 ```mermaid
 classDiagram
@@ -182,7 +207,7 @@ class MainWindow {
 -Networkclient* networkClient
 -CameraCapture* m_CameraCapture
 -VideoFrameCapture* m_VideoFrameCapture
--QWidget* m_VideoWidget
+-widget* m_VideoWidget
 -QThread* m_faceThread
 -QThread* m_networkThread
 -QTimer* m_timeTimer
@@ -211,68 +236,72 @@ class FaceRecognizer {
 +recognitionFailed() void
 +requestSaveAttendance() void
 }
-class LocalStorage {
--QSqlDatabase m_db
-+connectDatabse() bool
-+addAttendanceRecord() bool
-+getUnuploadedRecords() QVector
-+markAsUploaded() bool
-}
 class NetworkClient {
--QTcpSocket* socket
--QTimer* heartbeatTimer
+-Connectionmanager* m_connection
+-Heartbeatmanager* m_heartbeat
+-Messagewriter* m_writer
+-Messagereader* m_ready
+-Messagequeue* m_queue
+-bool m_isOnline
 +connectToServer() bool
 +uploadAttendance() void
 +networkStateChanged() void
 }
-MainWindow --> FaceRecognizer : "控制"
-MainWindow --> LocalStorage : "使用"
-MainWindow --> NetworkClient : "使用"
-FaceRecognizer --> LocalStorage : "读取特征"
-FaceRecognizer --> NetworkClient : "上传记录"
+MainWindow --> FaceRecognizer : "跨线程控制"
+MainWindow --> NetworkClient : "跨线程控制"
+FaceRecognizer --> LocalStorage : "主线程访问"
+NetworkClient --> LocalStorage : "主线程访问"
 ```
 
 **图表来源**
 - [mainwindow.h:22-94](file://mainwindow.h#L22-L94)
 - [facerecognizer.h:35-107](file://facerecognizer.h#L35-L107)
-- [localstorage.h:15-49](file://localstorage.h#L15-L49)
+- [networkclient.h:18-76](file://networkclient.h#L18-L76)
 
-#### 人脸识别流程序列图
+#### 多线程人脸识别流程序列图
 
 ```mermaid
 sequenceDiagram
 participant UI as "用户界面"
-participant MainWindow as "主窗口"
+participant MainWindow as "主窗口(主线程)"
+participant FaceThread as "人脸识别线程"
 participant FaceRecognizer as "人脸识别器"
 participant ArcFaceEngine as "ArcFace引擎"
 participant LocalStorage as "本地存储"
+participant NetworkThread as "网络线程"
 participant NetworkClient as "网络客户端"
 UI->>MainWindow : 启动应用
-MainWindow->>FaceRecognizer : init()
-FaceRecognizer->>ArcFaceEngine : initialize()
-ArcFaceEngine-->>FaceRecognizer : 初始化成功
+MainWindow->>FaceThread : 创建线程并启动
+MainWindow->>NetworkThread : 创建线程并启动
+MainWindow->>FaceRecognizer : moveToThread(FaceThread)
+MainWindow->>NetworkClient : moveToThread(NetworkThread)
+NetworkThread->>NetworkClient : 初始化网络模块
+FaceThread->>FaceRecognizer : 初始化识别器
 loop 实时视频流
-MainWindow->>FaceRecognizer : WanZhengYeWuLiuCheng(image)
+MainWindow->>FaceThread : frameCaptured信号
+FaceThread->>FaceRecognizer : WanZhengYeWuLiuCheng(image)
 FaceRecognizer->>ArcFaceEngine : detectFace(image)
 ArcFaceEngine-->>FaceRecognizer : FaceInfo列表
 FaceRecognizer->>ArcFaceEngine : extractFeature(image, FaceInfo[0])
 ArcFaceEngine-->>FaceRecognizer : FaceFeature
 FaceRecognizer->>FaceRecognizer : findBestMatch()
 alt 识别成功
-FaceRecognizer-->>MainWindow : recognitionSuccess()
-MainWindow->>LocalStorage : addAttendanceRecord()
+FaceRecognizer-->>MainWindow : recognitionSuccess信号(跨线程)
+MainWindow->>LocalStorage : addAttendanceRecord() (主线程)
 LocalStorage-->>MainWindow : 保存成功
-MainWindow->>NetworkClient : uploadAttendance()
+MainWindow->>NetworkThread : uploadAttendance() (跨线程调用)
+NetworkThread->>NetworkClient : uploadAttendance(record)
 NetworkClient-->>MainWindow : 上传成功
 else 识别失败
-FaceRecognizer-->>MainWindow : recognitionFailed()
+FaceRecognizer-->>MainWindow : recognitionFailed信号
 end
 end
 ```
 
 **图表来源**
+- [mainwindow.cpp:132-172](file://mainwindow.cpp#L132-L172)
 - [facerecognizer.cpp:46-196](file://facerecognizer.cpp#L46-L196)
-- [mainwindow.cpp:185-242](file://mainwindow.cpp#L185-L242)
+- [networkclient.cpp:45-65](file://networkclient.cpp#L45-L65)
 
 **章节来源**
 - [mainwindow.cpp:9-32](file://mainwindow.cpp#L9-L32)
@@ -453,9 +482,83 @@ CreateRecordIndex --> Success([数据库初始化完成])
 - [localstorage.cpp:139-196](file://localstorage.cpp#L139-L196)
 - [localstorage.cpp:198-239](file://localstorage.cpp#L198-L239)
 
+### 网络客户端线程分析
+
+NetworkClient实现了完整的网络通信功能，现已移动到独立线程中运行，确保UI响应性。
+
+```mermaid
+classDiagram
+class NetworkClient {
+-static NetworkClient* s_instance
+-Connectionmanager* m_connection
+-Heartbeatmanager* m_heartbeat
+-Messagewriter* m_writer
+-Messagereader* m_ready
+-Messagequeue* m_queue
+-bool m_isOnline
++connectToServer(QString, quint16) bool
++uploadAttendance(AttendanceRecord) bool
++networkStateChanged(bool) void
++processQueue() void
+}
+class ConnectionManager {
++connectToHost(QString, quint16) bool
++disconnect() void
++isConnect() bool
+}
+class HeartbeatManager {
++setSocket(QTcpSocket*) void
++start(int) void
++stop() void
+}
+class MessageWriter {
++send(QJsonObject) bool
++sendBatch(QVector~QJsonObject~) int
+}
+class MessageReader {
++start() void
++stop() void
+}
+class MessageQueue {
++enqueue(QJsonObject) void
++dequeueAll() QVector~QJsonObject~
++isEmpty() bool
+}
+NetworkClient --> ConnectionManager : "使用"
+NetworkClient --> HeartbeatManager : "使用"
+NetworkClient --> MessageWriter : "使用"
+NetworkClient --> MessageReader : "使用"
+NetworkClient --> MessageQueue : "使用"
+```
+
+**图表来源**
+- [networkclient.h:18-76](file://networkclient.h#L18-L76)
+- [networkclient.cpp:234-244](file://networkclient.cpp#L234-L244)
+
+#### 网络连接状态机
+
+```mermaid
+stateDiagram-v2
+[*] --> DISCONNECTED : 初始状态
+DISCONNECTED --> CONNECTING : 尝试连接
+CONNECTING --> CONNECTED : 连接成功
+CONNECTING --> DISCONNECTED : 连接失败
+CONNECTED --> HEARTBEATING : 启动心跳
+HEARTBEATING --> CONNECTED : 心跳正常
+HEARTBEATING --> DISCONNECTED : 心跳超时
+DISCONNECTED --> CONNECTING : 自动重连
+```
+
+**图表来源**
+- [networkclient.cpp:109-193](file://networkclient.cpp#L109-L193)
+
+**章节来源**
+- [networkclient.cpp:12-25](file://networkclient.cpp#L12-L25)
+- [networkclient.cpp:282-322](file://networkclient.cpp#L282-L322)
+
 ## 依赖关系分析
 
-系统采用模块化设计，各模块间依赖关系清晰：
+系统采用模块化设计，各模块间依赖关系清晰，并实现了线程分离：
 
 ```mermaid
 graph LR
@@ -464,6 +567,8 @@ QtWidgets[Qt Widgets]
 QtNetwork[Qt Network]
 QtSql[Qt SQL]
 QtMultimedia[Qt Multimedia]
+QtCore[Qt Core]
+QtConcurrent[Qt Concurrent]
 end
 subgraph "第三方库"
 ArcSoft[ArcSoft SDK]
@@ -475,28 +580,57 @@ FaceRecognizer[FaceRecognizer]
 LocalStorage[LocalStorage]
 NetworkClient[NetworkClient]
 end
+subgraph "线程管理"
+QThread[QThread]
+Qt::QueuedConnection[跨线程通信]
+QMetaObject::invokeMethod[异步调用]
+end
 MainWindow --> QtWidgets
 MainWindow --> QtNetwork
 MainWindow --> QtSql
 MainWindow --> QtMultimedia
+MainWindow --> QtCore
+MainWindow --> QtConcurrent
 FaceRecognizer --> ArcSoft
 FaceRecognizer --> LocalStorage
 LocalStorage --> QtSql
 LocalStorage --> SQLite
 NetworkClient --> QtNetwork
+NetworkClient --> QtConcurrent
+QThread --> QtCore
+Qt::QueuedConnection --> QtCore
+QMetaObject::invokeMethod --> QtCore
 ```
 
 **图表来源**
 - [CMakeLists.txt:16-17](file://CMakeLists.txt#L16-L17)
 - [CMakeLists.txt:79-86](file://CMakeLists.txt#L79-L86)
+- [mainwindow.cpp:74-103](file://mainwindow.cpp#L74-L103)
 
 **章节来源**
 - [CMakeLists.txt:72-86](file://CMakeLists.txt#L72-L86)
 
 ## 性能考虑
 
-### 线程管理
-系统采用多线程架构，将CPU密集型的人脸识别任务分离到独立线程，避免阻塞UI线程。
+### 多线程架构改进
+
+**更新** 系统已实现重要的多线程架构改进，显著提升了UI响应性和系统稳定性：
+
+#### 线程分离策略
+- **人脸识别线程**：将CPU密集型的人脸检测和特征提取任务分离到独立线程
+- **网络通信线程**：将网络连接、心跳检测和消息处理迁移到专用线程
+- **主线程专注UI**：确保UI操作完全在主线程执行，避免阻塞
+
+#### 跨线程通信机制
+- **Qt::QueuedConnection**：所有跨线程信号槽连接均使用队列连接方式
+- **QMetaObject::invokeMethod**：通过异步方法调用确保线程安全
+- **信号转发**：子线程通过信号将结果转发到主线程更新UI
+
+#### 性能收益
+- **UI响应性**：摄像头画面流畅显示，无卡顿现象
+- **识别性能**：人脸识别算法在独立线程中高效运行
+- **网络稳定性**：网络操作不影响UI交互
+- **资源隔离**：各模块独立运行，互不干扰
 
 ### 内存管理
 - ArcFace引擎采用单例模式，避免重复初始化
@@ -507,6 +641,10 @@ NetworkClient --> QtNetwork
 - 心跳机制检测连接状态
 - 断网缓存机制确保数据完整性
 - 批量上传减少网络开销
+
+**章节来源**
+- [mainwindow.cpp:74-118](file://mainwindow.cpp#L74-L118)
+- [mainwindow.cpp:132-172](file://mainwindow.cpp#L132-L172)
 
 ## 故障排除指南
 
@@ -532,22 +670,40 @@ NetworkClient --> QtNetwork
 - 验证防火墙设置
 - 确认网络连通性
 
+**多线程相关问题**
+- **线程启动失败**：检查QThread对象创建和启动顺序
+- **跨线程通信异常**：确认使用Qt::QueuedConnection连接
+- **线程资源泄漏**：确保正确调用quit()和wait()方法
+- **死锁问题**：检查QMutex使用，避免在不同线程间交叉使用
+
 **章节来源**
 - [cameracapture.cpp:14-32](file://cameracapture.cpp#L14-L32)
 - [arcfaceengine.cpp:31-62](file://arcfaceengine.cpp#L31-L62)
 - [localstorage.cpp:32-68](file://localstorage.cpp#L32-L68)
+- [mainwindow.cpp:42-54](file://mainwindow.cpp#L42-L54)
 
 ## 结论
 
-AttendanceCheckClient系统采用模块化设计，具有良好的可维护性和扩展性。通过合理的架构设计和组件划分，实现了人脸识别考勤的核心功能。系统的主要优势包括：
+AttendanceCheckClient系统采用模块化设计，具有良好的可维护性和扩展性。通过实施多线程架构改进，系统实现了以下重要提升：
 
-1. **模块化架构**：清晰的职责分离，便于维护和扩展
-2. **多线程设计**：避免UI阻塞，提升用户体验
-3. **容错机制**：断网缓存确保数据完整性
-4. **配置管理**：灵活的配置选项满足不同需求
+### 主要改进成果
+1. **多线程架构**：人脸识别和网络通信分离到独立线程，显著提升UI响应性
+2. **跨线程通信**：使用Qt::QueuedConnection确保线程间安全通信
+3. **模块化设计**：清晰的职责分离，便于维护和扩展
+4. **容错机制**：断网缓存确保数据完整性
+5. **配置管理**：灵活的配置选项满足不同需求
 
-未来可以考虑的改进方向：
+### 技术亮点
+- **线程安全**：所有跨线程操作均通过Qt信号槽机制实现
+- **异步处理**：网络操作和人脸识别均采用异步模式
+- **资源管理**：完善的线程生命周期管理，避免资源泄漏
+- **性能优化**：CPU密集型任务与UI线程分离运行
+
+### 未来发展方向
 - 增加更多的日志记录和监控功能
 - 优化人脸识别算法性能
 - 扩展更多的人脸识别库支持
 - 增强网络安全机制
+- 考虑引入线程池管理机制进一步优化资源利用
+
+通过这些改进，AttendanceCheckClient系统现在能够提供更加稳定、响应迅速的考勤识别体验，为实际部署提供了可靠的技术基础。

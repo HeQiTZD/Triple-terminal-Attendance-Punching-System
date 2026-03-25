@@ -120,13 +120,13 @@ void Networkclient::onConnectionConnected()
     //连接writer信号
     connect(m_writer,&Messagewriter::messageSent,this,&Networkclient::onSendError);
 
-    //启动并设置heartbeat
+    //先启动消息接收，确保能收到服务器响应
+    m_ready->start();
+
+    //再启动心跳（确保reader已就绪，能接收心跳响应）
     m_heartbeat->setSocket(socket);
     connect(m_heartbeat,&Heartbeatmanager::heartbeattimeout,this,&Networkclient::onHeartbeatTimeout);
     m_heartbeat->start(3000);
-
-    //启动消息接收
-    m_ready->start();
 
     //处理断网期间缓存消息
     processQueue();
@@ -231,6 +231,16 @@ void Networkclient::onSendError()
     qWarning()<<"Networkclient：消息发送错误";
 }
 
+//心跳发送处理
+void Networkclient::onSendHeartbeat(const QByteArray &data)
+{
+    if(m_writer){
+        m_writer->send(data);
+    }else{
+        qWarning()<<"Networkclient：writer未初始化，无法发送心跳";
+    }
+}
+
 Networkclient::Networkclient(QObject *parent): QObject(parent)
     ,m_connection(new Connectionmanager(this))
     ,m_heartbeat(new Heartbeatmanager(this))
@@ -249,6 +259,9 @@ void Networkclient::setupConnections()
     connect(m_connection,&Connectionmanager::connected,this,&Networkclient::onConnectionConnected);
    connect(m_connection,&Connectionmanager::disconnected,this,&Networkclient::onConnectionDisconnected);
     connect(m_connection,&Connectionmanager::stateChanged,this,&Networkclient::onConnectionStateChanged);
+    
+    //连接心跳管理器的心跳发送信号
+    connect(m_heartbeat,&Heartbeatmanager::sendHeartbeat,this,&Networkclient::onSendHeartbeat);
 }
 
 void Networkclient::processQueue()

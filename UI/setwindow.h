@@ -89,6 +89,7 @@ private slots:
     void onSliderThresholdChanged(int value);
     // 连接测试按钮槽函数
     void onBtnTestConnectionClicked();
+    void onBtnDisconnectClicked();  // 断开连接
 
 private:
     void setupConnections();

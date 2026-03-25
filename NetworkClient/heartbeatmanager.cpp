@@ -25,13 +25,8 @@ void Heartbeatmanager::setSocket(QTcpSocket *socket)
 {
     m_socket = socket;
     if(socket){
-        connect(socket,&QTcpSocket::connected,[=](){
-            //socket连接成功，自启动心跳
-            if(!isRunning()){
-                start();//使用默认间隔
-            }
-        });
-
+        // 注意：不在此处自动启动心跳，由外部控制启动时机
+        // 确保writer和reader准备就绪后再启动心跳
         connect(socket,&QTcpSocket::disconnected,[=](){
             //socket断开，停止心跳
             stop();
@@ -105,8 +100,8 @@ void Heartbeatmanager::onTimeout()
     //标记为等待响应状态
     m_waitingResponse = true;
 
-    //启动超时检测（5秒）
-    m_timeroutTimer->start(5000);
+    //启动超时检测（10秒）
+    m_timeroutTimer->start(10000);
 
     //通过信号发送出数据，由外部发送
     emit sendHeartbeat(heartbeatData);

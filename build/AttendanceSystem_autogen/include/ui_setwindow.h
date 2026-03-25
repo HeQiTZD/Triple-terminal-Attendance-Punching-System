@@ -55,6 +55,7 @@ public:
     QSpacerItem *timeoutSpacer;
     QHBoxLayout *testLayout;
     QPushButton *btnTestConnection;
+    QPushButton *btnDisconnect;
     QLabel *labelConnectionStatus;
     QSpacerItem *testSpacer;
     QSpacerItem *networkSpacer;
@@ -255,11 +256,20 @@ public:
         testLayout->setObjectName("testLayout");
         btnTestConnection = new QPushButton(networkGroup);
         btnTestConnection->setObjectName("btnTestConnection");
+        btnTestConnection->setStyleSheet(QString::fromUtf8("background-color: #4CAF50; color: white;"));
 
         testLayout->addWidget(btnTestConnection);
 
+        btnDisconnect = new QPushButton(networkGroup);
+        btnDisconnect->setObjectName("btnDisconnect");
+        btnDisconnect->setEnabled(false);
+        btnDisconnect->setStyleSheet(QString::fromUtf8("background-color: #f44336; color: white;"));
+
+        testLayout->addWidget(btnDisconnect);
+
         labelConnectionStatus = new QLabel(networkGroup);
         labelConnectionStatus->setObjectName("labelConnectionStatus");
+        labelConnectionStatus->setStyleSheet(QString::fromUtf8("color: red; font-weight: bold;"));
 
         testLayout->addWidget(labelConnectionStatus);
 
@@ -624,7 +634,8 @@ public:
         portLabel->setText(QCoreApplication::translate("SetWindow", "\347\253\257\345\217\243", nullptr));
         timeoutLabel->setText(QCoreApplication::translate("SetWindow", "\350\277\236\346\216\245\350\266\205\346\227\266", nullptr));
         spinBoxTimeout->setSuffix(QCoreApplication::translate("SetWindow", " \347\247\222", nullptr));
-        btnTestConnection->setText(QCoreApplication::translate("SetWindow", "\346\265\213\350\257\225\350\277\236\346\216\245", nullptr));
+        btnTestConnection->setText(QCoreApplication::translate("SetWindow", "\350\277\236\346\216\245\346\234\215\345\212\241\345\231\250", nullptr));
+        btnDisconnect->setText(QCoreApplication::translate("SetWindow", "\346\226\255\345\274\200\350\277\236\346\216\245", nullptr));
         labelConnectionStatus->setText(QCoreApplication::translate("SetWindow", "\346\234\252\350\277\236\346\216\245", nullptr));
         faceGroup->setTitle(QCoreApplication::translate("SetWindow", "\344\272\272\350\204\270\350\257\206\345\210\253\350\256\276\347\275\256", nullptr));
         thresholdLabel->setText(QCoreApplication::translate("SetWindow", "\347\233\270\344\274\274\345\272\246\351\230\210\345\200\274", nullptr));

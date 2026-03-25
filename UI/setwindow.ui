@@ -299,7 +299,23 @@
                <item>
                 <widget class="QPushButton" name="btnTestConnection">
                  <property name="text">
-                  <string>测试连接</string>
+                  <string>连接服务器</string>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #4CAF50; color: white;</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btnDisconnect">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="text">
+                  <string>断开连接</string>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #f44336; color: white;</string>
                  </property>
                 </widget>
                </item>
@@ -307,6 +323,9 @@
                 <widget class="QLabel" name="labelConnectionStatus">
                  <property name="text">
                   <string>未连接</string>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: red; font-weight: bold;</string>
                  </property>
                 </widget>
                </item>
