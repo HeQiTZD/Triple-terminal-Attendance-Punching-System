@@ -13,6 +13,7 @@
 
 #include <QTimer>
 #include <QDateTime>
+#include <QMouseEvent>
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -51,6 +52,11 @@ private slots:
     //打开设置窗口
     void onSetPushButten();
 
+    //窗口控制按钮槽函数
+    void onMinimizeButtonClicked();
+    void onMaximizeButtonClicked();
+    void onCloseButtonClicked();
+
 private:
     //初始化
     void init();
@@ -79,6 +85,10 @@ protected:
     void resizeEvent(QResizeEvent *event) override;
     //窗口关闭事件
     void closeEvent(QCloseEvent *event) override;
+    //鼠标事件用于拖动无边框窗口
+    void mousePressEvent(QMouseEvent *event) override;
+    void mouseMoveEvent(QMouseEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
 
 private:
     LocalStorage* m_db;
@@ -91,5 +101,9 @@ private:
     QThread* m_networkThread;
     QTimer* m_timeTimer;
     SetWindow* setwindow;  // 改为指针，在构造函数中创建并设置父对象
+
+    //无边框窗口拖动相关
+    QPoint m_dragPosition;
+    bool m_isDragging = false;
 };
 #endif // MAINWINDOW_H

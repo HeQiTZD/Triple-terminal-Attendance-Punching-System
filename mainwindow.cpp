@@ -11,8 +11,12 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
     ,m_timeTimer(nullptr)
     ,setwindow(nullptr)
+    ,m_isDragging(false)
 {
     ui->setupUi(this);
+
+    //设置无边框窗口
+    setWindowFlags(Qt::FramelessWindowHint);
 
     //创建设置窗口，设置父对象为主窗口，这样关闭主窗口时会自动关闭设置窗口
     setwindow = new SetWindow(this);
@@ -22,10 +26,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     //初始化网络客户端（必须先初始化，再连接信号）
     initNetworkClient();
-    
+
     //初始化网络状态显示（必须在网络客户端初始化之后）
     initNetWorkStatus();
-    
+
     //启动网络连接（必须在信号连接之后）
     startNetworkConnection();
 
@@ -39,6 +43,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     //连接信号与槽
     connect(ui->settingButton,&QPushButton::clicked,this,&MainWindow::onSetPushButten);
+
+    //连接窗口控制按钮
+    connect(ui->minimizeButton,&QPushButton::clicked,this,&MainWindow::onMinimizeButtonClicked);
+    connect(ui->maximizeButton,&QPushButton::clicked,this,&MainWindow::onMaximizeButtonClicked);
+    connect(ui->closeButton,&QPushButton::clicked,this,&MainWindow::onCloseButtonClicked);
 }
 
 MainWindow::~MainWindow()
@@ -279,6 +288,58 @@ void MainWindow::onSetPushButten()
     if (setwindow) {
         setwindow->show();
     }
+}
+
+//最小化按钮
+void MainWindow::onMinimizeButtonClicked()
+{
+    showMinimized();
+}
+
+//最大化/恢复按钮
+void MainWindow::onMaximizeButtonClicked()
+{
+    if (isMaximized()) {
+        showNormal();
+        ui->maximizeButton->setText("□");
+    } else {
+        showMaximized();
+        ui->maximizeButton->setText("❐");
+    }
+}
+
+//关闭按钮
+void MainWindow::onCloseButtonClicked()
+{
+    close();
+}
+
+//鼠标按下事件 - 用于拖动无边框窗口
+void MainWindow::mousePressEvent(QMouseEvent *event)
+{
+    if (event->button() == Qt::LeftButton) {
+        m_dragPosition = event->globalPosition().toPoint() - frameGeometry().topLeft();
+        m_isDragging = true;
+    }
+    QMainWindow::mousePressEvent(event);
+}
+
+//鼠标移动事件 - 用于拖动无边框窗口
+void MainWindow::mouseMoveEvent(QMouseEvent *event)
+{
+    if (m_isDragging && (event->buttons() & Qt::LeftButton)) {
+        move(event->globalPosition().toPoint() - m_dragPosition);
+    }
+    QMainWindow::mouseMoveEvent(event);
+}
+
+//鼠标释放事件 - 用于拖动无边框窗口
+void MainWindow::mouseReleaseEvent(QMouseEvent *event)
+{
+    if (event->button() == Qt::LeftButton) {
+        m_isDragging = false;
+    }
+    QMainWindow::mouseReleaseEvent(event);
 }
 
 //从配置恢复窗口大小
