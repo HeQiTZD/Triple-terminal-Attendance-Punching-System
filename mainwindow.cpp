@@ -148,7 +148,6 @@ void MainWindow::FaceFeatureStart()
     // 连接识别失败信号（可选，用于调试）
     connect(m_FaceRecognizer, &FaceRecognizer::recognitionFailed,
             this, [=](const QString &reason){
-        qDebug() << "识别失败:" << reason;
     });
 
     //连接数据库保存请求信号
@@ -227,22 +226,10 @@ void MainWindow::onRecognitionSuccess(const QString &employeeId,
     // 更新打卡时间
     ui->checkTimeEdit->setText(checkTime);
 
-    // 显示人脸识别图像
-    if(!faceImage.isNull()){
-        // 将QImage转换为QPixmap并显示在faceImageLabel中
-        QPixmap pixmap = QPixmap::fromImage(faceImage);
-        // 缩放图像以适应标签大小，保持宽高比
-        pixmap = pixmap.scaled(ui->faceImageLabel->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
-        ui->faceImageLabel->setPixmap(pixmap);
-        ui->faceImageLabel->setAlignment(Qt::AlignCenter);
-    }
+
 
     // 在状态栏显示识别成功信息
     ui->statusbar->showMessage(QString("识别成功 - 员工:%1 时间:%2").arg(employeeId, checkTime), 5000);
-
-    qDebug() << "识别成功 - 员工:" << employeeId
-             << "状态:" << status
-             << "时间:" << checkTime;
 }
 
 //处理保存打卡记录请求

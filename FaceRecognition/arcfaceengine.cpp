@@ -1,4 +1,4 @@
-﻿#include "arcfaceengine.h"
+#include "arcfaceengine.h"
 
 // 静态成员初始化
 arcfaceengine* arcfaceengine::s_instance = nullptr;
@@ -57,7 +57,6 @@ bool arcfaceengine::initialize(const QString &appId, const QString &sdkKey)
     }
 
     m_initialized = true;
-    qDebug() << "ArcFace引擎初始化成功";
     return true;
 }
 
@@ -68,7 +67,6 @@ void arcfaceengine::uninitialize()
         ASFUninitEngine(m_engine);  // SDK引擎反初始化
         m_engine = nullptr;
         m_initialized = false;
-        qDebug() << "ArcFace引擎已释放";
     }
 }
 
@@ -109,8 +107,7 @@ QVector<arcfaceengine::FaceInfo> arcfaceengine::detectFace(const QImage &image)
         return faceInfos;
     }
 
-    qDebug() << "输入图像格式:" << image.format() 
-             << "尺寸:" << image.width() << "x" << image.height();
+
 
     // 步骤1：图像格式转换
     // Qt的Format_RGB888是R-G-B顺序，但SDK可能需要B-G-R顺序
@@ -136,7 +133,6 @@ QVector<arcfaceengine::FaceInfo> arcfaceengine::detectFace(const QImage &image)
     if (alignedWidth != originalWidth) {
         // 裁剪右侧多余像素，确保宽度对齐
         m_convertedImage = m_convertedImage.copy(0, 0, alignedWidth, m_convertedImage.height());
-        qDebug() << "图像宽度对齐裁剪:" << originalWidth << "->" << alignedWidth;
     }
 
     // 步骤3：构造SDK图像结构
@@ -147,9 +143,7 @@ QVector<arcfaceengine::FaceInfo> arcfaceengine::detectFace(const QImage &image)
     asvl.ppu8Plane[0] = m_convertedImage.bits();        // 图像数据指针
     asvl.pi32Pitch[0] = m_convertedImage.bytesPerLine();// 每行字节数（可能有填充）
 
-    qDebug() << "SDK图像参数: 格式=BGR24, 宽度=" << asvl.i32Width 
-             << ", 高度=" << asvl.i32Height 
-             << ", pitch=" << asvl.pi32Pitch[0];
+
 
     // 步骤4：调用SDK人脸检测
     ASF_MultiFaceInfo detectedFaces = {0};
@@ -175,7 +169,6 @@ QVector<arcfaceengine::FaceInfo> arcfaceengine::detectFace(const QImage &image)
         faceInfos.append(info);
     }
 
-    qDebug() << "检测到" << faceInfos.size() << "张人脸";
     return faceInfos;
 }
 
@@ -244,7 +237,6 @@ arcfaceengine::FaceFeature arcfaceengine::extractFeature(const QImage &image, co
     feature.size = sdkFeature.featureSize;
     feature.data = QByteArray(reinterpret_cast<char*>(sdkFeature.feature), sdkFeature.featureSize);
 
-    qDebug() << "特征提取成功，大小：" << feature.size;
     return feature;
 }
 
@@ -289,6 +281,5 @@ float arcfaceengine::compareFeatures(const FaceFeature &feature1, const FaceFeat
     // - 0.8以上：极可能是同一人
     // - 0.6-0.8：可能是同一人
     // - 0.6以下：不太可能是同一人
-    qDebug() << "特征对比相似度:" << confidence;
     return confidence;
 }

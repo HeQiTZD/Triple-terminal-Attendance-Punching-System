@@ -19,16 +19,18 @@
 - [facerecognizer.cpp](file://FaceRecognition/facerecognizer.cpp)
 - [networkclient.h](file://NetworkClient/networkclient.h)
 - [networkclient.cpp](file://NetworkClient/networkclient.cpp)
+- [setwindow.h](file://UI/setwindow.h)
+- [setwindow.cpp](file://UI/setwindow.cpp)
 </cite>
 
 ## 更新摘要
 **所做更改**
-- 更新了多线程架构部分，反映网络客户端和人脸识别模块已移动到独立线程
-- 新增了线程管理和跨线程通信的详细说明，特别强调Qt::QueuedConnection的使用
-- 更新了架构图以体现新的线程分离设计
-- 增强了性能考虑章节，重点说明多线程带来的UI响应性改善
+- 更新了MainWindow类的初始化流程，反映新增的网络客户端初始化方法
+- 新增了线程管理机制的详细说明，包括明确的初始化顺序
+- 更新了设置窗口管理的实现细节，强调父子关系管理
+- 增强了跨线程通信的安全性说明，特别是Qt::QueuedConnection的使用
+- 更新了架构图以体现新的初始化顺序和线程分离设计
 - 新增了网络状态初始化的准确状态报告机制
-- 强调了避免重复信号连接的最佳实践
 
 ## 目录
 1. [项目概述](#项目概述)
@@ -127,7 +129,8 @@ CameraCapture --> VideoFrameCapture
 
 ### 主窗口管理器
 MainWindow作为应用的核心控制器，负责协调各个子系统的初始化和交互，包括：
-- 摄像头初始化和视频流显示
+- **改进的初始化流程**：明确的网络客户端初始化顺序，先创建再连接
+- **设置窗口管理**：设置窗口作为主窗口的子对象，实现自动生命周期管理
 - **多线程管理**：将人脸识别和网络客户端分别移动到独立线程
 - **跨线程通信**：使用Qt::QueuedConnection确保线程间安全通信
 - 数据库连接和本地存储
@@ -213,15 +216,18 @@ class MainWindow {
 -QThread* m_faceThread
 -QThread* m_networkThread
 -QTimer* m_timeTimer
--SetWindow setwindow
+-SetWindow* setwindow
 +MainWindow(QWidget*)
 +~MainWindow()
 +init() void
++initNetworkClient() void
++startNetworkConnection() void
 +FaceFeatureStart() void
 +onRecognitionSuccess() void
 +onSaveAttendanceRequest() void
 +updateTimeDisplay() void
 +onNetworkStateChanged() void
++onSetPushButten() void
 }
 class FaceRecognizer {
 -arcfaceengine* arcEngine
@@ -245,7 +251,7 @@ class NetworkClient {
 -Messagereader* m_ready
 -Messagequeue* m_queue
 -bool m_isOnline
-+connectToServer() bool
++connectToServer(QString, quint16) bool
 +uploadAttendance() void
 +networkStateChanged() void
 }
@@ -260,54 +266,103 @@ NetworkClient --> LocalStorage : "主线程访问"
 - [facerecognizer.h:35-107](file://facerecognizer.h#L35-L107)
 - [networkclient.h:18-76](file://networkclient.h#L18-L76)
 
-#### 多线程人脸识别流程序列图
+#### 改进的初始化序列图
 
 ```mermaid
 sequenceDiagram
-participant UI as "用户界面"
+participant Main as "main.cpp"
 participant MainWindow as "主窗口(主线程)"
-participant FaceThread as "人脸识别线程"
-participant FaceRecognizer as "人脸识别器"
-participant ArcFaceEngine as "ArcFace引擎"
-participant LocalStorage as "本地存储"
 participant NetworkThread as "网络线程"
+participant FaceThread as "人脸识别线程"
 participant NetworkClient as "网络客户端"
-UI->>MainWindow : 启动应用
-MainWindow->>FaceThread : 创建线程并启动
-MainWindow->>NetworkThread : 创建线程并启动
-MainWindow->>FaceRecognizer : moveToThread(FaceThread)
+participant FaceRecognizer as "人脸识别器"
+participant ConfigManager as "配置管理器"
+Main->>MainWindow : 创建主窗口
+MainWindow->>MainWindow : 创建设置窗口(父对象 : this)
+MainWindow->>MainWindow : initNetworkClient()
+MainWindow->>NetworkThread : 创建QThread
 MainWindow->>NetworkClient : moveToThread(NetworkThread)
 NetworkThread->>NetworkClient : 初始化网络模块
+MainWindow->>MainWindow : initNetWorkStatus()
+MainWindow->>MainWindow : startNetworkConnection()
+MainWindow->>ConfigManager : 读取服务器配置
+MainWindow->>NetworkClient : QMetaObject : : invokeMethod(connectToServer)
+MainWindow->>MainWindow : init()
+MainWindow->>FaceThread : 创建QThread
+MainWindow->>FaceRecognizer : moveToThread(FaceThread)
 FaceThread->>FaceRecognizer : 初始化识别器
-loop 实时视频流
-MainWindow->>FaceThread : frameCaptured信号
-FaceThread->>FaceRecognizer : WanZhengYeWuLiuCheng(image)
-FaceRecognizer->>ArcFaceEngine : detectFace(image)
-ArcFaceEngine-->>FaceRecognizer : FaceInfo列表
-FaceRecognizer->>ArcFaceEngine : extractFeature(image, FaceInfo[0])
-ArcFaceEngine-->>FaceRecognizer : FaceFeature
-FaceRecognizer->>FaceRecognizer : findBestMatch()
-alt 识别成功
-FaceRecognizer-->>MainWindow : recognitionSuccess信号(跨线程)
-MainWindow->>LocalStorage : addAttendanceRecord() (主线程)
-LocalStorage-->>MainWindow : 保存成功
-MainWindow->>NetworkThread : uploadAttendance() (跨线程调用)
-NetworkThread->>NetworkClient : uploadAttendance(record)
-NetworkClient-->>MainWindow : 上传成功
-else 识别失败
-FaceRecognizer-->>MainWindow : recognitionFailed信号
-end
-end
+MainWindow->>MainWindow : FaceFeatureStart()
+MainWindow->>MainWindow : initTimeDisplay()
 ```
 
 **图表来源**
-- [mainwindow.cpp:132-172](file://mainwindow.cpp#L132-L172)
-- [facerecognizer.cpp:46-196](file://facerecognizer.cpp#L46-L196)
-- [networkclient.cpp:45-65](file://networkclient.cpp#L45-L65)
+- [mainwindow.cpp:70-127](file://mainwindow.cpp#L70-L127)
+- [mainwindow.cpp:192-209](file://mainwindow.cpp#L192-L209)
 
 **章节来源**
 - [mainwindow.cpp:9-32](file://mainwindow.cpp#L9-L32)
 - [facerecognizer.cpp:25-43](file://facerecognizer.cpp#L25-L43)
+
+### 设置窗口管理分析
+
+设置窗口现在作为MainWindow的子对象进行管理，实现了自动的生命周期控制和父子关系管理。
+
+```mermaid
+classDiagram
+class SetWindow {
+-Ui : : SetWindow* ui
+-QString m_serverIP
+-int m_serverPort
+-int m_connectionTimeout
+-int m_faceThreshold
+-int m_maxFaceCount
+-int m_recognizeTimeout
++SetWindow(QWidget*)
++~SetWindow()
++getServerIP() QString
++setServerIP(QString) void
++getServerPort() int
++setServerPort(int) void
++getFaceThreshold() int
++setFaceThreshold(int) void
++loadFromConfig() void
++saveToConfig() void
++restoreDefaults() void
+}
+class MainWindow {
+-SetWindow* setwindow
++MainWindow(QWidget*)
++onSetPushButten() void
++~MainWindow()
+}
+MainWindow --> SetWindow : "父子关系管理"
+```
+
+**图表来源**
+- [setwindow.h:12-137](file://UI/setwindow.h#L12-L137)
+- [mainwindow.h:93](file://mainwindow.h#L93)
+
+#### 设置窗口生命周期管理
+
+```mermaid
+flowchart TD
+Start([主窗口创建]) --> CreateSetWindow[创建SetWindow(this)]
+CreateSetWindow --> ParentChild{设置父子关系}
+ParentChild --> |是| AutoCleanup[Qt自动清理]
+ParentChild --> |否| ManualCleanup[手动清理]
+AutoCleanup --> WindowClosed[主窗口关闭]
+ManualCleanup --> WindowClosed
+WindowClosed --> SetWindowDeleted[SetWindow自动删除]
+SetWindowDeleted --> End([完成])
+```
+
+**图表来源**
+- [mainwindow.cpp:17-18](file://mainwindow.cpp#L17-L18)
+- [mainwindow.cpp:46](file://mainwindow.cpp#L46)
+
+**章节来源**
+- [setwindow.cpp:10-26](file://UI/setwindow.cpp#L10-L26)
+- [mainwindow.cpp:17-18](file://mainwindow.cpp#L17-L18)
 
 ### 配置管理系统分析
 
@@ -614,19 +669,29 @@ QMetaObject::invokeMethod --> QtCore
 
 ## 性能考虑
 
-### 多线程架构改进
+### 重大重构后的性能改进
 
 **更新** 系统已实现重要的多线程架构改进，显著提升了UI响应性和系统稳定性：
 
-#### 线程分离策略
-- **人脸识别线程**：将CPU密集型的人脸检测和特征提取任务分离到独立线程
-- **网络通信线程**：将网络连接、心跳检测和消息处理迁移到专用线程
-- **主线程专注UI**：确保UI操作完全在主线程执行，避免阻塞
+#### 明确的初始化顺序
+- **网络客户端优先初始化**：先创建网络客户端并移动到独立线程，再进行信号连接
+- **严格的生命周期管理**：确保线程正确启动、运行和清理
+- **避免竞态条件**：通过明确的初始化顺序避免线程间竞争
 
-#### 跨线程通信机制
+#### 改进的线程管理机制
+- **独立线程分离**：人脸识别和网络通信分别在独立线程中运行
+- **主线程专注UI**：确保UI操作完全在主线程执行，避免阻塞
+- **资源隔离**：各模块独立运行，互不干扰
+
+#### 增强的跨线程通信
 - **Qt::QueuedConnection**：所有跨线程信号槽连接均使用队列连接方式
 - **QMetaObject::invokeMethod**：通过异步方法调用确保线程安全
-- **信号转发**：子线程通过信号将结果转发到主线程更新UI
+- **信号转发机制**：子线程通过信号将结果转发到主线程更新UI
+
+#### 改进的设置窗口管理
+- **父子关系管理**：设置窗口作为主窗口的子对象，实现自动生命周期管理
+- **资源自动清理**：Qt框架自动处理设置窗口的创建和销毁
+- **避免内存泄漏**：通过正确的父子关系避免资源泄漏
 
 #### 网络状态初始化
 - **初始离线状态**：系统启动时网络状态初始设置为离线，提供准确的状态报告
@@ -637,7 +702,7 @@ QMetaObject::invokeMethod --> QtCore
 - **UI响应性**：摄像头画面流畅显示，无卡顿现象
 - **识别性能**：人脸识别算法在独立线程中高效运行
 - **网络稳定性**：网络操作不影响UI交互
-- **资源隔离**：各模块独立运行，互不干扰
+- **资源管理**：完善的线程生命周期管理，避免资源泄漏
 
 ### 内存管理
 - ArcFace引擎采用单例模式，避免重复初始化
@@ -650,9 +715,9 @@ QMetaObject::invokeMethod --> QtCore
 - 批量上传减少网络开销
 
 **章节来源**
-- [mainwindow.cpp:74-118](file://mainwindow.cpp#L74-L118)
-- [mainwindow.cpp:132-172](file://mainwindow.cpp#L132-L172)
-- [mainwindow.cpp:175-192](file://mainwindow.cpp#L175-L192)
+- [mainwindow.cpp:70-127](file://mainwindow.cpp#L70-L127)
+- [mainwindow.cpp:192-209](file://mainwindow.cpp#L192-L209)
+- [mainwindow.cpp:44-68](file://mainwindow.cpp#L44-L68)
 
 ## 故障排除指南
 
@@ -684,6 +749,12 @@ QMetaObject::invokeMethod --> QtCore
 - **线程资源泄漏**：确保正确调用quit()和wait()方法
 - **死锁问题**：检查QMutex使用，避免在不同线程间交叉使用
 - **重复信号连接**：使用initNetWorkStatus()方法避免重复连接networkStateChanged信号
+- **初始化顺序错误**：确保先initNetworkClient()再initNetWorkStatus()
+
+**设置窗口管理问题**
+- **窗口无法关闭**：检查父子关系设置是否正确
+- **内存泄漏**：确认设置窗口作为主窗口子对象管理
+- **窗口显示异常**：验证Qt::Window标志的正确使用
 
 **网络状态显示问题**
 - **状态不准确**：检查initNetWorkStatus()中的initial offline state设置
@@ -699,16 +770,18 @@ QMetaObject::invokeMethod --> QtCore
 
 ## 结论
 
-AttendanceCheckClient系统采用模块化设计，具有良好的可维护性和扩展性。通过实施多线程架构改进，系统实现了以下重要提升：
+AttendanceCheckClient系统采用模块化设计，具有良好的可维护性和扩展性。通过实施重大重构，系统实现了以下重要提升：
 
 ### 主要改进成果
-1. **多线程架构**：人脸识别和网络通信分离到独立线程，显著提升UI响应性
-2. **跨线程通信**：使用Qt::QueuedConnection确保线程间安全通信
-3. **模块化设计**：清晰的职责分离，便于维护和扩展
-4. **容错机制**：断网缓存确保数据完整性
-5. **配置管理**：灵活的配置选项满足不同需求
-6. **网络状态管理**：初始离线状态确保准确的状态报告
-7. **避免重复连接**：通过initNetWorkStatus()方法避免重复信号连接
+1. **明确的初始化顺序**：网络客户端优先初始化，确保信号连接的正确性
+2. **改进的线程管理**：独立的网络线程和人脸识别线程，提升系统稳定性
+3. **增强的设置窗口管理**：父子关系管理实现自动资源清理
+4. **跨线程通信安全**：使用Qt::QueuedConnection确保线程间安全通信
+5. **模块化设计**：清晰的职责分离，便于维护和扩展
+6. **容错机制**：断网缓存确保数据完整性
+7. **配置管理**：灵活的配置选项满足不同需求
+8. **网络状态管理**：初始离线状态确保准确的状态报告
+9. **避免重复连接**：通过initNetWorkStatus()方法避免重复信号连接
 
 ### 技术亮点
 - **线程安全**：所有跨线程操作均通过Qt信号槽机制实现
@@ -716,6 +789,7 @@ AttendanceCheckClient系统采用模块化设计，具有良好的可维护性�
 - **资源管理**：完善的线程生命周期管理，避免资源泄漏
 - **性能优化**：CPU密集型任务与UI线程分离运行
 - **状态管理**：准确的网络状态初始化和报告机制
+- **内存管理**：通过父子关系实现自动资源清理
 
 ### 未来发展方向
 - 增加更多的日志记录和监控功能
@@ -723,5 +797,6 @@ AttendanceCheckClient系统采用模块化设计，具有良好的可维护性�
 - 扩展更多的人脸识别库支持
 - 增强网络安全机制
 - 考虑引入线程池管理机制进一步优化资源利用
+- 实现更精细的错误处理和恢复机制
 
-通过这些改进，AttendanceCheckClient系统现在能够提供更加稳定、响应迅速的考勤识别体验，为实际部署提供了可靠的技术基础。
+通过这些重大改进，AttendanceCheckClient系统现在能够提供更加稳定、响应迅速的考勤识别体验，为实际部署提供了可靠的技术基础。

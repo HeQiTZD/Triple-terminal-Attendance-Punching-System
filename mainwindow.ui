@@ -153,34 +153,7 @@
            </layout>
           </widget>
          </item>
-         <item>
-          <widget class="QGroupBox" name="faceImageGroupBox">
-           <property name="title">
-            <string>识别到的人脸</string>
-           </property>
-           <layout class="QVBoxLayout" name="verticalLayout_face">
-            <item>
-             <widget class="QLabel" name="faceImageLabel">
-              <property name="minimumSize">
-               <size>
-                <width>200</width>
-                <height>200</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color: lightgray; border: 1px solid gray;</string>
-              </property>
-              <property name="text">
-               <string>暂无人脸识别</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignmentFlag::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
+
         </layout>
        </widget>
       </item>

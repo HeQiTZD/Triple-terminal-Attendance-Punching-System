@@ -1,4 +1,4 @@
-﻿#include "facedatabasemanager.h"
+#include "facedatabasemanager.h"
 
 FaceDatabaseManager::FaceDatabaseManager(QObject *parent) {}
 
@@ -44,7 +44,6 @@ bool FaceDatabaseManager::loadFromDatabase()
         m_faceRecords.append(record);
     }
 
-    qDebug()<<"人脸特征加载成功"<<m_faceRecords.size()<<"条人脸特征";
     return true;
 }
 
@@ -52,7 +51,6 @@ void FaceDatabaseManager::clear()
 {
     QMutexLocker locker(&m_mutex);
     m_faceRecords.clear();
-    qDebug()<<"内存人脸特征已清空";
 }
 
 QPair<QString, float> FaceDatabaseManager::findBestMatch(const arcfaceengine::FaceFeature &targetFeature)

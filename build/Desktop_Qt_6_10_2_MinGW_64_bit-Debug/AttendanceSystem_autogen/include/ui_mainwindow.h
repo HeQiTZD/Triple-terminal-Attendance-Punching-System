@@ -53,9 +53,6 @@ public:
     QHBoxLayout *horizontalLayout_time;
     QLabel *checkTimeLabel;
     QLineEdit *checkTimeEdit;
-    QGroupBox *faceImageGroupBox;
-    QVBoxLayout *verticalLayout_face;
-    QLabel *faceImageLabel;
     QWidget *rightWidget;
     QVBoxLayout *verticalLayout_right;
     QLabel *cameraLabel;
@@ -181,21 +178,6 @@ public:
 
         verticalLayout_left->addWidget(infoGroupBox);
 
-        faceImageGroupBox = new QGroupBox(leftWidget);
-        faceImageGroupBox->setObjectName("faceImageGroupBox");
-        verticalLayout_face = new QVBoxLayout(faceImageGroupBox);
-        verticalLayout_face->setObjectName("verticalLayout_face");
-        faceImageLabel = new QLabel(faceImageGroupBox);
-        faceImageLabel->setObjectName("faceImageLabel");
-        faceImageLabel->setMinimumSize(QSize(200, 200));
-        faceImageLabel->setStyleSheet(QString::fromUtf8("background-color: lightgray; border: 1px solid gray;"));
-        faceImageLabel->setAlignment(Qt::AlignmentFlag::AlignCenter);
-
-        verticalLayout_face->addWidget(faceImageLabel);
-
-
-        verticalLayout_left->addWidget(faceImageGroupBox);
-
 
         horizontalLayout_center->addWidget(leftWidget);
 
@@ -252,8 +234,6 @@ public:
         nameLabel->setText(QCoreApplication::translate("MainWindow", "\345\247\223\345\220\215\357\274\232", nullptr));
         statusLabel->setText(QCoreApplication::translate("MainWindow", "\346\211\223\345\215\241\347\212\266\346\200\201\357\274\232", nullptr));
         checkTimeLabel->setText(QCoreApplication::translate("MainWindow", "\346\211\223\345\215\241\346\227\266\351\227\264\357\274\232", nullptr));
-        faceImageGroupBox->setTitle(QCoreApplication::translate("MainWindow", "\350\257\206\345\210\253\345\210\260\347\232\204\344\272\272\350\204\270", nullptr));
-        faceImageLabel->setText(QCoreApplication::translate("MainWindow", "\346\232\202\346\227\240\344\272\272\350\204\270\350\257\206\345\210\253", nullptr));
         cameraLabel->setText(QCoreApplication::translate("MainWindow", "\346\221\204\345\203\217\345\244\264\345\256\236\346\227\266\347\224\273\351\235\242", nullptr));
         cameraDisplay->setText(QCoreApplication::translate("MainWindow", "\346\221\204\345\203\217\345\244\264\347\224\273\351\235\242\346\230\276\347\244\272\345\214\272\345\237\237", nullptr));
     } // retranslateUi

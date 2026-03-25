@@ -1,4 +1,4 @@
-﻿#include "facerecognizer.h"
+#include "facerecognizer.h"
 #include "../Config/configmanager.h"
 
 FaceRecognizer::FaceRecognizer()
@@ -33,7 +33,6 @@ void FaceRecognizer::init()
     QString sdkKey = config->getSdkKey();
 
     if (!arcEngine->initialize(appid, sdkKey)) {
-        qDebug() << "ArcFace 引擎初始化失败";
         return;
     }
 
@@ -88,7 +87,6 @@ void FaceRecognizer::handleIdleState(QImage &image)
     }
 
     // 检测到人脸，切换到检测中状态
-    qDebug() << "状态: IDLE -> DETECTING (检测到人脸)";
     setState(RecognitionState::DETECTING);
 
     // 执行完整识别流程
@@ -100,7 +98,6 @@ void FaceRecognizer::handleDetectingState()
 {
     // 正在识别中，跳过新帧
     // 识别完成后会自动切换到RECOGNIZED状态
-    qDebug() << "状态: DETECTING (识别中，跳过帧)";
 }
 
 // 状态3：已识别 - 检查人脸是否还在
@@ -113,11 +110,9 @@ void FaceRecognizer::handleRecognizedState(QImage &image)
 
     if(faceInfo.isEmpty()){
         // 人脸已离开
-        qDebug() << "状态: RECOGNIZED -> LOST (人脸离开)";
         setState(RecognitionState::LOST);
     }else{
         // 人脸还在，继续冷却
-        qDebug() << "状态: RECOGNIZED (人脸仍在，冷却中)";
     }
 }
 
@@ -126,7 +121,6 @@ void FaceRecognizer::handleLostState()
 {
     // 检查是否可以重置（冷却已结束）
     if(!m_cooldownTimer->isActive()){
-        qDebug() << "状态: LOST -> IDLE (重置完成)";
         setState(RecognitionState::IDLE);
         m_lastRecognizedId.clear();  // 清除上次识别记录
     }
@@ -152,7 +146,6 @@ void FaceRecognizer::perfromRecognition(QImage &image)
 
     //相似度检查
     if(m_bestMatch.second < threshold){
-        qDebug() << "识别失败：相似度不足" << m_bestMatch.second << "阈值:" << threshold;
         emit recognitionFailed("未匹配到人员");
         setState(RecognitionState::IDLE);  // 失败，回到空闲
         return;
@@ -175,7 +168,6 @@ void FaceRecognizer::perfromRecognition(QImage &image)
 
     // 检查是否重复识别
     if(isSamePerson(employeeId)){
-        qDebug() << "同一人脸，跳过重复识别：" << employeeId;
         emit recognitionSuccess(employeeId, employeeId, status, checkTime, faceImage);
         setState(RecognitionState::RECOGNIZED);
         return;
@@ -200,16 +192,6 @@ void FaceRecognizer::setState(RecognitionState newState)
 {
     if(m_currentState != newState){
         m_currentState = newState;
-
-        //状态日志
-        QString stateStr;
-        switch (newState) {
-        case RecognitionState::IDLE: stateStr = "IDLE"; break;
-        case RecognitionState::DETECTING: stateStr = "DETECTING"; break;
-        case RecognitionState::RECOGNIZED: stateStr = "RECOGNIZED"; break;
-        case RecognitionState::LOST: stateStr = "LOST"; break;
-        }
-        qDebug() << "状态切换:" << stateStr;
     }
 }
 
