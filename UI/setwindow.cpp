@@ -8,10 +8,13 @@
 #include <QElapsedTimer>
 
 SetWindow::SetWindow(QWidget *parent)
-    : QWidget(parent)
+    : QWidget(parent, Qt::Window)  // 使用 Qt::Window 标志，使其成为独立窗口
     , ui(new Ui::SetWindow)
 {
     ui->setupUi(this);
+
+    // 设置窗口标题
+    setWindowTitle("设置");
 
     setupConnections();
     loadFromConfig();

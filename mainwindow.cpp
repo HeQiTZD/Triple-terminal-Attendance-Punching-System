@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "FaceRecognition/facerecognizer.h"
 #include "FaceRecognition/arcfaceengine.h"
@@ -10,13 +10,26 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     ,m_timeTimer(nullptr)
+    ,setwindow(nullptr)
 {
     ui->setupUi(this);
+
+    //创建设置窗口，设置父对象为主窗口，这样关闭主窗口时会自动关闭设置窗口
+    setwindow = new SetWindow(this);
 
     //从配置恢复窗口大小
     restoreWindowSize();
 
-    //初始化
+    //初始化网络客户端（必须先初始化，再连接信号）
+    initNetworkClient();
+    
+    //初始化网络状态显示（必须在网络客户端初始化之后）
+    initNetWorkStatus();
+    
+    //启动网络连接（必须在信号连接之后）
+    startNetworkConnection();
+
+    //初始化其他模块（数据库、人脸识别、摄像头等）
     init();
     InfoWidget();
     FaceFeatureStart();
@@ -24,15 +37,14 @@ MainWindow::MainWindow(QWidget *parent)
     // 初始化时间显示
     initTimeDisplay();
 
-    //初始化网络状态
-    initNetWorkStatus();
-
     //连接信号与槽
     connect(ui->settingButton,&QPushButton::clicked,this,&MainWindow::onSetPushButten);
 }
 
 MainWindow::~MainWindow()
 {
+    // 注意：setwindow 设置了 this 为父对象，Qt 会自动删除，无需手动清理
+
     // 停止时间更新定时器
     if (m_timeTimer) {
         m_timeTimer->stop();
@@ -41,7 +53,7 @@ MainWindow::~MainWindow()
 
     // 停止人脸识别线程
     if (m_faceThread) {
-        //终止人脸线程事件循环的调用，向线程发送 “退出请求
+        //终止人脸线程事件循环的调用，向线程发送 "退出请求
         //必须配合 wait() 使用，确保线程真正结束，避免资源泄漏
         m_faceThread->quit();
         m_faceThread->wait();
@@ -55,30 +67,21 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-//初始化
-void MainWindow::init()
+//初始化网络客户端（仅创建和移到线程，不连接服务器）
+void MainWindow::initNetworkClient()
 {
-    //数据库初始化
-    m_db = LocalStorage::instance();
-    if(!m_db->connectDatabse()){
-        return;
-    };
-
-    //人脸识别引擎,加载特征到内存
-    m_FaceRecognizer = new FaceRecognizer();
-    m_FaceRecognizer->init();
-
     //网络客户端
     networkClient = Networkclient::instance();
     
-    //多线程 - 将网络客户端移到独立线程（必须在连接信号之前）
+    //多线程 - 将网络客户端移到独立线程
     m_networkThread = new QThread(this);
     networkClient->moveToThread(m_networkThread);
     m_networkThread->start();
-    
-    //连接网络状态信号（使用Qt::QueuedConnection确保跨线程安全）
-    //注意：networkStateChanged的连接在initNetWorkStatus()中进行，避免重复连接
-    
+}
+
+//启动网络连接（在信号连接之后调用）
+void MainWindow::startNetworkConnection()
+{
     //连接服务器 (从配置中读取IP和端口)
     ConfigManager* config = ConfigManager::instance();
     QString serverIp = config->getServerIP();
@@ -93,6 +96,20 @@ void MainWindow::init()
             qWarning() << "连接服务器失败";
         }
     }, Qt::QueuedConnection);
+}
+
+//初始化其他模块
+void MainWindow::init()
+{
+    //数据库初始化
+    m_db = LocalStorage::instance();
+    if(!m_db->connectDatabse()){
+        return;
+    };
+
+    //人脸识别引擎,加载特征到内存
+    m_FaceRecognizer = new FaceRecognizer();
+    m_FaceRecognizer->init();
 
     //摄像头初始化
     m_CameraCapture = new CameraCapture();
@@ -272,7 +289,9 @@ void MainWindow::onNetworkStateChanged(bool isOnline)
 
 void MainWindow::onSetPushButten()
 {
-    setwindow.show();
+    if (setwindow) {
+        setwindow->show();
+    }
 }
 
 //从配置恢复窗口大小

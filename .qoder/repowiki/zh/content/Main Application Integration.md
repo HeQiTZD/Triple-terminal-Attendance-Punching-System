@@ -24,9 +24,11 @@
 ## 更新摘要
 **所做更改**
 - 更新了多线程架构部分，反映网络客户端和人脸识别模块已移动到独立线程
-- 新增了线程管理和跨线程通信的详细说明
+- 新增了线程管理和跨线程通信的详细说明，特别强调Qt::QueuedConnection的使用
 - 更新了架构图以体现新的线程分离设计
 - 增强了性能考虑章节，重点说明多线程带来的UI响应性改善
+- 新增了网络状态初始化的准确状态报告机制
+- 强调了避免重复信号连接的最佳实践
 
 ## 目录
 1. [项目概述](#项目概述)
@@ -626,6 +628,11 @@ QMetaObject::invokeMethod --> QtCore
 - **QMetaObject::invokeMethod**：通过异步方法调用确保线程安全
 - **信号转发**：子线程通过信号将结果转发到主线程更新UI
 
+#### 网络状态初始化
+- **初始离线状态**：系统启动时网络状态初始设置为离线，提供准确的状态报告
+- **避免重复连接**：通过initNetWorkStatus()方法确保networkStateChanged信号只连接一次
+- **跨线程安全**：所有网络状态信号连接均使用Qt::QueuedConnection确保线程安全
+
 #### 性能收益
 - **UI响应性**：摄像头画面流畅显示，无卡顿现象
 - **识别性能**：人脸识别算法在独立线程中高效运行
@@ -645,6 +652,7 @@ QMetaObject::invokeMethod --> QtCore
 **章节来源**
 - [mainwindow.cpp:74-118](file://mainwindow.cpp#L74-L118)
 - [mainwindow.cpp:132-172](file://mainwindow.cpp#L132-L172)
+- [mainwindow.cpp:175-192](file://mainwindow.cpp#L175-L192)
 
 ## 故障排除指南
 
@@ -675,12 +683,19 @@ QMetaObject::invokeMethod --> QtCore
 - **跨线程通信异常**：确认使用Qt::QueuedConnection连接
 - **线程资源泄漏**：确保正确调用quit()和wait()方法
 - **死锁问题**：检查QMutex使用，避免在不同线程间交叉使用
+- **重复信号连接**：使用initNetWorkStatus()方法避免重复连接networkStateChanged信号
+
+**网络状态显示问题**
+- **状态不准确**：检查initNetWorkStatus()中的initial offline state设置
+- **状态更新延迟**：确认Qt::QueuedConnection的正确使用
+- **状态切换异常**：验证networkStateChanged信号的连接和处理
 
 **章节来源**
 - [cameracapture.cpp:14-32](file://cameracapture.cpp#L14-L32)
 - [arcfaceengine.cpp:31-62](file://arcfaceengine.cpp#L31-L62)
 - [localstorage.cpp:32-68](file://localstorage.cpp#L32-L68)
 - [mainwindow.cpp:42-54](file://mainwindow.cpp#L42-L54)
+- [mainwindow.cpp:175-192](file://mainwindow.cpp#L175-L192)
 
 ## 结论
 
@@ -692,12 +707,15 @@ AttendanceCheckClient系统采用模块化设计，具有良好的可维护性�
 3. **模块化设计**：清晰的职责分离，便于维护和扩展
 4. **容错机制**：断网缓存确保数据完整性
 5. **配置管理**：灵活的配置选项满足不同需求
+6. **网络状态管理**：初始离线状态确保准确的状态报告
+7. **避免重复连接**：通过initNetWorkStatus()方法避免重复信号连接
 
 ### 技术亮点
 - **线程安全**：所有跨线程操作均通过Qt信号槽机制实现
 - **异步处理**：网络操作和人脸识别均采用异步模式
 - **资源管理**：完善的线程生命周期管理，避免资源泄漏
 - **性能优化**：CPU密集型任务与UI线程分离运行
+- **状态管理**：准确的网络状态初始化和报告机制
 
 ### 未来发展方向
 - 增加更多的日志记录和监控功能

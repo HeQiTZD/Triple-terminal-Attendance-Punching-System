@@ -54,6 +54,8 @@ private slots:
 private:
     //初始化
     void init();
+    void initNetworkClient();      //初始化网络客户端（创建和移到线程）
+    void startNetworkConnection(); //启动网络连接
 
     //页面信息展示
     void InfoWidget();
@@ -88,6 +90,6 @@ private:
     QThread* m_faceThread;
     QThread* m_networkThread;
     QTimer* m_timeTimer;
-    SetWindow setwindow;
+    SetWindow* setwindow;  // 改为指针，在构造函数中创建并设置父对象
 };
 #endif // MAINWINDOW_H
