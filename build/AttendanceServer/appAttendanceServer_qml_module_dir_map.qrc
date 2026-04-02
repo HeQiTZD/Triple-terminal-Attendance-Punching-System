@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/">
+    <file alias="/qt/qml/AttendanceServer">D:/QTproject/AttendanceServer/build/AttendanceServer</file>
+
+  </qresource>
+</RCC>

@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/qt/qml/AttendanceServer">
+    <file alias="qmldir">D:/QTproject/AttendanceServer/build/AttendanceServer/qmldir</file>
+  </qresource>
+</RCC>
+

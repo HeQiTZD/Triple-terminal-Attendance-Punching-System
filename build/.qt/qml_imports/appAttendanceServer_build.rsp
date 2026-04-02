@@ -1,0 +1,14 @@
+-rootPath
+D:/QTproject/AttendanceServer
+-cmake-output
+-output-file
+D:/QTproject/AttendanceServer/build/.qt/qml_imports/appAttendanceServer_build.cmake
+-importPath
+D:/QTproject/AttendanceServer/build
+-importPath
+D:/QTproject/AttendanceServer/build/AttendanceServer
+-importPath
+C:/Qt/6.10.2/mingw_64/qml
+-qrcFiles
+D:/QTproject/AttendanceServer/build/.qt/rcc/qmake_AttendanceServer.qrc
+D:/QTproject/AttendanceServer/build/.qt/rcc/appAttendanceServer_raw_qml_0.qrc

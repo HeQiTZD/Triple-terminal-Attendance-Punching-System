@@ -1,0 +1,5 @@
+--resource
+D:/QTproject/AttendanceServer/build/.qt/rcc/qmake_AttendanceServer.qrc
+--resource
+D:/QTproject/AttendanceServer/build/.qt/rcc/appAttendanceServer_raw_qml_0.qrc
+/qt/qml/AttendanceServer/Main.qml

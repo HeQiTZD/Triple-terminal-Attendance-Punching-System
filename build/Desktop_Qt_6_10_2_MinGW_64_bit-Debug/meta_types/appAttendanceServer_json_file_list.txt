@@ -1,0 +1,1 @@
+D:/QTproject/AttendanceServer/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/appAttendanceServer_autogen/include/../I7BNQNPOMK/moc_tcpserver.cpp.json

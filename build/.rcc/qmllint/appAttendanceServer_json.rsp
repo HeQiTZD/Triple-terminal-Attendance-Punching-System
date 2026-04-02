@@ -1,0 +1,16 @@
+--bare
+-I
+D:/QTproject/AttendanceServer/build
+-I
+D:/QTproject/AttendanceServer/build/AttendanceServer
+-I
+D:/QTproject/AttendanceServer/build
+-I
+C:/Qt/6.10.2/mingw_64/qml
+--resource
+D:/QTproject/AttendanceServer/build/.qt/rcc/qmake_AttendanceServer.qrc
+--resource
+D:/QTproject/AttendanceServer/build/.qt/rcc/appAttendanceServer_raw_qml_0.qrc
+D:/QTproject/AttendanceServer/Main.qml
+--json
+D:/QTproject/AttendanceServer/build/appAttendanceServer_qmllint.json

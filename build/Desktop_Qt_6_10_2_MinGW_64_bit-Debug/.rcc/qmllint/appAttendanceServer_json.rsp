@@ -1,0 +1,16 @@
+--bare
+-I
+D:/QTproject/AttendanceServer/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug
+-I
+D:/QTproject/AttendanceServer/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceServer
+-I
+D:/QTproject/AttendanceServer/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug
+-I
+C:/Qt/6.10.2/mingw_64/qml
+--resource
+D:/QTproject/AttendanceServer/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/.qt/rcc/qmake_AttendanceServer.qrc
+--resource
+D:/QTproject/AttendanceServer/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/.qt/rcc/appAttendanceServer_raw_qml_0.qrc
+D:/QTproject/AttendanceServer/Main.qml
+--json
+D:/QTproject/AttendanceServer/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/appAttendanceServer_qmllint.json
