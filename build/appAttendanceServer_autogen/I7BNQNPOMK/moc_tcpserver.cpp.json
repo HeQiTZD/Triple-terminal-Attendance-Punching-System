@@ -41,14 +41,14 @@
                 {
                     "access": "public",
                     "index": 0,
-                    "lineNumber": 34,
+                    "lineNumber": 39,
                     "name": "isRunningChanged",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
                     "index": 1,
-                    "lineNumber": 35,
+                    "lineNumber": 41,
                     "name": "clientCountChanged",
                     "returnType": "void"
                 },
@@ -65,7 +65,7 @@
                         }
                     ],
                     "index": 2,
-                    "lineNumber": 38,
+                    "lineNumber": 44,
                     "name": "clientConnected",
                     "returnType": "void"
                 },
@@ -78,7 +78,7 @@
                         }
                     ],
                     "index": 3,
-                    "lineNumber": 39,
+                    "lineNumber": 46,
                     "name": "clientDisconnected",
                     "returnType": "void"
                 },
@@ -91,7 +91,7 @@
                         }
                     ],
                     "index": 4,
-                    "lineNumber": 41,
+                    "lineNumber": 48,
                     "name": "attendanceRecordReceived",
                     "returnType": "void"
                 },
@@ -108,7 +108,7 @@
                         }
                     ],
                     "index": 5,
-                    "lineNumber": 42,
+                    "lineNumber": 50,
                     "name": "deviceStatusReceived",
                     "returnType": "void"
                 },
@@ -121,7 +121,7 @@
                         }
                     ],
                     "index": 6,
-                    "lineNumber": 44,
+                    "lineNumber": 52,
                     "name": "errorOccurred",
                     "returnType": "void"
                 }
@@ -130,28 +130,28 @@
                 {
                     "access": "private",
                     "index": 7,
-                    "lineNumber": 47,
+                    "lineNumber": 56,
                     "name": "onNewConnection",
                     "returnType": "void"
                 },
                 {
                     "access": "private",
                     "index": 8,
-                    "lineNumber": 48,
+                    "lineNumber": 58,
                     "name": "onSocketDisconnected",
                     "returnType": "void"
                 },
                 {
                     "access": "private",
                     "index": 9,
-                    "lineNumber": 49,
+                    "lineNumber": 60,
                     "name": "onSocketReadyRead",
                     "returnType": "void"
                 },
                 {
                     "access": "private",
                     "index": 10,
-                    "lineNumber": 50,
+                    "lineNumber": 62,
                     "name": "onHeartbeatTimeout",
                     "returnType": "void"
                 }

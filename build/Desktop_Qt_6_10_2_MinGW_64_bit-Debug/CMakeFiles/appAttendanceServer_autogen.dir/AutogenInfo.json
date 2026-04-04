@@ -1393,6 +1393,13 @@
 			"MU",
 			null
 		],
+		[ "D:/QTproject/AttendanceServer/src/Models/Person.cpp", "MU", null ],
+		[
+			"D:/QTproject/AttendanceServer/src/Models/attendancerecord.cpp",
+			"MU",
+			null
+		],
+		[ "D:/QTproject/AttendanceServer/src/Models/device.cpp", "MU", null ],
 		[
 			"D:/QTproject/AttendanceServer/src/TcpServer/tcpserver.cpp",
 			"MU",

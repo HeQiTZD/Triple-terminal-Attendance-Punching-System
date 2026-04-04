@@ -234,14 +234,25 @@ void TcpServer::removeClient(QTcpSocket *socket)
         return;
     }
 
-    ClientInfo info; m_clients.take(socket);
+    // 从客户端容器中取出并移除该客户端信息
+    ClientInfo info = m_clients.take(socket);//根据键 socket 找到对应的值，将其从容器中移除并返回
 
     if(!info.deviceId.isEmpty()){
-        
+        m_deviceMap.remove(info.deviceId);
+        emit clientDisconnected(info.deviceId);
     }
+
+    info.heartbeatTimer->stop();
+    info.heartbeatTimer->deleteLater();
+
+    socket->deleteLater();
+    emit clientCountChanged();
 }
 
 void TcpServer::updateHeartbeat(QTcpSocket *socket)
 {
-
+    if(m_clients.contains(socket)){
+        m_clients[socket].heartbeatTimer->stop();
+        m_clients[socket].heartbeatTimer->start();
+    }
 }
