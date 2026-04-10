@@ -7,6 +7,9 @@
 #include <QSqlError>
 #include <QList>
 #include <QJsonObject>
+#include <QSet>
+#include <QVariantMap>
+
 #include "../Models/Person.h"
 #include "../Models/device.h"
 #include "../Models/attendancerecord.h"
@@ -25,11 +28,11 @@ public:
 
     // ========== 人员管理 CRUD ==========
     Q_INVOKABLE bool addPerson(const QString &name,const QString employeeId,const QString &department,const QString &position);
-    Q_INVOKABLE bool updatedPerson(int id,const QString &name,const QString &employeeId,const QString &department,const QString &position);
-    Q_INVOKABLE bool deletePerson(int id);
+    Q_INVOKABLE bool updatedPerson(const QString &name,const QString &employeeId,const QString &department,const QString &position);
+    Q_INVOKABLE bool deletePerson(const QString &name,const QString &employeeId);
     Q_INVOKABLE QList<QObject*> getAllPerson();
     Q_INVOKABLE QObject* getPersonById(int id);
-    Q_INVOKABLE QObject* getPersonByEmployeeId(const QString &employee);
+    Q_INVOKABLE QObject* getPersonByEmployeeId(const QString &employeeId);
     Q_INVOKABLE bool updatePersonFaceFeature(int id,const QByteArray &faceFeature);
 
     // ========== 打卡记录管理 ==========
@@ -45,7 +48,7 @@ public:
     Q_INVOKABLE QObject* getDeviceById(const QString &deviceId);
 
 signals:
-    void connectionStateChaned();
+    void connectionStateChanged();
     void errorOccurred(const QString &errorString);
     void personAdded(int id);
     void personUpdated(int id);

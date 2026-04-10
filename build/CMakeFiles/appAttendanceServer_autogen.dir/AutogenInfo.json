@@ -9,7 +9,7 @@
 	[
 		"D:/QTproject/AttendanceServer/CMakeLists.txt",
 		"D:/QTproject/AttendanceServer/build/CMakeFiles/4.2.3/CMakeSystem.cmake",
-		"C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6/qt.toolchain.cmake",
+		"c:/Qt/6.10.2/mingw_64/lib/cmake/Qt6/qt.toolchain.cmake",
 		"C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeSystemSpecificInitialize.cmake",
 		"C:/Program Files/CMake/share/cmake-4.2/Modules/Platform/Windows-Initialize.cmake",
 		"D:/QTproject/AttendanceServer/build/CMakeFiles/4.2.3/CMakeCXXCompiler.cmake",
@@ -1234,7 +1234,7 @@
 	"MOC_PATH_PREFIX" : false,
 	"MOC_PREDEFS_CMD" : 
 	[
-		"C:/Qt/Tools/mingw1310_64/bin/g++.exe",
+		"c:/Qt/Tools/mingw1310_64/bin/g++.exe",
 		"-w",
 		"-dM",
 		"-E",
@@ -1266,6 +1266,13 @@
 			"MU",
 			null
 		],
+		[ "D:/QTproject/AttendanceServer/src/Models/Person.cpp", "MU", null ],
+		[
+			"D:/QTproject/AttendanceServer/src/Models/attendancerecord.cpp",
+			"MU",
+			null
+		],
+		[ "D:/QTproject/AttendanceServer/src/Models/device.cpp", "MU", null ],
 		[
 			"D:/QTproject/AttendanceServer/src/TcpServer/tcpserver.cpp",
 			"MU",

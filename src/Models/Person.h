@@ -4,7 +4,7 @@
 #include <QJsonObject>
 #include <QObject>
 #include <QDateTime>
-#endif // PERSON_H
+
 class Person : public QObject{
     Q_OBJECT
     Q_PROPERTY(int id READ id WRITE setId NOTIFY idChanged)
@@ -64,3 +64,4 @@ private:
     QDateTime m_createdAt;
     QDateTime m_updatedAt;
 };
+#endif // PERSON_H
