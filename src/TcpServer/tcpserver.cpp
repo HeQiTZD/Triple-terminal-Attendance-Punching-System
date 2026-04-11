@@ -187,7 +187,7 @@ void TcpServer::processMessage(QTcpSocket *socket, const QJsonObject &message)
         response["type"] = "auth_response";
         response["status"] = "success";
         sendMessage(socket,response);
-    }else if(type == "headrbeat"){
+    }else if(type == "heartbeat"){
         updateHeartbeat(socket);
 
         //发送心跳响应

@@ -29,11 +29,12 @@ CMAKE_ADDR2LINE:FILEPATH=C:/Qt/Tools/mingw1310_64/bin/addr2line.exe
 //Path to a program.
 CMAKE_AR:FILEPATH=C:/Qt/Tools/mingw1310_64/bin/ar.exe
 
-//No help, variable specified on the command line.
-CMAKE_BUILD_TYPE:STRING=Debug
+//Choose the type of build, options are: None Debug Release RelWithDebInfo
+// MinSizeRel ...
+CMAKE_BUILD_TYPE:STRING=
 
-//No help, variable specified on the command line.
-CMAKE_CXX_COMPILER:FILEPATH=c:/Qt/Tools/mingw1310_64/bin/g++.exe
+//CXX compiler
+CMAKE_CXX_COMPILER:STRING=c:/Qt/Tools/mingw1310_64/bin/g++.exe
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -47,10 +48,7 @@ CMAKE_CXX_COMPILER_RANLIB:FILEPATH=C:/Qt/Tools/mingw1310_64/bin/gcc-ranlib.exe
 CMAKE_CXX_FLAGS:STRING=
 
 //Flags used by the CXX compiler during DEBUG builds.
-CMAKE_CXX_FLAGS_DEBUG:STRING=-DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g
-
-//No help, variable specified on the command line.
-CMAKE_CXX_FLAGS_DEBUG_INIT:STRING=-DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG
+CMAKE_CXX_FLAGS_DEBUG:STRING=-g
 
 //Flags used by the CXX compiler during MINSIZEREL builds.
 CMAKE_CXX_FLAGS_MINSIZEREL:STRING=-Os -DNDEBUG
@@ -59,16 +57,10 @@ CMAKE_CXX_FLAGS_MINSIZEREL:STRING=-Os -DNDEBUG
 CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 
 //Flags used by the CXX compiler during RELWITHDEBINFO builds.
-CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -O2 -g -DNDEBUG
-
-//No help, variable specified on the command line.
-CMAKE_CXX_FLAGS_RELWITHDEBINFO_INIT:STRING=-DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG
+CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
 //Libraries linked by default with all C++ applications.
 CMAKE_CXX_STANDARD_LIBRARIES:STRING=-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-
-//No help, variable specified on the command line.
-CMAKE_C_COMPILER:FILEPATH=c:/Qt/Tools/mingw1310_64/bin/gcc.exe
 
 //Path to a program.
 CMAKE_DLLTOOL:FILEPATH=C:/Qt/Tools/mingw1310_64/bin/dlltool.exe
@@ -91,8 +83,8 @@ CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 //Enable/Disable output of build database during the build.
 CMAKE_EXPORT_BUILD_DATABASE:BOOL=
 
-//No help, variable specified on the command line.
-CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE
+//Enable/Disable output of compile commands during generation.
+CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=
 
 //Value Computed by CMake.
 CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=D:/QTproject/AttendanceServer/build/CMakeFiles/pkgRedirects
@@ -293,9 +285,6 @@ CMAKE_STRIP:FILEPATH=C:/Qt/Tools/mingw1310_64/bin/strip.exe
 //Path to a program.
 CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 
-//No help, variable specified on the command line.
-CMAKE_TOOLCHAIN_FILE:FILEPATH=c:/Qt/6.10.2/mingw_64/lib/cmake/Qt6/qt.toolchain.cmake
-
 //If this value is on, makefiles will be generated without the
 // .SILENT directive, and all commands will be echoed to the console
 // during the make.  This is useful for debugging only. With Visual
@@ -309,76 +298,71 @@ QT_ADDITIONAL_HOST_PACKAGES_PREFIX_PATH:STRING=
 //Additional directories where find(Qt6 ...) components are searched
 QT_ADDITIONAL_PACKAGES_PREFIX_PATH:STRING=
 
-QT_QMAKE_TARGET_MKSPEC:STRING=win32-g++
-
-//No help, variable specified on the command line.
-QT_QML_GENERATE_QMLLS_INI:STRING=ON
-
 //The directory containing a CMake configuration file for Qt6Concurrent.
-Qt6Concurrent_DIR:PATH=C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6Concurrent
+Qt6Concurrent_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Concurrent
 
 //The directory containing a CMake configuration file for Qt6CoreTools.
-Qt6CoreTools_DIR:PATH=C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6CoreTools
+Qt6CoreTools_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6CoreTools
 
 //The directory containing a CMake configuration file for Qt6Core.
-Qt6Core_DIR:PATH=C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6Core
+Qt6Core_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Core
 
 //The directory containing a CMake configuration file for Qt6EntryPointPrivate.
-Qt6EntryPointPrivate_DIR:PATH=C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6EntryPointPrivate
+Qt6EntryPointPrivate_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6EntryPointPrivate
 
 //The directory containing a CMake configuration file for Qt6ExamplesAssetDownloaderPrivate.
-Qt6ExamplesAssetDownloaderPrivate_DIR:PATH=C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6ExamplesAssetDownloaderPrivate
+Qt6ExamplesAssetDownloaderPrivate_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6ExamplesAssetDownloaderPrivate
 
 //The directory containing a CMake configuration file for Qt6GuiTools.
-Qt6GuiTools_DIR:PATH=C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6GuiTools
+Qt6GuiTools_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6GuiTools
 
 //The directory containing a CMake configuration file for Qt6Gui.
-Qt6Gui_DIR:PATH=C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6Gui
+Qt6Gui_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Gui
 
 //The directory containing a CMake configuration file for Qt6NetWork.
-Qt6NetWork_DIR:PATH=C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6Network
+Qt6NetWork_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Network
 
 //The directory containing a CMake configuration file for Qt6Network.
-Qt6Network_DIR:PATH=C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6Network
+Qt6Network_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Network
 
 //The directory containing a CMake configuration file for Qt6OpenGL.
-Qt6OpenGL_DIR:PATH=C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6OpenGL
+Qt6OpenGL_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6OpenGL
 
 //The directory containing a CMake configuration file for Qt6QmlAssetDownloader.
-Qt6QmlAssetDownloader_DIR:PATH=C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6QmlAssetDownloader
+Qt6QmlAssetDownloader_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6QmlAssetDownloader
 
 //The directory containing a CMake configuration file for Qt6QmlCompilerPlusPrivateTools.
 Qt6QmlCompilerPlusPrivateTools_DIR:PATH=Qt6QmlCompilerPlusPrivateTools_DIR-NOTFOUND
 
 //The directory containing a CMake configuration file for Qt6QmlIntegration.
-Qt6QmlIntegration_DIR:PATH=C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6QmlIntegration
+Qt6QmlIntegration_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6QmlIntegration
 
 //The directory containing a CMake configuration file for Qt6QmlMeta.
-Qt6QmlMeta_DIR:PATH=C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6QmlMeta
+Qt6QmlMeta_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6QmlMeta
 
 //The directory containing a CMake configuration file for Qt6QmlModels.
-Qt6QmlModels_DIR:PATH=C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6QmlModels
+Qt6QmlModels_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6QmlModels
 
 //The directory containing a CMake configuration file for Qt6QmlTools.
-Qt6QmlTools_DIR:PATH=C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6QmlTools
+Qt6QmlTools_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6QmlTools
 
 //The directory containing a CMake configuration file for Qt6QmlWorkerScript.
-Qt6QmlWorkerScript_DIR:PATH=C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6QmlWorkerScript
+Qt6QmlWorkerScript_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6QmlWorkerScript
 
 //The directory containing a CMake configuration file for Qt6Qml.
-Qt6Qml_DIR:PATH=C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6Qml
+Qt6Qml_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Qml
 
 //The directory containing a CMake configuration file for Qt6QuickTools.
-Qt6QuickTools_DIR:PATH=C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6QuickTools
+Qt6QuickTools_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6QuickTools
 
 //The directory containing a CMake configuration file for Qt6Quick.
-Qt6Quick_DIR:PATH=C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6Quick
+Qt6Quick_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Quick
 
 //The directory containing a CMake configuration file for Qt6Sql.
-Qt6Sql_DIR:PATH=C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6Sql
+Qt6Sql_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Sql
 
 //The directory containing a CMake configuration file for Qt6.
-Qt6_DIR:PATH=C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6
+Qt6_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6
 
 //Path to a program.
 Vulkan_GLSLANG_VALIDATOR_EXECUTABLE:FILEPATH=Vulkan_GLSLANG_VALIDATOR_EXECUTABLE-NOTFOUND
@@ -393,7 +377,7 @@ Vulkan_INCLUDE_DIR:PATH=Vulkan_INCLUDE_DIR-NOTFOUND
 Vulkan_LIBRARY:FILEPATH=Vulkan_LIBRARY-NOTFOUND
 
 //Path to a program.
-WINDEPLOYQT_EXECUTABLE:FILEPATH=C:/Qt/6.10.2/mingw_64/bin/windeployqt.exe
+WINDEPLOYQT_EXECUTABLE:FILEPATH=C:/Qt/6.10.2/msvc2022_64/bin/windeployqt.exe
 
 
 ########################
@@ -454,6 +438,8 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_EXPORT_BUILD_DATABASE
 CMAKE_EXPORT_BUILD_DATABASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_EXPORT_COMPILE_COMMANDS
+CMAKE_EXPORT_COMPILE_COMMANDS-ADVANCED:INTERNAL=1
 //Name of external makefile project generator.
 CMAKE_EXTRA_GENERATOR:INTERNAL=
 //Name of generator.
@@ -655,7 +641,7 @@ QT_FEATURE_concurrent:INTERNAL=ON
 //Qt feature: copy_file_range (from target Qt6::Core)
 QT_FEATURE_copy_file_range:INTERNAL=OFF
 //Qt feature: cpp_winrt (from target Qt6::Core)
-QT_FEATURE_cpp_winrt:INTERNAL=OFF
+QT_FEATURE_cpp_winrt:INTERNAL=ON
 //Qt feature: cross_compile (from target Qt6::Core)
 QT_FEATURE_cross_compile:INTERNAL=OFF
 //Qt feature: cssparser (from target Qt6::Gui)
@@ -689,9 +675,9 @@ QT_FEATURE_dbus:INTERNAL=ON
 //Qt feature: dbus_linked (from target Qt6::Core)
 QT_FEATURE_dbus_linked:INTERNAL=OFF
 //Qt feature: debug (from target Qt6::Core)
-QT_FEATURE_debug:INTERNAL=OFF
+QT_FEATURE_debug:INTERNAL=ON
 //Qt feature: debug_and_release (from target Qt6::Core)
-QT_FEATURE_debug_and_release:INTERNAL=OFF
+QT_FEATURE_debug_and_release:INTERNAL=ON
 //Qt feature: desktopservices (from target Qt6::Gui)
 QT_FEATURE_desktopservices:INTERNAL=ON
 //Qt feature: developer_build (from target Qt6::Core)
@@ -707,7 +693,7 @@ QT_FEATURE_directwrite:INTERNAL=ON
 //Qt feature: directwrite3 (from target Qt6::Gui)
 QT_FEATURE_directwrite3:INTERNAL=ON
 //Qt feature: directwritecolrv1 (from target Qt6::Gui)
-QT_FEATURE_directwritecolrv1:INTERNAL=OFF
+QT_FEATURE_directwritecolrv1:INTERNAL=ON
 //Qt feature: dladdr (from target Qt6::Core)
 QT_FEATURE_dladdr:INTERNAL=OFF
 //Qt feature: dlopen (from target Qt6::Core)
@@ -895,7 +881,7 @@ QT_FEATURE_library:INTERNAL=ON
 //Qt feature: libresolv (from target Qt6::Network)
 QT_FEATURE_libresolv:INTERNAL=OFF
 //Qt feature: libstdcpp_assertions (from target Qt6::Core)
-QT_FEATURE_libstdcpp_assertions:INTERNAL=ON
+QT_FEATURE_libstdcpp_assertions:INTERNAL=OFF
 //Qt feature: libudev (from target Qt6::Core)
 QT_FEATURE_libudev:INTERNAL=OFF
 //Qt feature: linkat (from target Qt6::Core)
@@ -930,6 +916,8 @@ QT_FEATURE_mips_dsp:INTERNAL=OFF
 QT_FEATURE_mips_dspr2:INTERNAL=OFF
 //Qt feature: movie (from target Qt6::Gui)
 QT_FEATURE_movie:INTERNAL=ON
+//Qt feature: msvc_obj_debug_info (from target Qt6::Core)
+QT_FEATURE_msvc_obj_debug_info:INTERNAL=ON
 //Qt feature: mtdev (from target Qt6::Gui)
 QT_FEATURE_mtdev:INTERNAL=OFF
 //Qt feature: multiprocess (from target Qt6::Gui)
@@ -1001,7 +989,7 @@ QT_FEATURE_poll_select:INTERNAL=OFF
 //Qt feature: posix_fallocate (from target Qt6::Core)
 QT_FEATURE_posix_fallocate:INTERNAL=OFF
 //Qt feature: posix_sem (from target Qt6::Core)
-QT_FEATURE_posix_sem:INTERNAL=ON
+QT_FEATURE_posix_sem:INTERNAL=OFF
 //Qt feature: posix_shm (from target Qt6::Core)
 QT_FEATURE_posix_shm:INTERNAL=OFF
 //Qt feature: printsupport (from target Qt6::Core)
@@ -1118,7 +1106,7 @@ QT_FEATURE_rdrnd:INTERNAL=ON
 //Qt feature: rdseed (from target Qt6::Core)
 QT_FEATURE_rdseed:INTERNAL=ON
 //Qt feature: reduce_exports (from target Qt6::Core)
-QT_FEATURE_reduce_exports:INTERNAL=ON
+QT_FEATURE_reduce_exports:INTERNAL=OFF
 //Qt feature: reduce_relocations (from target Qt6::Core)
 QT_FEATURE_reduce_relocations:INTERNAL=OFF
 //Qt feature: regularexpression (from target Qt6::Core)
@@ -1142,7 +1130,7 @@ QT_FEATURE_sctp:INTERNAL=OFF
 //Qt feature: securetransport (from target Qt6::Network)
 QT_FEATURE_securetransport:INTERNAL=OFF
 //Qt feature: separate_debug_info (from target Qt6::Core)
-QT_FEATURE_separate_debug_info:INTERNAL=ON
+QT_FEATURE_separate_debug_info:INTERNAL=OFF
 //Qt feature: sessionmanager (from target Qt6::Gui)
 QT_FEATURE_sessionmanager:INTERNAL=ON
 //Qt feature: settings (from target Qt6::Core)
@@ -1186,9 +1174,9 @@ QT_FEATURE_sspi:INTERNAL=ON
 //Qt feature: ssse3 (from target Qt6::Core)
 QT_FEATURE_ssse3:INTERNAL=ON
 //Qt feature: stack_clash_protection (from target Qt6::Core)
-QT_FEATURE_stack_clash_protection:INTERNAL=ON
+QT_FEATURE_stack_clash_protection:INTERNAL=OFF
 //Qt feature: stack_protector (from target Qt6::Core)
-QT_FEATURE_stack_protector:INTERNAL=ON
+QT_FEATURE_stack_protector:INTERNAL=OFF
 //Qt feature: standarditemmodel (from target Qt6::Gui)
 QT_FEATURE_standarditemmodel:INTERNAL=ON
 //Qt feature: static (from target Qt6::Core)
@@ -1352,7 +1340,7 @@ QT_FEATURE_wheelevent:INTERNAL=ON
 //Qt feature: widgets (from target Qt6::Core)
 QT_FEATURE_widgets:INTERNAL=ON
 //Qt feature: winsdkicu (from target Qt6::Core)
-QT_FEATURE_winsdkicu:INTERNAL=OFF
+QT_FEATURE_winsdkicu:INTERNAL=ON
 //Qt feature: x86intrin (from target Qt6::Core)
 QT_FEATURE_x86intrin:INTERNAL=ON
 //Qt feature: xcb (from target Qt6::Gui)
@@ -1399,5 +1387,5 @@ Vulkan_INCLUDE_DIR-ADVANCED:INTERNAL=1
 Vulkan_LIBRARY-ADVANCED:INTERNAL=1
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=C:/Program Files (x86)/AttendanceServer
-__qt_qml_macros_module_base_dir:INTERNAL=C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6Qml
+__qt_qml_macros_module_base_dir:INTERNAL=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Qml
 

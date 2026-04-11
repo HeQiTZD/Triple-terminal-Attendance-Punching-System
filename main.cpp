@@ -1,5 +1,6 @@
 ﻿#include "src/DataManager/datamanager.h"
 #include "src/TcpServer/tcpserver.h"
+#include "src/Controllers/networkcontroller.h"
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
@@ -11,20 +12,13 @@ int main(int argc, char *argv[])
     TcpServer tcpServer;
     DataManager dataManager;
 
-    // 初始化数据库（根据实际情况修改连接参数）
-    // dataManager.initialize("localhost", "attendance_db", "root", "password");
-
-    //
+    networkcontroller networkcontroller(&tcpServer,&dataManager);
+    tcpServer.startServer(8080);
+    
 
 
     QQmlApplicationEngine engine;
-    QObject::connect(
-        &engine,
-        &QQmlApplicationEngine::objectCreationFailed,
-        &app,
-        []() { QCoreApplication::exit(-1); },
-        Qt::QueuedConnection);
-    engine.loadFromModule("AttendanceServer", "Main");
+
 
     return app.exec();
 }

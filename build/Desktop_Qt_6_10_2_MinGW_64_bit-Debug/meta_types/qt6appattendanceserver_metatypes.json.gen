@@ -124,49 +124,49 @@
                     {
                         "access": "public",
                         "index": 0,
-                        "lineNumber": 49,
+                        "lineNumber": 67,
                         "name": "idChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 1,
-                        "lineNumber": 50,
+                        "lineNumber": 68,
                         "name": "nameChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 2,
-                        "lineNumber": 51,
+                        "lineNumber": 69,
                         "name": "employeeIdChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 3,
-                        "lineNumber": 52,
+                        "lineNumber": 70,
                         "name": "departmentChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 4,
-                        "lineNumber": 53,
+                        "lineNumber": 71,
                         "name": "positionChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 5,
-                        "lineNumber": 54,
+                        "lineNumber": 72,
                         "name": "createdAtChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 6,
-                        "lineNumber": 55,
+                        "lineNumber": 73,
                         "name": "updatedAtChanged",
                         "returnType": "void"
                     }
@@ -1039,6 +1039,86 @@
             }
         ],
         "inputFile": "datamanager.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "networkcontroller",
+                "lineNumber": 9,
+                "object": true,
+                "qualifiedClassName": "networkcontroller",
+                "slots": [
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "deviceId",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "ipAddress",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 0,
+                        "lineNumber": 16,
+                        "name": "onClientConnected",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "deviceId",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 1,
+                        "lineNumber": 17,
+                        "name": "onClientDisconnected",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "record",
+                                "type": "QJsonObject"
+                            }
+                        ],
+                        "index": 2,
+                        "lineNumber": 18,
+                        "name": "onAttendanceRecordReceived",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "deviceId",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "status",
+                                "type": "QJsonObject"
+                            }
+                        ],
+                        "index": 3,
+                        "lineNumber": 19,
+                        "name": "onDeviceStatusReceiced",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "networkcontroller.h",
         "outputRevision": 69
     }
 ]

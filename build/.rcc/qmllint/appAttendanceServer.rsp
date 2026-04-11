@@ -6,7 +6,7 @@ D:/QTproject/AttendanceServer/build/AttendanceServer
 -I
 D:/QTproject/AttendanceServer/build
 -I
-C:/Qt/6.10.2/mingw_64/qml
+C:/Qt/6.10.2/msvc2022_64/qml
 --resource
 D:/QTproject/AttendanceServer/build/.qt/rcc/qmake_AttendanceServer.qrc
 --resource
