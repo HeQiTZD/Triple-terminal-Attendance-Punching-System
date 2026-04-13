@@ -1209,6 +1209,7 @@ appAttendanceServer_autogen/timestamp: \
 	D:/QTproject/AttendanceServer/src/Models/attendancerecord.h \
 	D:/QTproject/AttendanceServer/src/Models/device.cpp \
 	D:/QTproject/AttendanceServer/src/Models/device.h \
+	D:/QTproject/AttendanceServer/src/Protocol/protocol.h \
 	D:/QTproject/AttendanceServer/src/TcpServer/tcpserver.cpp \
 	D:/QTproject/AttendanceServer/src/TcpServer/tcpserver.h \
 	C:/Qt/Tools/CMake_64/bin/cmake.exe

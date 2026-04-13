@@ -2,7 +2,6 @@
 #define PROTOCOL_H
 #include <QString>
 namespace Protocol{
-
 // message["type"]
 static inline const QString kType = "type";
 static inline const QString kAuth = "auth";

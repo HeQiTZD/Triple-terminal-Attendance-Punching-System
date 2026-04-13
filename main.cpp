@@ -12,12 +12,20 @@ int main(int argc, char *argv[])
     TcpServer tcpServer;
     DataManager dataManager;
 
+    //初始化数据库
+    const bool dbOk = dataManager.initialize("localhost","attenddance_db","root","password");
+     Q_UNUSED(dbOk);
+
+    //组装控制器（把网络事件落到数据层）
     networkcontroller networkcontroller(&tcpServer,&dataManager);
+
+    //启动 TCP 服务
     tcpServer.startServer(8080);
     
 
-
+    //UI（如果你还要 QML 主界面）
     QQmlApplicationEngine engine;
+    engine.loadFromModule("AttendanceServer", "Main");
 
 
     return app.exec();

@@ -69,16 +69,16 @@
 			"id" : "generate_qmlls_build_ini_file::@6890427a1f51a3e7e1df"
 		},
 		{
-			"backtrace" : 0,
-			"id" : "appAttendanceServer_qmlimportscan::@6890427a1f51a3e7e1df"
-		},
-		{
 			"backtrace" : 4,
 			"id" : "appAttendanceServer_copy_qml::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 6,
 			"id" : "appAttendanceServer_copy_res::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "appAttendanceServer_qmlimportscan::@6890427a1f51a3e7e1df"
 		}
 	],
 	"folder" : 
@@ -90,6 +90,10 @@
 	"name" : "appAttendanceServer_autogen_timestamp_deps",
 	"orderDependencies" : 
 	[
+		{
+			"backtrace" : 0,
+			"id" : "Qt6::moc::@6890427a1f51a3e7e1df"
+		},
 		{
 			"backtrace" : 0,
 			"id" : "Qt6::Gui::@6890427a1f51a3e7e1df"
@@ -108,11 +112,11 @@
 		},
 		{
 			"backtrace" : 0,
-			"id" : "Qt6::Quick::@6890427a1f51a3e7e1df"
+			"id" : "Qt6::Sql::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 0,
-			"id" : "Qt6::Sql::@6890427a1f51a3e7e1df"
+			"id" : "Qt6::Quick::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 0,
@@ -125,10 +129,6 @@
 		{
 			"backtrace" : 0,
 			"id" : "appAttendanceServer_qmlimportscan::@6890427a1f51a3e7e1df"
-		},
-		{
-			"backtrace" : 0,
-			"id" : "Qt6::moc::@6890427a1f51a3e7e1df"
 		}
 	],
 	"paths" : 

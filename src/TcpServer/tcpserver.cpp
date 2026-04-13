@@ -131,22 +131,34 @@ void TcpServer::onSocketDisconnected()
 
 void TcpServer::onSocketReadyRead()
 {
-    QTcpSocket* socket = qobject_cast<QTcpSocket*>(sender());
+    QTcpSocket* socket = qobject_cast<QTcpSocket*>(sender());//使用qobject_cast<>将发送对象安全转换为QTcpSocket
+    //检查套接字对象是否有效，并在客户端列表中
     if(!socket || !m_clients.contains(socket)){
         return;
     }
-    //读取socket缓冲区的所有数据
-    QByteArray data = socket->readAll();
-    //将二进制数据解析为JSON文档
-    QJsonDocument doc = QJsonDocument::fromJson(data);
 
-    //JSON合法性校验：非空且为对象类型
-    if(doc.isNull() || !doc.isObject()){
-        qDebug()<< "Invalid JSON received";
-        return;
+    ClientInfo &info = m_clients[socket];//获取socket对应的客户端结构体引用
+    info.buffer+=socket->readAll(); //将新接收的所有数据追加到客户端的缓冲区中buffer(QByteArray)
+
+    while(true){
+        const int newlineIndex = info.buffer.indexOf('\n');//用indexof()找到“\n”的位置
+        if(newlineIndex < 0) break;//如何为不存在，则返回
+
+        const QByteArray line = info.buffer.left(newlineIndex).trimmed();//使用left()截取\n前的子串，然后使用trimmed()移除字符串两端的空白字符（空格、制表符、换行符等）
+        info.buffer.remove(0,newlineIndex+1);//移除已处理部分
+
+        if(line.isEmpty()) continue;//为空，则跳过，进行下一次处理
+
+        QJsonParseError parseErr;
+        const QJsonDocument doc = QJsonDocument::fromJson(line,&parseErr);//解析数据，并捕获错误
+        if(doc.isNull() || !doc.isObject()){
+            // 解析失败：可选择忽略，或给客户端回 error
+            qDebug() << "Invalid JSON line:" << parseErr.errorString();
+            continue;
+        }
+
+        processMessage(socket, doc.object());
     }
-
-    processMessage(socket,doc.object());
 }
 
 void TcpServer::onHeartbeatTimeout()

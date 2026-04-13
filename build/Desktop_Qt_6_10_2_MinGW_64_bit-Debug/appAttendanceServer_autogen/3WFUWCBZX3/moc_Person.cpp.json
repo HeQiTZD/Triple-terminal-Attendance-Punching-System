@@ -123,49 +123,49 @@
                 {
                     "access": "public",
                     "index": 0,
-                    "lineNumber": 67,
+                    "lineNumber": 49,
                     "name": "idChanged",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
                     "index": 1,
-                    "lineNumber": 68,
+                    "lineNumber": 50,
                     "name": "nameChanged",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
                     "index": 2,
-                    "lineNumber": 69,
+                    "lineNumber": 51,
                     "name": "employeeIdChanged",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
                     "index": 3,
-                    "lineNumber": 70,
+                    "lineNumber": 52,
                     "name": "departmentChanged",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
                     "index": 4,
-                    "lineNumber": 71,
+                    "lineNumber": 53,
                     "name": "positionChanged",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
                     "index": 5,
-                    "lineNumber": 72,
+                    "lineNumber": 54,
                     "name": "createdAtChanged",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
                     "index": 6,
-                    "lineNumber": 73,
+                    "lineNumber": 55,
                     "name": "updatedAtChanged",
                     "returnType": "void"
                 }

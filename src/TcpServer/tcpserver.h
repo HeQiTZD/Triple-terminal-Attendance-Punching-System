@@ -69,6 +69,7 @@ private:
         QString ipAddress; // 客户端IP
         QTimer* heartbeatTimer;// 心跳定时器
         bool isAuthenticated;// 是否认证通过
+        QByteArray buffer; // 用于按行分帧（json + '\n'）
     };
 
     QTcpServer *m_server;// TCP服务端对象
