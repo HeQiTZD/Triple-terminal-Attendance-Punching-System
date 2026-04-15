@@ -1,0 +1,50 @@
+{
+    "classes": [
+        {
+            "className": "DeviceMonitor",
+            "lineNumber": 15,
+            "object": true,
+            "qualifiedClassName": "DeviceMonitor",
+            "slots": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "deviceId",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "ipAddress",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 0,
+                    "lineNumber": 22,
+                    "name": "onClientConnected",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "deviceId",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 1,
+                    "lineNumber": 23,
+                    "name": "onClientDisconnected",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "devicemonitor.h",
+    "outputRevision": 69
+}

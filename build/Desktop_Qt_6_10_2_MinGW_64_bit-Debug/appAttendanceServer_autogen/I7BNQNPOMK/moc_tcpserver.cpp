@@ -53,6 +53,7 @@ template <> constexpr inline auto TcpServer::qt_create_metaobjectdata<qt_meta_ta
         "status",
         "errorOccurred",
         "errorString",
+        "syncRequested",
         "onNewConnection",
         "onSocketDisconnected",
         "onSocketReadyRead",
@@ -86,20 +87,24 @@ template <> constexpr inline auto TcpServer::qt_create_metaobjectdata<qt_meta_ta
         QtMocHelpers::SignalData<void(const QString &)>(13, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::QString, 14 },
         }}),
+        // Signal 'syncRequested'
+        QtMocHelpers::SignalData<void(const QString &)>(15, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 5 },
+        }}),
         // Slot 'onNewConnection'
-        QtMocHelpers::SlotData<void()>(15, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onSocketDisconnected'
         QtMocHelpers::SlotData<void()>(16, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onSocketReadyRead'
+        // Slot 'onSocketDisconnected'
         QtMocHelpers::SlotData<void()>(17, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onHeartbeatTimeout'
+        // Slot 'onSocketReadyRead'
         QtMocHelpers::SlotData<void()>(18, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onHeartbeatTimeout'
+        QtMocHelpers::SlotData<void()>(19, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
         // property 'isRunning'
-        QtMocHelpers::PropertyData<bool>(19, QMetaType::Bool, QMC::DefaultPropertyFlags, 0),
+        QtMocHelpers::PropertyData<bool>(20, QMetaType::Bool, QMC::DefaultPropertyFlags, 0),
         // property 'clientCount'
-        QtMocHelpers::PropertyData<int>(20, QMetaType::Int, QMC::DefaultPropertyFlags, 1),
+        QtMocHelpers::PropertyData<int>(21, QMetaType::Int, QMC::DefaultPropertyFlags, 1),
     };
     QtMocHelpers::UintData qt_enums {
     };
@@ -128,10 +133,11 @@ void TcpServer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 4: _t->attendanceRecordReceived((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
         case 5: _t->deviceStatusReceived((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[2]))); break;
         case 6: _t->errorOccurred((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
-        case 7: _t->onNewConnection(); break;
-        case 8: _t->onSocketDisconnected(); break;
-        case 9: _t->onSocketReadyRead(); break;
-        case 10: _t->onHeartbeatTimeout(); break;
+        case 7: _t->syncRequested((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 8: _t->onNewConnection(); break;
+        case 9: _t->onSocketDisconnected(); break;
+        case 10: _t->onSocketReadyRead(); break;
+        case 11: _t->onHeartbeatTimeout(); break;
         default: ;
         }
     }
@@ -149,6 +155,8 @@ void TcpServer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         if (QtMocHelpers::indexOfMethod<void (TcpServer::*)(const QString & , const QJsonObject & )>(_a, &TcpServer::deviceStatusReceived, 5))
             return;
         if (QtMocHelpers::indexOfMethod<void (TcpServer::*)(const QString & )>(_a, &TcpServer::errorOccurred, 6))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (TcpServer::*)(const QString & )>(_a, &TcpServer::syncRequested, 7))
             return;
     }
     if (_c == QMetaObject::ReadProperty) {
@@ -180,14 +188,14 @@ int TcpServer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 11)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 12;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 11)
+        if (_id < 12)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 11;
+        _id -= 12;
     }
     if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::BindableProperty
@@ -238,5 +246,11 @@ void TcpServer::deviceStatusReceived(const QString & _t1, const QJsonObject & _t
 void TcpServer::errorOccurred(const QString & _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 6, nullptr, _t1);
+}
+
+// SIGNAL 7
+void TcpServer::syncRequested(const QString & _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 7, nullptr, _t1);
 }
 QT_WARNING_POP

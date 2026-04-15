@@ -19,6 +19,13 @@ static inline const QString kMessage = "message";
 static inline const QString kPersonEmployeeId = "employeeId"; // 或 personId，二选一统一
 static inline const QString kCheckTime = "checkTime";         // ISO8601 string
 static inline const QString kRecordStatus = "recordStatus";   // 比如 "in"/"out"/"success"/"fail"
+
+static inline const QString kSyncRequest = "sync_request";
+static inline const QString kPersonSync = "person_sync";
+static inline const QString kConfigSync = "config_sync";
+
+static inline const QString kPayload = "payload";
+static inline const QString kPersons = "persons";
 }
 
 #endif // PROTOCOL_H

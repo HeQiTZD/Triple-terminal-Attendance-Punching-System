@@ -628,34 +628,47 @@
                         "lineNumber": 52,
                         "name": "errorOccurred",
                         "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "deviceId",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 7,
+                        "lineNumber": 54,
+                        "name": "syncRequested",
+                        "returnType": "void"
                     }
                 ],
                 "slots": [
                     {
                         "access": "private",
-                        "index": 7,
-                        "lineNumber": 56,
-                        "name": "onNewConnection",
-                        "returnType": "void"
-                    },
-                    {
-                        "access": "private",
                         "index": 8,
                         "lineNumber": 58,
-                        "name": "onSocketDisconnected",
+                        "name": "onNewConnection",
                         "returnType": "void"
                     },
                     {
                         "access": "private",
                         "index": 9,
                         "lineNumber": 60,
-                        "name": "onSocketReadyRead",
+                        "name": "onSocketDisconnected",
                         "returnType": "void"
                     },
                     {
                         "access": "private",
                         "index": 10,
                         "lineNumber": 62,
+                        "name": "onSocketReadyRead",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "index": 11,
+                        "lineNumber": 64,
                         "name": "onHeartbeatTimeout",
                         "returnType": "void"
                     }
@@ -1044,6 +1057,39 @@
     {
         "classes": [
             {
+                "className": "SyncManager",
+                "lineNumber": 14,
+                "object": true,
+                "qualifiedClassName": "SyncManager",
+                "slots": [
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "deviceId",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 0,
+                        "lineNumber": 21,
+                        "name": "onSynRequested",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "syncmanager.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
                 "className": "networkcontroller",
                 "lineNumber": 13,
                 "object": true,
@@ -1119,6 +1165,73 @@
             }
         ],
         "inputFile": "networkcontroller.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "DeviceMonitor",
+                "lineNumber": 15,
+                "object": true,
+                "qualifiedClassName": "DeviceMonitor",
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "deviceId",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "ipAddress",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 0,
+                        "lineNumber": 22,
+                        "name": "onClientConnected",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "deviceId",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 1,
+                        "lineNumber": 23,
+                        "name": "onClientDisconnected",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "deviceId",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "status",
+                                "type": "QJsonObject"
+                            }
+                        ],
+                        "index": 2,
+                        "lineNumber": 24,
+                        "name": "onDeviceStatusReceived",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "devicemonitor.h",
         "outputRevision": 69
     }
 ]

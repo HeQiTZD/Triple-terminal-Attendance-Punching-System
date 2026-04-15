@@ -104,13 +104,13 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 52,
+				"line" : 53,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 1,
-				"line" : 43,
+				"line" : 44,
 				"parent" : 0
 			},
 			{
@@ -427,7 +427,7 @@
 			{
 				"command" : 15,
 				"file" : 10,
-				"line" : 970,
+				"line" : 976,
 				"parent" : 24
 			},
 			{
@@ -439,7 +439,7 @@
 			{
 				"command" : 15,
 				"file" : 10,
-				"line" : 976,
+				"line" : 970,
 				"parent" : 24
 			},
 			{
@@ -774,8 +774,9 @@
 				14,
 				16,
 				19,
-				20,
-				21
+				21,
+				22,
+				23
 			]
 		},
 		{
@@ -932,15 +933,11 @@
 		},
 		{
 			"backtrace" : 65,
-			"id" : "appAttendanceServer_copy_qml::@6890427a1f51a3e7e1df"
-		},
-		{
-			"backtrace" : 67,
 			"id" : "appAttendanceServer_copy_res::@6890427a1f51a3e7e1df"
 		},
 		{
-			"backtrace" : 0,
-			"id" : "appAttendanceServer_autogen::@6890427a1f51a3e7e1df"
+			"backtrace" : 67,
+			"id" : "appAttendanceServer_copy_qml::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 73,
@@ -948,6 +945,10 @@
 		},
 		{
 			"id" : "appAttendanceServer_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "appAttendanceServer_autogen::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "appAttendanceServer::@6890427a1f51a3e7e1df",
@@ -1091,19 +1092,19 @@
 				3,
 				4,
 				5,
-				19,
-				20,
 				21,
 				22,
+				23,
 				24,
-				25,
-				34,
-				35,
+				26,
+				27,
 				36,
 				37,
 				38,
 				39,
-				40
+				40,
+				41,
+				42
 			]
 		},
 		{
@@ -1117,7 +1118,8 @@
 				13,
 				14,
 				16,
-				18
+				19,
+				20
 			]
 		},
 		{
@@ -1130,28 +1132,29 @@
 				10,
 				11,
 				15,
-				17
+				17,
+				18
 			]
 		},
 		{
 			"name" : "Resources",
 			"sourceIndexes" : 
 			[
-				23
+				25
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				26,
-				27,
 				28,
 				29,
 				30,
 				31,
 				32,
-				33
+				33,
+				34,
+				35
 			]
 		}
 	],
@@ -1260,6 +1263,17 @@
 			"backtrace" : 85,
 			"path" : "src/Protocol/protocol.h",
 			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 85,
+			"path" : "src/DeviceMonitor/devicemonitor.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 85,
+			"compileGroupIndex" : 0,
+			"path" : "src/DeviceMonitor/devicemonitor.cpp",
+			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 87,

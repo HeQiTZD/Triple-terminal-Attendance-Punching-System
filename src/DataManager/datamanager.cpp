@@ -49,8 +49,10 @@ bool DataManager::isConnected() const
 bool DataManager::addPerson(const QString &name, const QString employeeId, const QString &department, const QString &position)
 {
     QSqlQuery query(m_db);
-    query.prepare("INSERT INTO Person (name,employee_id,department,position)"
-                  "VALUSE (:name,:employee_id,:department,:position)");
+    query.prepare(
+        "INSERT INTO Person (name, employee_id, department, position) "
+        "VALUES (:name, :employee_id, :department, :position)"
+    );
 
     query.bindValue(":name",name);
     query.bindValue(":employee_id",employeeId);
@@ -71,9 +73,9 @@ bool DataManager::updatedPerson(const QString &name, const QString &employeeId, 
 {
     //先找到对于的ID
     QSqlQuery selectQuery(m_db);
-    selectQuery.prepare("SELECT id FROM Person WHERE name = :name AND employee_Id = :employeeId");
+    selectQuery.prepare("SELECT id FROM Person WHERE name = :name AND employee_id = :employee_id");
     selectQuery.bindValue(":name",name);
-    selectQuery.bindValue(":employeeId",employeeId);
+    selectQuery.bindValue(":employee_id",employeeId);
     if(!selectQuery.exec()){
         emit errorOccurred(selectQuery.lastError().text());
         return false;
@@ -89,12 +91,12 @@ bool DataManager::updatedPerson(const QString &name, const QString &employeeId, 
 
     QVariantMap updates;
     updates["name"] = name;
-    updates["employee_Id"] = employeeId;
+    updates["employee_id"] = employeeId;
     updates["department"] = department;
     updates["position"] = position;
 
     QVariantMap nonEmptyUpdates;
-    static const QSet<QString> allowedFields = {"name","employee_Id","department","position"};
+    static const QSet<QString> allowedFields = {"name","employee_id","department","position"};
 
     for(auto it = updates.begin();it != updates.end();++it){
         const QString &field = it.key();
@@ -155,9 +157,9 @@ bool DataManager::deletePerson(const QString &name,const QString &employeeId)
 {
     //先找到对于的ID
     QSqlQuery selectQuery(m_db);
-    selectQuery.prepare("SELECT id FROM Person WHERE name = :name and employee_Id = :employeeId");
+    selectQuery.prepare("SELECT id FROM Person WHERE name = :name AND employee_id = :employee_id");
     selectQuery.bindValue(":name",name);
-    selectQuery.bindValue(":employeeId",employeeId);
+    selectQuery.bindValue(":employee_id",employeeId);
     if(!selectQuery.exec()){
         emit errorOccurred(selectQuery.lastError().text());
         return false;
@@ -179,7 +181,7 @@ bool DataManager::deletePerson(const QString &name,const QString &employeeId)
         return false;
     }
 
-    emit personUpdated(targetId);
+    emit personDeleted(targetId);
     return true;
 }
 
@@ -188,7 +190,7 @@ QList<QObject *> DataManager::getAllPerson()
     QList<QObject*> persons;
     QSqlQuery query(m_db);
 
-    if(!query.exec("SELECT id,name,employee_Id,department,position,created_at,updated_at FROM Person")){
+    if(!query.exec("SELECT id, name, employee_id, department, position, created_at, updated_at FROM Person")){
         emit errorOccurred(query.lastError().text());
         return persons;
     }
@@ -257,9 +259,9 @@ QObject *DataManager::getPersonByEmployeeId(const QString &employeeId)
 bool DataManager::updatePersonFaceFeature(int id, const QByteArray &faceFeature)
 {
     QSqlQuery query(m_db);
-    query.prepare("UPDATE Person SET face_feature=:face_fearure WHERE id=:id");
+    query.prepare("UPDATE Person SET face_feature = :face_feature WHERE id = :id");
     query.bindValue(":id",id);
-    query.bindValue(":face_fearure",faceFeature);
+    query.bindValue(":face_feature",faceFeature);
 
     if (!query.exec()) {
         emit errorOccurred(query.lastError().text());
@@ -444,24 +446,24 @@ QObject *DataManager::getDeviceById(const QString &deviceId)
 
 bool DataManager::createTables()
 {
-    return createTables() && createAttendanceRecordTable() &&createDeviceTable();
+    return createPersonTable() && createAttendanceRecordTable() &&createDeviceTable();
 }
 
 bool DataManager::createPersonTable()
 {
     QSqlQuery query(m_db);
     QString sql = R"(
-        CREATE TABLE IF NOT EXISTS Person (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            name VARCHAR(100) NOT NULL,
-            employee_Id VARCHAR(100) UNIQUE NOT NULL,
-            department VARCHAR(100),
-            position VARCHAR(100),
-            face_feature BLOB,
-            create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-            )
-        )";
+CREATE TABLE IF NOT EXISTS Person (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    employee_id VARCHAR(100) UNIQUE NOT NULL,
+    department VARCHAR(100),
+    position VARCHAR(100),
+    face_feature BLOB,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
+)";
 
     if(!query.exec(sql)){
         emit errorOccurred(query.lastError().text());
@@ -474,16 +476,16 @@ bool DataManager::createAttendanceRecordTable()
 {
     QSqlQuery query(m_db);
     QString sql = R"(
-        CREATE TABLE IF NOT EXISTS AttendanceRecordTable(
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            person_id INT NOT NULL,
-            check_time TIMESTAMP NOT NULL,
-            device_id VARCHAR(50),
-            status VARCHAR(20),
-            received_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (person_id) REFERENCES Person(id)
-            )
-        )";
+CREATE TABLE IF NOT EXISTS AttendanceRecord (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    person_id INT NOT NULL,
+    check_time TIMESTAMP NOT NULL,
+    device_id VARCHAR(50),
+    status VARCHAR(20),
+    received_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (person_id) REFERENCES Person(id)
+)
+)";
 
     if(!query.exec(sql)){
         emit errorOccurred(query.lastError().text());
@@ -496,15 +498,15 @@ bool DataManager::createDeviceTable()
 {
     QSqlQuery query(m_db);
     QString sql = R"(
-        CREATE TABLE IF NOT EXISTS Device (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            device_id VARCHAR(50) UNIQUE NOT NULL,
-            device_name VARCHAR(100),
-            ip_address VARCHAR(50),
-            last_online TIMESTAMP,
-            status VARCHAR(20) DEFAULT 'offline'
-        )
-    )";
+CREATE TABLE IF NOT EXISTS Device (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    device_id VARCHAR(50) UNIQUE NOT NULL,
+    device_name VARCHAR(100),
+    ip_address VARCHAR(50),
+    last_online TIMESTAMP,
+    status VARCHAR(20) DEFAULT 'offline'
+)
+)";
 
     if (!query.exec(sql)) {
         emit errorOccurred(query.lastError().text());

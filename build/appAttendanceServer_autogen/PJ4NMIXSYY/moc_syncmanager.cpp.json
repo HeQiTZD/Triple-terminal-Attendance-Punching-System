@@ -1,0 +1,33 @@
+{
+    "classes": [
+        {
+            "className": "SyncManager",
+            "lineNumber": 13,
+            "object": true,
+            "qualifiedClassName": "SyncManager",
+            "slots": [
+                {
+                    "access": "private",
+                    "arguments": [
+                        {
+                            "name": "deviceId",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 0,
+                    "lineNumber": 20,
+                    "name": "onSynRequested",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "syncmanager.h",
+    "outputRevision": 69
+}

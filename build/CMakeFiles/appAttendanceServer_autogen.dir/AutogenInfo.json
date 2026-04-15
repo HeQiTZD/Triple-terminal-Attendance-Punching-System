@@ -1311,6 +1311,12 @@
 			null
 		],
 		[
+			"D:/QTproject/AttendanceServer/src/DeviceMonitor/devicemonitor.h",
+			"MU",
+			"YPNXXZ35VI/moc_devicemonitor.cpp",
+			null
+		],
+		[
 			"D:/QTproject/AttendanceServer/src/Models/Person.h",
 			"MU",
 			"3WFUWCBZX3/moc_Person.cpp",
@@ -1332,6 +1338,12 @@
 			"D:/QTproject/AttendanceServer/src/Protocol/protocol.h",
 			"MU",
 			"QIFES6IJVT/moc_protocol.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceServer/src/SyncManager/syncmanager.h",
+			"MU",
+			"PJ4NMIXSYY/moc_syncmanager.cpp",
 			null
 		],
 		[
@@ -1439,6 +1451,11 @@
 			"MU",
 			null
 		],
+		[
+			"D:/QTproject/AttendanceServer/src/DeviceMonitor/devicemonitor.cpp",
+			"MU",
+			null
+		],
 		[ "D:/QTproject/AttendanceServer/src/Models/Person.cpp", "MU", null ],
 		[
 			"D:/QTproject/AttendanceServer/src/Models/attendancerecord.cpp",
@@ -1446,6 +1463,11 @@
 			null
 		],
 		[ "D:/QTproject/AttendanceServer/src/Models/device.cpp", "MU", null ],
+		[
+			"D:/QTproject/AttendanceServer/src/SyncManager/syncmanager.cpp",
+			"MU",
+			null
+		],
 		[
 			"D:/QTproject/AttendanceServer/src/TcpServer/tcpserver.cpp",
 			"MU",

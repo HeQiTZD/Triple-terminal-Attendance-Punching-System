@@ -96,7 +96,7 @@ bool networkcontroller::validateAttendanceRecord(const QJsonObject &obj, QString
 
 bool networkcontroller::validateDeviceStatus(const QJsonObject &obj, QString *error) const
 {
-    const auto type = obj.value(Protocol::kStatus).toString();
+    const auto type = obj.value(Protocol::kType).toString();
     if(type != Protocol::kDeviceStatus){
         if(error) *error = "type mismatch";
         return false;

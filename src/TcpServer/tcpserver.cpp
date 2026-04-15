@@ -1,4 +1,5 @@
 ﻿#include "tcpserver.h"
+#include "src/Protocol/protocol.h"
 #include <qabstractsocket.h>
 #include <qhostaddress.h>
 #include <qjsondocument.h>
@@ -215,6 +216,10 @@ void TcpServer::processMessage(QTcpSocket *socket, const QJsonObject &message)
         if(!info.isAuthenticated) return;
         updateHeartbeat(socket);
         emit deviceStatusReceived(info.deviceId,message);
+    }else if(type == Protocol::kSyncRequest){
+        if(!info.isAuthenticated) return;
+        updateHeartbeat(socket);
+        emit syncRequested(info.deviceId);
     }
 }
 

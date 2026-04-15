@@ -50,6 +50,8 @@ signals:
     void deviceStatusReceived(const QString &deviceId,const QJsonObject &status);
     //错误信号
     void errorOccurred(const QString &errorString);
+    // 让 TcpServer 把 sync_request 上报给控制层（TcpServer 新信号 + 分发）
+    void syncRequested(const QString &deviceId);
 
 private slots:
     // 有新客户端连接

@@ -1,6 +1,7 @@
 appAttendanceServer_autogen/timestamp: \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QDateTime \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QHash \
+	C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonArray \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonDocument \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonObject \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QList \
@@ -72,6 +73,7 @@ appAttendanceServer_autogen/timestamp: \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qiodevicebase.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qiterable.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qiterator.h \
+	C:/Qt/6.10.2/mingw_64/include/QtCore/qjsonarray.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qjsondocument.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qjsonobject.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qjsonparseerror.h \
@@ -1203,6 +1205,8 @@ appAttendanceServer_autogen/timestamp: \
 	D:/QTproject/AttendanceServer/src/Controllers/networkcontroller.h \
 	D:/QTproject/AttendanceServer/src/DataManager/datamanager.cpp \
 	D:/QTproject/AttendanceServer/src/DataManager/datamanager.h \
+	D:/QTproject/AttendanceServer/src/DeviceMonitor/devicemonitor.cpp \
+	D:/QTproject/AttendanceServer/src/DeviceMonitor/devicemonitor.h \
 	D:/QTproject/AttendanceServer/src/Models/Person.cpp \
 	D:/QTproject/AttendanceServer/src/Models/Person.h \
 	D:/QTproject/AttendanceServer/src/Models/attendancerecord.cpp \
@@ -1210,6 +1214,8 @@ appAttendanceServer_autogen/timestamp: \
 	D:/QTproject/AttendanceServer/src/Models/device.cpp \
 	D:/QTproject/AttendanceServer/src/Models/device.h \
 	D:/QTproject/AttendanceServer/src/Protocol/protocol.h \
+	D:/QTproject/AttendanceServer/src/SyncManager/syncmanager.cpp \
+	D:/QTproject/AttendanceServer/src/SyncManager/syncmanager.h \
 	D:/QTproject/AttendanceServer/src/TcpServer/tcpserver.cpp \
 	D:/QTproject/AttendanceServer/src/TcpServer/tcpserver.h \
 	C:/Qt/Tools/CMake_64/bin/cmake.exe

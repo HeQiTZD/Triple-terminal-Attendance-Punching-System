@@ -1,4 +1,6 @@
 ﻿#include "src/DataManager/datamanager.h"
+#include "src/DeviceMonitor/devicemonitor.h"
+#include "src/SyncManager/syncmanager.h"
 #include "src/TcpServer/tcpserver.h"
 #include "src/Controllers/networkcontroller.h"
 #include <QGuiApplication>
@@ -11,6 +13,7 @@ int main(int argc, char *argv[])
     //创建核心模块实例
     TcpServer tcpServer;
     DataManager dataManager;
+    DeviceMonitor deviceMonitor(&tcpServer,&dataManager);
 
     //初始化数据库
     const bool dbOk = dataManager.initialize("localhost","attenddance_db","root","password");
@@ -18,6 +21,7 @@ int main(int argc, char *argv[])
 
     //组装控制器（把网络事件落到数据层）
     networkcontroller networkcontroller(&tcpServer,&dataManager);
+     SyncManager SyncManager(&tcpServer,&dataManager);
 
     //启动 TCP 服务
     tcpServer.startServer(8080);
@@ -27,6 +31,14 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     engine.loadFromModule("AttendanceServer", "Main");
 
+
+    // 设备上线/离线接线
+    QObject::connect(&tcpServer, &TcpServer::clientConnected,
+                     &deviceMonitor, &DeviceMonitor::onClientConnected);
+    QObject::connect(&tcpServer, &TcpServer::clientDisconnected,
+                     &deviceMonitor, &DeviceMonitor::onClientDisconnected);
+    QObject::connect(&tcpServer, &TcpServer::deviceStatusReceived,
+                     &deviceMonitor, &DeviceMonitor::onDeviceStatusReceived);
 
     return app.exec();
 }

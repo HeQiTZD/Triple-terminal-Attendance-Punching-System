@@ -3,4 +3,6 @@ D:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/include/../3WFUW
 D:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/include/../3WFUWCBZX3/moc_device.cpp.json
 D:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/include/../I7BNQNPOMK/moc_tcpserver.cpp.json
 D:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/include/../MRZBYZ2XCI/moc_datamanager.cpp.json
+D:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/include/../PJ4NMIXSYY/moc_syncmanager.cpp.json
 D:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/include/../Y426ONDXH7/moc_networkcontroller.cpp.json
+D:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/include/../YPNXXZ35VI/moc_devicemonitor.cpp.json

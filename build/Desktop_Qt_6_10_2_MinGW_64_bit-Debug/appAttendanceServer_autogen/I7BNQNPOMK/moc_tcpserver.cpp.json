@@ -124,34 +124,47 @@
                     "lineNumber": 52,
                     "name": "errorOccurred",
                     "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "deviceId",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 7,
+                    "lineNumber": 54,
+                    "name": "syncRequested",
+                    "returnType": "void"
                 }
             ],
             "slots": [
                 {
                     "access": "private",
-                    "index": 7,
-                    "lineNumber": 56,
-                    "name": "onNewConnection",
-                    "returnType": "void"
-                },
-                {
-                    "access": "private",
                     "index": 8,
                     "lineNumber": 58,
-                    "name": "onSocketDisconnected",
+                    "name": "onNewConnection",
                     "returnType": "void"
                 },
                 {
                     "access": "private",
                     "index": 9,
                     "lineNumber": 60,
-                    "name": "onSocketReadyRead",
+                    "name": "onSocketDisconnected",
                     "returnType": "void"
                 },
                 {
                     "access": "private",
                     "index": 10,
                     "lineNumber": 62,
+                    "name": "onSocketReadyRead",
+                    "returnType": "void"
+                },
+                {
+                    "access": "private",
+                    "index": 11,
+                    "lineNumber": 64,
                     "name": "onHeartbeatTimeout",
                     "returnType": "void"
                 }
