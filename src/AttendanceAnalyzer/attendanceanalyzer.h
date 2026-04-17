@@ -8,9 +8,8 @@
 #include <QTime>
 #include <QDateTime>
 
-#include "src/DataManager/datamanager.h"
-#include "src/Models/Person.h"
 class DataManager;
+class Person;
 
 class AttendanceAnalyzer : public QObject
 {
