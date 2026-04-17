@@ -35,6 +35,23 @@
                     "lineNumber": 23,
                     "name": "onClientDisconnected",
                     "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "deviceId",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "status",
+                            "type": "QJsonObject"
+                        }
+                    ],
+                    "index": 2,
+                    "lineNumber": 24,
+                    "name": "onDeviceStatusReceived",
+                    "returnType": "void"
                 }
             ],
             "superClasses": [

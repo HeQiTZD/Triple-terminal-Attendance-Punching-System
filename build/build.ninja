@@ -12,7 +12,7 @@
 
 # =============================================================================
 # Project: AttendanceServer
-# Configurations: 
+# Configurations: Debug
 # =============================================================================
 
 #############################################
@@ -20,6 +20,11 @@
 
 ninja_required_version = 1.5
 
+
+#############################################
+# Set configuration variable for custom commands.
+
+CONFIGURATION = Debug
 # =============================================================================
 # Include auxiliary files.
 
@@ -42,124 +47,163 @@ cmake_ninja_workdir = D$:/QTproject/AttendanceServer/build/
 #############################################
 # Order-only phony target for appAttendanceServer
 
-build cmake_object_order_depends_target_appAttendanceServer: phony || .qt/rcc/qrc_appAttendanceServer_raw_qml_0.cpp .qt/rcc/qrc_qmake_AttendanceServer.cpp .rcc/qmlcache/appAttendanceServer_Main_qml.cpp .rcc/qmlcache/appAttendanceServer_Main_qml.cpp.aotstats .rcc/qmlcache/appAttendanceServer_qmlcache_loader.cpp AttendanceServer/appAttendanceServer.qmltypes appAttendanceServer_autogen appAttendanceServer_autogen/mocs_compilation.cpp appAttendanceServer_autogen/timestamp appAttendanceServer_autogen_timestamp_deps appAttendanceServer_copy_qml appAttendanceServer_copy_res appAttendanceServer_qmlimportscan appattendanceserver_qmltyperegistrations.cpp generate_qmlls_build_ini_file meta_types/appAttendanceServer_json_file_list.txt meta_types/appAttendanceServer_json_file_list.txt.timestamp meta_types/qt6appattendanceserver_metatypes.json meta_types/qt6appattendanceserver_metatypes.json.gen
+build cmake_object_order_depends_target_appAttendanceServer: phony || .qt/rcc/qrc_appAttendanceServer_raw_qml_0.cpp .qt/rcc/qrc_qmake_AttendanceServer.cpp .rcc/qmlcache/appAttendanceServer_Main_qml.cpp .rcc/qmlcache/appAttendanceServer_Main_qml.cpp.aotstats .rcc/qmlcache/appAttendanceServer_qmlcache_loader.cpp AttendanceServer/appAttendanceServer.qmltypes appAttendanceServer_autogen appAttendanceServer_autogen/mocs_compilation.cpp appAttendanceServer_autogen/timestamp appAttendanceServer_autogen_timestamp_deps appAttendanceServer_copy_qml appAttendanceServer_copy_res appAttendanceServer_generate_qmlls_ini_file appAttendanceServer_qmlimportscan appattendanceserver_qmltyperegistrations.cpp generate_qmlls_build_ini_file meta_types/appAttendanceServer_json_file_list.txt meta_types/appAttendanceServer_json_file_list.txt.timestamp meta_types/qt6appattendanceserver_metatypes.json meta_types/qt6appattendanceserver_metatypes.json.gen
 
-build CMakeFiles/appAttendanceServer.dir/appAttendanceServer_autogen/mocs_compilation.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_ D$:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/mocs_compilation.cpp || cmake_object_order_depends_target_appAttendanceServer
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_NO_DEBUG -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+build CMakeFiles/appAttendanceServer.dir/appAttendanceServer_autogen/mocs_compilation.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_Debug D$:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/mocs_compilation.cpp || cmake_object_order_depends_target_appAttendanceServer
+  CONFIG = Debug
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\appAttendanceServer.dir\appAttendanceServer_autogen\mocs_compilation.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -ID:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/include -ID:/QTproject/AttendanceServer -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQml -isystem C:/Qt/6.10.2/msvc2022_64/include -isystem C:/Qt/6.10.2/msvc2022_64/include/QtCore -isystem C:/Qt/6.10.2/msvc2022_64/mkspecs/win32-msvc -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQmlIntegration -isystem C:/Qt/6.10.2/msvc2022_64/include/QtNetwork -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQuick -isystem C:/Qt/6.10.2/msvc2022_64/include/QtGui -isystem C:/Qt/6.10.2/msvc2022_64/include/QtOpenGL -isystem C:/Qt/6.10.2/msvc2022_64/include/QtSql
   OBJECT_DIR = CMakeFiles\appAttendanceServer.dir
   OBJECT_FILE_DIR = CMakeFiles\appAttendanceServer.dir\appAttendanceServer_autogen
   TARGET_SUPPORT_DIR = CMakeFiles\appAttendanceServer.dir
 
-build CMakeFiles/appAttendanceServer.dir/main.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_ D$:/QTproject/AttendanceServer/main.cpp || cmake_object_order_depends_target_appAttendanceServer
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_NO_DEBUG -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+build CMakeFiles/appAttendanceServer.dir/main.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_Debug D$:/QTproject/AttendanceServer/main.cpp || cmake_object_order_depends_target_appAttendanceServer
+  CONFIG = Debug
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\appAttendanceServer.dir\main.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -ID:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/include -ID:/QTproject/AttendanceServer -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQml -isystem C:/Qt/6.10.2/msvc2022_64/include -isystem C:/Qt/6.10.2/msvc2022_64/include/QtCore -isystem C:/Qt/6.10.2/msvc2022_64/mkspecs/win32-msvc -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQmlIntegration -isystem C:/Qt/6.10.2/msvc2022_64/include/QtNetwork -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQuick -isystem C:/Qt/6.10.2/msvc2022_64/include/QtGui -isystem C:/Qt/6.10.2/msvc2022_64/include/QtOpenGL -isystem C:/Qt/6.10.2/msvc2022_64/include/QtSql
   OBJECT_DIR = CMakeFiles\appAttendanceServer.dir
   OBJECT_FILE_DIR = CMakeFiles\appAttendanceServer.dir
   TARGET_SUPPORT_DIR = CMakeFiles\appAttendanceServer.dir
 
-build CMakeFiles/appAttendanceServer.dir/src/TcpServer/tcpserver.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_ D$:/QTproject/AttendanceServer/src/TcpServer/tcpserver.cpp || cmake_object_order_depends_target_appAttendanceServer
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_NO_DEBUG -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+build CMakeFiles/appAttendanceServer.dir/src/TcpServer/tcpserver.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_Debug D$:/QTproject/AttendanceServer/src/TcpServer/tcpserver.cpp || cmake_object_order_depends_target_appAttendanceServer
+  CONFIG = Debug
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\appAttendanceServer.dir\src\TcpServer\tcpserver.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -ID:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/include -ID:/QTproject/AttendanceServer -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQml -isystem C:/Qt/6.10.2/msvc2022_64/include -isystem C:/Qt/6.10.2/msvc2022_64/include/QtCore -isystem C:/Qt/6.10.2/msvc2022_64/mkspecs/win32-msvc -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQmlIntegration -isystem C:/Qt/6.10.2/msvc2022_64/include/QtNetwork -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQuick -isystem C:/Qt/6.10.2/msvc2022_64/include/QtGui -isystem C:/Qt/6.10.2/msvc2022_64/include/QtOpenGL -isystem C:/Qt/6.10.2/msvc2022_64/include/QtSql
   OBJECT_DIR = CMakeFiles\appAttendanceServer.dir
   OBJECT_FILE_DIR = CMakeFiles\appAttendanceServer.dir\src\TcpServer
   TARGET_SUPPORT_DIR = CMakeFiles\appAttendanceServer.dir
 
-build CMakeFiles/appAttendanceServer.dir/appattendanceserver_qmltyperegistrations.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_ D$:/QTproject/AttendanceServer/build/appattendanceserver_qmltyperegistrations.cpp || cmake_object_order_depends_target_appAttendanceServer
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_NO_DEBUG -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+build CMakeFiles/appAttendanceServer.dir/appattendanceserver_qmltyperegistrations.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_Debug D$:/QTproject/AttendanceServer/build/appattendanceserver_qmltyperegistrations.cpp || cmake_object_order_depends_target_appAttendanceServer
+  CONFIG = Debug
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\appAttendanceServer.dir\appattendanceserver_qmltyperegistrations.cpp.obj.d
-  FLAGS = -Wa,-mbig-obj
+  FLAGS = -g -Wa,-mbig-obj
   INCLUDES = -ID:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/include -ID:/QTproject/AttendanceServer -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQml -isystem C:/Qt/6.10.2/msvc2022_64/include -isystem C:/Qt/6.10.2/msvc2022_64/include/QtCore -isystem C:/Qt/6.10.2/msvc2022_64/mkspecs/win32-msvc -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQmlIntegration -isystem C:/Qt/6.10.2/msvc2022_64/include/QtNetwork -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQuick -isystem C:/Qt/6.10.2/msvc2022_64/include/QtGui -isystem C:/Qt/6.10.2/msvc2022_64/include/QtOpenGL -isystem C:/Qt/6.10.2/msvc2022_64/include/QtSql
   OBJECT_DIR = CMakeFiles\appAttendanceServer.dir
   OBJECT_FILE_DIR = CMakeFiles\appAttendanceServer.dir
   TARGET_SUPPORT_DIR = CMakeFiles\appAttendanceServer.dir
 
-build CMakeFiles/appAttendanceServer.dir/build/.qt/rcc/qrc_qmake_AttendanceServer.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_ D$:/QTproject/AttendanceServer/build/.qt/rcc/qrc_qmake_AttendanceServer.cpp || cmake_object_order_depends_target_appAttendanceServer
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_NO_DEBUG -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+build CMakeFiles/appAttendanceServer.dir/build/.qt/rcc/qrc_qmake_AttendanceServer.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_Debug D$:/QTproject/AttendanceServer/build/.qt/rcc/qrc_qmake_AttendanceServer.cpp || cmake_object_order_depends_target_appAttendanceServer
+  CONFIG = Debug
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\appAttendanceServer.dir\build\.qt\rcc\qrc_qmake_AttendanceServer.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -ID:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/include -ID:/QTproject/AttendanceServer -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQml -isystem C:/Qt/6.10.2/msvc2022_64/include -isystem C:/Qt/6.10.2/msvc2022_64/include/QtCore -isystem C:/Qt/6.10.2/msvc2022_64/mkspecs/win32-msvc -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQmlIntegration -isystem C:/Qt/6.10.2/msvc2022_64/include/QtNetwork -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQuick -isystem C:/Qt/6.10.2/msvc2022_64/include/QtGui -isystem C:/Qt/6.10.2/msvc2022_64/include/QtOpenGL -isystem C:/Qt/6.10.2/msvc2022_64/include/QtSql
   OBJECT_DIR = CMakeFiles\appAttendanceServer.dir
   OBJECT_FILE_DIR = CMakeFiles\appAttendanceServer.dir\build\.qt\rcc
   TARGET_SUPPORT_DIR = CMakeFiles\appAttendanceServer.dir
 
-build CMakeFiles/appAttendanceServer.dir/src/DataManager/datamanager.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_ D$:/QTproject/AttendanceServer/src/DataManager/datamanager.cpp || cmake_object_order_depends_target_appAttendanceServer
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_NO_DEBUG -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+build CMakeFiles/appAttendanceServer.dir/src/DataManager/datamanager.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_Debug D$:/QTproject/AttendanceServer/src/DataManager/datamanager.cpp || cmake_object_order_depends_target_appAttendanceServer
+  CONFIG = Debug
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\appAttendanceServer.dir\src\DataManager\datamanager.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -ID:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/include -ID:/QTproject/AttendanceServer -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQml -isystem C:/Qt/6.10.2/msvc2022_64/include -isystem C:/Qt/6.10.2/msvc2022_64/include/QtCore -isystem C:/Qt/6.10.2/msvc2022_64/mkspecs/win32-msvc -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQmlIntegration -isystem C:/Qt/6.10.2/msvc2022_64/include/QtNetwork -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQuick -isystem C:/Qt/6.10.2/msvc2022_64/include/QtGui -isystem C:/Qt/6.10.2/msvc2022_64/include/QtOpenGL -isystem C:/Qt/6.10.2/msvc2022_64/include/QtSql
   OBJECT_DIR = CMakeFiles\appAttendanceServer.dir
   OBJECT_FILE_DIR = CMakeFiles\appAttendanceServer.dir\src\DataManager
   TARGET_SUPPORT_DIR = CMakeFiles\appAttendanceServer.dir
 
-build CMakeFiles/appAttendanceServer.dir/src/Models/Person.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_ D$:/QTproject/AttendanceServer/src/Models/Person.cpp || cmake_object_order_depends_target_appAttendanceServer
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_NO_DEBUG -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+build CMakeFiles/appAttendanceServer.dir/src/Models/Person.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_Debug D$:/QTproject/AttendanceServer/src/Models/Person.cpp || cmake_object_order_depends_target_appAttendanceServer
+  CONFIG = Debug
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\appAttendanceServer.dir\src\Models\Person.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -ID:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/include -ID:/QTproject/AttendanceServer -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQml -isystem C:/Qt/6.10.2/msvc2022_64/include -isystem C:/Qt/6.10.2/msvc2022_64/include/QtCore -isystem C:/Qt/6.10.2/msvc2022_64/mkspecs/win32-msvc -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQmlIntegration -isystem C:/Qt/6.10.2/msvc2022_64/include/QtNetwork -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQuick -isystem C:/Qt/6.10.2/msvc2022_64/include/QtGui -isystem C:/Qt/6.10.2/msvc2022_64/include/QtOpenGL -isystem C:/Qt/6.10.2/msvc2022_64/include/QtSql
   OBJECT_DIR = CMakeFiles\appAttendanceServer.dir
   OBJECT_FILE_DIR = CMakeFiles\appAttendanceServer.dir\src\Models
   TARGET_SUPPORT_DIR = CMakeFiles\appAttendanceServer.dir
 
-build CMakeFiles/appAttendanceServer.dir/src/Models/attendancerecord.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_ D$:/QTproject/AttendanceServer/src/Models/attendancerecord.cpp || cmake_object_order_depends_target_appAttendanceServer
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_NO_DEBUG -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+build CMakeFiles/appAttendanceServer.dir/src/Models/attendancerecord.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_Debug D$:/QTproject/AttendanceServer/src/Models/attendancerecord.cpp || cmake_object_order_depends_target_appAttendanceServer
+  CONFIG = Debug
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\appAttendanceServer.dir\src\Models\attendancerecord.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -ID:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/include -ID:/QTproject/AttendanceServer -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQml -isystem C:/Qt/6.10.2/msvc2022_64/include -isystem C:/Qt/6.10.2/msvc2022_64/include/QtCore -isystem C:/Qt/6.10.2/msvc2022_64/mkspecs/win32-msvc -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQmlIntegration -isystem C:/Qt/6.10.2/msvc2022_64/include/QtNetwork -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQuick -isystem C:/Qt/6.10.2/msvc2022_64/include/QtGui -isystem C:/Qt/6.10.2/msvc2022_64/include/QtOpenGL -isystem C:/Qt/6.10.2/msvc2022_64/include/QtSql
   OBJECT_DIR = CMakeFiles\appAttendanceServer.dir
   OBJECT_FILE_DIR = CMakeFiles\appAttendanceServer.dir\src\Models
   TARGET_SUPPORT_DIR = CMakeFiles\appAttendanceServer.dir
 
-build CMakeFiles/appAttendanceServer.dir/src/Models/device.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_ D$:/QTproject/AttendanceServer/src/Models/device.cpp || cmake_object_order_depends_target_appAttendanceServer
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_NO_DEBUG -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+build CMakeFiles/appAttendanceServer.dir/src/Models/device.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_Debug D$:/QTproject/AttendanceServer/src/Models/device.cpp || cmake_object_order_depends_target_appAttendanceServer
+  CONFIG = Debug
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\appAttendanceServer.dir\src\Models\device.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -ID:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/include -ID:/QTproject/AttendanceServer -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQml -isystem C:/Qt/6.10.2/msvc2022_64/include -isystem C:/Qt/6.10.2/msvc2022_64/include/QtCore -isystem C:/Qt/6.10.2/msvc2022_64/mkspecs/win32-msvc -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQmlIntegration -isystem C:/Qt/6.10.2/msvc2022_64/include/QtNetwork -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQuick -isystem C:/Qt/6.10.2/msvc2022_64/include/QtGui -isystem C:/Qt/6.10.2/msvc2022_64/include/QtOpenGL -isystem C:/Qt/6.10.2/msvc2022_64/include/QtSql
   OBJECT_DIR = CMakeFiles\appAttendanceServer.dir
   OBJECT_FILE_DIR = CMakeFiles\appAttendanceServer.dir\src\Models
   TARGET_SUPPORT_DIR = CMakeFiles\appAttendanceServer.dir
 
-build CMakeFiles/appAttendanceServer.dir/src/Controllers/networkcontroller.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_ D$:/QTproject/AttendanceServer/src/Controllers/networkcontroller.cpp || cmake_object_order_depends_target_appAttendanceServer
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_NO_DEBUG -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+build CMakeFiles/appAttendanceServer.dir/src/Controllers/networkcontroller.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_Debug D$:/QTproject/AttendanceServer/src/Controllers/networkcontroller.cpp || cmake_object_order_depends_target_appAttendanceServer
+  CONFIG = Debug
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\appAttendanceServer.dir\src\Controllers\networkcontroller.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -ID:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/include -ID:/QTproject/AttendanceServer -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQml -isystem C:/Qt/6.10.2/msvc2022_64/include -isystem C:/Qt/6.10.2/msvc2022_64/include/QtCore -isystem C:/Qt/6.10.2/msvc2022_64/mkspecs/win32-msvc -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQmlIntegration -isystem C:/Qt/6.10.2/msvc2022_64/include/QtNetwork -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQuick -isystem C:/Qt/6.10.2/msvc2022_64/include/QtGui -isystem C:/Qt/6.10.2/msvc2022_64/include/QtOpenGL -isystem C:/Qt/6.10.2/msvc2022_64/include/QtSql
   OBJECT_DIR = CMakeFiles\appAttendanceServer.dir
   OBJECT_FILE_DIR = CMakeFiles\appAttendanceServer.dir\src\Controllers
   TARGET_SUPPORT_DIR = CMakeFiles\appAttendanceServer.dir
 
-build CMakeFiles/appAttendanceServer.dir/src/DeviceMonitor/devicemonitor.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_ D$:/QTproject/AttendanceServer/src/DeviceMonitor/devicemonitor.cpp || cmake_object_order_depends_target_appAttendanceServer
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_NO_DEBUG -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+build CMakeFiles/appAttendanceServer.dir/src/DeviceMonitor/devicemonitor.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_Debug D$:/QTproject/AttendanceServer/src/DeviceMonitor/devicemonitor.cpp || cmake_object_order_depends_target_appAttendanceServer
+  CONFIG = Debug
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\appAttendanceServer.dir\src\DeviceMonitor\devicemonitor.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -ID:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/include -ID:/QTproject/AttendanceServer -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQml -isystem C:/Qt/6.10.2/msvc2022_64/include -isystem C:/Qt/6.10.2/msvc2022_64/include/QtCore -isystem C:/Qt/6.10.2/msvc2022_64/mkspecs/win32-msvc -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQmlIntegration -isystem C:/Qt/6.10.2/msvc2022_64/include/QtNetwork -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQuick -isystem C:/Qt/6.10.2/msvc2022_64/include/QtGui -isystem C:/Qt/6.10.2/msvc2022_64/include/QtOpenGL -isystem C:/Qt/6.10.2/msvc2022_64/include/QtSql
   OBJECT_DIR = CMakeFiles\appAttendanceServer.dir
   OBJECT_FILE_DIR = CMakeFiles\appAttendanceServer.dir\src\DeviceMonitor
   TARGET_SUPPORT_DIR = CMakeFiles\appAttendanceServer.dir
 
-build CMakeFiles/appAttendanceServer.dir/src/SyncManager/syncmanager.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_ D$:/QTproject/AttendanceServer/src/SyncManager/syncmanager.cpp || cmake_object_order_depends_target_appAttendanceServer
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_NO_DEBUG -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+build CMakeFiles/appAttendanceServer.dir/src/SyncManager/syncmanager.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_Debug D$:/QTproject/AttendanceServer/src/SyncManager/syncmanager.cpp || cmake_object_order_depends_target_appAttendanceServer
+  CONFIG = Debug
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\appAttendanceServer.dir\src\SyncManager\syncmanager.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -ID:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/include -ID:/QTproject/AttendanceServer -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQml -isystem C:/Qt/6.10.2/msvc2022_64/include -isystem C:/Qt/6.10.2/msvc2022_64/include/QtCore -isystem C:/Qt/6.10.2/msvc2022_64/mkspecs/win32-msvc -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQmlIntegration -isystem C:/Qt/6.10.2/msvc2022_64/include/QtNetwork -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQuick -isystem C:/Qt/6.10.2/msvc2022_64/include/QtGui -isystem C:/Qt/6.10.2/msvc2022_64/include/QtOpenGL -isystem C:/Qt/6.10.2/msvc2022_64/include/QtSql
   OBJECT_DIR = CMakeFiles\appAttendanceServer.dir
   OBJECT_FILE_DIR = CMakeFiles\appAttendanceServer.dir\src\SyncManager
   TARGET_SUPPORT_DIR = CMakeFiles\appAttendanceServer.dir
 
-build CMakeFiles/appAttendanceServer.dir/build/.rcc/qmlcache/appAttendanceServer_qmlcache_loader.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_ D$:/QTproject/AttendanceServer/build/.rcc/qmlcache/appAttendanceServer_qmlcache_loader.cpp || cmake_object_order_depends_target_appAttendanceServer
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_NO_DEBUG -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+build CMakeFiles/appAttendanceServer.dir/src/AttendanceAnalyzer/attendanceanalyzer.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_Debug D$:/QTproject/AttendanceServer/src/AttendanceAnalyzer/attendanceanalyzer.cpp || cmake_object_order_depends_target_appAttendanceServer
+  CONFIG = Debug
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEP_FILE = CMakeFiles\appAttendanceServer.dir\src\AttendanceAnalyzer\attendanceanalyzer.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -ID:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/include -ID:/QTproject/AttendanceServer -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQml -isystem C:/Qt/6.10.2/msvc2022_64/include -isystem C:/Qt/6.10.2/msvc2022_64/include/QtCore -isystem C:/Qt/6.10.2/msvc2022_64/mkspecs/win32-msvc -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQmlIntegration -isystem C:/Qt/6.10.2/msvc2022_64/include/QtNetwork -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQuick -isystem C:/Qt/6.10.2/msvc2022_64/include/QtGui -isystem C:/Qt/6.10.2/msvc2022_64/include/QtOpenGL -isystem C:/Qt/6.10.2/msvc2022_64/include/QtSql
+  OBJECT_DIR = CMakeFiles\appAttendanceServer.dir
+  OBJECT_FILE_DIR = CMakeFiles\appAttendanceServer.dir\src\AttendanceAnalyzer
+  TARGET_SUPPORT_DIR = CMakeFiles\appAttendanceServer.dir
+
+build CMakeFiles/appAttendanceServer.dir/build/.rcc/qmlcache/appAttendanceServer_qmlcache_loader.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_Debug D$:/QTproject/AttendanceServer/build/.rcc/qmlcache/appAttendanceServer_qmlcache_loader.cpp || cmake_object_order_depends_target_appAttendanceServer
+  CONFIG = Debug
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\appAttendanceServer.dir\build\.rcc\qmlcache\appAttendanceServer_qmlcache_loader.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -ID:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/include -ID:/QTproject/AttendanceServer -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQml -isystem C:/Qt/6.10.2/msvc2022_64/include -isystem C:/Qt/6.10.2/msvc2022_64/include/QtCore -isystem C:/Qt/6.10.2/msvc2022_64/mkspecs/win32-msvc -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQmlIntegration -isystem C:/Qt/6.10.2/msvc2022_64/include/QtNetwork -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQuick -isystem C:/Qt/6.10.2/msvc2022_64/include/QtGui -isystem C:/Qt/6.10.2/msvc2022_64/include/QtOpenGL -isystem C:/Qt/6.10.2/msvc2022_64/include/QtSql
   OBJECT_DIR = CMakeFiles\appAttendanceServer.dir
   OBJECT_FILE_DIR = CMakeFiles\appAttendanceServer.dir\build\.rcc\qmlcache
   TARGET_SUPPORT_DIR = CMakeFiles\appAttendanceServer.dir
 
-build CMakeFiles/appAttendanceServer.dir/build/.rcc/qmlcache/appAttendanceServer_Main_qml.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_ D$:/QTproject/AttendanceServer/build/.rcc/qmlcache/appAttendanceServer_Main_qml.cpp || cmake_object_order_depends_target_appAttendanceServer
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_NO_DEBUG -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+build CMakeFiles/appAttendanceServer.dir/build/.rcc/qmlcache/appAttendanceServer_Main_qml.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_Debug D$:/QTproject/AttendanceServer/build/.rcc/qmlcache/appAttendanceServer_Main_qml.cpp || cmake_object_order_depends_target_appAttendanceServer
+  CONFIG = Debug
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\appAttendanceServer.dir\build\.rcc\qmlcache\appAttendanceServer_Main_qml.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -ID:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/include -ID:/QTproject/AttendanceServer -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQml -isystem C:/Qt/6.10.2/msvc2022_64/include -isystem C:/Qt/6.10.2/msvc2022_64/include/QtCore -isystem C:/Qt/6.10.2/msvc2022_64/mkspecs/win32-msvc -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQmlIntegration -isystem C:/Qt/6.10.2/msvc2022_64/include/QtNetwork -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQuick -isystem C:/Qt/6.10.2/msvc2022_64/include/QtGui -isystem C:/Qt/6.10.2/msvc2022_64/include/QtOpenGL -isystem C:/Qt/6.10.2/msvc2022_64/include/QtSql
   OBJECT_DIR = CMakeFiles\appAttendanceServer.dir
   OBJECT_FILE_DIR = CMakeFiles\appAttendanceServer.dir\build\.rcc\qmlcache
   TARGET_SUPPORT_DIR = CMakeFiles\appAttendanceServer.dir
 
-build CMakeFiles/appAttendanceServer.dir/build/.qt/rcc/qrc_appAttendanceServer_raw_qml_0.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_ D$:/QTproject/AttendanceServer/build/.qt/rcc/qrc_appAttendanceServer_raw_qml_0.cpp || cmake_object_order_depends_target_appAttendanceServer
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_NO_DEBUG -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+build CMakeFiles/appAttendanceServer.dir/build/.qt/rcc/qrc_appAttendanceServer_raw_qml_0.cpp.obj: CXX_COMPILER__appAttendanceServer_unscanned_Debug D$:/QTproject/AttendanceServer/build/.qt/rcc/qrc_appAttendanceServer_raw_qml_0.cpp || cmake_object_order_depends_target_appAttendanceServer
+  CONFIG = Debug
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\appAttendanceServer.dir\build\.qt\rcc\qrc_appAttendanceServer_raw_qml_0.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -ID:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/include -ID:/QTproject/AttendanceServer -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQml -isystem C:/Qt/6.10.2/msvc2022_64/include -isystem C:/Qt/6.10.2/msvc2022_64/include/QtCore -isystem C:/Qt/6.10.2/msvc2022_64/mkspecs/win32-msvc -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQmlIntegration -isystem C:/Qt/6.10.2/msvc2022_64/include/QtNetwork -isystem C:/Qt/6.10.2/msvc2022_64/include/QtQuick -isystem C:/Qt/6.10.2/msvc2022_64/include/QtGui -isystem C:/Qt/6.10.2/msvc2022_64/include/QtOpenGL -isystem C:/Qt/6.10.2/msvc2022_64/include/QtSql
   OBJECT_DIR = CMakeFiles\appAttendanceServer.dir
   OBJECT_FILE_DIR = CMakeFiles\appAttendanceServer.dir\build\.qt\rcc
@@ -173,9 +217,11 @@ build CMakeFiles/appAttendanceServer.dir/build/.qt/rcc/qrc_appAttendanceServer_r
 #############################################
 # Link the executable appAttendanceServer.exe
 
-build appAttendanceServer.exe: CXX_EXECUTABLE_LINKER__appAttendanceServer_ CMakeFiles/appAttendanceServer.dir/appAttendanceServer_autogen/mocs_compilation.cpp.obj CMakeFiles/appAttendanceServer.dir/main.cpp.obj CMakeFiles/appAttendanceServer.dir/src/TcpServer/tcpserver.cpp.obj CMakeFiles/appAttendanceServer.dir/appattendanceserver_qmltyperegistrations.cpp.obj CMakeFiles/appAttendanceServer.dir/build/.qt/rcc/qrc_qmake_AttendanceServer.cpp.obj CMakeFiles/appAttendanceServer.dir/src/DataManager/datamanager.cpp.obj CMakeFiles/appAttendanceServer.dir/src/Models/Person.cpp.obj CMakeFiles/appAttendanceServer.dir/src/Models/attendancerecord.cpp.obj CMakeFiles/appAttendanceServer.dir/src/Models/device.cpp.obj CMakeFiles/appAttendanceServer.dir/src/Controllers/networkcontroller.cpp.obj CMakeFiles/appAttendanceServer.dir/src/DeviceMonitor/devicemonitor.cpp.obj CMakeFiles/appAttendanceServer.dir/src/SyncManager/syncmanager.cpp.obj CMakeFiles/appAttendanceServer.dir/build/.rcc/qmlcache/appAttendanceServer_qmlcache_loader.cpp.obj CMakeFiles/appAttendanceServer.dir/build/.rcc/qmlcache/appAttendanceServer_Main_qml.cpp.obj CMakeFiles/appAttendanceServer.dir/build/.qt/rcc/qrc_appAttendanceServer_raw_qml_0.cpp.obj | C$:/Qt/6.10.2/msvc2022_64/lib/Qt6Quick.lib C$:/Qt/6.10.2/msvc2022_64/lib/Qt6Sql.lib C$:/Qt/6.10.2/msvc2022_64/lib/Qt6OpenGL.lib C$:/Qt/6.10.2/msvc2022_64/lib/Qt6Gui.lib C$:/Qt/6.10.2/msvc2022_64/lib/Qt6Qml.lib C$:/Qt/6.10.2/msvc2022_64/lib/Qt6Network.lib C$:/Qt/6.10.2/msvc2022_64/lib/Qt6Core.lib C$:/Qt/6.10.2/msvc2022_64/lib/Qt6EntryPoint.lib || appAttendanceServer_autogen appAttendanceServer_autogen_timestamp_deps appAttendanceServer_copy_qml appAttendanceServer_copy_res appAttendanceServer_qmlimportscan generate_qmlls_build_ini_file
+build appAttendanceServer.exe: CXX_EXECUTABLE_LINKER__appAttendanceServer_Debug CMakeFiles/appAttendanceServer.dir/appAttendanceServer_autogen/mocs_compilation.cpp.obj CMakeFiles/appAttendanceServer.dir/main.cpp.obj CMakeFiles/appAttendanceServer.dir/src/TcpServer/tcpserver.cpp.obj CMakeFiles/appAttendanceServer.dir/appattendanceserver_qmltyperegistrations.cpp.obj CMakeFiles/appAttendanceServer.dir/build/.qt/rcc/qrc_qmake_AttendanceServer.cpp.obj CMakeFiles/appAttendanceServer.dir/src/DataManager/datamanager.cpp.obj CMakeFiles/appAttendanceServer.dir/src/Models/Person.cpp.obj CMakeFiles/appAttendanceServer.dir/src/Models/attendancerecord.cpp.obj CMakeFiles/appAttendanceServer.dir/src/Models/device.cpp.obj CMakeFiles/appAttendanceServer.dir/src/Controllers/networkcontroller.cpp.obj CMakeFiles/appAttendanceServer.dir/src/DeviceMonitor/devicemonitor.cpp.obj CMakeFiles/appAttendanceServer.dir/src/SyncManager/syncmanager.cpp.obj CMakeFiles/appAttendanceServer.dir/src/AttendanceAnalyzer/attendanceanalyzer.cpp.obj CMakeFiles/appAttendanceServer.dir/build/.rcc/qmlcache/appAttendanceServer_qmlcache_loader.cpp.obj CMakeFiles/appAttendanceServer.dir/build/.rcc/qmlcache/appAttendanceServer_Main_qml.cpp.obj CMakeFiles/appAttendanceServer.dir/build/.qt/rcc/qrc_appAttendanceServer_raw_qml_0.cpp.obj | C$:/Qt/6.10.2/msvc2022_64/lib/Qt6Quickd.lib C$:/Qt/6.10.2/msvc2022_64/lib/Qt6Sqld.lib C$:/Qt/6.10.2/msvc2022_64/lib/Qt6OpenGLd.lib C$:/Qt/6.10.2/msvc2022_64/lib/Qt6Guid.lib C$:/Qt/6.10.2/msvc2022_64/lib/Qt6Qmld.lib C$:/Qt/6.10.2/msvc2022_64/lib/Qt6Networkd.lib C$:/Qt/6.10.2/msvc2022_64/lib/Qt6Cored.lib C$:/Qt/6.10.2/msvc2022_64/lib/Qt6EntryPointd.lib || appAttendanceServer_autogen appAttendanceServer_autogen_timestamp_deps appAttendanceServer_copy_qml appAttendanceServer_copy_res appAttendanceServer_generate_qmlls_ini_file appAttendanceServer_qmlimportscan generate_qmlls_build_ini_file
+  CONFIG = Debug
+  FLAGS = -g
   LINK_FLAGS = -mwindows
-  LINK_LIBRARIES = C:/Qt/6.10.2/msvc2022_64/lib/Qt6Quick.lib  C:/Qt/6.10.2/msvc2022_64/lib/Qt6Sql.lib  C:/Qt/6.10.2/msvc2022_64/lib/Qt6OpenGL.lib  C:/Qt/6.10.2/msvc2022_64/lib/Qt6Gui.lib  -ld3d11  -ldxgi  -ldxguid  -ld3d12  -luser32  C:/Qt/6.10.2/msvc2022_64/lib/Qt6Qml.lib  C:/Qt/6.10.2/msvc2022_64/lib/Qt6Network.lib  -lws2_32  C:/Qt/6.10.2/msvc2022_64/lib/Qt6Core.lib  -lmpr  -luserenv  C:/Qt/6.10.2/msvc2022_64/lib/Qt6EntryPoint.lib  -lshell32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  LINK_LIBRARIES = C:/Qt/6.10.2/msvc2022_64/lib/Qt6Quickd.lib  C:/Qt/6.10.2/msvc2022_64/lib/Qt6Sqld.lib  C:/Qt/6.10.2/msvc2022_64/lib/Qt6OpenGLd.lib  C:/Qt/6.10.2/msvc2022_64/lib/Qt6Guid.lib  -ld3d11  -ldxgi  -ldxguid  -ld3d12  -luser32  C:/Qt/6.10.2/msvc2022_64/lib/Qt6Qmld.lib  C:/Qt/6.10.2/msvc2022_64/lib/Qt6Networkd.lib  -lws2_32  C:/Qt/6.10.2/msvc2022_64/lib/Qt6Cored.lib  -lmpr  -luserenv  C:/Qt/6.10.2/msvc2022_64/lib/Qt6EntryPointd.lib  -lshell32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\appAttendanceServer.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
@@ -243,6 +289,12 @@ build appAttendanceServer_copy_qml: phony CMakeFiles/appAttendanceServer_copy_qm
 # Utility command for appAttendanceServer_copy_res
 
 build appAttendanceServer_copy_res: phony CMakeFiles/appAttendanceServer_copy_res .qt/appAttendanceServer_res.txt
+
+
+#############################################
+# Utility command for appAttendanceServer_generate_qmlls_ini_file
+
+build appAttendanceServer_generate_qmlls_ini_file: phony CMakeFiles/appAttendanceServer_generate_qmlls_ini_file .qt/qmlls.ini.timestamp D$:/QTproject/AttendanceServer/.qmlls.ini .qt/qmlls.ini.build
 
 
 #############################################
@@ -338,7 +390,7 @@ build install/strip: phony CMakeFiles/install/strip.util
 #############################################
 # Utility command for appAttendanceServer_autogen_timestamp_deps
 
-build appAttendanceServer_autogen_timestamp_deps: phony appAttendanceServer_copy_qml appAttendanceServer_copy_res appAttendanceServer_qmlimportscan generate_qmlls_build_ini_file
+build appAttendanceServer_autogen_timestamp_deps: phony appAttendanceServer_copy_qml appAttendanceServer_copy_res appAttendanceServer_generate_qmlls_ini_file appAttendanceServer_qmlimportscan generate_qmlls_build_ini_file
 
 
 #############################################
@@ -350,7 +402,7 @@ build appAttendanceServer_autogen: phony CMakeFiles/appAttendanceServer_autogen 
 #############################################
 # Custom command for meta_types\qt6appattendanceserver_metatypes.json.gen
 
-build meta_types/qt6appattendanceserver_metatypes.json.gen meta_types/qt6appattendanceserver_metatypes.json | ${cmake_ninja_workdir}meta_types/qt6appattendanceserver_metatypes.json.gen ${cmake_ninja_workdir}meta_types/qt6appattendanceserver_metatypes.json: CUSTOM_COMMAND C$:/Qt/6.10.2/msvc2022_64/bin/moc.exe meta_types/appAttendanceServer_json_file_list.txt || appAttendanceServer_autogen appAttendanceServer_autogen_timestamp_deps appAttendanceServer_copy_qml appAttendanceServer_copy_res appAttendanceServer_qmlimportscan generate_qmlls_build_ini_file
+build meta_types/qt6appattendanceserver_metatypes.json.gen meta_types/qt6appattendanceserver_metatypes.json | ${cmake_ninja_workdir}meta_types/qt6appattendanceserver_metatypes.json.gen ${cmake_ninja_workdir}meta_types/qt6appattendanceserver_metatypes.json: CUSTOM_COMMAND C$:/Qt/6.10.2/msvc2022_64/bin/moc.exe meta_types/appAttendanceServer_json_file_list.txt || appAttendanceServer_autogen appAttendanceServer_autogen_timestamp_deps appAttendanceServer_copy_qml appAttendanceServer_copy_res appAttendanceServer_generate_qmlls_ini_file appAttendanceServer_qmlimportscan generate_qmlls_build_ini_file
   COMMAND = C:\windows\system32\cmd.exe /C "cd /D D:\QTproject\AttendanceServer\build && C:\Qt\6.10.2\msvc2022_64\bin\moc.exe -o D:/QTproject/AttendanceServer/build/meta_types/qt6appattendanceserver_metatypes.json.gen --collect-json @D:/QTproject/AttendanceServer/build/meta_types/appAttendanceServer_json_file_list.txt && "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different D:/QTproject/AttendanceServer/build/meta_types/qt6appattendanceserver_metatypes.json.gen D:/QTproject/AttendanceServer/build/meta_types/qt6appattendanceserver_metatypes.json"
   DESC = Running moc --collect-json for target appAttendanceServer
   restat = 1
@@ -368,7 +420,7 @@ build appattendanceserver_qmltyperegistrations.cpp AttendanceServer/appAttendanc
 #############################################
 # Custom command for .qt\rcc\qrc_qmake_AttendanceServer.cpp
 
-build .qt/rcc/qrc_qmake_AttendanceServer.cpp | ${cmake_ninja_workdir}.qt/rcc/qrc_qmake_AttendanceServer.cpp: CUSTOM_COMMAND AttendanceServer/qmldir .qt/rcc/qmake_AttendanceServer.qrc C$:/Qt/6.10.2/msvc2022_64/bin/rcc.exe || appAttendanceServer_autogen appAttendanceServer_autogen_timestamp_deps appAttendanceServer_copy_qml appAttendanceServer_copy_res appAttendanceServer_qmlimportscan generate_qmlls_build_ini_file
+build .qt/rcc/qrc_qmake_AttendanceServer.cpp | ${cmake_ninja_workdir}.qt/rcc/qrc_qmake_AttendanceServer.cpp: CUSTOM_COMMAND AttendanceServer/qmldir .qt/rcc/qmake_AttendanceServer.qrc C$:/Qt/6.10.2/msvc2022_64/bin/rcc.exe || appAttendanceServer_autogen appAttendanceServer_autogen_timestamp_deps appAttendanceServer_copy_qml appAttendanceServer_copy_res appAttendanceServer_generate_qmlls_ini_file appAttendanceServer_qmlimportscan generate_qmlls_build_ini_file
   COMMAND = C:\windows\system32\cmd.exe /C "cd /D D:\QTproject\AttendanceServer\build && C:\Qt\6.10.2\msvc2022_64\bin\rcc.exe --output D:/QTproject/AttendanceServer/build/.qt/rcc/qrc_qmake_AttendanceServer.cpp --name qmake_AttendanceServer D:/QTproject/AttendanceServer/build/.qt/rcc/qmake_AttendanceServer.qrc --no-zstd"
   DESC = Running rcc for resource qmake_AttendanceServer
   restat = 1
@@ -377,7 +429,7 @@ build .qt/rcc/qrc_qmake_AttendanceServer.cpp | ${cmake_ninja_workdir}.qt/rcc/qrc
 #############################################
 # Custom command for .rcc\qmlcache\appAttendanceServer_qmlcache_loader.cpp
 
-build .rcc/qmlcache/appAttendanceServer_qmlcache_loader.cpp | ${cmake_ninja_workdir}.rcc/qmlcache/appAttendanceServer_qmlcache_loader.cpp: CUSTOM_COMMAND C$:/Qt/6.10.2/msvc2022_64/bin/qmlcachegen.exe .rcc/qmlcache/appAttendanceServer_qml_loader_file_list.rsp .qt/rcc/qmake_AttendanceServer.qrc .qt/rcc/appAttendanceServer_raw_qml_0.qrc || appAttendanceServer_autogen appAttendanceServer_autogen_timestamp_deps appAttendanceServer_copy_qml appAttendanceServer_copy_res appAttendanceServer_qmlimportscan generate_qmlls_build_ini_file
+build .rcc/qmlcache/appAttendanceServer_qmlcache_loader.cpp | ${cmake_ninja_workdir}.rcc/qmlcache/appAttendanceServer_qmlcache_loader.cpp: CUSTOM_COMMAND C$:/Qt/6.10.2/msvc2022_64/bin/qmlcachegen.exe .rcc/qmlcache/appAttendanceServer_qml_loader_file_list.rsp .qt/rcc/qmake_AttendanceServer.qrc .qt/rcc/appAttendanceServer_raw_qml_0.qrc || appAttendanceServer_autogen appAttendanceServer_autogen_timestamp_deps appAttendanceServer_copy_qml appAttendanceServer_copy_res appAttendanceServer_generate_qmlls_ini_file appAttendanceServer_qmlimportscan generate_qmlls_build_ini_file
   COMMAND = C:\windows\system32\cmd.exe /C "cd /D D:\QTproject\AttendanceServer\build && D:\QTproject\AttendanceServer\build\.qt\bin\qt_setup_tool_path.bat C:/Qt/6.10.2/msvc2022_64/bin/qmlcachegen.exe --resource-name qmlcache_appAttendanceServer -o D:/QTproject/AttendanceServer/build/.rcc/qmlcache/appAttendanceServer_qmlcache_loader.cpp @D:/QTproject/AttendanceServer/build/.rcc/qmlcache/appAttendanceServer_qml_loader_file_list.rsp"
   DESC = Generating .rcc/qmlcache/appAttendanceServer_qmlcache_loader.cpp
   restat = 1
@@ -395,7 +447,7 @@ build .rcc/qmlcache/appAttendanceServer_Main_qml.cpp .rcc/qmlcache/appAttendance
 #############################################
 # Custom command for .qt\rcc\qrc_appAttendanceServer_raw_qml_0.cpp
 
-build .qt/rcc/qrc_appAttendanceServer_raw_qml_0.cpp | ${cmake_ninja_workdir}.qt/rcc/qrc_appAttendanceServer_raw_qml_0.cpp: CUSTOM_COMMAND D$:/QTproject/AttendanceServer/Main.qml .qt/rcc/appAttendanceServer_raw_qml_0.qrc C$:/Qt/6.10.2/msvc2022_64/bin/rcc.exe || appAttendanceServer_autogen appAttendanceServer_autogen_timestamp_deps appAttendanceServer_copy_qml appAttendanceServer_copy_res appAttendanceServer_qmlimportscan generate_qmlls_build_ini_file
+build .qt/rcc/qrc_appAttendanceServer_raw_qml_0.cpp | ${cmake_ninja_workdir}.qt/rcc/qrc_appAttendanceServer_raw_qml_0.cpp: CUSTOM_COMMAND D$:/QTproject/AttendanceServer/Main.qml .qt/rcc/appAttendanceServer_raw_qml_0.qrc C$:/Qt/6.10.2/msvc2022_64/bin/rcc.exe || appAttendanceServer_autogen appAttendanceServer_autogen_timestamp_deps appAttendanceServer_copy_qml appAttendanceServer_copy_res appAttendanceServer_generate_qmlls_ini_file appAttendanceServer_qmlimportscan generate_qmlls_build_ini_file
   COMMAND = C:\windows\system32\cmd.exe /C "cd /D D:\QTproject\AttendanceServer\build && C:\Qt\6.10.2\msvc2022_64\bin\rcc.exe --output D:/QTproject/AttendanceServer/build/.qt/rcc/qrc_appAttendanceServer_raw_qml_0.cpp --name appAttendanceServer_raw_qml_0 D:/QTproject/AttendanceServer/build/.qt/rcc/appAttendanceServer_raw_qml_0.qrc --no-zstd"
   DESC = Running rcc for resource appAttendanceServer_raw_qml_0
   restat = 1
@@ -404,8 +456,8 @@ build .qt/rcc/qrc_appAttendanceServer_raw_qml_0.cpp | ${cmake_ninja_workdir}.qt/
 #############################################
 # Custom command for appAttendanceServer_autogen\timestamp
 
-build appAttendanceServer_autogen/timestamp appAttendanceServer_autogen/mocs_compilation.cpp | ${cmake_ninja_workdir}appAttendanceServer_autogen/timestamp ${cmake_ninja_workdir}appAttendanceServer_autogen/mocs_compilation.cpp: CUSTOM_COMMAND C$:/Qt/6.10.2/msvc2022_64/bin/moc.exe || appAttendanceServer_autogen_timestamp_deps appAttendanceServer_copy_qml appAttendanceServer_copy_res appAttendanceServer_qmlimportscan generate_qmlls_build_ini_file
-  COMMAND = C:\windows\system32\cmd.exe /C "cd /D D:\QTproject\AttendanceServer\build && "C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen D:/QTproject/AttendanceServer/build/CMakeFiles/appAttendanceServer_autogen.dir/AutogenInfo.json "" && "C:\Program Files\CMake\bin\cmake.exe" -E touch D:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/timestamp && "C:\Program Files\CMake\bin\cmake.exe" -E cmake_transform_depfile Ninja gccdepfile D:/QTproject/AttendanceServer D:/QTproject/AttendanceServer D:/QTproject/AttendanceServer/build D:/QTproject/AttendanceServer/build D:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/deps D:/QTproject/AttendanceServer/build/CMakeFiles/d/228fdc87bb16785157d08ab9e00002cb720c7d5f40c71d511ea47b82ca80dfce.d"
+build appAttendanceServer_autogen/timestamp appAttendanceServer_autogen/mocs_compilation.cpp | ${cmake_ninja_workdir}appAttendanceServer_autogen/timestamp ${cmake_ninja_workdir}appAttendanceServer_autogen/mocs_compilation.cpp: CUSTOM_COMMAND C$:/Qt/6.10.2/msvc2022_64/bin/moc.exe || appAttendanceServer_autogen_timestamp_deps appAttendanceServer_copy_qml appAttendanceServer_copy_res appAttendanceServer_generate_qmlls_ini_file appAttendanceServer_qmlimportscan generate_qmlls_build_ini_file
+  COMMAND = C:\windows\system32\cmd.exe /C "cd /D D:\QTproject\AttendanceServer\build && "C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen D:/QTproject/AttendanceServer/build/CMakeFiles/appAttendanceServer_autogen.dir/AutogenInfo.json Debug && "C:\Program Files\CMake\bin\cmake.exe" -E touch D:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/timestamp && "C:\Program Files\CMake\bin\cmake.exe" -E cmake_transform_depfile Ninja gccdepfile D:/QTproject/AttendanceServer D:/QTproject/AttendanceServer D:/QTproject/AttendanceServer/build D:/QTproject/AttendanceServer/build D:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/deps D:/QTproject/AttendanceServer/build/CMakeFiles/d/228fdc87bb16785157d08ab9e00002cb720c7d5f40c71d511ea47b82ca80dfce.d"
   DESC = Automatic MOC and UIC for target appAttendanceServer
   depfile = CMakeFiles\d\228fdc87bb16785157d08ab9e00002cb720c7d5f40c71d511ea47b82ca80dfce.d
   deps = gcc
@@ -415,7 +467,7 @@ build appAttendanceServer_autogen/timestamp appAttendanceServer_autogen/mocs_com
 #############################################
 # Custom command for meta_types\appAttendanceServer_json_file_list.txt
 
-build meta_types/appAttendanceServer_json_file_list.txt meta_types/appAttendanceServer_json_file_list.txt.timestamp | ${cmake_ninja_workdir}meta_types/appAttendanceServer_json_file_list.txt ${cmake_ninja_workdir}meta_types/appAttendanceServer_json_file_list.txt.timestamp: CUSTOM_COMMAND C$:/Qt/6.10.2/msvc2022_64/bin/cmake_automoc_parser.exe appAttendanceServer_autogen/timestamp || appAttendanceServer_autogen appAttendanceServer_autogen_timestamp_deps appAttendanceServer_copy_qml appAttendanceServer_copy_res appAttendanceServer_qmlimportscan generate_qmlls_build_ini_file
+build meta_types/appAttendanceServer_json_file_list.txt meta_types/appAttendanceServer_json_file_list.txt.timestamp | ${cmake_ninja_workdir}meta_types/appAttendanceServer_json_file_list.txt ${cmake_ninja_workdir}meta_types/appAttendanceServer_json_file_list.txt.timestamp: CUSTOM_COMMAND C$:/Qt/6.10.2/msvc2022_64/bin/cmake_automoc_parser.exe appAttendanceServer_autogen/timestamp || appAttendanceServer_autogen appAttendanceServer_autogen_timestamp_deps appAttendanceServer_copy_qml appAttendanceServer_copy_res appAttendanceServer_generate_qmlls_ini_file appAttendanceServer_qmlimportscan generate_qmlls_build_ini_file
   COMMAND = C:\windows\system32\cmd.exe /C "cd /D D:\QTproject\AttendanceServer\build && C:\Qt\6.10.2\msvc2022_64\bin\cmake_automoc_parser.exe --cmake-autogen-cache-file D:/QTproject/AttendanceServer/build/CMakeFiles/appAttendanceServer_autogen.dir/ParseCache.txt --cmake-autogen-info-file D:/QTproject/AttendanceServer/build/CMakeFiles/appAttendanceServer_autogen.dir/AutogenInfo.json --output-file-path D:/QTproject/AttendanceServer/build/meta_types/appAttendanceServer_json_file_list.txt --timestamp-file-path D:/QTproject/AttendanceServer/build/meta_types/appAttendanceServer_json_file_list.txt.timestamp --cmake-autogen-include-dir-path D:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/include"
   DESC = Running AUTOMOC file extraction for target appAttendanceServer
   restat = 1
@@ -475,6 +527,30 @@ build CMakeFiles/appAttendanceServer_copy_res | ${cmake_ninja_workdir}CMakeFiles
 build .qt/appAttendanceServer_res.txt | ${cmake_ninja_workdir}.qt/appAttendanceServer_res.txt: CUSTOM_COMMAND C$:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Qml/Qt6QmlCopyFiles.cmake
   COMMAND = C:\windows\system32\cmd.exe /C "cd /D D:\QTproject\AttendanceServer\build && "C:\Program Files\CMake\bin\cmake.exe" -DFILES_INFO_PATH=D:/QTproject/AttendanceServer/build/.qt/appAttendanceServer_res.cmake -P C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Qml/Qt6QmlCopyFiles.cmake"
   DESC = Copying appAttendanceServer qml resources into build dir
+  restat = 1
+
+
+#############################################
+# Phony custom command for CMakeFiles\appAttendanceServer_generate_qmlls_ini_file
+
+build CMakeFiles/appAttendanceServer_generate_qmlls_ini_file | ${cmake_ninja_workdir}CMakeFiles/appAttendanceServer_generate_qmlls_ini_file: phony .qt/qmlls.ini.timestamp
+
+
+#############################################
+# Custom command for .qt\qmlls.ini.timestamp
+
+build .qt/qmlls.ini.timestamp D$:/QTproject/AttendanceServer/.qmlls.ini | ${cmake_ninja_workdir}.qt/qmlls.ini.timestamp: CUSTOM_COMMAND .qt/qmlls.ini.build
+  COMMAND = C:\windows\system32\cmd.exe /C "cd /D D:\QTproject\AttendanceServer\build && "C:\Program Files\CMake\bin\cmake.exe" -DqmllsIniPath=D:/QTproject/AttendanceServer/.qmlls.ini -P C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Qml/Qt6UpdateQmllsIni.cmake && "C:\Program Files\CMake\bin\cmake.exe" -E copy D:/QTproject/AttendanceServer/build/.qt/qmlls.ini.build D:/QTproject/AttendanceServer/.qmlls.ini && "C:\Program Files\CMake\bin\cmake.exe" -E touch D:/QTproject/AttendanceServer/build/.qt/qmlls.ini.timestamp"
+  DESC = Copying .qmlls.ini file at D:/QTproject/AttendanceServer/build/.qt/qmlls.ini.build to D:/QTproject/AttendanceServer/.qmlls.ini
+  restat = 1
+
+
+#############################################
+# Custom command for .qt\qmlls.ini.build
+
+build .qt/qmlls.ini.build | ${cmake_ninja_workdir}.qt/qmlls.ini.build: CUSTOM_COMMAND
+  COMMAND = C:\windows\system32\cmd.exe /C "cd /D D:\QTproject\AttendanceServer\build && "C:\Program Files\CMake\bin\cmake.exe" -E echo [General] > D:/QTproject/AttendanceServer/build/.qt/qmlls.ini.build && "C:\Program Files\CMake\bin\cmake.exe" -E echo buildDir=\"D:/QTproject/AttendanceServer/build\" >> D:/QTproject/AttendanceServer/build/.qt/qmlls.ini.build && "C:\Program Files\CMake\bin\cmake.exe" -E echo no-cmake-calls=false >> D:/QTproject/AttendanceServer/build/.qt/qmlls.ini.build && "C:\Program Files\CMake\bin\cmake.exe" -E echo_append docDir= >> D:/QTproject/AttendanceServer/build/.qt/qmlls.ini.build && D:\QTproject\AttendanceServer\build\.qt\bin\qt_setup_tool_path.bat C:/Qt/6.10.2/msvc2022_64/bin/qtpaths.exe --query QT_INSTALL_DOCS >> D:/QTproject/AttendanceServer/build/.qt/qmlls.ini.build && "C:\Program Files\CMake\bin\cmake.exe" -E echo importPaths=\"C:/Qt/6.10.2/msvc2022_64/qml\" >> D:/QTproject/AttendanceServer/build/.qt/qmlls.ini.build"
+  DESC = Populating .qmlls.ini file at D:/QTproject/AttendanceServer/build/.qt/qmlls.ini.build
   restat = 1
 
 
@@ -542,7 +618,7 @@ build .qt/qml_imports/appAttendanceServer_build.cmake | ${cmake_ninja_workdir}.q
 #############################################
 # Phony custom command for CMakeFiles\appAttendanceServer_autogen
 
-build CMakeFiles/appAttendanceServer_autogen | ${cmake_ninja_workdir}CMakeFiles/appAttendanceServer_autogen: phony appAttendanceServer_autogen/timestamp || appAttendanceServer_autogen_timestamp_deps appAttendanceServer_copy_qml appAttendanceServer_copy_res appAttendanceServer_qmlimportscan generate_qmlls_build_ini_file
+build CMakeFiles/appAttendanceServer_autogen | ${cmake_ninja_workdir}CMakeFiles/appAttendanceServer_autogen: phony appAttendanceServer_autogen/timestamp || appAttendanceServer_autogen_timestamp_deps appAttendanceServer_copy_qml appAttendanceServer_copy_res appAttendanceServer_generate_qmlls_ini_file appAttendanceServer_qmlimportscan generate_qmlls_build_ini_file
 
 # =============================================================================
 # Target aliases.
@@ -580,6 +656,7 @@ build .qt/qml_imports/appAttendanceServer_conf.cmake C$:/Program$ Files/CMake/sh
 # Clean additional files.
 
 build CMakeFiles/clean.additional: CLEAN_ADDITIONAL
+  CONFIG = Debug
 
 
 #############################################

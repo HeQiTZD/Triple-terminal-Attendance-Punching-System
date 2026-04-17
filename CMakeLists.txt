@@ -29,6 +29,7 @@ qt_add_qml_module(appAttendanceServer
         SOURCES src/Protocol/protocol.h
         SOURCES src/DeviceMonitor/devicemonitor.h src/DeviceMonitor/devicemonitor.cpp
         SOURCES src/SyncManager/syncmanager.h src/SyncManager/syncmanager.cpp
+        SOURCES src/AttendanceAnalyzer/attendanceanalyzer.h src/AttendanceAnalyzer/attendanceanalyzer.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

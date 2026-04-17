@@ -37,6 +37,7 @@ appAttendanceServer_autogen/timestamp: \
 	C:/Program\ Files/CMake/share/cmake-4.2/Modules/Platform/Windows-windres.cmake \
 	C:/Program\ Files/CMake/share/cmake-4.2/Modules/Platform/Windows.cmake \
 	C:/Program\ Files/CMake/share/cmake-4.2/Modules/Platform/WindowsPaths.cmake \
+	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QDate \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QDateTime \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QHash \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QJsonArray \
@@ -47,6 +48,7 @@ appAttendanceServer_autogen/timestamp: \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QObject \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QSet \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QString \
+	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QTime \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QTimer \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QVariant \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QVariantMap \
@@ -1363,6 +1365,8 @@ appAttendanceServer_autogen/timestamp: \
 	D:/QTproject/AttendanceServer/build/CMakeFiles/4.2.3/CMakeSystem.cmake \
 	D:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/moc_predefs.h \
 	D:/QTproject/AttendanceServer/main.cpp \
+	D:/QTproject/AttendanceServer/src/AttendanceAnalyzer/attendanceanalyzer.cpp \
+	D:/QTproject/AttendanceServer/src/AttendanceAnalyzer/attendanceanalyzer.h \
 	D:/QTproject/AttendanceServer/src/Controllers/networkcontroller.cpp \
 	D:/QTproject/AttendanceServer/src/Controllers/networkcontroller.h \
 	D:/QTproject/AttendanceServer/src/DataManager/datamanager.cpp \

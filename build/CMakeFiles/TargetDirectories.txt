@@ -9,6 +9,7 @@ D:/QTproject/AttendanceServer/build/CMakeFiles/all_qmllint_json.dir
 D:/QTproject/AttendanceServer/build/CMakeFiles/all_qmllint_module.dir
 D:/QTproject/AttendanceServer/build/CMakeFiles/appAttendanceServer_copy_qml.dir
 D:/QTproject/AttendanceServer/build/CMakeFiles/appAttendanceServer_copy_res.dir
+D:/QTproject/AttendanceServer/build/CMakeFiles/appAttendanceServer_generate_qmlls_ini_file.dir
 D:/QTproject/AttendanceServer/build/CMakeFiles/generate_qmlls_build_ini_file.dir
 D:/QTproject/AttendanceServer/build/CMakeFiles/module_appAttendanceServer_aotstats_target.dir
 D:/QTproject/AttendanceServer/build/CMakeFiles/all_aotstats.dir

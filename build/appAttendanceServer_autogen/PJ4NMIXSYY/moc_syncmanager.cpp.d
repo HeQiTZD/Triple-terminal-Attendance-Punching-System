@@ -390,4 +390,5 @@ D:/QTproject/AttendanceServer/build/appAttendanceServer_autogen/PJ4NMIXSYY/moc_s
   D:/QTproject/AttendanceServer/src/Models/Person.h \
   D:/QTproject/AttendanceServer/src/Models/attendancerecord.h \
   D:/QTproject/AttendanceServer/src/Models/device.h \
+  D:/QTproject/AttendanceServer/src/Protocol/protocol.h \
   D:/QTproject/AttendanceServer/src/TcpServer/tcpserver.h

@@ -1299,6 +1299,12 @@
 	"HEADERS" : 
 	[
 		[
+			"D:/QTproject/AttendanceServer/src/AttendanceAnalyzer/attendanceanalyzer.h",
+			"MU",
+			"R5M4TDKI6F/moc_attendanceanalyzer.cpp",
+			null
+		],
+		[
 			"D:/QTproject/AttendanceServer/src/Controllers/networkcontroller.h",
 			"MU",
 			"Y426ONDXH7/moc_networkcontroller.cpp",
@@ -1361,7 +1367,6 @@
 		"QT_CORE_LIB",
 		"QT_GUI_LIB",
 		"QT_NETWORK_LIB",
-		"QT_NO_DEBUG",
 		"QT_OPENGL_LIB",
 		"QT_QMLINTEGRATION_LIB",
 		"QT_QML_LIB",
@@ -1441,6 +1446,11 @@
 	"SOURCES" : 
 	[
 		[ "D:/QTproject/AttendanceServer/main.cpp", "MU", null ],
+		[
+			"D:/QTproject/AttendanceServer/src/AttendanceAnalyzer/attendanceanalyzer.cpp",
+			"MU",
+			null
+		],
 		[
 			"D:/QTproject/AttendanceServer/src/Controllers/networkcontroller.cpp",
 			"MU",

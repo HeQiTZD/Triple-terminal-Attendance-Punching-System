@@ -2,7 +2,7 @@
     "classes": [
         {
             "className": "SyncManager",
-            "lineNumber": 13,
+            "lineNumber": 14,
             "object": true,
             "qualifiedClassName": "SyncManager",
             "slots": [
@@ -15,7 +15,7 @@
                         }
                     ],
                     "index": 0,
-                    "lineNumber": 20,
+                    "lineNumber": 21,
                     "name": "onSynRequested",
                     "returnType": "void"
                 }

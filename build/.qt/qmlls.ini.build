@@ -2,4 +2,4 @@
 buildDir="D:/QTproject/AttendanceServer/build"
 no-cmake-calls=false
 docDir=C:/Qt/Docs/Qt-6.10.2
-importPaths="C:/Qt/6.10.2/mingw_64/qml"
+importPaths="C:/Qt/6.10.2/msvc2022_64/qml"
