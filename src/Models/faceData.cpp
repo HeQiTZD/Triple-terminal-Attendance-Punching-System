@@ -1,7 +1,7 @@
 ﻿#include "faceData.h"
 
 FaceData::FaceData(QObject *parent)
-    : QObject(parent), m_id(0), m_personId(0), m_status("")
+    : QObject(parent), m_id(0), m_personId(0), m_status(""), m_featureSize(0)
 {
 }
 
@@ -86,3 +86,17 @@ void FaceData::setUpdatedAt(const QDateTime &updatedAt)
         emit updatedAtChanged(updatedAt);
     }
 }
+
+int FaceData::featureSize() const
+{
+    return m_featureSize;
+}
+
+void FaceData::setFeatureSize(int featureSize)
+{
+    if (m_featureSize != featureSize) {
+        m_featureSize = featureSize;
+        emit featureSizeChanged(featureSize);
+    }
+}
+

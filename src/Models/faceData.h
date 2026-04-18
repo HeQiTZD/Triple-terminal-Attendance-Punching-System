@@ -15,6 +15,7 @@ class FaceData : public QObject
     Q_PROPERTY(QString status READ status WRITE setStatus NOTIFY statusChanged)
     Q_PROPERTY(QDateTime createdAt READ createdAt WRITE setCreatedAt NOTIFY createdAtChanged)
     Q_PROPERTY(QDateTime updatedAt READ updatedAt WRITE setUpdatedAt NOTIFY updatedAtChanged)
+    Q_PROPERTY(int featureSize READ featureSize WRITE setFeatureSize NOTIFY featureSizeChanged)
 
 public:
     explicit FaceData(QObject *parent = nullptr);
@@ -38,6 +39,9 @@ public:
     QDateTime updatedAt() const;
     void setUpdatedAt(const QDateTime &updatedAt);
 
+    int featureSize() const;
+    void setFeatureSize(int featureSize);
+
 signals:
     void idChanged(int id);
     void personIdChanged(int personId);
@@ -45,6 +49,7 @@ signals:
     void statusChanged(const QString &status);
     void createdAtChanged(const QDateTime &createdAt);
     void updatedAtChanged(const QDateTime &updatedAt);
+    void featureSizeChanged(int featureSize);
 
 private:
     int m_id;
@@ -53,6 +58,7 @@ private:
     QString m_status;
     QDateTime m_createdAt;
     QDateTime m_updatedAt;
+    int m_featureSize;
 };
 
 #endif // FACEDATA_H

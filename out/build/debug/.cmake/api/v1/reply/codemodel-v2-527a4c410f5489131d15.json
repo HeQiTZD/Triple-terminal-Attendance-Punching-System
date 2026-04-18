@@ -237,6 +237,13 @@
 				},
 				{
 					"directoryIndex" : 0,
+					"id" : "Qt6::QModernWindowsStylePlugin::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Qt6__QModernWindowsStylePlugin-Debug-42b8837506c0615ec67c.json",
+					"name" : "Qt6::QModernWindowsStylePlugin",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
 					"id" : "Qt6::QNLMNIPlugin::@6890427a1f51a3e7e1df",
 					"jsonFile" : "target-Qt6__QNLMNIPlugin-Debug-32a7d3045b6deb4b704e.json",
 					"name" : "Qt6::QNLMNIPlugin",
@@ -569,6 +576,13 @@
 					"id" : "Qt6::WebChannelQuickplugin::@6890427a1f51a3e7e1df",
 					"jsonFile" : "target-Qt6__WebChannelQuickplugin-Debug-d8e1b66860e081659b7a.json",
 					"name" : "Qt6::WebChannelQuickplugin",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Qt6::Widgets::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Qt6__Widgets-Debug-23d823ebf925e56ea8c2.json",
+					"name" : "Qt6::Widgets",
 					"projectIndex" : 0
 				},
 				{
@@ -1357,6 +1371,13 @@
 				},
 				{
 					"directoryIndex" : 0,
+					"id" : "Qt6::uic::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Qt6__uic-Debug-03d7cd709e934b1739aa.json",
+					"name" : "Qt6::uic",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
 					"id" : "Qt6::windeployqt::@6890427a1f51a3e7e1df",
 					"jsonFile" : "target-Qt6__windeployqt-Debug-c788913381602e03b9a2.json",
 					"name" : "Qt6::windeployqt",
@@ -1549,6 +1570,13 @@
 					"id" : "Qt::tracepointgen::@6890427a1f51a3e7e1df",
 					"jsonFile" : "target-Qt__tracepointgen-Debug-ab4f94e22d12e83c8248.json",
 					"name" : "Qt::tracepointgen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Qt::uic::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Qt__uic-Debug-3d41190df220ec38e923.json",
+					"name" : "Qt::uic",
 					"projectIndex" : 0
 				},
 				{
@@ -1817,11 +1845,15 @@
 						222,
 						223,
 						224,
-						225
+						225,
+						226,
+						227,
+						228,
+						229
 					],
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-86cec9dc7a208fb03b2f.json",
+					"jsonFile" : "directory-.-Debug-d708953116ec813b9a72.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -2081,7 +2113,11 @@
 						222,
 						223,
 						224,
-						225
+						225,
+						226,
+						227,
+						228,
+						229
 					],
 					"directoryIndexes" : 
 					[
@@ -2150,21 +2186,21 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "appAttendanceServer::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-appAttendanceServer-Debug-d117174881396bb7bb2d.json",
+					"jsonFile" : "target-appAttendanceServer-Debug-90f6f57e519e8c7b536a.json",
 					"name" : "appAttendanceServer",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "appAttendanceServer_autogen::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-appAttendanceServer_autogen-Debug-39a207c2d3ebe65bd7da.json",
+					"jsonFile" : "target-appAttendanceServer_autogen-Debug-e7eac2b1cab4a33a5bca.json",
 					"name" : "appAttendanceServer_autogen",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "appAttendanceServer_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-appAttendanceServer_autogen_timestamp_deps-Debug-a9791fe5248c329b4806.json",
+					"jsonFile" : "target-appAttendanceServer_autogen_timestamp_deps-Debug-b1fb970fa2dc66f8e306.json",
 					"name" : "appAttendanceServer_autogen_timestamp_deps",
 					"projectIndex" : 0
 				},

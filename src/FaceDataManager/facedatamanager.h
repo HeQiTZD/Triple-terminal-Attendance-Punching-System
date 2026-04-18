@@ -48,6 +48,13 @@ public:
 
     QString getErrorMessage(int errCode) const;
 
+    /**
+     * @brief 打开文件夹选择图片，返回选中的图片路径（实现见 cpp，不包含 QFileDialog 头文件）
+     * @param parent 父窗口指针
+     * @return 选中的图片路径，未选择返回空字符串
+     */
+    static QString selectImageFile(void *parent = nullptr);
+
 signals:
     void engineInitialized();
     void engineReleased();

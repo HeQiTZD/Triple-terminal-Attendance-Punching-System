@@ -525,10 +525,11 @@ bool DataManager::addFaceDataByEmployeeId(const QString& employeeId, const QByte
 
     // 插入人脸数据
     QSqlQuery query(m_db);
-    query.prepare("INSERT INTO face_data (person_id, feature_vector, status) "
-        "VALUES (:person_id, :feature_vector, :status)");
+    query.prepare("INSERT INTO face_data (person_id, feature_vector, feature_size, status) "
+        "VALUES (:person_id, :feature_vector, :feature_size, :status)");
     query.bindValue(":person_id", personId);
     query.bindValue(":feature_vector", featureVector);
+    query.bindValue(":feature_size", featureVector.size());
     query.bindValue(":status", "active");
 
     if (!query.exec()) {
@@ -585,9 +586,10 @@ bool DataManager::updateFaceDataByEmployeeId(const QString& employeeId, const QB
 
     // 更新人脸特征
     QSqlQuery query(m_db);
-    query.prepare("UPDATE face_data SET feature_vector = :feature_vector, "
+    query.prepare("UPDATE face_data SET feature_vector = :feature_vector, feature_size = :feature_size, "
         "updated_at = CURRENT_TIMESTAMP WHERE id = :id");
     query.bindValue(":feature_vector", featureVector);
+    query.bindValue(":feature_size", featureVector.size());
     query.bindValue(":id", faceDataId);
 
     if (!query.exec()) {
@@ -663,7 +665,7 @@ QObject* DataManager::getFaceDataByEmployeeId(const QString& employeeId)
 
     QSqlQuery query(m_db);
     query.prepare(
-        "SELECT fd.id, fd.person_id, fd.feature_vector, fd.status, fd.created_at, fd.updated_at "
+        "SELECT fd.id, fd.person_id, fd.feature_vector, fd.feature_size, fd.status, fd.created_at, fd.updated_at "
         "FROM face_data fd "
         "INNER JOIN Person p ON fd.person_id = p.id "
         "WHERE p.employee_id = :employee_id"
@@ -684,9 +686,10 @@ QObject* DataManager::getFaceDataByEmployeeId(const QString& employeeId)
     faceData->setId(query.value(0).toInt());
     faceData->setPersonId(query.value(1).toInt());
     faceData->setFeatureVector(query.value(2).toByteArray());
-    faceData->setStatus(query.value(3).toString());
-    faceData->setCreatedAt(query.value(4).toDateTime());
-    faceData->setUpdatedAt(query.value(5).toDateTime());
+    faceData->setFeatureSize(query.value(3).toInt());
+    faceData->setStatus(query.value(4).toString());
+    faceData->setCreatedAt(query.value(5).toDateTime());
+    faceData->setUpdatedAt(query.value(6).toDateTime());
 
     return faceData;
 }
@@ -701,7 +704,7 @@ QList<QObject*> DataManager::getAllFaceData()
 
     QSqlQuery query(m_db);
     query.prepare(
-        "SELECT id, person_id, feature_vector, status, created_at, updated_at "
+        "SELECT id, person_id, feature_vector, feature_size, status, created_at, updated_at "
         "FROM face_data ORDER BY created_at DESC"
     );
 
@@ -715,9 +718,10 @@ QList<QObject*> DataManager::getAllFaceData()
         faceData->setId(query.value(0).toInt());
         faceData->setPersonId(query.value(1).toInt());
         faceData->setFeatureVector(query.value(2).toByteArray());
-        faceData->setStatus(query.value(3).toString());
-        faceData->setCreatedAt(query.value(4).toDateTime());
-        faceData->setUpdatedAt(query.value(5).toDateTime());
+        faceData->setFeatureSize(query.value(3).toInt());
+        faceData->setStatus(query.value(4).toString());
+        faceData->setCreatedAt(query.value(5).toDateTime());
+        faceData->setUpdatedAt(query.value(6).toDateTime());
         result.append(faceData);
     }
 
@@ -776,6 +780,7 @@ CREATE TABLE IF NOT EXISTS face_data (
     id INT AUTO_INCREMENT PRIMARY KEY,
     person_id INT NOT NULL,
     feature_vector LONGBLOB NOT NULL,
+    feature_size INT NOT NULL,
     status VARCHAR(20) DEFAULT 'active' COMMENT '状态: active, inactive, failed',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
