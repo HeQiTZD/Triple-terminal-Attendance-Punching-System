@@ -56,6 +56,7 @@ E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/PJ4NMIXS
   C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/version \
   C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/yvals.h \
   C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/yvals_core.h \
+  C:/Qt/6.10.2/msvc2022_64/include/QtCore/QByteArray \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QDateTime \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QHash \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QJsonArray \
@@ -233,5 +234,6 @@ E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/PJ4NMIXS
   E:/project/AttendanceServer/src/Models/Person.h \
   E:/project/AttendanceServer/src/Models/attendancerecord.h \
   E:/project/AttendanceServer/src/Models/device.h \
+  E:/project/AttendanceServer/src/Models/faceData.h \
   E:/project/AttendanceServer/src/Protocol/protocol.h \
   E:/project/AttendanceServer/src/TcpServer/tcpserver.h

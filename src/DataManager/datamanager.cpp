@@ -446,7 +446,7 @@ QObject *DataManager::getDeviceById(const QString &deviceId)
 
 bool DataManager::createTables()
 {
-    return createPersonTable() && createAttendanceRecordTable() &&createDeviceTable();
+    return createPersonTable() && createAttendanceRecordTable() &&createDeviceTable() && createFaceDataTable();
 }
 
 bool DataManager::createPersonTable()
@@ -470,6 +470,259 @@ CREATE TABLE IF NOT EXISTS Person (
         return false;
     }
     return true;
+}
+
+// ========== 人脸数据管理实现（基于employee_id） ==========
+
+bool DataManager::addFaceDataByEmployeeId(const QString& employeeId, const QByteArray& featureVector)
+{
+    if (!m_isConnected) {
+        emit errorOccurred("Database not connected");
+        return false;
+    }
+
+    if (employeeId.isEmpty()) {
+        emit errorOccurred("Employee ID cannot be empty");
+        return false;
+    }
+
+    if (featureVector.isEmpty()) {
+        emit errorOccurred("Feature vector cannot be empty");
+        return false;
+    }
+
+    // 先根据employee_id获取person_id
+    QSqlQuery selectQuery(m_db);
+    selectQuery.prepare("SELECT id FROM Person WHERE employee_id = :employee_id");
+    selectQuery.bindValue(":employee_id", employeeId);
+
+    if (!selectQuery.exec()) {
+        emit errorOccurred("Failed to query person: " + selectQuery.lastError().text());
+        return false;
+    }
+
+    if (!selectQuery.next()) {
+        emit errorOccurred(QString("Employee with ID %1 not found").arg(employeeId));
+        return false;
+    }
+
+    int personId = selectQuery.value(0).toInt();
+
+    // 检查是否已存在该员工的人脸数据
+    QSqlQuery checkQuery(m_db);
+    checkQuery.prepare("SELECT id FROM face_data WHERE person_id = :person_id");
+    checkQuery.bindValue(":person_id", personId);
+
+    if (!checkQuery.exec()) {
+        emit errorOccurred("Failed to check face data: " + checkQuery.lastError().text());
+        return false;
+    }
+
+    if (checkQuery.next()) {
+        emit errorOccurred(QString("Face data already exists for employee %1").arg(employeeId));
+        return false;
+    }
+
+    // 插入人脸数据
+    QSqlQuery query(m_db);
+    query.prepare("INSERT INTO face_data (person_id, feature_vector, status) "
+        "VALUES (:person_id, :feature_vector, :status)");
+    query.bindValue(":person_id", personId);
+    query.bindValue(":feature_vector", featureVector);
+    query.bindValue(":status", "active");
+
+    if (!query.exec()) {
+        emit errorOccurred("Failed to add face data: " + query.lastError().text());
+        return false;
+    }
+
+    int newId = query.lastInsertId().toInt();
+    updatePersonFaceFeature(personId, featureVector);
+    emit faceDataAdded(newId, personId);
+
+    qDebug() << "Face data added for employee:" << employeeId << "with ID:" << newId;
+    return true;
+}
+
+bool DataManager::updateFaceDataByEmployeeId(const QString& employeeId, const QByteArray& featureVector)
+{
+    if (!m_isConnected) {
+        emit errorOccurred("Database not connected");
+        return false;
+    }
+
+    if (employeeId.isEmpty()) {
+        emit errorOccurred("Employee ID cannot be empty");
+        return false;
+    }
+
+    if (featureVector.isEmpty()) {
+        emit errorOccurred("Feature vector cannot be empty");
+        return false;
+    }
+
+    // 先根据employee_id获取person_id和face_data_id
+    QSqlQuery selectQuery(m_db);
+    selectQuery.prepare(
+        "SELECT fd.id, fd.person_id FROM face_data fd "
+        "INNER JOIN Person p ON fd.person_id = p.id "
+        "WHERE p.employee_id = :employee_id"
+    );
+    selectQuery.bindValue(":employee_id", employeeId);
+
+    if (!selectQuery.exec()) {
+        emit errorOccurred("Failed to query face data: " + selectQuery.lastError().text());
+        return false;
+    }
+
+    if (!selectQuery.next()) {
+        emit errorOccurred(QString("Face data not found for employee %1").arg(employeeId));
+        return false;
+    }
+
+    int faceDataId = selectQuery.value(0).toInt();
+    int personId = selectQuery.value(1).toInt();
+
+    // 更新人脸特征
+    QSqlQuery query(m_db);
+    query.prepare("UPDATE face_data SET feature_vector = :feature_vector, "
+        "updated_at = CURRENT_TIMESTAMP WHERE id = :id");
+    query.bindValue(":feature_vector", featureVector);
+    query.bindValue(":id", faceDataId);
+
+    if (!query.exec()) {
+        emit errorOccurred("Failed to update face data: " + query.lastError().text());
+        return false;
+    }
+
+    updatePersonFaceFeature(personId, featureVector);
+    emit faceDataUpdated(faceDataId, personId);
+
+    qDebug() << "Face data updated for employee:" << employeeId;
+    return true;
+}
+
+bool DataManager::deleteFaceDataByEmployeeId(const QString& employeeId)
+{
+    if (!m_isConnected) {
+        emit errorOccurred("Database not connected");
+        return false;
+    }
+
+    if (employeeId.isEmpty()) {
+        emit errorOccurred("Employee ID cannot be empty");
+        return false;
+    }
+
+    // 先根据employee_id获取face_data_id
+    QSqlQuery selectQuery(m_db);
+    selectQuery.prepare(
+        "SELECT fd.id FROM face_data fd "
+        "INNER JOIN Person p ON fd.person_id = p.id "
+        "WHERE p.employee_id = :employee_id"
+    );
+    selectQuery.bindValue(":employee_id", employeeId);
+
+    if (!selectQuery.exec()) {
+        emit errorOccurred("Failed to query face data: " + selectQuery.lastError().text());
+        return false;
+    }
+
+    if (!selectQuery.next()) {
+        emit errorOccurred(QString("Face data not found for employee %1").arg(employeeId));
+        return false;
+    }
+
+    int faceDataId = selectQuery.value(0).toInt();
+
+    // 删除数据库记录
+    QSqlQuery query(m_db);
+    query.prepare("DELETE FROM face_data WHERE id = :id");
+    query.bindValue(":id", faceDataId);
+
+    if (!query.exec()) {
+        emit errorOccurred("Failed to delete face data: " + query.lastError().text());
+        return false;
+    }
+
+    emit faceDataDeleted(faceDataId);
+
+    qDebug() << "Face data deleted for employee:" << employeeId;
+    return true;
+}
+
+QObject* DataManager::getFaceDataByEmployeeId(const QString& employeeId)
+{
+    if (!m_isConnected) {
+        return nullptr;
+    }
+
+    if (employeeId.isEmpty()) {
+        return nullptr;
+    }
+
+    QSqlQuery query(m_db);
+    query.prepare(
+        "SELECT fd.id, fd.person_id, fd.feature_vector, fd.status, fd.created_at, fd.updated_at "
+        "FROM face_data fd "
+        "INNER JOIN Person p ON fd.person_id = p.id "
+        "WHERE p.employee_id = :employee_id"
+    );
+    query.bindValue(":employee_id", employeeId);
+
+    if (!query.exec()) {
+        qWarning() << "Failed to query face data:" << query.lastError().text();
+        return nullptr;
+    }
+
+    if (!query.next()) {
+        qDebug() << "No face data found for employee:" << employeeId;
+        return nullptr;
+    }
+
+    FaceData* faceData = new FaceData();
+    faceData->setId(query.value(0).toInt());
+    faceData->setPersonId(query.value(1).toInt());
+    faceData->setFeatureVector(query.value(2).toByteArray());
+    faceData->setStatus(query.value(3).toString());
+    faceData->setCreatedAt(query.value(4).toDateTime());
+    faceData->setUpdatedAt(query.value(5).toDateTime());
+
+    return faceData;
+}
+
+QList<QObject*> DataManager::getAllFaceData()
+{
+    QList<QObject*> result;
+
+    if (!m_isConnected) {
+        return result;
+    }
+
+    QSqlQuery query(m_db);
+    query.prepare(
+        "SELECT id, person_id, feature_vector, status, created_at, updated_at "
+        "FROM face_data ORDER BY created_at DESC"
+    );
+
+    if (!query.exec()) {
+        qWarning() << "Failed to query all face data:" << query.lastError().text();
+        return result;
+    }
+
+    while (query.next()) {
+        FaceData* faceData = new FaceData();
+        faceData->setId(query.value(0).toInt());
+        faceData->setPersonId(query.value(1).toInt());
+        faceData->setFeatureVector(query.value(2).toByteArray());
+        faceData->setStatus(query.value(3).toString());
+        faceData->setCreatedAt(query.value(4).toDateTime());
+        faceData->setUpdatedAt(query.value(5).toDateTime());
+        result.append(faceData);
+    }
+
+    qDebug() << "Retrieved" << result.size() << "face data records";
+    return result;
 }
 
 bool DataManager::createAttendanceRecordTable()
@@ -512,5 +765,32 @@ CREATE TABLE IF NOT EXISTS Device (
         emit errorOccurred(query.lastError().text());
         return false;
     }
+    return true;
+}
+
+bool DataManager::createFaceDataTable()
+{
+    QSqlQuery query(m_db);
+    QString sql = R"(
+CREATE TABLE IF NOT EXISTS face_data (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    person_id INT NOT NULL,
+    feature_vector LONGBLOB NOT NULL,
+    status VARCHAR(20) DEFAULT 'active' COMMENT '状态: active, inactive, failed',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (person_id) REFERENCES Person(id) ON DELETE CASCADE,
+    INDEX idx_person_id (person_id),
+    INDEX idx_status (status)
+)
+)";
+
+    if (!query.exec(sql)) {
+        emit errorOccurred(query.lastError().text());
+        qWarning() << "Failed to create face_data table:" << query.lastError().text();
+        return false;
+    }
+
+    qDebug() << "face_data table created successfully";
     return true;
 }

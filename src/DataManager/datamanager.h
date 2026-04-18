@@ -9,7 +9,9 @@
 #include <QJsonObject>
 #include <QSet>
 #include <QVariantMap>
+#include <cmath>
 
+#include "../Models/faceData.h"
 #include "../Models/Person.h"
 #include "../Models/device.h"
 #include "../Models/attendancerecord.h"
@@ -47,6 +49,13 @@ public:
     Q_INVOKABLE QList<QObject*> getAllDevices();
     Q_INVOKABLE QObject* getDeviceById(const QString &deviceId);
 
+    // ========== 人脸数据管理（基于employee_id） ==========
+    Q_INVOKABLE bool addFaceDataByEmployeeId(const QString& employeeId, const QByteArray& featureVector);
+    Q_INVOKABLE bool updateFaceDataByEmployeeId(const QString& employeeId, const QByteArray& featureVector);
+    Q_INVOKABLE bool deleteFaceDataByEmployeeId(const QString& employeeId);
+    Q_INVOKABLE QObject* getFaceDataByEmployeeId(const QString& employeeId);
+    Q_INVOKABLE QList<QObject*> getAllFaceData();
+
 signals:
     void connectionStateChanged();
     void errorOccurred(const QString &errorString);
@@ -56,6 +65,10 @@ signals:
     void attendanceRecordAdded(int id);
     void deviceStatusChanged(const QString &devicdId,const QString &status);
 
+    void faceDataAdded(int id, int personId);
+    void faceDataUpdated(int id, int personId);
+    void faceDataDeleted(int id);
+
 private:
     QSqlDatabase m_db;
     bool m_isConnected;
@@ -64,6 +77,7 @@ private:
     bool createPersonTable();
     bool createAttendanceRecordTable();
     bool createDeviceTable();
+    bool createFaceDataTable();
 };
 
 #endif // DATAMANAGER_H

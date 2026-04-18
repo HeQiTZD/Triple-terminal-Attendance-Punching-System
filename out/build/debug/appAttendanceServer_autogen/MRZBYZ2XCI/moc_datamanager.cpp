@@ -51,6 +51,10 @@ template <> constexpr inline auto DataManager::qt_create_metaobjectdata<qt_meta_
         "deviceStatusChanged",
         "devicdId",
         "status",
+        "faceDataAdded",
+        "personId",
+        "faceDataUpdated",
+        "faceDataDeleted",
         "addPerson",
         "name",
         "employeeId",
@@ -65,7 +69,6 @@ template <> constexpr inline auto DataManager::qt_create_metaobjectdata<qt_meta_
         "updatePersonFaceFeature",
         "faceFeature",
         "addAttendanceRecore",
-        "personId",
         "checkTime",
         "deviceId",
         "getAttendanceRecords",
@@ -78,6 +81,12 @@ template <> constexpr inline auto DataManager::qt_create_metaobjectdata<qt_meta_
         "updateDeviceStatus",
         "getAllDevices",
         "getDeviceById",
+        "addFaceDataByEmployeeId",
+        "featureVector",
+        "updateFaceDataByEmployeeId",
+        "deleteFaceDataByEmployeeId",
+        "getFaceDataByEmployeeId",
+        "getAllFaceData",
         "isConnected"
     };
 
@@ -108,62 +117,92 @@ template <> constexpr inline auto DataManager::qt_create_metaobjectdata<qt_meta_
         QtMocHelpers::SignalData<void(const QString &, const QString &)>(10, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::QString, 11 }, { QMetaType::QString, 12 },
         }}),
+        // Signal 'faceDataAdded'
+        QtMocHelpers::SignalData<void(int, int)>(13, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 6 }, { QMetaType::Int, 14 },
+        }}),
+        // Signal 'faceDataUpdated'
+        QtMocHelpers::SignalData<void(int, int)>(15, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 6 }, { QMetaType::Int, 14 },
+        }}),
+        // Signal 'faceDataDeleted'
+        QtMocHelpers::SignalData<void(int)>(16, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 6 },
+        }}),
         // Method 'addPerson'
-        QtMocHelpers::MethodData<bool(const QString &, const QString, const QString &, const QString &)>(13, 2, QMC::AccessPublic, QMetaType::Bool, {{
-            { QMetaType::QString, 14 }, { QMetaType::QString, 15 }, { QMetaType::QString, 16 }, { QMetaType::QString, 17 },
+        QtMocHelpers::MethodData<bool(const QString &, const QString, const QString &, const QString &)>(17, 2, QMC::AccessPublic, QMetaType::Bool, {{
+            { QMetaType::QString, 18 }, { QMetaType::QString, 19 }, { QMetaType::QString, 20 }, { QMetaType::QString, 21 },
         }}),
         // Method 'updatedPerson'
-        QtMocHelpers::MethodData<bool(const QString &, const QString &, const QString &, const QString &)>(18, 2, QMC::AccessPublic, QMetaType::Bool, {{
-            { QMetaType::QString, 14 }, { QMetaType::QString, 15 }, { QMetaType::QString, 16 }, { QMetaType::QString, 17 },
+        QtMocHelpers::MethodData<bool(const QString &, const QString &, const QString &, const QString &)>(22, 2, QMC::AccessPublic, QMetaType::Bool, {{
+            { QMetaType::QString, 18 }, { QMetaType::QString, 19 }, { QMetaType::QString, 20 }, { QMetaType::QString, 21 },
         }}),
         // Method 'deletePerson'
-        QtMocHelpers::MethodData<bool(const QString &, const QString &)>(19, 2, QMC::AccessPublic, QMetaType::Bool, {{
-            { QMetaType::QString, 14 }, { QMetaType::QString, 15 },
+        QtMocHelpers::MethodData<bool(const QString &, const QString &)>(23, 2, QMC::AccessPublic, QMetaType::Bool, {{
+            { QMetaType::QString, 18 }, { QMetaType::QString, 19 },
         }}),
         // Method 'getAllPerson'
-        QtMocHelpers::MethodData<QList<QObject*>()>(20, 2, QMC::AccessPublic, 0x80000000 | 21),
+        QtMocHelpers::MethodData<QList<QObject*>()>(24, 2, QMC::AccessPublic, 0x80000000 | 25),
         // Method 'getPersonById'
-        QtMocHelpers::MethodData<QObject *(int)>(22, 2, QMC::AccessPublic, QMetaType::QObjectStar, {{
+        QtMocHelpers::MethodData<QObject *(int)>(26, 2, QMC::AccessPublic, QMetaType::QObjectStar, {{
             { QMetaType::Int, 6 },
         }}),
         // Method 'getPersonByEmployeeId'
-        QtMocHelpers::MethodData<QObject *(const QString &)>(23, 2, QMC::AccessPublic, QMetaType::QObjectStar, {{
-            { QMetaType::QString, 15 },
+        QtMocHelpers::MethodData<QObject *(const QString &)>(27, 2, QMC::AccessPublic, QMetaType::QObjectStar, {{
+            { QMetaType::QString, 19 },
         }}),
         // Method 'updatePersonFaceFeature'
-        QtMocHelpers::MethodData<bool(int, const QByteArray &)>(24, 2, QMC::AccessPublic, QMetaType::Bool, {{
-            { QMetaType::Int, 6 }, { QMetaType::QByteArray, 25 },
+        QtMocHelpers::MethodData<bool(int, const QByteArray &)>(28, 2, QMC::AccessPublic, QMetaType::Bool, {{
+            { QMetaType::Int, 6 }, { QMetaType::QByteArray, 29 },
         }}),
         // Method 'addAttendanceRecore'
-        QtMocHelpers::MethodData<bool(int, const QDateTime &, const QString &, const QString &)>(26, 2, QMC::AccessPublic, QMetaType::Bool, {{
-            { QMetaType::Int, 27 }, { QMetaType::QDateTime, 28 }, { QMetaType::QString, 29 }, { QMetaType::QString, 12 },
+        QtMocHelpers::MethodData<bool(int, const QDateTime &, const QString &, const QString &)>(30, 2, QMC::AccessPublic, QMetaType::Bool, {{
+            { QMetaType::Int, 14 }, { QMetaType::QDateTime, 31 }, { QMetaType::QString, 32 }, { QMetaType::QString, 12 },
         }}),
         // Method 'getAttendanceRecords'
-        QtMocHelpers::MethodData<QList<QObject*>(const QDateTime &, const QDateTime &)>(30, 2, QMC::AccessPublic, 0x80000000 | 21, {{
-            { QMetaType::QDateTime, 31 }, { QMetaType::QDateTime, 32 },
+        QtMocHelpers::MethodData<QList<QObject*>(const QDateTime &, const QDateTime &)>(33, 2, QMC::AccessPublic, 0x80000000 | 25, {{
+            { QMetaType::QDateTime, 34 }, { QMetaType::QDateTime, 35 },
         }}),
         // Method 'getAttendanceRecordsByPerson'
-        QtMocHelpers::MethodData<QList<QObject*>(int, const QDateTime &, const QDateTime &)>(33, 2, QMC::AccessPublic, 0x80000000 | 21, {{
-            { QMetaType::Int, 27 }, { QMetaType::QDateTime, 31 }, { QMetaType::QDateTime, 32 },
+        QtMocHelpers::MethodData<QList<QObject*>(int, const QDateTime &, const QDateTime &)>(36, 2, QMC::AccessPublic, 0x80000000 | 25, {{
+            { QMetaType::Int, 14 }, { QMetaType::QDateTime, 34 }, { QMetaType::QDateTime, 35 },
         }}),
         // Method 'addOrUpdateDevice'
-        QtMocHelpers::MethodData<bool(const QString &, const QString &, const QString &, const QString &)>(34, 2, QMC::AccessPublic, QMetaType::Bool, {{
-            { QMetaType::QString, 29 }, { QMetaType::QString, 35 }, { QMetaType::QString, 36 }, { QMetaType::QString, 12 },
+        QtMocHelpers::MethodData<bool(const QString &, const QString &, const QString &, const QString &)>(37, 2, QMC::AccessPublic, QMetaType::Bool, {{
+            { QMetaType::QString, 32 }, { QMetaType::QString, 38 }, { QMetaType::QString, 39 }, { QMetaType::QString, 12 },
         }}),
         // Method 'updateDeviceStatus'
-        QtMocHelpers::MethodData<bool(const QString &, const QString &)>(37, 2, QMC::AccessPublic, QMetaType::Bool, {{
-            { QMetaType::QString, 29 }, { QMetaType::QString, 12 },
+        QtMocHelpers::MethodData<bool(const QString &, const QString &)>(40, 2, QMC::AccessPublic, QMetaType::Bool, {{
+            { QMetaType::QString, 32 }, { QMetaType::QString, 12 },
         }}),
         // Method 'getAllDevices'
-        QtMocHelpers::MethodData<QList<QObject*>()>(38, 2, QMC::AccessPublic, 0x80000000 | 21),
+        QtMocHelpers::MethodData<QList<QObject*>()>(41, 2, QMC::AccessPublic, 0x80000000 | 25),
         // Method 'getDeviceById'
-        QtMocHelpers::MethodData<QObject *(const QString &)>(39, 2, QMC::AccessPublic, QMetaType::QObjectStar, {{
-            { QMetaType::QString, 29 },
+        QtMocHelpers::MethodData<QObject *(const QString &)>(42, 2, QMC::AccessPublic, QMetaType::QObjectStar, {{
+            { QMetaType::QString, 32 },
         }}),
+        // Method 'addFaceDataByEmployeeId'
+        QtMocHelpers::MethodData<bool(const QString &, const QByteArray &)>(43, 2, QMC::AccessPublic, QMetaType::Bool, {{
+            { QMetaType::QString, 19 }, { QMetaType::QByteArray, 44 },
+        }}),
+        // Method 'updateFaceDataByEmployeeId'
+        QtMocHelpers::MethodData<bool(const QString &, const QByteArray &)>(45, 2, QMC::AccessPublic, QMetaType::Bool, {{
+            { QMetaType::QString, 19 }, { QMetaType::QByteArray, 44 },
+        }}),
+        // Method 'deleteFaceDataByEmployeeId'
+        QtMocHelpers::MethodData<bool(const QString &)>(46, 2, QMC::AccessPublic, QMetaType::Bool, {{
+            { QMetaType::QString, 19 },
+        }}),
+        // Method 'getFaceDataByEmployeeId'
+        QtMocHelpers::MethodData<QObject *(const QString &)>(47, 2, QMC::AccessPublic, QMetaType::QObjectStar, {{
+            { QMetaType::QString, 19 },
+        }}),
+        // Method 'getAllFaceData'
+        QtMocHelpers::MethodData<QList<QObject*>()>(48, 2, QMC::AccessPublic, 0x80000000 | 25),
     };
     QtMocHelpers::UintData qt_properties {
         // property 'isConnected'
-        QtMocHelpers::PropertyData<bool>(40, QMetaType::Bool, QMC::DefaultPropertyFlags, 0),
+        QtMocHelpers::PropertyData<bool>(49, QMetaType::Bool, QMC::DefaultPropertyFlags, 0),
     };
     QtMocHelpers::UintData qt_enums {
     };
@@ -192,34 +231,47 @@ void DataManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 4: _t->personDeleted((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
         case 5: _t->attendanceRecordAdded((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
         case 6: _t->deviceStatusChanged((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2]))); break;
-        case 7: { bool _r = _t->addPerson((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[4])));
+        case 7: _t->faceDataAdded((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<int>>(_a[2]))); break;
+        case 8: _t->faceDataUpdated((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<int>>(_a[2]))); break;
+        case 9: _t->faceDataDeleted((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
+        case 10: { bool _r = _t->addPerson((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[4])));
             if (_a[0]) *reinterpret_cast<bool*>(_a[0]) = std::move(_r); }  break;
-        case 8: { bool _r = _t->updatedPerson((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[4])));
+        case 11: { bool _r = _t->updatedPerson((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[4])));
             if (_a[0]) *reinterpret_cast<bool*>(_a[0]) = std::move(_r); }  break;
-        case 9: { bool _r = _t->deletePerson((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])));
+        case 12: { bool _r = _t->deletePerson((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])));
             if (_a[0]) *reinterpret_cast<bool*>(_a[0]) = std::move(_r); }  break;
-        case 10: { QList<QObject*> _r = _t->getAllPerson();
+        case 13: { QList<QObject*> _r = _t->getAllPerson();
             if (_a[0]) *reinterpret_cast<QList<QObject*>*>(_a[0]) = std::move(_r); }  break;
-        case 11: { QObject* _r = _t->getPersonById((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])));
+        case 14: { QObject* _r = _t->getPersonById((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])));
             if (_a[0]) *reinterpret_cast<QObject**>(_a[0]) = std::move(_r); }  break;
-        case 12: { QObject* _r = _t->getPersonByEmployeeId((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])));
+        case 15: { QObject* _r = _t->getPersonByEmployeeId((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])));
             if (_a[0]) *reinterpret_cast<QObject**>(_a[0]) = std::move(_r); }  break;
-        case 13: { bool _r = _t->updatePersonFaceFeature((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QByteArray>>(_a[2])));
+        case 16: { bool _r = _t->updatePersonFaceFeature((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QByteArray>>(_a[2])));
             if (_a[0]) *reinterpret_cast<bool*>(_a[0]) = std::move(_r); }  break;
-        case 14: { bool _r = _t->addAttendanceRecore((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[4])));
+        case 17: { bool _r = _t->addAttendanceRecore((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[4])));
             if (_a[0]) *reinterpret_cast<bool*>(_a[0]) = std::move(_r); }  break;
-        case 15: { QList<QObject*> _r = _t->getAttendanceRecords((*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[2])));
+        case 18: { QList<QObject*> _r = _t->getAttendanceRecords((*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[2])));
             if (_a[0]) *reinterpret_cast<QList<QObject*>*>(_a[0]) = std::move(_r); }  break;
-        case 16: { QList<QObject*> _r = _t->getAttendanceRecordsByPerson((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[3])));
+        case 19: { QList<QObject*> _r = _t->getAttendanceRecordsByPerson((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[3])));
             if (_a[0]) *reinterpret_cast<QList<QObject*>*>(_a[0]) = std::move(_r); }  break;
-        case 17: { bool _r = _t->addOrUpdateDevice((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[4])));
+        case 20: { bool _r = _t->addOrUpdateDevice((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[4])));
             if (_a[0]) *reinterpret_cast<bool*>(_a[0]) = std::move(_r); }  break;
-        case 18: { bool _r = _t->updateDeviceStatus((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])));
+        case 21: { bool _r = _t->updateDeviceStatus((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])));
             if (_a[0]) *reinterpret_cast<bool*>(_a[0]) = std::move(_r); }  break;
-        case 19: { QList<QObject*> _r = _t->getAllDevices();
+        case 22: { QList<QObject*> _r = _t->getAllDevices();
             if (_a[0]) *reinterpret_cast<QList<QObject*>*>(_a[0]) = std::move(_r); }  break;
-        case 20: { QObject* _r = _t->getDeviceById((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])));
+        case 23: { QObject* _r = _t->getDeviceById((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])));
             if (_a[0]) *reinterpret_cast<QObject**>(_a[0]) = std::move(_r); }  break;
+        case 24: { bool _r = _t->addFaceDataByEmployeeId((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QByteArray>>(_a[2])));
+            if (_a[0]) *reinterpret_cast<bool*>(_a[0]) = std::move(_r); }  break;
+        case 25: { bool _r = _t->updateFaceDataByEmployeeId((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QByteArray>>(_a[2])));
+            if (_a[0]) *reinterpret_cast<bool*>(_a[0]) = std::move(_r); }  break;
+        case 26: { bool _r = _t->deleteFaceDataByEmployeeId((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])));
+            if (_a[0]) *reinterpret_cast<bool*>(_a[0]) = std::move(_r); }  break;
+        case 27: { QObject* _r = _t->getFaceDataByEmployeeId((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])));
+            if (_a[0]) *reinterpret_cast<QObject**>(_a[0]) = std::move(_r); }  break;
+        case 28: { QList<QObject*> _r = _t->getAllFaceData();
+            if (_a[0]) *reinterpret_cast<QList<QObject*>*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
     }
@@ -237,6 +289,12 @@ void DataManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         if (QtMocHelpers::indexOfMethod<void (DataManager::*)(int )>(_a, &DataManager::attendanceRecordAdded, 5))
             return;
         if (QtMocHelpers::indexOfMethod<void (DataManager::*)(const QString & , const QString & )>(_a, &DataManager::deviceStatusChanged, 6))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (DataManager::*)(int , int )>(_a, &DataManager::faceDataAdded, 7))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (DataManager::*)(int , int )>(_a, &DataManager::faceDataUpdated, 8))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (DataManager::*)(int )>(_a, &DataManager::faceDataDeleted, 9))
             return;
     }
     if (_c == QMetaObject::ReadProperty) {
@@ -267,14 +325,14 @@ int DataManager::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 21)
+        if (_id < 29)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 21;
+        _id -= 29;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 21)
+        if (_id < 29)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 21;
+        _id -= 29;
     }
     if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::BindableProperty
@@ -325,5 +383,23 @@ void DataManager::attendanceRecordAdded(int _t1)
 void DataManager::deviceStatusChanged(const QString & _t1, const QString & _t2)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 6, nullptr, _t1, _t2);
+}
+
+// SIGNAL 7
+void DataManager::faceDataAdded(int _t1, int _t2)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 7, nullptr, _t1, _t2);
+}
+
+// SIGNAL 8
+void DataManager::faceDataUpdated(int _t1, int _t2)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 8, nullptr, _t1, _t2);
+}
+
+// SIGNAL 9
+void DataManager::faceDataDeleted(int _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 9, nullptr, _t1);
 }
 QT_WARNING_POP

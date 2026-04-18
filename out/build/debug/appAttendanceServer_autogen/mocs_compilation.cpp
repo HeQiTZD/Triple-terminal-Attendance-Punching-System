@@ -6,5 +6,6 @@
 #include "3WFUWCBZX3/moc_Person.cpp"
 #include "3WFUWCBZX3/moc_attendancerecord.cpp"
 #include "3WFUWCBZX3/moc_device.cpp"
+#include "3WFUWCBZX3/moc_faceData.cpp"
 #include "PJ4NMIXSYY/moc_syncmanager.cpp"
 #include "I7BNQNPOMK/moc_tcpserver.cpp"

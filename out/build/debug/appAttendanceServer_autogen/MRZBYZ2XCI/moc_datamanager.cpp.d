@@ -55,6 +55,7 @@ E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/MRZBYZ2X
   C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/version \
   C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/yvals.h \
   C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/yvals_core.h \
+  C:/Qt/6.10.2/msvc2022_64/include/QtCore/QByteArray \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QDateTime \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QJsonObject \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QList \
@@ -208,4 +209,5 @@ E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/MRZBYZ2X
   C:/Qt/6.10.2/msvc2022_64/include/QtSql/qtsqlglobal.h \
   E:/project/AttendanceServer/src/Models/Person.h \
   E:/project/AttendanceServer/src/Models/attendancerecord.h \
-  E:/project/AttendanceServer/src/Models/device.h
+  E:/project/AttendanceServer/src/Models/device.h \
+  E:/project/AttendanceServer/src/Models/faceData.h

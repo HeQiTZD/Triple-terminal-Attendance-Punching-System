@@ -22,6 +22,7 @@ qt_add_qml_module(appAttendanceServer
         SOURCES src/Models/Person.h
         SOURCES src/Models/attendancerecord.h
         SOURCES src/Models/device.h
+        SOURCES src/Models/faceData.h src/Models/faceData.cpp
         SOURCES src/Models/Person.cpp
         SOURCES src/Models/attendancerecord.cpp
         SOURCES src/Models/device.cpp
