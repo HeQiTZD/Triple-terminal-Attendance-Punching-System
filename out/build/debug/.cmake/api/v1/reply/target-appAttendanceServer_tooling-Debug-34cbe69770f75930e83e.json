@@ -49,7 +49,7 @@
 			{
 				"command" : 5,
 				"file" : 0,
-				"line" : 970,
+				"line" : 976,
 				"parent" : 2
 			},
 			{
@@ -61,7 +61,7 @@
 			{
 				"command" : 5,
 				"file" : 0,
-				"line" : 976,
+				"line" : 970,
 				"parent" : 2
 			},
 			{
@@ -87,11 +87,11 @@
 	[
 		{
 			"backtrace" : 6,
-			"id" : "appAttendanceServer_copy_qml::@6890427a1f51a3e7e1df"
+			"id" : "appAttendanceServer_copy_res::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 8,
-			"id" : "appAttendanceServer_copy_res::@6890427a1f51a3e7e1df"
+			"id" : "appAttendanceServer_copy_qml::@6890427a1f51a3e7e1df"
 		}
 	],
 	"paths" : 

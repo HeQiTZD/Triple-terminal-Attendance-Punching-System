@@ -1321,6 +1321,12 @@
 			null
 		],
 		[
+			"E:/project/AttendanceServer/src/FaceDataManager/facedatamanager.h",
+			"MU",
+			"GHKGLY4XUE/moc_facedatamanager.cpp",
+			null
+		],
+		[
 			"E:/project/AttendanceServer/src/Models/Person.h",
 			"MU",
 			"3WFUWCBZX3/moc_Person.cpp",
@@ -1454,6 +1460,11 @@
 		],
 		[
 			"E:/project/AttendanceServer/src/DeviceMonitor/devicemonitor.cpp",
+			"MU",
+			null
+		],
+		[
+			"E:/project/AttendanceServer/src/FaceDataManager/facedatamanager.cpp",
 			"MU",
 			null
 		],

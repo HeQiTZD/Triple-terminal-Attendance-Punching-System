@@ -2,95 +2,63 @@
 #define FACEDATAMANAGER_H
 
 #include <QObject>
-#include <QString>
 #include <QByteArray>
-#include <QList>
-#include <QJsonObject>
+#include <QString>
+#include <QRect>
+#include <QVector>
 #include <QImage>
+#include <QMutex>
 
-// 人脸数据管理器
+// 直接包含 ArcSoft SDK 头文件
+#include "../third_party/arcface/include/arcsoft_face_sdk.h"
+#include "../third_party/arcface/include/merror.h"
+
 class FaceDataManager : public QObject
 {
     Q_OBJECT
-        Q_PROPERTY(bool isInitialized READ isInitialized NOTIFY initializationChanged)
-
 public:
-    explicit FaceDataManager(DataManager* dataManager, QObject* parent = nullptr);
+    struct FaceInfo {
+        QRect rect;
+        int orient;
+        int faceId;
+    };
+    struct FaceFeature {
+        QByteArray data;
+        int size;
+        FaceFeature() : size(0) {}
+    };
+
+    explicit FaceDataManager(QObject *parent = nullptr);
     ~FaceDataManager();
 
-    bool isInitialized() const { return m_initialized; }
+    // 引擎管理接口
+    bool initializeEngine(const QString &appId, const QString &sdkKey);
+    void releaseEngine();
+    bool isEngineInitialized() const;
 
-    // ========== 人脸数据 CRUD 操作 ==========
+    // 人脸特征提取与对比
+    QVector<FaceInfo> detectFace(const QImage &image);
+    FaceFeature extractFeature(const QImage &image, const FaceInfo &faceInfo);
+    float compareFeatures(const FaceFeature &feature1, const FaceFeature &feature2) const;
 
-    // 添加人脸数据（输入图片路径，内部调用人脸识别库生成特征向量）
-    Q_INVOKABLE bool addFaceData(int personId, const QString& imagePath);
+    bool extractFaceFeature(const QString &imagePath, QByteArray &featureVector);
+    bool compareFaceFeature(const QByteArray &feature1, const QByteArray &feature2, float &similarity) const;
+    bool isSimilarityAboveThreshold(float similarity, float threshold = 0.8f) const;
+    bool shouldUpdateFaceFeature(const QByteArray &newFeature, const QByteArray &oldFeature) const;
 
-    // 更新人脸数据（替换现有人脸）
-    Q_INVOKABLE bool updateFaceData(int faceDataId, const QString& imagePath);
-
-    // 删除人脸数据
-    Q_INVOKABLE bool deleteFaceData(int faceDataId);
-
-    // 删除指定人员的所有人脸数据
-    Q_INVOKABLE bool deleteFaceDataByPerson(int personId);
-
-    // 获取所有人脸数据
-    Q_INVOKABLE QList<QObject*> getAllFaceData();
-
-    // 获取指定人员的所有人脸数据
-    Q_INVOKABLE QList<QObject*> getFaceDataByPersonId(int personId);
-
-    // 获取单个人脸数据
-    Q_INVOKABLE QObject* getFaceDataById(int id);
-
-    // 人脸识别比对（返回相似度，范围 0-1）
-    Q_INVOKABLE double compareFaceFeatures(const QByteArray& feature1, const QByteArray& feature2);
-
-    // 批量导入人脸数据
-    Q_INVOKABLE bool importFaceDataBatch(const QString& directoryPath);
-
-    // 导出人脸数据（包括图片和特征向量）
-    Q_INVOKABLE bool exportFaceData(int personId, const QString& exportPath);
-
-    // ========== 人脸特征提取 ==========
-
-    // 从图片提取人脸特征向量（调用第三方库）
-    QByteArray extractFaceFeature(const QString& imagePath, double& outQuality);
-
-    // 验证图片是否包含有效人脸
-    bool validateFaceImage(const QString& imagePath);
+    QString getErrorMessage(int errCode) const;
 
 signals:
-    void initializationChanged();
-    void faceDataAdded(int id, int personId);
-    void faceDataUpdated(int id, int personId);
-    void faceDataDeleted(int id);
-    void faceDataQualityChanged(int id, double quality);
-    void batchImportProgress(int current, int total);
-    void batchImportCompleted(int successCount, int failureCount);
-    void errorOccurred(const QString& errorString);
-
-private slots:
-    // 异步处理人脸提取
-    void onFaceExtractionCompleted(int personId, const QByteArray& feature, double quality);
-    void onFaceExtractionFailed(const QString& imagePath, const QString& error);
+    void engineInitialized();
+    void engineReleased();
+    void featureExtracted(bool success);
+    void errorOccurred(const QString &error);
 
 private:
-    DataManager* m_dataManager;
+    MHandle m_engine;
     bool m_initialized;
-
-    // 数据库表创建
-    bool createFaceDataTable();
-
-    // 特征向量管理
-    bool saveFaceFeatureToDb(int personId, const QByteArray& feature,
-        double quality, const QString& imagePath);
-    bool updateFaceFeatureInDb(int faceDataId, const QByteArray& feature,
-        double quality, const QString& imagePath);
-
-    // 文件管理
-    QString generateFaceImagePath(int personId, int sequenceNumber);
-    bool copyFaceImageToStorage(const QString& sourcePath, const QString& destPath);
-    bool deleteFaceImageFromStorage(const QString& imagePath);
+    QImage m_convertedImage;
+    QMutex m_mutex;
 };
+
 #endif // FACEDATAMANAGER_H

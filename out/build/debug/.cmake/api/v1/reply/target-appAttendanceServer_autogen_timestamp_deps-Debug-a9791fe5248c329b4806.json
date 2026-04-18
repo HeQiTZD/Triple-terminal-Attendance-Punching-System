@@ -34,7 +34,7 @@
 			{
 				"command" : 1,
 				"file" : 1,
-				"line" : 970,
+				"line" : 976,
 				"parent" : 2
 			},
 			{
@@ -46,7 +46,7 @@
 			{
 				"command" : 1,
 				"file" : 1,
-				"line" : 976,
+				"line" : 970,
 				"parent" : 2
 			},
 			{
@@ -66,19 +66,19 @@
 	[
 		{
 			"backtrace" : 4,
+			"id" : "appAttendanceServer_copy_res::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 6,
 			"id" : "appAttendanceServer_copy_qml::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 0,
-			"id" : "appAttendanceServer_qmlimportscan::@6890427a1f51a3e7e1df"
-		},
-		{
-			"backtrace" : 6,
-			"id" : "appAttendanceServer_copy_res::@6890427a1f51a3e7e1df"
+			"id" : "generate_qmlls_build_ini_file::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 0,
-			"id" : "generate_qmlls_build_ini_file::@6890427a1f51a3e7e1df"
+			"id" : "appAttendanceServer_qmlimportscan::@6890427a1f51a3e7e1df"
 		}
 	],
 	"folder" : 
@@ -96,15 +96,11 @@
 		},
 		{
 			"backtrace" : 0,
-			"id" : "Qt6::Core::@6890427a1f51a3e7e1df"
-		},
-		{
-			"backtrace" : 0,
 			"id" : "Qt6::Gui::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 0,
-			"id" : "Qt6::Qml::@6890427a1f51a3e7e1df"
+			"id" : "Qt6::Core::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 0,
@@ -112,11 +108,11 @@
 		},
 		{
 			"backtrace" : 0,
-			"id" : "Qt6::Quick::@6890427a1f51a3e7e1df"
+			"id" : "Qt6::Qml::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 0,
-			"id" : "Qt6::Sql::@6890427a1f51a3e7e1df"
+			"id" : "Qt6::Quick::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 0,
@@ -124,11 +120,15 @@
 		},
 		{
 			"backtrace" : 0,
-			"id" : "appAttendanceServer_qmlimportscan::@6890427a1f51a3e7e1df"
+			"id" : "Qt6::Sql::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 0,
 			"id" : "generate_qmlls_build_ini_file::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "appAttendanceServer_qmlimportscan::@6890427a1f51a3e7e1df"
 		}
 	],
 	"paths" : 
