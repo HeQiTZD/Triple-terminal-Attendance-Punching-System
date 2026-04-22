@@ -731,21 +731,21 @@
         "classes": [
             {
                 "className": "FaceDataManager",
-                "lineNumber": 21,
+                "lineNumber": 19,
                 "object": true,
                 "qualifiedClassName": "FaceDataManager",
                 "signals": [
                     {
                         "access": "public",
                         "index": 0,
-                        "lineNumber": 64,
+                        "lineNumber": 62,
                         "name": "engineInitialized",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 1,
-                        "lineNumber": 65,
+                        "lineNumber": 63,
                         "name": "engineReleased",
                         "returnType": "void"
                     },
@@ -758,7 +758,7 @@
                             }
                         ],
                         "index": 2,
-                        "lineNumber": 66,
+                        "lineNumber": 64,
                         "name": "featureExtracted",
                         "returnType": "void"
                     },
@@ -771,8 +771,43 @@
                             }
                         ],
                         "index": 3,
-                        "lineNumber": 67,
+                        "lineNumber": 65,
                         "name": "errorOccurred",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "private",
+                        "index": 4,
+                        "lineNumber": 68,
+                        "name": "onEngineReleased",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "success",
+                                "type": "bool"
+                            }
+                        ],
+                        "index": 5,
+                        "lineNumber": 69,
+                        "name": "onFeatureExtracted",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "error",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 6,
+                        "lineNumber": 70,
+                        "name": "onErrorOccurred",
                         "returnType": "void"
                     }
                 ],

@@ -8,6 +8,9 @@
 FaceDataManager::FaceDataManager(QObject *parent)
     : QObject(parent), m_engine(nullptr), m_initialized(false)
 {
+    connect(this, &FaceDataManager::engineReleased, this, &FaceDataManager::onEngineReleased);
+    connect(this, &FaceDataManager::featureExtracted, this, &FaceDataManager::onFeatureExtracted);
+    connect(this, &FaceDataManager::errorOccurred, this, &FaceDataManager::onErrorOccurred);
 }
 
 // 析构函数：释放引擎资源
@@ -310,4 +313,35 @@ bool FaceDataManager::shouldUpdateFaceFeature(const QByteArray &newFeature, cons
 QString FaceDataManager::getErrorMessage(int errCode) const
 {
     return QString("Error code: %1").arg(errCode);
+}
+
+/**
+ * @brief 打开文件夹选择图片，返回选中的图片路径（实现放在 cpp 中，避免在 header 中包含 QFileDialog）
+ */
+QString FaceDataManager::selectImageFile(QWidget *parent)
+{
+    const QString filter = QObject::tr("Images (*.png *.jpg *.jpeg *.bmp *.gif);;All Files (*)");
+    QString file = QFileDialog::getOpenFileName(parent, tr("Select Image"), QString(), filter);
+    return file;
+}
+
+void FaceDataManager::onEngineReleased()
+{
+    QMutexLocker locker(&m_mutex);
+    m_convertedImage = QImage();
+    qInfo() << "FaceDataManager engine released";
+}
+
+void FaceDataManager::onFeatureExtracted(bool success)
+{
+    if (success) {
+        qInfo() << "FaceDataManager feature extracted successfully";
+    } else {
+        qWarning() << "FaceDataManager feature extraction failed";
+    }
+}
+
+void FaceDataManager::onErrorOccurred(const QString &error)
+{
+    qWarning() << "FaceDataManager error:" << error;
 }

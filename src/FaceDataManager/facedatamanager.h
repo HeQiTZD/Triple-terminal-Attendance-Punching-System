@@ -15,8 +15,6 @@ class QWidget;
 // 直接包含 ArcSoft SDK 头文件
 #include "../third_party/arcface/include/arcsoft_face_sdk.h"
 #include "../third_party/arcface/include/merror.h"
-#include "../third_party/arcface/include/amcomdef.h"
-#include "../third_party/arcface/include/asvloffscreen.h"
 
 class FaceDataManager : public QObject
 {
@@ -65,6 +63,11 @@ signals:
     void engineReleased();
     void featureExtracted(bool success);
     void errorOccurred(const QString &error);
+
+private slots:
+    void onEngineReleased();
+    void onFeatureExtracted(bool success);
+    void onErrorOccurred(const QString &error);
 
 private:
     MHandle m_engine;

@@ -8,6 +8,10 @@ find_package(Qt6 REQUIRED COMPONENTS Quick Core Gui NetWork Sql Widgets)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
+set(ARCFACE_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/src/third_party/arcface")
+set(ARCFACE_INCLUDE_DIR "${ARCFACE_ROOT}/include")
+set(ARCFACE_LIB_DIR "${ARCFACE_ROOT}/lib")
+
 qt_add_executable(appAttendanceServer
     main.cpp
     src/TcpServer/tcpserver.cpp
@@ -45,11 +49,6 @@ set_target_properties(appAttendanceServer PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
-# Add ArcSoft SDK include directory
-target_include_directories(appAttendanceServer
-    PRIVATE ${CMAKE_SOURCE_DIR}/src/third_party/arcface/include
-)
-
 target_link_libraries(appAttendanceServer
     PRIVATE Qt6::Quick
             Qt6::Core
@@ -57,19 +56,26 @@ target_link_libraries(appAttendanceServer
             Qt6::Network
             Qt6::Sql
             Qt6::Widgets
-            ${CMAKE_SOURCE_DIR}/src/third_party/arcface/lib/libarcsoft_face_engine.lib
+            "${ARCFACE_LIB_DIR}/libarcsoft_face_engine.lib"
 )
 
-# Copy ArcSoft SDK DLL files to the output directory
-add_custom_command(TARGET appAttendanceServer POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${CMAKE_SOURCE_DIR}/src/third_party/arcface/lib/libarcsoft_face_engine.dll"
-        $<TARGET_FILE_DIR:appAttendanceServer>/
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${CMAKE_SOURCE_DIR}/src/third_party/arcface/lib/libarcsoft_face.dll"
-        $<TARGET_FILE_DIR:appAttendanceServer>/
-    COMMENT "Copying ArcSoft SDK DLL files to output directory"
+target_include_directories(appAttendanceServer
+    PRIVATE
+        "${ARCFACE_INCLUDE_DIR}"
 )
+
+# Ensure ArcSoft runtime DLLs are beside the exe (Windows).
+if(WIN32)
+    add_custom_command(TARGET appAttendanceServer POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${ARCFACE_LIB_DIR}/libarcsoft_face_engine.dll"
+            "$<TARGET_FILE_DIR:appAttendanceServer>"
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${ARCFACE_LIB_DIR}/libarcsoft_face.dll"
+            "$<TARGET_FILE_DIR:appAttendanceServer>"
+        VERBATIM
+    )
+endif()
 
 include(GNUInstallDirs)
 install(TARGETS appAttendanceServer

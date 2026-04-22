@@ -1279,8 +1279,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-9oa1zu"
-      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-9oa1zu"
+      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-t26mzf"
+      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-t26mzf"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "-DQT_QML_DEBUG"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -1290,11 +1290,11 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-9oa1zu'
+        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-t26mzf'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_7be90
-        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -D_MBCS  -DQT_QML_DEBUG  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_7be90.dir\\CMakeCXXCompilerABI.cpp.obj /FdCMakeFiles\\cmTC_7be90.dir\\ /FS -c "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"
-        [2/2] C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_7be90.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_7be90.dir\\CMakeCXXCompilerABI.cpp.obj  /out:cmTC_7be90.exe /implib:cmTC_7be90.lib /pdb:cmTC_7be90.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_09a6a
+        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -D_MBCS  -DQT_QML_DEBUG  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_09a6a.dir\\CMakeCXXCompilerABI.cpp.obj /FdCMakeFiles\\cmTC_09a6a.dir\\ /FS -c "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"
+        [2/2] C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_09a6a.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_09a6a.dir\\CMakeCXXCompilerABI.cpp.obj  /out:cmTC_09a6a.exe /implib:cmTC_09a6a.lib /pdb:cmTC_09a6a.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
         
       exitCode: 0
   -
@@ -1341,8 +1341,8 @@ events:
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-9pqgkl"
-      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-9pqgkl"
+      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-hix17g"
+      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-hix17g"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "-DQT_QML_DEBUG"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -1352,13 +1352,13 @@ events:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-9pqgkl'
+        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-hix17g'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_ecf0b
-        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DCMAKE_HAVE_LIBC_PTHREAD -D_MBCS  -DQT_QML_DEBUG  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_ecf0b.dir\\src.cxx.obj /FdCMakeFiles\\cmTC_ecf0b.dir\\ /FS -c E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-9pqgkl\\src.cxx
-        FAILED: CMakeFiles/cmTC_ecf0b.dir/src.cxx.obj 
-        C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DCMAKE_HAVE_LIBC_PTHREAD -D_MBCS  -DQT_QML_DEBUG  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_ecf0b.dir\\src.cxx.obj /FdCMakeFiles\\cmTC_ecf0b.dir\\ /FS -c E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-9pqgkl\\src.cxx
-        E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-9pqgkl\\src.cxx(1): fatal error C1083: 无法打开包括文件: “pthread.h”: No such file or directory
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_64144
+        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DCMAKE_HAVE_LIBC_PTHREAD -D_MBCS  -DQT_QML_DEBUG  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_64144.dir\\src.cxx.obj /FdCMakeFiles\\cmTC_64144.dir\\ /FS -c E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-hix17g\\src.cxx
+        FAILED: CMakeFiles/cmTC_64144.dir/src.cxx.obj 
+        C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DCMAKE_HAVE_LIBC_PTHREAD -D_MBCS  -DQT_QML_DEBUG  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_64144.dir\\src.cxx.obj /FdCMakeFiles\\cmTC_64144.dir\\ /FS -c E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-hix17g\\src.cxx
+        E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-hix17g\\src.cxx(1): fatal error C1083: 无法打开包括文件: “pthread.h”: No such file or directory
         ninja: build stopped: subcommand failed.
         
       exitCode: 1
@@ -1377,8 +1377,8 @@ events:
     checks:
       - "Looking for pthread_create in pthreads"
     directories:
-      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-34qea0"
-      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-34qea0"
+      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-jrf73l"
+      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-jrf73l"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "-DQT_QML_DEBUG"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -1388,14 +1388,14 @@ events:
       variable: "CMAKE_HAVE_PTHREADS_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-34qea0'
+        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-jrf73l'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_8a79e
-        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -D_MBCS  -DQT_QML_DEBUG -DCHECK_FUNCTION_EXISTS=pthread_create /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_8a79e.dir\\CheckFunctionExists.cxx.obj /FdCMakeFiles\\cmTC_8a79e.dir\\ /FS -c E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-34qea0\\CheckFunctionExists.cxx
-        [2/2] C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_8a79e.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_8a79e.dir\\CheckFunctionExists.cxx.obj  /out:cmTC_8a79e.exe /implib:cmTC_8a79e.lib /pdb:cmTC_8a79e.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  pthreads.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
-        FAILED: cmTC_8a79e.exe 
-        C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_8a79e.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_8a79e.dir\\CheckFunctionExists.cxx.obj  /out:cmTC_8a79e.exe /implib:cmTC_8a79e.lib /pdb:cmTC_8a79e.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  pthreads.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
-        LINK Pass 1: command "C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_8a79e.dir\\CheckFunctionExists.cxx.obj /out:cmTC_8a79e.exe /implib:cmTC_8a79e.lib /pdb:cmTC_8a79e.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_8a79e.dir/intermediate.manifest CMakeFiles\\cmTC_8a79e.dir/manifest.res" failed (exit code 1104) with the following output:\x0d
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_c8ceb
+        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -D_MBCS  -DQT_QML_DEBUG -DCHECK_FUNCTION_EXISTS=pthread_create /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_c8ceb.dir\\CheckFunctionExists.cxx.obj /FdCMakeFiles\\cmTC_c8ceb.dir\\ /FS -c E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-jrf73l\\CheckFunctionExists.cxx
+        [2/2] C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_c8ceb.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_c8ceb.dir\\CheckFunctionExists.cxx.obj  /out:cmTC_c8ceb.exe /implib:cmTC_c8ceb.lib /pdb:cmTC_c8ceb.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  pthreads.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: cmTC_c8ceb.exe 
+        C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_c8ceb.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_c8ceb.dir\\CheckFunctionExists.cxx.obj  /out:cmTC_c8ceb.exe /implib:cmTC_c8ceb.lib /pdb:cmTC_c8ceb.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  pthreads.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        LINK Pass 1: command "C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_c8ceb.dir\\CheckFunctionExists.cxx.obj /out:cmTC_c8ceb.exe /implib:cmTC_c8ceb.lib /pdb:cmTC_c8ceb.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_c8ceb.dir/intermediate.manifest CMakeFiles\\cmTC_c8ceb.dir/manifest.res" failed (exit code 1104) with the following output:\x0d
         LINK : fatal error LNK1104: 无法打开文件“pthreads.lib”\x0d\x0d
         ninja: build stopped: subcommand failed.
         
@@ -1415,8 +1415,8 @@ events:
     checks:
       - "Looking for pthread_create in pthread"
     directories:
-      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-50hd16"
-      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-50hd16"
+      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-bn3yap"
+      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-bn3yap"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "-DQT_QML_DEBUG"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -1426,14 +1426,14 @@ events:
       variable: "CMAKE_HAVE_PTHREAD_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-50hd16'
+        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-bn3yap'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_042da
-        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -D_MBCS  -DQT_QML_DEBUG -DCHECK_FUNCTION_EXISTS=pthread_create /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_042da.dir\\CheckFunctionExists.cxx.obj /FdCMakeFiles\\cmTC_042da.dir\\ /FS -c E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-50hd16\\CheckFunctionExists.cxx
-        [2/2] C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_042da.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_042da.dir\\CheckFunctionExists.cxx.obj  /out:cmTC_042da.exe /implib:cmTC_042da.lib /pdb:cmTC_042da.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  pthread.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
-        FAILED: cmTC_042da.exe 
-        C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_042da.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_042da.dir\\CheckFunctionExists.cxx.obj  /out:cmTC_042da.exe /implib:cmTC_042da.lib /pdb:cmTC_042da.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  pthread.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
-        LINK Pass 1: command "C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_042da.dir\\CheckFunctionExists.cxx.obj /out:cmTC_042da.exe /implib:cmTC_042da.lib /pdb:cmTC_042da.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_042da.dir/intermediate.manifest CMakeFiles\\cmTC_042da.dir/manifest.res" failed (exit code 1104) with the following output:\x0d
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_2107f
+        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -D_MBCS  -DQT_QML_DEBUG -DCHECK_FUNCTION_EXISTS=pthread_create /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_2107f.dir\\CheckFunctionExists.cxx.obj /FdCMakeFiles\\cmTC_2107f.dir\\ /FS -c E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-bn3yap\\CheckFunctionExists.cxx
+        [2/2] C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_2107f.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_2107f.dir\\CheckFunctionExists.cxx.obj  /out:cmTC_2107f.exe /implib:cmTC_2107f.lib /pdb:cmTC_2107f.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  pthread.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: cmTC_2107f.exe 
+        C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_2107f.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_2107f.dir\\CheckFunctionExists.cxx.obj  /out:cmTC_2107f.exe /implib:cmTC_2107f.lib /pdb:cmTC_2107f.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  pthread.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        LINK Pass 1: command "C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_2107f.dir\\CheckFunctionExists.cxx.obj /out:cmTC_2107f.exe /implib:cmTC_2107f.lib /pdb:cmTC_2107f.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_2107f.dir/intermediate.manifest CMakeFiles\\cmTC_2107f.dir/manifest.res" failed (exit code 1104) with the following output:\x0d
         LINK : fatal error LNK1104: 无法打开文件“pthread.lib”\x0d\x0d
         ninja: build stopped: subcommand failed.
         
@@ -1712,8 +1712,8 @@ events:
     checks:
       - "Performing Test HAVE_STDATOMIC"
     directories:
-      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-kdmdyk"
-      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-kdmdyk"
+      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-9fsyrk"
+      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-9fsyrk"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "-DQT_QML_DEBUG"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -1723,11 +1723,11 @@ events:
       variable: "HAVE_STDATOMIC"
       cached: true
       stdout: |
-        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-kdmdyk'
+        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-9fsyrk'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_45c54
-        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DHAVE_STDATOMIC -D_MBCS  -DQT_QML_DEBUG  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_45c54.dir\\src.cxx.obj /FdCMakeFiles\\cmTC_45c54.dir\\ /FS -c E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-kdmdyk\\src.cxx
-        [2/2] C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_45c54.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_45c54.dir\\src.cxx.obj  /out:cmTC_45c54.exe /implib:cmTC_45c54.lib /pdb:cmTC_45c54.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_c0107
+        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DHAVE_STDATOMIC -D_MBCS  -DQT_QML_DEBUG  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_c0107.dir\\src.cxx.obj /FdCMakeFiles\\cmTC_c0107.dir\\ /FS -c E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-9fsyrk\\src.cxx
+        [2/2] C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_c0107.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_c0107.dir\\src.cxx.obj  /out:cmTC_c0107.exe /implib:cmTC_c0107.lib /pdb:cmTC_c0107.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
         
       exitCode: 0
   -
@@ -6982,6 +6982,266 @@ events:
   -
     kind: "find_package-v1"
     backtrace:
+      - "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:100 (find_package)"
+      - "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6WidgetsDependencies.cmake:42 (_qt_internal_find_tool_dependencies)"
+      - "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6WidgetsConfig.cmake:40 (include)"
+      - "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/Qt6Config.cmake:241 (find_package)"
+      - "CMakeLists.txt:7 (find_package)"
+    name: "Qt6WidgetsTools"
+    configs:
+      -
+        filename: "Qt6WidgetsToolsConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "qt6widgetstools-config.cmake"
+        kind: "cmake"
+    version_request:
+      version: "6.10.2"
+      version_complete: "6.10.2"
+      exact: false
+    settings:
+      required: "optional"
+      quiet: false
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      names:
+        - "Qt6WidgetsTools"
+      search_paths:
+        - "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Widgets/.."
+        - "C:/Qt/6.10.2/msvc2022_64/lib/cmake"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/pkgRedirects/Qt6WidgetsToolsConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/pkgRedirects/qt6widgetstools-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Qt/6.10.2/msvc2022_64/Qt6WidgetsToolsConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Qt/6.10.2/msvc2022_64/qt6widgetstools-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+    found:
+      path: "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfig.cmake"
+      mode: "config"
+      version: "6.10.2"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "C:/Qt/6.10.2/msvc2022_64"
+      ENV{CMAKE_PREFIX_PATH}:
+        - "C:\\Qt\\6.10.2\\msvc2022_64\\lib\\cmake"
+      ENV{PATH}:
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\VC\\VCPackages"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\MSBuild\\Current\\bin\\Roslyn"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Team Tools\\DiagnosticsHub\\Collector"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\Extensions\\Microsoft\\CodeCoverage.Console"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\\\x64"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\\\x64"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\\\MSBuild\\Current\\Bin\\amd64"
+        - "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\Tools\\"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\windows\\system32"
+        - "C:\\windows"
+        - "C:\\windows\\System32\\Wbem"
+        - "C:\\windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\IncrediBuild"
+        - "C:\\MySql\\mysql-8.4.8-winx64\\bin"
+        - "C:\\Program Files\\Java\\jdk-17\\bin"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "D:\\other\\Qoder\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "E:\\JAVASet\\apache-maven-3.8.8\\bin"
+        - "E:\\JAVASet\\apache-tomcat-9.0.87\\bin"
+        - "C:\\Qt\\6.10.2\\msvc2022_64\\bin"
+        - "C:\\Qt\\6.10.2\\mingw_64\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\JetBrains\\Toolbox\\scripts"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\Qt\\6.10.2\\mingw_64\\bin"
+        - "C:\\Qt\\Tools\\mingw1310_64\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
+        - "C:\\Users\\LENOVO\\.lmstudio\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "D:\\other\\cursor\\resources\\app\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\vcpkg"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/AttendanceServer"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "C:/Program Files"
+        - "C:/Program Files (x86)"
+        - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake"
+        - "C:/Program Files (x86)/AttendanceServer"
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/Qt6Config.cmake:241 (find_package)"
+      - "CMakeLists.txt:7 (find_package)"
+    name: "Qt6Widgets"
+    configs:
+      -
+        filename: "Qt6WidgetsConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "qt6widgets-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
+    settings:
+      required: "optional"
+      quiet: false
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      names:
+        - "Qt6Widgets"
+      search_paths:
+        - "C:/Qt/6.10.2/msvc2022_64/lib/cmake"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: false
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/pkgRedirects/Qt6WidgetsConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/pkgRedirects/qt6widgets-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6WidgetsConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Qt/6.10.2/msvc2022_64/lib/cmake/qt6widgets-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6WidgetsTools/qt6widgets-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6WidgetsPrivate/Qt6WidgetsConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6WidgetsPrivate/qt6widgets-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+    found:
+      path: "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6WidgetsConfig.cmake"
+      mode: "config"
+      version: "6.10.2"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "C:/Qt/6.10.2/msvc2022_64"
+      ENV{CMAKE_PREFIX_PATH}:
+        - "C:\\Qt\\6.10.2\\msvc2022_64\\lib\\cmake"
+      ENV{PATH}:
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\VC\\VCPackages"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\MSBuild\\Current\\bin\\Roslyn"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Team Tools\\DiagnosticsHub\\Collector"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\Extensions\\Microsoft\\CodeCoverage.Console"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\\\x64"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\\\x64"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\\\MSBuild\\Current\\Bin\\amd64"
+        - "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\Tools\\"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\windows\\system32"
+        - "C:\\windows"
+        - "C:\\windows\\System32\\Wbem"
+        - "C:\\windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\IncrediBuild"
+        - "C:\\MySql\\mysql-8.4.8-winx64\\bin"
+        - "C:\\Program Files\\Java\\jdk-17\\bin"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "D:\\other\\Qoder\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "E:\\JAVASet\\apache-maven-3.8.8\\bin"
+        - "E:\\JAVASet\\apache-tomcat-9.0.87\\bin"
+        - "C:\\Qt\\6.10.2\\msvc2022_64\\bin"
+        - "C:\\Qt\\6.10.2\\mingw_64\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\JetBrains\\Toolbox\\scripts"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\Qt\\6.10.2\\mingw_64\\bin"
+        - "C:\\Qt\\Tools\\mingw1310_64\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
+        - "C:\\Users\\LENOVO\\.lmstudio\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "D:\\other\\cursor\\resources\\app\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
+        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\vcpkg"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/AttendanceServer"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "C:/Program Files"
+        - "C:/Program Files (x86)"
+        - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake"
+        - "C:/Program Files (x86)/AttendanceServer"
+  -
+    kind: "find_package-v1"
+    backtrace:
       - "CMakeLists.txt:7 (find_package)"
     name: "Qt6"
     components:
@@ -7003,6 +7263,10 @@ events:
         found: false
       -
         name: "Sql"
+        required: true
+        found: false
+      -
+        name: "Widgets"
         required: true
         found: false
     configs:
@@ -9861,270 +10125,6 @@ events:
 ---
 events:
   -
-    kind: "find_package-v1"
-    backtrace:
-      - "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:100 (find_package)"
-      - "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6WidgetsDependencies.cmake:42 (_qt_internal_find_tool_dependencies)"
-      - "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6WidgetsConfig.cmake:40 (include)"
-      - "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/Qt6Config.cmake:241 (find_package)"
-      - "CMakeLists.txt:7 (find_package)"
-    name: "Qt6WidgetsTools"
-    configs:
-      -
-        filename: "Qt6WidgetsToolsConfig.cmake"
-        kind: "cmake"
-      -
-        filename: "qt6widgetstools-config.cmake"
-        kind: "cmake"
-    version_request:
-      version: "6.10.2"
-      version_complete: "6.10.2"
-      exact: false
-    settings:
-      required: "optional"
-      quiet: false
-      global: false
-      policy_scope: true
-      bypass_provider: false
-      names:
-        - "Qt6WidgetsTools"
-      search_paths:
-        - "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Widgets/.."
-        - "C:/Qt/6.10.2/msvc2022_64/lib/cmake"
-      path_suffixes:
-        - ""
-      paths:
-        CMAKE_FIND_USE_CMAKE_PATH: true
-        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
-        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
-        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
-        CMAKE_FIND_USE_INSTALL_PREFIX: true
-        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
-        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
-        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
-        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
-    candidates:
-      -
-        path: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/pkgRedirects/Qt6WidgetsToolsConfig.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/pkgRedirects/qt6widgetstools-config.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "C:/Qt/6.10.2/msvc2022_64/Qt6WidgetsToolsConfig.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "C:/Qt/6.10.2/msvc2022_64/qt6widgetstools-config.cmake"
-        mode: "config"
-        reason: "no_exist"
-    found:
-      path: "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfig.cmake"
-      mode: "config"
-      version: "6.10.2"
-    search_context:
-      CMAKE_PREFIX_PATH:
-        - "C:/Qt/6.10.2/msvc2022_64"
-      ENV{CMAKE_PREFIX_PATH}:
-        - "C:\\Qt\\6.10.2\\msvc2022_64\\lib\\cmake"
-      ENV{PATH}:
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\VC\\VCPackages"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\MSBuild\\Current\\bin\\Roslyn"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Team Tools\\DiagnosticsHub\\Collector"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\Extensions\\Microsoft\\CodeCoverage.Console"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\\\x64"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\\\x64"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\\\MSBuild\\Current\\Bin\\amd64"
-        - "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\Tools\\"
-        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
-        - "C:\\windows\\system32"
-        - "C:\\windows"
-        - "C:\\windows\\System32\\Wbem"
-        - "C:\\windows\\System32\\WindowsPowerShell\\v1.0\\"
-        - "C:\\windows\\System32\\OpenSSH\\"
-        - "C:\\Program Files\\dotnet\\"
-        - "C:\\Program Files (x86)\\IncrediBuild"
-        - "C:\\MySql\\mysql-8.4.8-winx64\\bin"
-        - "C:\\Program Files\\Java\\jdk-17\\bin"
-        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
-        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
-        - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Program Files\\Git\\cmd"
-        - "D:\\other\\Qoder\\bin"
-        - "C:\\Program Files\\nodejs\\"
-        - "E:\\JAVASet\\apache-maven-3.8.8\\bin"
-        - "E:\\JAVASet\\apache-tomcat-9.0.87\\bin"
-        - "C:\\Qt\\6.10.2\\msvc2022_64\\bin"
-        - "C:\\Qt\\6.10.2\\mingw_64\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Microsoft\\WindowsApps"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\JetBrains\\Toolbox\\scripts"
-        - "C:\\msys64\\ucrt64\\bin"
-        - "C:\\Qt\\6.10.2\\mingw_64\\bin"
-        - "C:\\Qt\\Tools\\mingw1310_64\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
-        - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
-        - "D:\\other\\cursor\\resources\\app\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\vcpkg"
-      CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/AttendanceServer"
-      CMAKE_SYSTEM_PREFIX_PATH:
-        - "C:/Program Files"
-        - "C:/Program Files (x86)"
-        - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake"
-        - "C:/Program Files (x86)/AttendanceServer"
-  -
-    kind: "find_package-v1"
-    backtrace:
-      - "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/Qt6Config.cmake:241 (find_package)"
-      - "CMakeLists.txt:7 (find_package)"
-    name: "Qt6Widgets"
-    configs:
-      -
-        filename: "Qt6WidgetsConfig.cmake"
-        kind: "cmake"
-      -
-        filename: "qt6widgets-config.cmake"
-        kind: "cmake"
-    version_request:
-      exact: false
-    settings:
-      required: "optional"
-      quiet: false
-      global: false
-      policy_scope: true
-      bypass_provider: false
-      names:
-        - "Qt6Widgets"
-      search_paths:
-        - "C:/Qt/6.10.2/msvc2022_64/lib/cmake"
-      path_suffixes:
-        - ""
-      paths:
-        CMAKE_FIND_USE_CMAKE_PATH: false
-        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
-        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
-        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
-        CMAKE_FIND_USE_INSTALL_PREFIX: true
-        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
-        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
-        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
-        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
-    candidates:
-      -
-        path: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/pkgRedirects/Qt6WidgetsConfig.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/pkgRedirects/qt6widgets-config.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6WidgetsConfig.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "C:/Qt/6.10.2/msvc2022_64/lib/cmake/qt6widgets-config.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsConfig.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6WidgetsTools/qt6widgets-config.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6WidgetsPrivate/Qt6WidgetsConfig.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6WidgetsPrivate/qt6widgets-config.cmake"
-        mode: "config"
-        reason: "no_exist"
-    found:
-      path: "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6WidgetsConfig.cmake"
-      mode: "config"
-      version: "6.10.2"
-    search_context:
-      CMAKE_PREFIX_PATH:
-        - "C:/Qt/6.10.2/msvc2022_64"
-      ENV{CMAKE_PREFIX_PATH}:
-        - "C:\\Qt\\6.10.2\\msvc2022_64\\lib\\cmake"
-      ENV{PATH}:
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\VC\\VCPackages"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\MSBuild\\Current\\bin\\Roslyn"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Team Tools\\DiagnosticsHub\\Collector"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\Extensions\\Microsoft\\CodeCoverage.Console"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\\\x64"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\\\x64"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\\\MSBuild\\Current\\Bin\\amd64"
-        - "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\Tools\\"
-        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
-        - "C:\\windows\\system32"
-        - "C:\\windows"
-        - "C:\\windows\\System32\\Wbem"
-        - "C:\\windows\\System32\\WindowsPowerShell\\v1.0\\"
-        - "C:\\windows\\System32\\OpenSSH\\"
-        - "C:\\Program Files\\dotnet\\"
-        - "C:\\Program Files (x86)\\IncrediBuild"
-        - "C:\\MySql\\mysql-8.4.8-winx64\\bin"
-        - "C:\\Program Files\\Java\\jdk-17\\bin"
-        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
-        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
-        - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Program Files\\Git\\cmd"
-        - "D:\\other\\Qoder\\bin"
-        - "C:\\Program Files\\nodejs\\"
-        - "E:\\JAVASet\\apache-maven-3.8.8\\bin"
-        - "E:\\JAVASet\\apache-tomcat-9.0.87\\bin"
-        - "C:\\Qt\\6.10.2\\msvc2022_64\\bin"
-        - "C:\\Qt\\6.10.2\\mingw_64\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Microsoft\\WindowsApps"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\JetBrains\\Toolbox\\scripts"
-        - "C:\\msys64\\ucrt64\\bin"
-        - "C:\\Qt\\6.10.2\\mingw_64\\bin"
-        - "C:\\Qt\\Tools\\mingw1310_64\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
-        - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
-        - "D:\\other\\cursor\\resources\\app\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\vcpkg"
-      CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/AttendanceServer"
-      CMAKE_SYSTEM_PREFIX_PATH:
-        - "C:/Program Files"
-        - "C:/Program Files (x86)"
-        - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake"
-        - "C:/Program Files (x86)/AttendanceServer"
-...
-
----
-events:
-  -
     kind: "message-v1"
     backtrace:
       - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineSystem.cmake:212 (message)"
@@ -10162,19 +10162,6 @@ events:
       ENV{CMAKE_PREFIX_PATH}:
         - "C:\\Qt\\6.10.2\\msvc2022_64\\lib\\cmake"
       ENV{PATH}:
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX86\\x86"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\VC\\VCPackages"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\MSBuild\\Current\\bin\\Roslyn"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Team Tools\\DiagnosticsHub\\Collector"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\Extensions\\Microsoft\\CodeCoverage.Console"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\\\x86"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\\\x86"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\\\MSBuild\\Current\\Bin\\amd64"
-        - "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\Tools\\"
         - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
         - "C:\\windows\\system32"
         - "C:\\windows"
@@ -10206,21 +10193,7 @@ events:
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "D:\\other\\cursor\\resources\\app\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\vcpkg"
       CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/AttendanceServer"
-      ENV{INCLUDE}:
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\include"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\include"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Auxiliary\\VS\\include"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\ucrt"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\um"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\shared"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\winrt"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\cppwinrt"
   -
     kind: "message-v1"
     backtrace:
@@ -10245,9 +10218,7 @@ events:
       
       /out:CMakeCXXCompilerId.exe 
       CMakeCXXCompilerId.obj 
-      LINK : error LNK2001: 无法解析的外部符号 mainCRTStartup
-      C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\lib\\x86\\LIBCMT.lib : warning LNK4272:库计算机类型“x86”与目标计算机类型“x64”冲突
-      CMakeCXXCompilerId.exe : fatal error LNK1120: 1 个无法解析的外部命令
+      LINK : fatal error LNK1104: 无法打开文件“LIBCMT.lib”
       
       
   -
@@ -10281,19 +10252,6 @@ events:
       ENV{CMAKE_PREFIX_PATH}:
         - "C:\\Qt\\6.10.2\\msvc2022_64\\lib\\cmake"
       ENV{PATH}:
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX86\\x86"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\VC\\VCPackages"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\MSBuild\\Current\\bin\\Roslyn"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Team Tools\\DiagnosticsHub\\Collector"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\Extensions\\Microsoft\\CodeCoverage.Console"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\\\x86"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\\\x86"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\\\MSBuild\\Current\\Bin\\amd64"
-        - "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\Tools\\"
         - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
         - "C:\\windows\\system32"
         - "C:\\windows"
@@ -10325,21 +10283,7 @@ events:
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "D:\\other\\cursor\\resources\\app\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\vcpkg"
       CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/AttendanceServer"
-      ENV{INCLUDE}:
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\include"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\include"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Auxiliary\\VS\\include"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\ucrt"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\um"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\shared"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\winrt"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\cppwinrt"
   -
     kind: "message-v1"
     backtrace:
@@ -10402,19 +10346,6 @@ events:
       - "link"
     candidate_directories:
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/VC/vcpackages/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/TestWindow/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/MSBuild/Current/Bin/Roslyn/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Team Tools/DiagnosticsHub/Collector/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/Extensions/Microsoft/CodeCoverage.Console/"
-      - "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x86/"
-      - "C:/Program Files (x86)/Windows Kits/10/bin/x86/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/MSBuild/Current/Bin/amd64/"
-      - "C:/Windows/Microsoft.NET/Framework/v4.0.30319/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/Tools/"
       - "C:/Program Files/Common Files/Oracle/Java/javapath/"
       - "C:/Windows/System32/"
       - "C:/Windows/"
@@ -10445,11 +10376,6 @@ events:
       - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "D:/other/cursor/resources/app/bin/"
       - "C:/Users/LENOVO/AppData/Roaming/npm/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/PrivateAssemblies/runtimes/win-x64/native/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/vcpkg/"
     searched_directories:
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/link.com"
     found: "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/link.exe"
@@ -10459,19 +10385,6 @@ events:
       ENV{CMAKE_PREFIX_PATH}:
         - "C:\\Qt\\6.10.2\\msvc2022_64\\lib\\cmake"
       ENV{PATH}:
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX86\\x86"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\VC\\VCPackages"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\MSBuild\\Current\\bin\\Roslyn"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Team Tools\\DiagnosticsHub\\Collector"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\Extensions\\Microsoft\\CodeCoverage.Console"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\\\x86"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\\\x86"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\\\MSBuild\\Current\\Bin\\amd64"
-        - "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\Tools\\"
         - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
         - "C:\\windows\\system32"
         - "C:\\windows"
@@ -10503,11 +10416,6 @@ events:
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "D:\\other\\cursor\\resources\\app\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\vcpkg"
       CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/AttendanceServer"
   -
     kind: "find-v1"
@@ -10532,19 +10440,6 @@ events:
       - "lld-link"
     candidate_directories:
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/VC/vcpackages/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/TestWindow/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/MSBuild/Current/Bin/Roslyn/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Team Tools/DiagnosticsHub/Collector/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/Extensions/Microsoft/CodeCoverage.Console/"
-      - "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x86/"
-      - "C:/Program Files (x86)/Windows Kits/10/bin/x86/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/MSBuild/Current/Bin/amd64/"
-      - "C:/Windows/Microsoft.NET/Framework/v4.0.30319/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/Tools/"
       - "C:/Program Files/Common Files/Oracle/Java/javapath/"
       - "C:/Windows/System32/"
       - "C:/Windows/"
@@ -10575,54 +10470,10 @@ events:
       - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "D:/other/cursor/resources/app/bin/"
       - "C:/Users/LENOVO/AppData/Roaming/npm/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/PrivateAssemblies/runtimes/win-x64/native/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/vcpkg/"
     searched_directories:
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/lld-link.com"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/lld-link.exe"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/lld-link"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/lld-link.com"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/lld-link.exe"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/lld-link"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/VC/vcpackages/lld-link.com"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/VC/vcpackages/lld-link.exe"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/VC/vcpackages/lld-link"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/TestWindow/lld-link.com"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/TestWindow/lld-link.exe"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/TestWindow/lld-link"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/lld-link.com"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/lld-link.exe"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/lld-link"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/MSBuild/Current/Bin/Roslyn/lld-link.com"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/MSBuild/Current/Bin/Roslyn/lld-link.exe"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/MSBuild/Current/Bin/Roslyn/lld-link"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Team Tools/DiagnosticsHub/Collector/lld-link.com"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Team Tools/DiagnosticsHub/Collector/lld-link.exe"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Team Tools/DiagnosticsHub/Collector/lld-link"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/Extensions/Microsoft/CodeCoverage.Console/lld-link.com"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/Extensions/Microsoft/CodeCoverage.Console/lld-link.exe"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/Extensions/Microsoft/CodeCoverage.Console/lld-link"
-      - "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x86/lld-link.com"
-      - "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x86/lld-link.exe"
-      - "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x86/lld-link"
-      - "C:/Program Files (x86)/Windows Kits/10/bin/x86/lld-link.com"
-      - "C:/Program Files (x86)/Windows Kits/10/bin/x86/lld-link.exe"
-      - "C:/Program Files (x86)/Windows Kits/10/bin/x86/lld-link"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/MSBuild/Current/Bin/amd64/lld-link.com"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/MSBuild/Current/Bin/amd64/lld-link.exe"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/MSBuild/Current/Bin/amd64/lld-link"
-      - "C:/Windows/Microsoft.NET/Framework/v4.0.30319/lld-link.com"
-      - "C:/Windows/Microsoft.NET/Framework/v4.0.30319/lld-link.exe"
-      - "C:/Windows/Microsoft.NET/Framework/v4.0.30319/lld-link"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/lld-link.com"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/lld-link.exe"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/lld-link"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/Tools/lld-link.com"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/Tools/lld-link.exe"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/Tools/lld-link"
       - "C:/Program Files/Common Files/Oracle/Java/javapath/lld-link.com"
       - "C:/Program Files/Common Files/Oracle/Java/javapath/lld-link.exe"
       - "C:/Program Files/Common Files/Oracle/Java/javapath/lld-link"
@@ -10713,21 +10564,6 @@ events:
       - "C:/Users/LENOVO/AppData/Roaming/npm/lld-link.com"
       - "C:/Users/LENOVO/AppData/Roaming/npm/lld-link.exe"
       - "C:/Users/LENOVO/AppData/Roaming/npm/lld-link"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/PrivateAssemblies/runtimes/win-x64/native/lld-link.com"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/PrivateAssemblies/runtimes/win-x64/native/lld-link.exe"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/PrivateAssemblies/runtimes/win-x64/native/lld-link"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/lld-link.com"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/lld-link.exe"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/lld-link"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/lld-link.com"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/lld-link.exe"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/lld-link"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/lld-link.com"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/lld-link.exe"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/lld-link"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/vcpkg/lld-link.com"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/vcpkg/lld-link.exe"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/vcpkg/lld-link"
     found: false
     search_context:
       CMAKE_PREFIX_PATH:
@@ -10735,19 +10571,6 @@ events:
       ENV{CMAKE_PREFIX_PATH}:
         - "C:\\Qt\\6.10.2\\msvc2022_64\\lib\\cmake"
       ENV{PATH}:
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX86\\x86"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\VC\\VCPackages"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\MSBuild\\Current\\bin\\Roslyn"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Team Tools\\DiagnosticsHub\\Collector"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\Extensions\\Microsoft\\CodeCoverage.Console"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\\\x86"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\\\x86"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\\\MSBuild\\Current\\Bin\\amd64"
-        - "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\Tools\\"
         - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
         - "C:\\windows\\system32"
         - "C:\\windows"
@@ -10779,11 +10602,6 @@ events:
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "D:\\other\\cursor\\resources\\app\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\vcpkg"
       CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/AttendanceServer"
   -
     kind: "try_compile-v1"
@@ -10794,8 +10612,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-62mks1"
-      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-62mks1"
+      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-uh0noe"
+      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-uh0noe"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "-DQT_QML_DEBUG"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -10805,29 +10623,15 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-62mks1'
+        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-uh0noe'
         
-        Run Build Command(s): C:/PROGRA~1/MIB055~1/18/Insiders/Common7/IDE/COMMON~1/MICROS~1/CMake/Ninja/ninja.exe -v cmTC_6b6fd
-        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -D_MBCS  -DQT_QML_DEBUG  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_6b6fd.dir\\CMakeCXXCompilerABI.cpp.obj /FdCMakeFiles\\cmTC_6b6fd.dir\\ /FS -c "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"
-        [2/2] C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_6b6fd.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_6b6fd.dir\\CMakeCXXCompilerABI.cpp.obj  /out:cmTC_6b6fd.exe /implib:cmTC_6b6fd.lib /pdb:cmTC_6b6fd.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
-        FAILED: cmTC_6b6fd.exe 
-        C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_6b6fd.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_6b6fd.dir\\CMakeCXXCompilerABI.cpp.obj  /out:cmTC_6b6fd.exe /implib:cmTC_6b6fd.lib /pdb:cmTC_6b6fd.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
-        LINK Pass 1: command "C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_6b6fd.dir\\CMakeCXXCompilerABI.cpp.obj /out:cmTC_6b6fd.exe /implib:cmTC_6b6fd.lib /pdb:cmTC_6b6fd.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_6b6fd.dir/intermediate.manifest CMakeFiles\\cmTC_6b6fd.dir/manifest.res" failed (exit code 1120) with the following output:
-        CMakeCXXCompilerABI.cpp.obj : error LNK2001: 无法解析的外部符号 _RTC_InitBase\x0d
-        CMakeCXXCompilerABI.cpp.obj : error LNK2001: 无法解析的外部符号 _RTC_Shutdown\x0d
-        LINK : error LNK2001: 无法解析的外部符号 mainCRTStartup\x0d
-        C:\\Program Files (x86)\\Windows Kits\\10\\\\lib\\10.0.26100.0\\\\um\\x86\\kernel32.lib : warning LNK4272:库计算机类型“x86”与目标计算机类型“x64”冲突\x0d
-        C:\\Program Files (x86)\\Windows Kits\\10\\\\lib\\10.0.26100.0\\\\um\\x86\\user32.lib : warning LNK4272:库计算机类型“x86”与目标计算机类型“x64”冲突\x0d
-        C:\\Program Files (x86)\\Windows Kits\\10\\\\lib\\10.0.26100.0\\\\um\\x86\\gdi32.lib : warning LNK4272:库计算机类型“x86”与目标计算机类型“x64”冲突\x0d
-        C:\\Program Files (x86)\\Windows Kits\\10\\\\lib\\10.0.26100.0\\\\um\\x86\\winspool.lib : warning LNK4272:库计算机类型“x86”与目标计算机类型“x64”冲突\x0d
-        C:\\Program Files (x86)\\Windows Kits\\10\\\\lib\\10.0.26100.0\\\\um\\x86\\shell32.lib : warning LNK4272:库计算机类型“x86”与目标计算机类型“x64”冲突\x0d
-        C:\\Program Files (x86)\\Windows Kits\\10\\\\lib\\10.0.26100.0\\\\um\\x86\\ole32.lib : warning LNK4272:库计算机类型“x86”与目标计算机类型“x64”冲突\x0d
-        C:\\Program Files (x86)\\Windows Kits\\10\\\\lib\\10.0.26100.0\\\\um\\x86\\oleaut32.lib : warning LNK4272:库计算机类型“x86”与目标计算机类型“x64”冲突\x0d
-        C:\\Program Files (x86)\\Windows Kits\\10\\\\lib\\10.0.26100.0\\\\um\\x86\\uuid.lib : warning LNK4272:库计算机类型“x86”与目标计算机类型“x64”冲突\x0d
-        C:\\Program Files (x86)\\Windows Kits\\10\\\\lib\\10.0.26100.0\\\\um\\x86\\comdlg32.lib : warning LNK4272:库计算机类型“x86”与目标计算机类型“x64”冲突\x0d
-        C:\\Program Files (x86)\\Windows Kits\\10\\\\lib\\10.0.26100.0\\\\um\\x86\\advapi32.lib : warning LNK4272:库计算机类型“x86”与目标计算机类型“x64”冲突\x0d
-        C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\lib\\x86\\MSVCRTD.lib : warning LNK4272:库计算机类型“x86”与目标计算机类型“x64”冲突\x0d\x0d
-        cmTC_6b6fd.exe : fatal error LNK1120: 3 个无法解析的外部命令\x0d\x0d
+        Run Build Command(s): C:/PROGRA~1/MIB055~1/18/Insiders/Common7/IDE/COMMON~1/MICROS~1/CMake/Ninja/ninja.exe -v cmTC_f6197
+        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -D_MBCS  -DQT_QML_DEBUG  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_f6197.dir\\CMakeCXXCompilerABI.cpp.obj /FdCMakeFiles\\cmTC_f6197.dir\\ /FS -c "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"
+        [2/2] C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_f6197.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_f6197.dir\\CMakeCXXCompilerABI.cpp.obj  /out:cmTC_f6197.exe /implib:cmTC_f6197.lib /pdb:cmTC_f6197.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: cmTC_f6197.exe 
+        C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_f6197.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_f6197.dir\\CMakeCXXCompilerABI.cpp.obj  /out:cmTC_f6197.exe /implib:cmTC_f6197.lib /pdb:cmTC_f6197.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        LINK Pass 1: command "C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_f6197.dir\\CMakeCXXCompilerABI.cpp.obj /out:cmTC_f6197.exe /implib:cmTC_f6197.lib /pdb:cmTC_f6197.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_f6197.dir/intermediate.manifest CMakeFiles\\cmTC_f6197.dir/manifest.res" failed (exit code 1104) with the following output:\x0d
+        LINK : fatal error LNK1104: 无法打开文件“kernel32.lib”\x0d\x0d
         ninja: build stopped: subcommand failed.
         
       exitCode: 1
@@ -10839,8 +10643,8 @@ events:
     checks:
       - "Check for working CXX compiler: C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe"
     directories:
-      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-krgapd"
-      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-krgapd"
+      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-0qiud7"
+      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-0qiud7"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "-DQT_QML_DEBUG"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -10850,29 +10654,554 @@ events:
       variable: "CMAKE_CXX_COMPILER_WORKS"
       cached: true
       stdout: |
-        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-krgapd'
+        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-0qiud7'
         
-        Run Build Command(s): C:/PROGRA~1/MIB055~1/18/Insiders/Common7/IDE/COMMON~1/MICROS~1/CMake/Ninja/ninja.exe -v cmTC_e06c3
-        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -D_MBCS  -DQT_QML_DEBUG  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_e06c3.dir\\testCXXCompiler.cxx.obj /FdCMakeFiles\\cmTC_e06c3.dir\\ /FS -c E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-krgapd\\testCXXCompiler.cxx
-        [2/2] C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_e06c3.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_e06c3.dir\\testCXXCompiler.cxx.obj  /out:cmTC_e06c3.exe /implib:cmTC_e06c3.lib /pdb:cmTC_e06c3.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
-        FAILED: cmTC_e06c3.exe 
-        C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_e06c3.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_e06c3.dir\\testCXXCompiler.cxx.obj  /out:cmTC_e06c3.exe /implib:cmTC_e06c3.lib /pdb:cmTC_e06c3.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
-        LINK Pass 1: command "C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_e06c3.dir\\testCXXCompiler.cxx.obj /out:cmTC_e06c3.exe /implib:cmTC_e06c3.lib /pdb:cmTC_e06c3.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_e06c3.dir/intermediate.manifest CMakeFiles\\cmTC_e06c3.dir/manifest.res" failed (exit code 1120) with the following output:
-        testCXXCompiler.cxx.obj : error LNK2001: 无法解析的外部符号 _RTC_InitBase\x0d
-        testCXXCompiler.cxx.obj : error LNK2001: 无法解析的外部符号 _RTC_Shutdown\x0d
-        LINK : error LNK2001: 无法解析的外部符号 mainCRTStartup\x0d
-        C:\\Program Files (x86)\\Windows Kits\\10\\\\lib\\10.0.26100.0\\\\um\\x86\\kernel32.lib : warning LNK4272:库计算机类型“x86”与目标计算机类型“x64”冲突\x0d
-        C:\\Program Files (x86)\\Windows Kits\\10\\\\lib\\10.0.26100.0\\\\um\\x86\\user32.lib : warning LNK4272:库计算机类型“x86”与目标计算机类型“x64”冲突\x0d
-        C:\\Program Files (x86)\\Windows Kits\\10\\\\lib\\10.0.26100.0\\\\um\\x86\\gdi32.lib : warning LNK4272:库计算机类型“x86”与目标计算机类型“x64”冲突\x0d
-        C:\\Program Files (x86)\\Windows Kits\\10\\\\lib\\10.0.26100.0\\\\um\\x86\\winspool.lib : warning LNK4272:库计算机类型“x86”与目标计算机类型“x64”冲突\x0d
-        C:\\Program Files (x86)\\Windows Kits\\10\\\\lib\\10.0.26100.0\\\\um\\x86\\shell32.lib : warning LNK4272:库计算机类型“x86”与目标计算机类型“x64”冲突\x0d
-        C:\\Program Files (x86)\\Windows Kits\\10\\\\lib\\10.0.26100.0\\\\um\\x86\\ole32.lib : warning LNK4272:库计算机类型“x86”与目标计算机类型“x64”冲突\x0d
-        C:\\Program Files (x86)\\Windows Kits\\10\\\\lib\\10.0.26100.0\\\\um\\x86\\oleaut32.lib : warning LNK4272:库计算机类型“x86”与目标计算机类型“x64”冲突\x0d
-        C:\\Program Files (x86)\\Windows Kits\\10\\\\lib\\10.0.26100.0\\\\um\\x86\\uuid.lib : warning LNK4272:库计算机类型“x86”与目标计算机类型“x64”冲突\x0d
-        C:\\Program Files (x86)\\Windows Kits\\10\\\\lib\\10.0.26100.0\\\\um\\x86\\comdlg32.lib : warning LNK4272:库计算机类型“x86”与目标计算机类型“x64”冲突\x0d
-        C:\\Program Files (x86)\\Windows Kits\\10\\\\lib\\10.0.26100.0\\\\um\\x86\\advapi32.lib : warning LNK4272:库计算机类型“x86”与目标计算机类型“x64”冲突\x0d
-        C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\lib\\x86\\MSVCRTD.lib : warning LNK4272:库计算机类型“x86”与目标计算机类型“x64”冲突\x0d\x0d
-        cmTC_e06c3.exe : fatal error LNK1120: 3 个无法解析的外部命令\x0d\x0d
+        Run Build Command(s): C:/PROGRA~1/MIB055~1/18/Insiders/Common7/IDE/COMMON~1/MICROS~1/CMake/Ninja/ninja.exe -v cmTC_8932a
+        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -D_MBCS  -DQT_QML_DEBUG  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_8932a.dir\\testCXXCompiler.cxx.obj /FdCMakeFiles\\cmTC_8932a.dir\\ /FS -c E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-0qiud7\\testCXXCompiler.cxx
+        [2/2] C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_8932a.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_8932a.dir\\testCXXCompiler.cxx.obj  /out:cmTC_8932a.exe /implib:cmTC_8932a.lib /pdb:cmTC_8932a.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: cmTC_8932a.exe 
+        C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_8932a.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_8932a.dir\\testCXXCompiler.cxx.obj  /out:cmTC_8932a.exe /implib:cmTC_8932a.lib /pdb:cmTC_8932a.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        LINK Pass 1: command "C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_8932a.dir\\testCXXCompiler.cxx.obj /out:cmTC_8932a.exe /implib:cmTC_8932a.lib /pdb:cmTC_8932a.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_8932a.dir/intermediate.manifest CMakeFiles\\cmTC_8932a.dir/manifest.res" failed (exit code 1104) with the following output:\x0d
+        LINK : fatal error LNK1104: 无法打开文件“kernel32.lib”\x0d\x0d
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/"
+    found: "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "C:/Qt/6.10.2/msvc2022_64"
+      ENV{CMAKE_PREFIX_PATH}:
+        - "C:\\Qt\\6.10.2\\msvc2022_64\\lib\\cmake"
+      ENV{PATH}:
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\windows\\system32"
+        - "C:\\windows"
+        - "C:\\windows\\System32\\Wbem"
+        - "C:\\windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\IncrediBuild"
+        - "C:\\MySql\\mysql-8.4.8-winx64\\bin"
+        - "C:\\Program Files\\Java\\jdk-17\\bin"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "D:\\other\\Qoder\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "E:\\JAVASet\\apache-maven-3.8.8\\bin"
+        - "E:\\JAVASet\\apache-tomcat-9.0.87\\bin"
+        - "C:\\Qt\\6.10.2\\msvc2022_64\\bin"
+        - "C:\\Qt\\6.10.2\\mingw_64\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\JetBrains\\Toolbox\\scripts"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\Qt\\6.10.2\\mingw_64\\bin"
+        - "C:\\Qt\\Tools\\mingw1310_64\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
+        - "C:\\Users\\LENOVO\\.lmstudio\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "D:\\other\\cursor\\resources\\app\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/AttendanceServer"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe 
+      Build flags: -DQT_QML_DEBUG
+      Id flags:  
+      
+      The output was:
+      2
+      用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.50.35728 版
+      版权所有(C) Microsoft Corporation。保留所有权利。
+      
+      CMakeCXXCompilerId.cpp
+      Microsoft (R) Incremental Linker Version 14.50.35728.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      /out:CMakeCXXCompilerId.exe 
+      CMakeCXXCompilerId.obj 
+      LINK : fatal error LNK1104: 无法打开文件“LIBCMT.lib”
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/"
+    found: "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "C:/Qt/6.10.2/msvc2022_64"
+      ENV{CMAKE_PREFIX_PATH}:
+        - "C:\\Qt\\6.10.2\\msvc2022_64\\lib\\cmake"
+      ENV{PATH}:
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\windows\\system32"
+        - "C:\\windows"
+        - "C:\\windows\\System32\\Wbem"
+        - "C:\\windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\IncrediBuild"
+        - "C:\\MySql\\mysql-8.4.8-winx64\\bin"
+        - "C:\\Program Files\\Java\\jdk-17\\bin"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "D:\\other\\Qoder\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "E:\\JAVASet\\apache-maven-3.8.8\\bin"
+        - "E:\\JAVASet\\apache-tomcat-9.0.87\\bin"
+        - "C:\\Qt\\6.10.2\\msvc2022_64\\bin"
+        - "C:\\Qt\\6.10.2\\mingw_64\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\JetBrains\\Toolbox\\scripts"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\Qt\\6.10.2\\mingw_64\\bin"
+        - "C:\\Qt\\Tools\\mingw1310_64\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
+        - "C:\\Users\\LENOVO\\.lmstudio\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "D:\\other\\cursor\\resources\\app\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/AttendanceServer"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe 
+      Build flags: -DQT_QML_DEBUG
+      Id flags: -c 
+      
+      The output was:
+      0
+      用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.50.35728 版
+      版权所有(C) Microsoft Corporation。保留所有权利。
+      
+      CMakeCXXCompilerId.cpp
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.obj"
+      
+      The CXX compiler identification is MSVC, found in:
+        E:/project/AttendanceServer/out/build/debug/CMakeFiles/4.2.3/CompilerIdCXX/CMakeCXXCompilerId.obj
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:250 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Detecting CXX compiler /showIncludes prefix:
+        main.c
+        注意: 包含文件:  E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\ShowIncludes\\foo.h
+        
+      Found prefix "注意: 包含文件:  "
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:37 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:65 (__resolve_tool_path)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:103 (__resolve_linker_path)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "program"
+    variable: "_CMAKE_TOOL_WITH_PATH"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "link"
+    candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files (x86)/IncrediBuild/"
+      - "C:/MySql/mysql-8.4.8-winx64/bin/"
+      - "C:/Program Files/Java/jdk-17/bin/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/CMake/bin/"
+      - "C:/Program Files/Git/cmd/"
+      - "D:/other/Qoder/bin/"
+      - "C:/Program Files/nodejs/"
+      - "E:/JAVASet/apache-maven-3.8.8/bin/"
+      - "E:/JAVASet/apache-tomcat-9.0.87/bin/"
+      - "C:/Qt/6.10.2/msvc2022_64/bin/"
+      - "C:/Qt/6.10.2/mingw_64/bin/"
+      - "C:/Users/LENOVO/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/LENOVO/AppData/Local/JetBrains/Toolbox/scripts/"
+      - "C:/msys64/ucrt64/bin/"
+      - "C:/Qt/Tools/mingw1310_64/bin/"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Ollama/"
+      - "C:/Users/LENOVO/.lmstudio/bin/"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "D:/other/cursor/resources/app/bin/"
+      - "C:/Users/LENOVO/AppData/Roaming/npm/"
+    searched_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/link.com"
+    found: "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/link.exe"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "C:/Qt/6.10.2/msvc2022_64"
+      ENV{CMAKE_PREFIX_PATH}:
+        - "C:\\Qt\\6.10.2\\msvc2022_64\\lib\\cmake"
+      ENV{PATH}:
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\windows\\system32"
+        - "C:\\windows"
+        - "C:\\windows\\System32\\Wbem"
+        - "C:\\windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\IncrediBuild"
+        - "C:\\MySql\\mysql-8.4.8-winx64\\bin"
+        - "C:\\Program Files\\Java\\jdk-17\\bin"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "D:\\other\\Qoder\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "E:\\JAVASet\\apache-maven-3.8.8\\bin"
+        - "E:\\JAVASet\\apache-tomcat-9.0.87\\bin"
+        - "C:\\Qt\\6.10.2\\msvc2022_64\\bin"
+        - "C:\\Qt\\6.10.2\\mingw_64\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\JetBrains\\Toolbox\\scripts"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\Qt\\6.10.2\\mingw_64\\bin"
+        - "C:\\Qt\\Tools\\mingw1310_64\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
+        - "C:\\Users\\LENOVO\\.lmstudio\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "D:\\other\\cursor\\resources\\app\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/AttendanceServer"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:37 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:65 (__resolve_tool_path)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:104 (__resolve_linker_path)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "program"
+    variable: "_CMAKE_TOOL_WITH_PATH"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "lld-link"
+    candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files (x86)/IncrediBuild/"
+      - "C:/MySql/mysql-8.4.8-winx64/bin/"
+      - "C:/Program Files/Java/jdk-17/bin/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/CMake/bin/"
+      - "C:/Program Files/Git/cmd/"
+      - "D:/other/Qoder/bin/"
+      - "C:/Program Files/nodejs/"
+      - "E:/JAVASet/apache-maven-3.8.8/bin/"
+      - "E:/JAVASet/apache-tomcat-9.0.87/bin/"
+      - "C:/Qt/6.10.2/msvc2022_64/bin/"
+      - "C:/Qt/6.10.2/mingw_64/bin/"
+      - "C:/Users/LENOVO/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/LENOVO/AppData/Local/JetBrains/Toolbox/scripts/"
+      - "C:/msys64/ucrt64/bin/"
+      - "C:/Qt/Tools/mingw1310_64/bin/"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Ollama/"
+      - "C:/Users/LENOVO/.lmstudio/bin/"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "D:/other/cursor/resources/app/bin/"
+      - "C:/Users/LENOVO/AppData/Roaming/npm/"
+    searched_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/lld-link.com"
+      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/lld-link.exe"
+      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/lld-link"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/lld-link.com"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/lld-link.exe"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/lld-link"
+      - "C:/Windows/System32/lld-link.com"
+      - "C:/Windows/System32/lld-link.exe"
+      - "C:/Windows/System32/lld-link"
+      - "C:/Windows/lld-link.com"
+      - "C:/Windows/lld-link.exe"
+      - "C:/Windows/lld-link"
+      - "C:/Windows/System32/wbem/lld-link.com"
+      - "C:/Windows/System32/wbem/lld-link.exe"
+      - "C:/Windows/System32/wbem/lld-link"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link"
+      - "C:/Windows/System32/OpenSSH/lld-link.com"
+      - "C:/Windows/System32/OpenSSH/lld-link.exe"
+      - "C:/Windows/System32/OpenSSH/lld-link"
+      - "C:/Program Files/dotnet/lld-link.com"
+      - "C:/Program Files/dotnet/lld-link.exe"
+      - "C:/Program Files/dotnet/lld-link"
+      - "C:/Program Files (x86)/IncrediBuild/lld-link.com"
+      - "C:/Program Files (x86)/IncrediBuild/lld-link.exe"
+      - "C:/Program Files (x86)/IncrediBuild/lld-link"
+      - "C:/MySql/mysql-8.4.8-winx64/bin/lld-link.com"
+      - "C:/MySql/mysql-8.4.8-winx64/bin/lld-link.exe"
+      - "C:/MySql/mysql-8.4.8-winx64/bin/lld-link"
+      - "C:/Program Files/Java/jdk-17/bin/lld-link.com"
+      - "C:/Program Files/Java/jdk-17/bin/lld-link.exe"
+      - "C:/Program Files/Java/jdk-17/bin/lld-link"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/lld-link.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/lld-link.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/lld-link"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/lld-link.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/lld-link.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/lld-link"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lld-link.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lld-link.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lld-link"
+      - "C:/Program Files/CMake/bin/lld-link.com"
+      - "C:/Program Files/CMake/bin/lld-link.exe"
+      - "C:/Program Files/CMake/bin/lld-link"
+      - "C:/Program Files/Git/cmd/lld-link.com"
+      - "C:/Program Files/Git/cmd/lld-link.exe"
+      - "C:/Program Files/Git/cmd/lld-link"
+      - "D:/other/Qoder/bin/lld-link.com"
+      - "D:/other/Qoder/bin/lld-link.exe"
+      - "D:/other/Qoder/bin/lld-link"
+      - "C:/Program Files/nodejs/lld-link.com"
+      - "C:/Program Files/nodejs/lld-link.exe"
+      - "C:/Program Files/nodejs/lld-link"
+      - "E:/JAVASet/apache-maven-3.8.8/bin/lld-link.com"
+      - "E:/JAVASet/apache-maven-3.8.8/bin/lld-link.exe"
+      - "E:/JAVASet/apache-maven-3.8.8/bin/lld-link"
+      - "E:/JAVASet/apache-tomcat-9.0.87/bin/lld-link.com"
+      - "E:/JAVASet/apache-tomcat-9.0.87/bin/lld-link.exe"
+      - "E:/JAVASet/apache-tomcat-9.0.87/bin/lld-link"
+      - "C:/Qt/6.10.2/msvc2022_64/bin/lld-link.com"
+      - "C:/Qt/6.10.2/msvc2022_64/bin/lld-link.exe"
+      - "C:/Qt/6.10.2/msvc2022_64/bin/lld-link"
+      - "C:/Qt/6.10.2/mingw_64/bin/lld-link.com"
+      - "C:/Qt/6.10.2/mingw_64/bin/lld-link.exe"
+      - "C:/Qt/6.10.2/mingw_64/bin/lld-link"
+      - "C:/Users/LENOVO/AppData/Local/Microsoft/WindowsApps/lld-link.com"
+      - "C:/Users/LENOVO/AppData/Local/Microsoft/WindowsApps/lld-link.exe"
+      - "C:/Users/LENOVO/AppData/Local/Microsoft/WindowsApps/lld-link"
+      - "C:/Users/LENOVO/AppData/Local/JetBrains/Toolbox/scripts/lld-link.com"
+      - "C:/Users/LENOVO/AppData/Local/JetBrains/Toolbox/scripts/lld-link.exe"
+      - "C:/Users/LENOVO/AppData/Local/JetBrains/Toolbox/scripts/lld-link"
+      - "C:/msys64/ucrt64/bin/lld-link.com"
+      - "C:/msys64/ucrt64/bin/lld-link.exe"
+      - "C:/msys64/ucrt64/bin/lld-link"
+      - "C:/Qt/Tools/mingw1310_64/bin/lld-link.com"
+      - "C:/Qt/Tools/mingw1310_64/bin/lld-link.exe"
+      - "C:/Qt/Tools/mingw1310_64/bin/lld-link"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Ollama/lld-link.com"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Ollama/lld-link.exe"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Ollama/lld-link"
+      - "C:/Users/LENOVO/.lmstudio/bin/lld-link.com"
+      - "C:/Users/LENOVO/.lmstudio/bin/lld-link.exe"
+      - "C:/Users/LENOVO/.lmstudio/bin/lld-link"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.com"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.exe"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/lld-link"
+      - "D:/other/cursor/resources/app/bin/lld-link.com"
+      - "D:/other/cursor/resources/app/bin/lld-link.exe"
+      - "D:/other/cursor/resources/app/bin/lld-link"
+      - "C:/Users/LENOVO/AppData/Roaming/npm/lld-link.com"
+      - "C:/Users/LENOVO/AppData/Roaming/npm/lld-link.exe"
+      - "C:/Users/LENOVO/AppData/Roaming/npm/lld-link"
+    found: false
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "C:/Qt/6.10.2/msvc2022_64"
+      ENV{CMAKE_PREFIX_PATH}:
+        - "C:\\Qt\\6.10.2\\msvc2022_64\\lib\\cmake"
+      ENV{PATH}:
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\windows\\system32"
+        - "C:\\windows"
+        - "C:\\windows\\System32\\Wbem"
+        - "C:\\windows\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\windows\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\IncrediBuild"
+        - "C:\\MySql\\mysql-8.4.8-winx64\\bin"
+        - "C:\\Program Files\\Java\\jdk-17\\bin"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "D:\\other\\Qoder\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "E:\\JAVASet\\apache-maven-3.8.8\\bin"
+        - "E:\\JAVASet\\apache-tomcat-9.0.87\\bin"
+        - "C:\\Qt\\6.10.2\\msvc2022_64\\bin"
+        - "C:\\Qt\\6.10.2\\mingw_64\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\JetBrains\\Toolbox\\scripts"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\Qt\\6.10.2\\mingw_64\\bin"
+        - "C:\\Qt\\Tools\\mingw1310_64\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
+        - "C:\\Users\\LENOVO\\.lmstudio\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "D:\\other\\cursor\\resources\\app\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/AttendanceServer"
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-qmbpms"
+      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-qmbpms"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "-DQT_QML_DEBUG"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-qmbpms'
+        
+        Run Build Command(s): C:/PROGRA~1/MIB055~1/18/Insiders/Common7/IDE/COMMON~1/MICROS~1/CMake/Ninja/ninja.exe -v cmTC_9edbc
+        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -D_MBCS  -DQT_QML_DEBUG  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_9edbc.dir\\CMakeCXXCompilerABI.cpp.obj /FdCMakeFiles\\cmTC_9edbc.dir\\ /FS -c "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"
+        [2/2] C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_9edbc.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_9edbc.dir\\CMakeCXXCompilerABI.cpp.obj  /out:cmTC_9edbc.exe /implib:cmTC_9edbc.lib /pdb:cmTC_9edbc.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: cmTC_9edbc.exe 
+        C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_9edbc.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_9edbc.dir\\CMakeCXXCompilerABI.cpp.obj  /out:cmTC_9edbc.exe /implib:cmTC_9edbc.lib /pdb:cmTC_9edbc.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        LINK Pass 1: command "C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_9edbc.dir\\CMakeCXXCompilerABI.cpp.obj /out:cmTC_9edbc.exe /implib:cmTC_9edbc.lib /pdb:cmTC_9edbc.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_9edbc.dir/intermediate.manifest CMakeFiles\\cmTC_9edbc.dir/manifest.res" failed (exit code 1104) with the following output:\x0d
+        LINK : fatal error LNK1104: 无法打开文件“kernel32.lib”\x0d\x0d
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeTestCXXCompiler.cmake:56 (try_compile)"
+      - "CMakeLists.txt:3 (project)"
+    checks:
+      - "Check for working CXX compiler: C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe"
+    directories:
+      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-bwhlkk"
+      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-bwhlkk"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "-DQT_QML_DEBUG"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_CXX_COMPILER_WORKS"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-bwhlkk'
+        
+        Run Build Command(s): C:/PROGRA~1/MIB055~1/18/Insiders/Common7/IDE/COMMON~1/MICROS~1/CMake/Ninja/ninja.exe -v cmTC_c1f61
+        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -D_MBCS  -DQT_QML_DEBUG  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_c1f61.dir\\testCXXCompiler.cxx.obj /FdCMakeFiles\\cmTC_c1f61.dir\\ /FS -c E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-bwhlkk\\testCXXCompiler.cxx
+        [2/2] C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_c1f61.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_c1f61.dir\\testCXXCompiler.cxx.obj  /out:cmTC_c1f61.exe /implib:cmTC_c1f61.lib /pdb:cmTC_c1f61.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: cmTC_c1f61.exe 
+        C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_c1f61.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_c1f61.dir\\testCXXCompiler.cxx.obj  /out:cmTC_c1f61.exe /implib:cmTC_c1f61.lib /pdb:cmTC_c1f61.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        LINK Pass 1: command "C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_c1f61.dir\\testCXXCompiler.cxx.obj /out:cmTC_c1f61.exe /implib:cmTC_c1f61.lib /pdb:cmTC_c1f61.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_c1f61.dir/intermediate.manifest CMakeFiles\\cmTC_c1f61.dir/manifest.res" failed (exit code 1104) with the following output:\x0d
+        LINK : fatal error LNK1104: 无法打开文件“kernel32.lib”\x0d\x0d
         ninja: build stopped: subcommand failed.
         
       exitCode: 1
