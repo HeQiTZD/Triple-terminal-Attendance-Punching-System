@@ -311,20 +311,3 @@ QString FaceDataManager::getErrorMessage(int errCode) const
 {
     return QString("Error code: %1").arg(errCode);
 }
-
-/**
- * @brief 打开文件夹选择图片，返回选中的图片路径
- * @param parent 父窗口指针
- * @return 选中的图片路径，未选择返回空字符串
- */
-QString FaceDataManager::selectImageFile(void *parent)
-{
-    QWidget *widget = static_cast<QWidget*>(parent);
-    QString filePath = QFileDialog::getOpenFileName(
-        widget,
-        QStringLiteral("选择图片文件"),
-        QString(),
-        QStringLiteral("图片文件 (*.png *.jpg *.jpeg *.bmp *.gif)")
-    );
-    return filePath;
-}

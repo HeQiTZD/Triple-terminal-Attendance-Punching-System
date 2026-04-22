@@ -9,6 +9,9 @@
 #include <QImage>
 #include <QMutex>
 
+// forward declaration to avoid including QWidget header in this header file
+class QWidget;
+
 // 直接包含 ArcSoft SDK 头文件
 #include "../third_party/arcface/include/arcsoft_face_sdk.h"
 #include "../third_party/arcface/include/merror.h"
@@ -53,7 +56,7 @@ public:
      * @param parent 父窗口指针
      * @return 选中的图片路径，未选择返回空字符串
      */
-    static QString selectImageFile(void *parent = nullptr);
+    QString selectImageFile(QWidget *parent = nullptr);
 
 signals:
     void engineInitialized();
