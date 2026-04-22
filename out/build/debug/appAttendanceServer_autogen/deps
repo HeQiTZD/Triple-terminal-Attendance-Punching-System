@@ -101,13 +101,16 @@ appAttendanceServer_autogen/timestamp: \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QJsonObject \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QList \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QMap \
+	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QMutex \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QObject \
+	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QRect \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QSet \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QString \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QTime \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QTimer \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QVariant \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QVariantMap \
+	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QVector \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/q17memory.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/q20functional.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/q20iterator.h \
@@ -137,6 +140,7 @@ appAttendanceServer_autogen/timestamp: \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qcborcommon.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qcborvalue.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qchar.h \
+	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qcheckedint_impl.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qcompare.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qcompare_impl.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qcomparehelpers.h \
@@ -175,16 +179,19 @@ appAttendanceServer_autogen/timestamp: \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qjsonparseerror.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qjsonvalue.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qlatin1stringview.h \
+	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qline.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qlist.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qlocale.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qlogging.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qmalloc.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qmap.h \
+	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qmargins.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qmath.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qmetacontainer.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qmetaobject.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qmetatype.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qminmax.h \
+	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qmutex.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qnamespace.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qnumeric.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qobject.h \
@@ -193,7 +200,9 @@ appAttendanceServer_autogen/timestamp: \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qobjectdefs_impl.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qoverload.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qpair.h \
+	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qpoint.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qprocessordetection.h \
+	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qrect.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qrefcount.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qregularexpression.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qscopedpointer.h \
@@ -203,6 +212,7 @@ appAttendanceServer_autogen/timestamp: \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qshareddata_impl.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qsharedpointer.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qsharedpointer_impl.h \
+	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qsize.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qspan.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qstdlibdetection.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qstring.h \
@@ -235,6 +245,7 @@ appAttendanceServer_autogen/timestamp: \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qtnoop.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qtpreprocessorsupport.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qtresource.h \
+	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qtsan_impl.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qttranslation.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qttypetraits.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qtversion.h \
@@ -247,9 +258,25 @@ appAttendanceServer_autogen/timestamp: \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qvariant.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qvariantmap.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qvarlengtharray.h \
+	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qvector.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qversiontagging.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qxptype_traits.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qyieldcpu.h \
+	C:/Qt/6.10.2/msvc2022_64/include/QtGui/QImage \
+	C:/Qt/6.10.2/msvc2022_64/include/QtGui/qcolor.h \
+	C:/Qt/6.10.2/msvc2022_64/include/QtGui/qimage.h \
+	C:/Qt/6.10.2/msvc2022_64/include/QtGui/qpaintdevice.h \
+	C:/Qt/6.10.2/msvc2022_64/include/QtGui/qpixelformat.h \
+	C:/Qt/6.10.2/msvc2022_64/include/QtGui/qpolygon.h \
+	C:/Qt/6.10.2/msvc2022_64/include/QtGui/qregion.h \
+	C:/Qt/6.10.2/msvc2022_64/include/QtGui/qrgb.h \
+	C:/Qt/6.10.2/msvc2022_64/include/QtGui/qrgba64.h \
+	C:/Qt/6.10.2/msvc2022_64/include/QtGui/qtgui-config.h \
+	C:/Qt/6.10.2/msvc2022_64/include/QtGui/qtguiexports.h \
+	C:/Qt/6.10.2/msvc2022_64/include/QtGui/qtguiglobal.h \
+	C:/Qt/6.10.2/msvc2022_64/include/QtGui/qtransform.h \
+	C:/Qt/6.10.2/msvc2022_64/include/QtGui/qwindowdefs.h \
+	C:/Qt/6.10.2/msvc2022_64/include/QtGui/qwindowdefs_win.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtNetwork/QTcpServer \
 	C:/Qt/6.10.2/msvc2022_64/include/QtNetwork/QTcpSocket \
 	C:/Qt/6.10.2/msvc2022_64/include/QtNetwork/qabstractsocket.h \
@@ -1201,6 +1228,31 @@ appAttendanceServer_autogen/timestamp: \
 	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Sql/Qt6SqlTargets-relwithdebinfo.cmake \
 	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Sql/Qt6SqlTargets.cmake \
 	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Sql/Qt6SqlVersionlessAliasTargets.cmake \
+	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6QModernWindowsStylePluginAdditionalTargetInfo.cmake \
+	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6QModernWindowsStylePluginConfig.cmake \
+	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6QModernWindowsStylePluginTargets-debug.cmake \
+	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6QModernWindowsStylePluginTargets-relwithdebinfo.cmake \
+	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6QModernWindowsStylePluginTargets.cmake \
+	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6WidgetsAdditionalTargetInfo.cmake \
+	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6WidgetsConfig.cmake \
+	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6WidgetsConfigVersion.cmake \
+	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6WidgetsConfigVersionImpl.cmake \
+	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6WidgetsDependencies.cmake \
+	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6WidgetsMacros.cmake \
+	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6WidgetsPlugins.cmake \
+	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6WidgetsTargets-debug.cmake \
+	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6WidgetsTargets-relwithdebinfo.cmake \
+	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6WidgetsTargets.cmake \
+	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Widgets/Qt6WidgetsVersionlessAliasTargets.cmake \
+	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsAdditionalTargetInfo.cmake \
+	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfig.cmake \
+	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfigVersion.cmake \
+	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfigVersionImpl.cmake \
+	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsDependencies.cmake \
+	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargets-debug.cmake \
+	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargets-relwithdebinfo.cmake \
+	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargets.cmake \
+	C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsVersionlessTargets.cmake \
 	E:/project/AttendanceServer/CMakeLists.txt \
 	E:/project/AttendanceServer/main.cpp \
 	E:/project/AttendanceServer/out/build/debug/.qt/qml_imports/appAttendanceServer_conf.cmake \
@@ -1215,6 +1267,8 @@ appAttendanceServer_autogen/timestamp: \
 	E:/project/AttendanceServer/src/DataManager/datamanager.h \
 	E:/project/AttendanceServer/src/DeviceMonitor/devicemonitor.cpp \
 	E:/project/AttendanceServer/src/DeviceMonitor/devicemonitor.h \
+	E:/project/AttendanceServer/src/FaceDataManager/facedatamanager.cpp \
+	E:/project/AttendanceServer/src/FaceDataManager/facedatamanager.h \
 	E:/project/AttendanceServer/src/Models/Person.cpp \
 	E:/project/AttendanceServer/src/Models/Person.h \
 	E:/project/AttendanceServer/src/Models/attendancerecord.cpp \
@@ -1228,4 +1282,8 @@ appAttendanceServer_autogen/timestamp: \
 	E:/project/AttendanceServer/src/SyncManager/syncmanager.h \
 	E:/project/AttendanceServer/src/TcpServer/tcpserver.cpp \
 	E:/project/AttendanceServer/src/TcpServer/tcpserver.h \
+	E:/project/AttendanceServer/src/third_party/arcface/include/amcomdef.h \
+	E:/project/AttendanceServer/src/third_party/arcface/include/arcsoft_face_sdk.h \
+	E:/project/AttendanceServer/src/third_party/arcface/include/asvloffscreen.h \
+	E:/project/AttendanceServer/src/third_party/arcface/include/merror.h \
 	C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe

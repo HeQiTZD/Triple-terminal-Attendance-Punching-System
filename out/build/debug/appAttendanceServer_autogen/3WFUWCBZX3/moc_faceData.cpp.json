@@ -100,6 +100,22 @@
                     "type": "QDateTime",
                     "user": false,
                     "write": "setUpdatedAt"
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 6,
+                    "lineNumber": 18,
+                    "name": "featureSize",
+                    "notify": "featureSizeChanged",
+                    "read": "featureSize",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "int",
+                    "user": false,
+                    "write": "setFeatureSize"
                 }
             ],
             "qualifiedClassName": "FaceData",
@@ -113,7 +129,7 @@
                         }
                     ],
                     "index": 0,
-                    "lineNumber": 42,
+                    "lineNumber": 46,
                     "name": "idChanged",
                     "returnType": "void"
                 },
@@ -126,7 +142,7 @@
                         }
                     ],
                     "index": 1,
-                    "lineNumber": 43,
+                    "lineNumber": 47,
                     "name": "personIdChanged",
                     "returnType": "void"
                 },
@@ -139,7 +155,7 @@
                         }
                     ],
                     "index": 2,
-                    "lineNumber": 44,
+                    "lineNumber": 48,
                     "name": "featureVectorChanged",
                     "returnType": "void"
                 },
@@ -152,7 +168,7 @@
                         }
                     ],
                     "index": 3,
-                    "lineNumber": 45,
+                    "lineNumber": 49,
                     "name": "statusChanged",
                     "returnType": "void"
                 },
@@ -165,7 +181,7 @@
                         }
                     ],
                     "index": 4,
-                    "lineNumber": 46,
+                    "lineNumber": 50,
                     "name": "createdAtChanged",
                     "returnType": "void"
                 },
@@ -178,8 +194,21 @@
                         }
                     ],
                     "index": 5,
-                    "lineNumber": 47,
+                    "lineNumber": 51,
                     "name": "updatedAtChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "featureSize",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 6,
+                    "lineNumber": 52,
+                    "name": "featureSizeChanged",
                     "returnType": "void"
                 }
             ],

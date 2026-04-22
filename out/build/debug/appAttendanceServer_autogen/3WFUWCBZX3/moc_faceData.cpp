@@ -51,7 +51,9 @@ template <> constexpr inline auto FaceData::qt_create_metaobjectdata<qt_meta_tag
         "createdAtChanged",
         "createdAt",
         "updatedAtChanged",
-        "updatedAt"
+        "updatedAt",
+        "featureSizeChanged",
+        "featureSize"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -79,6 +81,10 @@ template <> constexpr inline auto FaceData::qt_create_metaobjectdata<qt_meta_tag
         QtMocHelpers::SignalData<void(const QDateTime &)>(12, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::QDateTime, 13 },
         }}),
+        // Signal 'featureSizeChanged'
+        QtMocHelpers::SignalData<void(int)>(14, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 15 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
         // property 'id'
@@ -93,6 +99,8 @@ template <> constexpr inline auto FaceData::qt_create_metaobjectdata<qt_meta_tag
         QtMocHelpers::PropertyData<QDateTime>(11, QMetaType::QDateTime, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 4),
         // property 'updatedAt'
         QtMocHelpers::PropertyData<QDateTime>(13, QMetaType::QDateTime, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 5),
+        // property 'featureSize'
+        QtMocHelpers::PropertyData<int>(15, QMetaType::Int, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 6),
     };
     QtMocHelpers::UintData qt_enums {
     };
@@ -120,6 +128,7 @@ void FaceData::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         case 3: _t->statusChanged((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
         case 4: _t->createdAtChanged((*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[1]))); break;
         case 5: _t->updatedAtChanged((*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[1]))); break;
+        case 6: _t->featureSizeChanged((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
         default: ;
         }
     }
@@ -136,6 +145,8 @@ void FaceData::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
             return;
         if (QtMocHelpers::indexOfMethod<void (FaceData::*)(const QDateTime & )>(_a, &FaceData::updatedAtChanged, 5))
             return;
+        if (QtMocHelpers::indexOfMethod<void (FaceData::*)(int )>(_a, &FaceData::featureSizeChanged, 6))
+            return;
     }
     if (_c == QMetaObject::ReadProperty) {
         void *_v = _a[0];
@@ -146,6 +157,7 @@ void FaceData::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         case 3: *reinterpret_cast<QString*>(_v) = _t->status(); break;
         case 4: *reinterpret_cast<QDateTime*>(_v) = _t->createdAt(); break;
         case 5: *reinterpret_cast<QDateTime*>(_v) = _t->updatedAt(); break;
+        case 6: *reinterpret_cast<int*>(_v) = _t->featureSize(); break;
         default: break;
         }
     }
@@ -158,6 +170,7 @@ void FaceData::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         case 3: _t->setStatus(*reinterpret_cast<QString*>(_v)); break;
         case 4: _t->setCreatedAt(*reinterpret_cast<QDateTime*>(_v)); break;
         case 5: _t->setUpdatedAt(*reinterpret_cast<QDateTime*>(_v)); break;
+        case 6: _t->setFeatureSize(*reinterpret_cast<int*>(_v)); break;
         default: break;
         }
     }
@@ -182,20 +195,20 @@ int FaceData::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 7;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 7)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 6;
+        _id -= 7;
     }
     if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::BindableProperty
             || _c == QMetaObject::RegisterPropertyMetaType) {
         qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 7;
     }
     return _id;
 }
@@ -234,5 +247,11 @@ void FaceData::createdAtChanged(const QDateTime & _t1)
 void FaceData::updatedAtChanged(const QDateTime & _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 5, nullptr, _t1);
+}
+
+// SIGNAL 6
+void FaceData::featureSizeChanged(int _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 6, nullptr, _t1);
 }
 QT_WARNING_POP

@@ -1452,6 +1452,7 @@
 	"MOC_INCLUDES" : 
 	[
 		"E:/project/AttendanceServer",
+		"E:/project/AttendanceServer/src/third_party/arcface/include",
 		"C:/Qt/6.10.2/msvc2022_64/include/QtQml",
 		"C:/Qt/6.10.2/msvc2022_64/include",
 		"C:/Qt/6.10.2/msvc2022_64/include/QtCore",
