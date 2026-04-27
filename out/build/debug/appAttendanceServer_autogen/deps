@@ -1267,6 +1267,8 @@ appAttendanceServer_autogen/timestamp: \
 	E:/project/AttendanceServer/src/DataManager/datamanager.h \
 	E:/project/AttendanceServer/src/DeviceMonitor/devicemonitor.cpp \
 	E:/project/AttendanceServer/src/DeviceMonitor/devicemonitor.h \
+	E:/project/AttendanceServer/src/ExportManager/exportmanager.cpp \
+	E:/project/AttendanceServer/src/ExportManager/exportmanager.h \
 	E:/project/AttendanceServer/src/FaceDataManager/facedatamanager.cpp \
 	E:/project/AttendanceServer/src/FaceDataManager/facedatamanager.h \
 	E:/project/AttendanceServer/src/Models/Person.cpp \

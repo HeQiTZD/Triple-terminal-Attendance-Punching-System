@@ -3,6 +3,7 @@
 #include "Y426ONDXH7/moc_networkcontroller.cpp"
 #include "MRZBYZ2XCI/moc_datamanager.cpp"
 #include "YPNXXZ35VI/moc_devicemonitor.cpp"
+#include "ONL55FX37M/moc_exportmanager.cpp"
 #include "GHKGLY4XUE/moc_facedatamanager.cpp"
 #include "3WFUWCBZX3/moc_Person.cpp"
 #include "3WFUWCBZX3/moc_attendancerecord.cpp"

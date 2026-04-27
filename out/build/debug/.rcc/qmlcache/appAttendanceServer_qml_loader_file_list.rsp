@@ -2,4 +2,6 @@
 E:/project/AttendanceServer/out/build/debug/.qt/rcc/qmake_AttendanceServer.qrc
 --resource
 E:/project/AttendanceServer/out/build/debug/.qt/rcc/appAttendanceServer_raw_qml_0.qrc
-/qt/qml/AttendanceServer/Main.qml
+--resource
+E:/project/AttendanceServer/out/build/debug/.qt/rcc/appAttendanceServer_raw_qml_0_extra_qmldirs.qrc
+/qt/qml/AttendanceServer/ui/Main.qml

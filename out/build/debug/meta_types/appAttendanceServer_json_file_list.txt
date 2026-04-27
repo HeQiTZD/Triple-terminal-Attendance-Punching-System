@@ -5,6 +5,7 @@ E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/include/
 E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/include/../GHKGLY4XUE/moc_facedatamanager.cpp.json
 E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/include/../I7BNQNPOMK/moc_tcpserver.cpp.json
 E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/include/../MRZBYZ2XCI/moc_datamanager.cpp.json
+E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/include/../ONL55FX37M/moc_exportmanager.cpp.json
 E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/include/../PJ4NMIXSYY/moc_syncmanager.cpp.json
 E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/include/../R5M4TDKI6F/moc_attendanceanalyzer.cpp.json
 E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/include/../Y426ONDXH7/moc_networkcontroller.cpp.json

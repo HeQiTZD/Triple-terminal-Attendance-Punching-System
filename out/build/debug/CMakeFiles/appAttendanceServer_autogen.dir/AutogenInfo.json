@@ -1338,6 +1338,8 @@
 		"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Core/Qt6CoreConfigureFileTemplate.in",
 		"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Qml/Qt6QmlModuleDirMappingTemplate.qrc.in",
 		"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Core/Qt6CoreConfigureFileTemplate.in",
+		"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Qml/Qt6qmldirTemplate.cmake.in",
+		"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Core/Qt6CoreConfigureFileTemplate.in",
 		"C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.2/Modules/GNUInstallDirs.cmake",
 		"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Qml/Qt6qmldirTemplate.cmake.in",
 		"E:/project/AttendanceServer/out/build/debug/.qt/qml_imports/appAttendanceServer_conf.cmake"
@@ -1370,6 +1372,12 @@
 			"E:/project/AttendanceServer/src/DeviceMonitor/devicemonitor.h",
 			"MU",
 			"YPNXXZ35VI/moc_devicemonitor.cpp",
+			null
+		],
+		[
+			"E:/project/AttendanceServer/src/ExportManager/exportmanager.h",
+			"MU",
+			"ONL55FX37M/moc_exportmanager.cpp",
 			null
 		],
 		[
@@ -1482,9 +1490,10 @@
 	"MOC_SKIP" : 
 	[
 		"E:/project/AttendanceServer/out/build/debug/.qt/rcc/qrc_appAttendanceServer_raw_qml_0.cpp",
+		"E:/project/AttendanceServer/out/build/debug/.qt/rcc/qrc_appAttendanceServer_raw_qml_0_extra_qmldirs.cpp",
 		"E:/project/AttendanceServer/out/build/debug/.qt/rcc/qrc_qmake_AttendanceServer.cpp",
-		"E:/project/AttendanceServer/out/build/debug/.rcc/qmlcache/appAttendanceServer_Main_qml.cpp",
 		"E:/project/AttendanceServer/out/build/debug/.rcc/qmlcache/appAttendanceServer_qmlcache_loader.cpp",
+		"E:/project/AttendanceServer/out/build/debug/.rcc/qmlcache/appAttendanceServer_ui/Main_qml.cpp",
 		"E:/project/AttendanceServer/out/build/debug/appattendanceserver_qmltyperegistrations.cpp"
 	],
 	"MULTI_CONFIG" : false,
@@ -1519,6 +1528,11 @@
 			null
 		],
 		[
+			"E:/project/AttendanceServer/src/ExportManager/exportmanager.cpp",
+			"MU",
+			null
+		],
+		[
 			"E:/project/AttendanceServer/src/FaceDataManager/facedatamanager.cpp",
 			"MU",
 			null
@@ -1543,9 +1557,10 @@
 	"UIC_SKIP" : 
 	[
 		"E:/project/AttendanceServer/out/build/debug/.qt/rcc/qrc_appAttendanceServer_raw_qml_0.cpp",
+		"E:/project/AttendanceServer/out/build/debug/.qt/rcc/qrc_appAttendanceServer_raw_qml_0_extra_qmldirs.cpp",
 		"E:/project/AttendanceServer/out/build/debug/.qt/rcc/qrc_qmake_AttendanceServer.cpp",
-		"E:/project/AttendanceServer/out/build/debug/.rcc/qmlcache/appAttendanceServer_Main_qml.cpp",
 		"E:/project/AttendanceServer/out/build/debug/.rcc/qmlcache/appAttendanceServer_qmlcache_loader.cpp",
+		"E:/project/AttendanceServer/out/build/debug/.rcc/qmlcache/appAttendanceServer_ui/Main_qml.cpp",
 		"E:/project/AttendanceServer/out/build/debug/appattendanceserver_qmltyperegistrations.cpp"
 	],
 	"UIC_UI_FILES" : [],

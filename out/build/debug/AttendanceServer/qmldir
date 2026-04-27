@@ -1,6 +1,6 @@
 module AttendanceServer
 typeinfo appAttendanceServer.qmltypes
 prefer :/qt/qml/AttendanceServer/
-Main 254.0 Main.qml
+Main 254.0 ui/Main.qml
 depends QtQuick
 

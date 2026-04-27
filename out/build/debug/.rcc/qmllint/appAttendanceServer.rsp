@@ -11,4 +11,6 @@ C:/Qt/6.10.2/msvc2022_64/qml
 E:/project/AttendanceServer/out/build/debug/.qt/rcc/qmake_AttendanceServer.qrc
 --resource
 E:/project/AttendanceServer/out/build/debug/.qt/rcc/appAttendanceServer_raw_qml_0.qrc
-E:/project/AttendanceServer/Main.qml
+--resource
+E:/project/AttendanceServer/out/build/debug/.qt/rcc/appAttendanceServer_raw_qml_0_extra_qmldirs.qrc
+E:/project/AttendanceServer/ui/Main.qml

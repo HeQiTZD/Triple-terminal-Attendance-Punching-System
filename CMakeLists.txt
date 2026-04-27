@@ -20,7 +20,7 @@ qt_add_executable(appAttendanceServer
 qt_add_qml_module(appAttendanceServer
     URI AttendanceServer
     QML_FILES
-        Main.qml
+        ui/Main.qml
         SOURCES src/TcpServer/tcpserver.h src/TcpServer/tcpserver.cpp
         SOURCES src/DataManager/datamanager.h src/DataManager/datamanager.cpp
         SOURCES src/Models/Person.h
@@ -36,6 +36,7 @@ qt_add_qml_module(appAttendanceServer
         SOURCES src/SyncManager/syncmanager.h src/SyncManager/syncmanager.cpp
         SOURCES src/AttendanceAnalyzer/attendanceanalyzer.h src/AttendanceAnalyzer/attendanceanalyzer.cpp
         SOURCES src/FaceDataManager/facedatamanager.h src/FaceDataManager/facedatamanager.cpp
+        SOURCES src/ExportManager/exportmanager.h src/ExportManager/exportmanager.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
