@@ -730,6 +730,125 @@
     {
         "classes": [
             {
+                "className": "TestApi",
+                "lineNumber": 12,
+                "methods": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "appId",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "sdkKey",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 1,
+                        "lineNumber": 27,
+                        "name": "initFaceEngine",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "imagePath",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 2,
+                        "lineNumber": 28,
+                        "name": "extractFeatureBase64",
+                        "returnType": "QString"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "f1Base64",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "f2Base64",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 3,
+                        "lineNumber": 29,
+                        "name": "compareFeatureBase64",
+                        "returnType": "double"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "deviceId",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 4,
+                        "lineNumber": 31,
+                        "name": "requestPersonSync",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "jsonText",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 5,
+                        "lineNumber": 32,
+                        "name": "broadcastJson",
+                        "returnType": "bool"
+                    }
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 15,
+                        "name": "lastError",
+                        "notify": "lastErrorChanged",
+                        "read": "lastError",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false
+                    }
+                ],
+                "qualifiedClassName": "TestApi",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 35,
+                        "name": "lastErrorChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "testapi.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
                 "className": "FaceDataManager",
                 "lineNumber": 19,
                 "object": true,
@@ -827,6 +946,66 @@
             {
                 "className": "TcpServer",
                 "lineNumber": 12,
+                "methods": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "pot",
+                                "type": "quint16"
+                            }
+                        ],
+                        "index": 12,
+                        "lineNumber": 23,
+                        "name": "startServer",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "index": 13,
+                        "isCloned": true,
+                        "lineNumber": 23,
+                        "name": "startServer",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "index": 14,
+                        "lineNumber": 25,
+                        "name": "stopServer",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "deviceId",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "data",
+                                "type": "QJsonObject"
+                            }
+                        ],
+                        "index": 15,
+                        "lineNumber": 33,
+                        "name": "sendToClient",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "data",
+                                "type": "QJsonObject"
+                            }
+                        ],
+                        "index": 16,
+                        "lineNumber": 35,
+                        "name": "brodcastsToAll",
+                        "returnType": "void"
+                    }
+                ],
                 "object": true,
                 "properties": [
                     {
@@ -1492,7 +1671,7 @@
         "classes": [
             {
                 "className": "ExportManager",
-                "lineNumber": 17,
+                "lineNumber": 18,
                 "methods": [
                     {
                         "access": "public",
@@ -1511,7 +1690,7 @@
                             }
                         ],
                         "index": 1,
-                        "lineNumber": 27,
+                        "lineNumber": 28,
                         "name": "exportAttendanceRecordsCsv",
                         "returnType": "bool"
                     },
@@ -1524,7 +1703,7 @@
                             }
                         ],
                         "index": 2,
-                        "lineNumber": 32,
+                        "lineNumber": 33,
                         "name": "exportPersonsCsv",
                         "returnType": "bool"
                     },
@@ -1537,7 +1716,7 @@
                             }
                         ],
                         "index": 3,
-                        "lineNumber": 35,
+                        "lineNumber": 36,
                         "name": "exportDeviceCsv",
                         "returnType": "bool"
                     }
@@ -1549,7 +1728,7 @@
                         "designable": true,
                         "final": false,
                         "index": 0,
-                        "lineNumber": 19,
+                        "lineNumber": 20,
                         "name": "lastError",
                         "notify": "lastErrorChanged",
                         "read": "lastError",
@@ -1565,7 +1744,7 @@
                     {
                         "access": "public",
                         "index": 0,
-                        "lineNumber": 38,
+                        "lineNumber": 39,
                         "name": "lastErrorChanged",
                         "returnType": "void"
                     }
@@ -1586,6 +1765,21 @@
             {
                 "className": "SyncManager",
                 "lineNumber": 14,
+                "methods": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "deviceId",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 1,
+                        "lineNumber": 19,
+                        "name": "sendPersonSyncNow",
+                        "returnType": "void"
+                    }
+                ],
                 "object": true,
                 "qualifiedClassName": "SyncManager",
                 "slots": [
@@ -1598,7 +1792,7 @@
                             }
                         ],
                         "index": 0,
-                        "lineNumber": 21,
+                        "lineNumber": 22,
                         "name": "onSynRequested",
                         "returnType": "void"
                     }

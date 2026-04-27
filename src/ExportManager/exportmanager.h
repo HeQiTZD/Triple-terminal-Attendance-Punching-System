@@ -11,6 +11,7 @@
 #include "src/DataManager/datamanager.h"
 #include "src/Models/Person.h"
 #include "src/Models/device.h"
+#include "src/Models/attendancerecord.h"
 
 class DataManager;
 

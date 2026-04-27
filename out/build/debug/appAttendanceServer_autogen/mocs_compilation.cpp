@@ -11,3 +11,4 @@
 #include "3WFUWCBZX3/moc_faceData.cpp"
 #include "PJ4NMIXSYY/moc_syncmanager.cpp"
 #include "I7BNQNPOMK/moc_tcpserver.cpp"
+#include "FEU2BV2BIM/moc_testapi.cpp"

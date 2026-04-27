@@ -16,6 +16,7 @@ class SyncManager : public QObject
     Q_OBJECT
 public:
     explicit SyncManager(TcpServer* tcpServer, DataManager* dataManager, QObject* parent = nullptr);
+    Q_INVOKABLE void sendPersonSyncNow(const QString& deviceId);
 
 private slots:
     void onSynRequested(const QString &deviceId);

@@ -23,6 +23,7 @@ bool DataManager::initialize(const QString &host, const QString &database, const
     m_isConnected = true;
     emit connectionStateChanged();
 
+    qDebug() << "开始创建表";
     //创建数据表
     if(!createTables()){
         return false;

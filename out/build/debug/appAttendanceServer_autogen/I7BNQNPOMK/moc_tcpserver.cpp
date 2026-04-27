@@ -58,6 +58,12 @@ template <> constexpr inline auto TcpServer::qt_create_metaobjectdata<qt_meta_ta
         "onSocketDisconnected",
         "onSocketReadyRead",
         "onHeartbeatTimeout",
+        "startServer",
+        "pot",
+        "stopServer",
+        "sendToClient",
+        "data",
+        "brodcastsToAll",
         "isRunning",
         "clientCount"
     };
@@ -99,12 +105,28 @@ template <> constexpr inline auto TcpServer::qt_create_metaobjectdata<qt_meta_ta
         QtMocHelpers::SlotData<void()>(18, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onHeartbeatTimeout'
         QtMocHelpers::SlotData<void()>(19, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Method 'startServer'
+        QtMocHelpers::MethodData<bool(quint16)>(20, 2, QMC::AccessPublic, QMetaType::Bool, {{
+            { QMetaType::UShort, 21 },
+        }}),
+        // Method 'startServer'
+        QtMocHelpers::MethodData<bool()>(20, 2, QMC::AccessPublic | QMC::MethodCloned, QMetaType::Bool),
+        // Method 'stopServer'
+        QtMocHelpers::MethodData<void()>(22, 2, QMC::AccessPublic, QMetaType::Void),
+        // Method 'sendToClient'
+        QtMocHelpers::MethodData<bool(const QString &, const QJsonObject &)>(23, 2, QMC::AccessPublic, QMetaType::Bool, {{
+            { QMetaType::QString, 5 }, { 0x80000000 | 9, 24 },
+        }}),
+        // Method 'brodcastsToAll'
+        QtMocHelpers::MethodData<void(const QJsonObject &)>(25, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 9, 24 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
         // property 'isRunning'
-        QtMocHelpers::PropertyData<bool>(20, QMetaType::Bool, QMC::DefaultPropertyFlags, 0),
+        QtMocHelpers::PropertyData<bool>(26, QMetaType::Bool, QMC::DefaultPropertyFlags, 0),
         // property 'clientCount'
-        QtMocHelpers::PropertyData<int>(21, QMetaType::Int, QMC::DefaultPropertyFlags, 1),
+        QtMocHelpers::PropertyData<int>(27, QMetaType::Int, QMC::DefaultPropertyFlags, 1),
     };
     QtMocHelpers::UintData qt_enums {
     };
@@ -138,6 +160,14 @@ void TcpServer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 9: _t->onSocketDisconnected(); break;
         case 10: _t->onSocketReadyRead(); break;
         case 11: _t->onHeartbeatTimeout(); break;
+        case 12: { bool _r = _t->startServer((*reinterpret_cast<std::add_pointer_t<quint16>>(_a[1])));
+            if (_a[0]) *reinterpret_cast<bool*>(_a[0]) = std::move(_r); }  break;
+        case 13: { bool _r = _t->startServer();
+            if (_a[0]) *reinterpret_cast<bool*>(_a[0]) = std::move(_r); }  break;
+        case 14: _t->stopServer(); break;
+        case 15: { bool _r = _t->sendToClient((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[2])));
+            if (_a[0]) *reinterpret_cast<bool*>(_a[0]) = std::move(_r); }  break;
+        case 16: _t->brodcastsToAll((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
         default: ;
         }
     }
@@ -188,14 +218,14 @@ int TcpServer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 12)
+        if (_id < 17)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 12;
+        _id -= 17;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 12)
+        if (_id < 17)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 12;
+        _id -= 17;
     }
     if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::BindableProperty

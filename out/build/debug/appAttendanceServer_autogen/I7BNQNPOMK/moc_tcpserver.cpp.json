@@ -3,6 +3,66 @@
         {
             "className": "TcpServer",
             "lineNumber": 12,
+            "methods": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "pot",
+                            "type": "quint16"
+                        }
+                    ],
+                    "index": 12,
+                    "lineNumber": 23,
+                    "name": "startServer",
+                    "returnType": "bool"
+                },
+                {
+                    "access": "public",
+                    "index": 13,
+                    "isCloned": true,
+                    "lineNumber": 23,
+                    "name": "startServer",
+                    "returnType": "bool"
+                },
+                {
+                    "access": "public",
+                    "index": 14,
+                    "lineNumber": 25,
+                    "name": "stopServer",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "deviceId",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "data",
+                            "type": "QJsonObject"
+                        }
+                    ],
+                    "index": 15,
+                    "lineNumber": 33,
+                    "name": "sendToClient",
+                    "returnType": "bool"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "data",
+                            "type": "QJsonObject"
+                        }
+                    ],
+                    "index": 16,
+                    "lineNumber": 35,
+                    "name": "brodcastsToAll",
+                    "returnType": "void"
+                }
+            ],
             "object": true,
             "properties": [
                 {

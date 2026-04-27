@@ -10,6 +10,13 @@ SyncManager::SyncManager(TcpServer* tcpServer, DataManager* dataManager, QObject
     connect(m_tcpServer,&TcpServer::syncRequested,this,&SyncManager::onSynRequested);
 }
 
+void SyncManager::sendPersonSyncNow(const QString& deviceId)
+{
+    if (deviceId.isEmpty()) return;
+    if (!m_dataManager->isConnected()) return;
+    sendPersonSync(deviceId);
+}
+
 void SyncManager::onSynRequested(const QString &deviceId)
 {
     if(!m_dataManager->isConnected()) return;

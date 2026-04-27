@@ -62,7 +62,6 @@ appAttendanceServer_autogen/timestamp: \
 	C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/cstdint \
 	C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/cstdlib \
 	C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/cstring \
-	C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/filesystem \
 	C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/functional \
 	C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/initializer_list \
 	C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/iterator \
@@ -1297,6 +1296,8 @@ appAttendanceServer_autogen/timestamp: \
 	E:/project/AttendanceServer/src/SyncManager/syncmanager.h \
 	E:/project/AttendanceServer/src/TcpServer/tcpserver.cpp \
 	E:/project/AttendanceServer/src/TcpServer/tcpserver.h \
+	E:/project/AttendanceServer/src/TestApi/testapi.cpp \
+	E:/project/AttendanceServer/src/TestApi/testapi.h \
 	E:/project/AttendanceServer/src/third_party/arcface/include/amcomdef.h \
 	E:/project/AttendanceServer/src/third_party/arcface/include/arcsoft_face_sdk.h \
 	E:/project/AttendanceServer/src/third_party/arcface/include/asvloffscreen.h \

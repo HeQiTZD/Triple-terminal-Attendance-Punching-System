@@ -20,9 +20,9 @@ public:
     ~TcpServer();
 
     //启动TCP服务，默认端口8080
-    bool startServer(quint16 pot = 8080);
+    Q_INVOKABLE bool startServer(quint16 pot = 8080);
     //停止TCP服务
-    void stopServer();
+    Q_INVOKABLE void stopServer();
 
     //获取服务状态
     bool isRunning() const;
@@ -30,9 +30,9 @@ public:
     int clientCount() const;
 
     //向指定客户端发送数据
-    bool sendToClient(const QString &deviceId,const QJsonObject &data);
+    Q_INVOKABLE bool sendToClient(const QString &deviceId,const QJsonObject &data);
     //广播给所有客户端
-    void brodcastsToAll(const QJsonObject &data);
+    Q_INVOKABLE void brodcastsToAll(const QJsonObject &data);
 
 signals:
     //服务状态变化

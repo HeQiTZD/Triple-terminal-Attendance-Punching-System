@@ -4,480 +4,302 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 
-// 说明：当前仓库里 `ui/components`、`ui/pages` 目录未在源代码中出现（仅在构建输出里存在），
-// 所以这里做成一个自包含的简单主界面，方便你先把“主界面”跑通；后续再替换为真实页面组件即可。
+ApplicationWindow {
+    id: win
+    width: 1200
+    height: 800
+    visible: true
+    title: qsTr("AttendanceServer - 测试面板")
 
-ApplicationWindow{
-	id:win
-	width:1200
-	height:800
-	visible:true
-	title:qsTr("考勤管理系统 - AttendanceServer")
-	color: "#0b1220"
+    ScrollView {
+        anchors.fill: parent
+        padding: 10
 
-	property int currentIndex: 0
+        ColumnLayout {
+            id: testRoot
+            width: parent.width
+            spacing: 10
 
-	function pageTitle(idx) {
-		switch (idx) {
-		case 0: return qsTr("仪表盘")
-		case 1: return qsTr("考勤记录")
-		case 2: return qsTr("人员管理")
-		case 3: return qsTr("设备管理")
-		case 4: return qsTr("设置")
-		default: return qsTr("主页")
-		}
-	}
+            function appendLog(s) {
+                const ts = Qt.formatDateTime(new Date(), "HH:mm:ss")
+                logArea.text += "[" + ts + "] " + s + "\n"
+                logArea.cursorPosition = logArea.text.length
+            }
 
-	Component.onCompleted: clockTimer.restart()
+            Connections {
+                target: tcpServer
+                function onClientConnected(deviceId, ipAddress) { appendLog("客户端连接: " + deviceId + " @ " + ipAddress) }
+                function onClientDisconnected(deviceId) { appendLog("客户端断开: " + deviceId) }
+                function onDeviceStatusReceived(deviceId, status) { appendLog("设备状态上报: " + deviceId + " => " + JSON.stringify(status)) }
+                function onErrorOccurred(errorString) { appendLog("TCP错误: " + errorString) }
+                function onIsRunningChanged() { appendLog("TCP运行状态=" + tcpServer.isRunning) }
+                function onClientCountChanged() { appendLog("在线客户端数=" + tcpServer.clientCount) }
+            }
 
-	Timer {
-		id: clockTimer
-		interval: 1000
-		repeat: true
-		running: true
-		onTriggered: timeText.text = Qt.formatDateTime(new Date(), "yyyy-MM-dd  HH:mm:ss")
-	}
+            Connections {
+                target: dataManager
+                function onConnectionStateChanged() { appendLog("数据库连接状态=" + dataManager.isConnected) }
+                function onErrorOccurred(errorString) { appendLog("数据库错误: " + errorString) }
+                function onDeviceStatusChanged(devicdId, status) { appendLog("设备状态变更: " + devicdId + " => " + status) }
+            }
 
-	header: ToolBar {
-		background: Rectangle { color: "#0f1b2d" }
-		contentItem: RowLayout {
-			spacing: 12
-			ToolButton {
-				text: "\u2630" // ☰
-				onClicked: sideBar.visible ? sideBar.close() : sideBar.open()
-				font.pixelSize: 18
-			}
-			Label {
-				text: qsTr("AttendanceServer")
-				font.pixelSize: 18
-				font.bold: true
-				color: "#e6eefc"
-				Layout.alignment: Qt.AlignVCenter
-			}
-			Rectangle {
-				Layout.fillWidth: true
-				height: 1
-				opacity: 0
-			}
-			Label {
-				id: timeText
-				text: Qt.formatDateTime(new Date(), "yyyy-MM-dd  HH:mm:ss")
-				color: "#a9bddc"
-				font.pixelSize: 12
-				Layout.alignment: Qt.AlignVCenter
-			}
-			Rectangle {
-				width: 10
-				height: 10
-				radius: 5
-				color: "#22c55e"
-				Layout.alignment: Qt.AlignVCenter
-			}
-			Label {
-				text: qsTr("服务正常")
-				color: "#a9bddc"
-				font.pixelSize: 12
-				Layout.alignment: Qt.AlignVCenter
-			}
-			Item { width: 6 }
-		}
-	}
+            GroupBox {
+                title: qsTr("状态")
+                Layout.fillWidth: true
+                RowLayout {
+                    anchors.fill: parent
+                    anchors.margins: 8
+                    spacing: 12
+                    Label { text: qsTr("数据库") }
+                    Label { text: dataManager ? (dataManager.isConnected ? qsTr("已连接") : qsTr("未连接")) : qsTr("不可用") }
+                    Label { text: qsTr("TCP服务") }
+                    Label { text: tcpServer ? (tcpServer.isRunning ? qsTr("运行中") : qsTr("已停止")) : qsTr("不可用") }
+                    Label { text: qsTr("客户端") }
+                    Label { text: tcpServer ? tcpServer.clientCount : 0 }
+                    Item { Layout.fillWidth: true }
+                }
+            }
 
-	Drawer {
-		id: sideBar
-		width: 260
-		height: win.height
-		edge: Qt.LeftEdge
-		modal: false
-		interactive: true
-		background: Rectangle { color: "#0f1b2d" }
+            GroupBox {
+                title: qsTr("TCP 控制")
+                Layout.fillWidth: true
+                RowLayout {
+                    anchors.fill: parent
+                    anchors.margins: 8
+                    spacing: 8
+                    Label { text: qsTr("端口") }
+                    TextField { id: tcpPort; text: "8080"; width: 120 }
+                    Button {
+                        text: qsTr("启动")
+                        onClicked: {
+                            const p = parseInt(tcpPort.text)
+                            const ok = tcpServer.startServer(p)
+                            appendLog("启动服务(" + p + ") => " + ok)
+                        }
+                    }
+                    Button {
+                        text: qsTr("停止")
+                        onClicked: {
+                            tcpServer.stopServer()
+                            appendLog("停止服务()")
+                        }
+                    }
+                    Item { Layout.fillWidth: true }
+                }
+            }
 
-		contentItem: Loader { anchors.fill: parent; sourceComponent: sideBarContent }
-	}
+            GroupBox {
+                title: qsTr("导出测试（CSV）")
+                Layout.fillWidth: true
+                ColumnLayout {
+                    anchors.fill: parent
+                    anchors.margins: 8
+                    spacing: 8
 
-	Component {
-		id: sideBarContent
-		ColumnLayout {
-			anchors.fill: parent
-			anchors.margins: 14
-			spacing: 12
+                    RowLayout {
+                        spacing: 8
+                        Label { text: qsTr("文件路径") }
+                        TextField { id: exportPath; Layout.fillWidth: true; placeholderText: qsTr("例如：E:/temp/persons.csv") }
+                        Button {
+                            text: qsTr("导出人员")
+                            onClicked: {
+                                const ok = exportManager.exportPersonsCsv(exportPath.text)
+                                appendLog("导出人员CSV => " + ok + (ok ? "" : (" 错误=" + exportManager.lastError)))
+                            }
+                        }
+                        Button {
+                            text: qsTr("导出设备")
+                            onClicked: {
+                                const ok = exportManager.exportDeviceCsv(exportPath.text)
+                                appendLog("导出设备CSV => " + ok + (ok ? "" : (" 错误=" + exportManager.lastError)))
+                            }
+                        }
+                    }
 
-			Rectangle {
-				Layout.fillWidth: true
-				height: 78
-				radius: 14
-				color: "#12233c"
-				border.color: "#1e3353"
-				RowLayout {
-					anchors.fill: parent
-					anchors.margins: 12
-					spacing: 10
-					Rectangle {
-						width: 42
-						height: 42
-						radius: 12
-						color: "#1d4ed8"
-						Label {
-							anchors.centerIn: parent
-							text: "AS"
-							color: "white"
-							font.bold: true
-						}
-					}
-					ColumnLayout {
-						Layout.fillWidth: true
-						spacing: 2
-						Label { text: qsTr("考勤管理系统"); color: "#e6eefc"; font.bold: true; font.pixelSize: 14 }
-						Label { text: qsTr("简单主界面（示例）"); color: "#a9bddc"; font.pixelSize: 11 }
-					}
-				}
-			}
+                    RowLayout {
+                        spacing: 8
+                        Label { text: qsTr("开始时间") }
+                        TextField { id: exportStart; text: "2026-04-01 00:00:00"; width: 180 }
+                        Label { text: qsTr("结束时间") }
+                        TextField { id: exportEnd; text: "2026-04-30 23:59:59"; width: 180 }
+                        Button {
+                            text: qsTr("导出考勤")
+                            onClicked: {
+                                const startDate = Date.fromLocaleString(Qt.locale(), exportStart.text, "yyyy-MM-dd HH:mm:ss")
+                                const endDate = Date.fromLocaleString(Qt.locale(), exportEnd.text, "yyyy-MM-dd HH:mm:ss")
+                                const ok = exportManager.exportAttendanceRecordsCsv(exportPath.text, startDate, endDate)
+                                appendLog("导出考勤CSV => " + ok + (ok ? "" : (" 错误=" + exportManager.lastError)))
+                            }
+                        }
+                        Item { Layout.fillWidth: true }
+                    }
+                }
+            }
 
-			ListView {
-				id: navList
-				Layout.fillWidth: true
-				Layout.fillHeight: true
-				clip: true
-				spacing: 8
-				model: [
-					{ icon: "\u25A3", title: qsTr("仪表盘") },
-					{ icon: "\u23F1", title: qsTr("考勤记录") },
-					{ icon: "\u263A", title: qsTr("人员管理") },
-					{ icon: "\u2699", title: qsTr("设备管理") },
-					{ icon: "\u2692", title: qsTr("设置") }
-				]
-				delegate: Item {
-					id: navItem
-					required property int index
-					required property var modelData
+            GroupBox {
+                title: qsTr("数据层 CRUD 快测")
+                Layout.fillWidth: true
+                ColumnLayout {
+                    anchors.fill: parent
+                    anchors.margins: 8
+                    spacing: 8
 
-					width: navList.width
-					height: 44
-					readonly property bool active: navItem.index === win.currentIndex
+                    RowLayout {
+                        spacing: 8
+                        TextField { id: pName; placeholderText: qsTr("姓名"); width: 140 }
+                        TextField { id: pEmpId; placeholderText: qsTr("工号"); width: 140 }
+                        TextField { id: pDept; placeholderText: qsTr("部门"); width: 140 }
+                        TextField { id: pPos; placeholderText: qsTr("岗位"); width: 140 }
+                        Button {
+                            text: qsTr("新增人员")
+                            onClicked: {
+                                const ok = dataManager.addPerson(pName.text, pEmpId.text, pDept.text, pPos.text)
+                                appendLog("新增人员 => " + ok)
+                            }
+                        }
+                        Item { Layout.fillWidth: true }
+                    }
 
-					Rectangle {
-						anchors.fill: parent
-						radius: 12
-						color: navItem.active ? "#1a2f52" : "#00000000"
-						border.color: navItem.active ? "#2b4f86" : "#1e3353"
-						border.width: 1
-					}
+                    RowLayout {
+                        spacing: 8
+                        Button {
+                            text: qsTr("加载人员列表")
+                            onClicked: {
+                                testRoot.personModel = dataManager.getAllPerson()
+                                appendLog("加载人员列表 => " + (testRoot.personModel ? testRoot.personModel.length : 0))
+                            }
+                        }
+                        Button {
+                            text: qsTr("加载设备列表")
+                            onClicked: {
+                                testRoot.deviceModel = dataManager.getAllDevices()
+                                appendLog("加载设备列表 => " + (testRoot.deviceModel ? testRoot.deviceModel.length : 0))
+                            }
+                        }
+                        Item { Layout.fillWidth: true }
+                    }
 
-					MouseArea {
-						anchors.fill: parent
-						hoverEnabled: true
-						onClicked: {
-							win.currentIndex = navItem.index
-							sideBar.close()
-						}
-					}
+                    RowLayout {
+                        spacing: 12
+                        ListView {
+                            Layout.fillWidth: true
+                            Layout.preferredHeight: 120
+                            clip: true
+                            model: testRoot.personModel
+                            delegate: Text {
+                                text: (modelData && modelData.name) ? (modelData.employeeId + " - " + modelData.name) : JSON.stringify(modelData)
+                            }
+                        }
+                        ListView {
+                            Layout.fillWidth: true
+                            Layout.preferredHeight: 120
+                            clip: true
+                            model: testRoot.deviceModel
+                            delegate: Text {
+                                text: (modelData && modelData.deviceId) ? (modelData.deviceId + " - " + modelData.status) : JSON.stringify(modelData)
+                            }
+                        }
+                    }
+                }
+            }
 
-					RowLayout {
-						anchors.fill: parent
-						anchors.margins: 10
-						spacing: 10
-						Label {
-							text: navItem.modelData.icon
-							color: navItem.active ? "#e6eefc" : "#a9bddc"
-							font.pixelSize: 14
-							Layout.alignment: Qt.AlignVCenter
-						}
-						Label {
-							text: navItem.modelData.title
-							color: navItem.active ? "#e6eefc" : "#a9bddc"
-							font.pixelSize: 13
-							Layout.fillWidth: true
-							elide: Text.ElideRight
-							Layout.alignment: Qt.AlignVCenter
-						}
-					}
-				}
-			}
+            GroupBox {
+                title: qsTr("Sync 测试")
+                Layout.fillWidth: true
+                RowLayout {
+                    anchors.fill: parent
+                    anchors.margins: 8
+                    spacing: 8
+                    Label { text: qsTr("设备ID") }
+                    TextField { id: syncDeviceId; text: "dev001"; width: 160 }
+                    Button {
+                        text: qsTr("下发人员同步")
+                        onClicked: {
+                            testApi.requestPersonSync(syncDeviceId.text)
+                            appendLog("下发人员同步(" + syncDeviceId.text + ") 错误=" + testApi.lastError)
+                        }
+                    }
+                    Item { Layout.fillWidth: true }
+                }
+            }
 
-			Rectangle {
-				Layout.fillWidth: true
-				height: 54
-				radius: 14
-				color: "#0b1220"
-				border.color: "#1e3353"
-				RowLayout {
-					anchors.fill: parent
-					anchors.margins: 12
-					spacing: 10
-					Label { text: qsTr("版本"); color: "#a9bddc"; font.pixelSize: 12 }
-					Label { text: "v0.1"; color: "#e6eefc"; font.pixelSize: 12; font.bold: true }
-					Rectangle { Layout.fillWidth: true; height: 1; opacity: 0 }
-					Button {
-						text: qsTr("退出")
-						onClicked: Qt.quit()
-					}
-				}
-			}
-		}
-	}
+            GroupBox {
+                title: qsTr("人脸测试（Base64 特征）")
+                Layout.fillWidth: true
+                ColumnLayout {
+                    anchors.fill: parent
+                    anchors.margins: 8
+                    spacing: 8
 
-	RowLayout {
-		anchors.fill: parent
-		spacing: 0
+                    RowLayout {
+                        spacing: 8
+                        TextField { id: faceAppId; placeholderText: qsTr("AppId"); Layout.fillWidth: true }
+                        TextField { id: faceSdkKey; placeholderText: qsTr("SdkKey"); Layout.fillWidth: true }
+                        Button {
+                            text: qsTr("初始化引擎")
+                            onClicked: {
+                                const ok = testApi.initFaceEngine(faceAppId.text, faceSdkKey.text)
+                                appendLog("初始化引擎 => " + ok + (ok ? "" : (" 错误=" + testApi.lastError)))
+                            }
+                        }
+                    }
 
-		// 桌面端同时显示一个固定侧栏；小屏可用 Drawer（上方按钮）
-		Rectangle {
-			visible: win.width >= 1000
-			Layout.preferredWidth: 260
-			Layout.fillHeight: true
-			color: "#0f1b2d"
-			border.color: "#12233c"
-			border.width: 1
+                    RowLayout {
+                        spacing: 8
+                        TextField { id: img1; placeholderText: qsTr("图片路径1"); Layout.fillWidth: true }
+                        Button {
+                            text: qsTr("提取特征1")
+                            onClicked: {
+                                feat1.text = testApi.extractFeatureBase64(img1.text)
+                                appendLog("提取特征1 长度=" + feat1.text.length + (feat1.text.length ? "" : (" 错误=" + testApi.lastError)))
+                            }
+                        }
+                    }
 
-			// 复用 Drawer 内部内容（避免重复定义一套逻辑）
-			Loader {
-				anchors.fill: parent
-				sourceComponent: sideBarContent
-			}
-		}
+                    RowLayout {
+                        spacing: 8
+                        TextField { id: img2; placeholderText: qsTr("图片路径2"); Layout.fillWidth: true }
+                        Button {
+                            text: qsTr("提取特征2")
+                            onClicked: {
+                                feat2.text = testApi.extractFeatureBase64(img2.text)
+                                appendLog("提取特征2 长度=" + feat2.text.length + (feat2.text.length ? "" : (" 错误=" + testApi.lastError)))
+                            }
+                        }
+                    }
 
-		Rectangle {
-			Layout.fillWidth: true
-			Layout.fillHeight: true
-			color: "#0b1220"
+                    RowLayout {
+                        spacing: 8
+                        Button {
+                            text: qsTr("比对相似度")
+                            onClicked: {
+                                const sim = testApi.compareFeatureBase64(feat1.text, feat2.text)
+                                appendLog("比对相似度 => " + sim + (sim >= 0 ? "" : (" 错误=" + testApi.lastError)))
+                            }
+                        }
+                        Item { Layout.fillWidth: true }
+                    }
 
-			ColumnLayout {
-				anchors.fill: parent
-				anchors.margins: 18
-				spacing: 14
+                    TextField { id: feat1; placeholderText: qsTr("特征1（base64）"); Layout.fillWidth: true }
+                    TextField { id: feat2; placeholderText: qsTr("特征2（base64）"); Layout.fillWidth: true }
+                }
+            }
 
-				RowLayout {
-					Layout.fillWidth: true
-					spacing: 12
-					Label {
-						text: win.pageTitle(win.currentIndex)
-						color: "#e6eefc"
-						font.pixelSize: 22
-						font.bold: true
-						Layout.alignment: Qt.AlignVCenter
-					}
-					Rectangle { Layout.fillWidth: true; height: 1; opacity: 0 }
-					TextField {
-						placeholderText: qsTr("搜索…")
-						Layout.preferredWidth: 260
-					}
-					Button {
-						text: qsTr("刷新")
-					}
-				}
+            GroupBox {
+                title: qsTr("日志")
+                Layout.fillWidth: true
+                Layout.preferredHeight: 240
+                TextArea {
+                    id: logArea
+                    anchors.fill: parent
+                    anchors.margins: 8
+                    readOnly: true
+                    wrapMode: TextArea.WrapAnywhere
+                }
+            }
 
-				Rectangle {
-					Layout.fillWidth: true
-					Layout.fillHeight: true
-					radius: 16
-					color: "#0f1b2d"
-					border.color: "#1e3353"
-
-					Loader {
-						id: pageLoader
-						anchors.fill: parent
-						anchors.margins: 16
-						sourceComponent: win.currentIndex === 0 ? dashboardPage
-							: win.currentIndex === 1 ? attendancePage
-							: win.currentIndex === 2 ? peoplePage
-							: win.currentIndex === 3 ? devicesPage
-							: settingsPage
-					}
-				}
-			}
-		}
-	}
-
-	Component {
-		id: dashboardPage
-		ColumnLayout {
-			spacing: 12
-			Label { text: qsTr("今日概览"); color: "#e6eefc"; font.pixelSize: 16; font.bold: true }
-			RowLayout {
-				spacing: 12
-				Repeater {
-					model: [
-						{ title: qsTr("到岗人数"), value: "86" },
-						{ title: qsTr("缺勤人数"), value: "4" },
-						{ title: qsTr("设备在线"), value: "12" }
-					]
-					delegate: Rectangle {
-						id: dashTile
-						required property var modelData
-						Layout.fillWidth: true
-						Layout.preferredHeight: 96
-						radius: 14
-						color: "#12233c"
-						border.color: "#1e3353"
-						Column {
-							anchors.fill: parent
-							anchors.margins: 14
-							spacing: 6
-							Text { text: dashTile.modelData.title; color: "#a9bddc"; font.pixelSize: 12 }
-							Text { text: dashTile.modelData.value; color: "#e6eefc"; font.pixelSize: 28; font.bold: true }
-						}
-					}
-				}
-			}
-			Rectangle {
-				Layout.fillWidth: true
-				Layout.fillHeight: true
-				radius: 14
-				color: "#0b1220"
-				border.color: "#1e3353"
-				Column {
-					anchors.fill: parent
-					anchors.margins: 14
-					spacing: 8
-					Text { text: qsTr("提示"); color: "#e6eefc"; font.pixelSize: 14; font.bold: true }
-					Text {
-						text: qsTr("这里可以放置告警、最新打卡记录、趋势图等内容。")
-						color: "#a9bddc"
-						wrapMode: Text.WordWrap
-					}
-				}
-			}
-		}
-	}
-
-	Component {
-		id: attendancePage
-		ColumnLayout {
-			spacing: 10
-			Label { text: qsTr("考勤记录"); color: "#e6eefc"; font.pixelSize: 16; font.bold: true }
-			TableView {
-				Layout.fillWidth: true
-				Layout.fillHeight: true
-				clip: true
-				model: 20
-				delegate: Rectangle {
-					id: attRow
-					required property int row
-					implicitHeight: 40
-					color: (row % 2 === 0) ? "#0b1220" : "#0e1728"
-					Text {
-						anchors.verticalCenter: parent.verticalCenter
-						anchors.left: parent.left
-						anchors.leftMargin: 12
-						text: qsTr("记录 #%1  -  2026-04-26  09:%2").arg(attRow.row + 1).arg((attRow.row % 60).toString().padStart(2, "0"))
-						color: "#a9bddc"
-					}
-				}
-			}
-		}
-	}
-
-	Component {
-		id: peoplePage
-		ColumnLayout {
-			spacing: 10
-			Label { text: qsTr("人员管理"); color: "#e6eefc"; font.pixelSize: 16; font.bold: true }
-			RowLayout {
-				spacing: 10
-				Button { text: qsTr("新增人员") }
-				Button { text: qsTr("导入") }
-				Button { text: qsTr("导出") }
-				Rectangle { Layout.fillWidth: true; height: 1; opacity: 0 }
-			}
-			Rectangle {
-				Layout.fillWidth: true
-				Layout.fillHeight: true
-				radius: 14
-				color: "#0b1220"
-				border.color: "#1e3353"
-				ListView {
-					anchors.fill: parent
-					anchors.margins: 10
-					clip: true
-					model: 30
-					delegate: Rectangle {
-						id: personRow
-						required property int index
-						width: parent.width
-						height: 46
-						radius: 12
-						color: "#00000000"
-						border.color: "#12233c"
-						RowLayout {
-							anchors.fill: parent
-							anchors.margins: 10
-							Text { text: qsTr("员工 #%1").arg(personRow.index + 1); color: "#e6eefc" }
-							Rectangle { Layout.fillWidth: true; height: 1; opacity: 0 }
-							Text { text: qsTr("正常"); color: "#22c55e" }
-						}
-					}
-				}
-			}
-		}
-	}
-
-	Component {
-		id: devicesPage
-		ColumnLayout {
-			spacing: 10
-			Label { text: qsTr("设备管理"); color: "#e6eefc"; font.pixelSize: 16; font.bold: true }
-			RowLayout {
-				spacing: 10
-				Button { text: qsTr("扫描设备") }
-				Button { text: qsTr("添加设备") }
-				Rectangle { Layout.fillWidth: true; height: 1; opacity: 0 }
-			}
-			Flow {
-				Layout.fillWidth: true
-				Layout.fillHeight: true
-				spacing: 12
-				Repeater {
-					model: 8
-					delegate: Rectangle {
-						id: devCard
-						required property int index
-						width: 260
-						height: 110
-						radius: 14
-						color: "#12233c"
-						border.color: "#1e3353"
-						Column {
-							anchors.fill: parent
-							anchors.margins: 14
-							spacing: 6
-							Text { text: qsTr("设备 #%1").arg(devCard.index + 1); color: "#e6eefc"; font.bold: true }
-							Text { text: qsTr("IP: 192.168.1.%1").arg(10 + devCard.index); color: "#a9bddc" }
-							Text { text: (devCard.index % 3 === 0) ? qsTr("离线") : qsTr("在线"); color: (devCard.index % 3 === 0) ? "#f97316" : "#22c55e" }
-						}
-					}
-				}
-			}
-		}
-	}
-
-	Component {
-		id: settingsPage
-		ColumnLayout {
-			spacing: 10
-			Label { text: qsTr("设置"); color: "#e6eefc"; font.pixelSize: 16; font.bold: true }
-			Rectangle {
-				Layout.fillWidth: true
-				radius: 14
-				color: "#12233c"
-				border.color: "#1e3353"
-				ColumnLayout {
-					anchors.fill: parent
-					anchors.margins: 14
-					spacing: 12
-					RowLayout {
-						Label { text: qsTr("自动刷新"); color: "#e6eefc"; Layout.fillWidth: true }
-						Switch { checked: true }
-					}
-					RowLayout {
-						Label { text: qsTr("主题"); color: "#e6eefc"; Layout.fillWidth: true }
-						ComboBox { model: [qsTr("深色"), qsTr("浅色")] }
-					}
-					RowLayout {
-						Label { text: qsTr("服务端地址"); color: "#e6eefc"; Layout.fillWidth: true }
-						TextField { text: "http://127.0.0.1:8080"; Layout.preferredWidth: 260 }
-					}
-				}
-			}
-		}
-	}
+            property var personModel: []
+            property var deviceModel: []
+        }
+    }
 }

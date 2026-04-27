@@ -1427,6 +1427,12 @@
 			"MU",
 			"I7BNQNPOMK/moc_tcpserver.cpp",
 			null
+		],
+		[
+			"E:/project/AttendanceServer/src/TestApi/testapi.h",
+			"MU",
+			"FEU2BV2BIM/moc_testapi.cpp",
+			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -1550,7 +1556,8 @@
 			"MU",
 			null
 		],
-		[ "E:/project/AttendanceServer/src/TcpServer/tcpserver.cpp", "MU", null ]
+		[ "E:/project/AttendanceServer/src/TcpServer/tcpserver.cpp", "MU", null ],
+		[ "E:/project/AttendanceServer/src/TestApi/testapi.cpp", "MU", null ]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],
