@@ -41,7 +41,7 @@ template <> constexpr inline auto ExportManager::qt_create_metaobjectdata<qt_met
         "ExportManager",
         "lastErrorChanged",
         "",
-        "exportAttendanceRecordsCvs",
+        "exportAttendanceRecordsCsv",
         "filePath",
         "startTime",
         "endTime",
@@ -53,7 +53,7 @@ template <> constexpr inline auto ExportManager::qt_create_metaobjectdata<qt_met
     QtMocHelpers::UintData qt_methods {
         // Signal 'lastErrorChanged'
         QtMocHelpers::SignalData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
-        // Method 'exportAttendanceRecordsCvs'
+        // Method 'exportAttendanceRecordsCsv'
         QtMocHelpers::MethodData<bool(const QString &, const QDateTime &, const QDateTime &)>(3, 2, QMC::AccessPublic, QMetaType::Bool, {{
             { QMetaType::QString, 4 }, { QMetaType::QDateTime, 5 }, { QMetaType::QDateTime, 6 },
         }}),
@@ -91,7 +91,7 @@ void ExportManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->lastErrorChanged(); break;
-        case 1: { bool _r = _t->exportAttendanceRecordsCvs((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[3])));
+        case 1: { bool _r = _t->exportAttendanceRecordsCsv((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[3])));
             if (_a[0]) *reinterpret_cast<bool*>(_a[0]) = std::move(_r); }  break;
         case 2: { bool _r = _t->exportPersonsCsv((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])));
             if (_a[0]) *reinterpret_cast<bool*>(_a[0]) = std::move(_r); }  break;

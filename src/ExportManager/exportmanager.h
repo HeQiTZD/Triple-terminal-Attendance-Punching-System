@@ -2,7 +2,17 @@
 
 #include <QObject>
 #include <QDateTime>
-#include "../DataManager/datamanager.h"
+#include <QDir>
+#include <QFileInfo>
+#include <QSaveFile>
+#include <QTextStream>
+#include <QIODevice>
+
+#include "src/DataManager/datamanager.h"
+#include "src/Models/Person.h"
+#include "src/Models/device.h"
+
+class DataManager;
 
 class ExportManager : public QObject {
 	Q_OBJECT
@@ -14,7 +24,7 @@ public:
 	QString lastError() const { return m_lastError; }
 
 	// 导出：考勤记录（按时间范围）
-	Q_INVOKABLE bool exportAttendanceRecordsCvs(const QString& filePath,
+	Q_INVOKABLE bool exportAttendanceRecordsCsv(const QString& filePath,
 												const QDateTime& startTime,
 												const QDateTime& endTime);
 

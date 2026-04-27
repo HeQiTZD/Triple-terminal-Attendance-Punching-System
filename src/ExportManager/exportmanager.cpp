@@ -1,20 +1,11 @@
 #include "exportmanager.h"
-#include "src/DataManager/datamanager.h"
-#include "src/Models/Person.h"
-#include "src/Models/device.h"
-#include "src/Models/attendancerecord.h"
-#include <QDir>
-#include <QFileInfo>
-#include <QSaveFile>
-#include <QTextStream>
-#include <QIODevice>
 
 ExportManager::ExportManager(DataManager* dataManager, QObject* parent)
 	: QObject(parent),m_dataManager(dataManager)
 {
 }
 
-Q_INVOKABLE bool ExportManager::exportAttendanceRecordsCvs(const QString& filePath, const QDateTime& startTime, const QDateTime& endTime)
+Q_INVOKABLE bool ExportManager::exportAttendanceRecordsCsv(const QString& filePath, const QDateTime& startTime, const QDateTime& endTime)
 {
 	if (!m_dataManager) {
 		setError("DataManager 未初始化");
@@ -92,13 +83,13 @@ Q_INVOKABLE bool ExportManager::exportPersonsCsv(const QString& filePath)
 		auto* person = qobject_cast<Person*>(obj);
 		if (!person) continue;
 
-		csv += csvEscape(QString::number(person->id()) + ",");
-		csv += csvEscape(person->name() + ",");
-		csv += csvEscape(person->employeeId() + ",");
-		csv += csvEscape(person->department() + ",");
-		csv += csvEscape(person->position() + ",");
-		csv += csvEscape(person->createdAt().toString(Qt::ISODate) + ",");
-		csv += csvEscape(person->updatedAt().toString(Qt::ISODate) + "\n");
+		csv += csvEscape(QString::number(person->id())) + ",";
+		csv += csvEscape(person->name()) + ",";
+		csv += csvEscape(person->employeeId()) + ",";
+		csv += csvEscape(person->department()) + ",";
+		csv += csvEscape(person->position()) + ",";
+		csv += csvEscape(person->createdAt().toString(Qt::ISODate)) + ",";
+		csv += csvEscape(person->updatedAt().toString(Qt::ISODate)) + "\n";
 	}
 
 	//把 CSV 以 UTF-8（带 BOM）写入到 filePath 指定的文件

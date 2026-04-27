@@ -17,6 +17,7 @@ E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/ONL55FX3
   C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/algorithm \
   C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/array \
   C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/atomic \
+  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/cassert \
   C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/chrono \
   C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/climits \
   C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/cmath \
@@ -25,6 +26,7 @@ E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/ONL55FX3
   C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/cstdint \
   C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/cstdlib \
   C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/cstring \
+  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/filesystem \
   C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/functional \
   C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/initializer_list \
   C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/iterator \
@@ -57,16 +59,22 @@ E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/ONL55FX3
   C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/yvals_core.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QByteArray \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QDateTime \
+  C:/Qt/6.10.2/msvc2022_64/include/QtCore/QDir \
+  C:/Qt/6.10.2/msvc2022_64/include/QtCore/QFileInfo \
+  C:/Qt/6.10.2/msvc2022_64/include/QtCore/QIODevice \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QJsonObject \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QList \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QMap \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QObject \
+  C:/Qt/6.10.2/msvc2022_64/include/QtCore/QSaveFile \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QSet \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QString \
+  C:/Qt/6.10.2/msvc2022_64/include/QtCore/QTextStream \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QVariant \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QVariantMap \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/q17memory.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/q20functional.h \
+  C:/Qt/6.10.2/msvc2022_64/include/QtCore/q20iterator.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/q20memory.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/q20type_traits.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/q20utility.h \
@@ -105,8 +113,13 @@ E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/ONL55FX3
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qdatastream.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qdatetime.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qdebug.h \
+  C:/Qt/6.10.2/msvc2022_64/include/QtCore/qdir.h \
+  C:/Qt/6.10.2/msvc2022_64/include/QtCore/qdirlisting.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qendian.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qexceptionhandling.h \
+  C:/Qt/6.10.2/msvc2022_64/include/QtCore/qfile.h \
+  C:/Qt/6.10.2/msvc2022_64/include/QtCore/qfiledevice.h \
+  C:/Qt/6.10.2/msvc2022_64/include/QtCore/qfileinfo.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qflags.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qfloat16.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qforeach.h \
@@ -117,6 +130,7 @@ E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/ONL55FX3
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qglobalstatic.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qhash.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qhashfunctions.h \
+  C:/Qt/6.10.2/msvc2022_64/include/QtCore/qiodevice.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qiodevicebase.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qiterable.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qiterator.h \
@@ -146,6 +160,7 @@ E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/ONL55FX3
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qprocessordetection.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qrefcount.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qregularexpression.h \
+  C:/Qt/6.10.2/msvc2022_64/include/QtCore/qsavefile.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qscopedpointer.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qscopeguard.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qset.h \
@@ -153,6 +168,7 @@ E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/ONL55FX3
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qshareddata_impl.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qsharedpointer.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qsharedpointer_impl.h \
+  C:/Qt/6.10.2/msvc2022_64/include/QtCore/qspan.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qstdlibdetection.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qstring.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qstringalgorithms.h \
@@ -179,6 +195,7 @@ E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/ONL55FX3
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qtenvironmentvariables.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qtextstream.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qtformat_impl.h \
+  C:/Qt/6.10.2/msvc2022_64/include/QtCore/qtimezone.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qtmetamacros.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qtnoop.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qtpreprocessorsupport.h \
