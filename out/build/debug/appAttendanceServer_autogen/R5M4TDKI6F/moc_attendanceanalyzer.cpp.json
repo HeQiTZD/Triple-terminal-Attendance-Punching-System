@@ -1,0 +1,147 @@
+{
+    "classes": [
+        {
+            "className": "AttendanceAnalyzer",
+            "lineNumber": 14,
+            "methods": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "start",
+                            "type": "QDate"
+                        },
+                        {
+                            "name": "end",
+                            "type": "QDate"
+                        },
+                        {
+                            "name": "department",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "employeeId",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 0,
+                    "isConst": true,
+                    "lineNumber": 21,
+                    "name": "dailySummary",
+                    "returnType": "QJsonArray"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "start",
+                            "type": "QDate"
+                        },
+                        {
+                            "name": "end",
+                            "type": "QDate"
+                        },
+                        {
+                            "name": "department",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 1,
+                    "isCloned": true,
+                    "isConst": true,
+                    "lineNumber": 21,
+                    "name": "dailySummary",
+                    "returnType": "QJsonArray"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "start",
+                            "type": "QDate"
+                        },
+                        {
+                            "name": "end",
+                            "type": "QDate"
+                        }
+                    ],
+                    "index": 2,
+                    "isCloned": true,
+                    "isConst": true,
+                    "lineNumber": 21,
+                    "name": "dailySummary",
+                    "returnType": "QJsonArray"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "start",
+                            "type": "QDate"
+                        },
+                        {
+                            "name": "end",
+                            "type": "QDate"
+                        },
+                        {
+                            "name": "department",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 3,
+                    "isConst": true,
+                    "lineNumber": 26,
+                    "name": "personSummary",
+                    "returnType": "QJsonArray"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "start",
+                            "type": "QDate"
+                        },
+                        {
+                            "name": "end",
+                            "type": "QDate"
+                        }
+                    ],
+                    "index": 4,
+                    "isCloned": true,
+                    "isConst": true,
+                    "lineNumber": 26,
+                    "name": "personSummary",
+                    "returnType": "QJsonArray"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "start",
+                            "type": "QDate"
+                        },
+                        {
+                            "name": "end",
+                            "type": "QDate"
+                        }
+                    ],
+                    "index": 5,
+                    "isConst": true,
+                    "lineNumber": 30,
+                    "name": "departmentSummary",
+                    "returnType": "QJsonArray"
+                }
+            ],
+            "object": true,
+            "qualifiedClassName": "AttendanceAnalyzer",
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "attendanceanalyzer.h",
+    "outputRevision": 69
+}

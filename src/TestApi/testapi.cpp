@@ -97,21 +97,6 @@ double TestApi::compareFeatureBase64(const QString& f1Base64, const QString& f2B
     return static_cast<double>(similarity);
 }
 
-QString TestApi::selectImageFile()
-{
-    if (!m_faceDataManager) {
-        setError("FaceDataManager 未初始化");
-        return QString();
-    }
-    const QString path = m_faceDataManager->selectImageFile(nullptr);
-    if (path.isEmpty()) {
-        setError("未选择图片");
-        return QString();
-    }
-    setError(QString());
-    return path;
-}
-
 void TestApi::requestPersonSync(const QString& deviceId)
 {
     if (!m_syncManager) {
@@ -124,38 +109,6 @@ void TestApi::requestPersonSync(const QString& deviceId)
     }
     m_syncManager->sendPersonSyncNow(deviceId);
     setError(QString());
-}
-
-bool TestApi::sendToClientJson(const QString& deviceId, const QString& jsonText)
-{
-    if (!m_tcpServer) {
-        setError("TcpServer 未初始化");
-        return false;
-    }
-    if (deviceId.trimmed().isEmpty()) {
-        setError("deviceId 不能为空");
-        return false;
-    }
-    if (jsonText.trimmed().isEmpty()) {
-        setError("jsonText 不能为空");
-        return false;
-    }
-
-    QJsonParseError err;
-    const QJsonDocument doc = QJsonDocument::fromJson(jsonText.toUtf8(), &err);
-    if (doc.isNull() || !doc.isObject()) {
-        setError(QString("JSON 解析失败：%1").arg(err.errorString()));
-        return false;
-    }
-
-    const bool ok = m_tcpServer->sendToClient(deviceId, doc.object());
-    if (!ok) {
-        setError("发送失败：设备不在线或 TCP 发送失败");
-        return false;
-    }
-
-    setError(QString());
-    return true;
 }
 
 bool TestApi::broadcastJson(const QString& jsonText)
@@ -175,89 +128,6 @@ bool TestApi::broadcastJson(const QString& jsonText)
         return false;
     }
     m_tcpServer->brodcastsToAll(doc.object());
-    setError(QString());
-    return true;
-}
-
-bool TestApi::addFaceDataBase64(const QString& employeeId, const QString& featureBase64)
-{
-    if (!m_dataManager) {
-        setError("DataManager 未初始化");
-        return false;
-    }
-    if (employeeId.trimmed().isEmpty()) {
-        setError("employeeId 不能为空");
-        return false;
-    }
-    if (featureBase64.trimmed().isEmpty()) {
-        setError("featureBase64 不能为空");
-        return false;
-    }
-
-    const QByteArray feature = QByteArray::fromBase64(featureBase64.toLatin1());
-    if (feature.isEmpty()) {
-        setError("Base64 解码失败");
-        return false;
-    }
-
-    const bool ok = m_dataManager->addFaceDataByEmployeeId(employeeId, feature);
-    if (!ok) {
-        setError("新增人脸特征失败（请查看数据库错误日志）");
-        return false;
-    }
-
-    setError(QString());
-    return true;
-}
-
-bool TestApi::updateFaceDataBase64(const QString& employeeId, const QString& featureBase64)
-{
-    if (!m_dataManager) {
-        setError("DataManager 未初始化");
-        return false;
-    }
-    if (employeeId.trimmed().isEmpty()) {
-        setError("employeeId 不能为空");
-        return false;
-    }
-    if (featureBase64.trimmed().isEmpty()) {
-        setError("featureBase64 不能为空");
-        return false;
-    }
-
-    const QByteArray feature = QByteArray::fromBase64(featureBase64.toLatin1());
-    if (feature.isEmpty()) {
-        setError("Base64 解码失败");
-        return false;
-    }
-
-    const bool ok = m_dataManager->updateFaceDataByEmployeeId(employeeId, feature);
-    if (!ok) {
-        setError("更新人脸特征失败（请查看数据库错误日志）");
-        return false;
-    }
-
-    setError(QString());
-    return true;
-}
-
-bool TestApi::deleteFaceDataByEmployeeId(const QString& employeeId)
-{
-    if (!m_dataManager) {
-        setError("DataManager 未初始化");
-        return false;
-    }
-    if (employeeId.trimmed().isEmpty()) {
-        setError("employeeId 不能为空");
-        return false;
-    }
-
-    const bool ok = m_dataManager->deleteFaceDataByEmployeeId(employeeId);
-    if (!ok) {
-        setError("删除人脸特征失败（请查看数据库错误日志）");
-        return false;
-    }
-
     setError(QString());
     return true;
 }

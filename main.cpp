@@ -5,15 +5,14 @@
 #include "src/TestApi/testapi.h"
 #include "src/SyncManager/syncmanager.h"
 #include "src/TcpServer/tcpserver.h"
-#include "src/AttendanceAnalyzer/attendanceanalyzer.h"
 #include "src/Controllers/networkcontroller.h"
-#include <QApplication>
+#include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
+    QGuiApplication app(argc, argv);
 
     //创建核心模块实例
     TcpServer tcpServer;
@@ -21,7 +20,6 @@ int main(int argc, char *argv[])
     DeviceMonitor deviceMonitor(&tcpServer,&dataManager);
     ExportManager exportManager(&dataManager);
     FaceDataManager faceDataManager;
-    AttendanceAnalyzer attendanceAnalyzer(&dataManager);
 
     //初始化数据库
     const bool dbOk = dataManager.initialize("localhost","textAttendance","root","root");
@@ -44,7 +42,6 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("syncManager", &syncManager);
     engine.rootContext()->setContextProperty("faceDataManager", &faceDataManager);
     engine.rootContext()->setContextProperty("testApi", &testApi);
-    engine.rootContext()->setContextProperty("attendanceAnalyzer", &attendanceAnalyzer);
     engine.loadFromModule("AttendanceServer", "Main");
 
 

@@ -23,6 +23,7 @@ bool DataManager::initialize(const QString &host, const QString &database, const
     m_isConnected = true;
     emit connectionStateChanged();
 
+    qDebug() << "开始创建表";
     //创建数据表
     if(!createTables()){
         return false;
@@ -461,7 +462,7 @@ CREATE TABLE IF NOT EXISTS Person (
     position VARCHAR(100),
     face_feature BLOB,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )
 )";
 
@@ -783,11 +784,12 @@ CREATE TABLE IF NOT EXISTS face_data (
     feature_size INT NOT NULL,
     status VARCHAR(20) DEFAULT 'active' COMMENT '状态: active, inactive, failed',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (person_id) REFERENCES Person(id) ON DELETE CASCADE,
     INDEX idx_person_id (person_id),
     INDEX idx_status (status)
-);)";
+)
+)";
 
     if (!query.exec(sql)) {
         emit errorOccurred(query.lastError().text());
