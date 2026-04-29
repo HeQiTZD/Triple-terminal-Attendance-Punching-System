@@ -4,7 +4,7 @@ project(AttendanceServer VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick Core Gui NetWork Sql Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Quick Core Gui Network Sql Widgets)
 
 qt_standard_project_setup(REQUIRES 6.8)
 

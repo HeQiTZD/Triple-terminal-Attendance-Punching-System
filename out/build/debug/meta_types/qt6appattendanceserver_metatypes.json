@@ -782,16 +782,40 @@
                     },
                     {
                         "access": "public",
+                        "index": 4,
+                        "lineNumber": 30,
+                        "name": "selectImageFile",
+                        "returnType": "QString"
+                    },
+                    {
+                        "access": "public",
                         "arguments": [
                             {
                                 "name": "deviceId",
                                 "type": "QString"
                             }
                         ],
-                        "index": 4,
-                        "lineNumber": 31,
+                        "index": 5,
+                        "lineNumber": 32,
                         "name": "requestPersonSync",
                         "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "deviceId",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "jsonText",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 6,
+                        "lineNumber": 33,
+                        "name": "sendToClientJson",
+                        "returnType": "bool"
                     },
                     {
                         "access": "public",
@@ -801,9 +825,56 @@
                                 "type": "QString"
                             }
                         ],
-                        "index": 5,
-                        "lineNumber": 32,
+                        "index": 7,
+                        "lineNumber": 34,
                         "name": "broadcastJson",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "employeeId",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "featureBase64",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 8,
+                        "lineNumber": 35,
+                        "name": "addFaceDataBase64",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "employeeId",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "featureBase64",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 9,
+                        "lineNumber": 36,
+                        "name": "updateFaceDataBase64",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "employeeId",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 10,
+                        "lineNumber": 37,
+                        "name": "deleteFaceDataByEmployeeId",
                         "returnType": "bool"
                     }
                 ],
@@ -830,7 +901,7 @@
                     {
                         "access": "public",
                         "index": 0,
-                        "lineNumber": 35,
+                        "lineNumber": 40,
                         "name": "lastErrorChanged",
                         "returnType": "void"
                     }

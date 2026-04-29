@@ -49,10 +49,17 @@ template <> constexpr inline auto TestApi::qt_create_metaobjectdata<qt_meta_tag_
         "compareFeatureBase64",
         "f1Base64",
         "f2Base64",
+        "selectImageFile",
         "requestPersonSync",
         "deviceId",
-        "broadcastJson",
+        "sendToClientJson",
         "jsonText",
+        "broadcastJson",
+        "addFaceDataBase64",
+        "employeeId",
+        "featureBase64",
+        "updateFaceDataBase64",
+        "deleteFaceDataByEmployeeId",
         "lastError"
     };
 
@@ -71,18 +78,36 @@ template <> constexpr inline auto TestApi::qt_create_metaobjectdata<qt_meta_tag_
         QtMocHelpers::MethodData<double(const QString &, const QString &)>(8, 2, QMC::AccessPublic, QMetaType::Double, {{
             { QMetaType::QString, 9 }, { QMetaType::QString, 10 },
         }}),
+        // Method 'selectImageFile'
+        QtMocHelpers::MethodData<QString()>(11, 2, QMC::AccessPublic, QMetaType::QString),
         // Method 'requestPersonSync'
-        QtMocHelpers::MethodData<void(const QString &)>(11, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 12 },
+        QtMocHelpers::MethodData<void(const QString &)>(12, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 13 },
+        }}),
+        // Method 'sendToClientJson'
+        QtMocHelpers::MethodData<bool(const QString &, const QString &)>(14, 2, QMC::AccessPublic, QMetaType::Bool, {{
+            { QMetaType::QString, 13 }, { QMetaType::QString, 15 },
         }}),
         // Method 'broadcastJson'
-        QtMocHelpers::MethodData<bool(const QString &)>(13, 2, QMC::AccessPublic, QMetaType::Bool, {{
-            { QMetaType::QString, 14 },
+        QtMocHelpers::MethodData<bool(const QString &)>(16, 2, QMC::AccessPublic, QMetaType::Bool, {{
+            { QMetaType::QString, 15 },
+        }}),
+        // Method 'addFaceDataBase64'
+        QtMocHelpers::MethodData<bool(const QString &, const QString &)>(17, 2, QMC::AccessPublic, QMetaType::Bool, {{
+            { QMetaType::QString, 18 }, { QMetaType::QString, 19 },
+        }}),
+        // Method 'updateFaceDataBase64'
+        QtMocHelpers::MethodData<bool(const QString &, const QString &)>(20, 2, QMC::AccessPublic, QMetaType::Bool, {{
+            { QMetaType::QString, 18 }, { QMetaType::QString, 19 },
+        }}),
+        // Method 'deleteFaceDataByEmployeeId'
+        QtMocHelpers::MethodData<bool(const QString &)>(21, 2, QMC::AccessPublic, QMetaType::Bool, {{
+            { QMetaType::QString, 18 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
         // property 'lastError'
-        QtMocHelpers::PropertyData<QString>(15, QMetaType::QString, QMC::DefaultPropertyFlags, 0),
+        QtMocHelpers::PropertyData<QString>(22, QMetaType::QString, QMC::DefaultPropertyFlags, 0),
     };
     QtMocHelpers::UintData qt_enums {
     };
@@ -111,8 +136,18 @@ void TestApi::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
             if (_a[0]) *reinterpret_cast<QString*>(_a[0]) = std::move(_r); }  break;
         case 3: { double _r = _t->compareFeatureBase64((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])));
             if (_a[0]) *reinterpret_cast<double*>(_a[0]) = std::move(_r); }  break;
-        case 4: _t->requestPersonSync((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
-        case 5: { bool _r = _t->broadcastJson((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])));
+        case 4: { QString _r = _t->selectImageFile();
+            if (_a[0]) *reinterpret_cast<QString*>(_a[0]) = std::move(_r); }  break;
+        case 5: _t->requestPersonSync((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 6: { bool _r = _t->sendToClientJson((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])));
+            if (_a[0]) *reinterpret_cast<bool*>(_a[0]) = std::move(_r); }  break;
+        case 7: { bool _r = _t->broadcastJson((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])));
+            if (_a[0]) *reinterpret_cast<bool*>(_a[0]) = std::move(_r); }  break;
+        case 8: { bool _r = _t->addFaceDataBase64((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])));
+            if (_a[0]) *reinterpret_cast<bool*>(_a[0]) = std::move(_r); }  break;
+        case 9: { bool _r = _t->updateFaceDataBase64((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])));
+            if (_a[0]) *reinterpret_cast<bool*>(_a[0]) = std::move(_r); }  break;
+        case 10: { bool _r = _t->deleteFaceDataByEmployeeId((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])));
             if (_a[0]) *reinterpret_cast<bool*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
@@ -149,14 +184,14 @@ int TestApi::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 11;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 11)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 6;
+        _id -= 11;
     }
     if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::BindableProperty
