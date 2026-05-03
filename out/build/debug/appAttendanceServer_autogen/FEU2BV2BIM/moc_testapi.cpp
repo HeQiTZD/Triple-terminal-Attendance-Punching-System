@@ -57,6 +57,15 @@ template <> constexpr inline auto TestApi::qt_create_metaobjectdata<qt_meta_tag_
         "featureBase64",
         "updateFaceDataBase64",
         "deleteFaceDataByEmployeeId",
+        "selectSaveFile",
+        "title",
+        "defaultName",
+        "nameFilter",
+        "selectOpenFile",
+        "readTextFile",
+        "path",
+        "writeTextFile",
+        "content",
         "lastError"
     };
 
@@ -97,10 +106,42 @@ template <> constexpr inline auto TestApi::qt_create_metaobjectdata<qt_meta_tag_
         QtMocHelpers::MethodData<bool(const QString &)>(18, 2, QMC::AccessPublic, QMetaType::Bool, {{
             { QMetaType::QString, 15 },
         }}),
+        // Method 'selectSaveFile'
+        QtMocHelpers::MethodData<QString(const QString &, const QString &, const QString &)>(19, 2, QMC::AccessPublic, QMetaType::QString, {{
+            { QMetaType::QString, 20 }, { QMetaType::QString, 21 }, { QMetaType::QString, 22 },
+        }}),
+        // Method 'selectSaveFile'
+        QtMocHelpers::MethodData<QString(const QString &, const QString &)>(19, 2, QMC::AccessPublic | QMC::MethodCloned, QMetaType::QString, {{
+            { QMetaType::QString, 20 }, { QMetaType::QString, 21 },
+        }}),
+        // Method 'selectSaveFile'
+        QtMocHelpers::MethodData<QString(const QString &)>(19, 2, QMC::AccessPublic | QMC::MethodCloned, QMetaType::QString, {{
+            { QMetaType::QString, 20 },
+        }}),
+        // Method 'selectSaveFile'
+        QtMocHelpers::MethodData<QString()>(19, 2, QMC::AccessPublic | QMC::MethodCloned, QMetaType::QString),
+        // Method 'selectOpenFile'
+        QtMocHelpers::MethodData<QString(const QString &, const QString &)>(23, 2, QMC::AccessPublic, QMetaType::QString, {{
+            { QMetaType::QString, 20 }, { QMetaType::QString, 22 },
+        }}),
+        // Method 'selectOpenFile'
+        QtMocHelpers::MethodData<QString(const QString &)>(23, 2, QMC::AccessPublic | QMC::MethodCloned, QMetaType::QString, {{
+            { QMetaType::QString, 20 },
+        }}),
+        // Method 'selectOpenFile'
+        QtMocHelpers::MethodData<QString()>(23, 2, QMC::AccessPublic | QMC::MethodCloned, QMetaType::QString),
+        // Method 'readTextFile'
+        QtMocHelpers::MethodData<QString(const QString &)>(24, 2, QMC::AccessPublic, QMetaType::QString, {{
+            { QMetaType::QString, 25 },
+        }}),
+        // Method 'writeTextFile'
+        QtMocHelpers::MethodData<bool(const QString &, const QString &)>(26, 2, QMC::AccessPublic, QMetaType::Bool, {{
+            { QMetaType::QString, 25 }, { QMetaType::QString, 27 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
         // property 'lastError'
-        QtMocHelpers::PropertyData<QString>(19, QMetaType::QString, QMC::DefaultPropertyFlags, 0),
+        QtMocHelpers::PropertyData<QString>(28, QMetaType::QString, QMC::DefaultPropertyFlags, 0),
     };
     QtMocHelpers::UintData qt_enums {
     };
@@ -140,6 +181,24 @@ void TestApi::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
             if (_a[0]) *reinterpret_cast<bool*>(_a[0]) = std::move(_r); }  break;
         case 9: { bool _r = _t->deleteFaceDataByEmployeeId((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])));
             if (_a[0]) *reinterpret_cast<bool*>(_a[0]) = std::move(_r); }  break;
+        case 10: { QString _r = _t->selectSaveFile((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3])));
+            if (_a[0]) *reinterpret_cast<QString*>(_a[0]) = std::move(_r); }  break;
+        case 11: { QString _r = _t->selectSaveFile((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])));
+            if (_a[0]) *reinterpret_cast<QString*>(_a[0]) = std::move(_r); }  break;
+        case 12: { QString _r = _t->selectSaveFile((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])));
+            if (_a[0]) *reinterpret_cast<QString*>(_a[0]) = std::move(_r); }  break;
+        case 13: { QString _r = _t->selectSaveFile();
+            if (_a[0]) *reinterpret_cast<QString*>(_a[0]) = std::move(_r); }  break;
+        case 14: { QString _r = _t->selectOpenFile((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])));
+            if (_a[0]) *reinterpret_cast<QString*>(_a[0]) = std::move(_r); }  break;
+        case 15: { QString _r = _t->selectOpenFile((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])));
+            if (_a[0]) *reinterpret_cast<QString*>(_a[0]) = std::move(_r); }  break;
+        case 16: { QString _r = _t->selectOpenFile();
+            if (_a[0]) *reinterpret_cast<QString*>(_a[0]) = std::move(_r); }  break;
+        case 17: { QString _r = _t->readTextFile((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])));
+            if (_a[0]) *reinterpret_cast<QString*>(_a[0]) = std::move(_r); }  break;
+        case 18: { bool _r = _t->writeTextFile((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])));
+            if (_a[0]) *reinterpret_cast<bool*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
     }
@@ -175,14 +234,14 @@ int TestApi::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 19)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 19;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
+        if (_id < 19)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 10;
+        _id -= 19;
     }
     if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::BindableProperty

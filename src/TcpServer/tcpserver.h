@@ -8,6 +8,7 @@
 #include <QTimer>
 #include <QJsonObject>
 #include <QJsonDocument>
+#include <QVariantList>
 
 class TcpServer : public QObject
 {
@@ -34,11 +35,17 @@ public:
     //广播给所有客户端
     Q_INVOKABLE void brodcastsToAll(const QJsonObject &data);
 
+    // 在线客户端列表（QML 可直接遍历）
+    // 元素结构：{ deviceId, ipAddress, authenticated }
+    Q_INVOKABLE QVariantList connectedClients() const;
+
 signals:
     //服务状态变化
     void isRunningChanged();
     //客户端数量变化
     void clientCountChanged();
+    //客户端列表发生变化（连接/断开/认证完成时）
+    void clientsChanged();
 
     //客户端连接
     void clientConnected(const QString &deviceId,const QString &ipAddress);

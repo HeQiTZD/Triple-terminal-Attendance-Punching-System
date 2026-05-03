@@ -17,10 +17,47 @@ qt_add_executable(appAttendanceServer
     src/TcpServer/tcpserver.cpp
 )
 
+# 标记 Theme/Logger/History/Presets 为 QML 单例
+set_source_files_properties(
+    ui/theme/Theme.qml
+    ui/models/Logger.qml
+    ui/models/History.qml
+    ui/models/Presets.qml
+    PROPERTIES
+        QT_QML_SINGLETON_TYPE TRUE
+)
+
 qt_add_qml_module(appAttendanceServer
     URI AttendanceServer
     QML_FILES
         ui/Main.qml
+        ui/theme/Theme.qml
+        ui/models/Logger.qml
+        ui/models/History.qml
+        ui/models/Presets.qml
+        ui/components/Card.qml
+        ui/components/SideBar.qml
+        ui/components/StatusBar.qml
+        ui/components/BadgeStatus.qml
+        ui/components/LabeledField.qml
+        ui/components/ToolBarRow.qml
+        ui/components/JsonEditor.qml
+        ui/components/JsonViewer.qml
+        ui/components/DataTable.qml
+        ui/components/LogPanel.qml
+        ui/components/ConfirmDialog.qml
+        ui/pages/PageDashboard.qml
+        ui/pages/PageTcpServer.qml
+        ui/pages/PagePerson.qml
+        ui/pages/PageDevice.qml
+        ui/pages/PageAttendance.qml
+        ui/pages/PageFace.qml
+        ui/pages/PageSync.qml
+        ui/pages/PageExport.qml
+        ui/pages/PageAnalytics.qml
+        ui/pages/PageBatchTest.qml
+        ui/pages/PageHistory.qml
+        ui/pages/PageSettings.qml
     SOURCES
         src/TcpServer/tcpserver.h src/TcpServer/tcpserver.cpp
         src/DataManager/datamanager.h src/DataManager/datamanager.cpp

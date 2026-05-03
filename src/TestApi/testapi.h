@@ -36,6 +36,15 @@ public:
     Q_INVOKABLE bool updateFaceDataBase64(const QString& employeeId, const QString& featureBase64);
     Q_INVOKABLE bool deleteFaceDataByEmployeeId(const QString& employeeId);
 
+    // ===== 文件辅助（供 QML 使用：另存为对话框、读写文本） =====
+    Q_INVOKABLE QString selectSaveFile(const QString& title = QString(),
+                                       const QString& defaultName = QString(),
+                                       const QString& nameFilter = QString());
+    Q_INVOKABLE QString selectOpenFile(const QString& title = QString(),
+                                       const QString& nameFilter = QString());
+    Q_INVOKABLE QString readTextFile(const QString& path);
+    Q_INVOKABLE bool writeTextFile(const QString& path, const QString& content);
+
 signals:
     void lastErrorChanged();
 

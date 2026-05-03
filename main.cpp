@@ -9,12 +9,16 @@
 #include "src/AttendanceAnalyzer/attendanceanalyzer.h"
 #include "src/Controllers/networkcontroller.h"
 #include <QApplication>
+#include <QCoreApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+    QCoreApplication::setOrganizationName(QStringLiteral("AttendanceServer"));
+    QCoreApplication::setOrganizationDomain(QStringLiteral("local"));
+    QCoreApplication::setApplicationName(QStringLiteral("AttendanceServer"));
 
     //创建核心模块实例
     TcpServer tcpServer;

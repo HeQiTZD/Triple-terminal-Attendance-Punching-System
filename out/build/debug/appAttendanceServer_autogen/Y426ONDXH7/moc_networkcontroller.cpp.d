@@ -65,6 +65,8 @@ E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/Y426ONDX
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QObject \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QString \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QTimer \
+  C:/Qt/6.10.2/msvc2022_64/include/QtCore/QVariant \
+  C:/Qt/6.10.2/msvc2022_64/include/QtCore/QVariantList \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/q17memory.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/q20functional.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/q20iterator.h \
@@ -200,6 +202,7 @@ E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/Y426ONDX
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qutf8stringview.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/quuid.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qvariant.h \
+  C:/Qt/6.10.2/msvc2022_64/include/QtCore/qvariantlist.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qvarlengtharray.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qversiontagging.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qxptype_traits.h \

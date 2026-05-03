@@ -115,6 +115,7 @@ appAttendanceServer_autogen/timestamp: \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QTime \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QTimer \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QVariant \
+	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QVariantList \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QVariantMap \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/QVector \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/q17memory.h \
@@ -269,6 +270,7 @@ appAttendanceServer_autogen/timestamp: \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qutf8stringview.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/quuid.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qvariant.h \
+	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qvariantlist.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qvariantmap.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qvarlengtharray.h \
 	C:/Qt/6.10.2/msvc2022_64/include/QtCore/qvector.h \

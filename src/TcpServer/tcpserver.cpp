@@ -61,6 +61,7 @@ void TcpServer::stopServer()
     m_server->close();
     emit isRunningChanged();
     emit clientCountChanged();
+    emit clientsChanged();
 }
 
 bool TcpServer::isRunning() const
@@ -71,6 +72,21 @@ bool TcpServer::isRunning() const
 int TcpServer::clientCount() const
 {
     return m_clients.size();
+}
+
+QVariantList TcpServer::connectedClients() const
+{
+    QVariantList list;
+    list.reserve(m_clients.size());
+    for (auto it = m_clients.constBegin(); it != m_clients.constEnd(); ++it) {
+        const ClientInfo &info = it.value();
+        QVariantMap row;
+        row["deviceId"] = info.deviceId;
+        row["ipAddress"] = info.ipAddress;
+        row["authenticated"] = info.isAuthenticated;
+        list.append(row);
+    }
+    return list;
 }
 
 //根据设备 ID 向指定 TCP 客户端发送数据
@@ -118,6 +134,7 @@ void TcpServer::onNewConnection()
         connect(socket,&QTcpSocket::readyRead,this,&TcpServer::onSocketReadyRead);
 
         emit clientCountChanged();
+        emit clientsChanged();
         qDebug()<<"New client connected from:" << info.ipAddress;
     }
 }
@@ -194,6 +211,7 @@ void TcpServer::processMessage(QTcpSocket *socket, const QJsonObject &message)
         updateHeartbeat(socket);
 
         emit clientConnected(info.deviceId,info.ipAddress);
+        emit clientsChanged();
 
         //发送认证成功响应
         QJsonObject response;
@@ -264,6 +282,7 @@ void TcpServer::removeClient(QTcpSocket *socket)
 
     socket->deleteLater();
     emit clientCountChanged();
+    emit clientsChanged();
 }
 
 void TcpServer::updateHeartbeat(QTcpSocket *socket)

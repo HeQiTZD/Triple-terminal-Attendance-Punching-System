@@ -2,7 +2,7 @@
     "classes": [
         {
             "className": "TcpServer",
-            "lineNumber": 12,
+            "lineNumber": 13,
             "methods": [
                 {
                     "access": "public",
@@ -12,23 +12,23 @@
                             "type": "quint16"
                         }
                     ],
-                    "index": 12,
-                    "lineNumber": 23,
-                    "name": "startServer",
-                    "returnType": "bool"
-                },
-                {
-                    "access": "public",
                     "index": 13,
-                    "isCloned": true,
-                    "lineNumber": 23,
+                    "lineNumber": 24,
                     "name": "startServer",
                     "returnType": "bool"
                 },
                 {
                     "access": "public",
                     "index": 14,
-                    "lineNumber": 25,
+                    "isCloned": true,
+                    "lineNumber": 24,
+                    "name": "startServer",
+                    "returnType": "bool"
+                },
+                {
+                    "access": "public",
+                    "index": 15,
+                    "lineNumber": 26,
                     "name": "stopServer",
                     "returnType": "void"
                 },
@@ -44,8 +44,8 @@
                             "type": "QJsonObject"
                         }
                     ],
-                    "index": 15,
-                    "lineNumber": 33,
+                    "index": 16,
+                    "lineNumber": 34,
                     "name": "sendToClient",
                     "returnType": "bool"
                 },
@@ -57,10 +57,18 @@
                             "type": "QJsonObject"
                         }
                     ],
-                    "index": 16,
-                    "lineNumber": 35,
+                    "index": 17,
+                    "lineNumber": 36,
                     "name": "brodcastsToAll",
                     "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 18,
+                    "isConst": true,
+                    "lineNumber": 40,
+                    "name": "connectedClients",
+                    "returnType": "QVariantList"
                 }
             ],
             "object": true,
@@ -70,7 +78,7 @@
                     "designable": true,
                     "final": false,
                     "index": 0,
-                    "lineNumber": 15,
+                    "lineNumber": 16,
                     "name": "isRunning",
                     "notify": "isRunningChanged",
                     "read": "isRunning",
@@ -85,7 +93,7 @@
                     "designable": true,
                     "final": false,
                     "index": 1,
-                    "lineNumber": 16,
+                    "lineNumber": 17,
                     "name": "clientCount",
                     "notify": "clientCountChanged",
                     "read": "clientCount",
@@ -101,15 +109,22 @@
                 {
                     "access": "public",
                     "index": 0,
-                    "lineNumber": 39,
+                    "lineNumber": 44,
                     "name": "isRunningChanged",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
                     "index": 1,
-                    "lineNumber": 41,
+                    "lineNumber": 46,
                     "name": "clientCountChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 2,
+                    "lineNumber": 48,
+                    "name": "clientsChanged",
                     "returnType": "void"
                 },
                 {
@@ -124,8 +139,8 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 2,
-                    "lineNumber": 44,
+                    "index": 3,
+                    "lineNumber": 51,
                     "name": "clientConnected",
                     "returnType": "void"
                 },
@@ -137,8 +152,8 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 3,
-                    "lineNumber": 46,
+                    "index": 4,
+                    "lineNumber": 53,
                     "name": "clientDisconnected",
                     "returnType": "void"
                 },
@@ -150,8 +165,8 @@
                             "type": "QJsonObject"
                         }
                     ],
-                    "index": 4,
-                    "lineNumber": 48,
+                    "index": 5,
+                    "lineNumber": 55,
                     "name": "attendanceRecordReceived",
                     "returnType": "void"
                 },
@@ -167,8 +182,8 @@
                             "type": "QJsonObject"
                         }
                     ],
-                    "index": 5,
-                    "lineNumber": 50,
+                    "index": 6,
+                    "lineNumber": 57,
                     "name": "deviceStatusReceived",
                     "returnType": "void"
                 },
@@ -180,8 +195,8 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 6,
-                    "lineNumber": 52,
+                    "index": 7,
+                    "lineNumber": 59,
                     "name": "errorOccurred",
                     "returnType": "void"
                 },
@@ -193,8 +208,8 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 7,
-                    "lineNumber": 54,
+                    "index": 8,
+                    "lineNumber": 61,
                     "name": "syncRequested",
                     "returnType": "void"
                 }
@@ -202,29 +217,29 @@
             "slots": [
                 {
                     "access": "private",
-                    "index": 8,
-                    "lineNumber": 58,
+                    "index": 9,
+                    "lineNumber": 65,
                     "name": "onNewConnection",
                     "returnType": "void"
                 },
                 {
                     "access": "private",
-                    "index": 9,
-                    "lineNumber": 60,
+                    "index": 10,
+                    "lineNumber": 67,
                     "name": "onSocketDisconnected",
                     "returnType": "void"
                 },
                 {
                     "access": "private",
-                    "index": 10,
-                    "lineNumber": 62,
+                    "index": 11,
+                    "lineNumber": 69,
                     "name": "onSocketReadyRead",
                     "returnType": "void"
                 },
                 {
                     "access": "private",
-                    "index": 11,
-                    "lineNumber": 64,
+                    "index": 12,
+                    "lineNumber": 71,
                     "name": "onHeartbeatTimeout",
                     "returnType": "void"
                 }

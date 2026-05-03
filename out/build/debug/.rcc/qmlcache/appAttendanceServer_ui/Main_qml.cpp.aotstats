@@ -6,275 +6,179 @@
                 {
                     "entries": [
                         {
-                            "codegenResult": 0,
-                            "column": 41,
+                            "codegenResult": 2,
+                            "column": 12,
                             "durationMicroseconds": 0,
-                            "functionName": "isDarkTheme",
+                            "functionName": "color",
                             "line": 17,
-                            "message": ""
+                            "message": "Could not find property \"color\"."
                         },
                         {
                             "codegenResult": 2,
-                            "column": 31,
-                            "durationMicroseconds": 0,
-                            "functionName": "personModel",
-                            "line": 37,
-                            "message": "Cannot generate efficient code for storing an array in a non-sequence type"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 31,
-                            "durationMicroseconds": 0,
-                            "functionName": "deviceModel",
-                            "line": 38,
-                            "message": "Cannot generate efficient code for storing an array in a non-sequence type"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 35,
-                            "durationMicroseconds": 0,
-                            "functionName": "attendanceModel",
-                            "line": 39,
-                            "message": "Cannot generate efficient code for storing an array in a non-sequence type"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 29,
-                            "durationMicroseconds": 0,
-                            "functionName": "faceModel",
-                            "line": 40,
+                            "column": 37,
+                            "durationMicroseconds": 2000,
+                            "functionName": "navItems",
+                            "line": 90,
                             "message": "Cannot generate efficient code for storing an array in a non-sequence type"
                         },
                         {
                             "codegenResult": 2,
                             "column": 5,
                             "durationMicroseconds": 0,
-                            "functionName": "appendLog",
-                            "line": 45,
-                            "message": "Functions without type annotations won't be compiled"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 5,
-                            "durationMicroseconds": 0,
-                            "functionName": "rememberError",
-                            "line": 55,
-                            "message": "Functions without type annotations won't be compiled"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 5,
-                            "durationMicroseconds": 0,
-                            "functionName": "rememberInfo",
-                            "line": 62,
-                            "message": "Functions without type annotations won't be compiled"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 5,
-                            "durationMicroseconds": 0,
-                            "functionName": "logResult",
-                            "line": 69,
-                            "message": "Functions without type annotations won't be compiled"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 5,
-                            "durationMicroseconds": 0,
-                            "functionName": "parseIntOrZero",
-                            "line": 75,
-                            "message": "Functions without type annotations won't be compiled"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 5,
-                            "durationMicroseconds": 0,
-                            "functionName": "parseDateTime",
-                            "line": 80,
-                            "message": "Functions without type annotations won't be compiled"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 5,
-                            "durationMicroseconds": 0,
-                            "functionName": "parseOptionalDateTime",
-                            "line": 85,
-                            "message": "Functions without type annotations won't be compiled"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 5,
-                            "durationMicroseconds": 0,
-                            "functionName": "parseDate",
-                            "line": 93,
-                            "message": "Functions without type annotations won't be compiled"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 5,
-                            "durationMicroseconds": 0,
-                            "functionName": "maskSecret",
-                            "line": 98,
-                            "message": "Functions without type annotations won't be compiled"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 5,
-                            "durationMicroseconds": 0,
-                            "functionName": "jsonText",
-                            "line": 106,
-                            "message": "Functions without type annotations won't be compiled"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 5,
-                            "durationMicroseconds": 0,
-                            "functionName": "describePerson",
+                            "functionName": "_findKeyIndex",
                             "line": 114,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
                             "codegenResult": 2,
-                            "column": 5,
+                            "column": 35,
                             "durationMicroseconds": 0,
-                            "functionName": "describeDevice",
-                            "line": 121,
-                            "message": "Functions without type annotations won't be compiled"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 5,
-                            "durationMicroseconds": 0,
-                            "functionName": "describeRecord",
-                            "line": 128,
-                            "message": "Functions without type annotations won't be compiled"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 5,
-                            "durationMicroseconds": 0,
-                            "functionName": "describeFaceData",
-                            "line": 137,
-                            "message": "Functions without type annotations won't be compiled"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 5,
-                            "durationMicroseconds": 0,
-                            "functionName": "refreshPersons",
-                            "line": 147,
-                            "message": "Cannot access value for name dataService"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 5,
-                            "durationMicroseconds": 0,
-                            "functionName": "refreshDevices",
-                            "line": 152,
-                            "message": "Cannot access value for name dataService"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 5,
-                            "durationMicroseconds": 0,
-                            "functionName": "refreshFaces",
-                            "line": 157,
-                            "message": "Cannot access value for name dataService"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 21,
-                            "durationMicroseconds": 0,
-                            "functionName": "window",
-                            "line": 20,
-                            "message": "Could not find property \"window\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 25,
-                            "durationMicroseconds": 0,
-                            "functionName": "windowText",
-                            "line": 21,
-                            "message": "Could not find property \"windowText\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 19,
-                            "durationMicroseconds": 0,
-                            "functionName": "base",
-                            "line": 22,
-                            "message": "Could not find property \"base\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 28,
-                            "durationMicroseconds": 0,
-                            "functionName": "alternateBase",
-                            "line": 23,
-                            "message": "Could not find property \"alternateBase\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 19,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 24,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 21,
-                            "durationMicroseconds": 0,
-                            "functionName": "button",
-                            "line": 25,
-                            "message": "Could not find property \"button\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 25,
-                            "durationMicroseconds": 0,
-                            "functionName": "buttonText",
-                            "line": 26,
-                            "message": "Could not find property \"buttonText\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 26,
-                            "durationMicroseconds": 0,
-                            "functionName": "toolTipBase",
-                            "line": 29,
-                            "message": "Could not find property \"toolTipBase\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 26,
-                            "durationMicroseconds": 0,
-                            "functionName": "toolTipText",
-                            "line": 30,
-                            "message": "Could not find property \"toolTipText\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 28,
-                            "durationMicroseconds": 0,
-                            "functionName": "onCompleted",
-                            "line": 162,
+                            "functionName": "currentNavIndex",
+                            "line": 120,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
                         },
                         {
                             "codegenResult": 2,
+                            "column": 5,
+                            "durationMicroseconds": 0,
+                            "functionName": "_stackIndexFromNav",
+                            "line": 123,
+                            "message": "Functions without type annotations won't be compiled"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "window",
+                            "line": 18,
+                            "message": "Could not find property \"window\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "windowText",
+                            "line": 19,
+                            "message": "Could not find property \"windowText\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "base",
+                            "line": 20,
+                            "message": "Could not find property \"base\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "alternateBase",
+                            "line": 21,
+                            "message": "Could not find property \"alternateBase\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 22,
+                            "message": "Could not find property \"text\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "button",
+                            "line": 23,
+                            "message": "Could not find property \"button\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "buttonText",
+                            "line": 24,
+                            "message": "Could not find property \"buttonText\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "highlight",
+                            "line": 25,
+                            "message": "Could not find property \"highlight\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "toolTipBase",
+                            "line": 27,
+                            "message": "Could not find property \"toolTipBase\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "toolTipText",
+                            "line": 28,
+                            "message": "Could not find property \"toolTipText\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "placeholderText",
+                            "line": 29,
+                            "message": "Could not find property \"placeholderText\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "mid",
+                            "line": 30,
+                            "message": "Could not find property \"mid\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "midlight",
+                            "line": 31,
+                            "message": "Could not find property \"midlight\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "dark",
+                            "line": 33,
+                            "message": "Could not find property \"dark\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "light",
+                            "line": 34,
+                            "message": "Could not find property \"light\"."
+                        },
+                        {
+                            "codegenResult": 2,
                             "column": 17,
                             "durationMicroseconds": 0,
                             "functionName": "target",
-                            "line": 165,
+                            "line": 38,
                             "message": "Cannot access value for name testApi"
                         },
                         {
                             "codegenResult": 2,
                             "column": 9,
-                            "durationMicroseconds": 0,
+                            "durationMicroseconds": 14000,
                             "functionName": "onLastErrorChanged",
-                            "line": 166,
+                            "line": 39,
                             "message": "Cannot access value for name testApi"
                         },
                         {
@@ -282,7 +186,7 @@
                             "column": 17,
                             "durationMicroseconds": 0,
                             "functionName": "target",
-                            "line": 172,
+                            "line": 45,
                             "message": "Cannot access value for name exportManager"
                         },
                         {
@@ -290,7 +194,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onLastErrorChanged",
-                            "line": 173,
+                            "line": 46,
                             "message": "Cannot access value for name exportManager"
                         },
                         {
@@ -298,7 +202,7 @@
                             "column": 17,
                             "durationMicroseconds": 0,
                             "functionName": "target",
-                            "line": 179,
+                            "line": 52,
                             "message": "Cannot access value for name tcpServer"
                         },
                         {
@@ -306,7 +210,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onClientConnected",
-                            "line": 180,
+                            "line": 53,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -314,7 +218,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onClientDisconnected",
-                            "line": 181,
+                            "line": 54,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -322,7 +226,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onAttendanceRecordReceived",
-                            "line": 182,
+                            "line": 55,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -330,15 +234,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onDeviceStatusReceived",
-                            "line": 183,
-                            "message": "Functions without type annotations won't be compiled"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 9,
-                            "durationMicroseconds": 0,
-                            "functionName": "onSyncRequested",
-                            "line": 184,
+                            "line": 59,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -346,7 +242,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onErrorOccurred",
-                            "line": 185,
+                            "line": 63,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -354,15 +250,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onIsRunningChanged",
-                            "line": 186,
-                            "message": "Cannot access value for name tcpServer"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 9,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClientCountChanged",
-                            "line": 187,
+                            "line": 64,
                             "message": "Cannot access value for name tcpServer"
                         },
                         {
@@ -370,7 +258,7 @@
                             "column": 17,
                             "durationMicroseconds": 0,
                             "functionName": "target",
-                            "line": 191,
+                            "line": 67,
                             "message": "Cannot access value for name dataService"
                         },
                         {
@@ -378,7 +266,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onOperationTip",
-                            "line": 192,
+                            "line": 68,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -386,7 +274,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onOperationResult",
-                            "line": 193,
+                            "line": 69,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -394,7 +282,7 @@
                             "column": 17,
                             "durationMicroseconds": 0,
                             "functionName": "target",
-                            "line": 203,
+                            "line": 75,
                             "message": "Cannot access value for name dataManager"
                         },
                         {
@@ -402,7 +290,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onConnectionStateChanged",
-                            "line": 204,
+                            "line": 76,
                             "message": "Cannot access value for name dataManager"
                         },
                         {
@@ -410,7 +298,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onErrorOccurred",
-                            "line": 205,
+                            "line": 77,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -418,7 +306,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onPersonAdded",
-                            "line": 206,
+                            "line": 78,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -426,7 +314,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onPersonDeleted",
-                            "line": 207,
+                            "line": 79,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -434,7 +322,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onAttendanceRecordAdded",
-                            "line": 208,
+                            "line": 80,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -442,7 +330,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onDeviceStatusChanged",
-                            "line": 209,
+                            "line": 81,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -450,7 +338,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onFaceDataAdded",
-                            "line": 210,
+                            "line": 82,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -458,7 +346,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onFaceDataUpdated",
-                            "line": 211,
+                            "line": 83,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -466,15 +354,23 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onFaceDataDeleted",
-                            "line": 212,
+                            "line": 84,
                             "message": "Functions without type annotations won't be compiled"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 28,
+                            "durationMicroseconds": 0,
+                            "functionName": "onCompleted",
+                            "line": 87,
+                            "message": "Cannot generate efficient code for call to untyped JavaScript function"
                         },
                         {
                             "codegenResult": 2,
                             "column": 22,
                             "durationMicroseconds": 0,
                             "functionName": "orientation",
-                            "line": 217,
+                            "line": 135,
                             "message": "Could not find property \"orientation\"."
                         },
                         {
@@ -482,864 +378,112 @@
                             "column": 23,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 216,
+                            "line": 134,
                             "message": "Could not find property \"fill\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 26,
+                            "durationMicroseconds": 0,
+                            "functionName": "orientation",
+                            "line": 142,
+                            "message": "Could not find property \"orientation\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 24,
+                            "durationMicroseconds": 0,
+                            "functionName": "items",
+                            "line": 148,
+                            "message": "Cannot retrieve a non-object type by ID: win"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "currentIndex",
+                            "line": 149,
+                            "message": "Cannot retrieve a non-object type by ID: win"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 30,
+                            "durationMicroseconds": 0,
+                            "functionName": "onNavigated",
+                            "line": 150,
+                            "message": "Cannot retrieve a non-object type by ID: win"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 30,
+                            "durationMicroseconds": 0,
+                            "functionName": "onNavigated",
+                            "line": 150,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 43,
+                            "durationMicroseconds": 0,
+                            "functionName": "preferredWidth",
+                            "line": 146,
+                            "message": "Could not find property \"preferredWidth\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 34,
+                            "durationMicroseconds": 0,
+                            "functionName": "dbConnected",
+                            "line": 163,
+                            "message": "Cannot access value for name dataService"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 33,
+                            "durationMicroseconds": 0,
+                            "functionName": "tcpRunning",
+                            "line": 164,
+                            "message": "Cannot access value for name tcpServer"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 30,
+                            "durationMicroseconds": 4000,
+                            "functionName": "tcpPort",
+                            "line": 165,
+                            "message": "Cannot load property tcpPort from Presets."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 34,
+                            "durationMicroseconds": 0,
+                            "functionName": "clientCount",
+                            "line": 166,
+                            "message": "Cannot access value for name tcpServer"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 32,
+                            "durationMicroseconds": 0,
+                            "functionName": "lastError",
+                            "line": 167,
+                            "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 31,
                             "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 225,
+                            "functionName": "lastInfo",
+                            "line": 168,
                             "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 39,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 234,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 39,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 241,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 39,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 243,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 39,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 245,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 35,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 249,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "elide",
-                            "line": 250,
-                            "message": "Could not find property \"elide\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 35,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 257,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "color",
-                            "line": 258,
-                            "message": "Could not find property \"color\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "elide",
-                            "line": 259,
-                            "message": "Could not find property \"elide\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 35,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 266,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "color",
-                            "line": 267,
-                            "message": "Could not find property \"color\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "elide",
-                            "line": 268,
-                            "message": "Could not find property \"elide\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "currentIndex",
-                            "line": 289,
-                            "message": "Cannot retrieve a non-object type by ID: tabs"
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "width",
-                            "line": 294,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 51,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 301,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 52,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 306,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 52,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 310,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 52,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 314,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 52,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 318,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 47,
-                            "durationMicroseconds": 0,
-                            "functionName": "wrapMode",
-                            "line": 333,
-                            "message": "Could not find property \"wrapMode\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 51,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 331,
-                            "message": "Could not find property \"fill\"."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "width",
-                            "line": 343,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 51,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 350,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 52,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 362,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 52,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 370,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 51,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 375,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 51,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 384,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 397,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 404,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 51,
-                            "durationMicroseconds": 0,
-                            "functionName": "wrapMode",
-                            "line": 416,
-                            "message": "Could not find property \"wrapMode\"."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "width",
-                            "line": 427,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 51,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 434,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 457,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 465,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 473,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 481,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 488,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 495,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 51,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 500,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 44,
-                            "durationMicroseconds": 0,
-                            "functionName": "model",
-                            "line": 511,
-                            "message": "Cannot access value for name personModel"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 48,
-                            "durationMicroseconds": 0,
-                            "functionName": "width",
-                            "line": 514,
-                            "message": "Could not find property \"width\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 47,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 515,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 52,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 516,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "width",
-                            "line": 533,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 51,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 540,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 52,
-                            "durationMicroseconds": 0,
-                            "functionName": "model",
-                            "line": 556,
-                            "message": "Could not find property \"model\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 565,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 573,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 581,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 588,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 52,
-                            "durationMicroseconds": 0,
-                            "functionName": "model",
-                            "line": 603,
-                            "message": "Could not find property \"model\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 608,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 51,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 613,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 44,
-                            "durationMicroseconds": 0,
-                            "functionName": "model",
-                            "line": 624,
-                            "message": "Cannot access value for name deviceModel"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 48,
-                            "durationMicroseconds": 0,
-                            "functionName": "width",
-                            "line": 627,
-                            "message": "Could not find property \"width\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 47,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 628,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 52,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 629,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "width",
-                            "line": 645,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 51,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 652,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 84,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 662,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 81,
-                            "durationMicroseconds": 0,
-                            "functionName": "model",
-                            "line": 666,
-                            "message": "Could not find property \"model\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 683,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 695,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 702,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 709,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 44,
-                            "durationMicroseconds": 0,
-                            "functionName": "model",
-                            "line": 733,
-                            "message": "Cannot access value for name attendanceModel"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 48,
-                            "durationMicroseconds": 0,
-                            "functionName": "width",
-                            "line": 736,
-                            "message": "Could not find property \"width\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 47,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 737,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "width",
-                            "line": 747,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 51,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 754,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 103,
-                            "durationMicroseconds": 0,
-                            "functionName": "echoMode",
-                            "line": 762,
-                            "message": "Could not find property \"echoMode\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 765,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 55,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 771,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 779,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 788,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 55,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 794,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 51,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 805,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 814,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 822,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 830,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 838,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 845,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 881,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 51,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 894,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 48,
-                            "durationMicroseconds": 0,
-                            "functionName": "model",
-                            "line": 900,
-                            "message": "Cannot access value for name faceModel"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 52,
-                            "durationMicroseconds": 0,
-                            "functionName": "width",
-                            "line": 903,
-                            "message": "Could not find property \"width\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 51,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 904,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 905,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "width",
-                            "line": 916,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 51,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 923,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 52,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 930,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 52,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 937,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 51,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 950,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 970,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 977,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 984,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "width",
-                            "line": 999,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 51,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 1006,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 1027,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 1035,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 1043,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 51,
-                            "durationMicroseconds": 0,
-                            "functionName": "wrapMode",
-                            "line": 1057,
-                            "message": "Could not find property \"wrapMode\"."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 31,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 1074,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 1082,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 1086,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 31,
-                            "durationMicroseconds": 0,
-                            "functionName": "wrapMode",
-                            "line": 1096,
-                            "message": "Could not find property \"wrapMode\"."
+                            "line": 175,
+                            "message": "Cannot retrieve a non-object type by ID: win"
                         }
                     ],
                     "filePath": "E:/project/AttendanceServer/ui/Main.qml"

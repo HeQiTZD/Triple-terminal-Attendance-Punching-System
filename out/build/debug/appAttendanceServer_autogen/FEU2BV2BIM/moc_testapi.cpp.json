@@ -130,6 +130,136 @@
                     "lineNumber": 37,
                     "name": "deleteFaceDataByEmployeeId",
                     "returnType": "bool"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "title",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "defaultName",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "nameFilter",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 10,
+                    "lineNumber": 40,
+                    "name": "selectSaveFile",
+                    "returnType": "QString"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "title",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "defaultName",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 11,
+                    "isCloned": true,
+                    "lineNumber": 40,
+                    "name": "selectSaveFile",
+                    "returnType": "QString"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "title",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 12,
+                    "isCloned": true,
+                    "lineNumber": 40,
+                    "name": "selectSaveFile",
+                    "returnType": "QString"
+                },
+                {
+                    "access": "public",
+                    "index": 13,
+                    "isCloned": true,
+                    "lineNumber": 40,
+                    "name": "selectSaveFile",
+                    "returnType": "QString"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "title",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "nameFilter",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 14,
+                    "lineNumber": 43,
+                    "name": "selectOpenFile",
+                    "returnType": "QString"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "title",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 15,
+                    "isCloned": true,
+                    "lineNumber": 43,
+                    "name": "selectOpenFile",
+                    "returnType": "QString"
+                },
+                {
+                    "access": "public",
+                    "index": 16,
+                    "isCloned": true,
+                    "lineNumber": 43,
+                    "name": "selectOpenFile",
+                    "returnType": "QString"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "path",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 17,
+                    "lineNumber": 45,
+                    "name": "readTextFile",
+                    "returnType": "QString"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "path",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "content",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 18,
+                    "lineNumber": 46,
+                    "name": "writeTextFile",
+                    "returnType": "bool"
                 }
             ],
             "object": true,
@@ -155,7 +285,7 @@
                 {
                     "access": "public",
                     "index": 0,
-                    "lineNumber": 40,
+                    "lineNumber": 49,
                     "name": "lastErrorChanged",
                     "returnType": "void"
                 }

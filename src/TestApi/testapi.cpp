@@ -7,8 +7,14 @@
 #include "src/TcpServer/tcpserver.h"
 
 #include <QByteArray>
+#include <QDir>
+#include <QFile>
+#include <QFileDialog>
+#include <QFileInfo>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QSaveFile>
+#include <QTextStream>
 
 TestApi::TestApi(DataService* dataService,
                  TcpServer* tcpServer,
@@ -232,6 +238,87 @@ bool TestApi::deleteFaceDataByEmployeeId(const QString& employeeId)
         return false;
     }
 
+    setError(QString());
+    return true;
+}
+
+QString TestApi::selectSaveFile(const QString& title,
+                                const QString& defaultName,
+                                const QString& nameFilter)
+{
+    const QString actualTitle = title.isEmpty() ? QStringLiteral("选择保存文件") : title;
+    const QString actualFilter = nameFilter.isEmpty()
+        ? QStringLiteral("CSV 文件 (*.csv);;JSON 文件 (*.json);;所有文件 (*)")
+        : nameFilter;
+    const QString path = QFileDialog::getSaveFileName(nullptr, actualTitle, defaultName, actualFilter);
+    if (path.isEmpty()) {
+        setError("未选择保存路径");
+        return QString();
+    }
+    setError(QString());
+    return path;
+}
+
+QString TestApi::selectOpenFile(const QString& title, const QString& nameFilter)
+{
+    const QString actualTitle = title.isEmpty() ? QStringLiteral("选择文件") : title;
+    const QString actualFilter = nameFilter.isEmpty()
+        ? QStringLiteral("所有文件 (*)")
+        : nameFilter;
+    const QString path = QFileDialog::getOpenFileName(nullptr, actualTitle, QString(), actualFilter);
+    if (path.isEmpty()) {
+        setError("未选择文件");
+        return QString();
+    }
+    setError(QString());
+    return path;
+}
+
+QString TestApi::readTextFile(const QString& path)
+{
+    if (path.trimmed().isEmpty()) {
+        setError("路径不能为空");
+        return QString();
+    }
+    QFile file(path);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        setError(QStringLiteral("打开文件失败：%1").arg(file.errorString()));
+        return QString();
+    }
+    QTextStream in(&file);
+    in.setEncoding(QStringConverter::Utf8);
+    const QString text = in.readAll();
+    file.close();
+    setError(QString());
+    return text;
+}
+
+bool TestApi::writeTextFile(const QString& path, const QString& content)
+{
+    if (path.trimmed().isEmpty()) {
+        setError("路径不能为空");
+        return false;
+    }
+    QFileInfo fi(path);
+    QDir dir = fi.absoluteDir();
+    if (!dir.exists() && !dir.mkpath(".")) {
+        setError(QStringLiteral("目录不存在且无法创建：%1").arg(dir.absolutePath()));
+        return false;
+    }
+    QSaveFile file(path);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        setError(QStringLiteral("打开文件失败：%1").arg(file.errorString()));
+        return false;
+    }
+    QTextStream out(&file);
+    out.setEncoding(QStringConverter::Utf8);
+    out.setGenerateByteOrderMark(true);
+    out << content;
+    out.flush();
+    if (!file.commit()) {
+        setError(QStringLiteral("写入文件失败：%1").arg(file.errorString()));
+        return false;
+    }
     setError(QString());
     return true;
 }
