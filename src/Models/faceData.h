@@ -10,9 +10,9 @@ class FaceData : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(int id READ id WRITE setId NOTIFY idChanged)
-    Q_PROPERTY(int personId READ personId WRITE setPersonId NOTIFY personIdChanged)
+    Q_PROPERTY(QString employeeId READ employeeId WRITE setEmployeeId NOTIFY employeeIdChanged)
+    Q_PROPERTY(QString personName READ personName WRITE setPersonName NOTIFY personNameChanged)
     Q_PROPERTY(QByteArray featureVector READ featureVector WRITE setFeatureVector NOTIFY featureVectorChanged)
-    Q_PROPERTY(QString status READ status WRITE setStatus NOTIFY statusChanged)
     Q_PROPERTY(QDateTime createdAt READ createdAt WRITE setCreatedAt NOTIFY createdAtChanged)
     Q_PROPERTY(QDateTime updatedAt READ updatedAt WRITE setUpdatedAt NOTIFY updatedAtChanged)
     Q_PROPERTY(int featureSize READ featureSize WRITE setFeatureSize NOTIFY featureSizeChanged)
@@ -24,14 +24,14 @@ public:
     int id() const;
     void setId(int id);
 
-    int personId() const;
-    void setPersonId(int personId);
+    QString employeeId() const;
+    void setEmployeeId(const QString &employeeId);
+
+    QString personName() const;
+    void setPersonName(const QString &personName);
 
     QByteArray featureVector() const;
     void setFeatureVector(const QByteArray &featureVector);
-
-    QString status() const;
-    void setStatus(const QString &status);
 
     QDateTime createdAt() const;
     void setCreatedAt(const QDateTime &createdAt);
@@ -44,18 +44,18 @@ public:
 
 signals:
     void idChanged(int id);
-    void personIdChanged(int personId);
+    void employeeIdChanged(const QString &employeeId);
+    void personNameChanged(const QString &personName);
     void featureVectorChanged(const QByteArray &featureVector);
-    void statusChanged(const QString &status);
     void createdAtChanged(const QDateTime &createdAt);
     void updatedAtChanged(const QDateTime &updatedAt);
     void featureSizeChanged(int featureSize);
 
 private:
     int m_id;
-    int m_personId;
+    QString m_employeeId;
+    QString m_personName;
     QByteArray m_featureVector;
-    QString m_status;
     QDateTime m_createdAt;
     QDateTime m_updatedAt;
     int m_featureSize;

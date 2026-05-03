@@ -1,7 +1,7 @@
 ﻿#include "faceData.h"
 
 FaceData::FaceData(QObject *parent)
-    : QObject(parent), m_id(0), m_personId(0), m_status(""), m_featureSize(0)
+    : QObject(parent), m_id(0), m_featureSize(0)
 {
 }
 
@@ -22,16 +22,29 @@ void FaceData::setId(int id)
     }
 }
 
-int FaceData::personId() const
+QString FaceData::employeeId() const
 {
-    return m_personId;
+    return m_employeeId;
 }
 
-void FaceData::setPersonId(int personId)
+void FaceData::setEmployeeId(const QString &employeeId)
 {
-    if (m_personId != personId) {
-        m_personId = personId;
-        emit personIdChanged(personId);
+    if (m_employeeId != employeeId) {
+        m_employeeId = employeeId;
+        emit employeeIdChanged(employeeId);
+    }
+}
+
+QString FaceData::personName() const
+{
+    return m_personName;
+}
+
+void FaceData::setPersonName(const QString &personName)
+{
+    if (m_personName != personName) {
+        m_personName = personName;
+        emit personNameChanged(personName);
     }
 }
 
@@ -45,19 +58,6 @@ void FaceData::setFeatureVector(const QByteArray &featureVector)
     if (m_featureVector != featureVector) {
         m_featureVector = featureVector;
         emit featureVectorChanged(featureVector);
-    }
-}
-
-QString FaceData::status() const
-{
-    return m_status;
-}
-
-void FaceData::setStatus(const QString &status)
-{
-    if (m_status != status) {
-        m_status = status;
-        emit statusChanged(status);
     }
 }
 
@@ -99,4 +99,3 @@ void FaceData::setFeatureSize(int featureSize)
         emit featureSizeChanged(featureSize);
     }
 }
-

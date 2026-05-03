@@ -7,37 +7,7 @@
             "qualifiedClassName": "DeviceMonitor",
             "slots": [
                 {
-                    "access": "public",
-                    "arguments": [
-                        {
-                            "name": "deviceId",
-                            "type": "QString"
-                        },
-                        {
-                            "name": "ipAddress",
-                            "type": "QString"
-                        }
-                    ],
-                    "index": 0,
-                    "lineNumber": 22,
-                    "name": "onClientConnected",
-                    "returnType": "void"
-                },
-                {
-                    "access": "public",
-                    "arguments": [
-                        {
-                            "name": "deviceId",
-                            "type": "QString"
-                        }
-                    ],
-                    "index": 1,
-                    "lineNumber": 23,
-                    "name": "onClientDisconnected",
-                    "returnType": "void"
-                },
-                {
-                    "access": "public",
+                    "access": "private",
                     "arguments": [
                         {
                             "name": "deviceId",
@@ -45,12 +15,12 @@
                         },
                         {
                             "name": "status",
-                            "type": "QJsonObject"
+                            "type": "QString"
                         }
                     ],
-                    "index": 2,
-                    "lineNumber": 24,
-                    "name": "onDeviceStatusReceived",
+                    "index": 0,
+                    "lineNumber": 22,
+                    "name": "onDeviceStatusChanged",
                     "returnType": "void"
                 }
             ],

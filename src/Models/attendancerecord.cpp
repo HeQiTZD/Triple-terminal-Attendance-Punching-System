@@ -3,7 +3,6 @@
 AttendanceRecord::AttendanceRecord(QObject *parent)
     : QObject(parent)
     , m_id(0)
-    , m_personId(0)
 {
 }
 
@@ -15,11 +14,19 @@ void AttendanceRecord::setId(int id) {
     }
 }
 
-int AttendanceRecord::personId() const { return m_personId; }
-void AttendanceRecord::setPersonId(int personId) {
-    if (m_personId != personId) {
-        m_personId = personId;
-        emit personIdChanged();
+QString AttendanceRecord::employeeId() const { return m_employeeId; }
+void AttendanceRecord::setEmployeeId(const QString &employeeId) {
+    if (m_employeeId != employeeId) {
+        m_employeeId = employeeId;
+        emit employeeIdChanged();
+    }
+}
+
+QString AttendanceRecord::personName() const { return m_personName; }
+void AttendanceRecord::setPersonName(const QString &personName) {
+    if (m_personName != personName) {
+        m_personName = personName;
+        emit personNameChanged();
     }
 }
 
@@ -59,7 +66,8 @@ QJsonObject AttendanceRecord::toJson() const
 {
     QJsonObject json;
     json["id"] = m_id;
-    json["personId"] = m_personId;
+    json["employeeId"] = m_employeeId;
+    json["personName"] = m_personName;
     json["checkTime"] = m_checkTime.toString(Qt::ISODate);
     json["deviceId"] = m_deviceId;
     json["status"] = m_status;
@@ -71,7 +79,8 @@ AttendanceRecord* AttendanceRecord::fromJson(const QJsonObject &json, QObject *p
 {
     AttendanceRecord *record = new AttendanceRecord(parent);
     record->setId(json["id"].toInt());
-    record->setPersonId(json["personId"].toInt());
+    record->setEmployeeId(json["employeeId"].toString());
+    record->setPersonName(json["personName"].toString());
     record->setCheckTime(QDateTime::fromString(json["checkTime"].toString(), Qt::ISODate));
     record->setDeviceId(json["deviceId"].toString());
     record->setStatus(json["status"].toString());

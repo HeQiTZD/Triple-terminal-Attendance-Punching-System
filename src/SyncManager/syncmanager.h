@@ -5,17 +5,18 @@
 #include <QJsonArray>
 
 #include "src/TcpServer/tcpserver.h"
-#include "src/DataManager/datamanager.h"
+#include "src/Services/dataservice.h"
 #include "src/Protocol/protocol.h"
+#include "src/Models/Person.h"
 
 class TcpServer;
-class DataManager;
+class DataService;
 
 class SyncManager : public QObject
 {
     Q_OBJECT
 public:
-    explicit SyncManager(TcpServer* tcpServer, DataManager* dataManager, QObject* parent = nullptr);
+    explicit SyncManager(TcpServer* tcpServer, DataService* dataService, QObject* parent = nullptr);
     Q_INVOKABLE void sendPersonSyncNow(const QString& deviceId);
 
 private slots:
@@ -23,7 +24,7 @@ private slots:
 
 private:
     TcpServer* m_tcpServer;
-    DataManager* m_dataManager;
+    DataService* m_dataService;
 
     void sendPersonSync(const QString& deviceId);
 };

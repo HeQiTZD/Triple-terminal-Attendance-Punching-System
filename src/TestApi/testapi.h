@@ -4,6 +4,7 @@
 #include <QString>
 
 class DataManager;
+class DataService;
 class TcpServer;
 class SyncManager;
 class ExportManager;
@@ -15,7 +16,7 @@ class TestApi : public QObject
     Q_PROPERTY(QString lastError READ lastError NOTIFY lastErrorChanged)
 
 public:
-    explicit TestApi(DataManager* dataManager,
+    explicit TestApi(DataService* dataService,
                      TcpServer* tcpServer,
                      SyncManager* syncManager,
                      ExportManager* exportManager,
@@ -27,15 +28,20 @@ public:
     Q_INVOKABLE bool initFaceEngine(const QString& appId, const QString& sdkKey);
     Q_INVOKABLE QString extractFeatureBase64(const QString& imagePath);
     Q_INVOKABLE double compareFeatureBase64(const QString& f1Base64, const QString& f2Base64);
+    Q_INVOKABLE QString selectImageFile();
 
     Q_INVOKABLE void requestPersonSync(const QString& deviceId);
+    Q_INVOKABLE bool sendToClientJson(const QString& deviceId, const QString& jsonText);
     Q_INVOKABLE bool broadcastJson(const QString& jsonText);
+    Q_INVOKABLE bool addFaceDataBase64(const QString& employeeId, const QString& featureBase64);
+    Q_INVOKABLE bool updateFaceDataBase64(const QString& employeeId, const QString& featureBase64);
+    Q_INVOKABLE bool deleteFaceDataByEmployeeId(const QString& employeeId);
 
 signals:
     void lastErrorChanged();
 
 private:
-    DataManager* m_dataManager = nullptr;
+    DataService* m_dataService = nullptr;
     TcpServer* m_tcpServer = nullptr;
     SyncManager* m_syncManager = nullptr;
     ExportManager* m_exportManager = nullptr;

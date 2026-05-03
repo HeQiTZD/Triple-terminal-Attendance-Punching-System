@@ -5,16 +5,16 @@
 #include <QDateTime>
 
 #include "../TcpServer/tcpserver.h"
-#include "../DataManager/datamanager.h"
+#include "../Services/dataservice.h"
 #include "../Protocol/protocol.h"
 class TcpServer;
-class DataManager;
+class DataService;
 
 class networkcontroller : public QObject
 {
     Q_OBJECT
 public:
-     explicit networkcontroller(TcpServer* tcpserver, DataManager* dataManager, QObject* parent = nullptr);
+     explicit networkcontroller(TcpServer* tcpserver, DataService* dataService, QObject* parent = nullptr);
 
 private slots:
     void onClientConnected(const QString &deviceId, const QString &ipAddress);
@@ -24,7 +24,7 @@ private slots:
 
 private:
     TcpServer* m_tcpServer;
-    DataManager* m_dataManager;
+    DataService* m_dataService;
 
     bool validateAttendanceRecord(const QJsonObject &obj, QString* error) const;
     bool validateDeviceStatus(const QJsonObject &obj,QString *error) const;

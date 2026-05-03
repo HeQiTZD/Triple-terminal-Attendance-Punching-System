@@ -27,15 +27,15 @@
                     "final": false,
                     "index": 1,
                     "lineNumber": 13,
-                    "name": "personId",
-                    "notify": "personIdChanged",
-                    "read": "personId",
+                    "name": "employeeId",
+                    "notify": "employeeIdChanged",
+                    "read": "employeeId",
                     "required": false,
                     "scriptable": true,
                     "stored": true,
-                    "type": "int",
+                    "type": "QString",
                     "user": false,
-                    "write": "setPersonId"
+                    "write": "setEmployeeId"
                 },
                 {
                     "constant": false,
@@ -43,6 +43,22 @@
                     "final": false,
                     "index": 2,
                     "lineNumber": 14,
+                    "name": "personName",
+                    "notify": "personNameChanged",
+                    "read": "personName",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "QString",
+                    "user": false,
+                    "write": "setPersonName"
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 3,
+                    "lineNumber": 15,
                     "name": "featureVector",
                     "notify": "featureVectorChanged",
                     "read": "featureVector",
@@ -52,22 +68,6 @@
                     "type": "QByteArray",
                     "user": false,
                     "write": "setFeatureVector"
-                },
-                {
-                    "constant": false,
-                    "designable": true,
-                    "final": false,
-                    "index": 3,
-                    "lineNumber": 15,
-                    "name": "status",
-                    "notify": "statusChanged",
-                    "read": "status",
-                    "required": false,
-                    "scriptable": true,
-                    "stored": true,
-                    "type": "QString",
-                    "user": false,
-                    "write": "setStatus"
                 },
                 {
                     "constant": false,
@@ -137,13 +137,26 @@
                     "access": "public",
                     "arguments": [
                         {
-                            "name": "personId",
-                            "type": "int"
+                            "name": "employeeId",
+                            "type": "QString"
                         }
                     ],
                     "index": 1,
                     "lineNumber": 47,
-                    "name": "personIdChanged",
+                    "name": "employeeIdChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "personName",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 2,
+                    "lineNumber": 48,
+                    "name": "personNameChanged",
                     "returnType": "void"
                 },
                 {
@@ -154,22 +167,9 @@
                             "type": "QByteArray"
                         }
                     ],
-                    "index": 2,
-                    "lineNumber": 48,
-                    "name": "featureVectorChanged",
-                    "returnType": "void"
-                },
-                {
-                    "access": "public",
-                    "arguments": [
-                        {
-                            "name": "status",
-                            "type": "QString"
-                        }
-                    ],
                     "index": 3,
                     "lineNumber": 49,
-                    "name": "statusChanged",
+                    "name": "featureVectorChanged",
                     "returnType": "void"
                 },
                 {

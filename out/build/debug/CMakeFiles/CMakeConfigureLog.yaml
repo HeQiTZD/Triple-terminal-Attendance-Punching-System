@@ -35,6 +35,7 @@ events:
       - "C:/Qt/6.10.2/msvc2022_64/lib/cmake/bin/"
       - "C:/Qt/6.10.2/msvc2022_64/lib/cmake/sbin/"
       - "C:/Qt/6.10.2/msvc2022_64/lib/cmake/"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/resources/helpers/"
       - "C:/Program Files/Common Files/Oracle/Java/javapath/"
       - "C:/Windows/System32/"
       - "C:/Windows/"
@@ -56,16 +57,17 @@ events:
       - "E:/JAVASet/apache-tomcat-9.0.87/bin/"
       - "C:/Qt/6.10.2/msvc2022_64/bin/"
       - "C:/Qt/6.10.2/mingw_64/bin/"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/codeBin/"
       - "C:/Users/LENOVO/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/LENOVO/AppData/Local/JetBrains/Toolbox/scripts/"
       - "C:/msys64/ucrt64/bin/"
       - "C:/Qt/Tools/mingw1310_64/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/Ollama/"
       - "C:/Users/LENOVO/.lmstudio/bin/"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
-      - "D:/other/cursor/resources/app/bin/"
       - "C:/Users/LENOVO/AppData/Roaming/npm/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/"
     searched_directories:
       - "C:/Qt/6.10.2/msvc2022_64/bin/ninja-build.com"
       - "C:/Qt/6.10.2/msvc2022_64/bin/ninja-build.exe"
@@ -121,6 +123,15 @@ events:
       - "C:/Qt/6.10.2/msvc2022_64/lib/cmake/samu.com"
       - "C:/Qt/6.10.2/msvc2022_64/lib/cmake/samu.exe"
       - "C:/Qt/6.10.2/msvc2022_64/lib/cmake/samu"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/resources/helpers/ninja-build.com"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/resources/helpers/ninja-build.exe"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/resources/helpers/ninja-build"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/resources/helpers/ninja.com"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/resources/helpers/ninja.exe"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/resources/helpers/ninja"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/resources/helpers/samu.com"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/resources/helpers/samu.exe"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/resources/helpers/samu"
       - "C:/Program Files/Common Files/Oracle/Java/javapath/ninja-build.com"
       - "C:/Program Files/Common Files/Oracle/Java/javapath/ninja-build.exe"
       - "C:/Program Files/Common Files/Oracle/Java/javapath/ninja-build"
@@ -310,6 +321,15 @@ events:
       - "C:/Qt/6.10.2/mingw_64/bin/samu.com"
       - "C:/Qt/6.10.2/mingw_64/bin/samu.exe"
       - "C:/Qt/6.10.2/mingw_64/bin/samu"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/codeBin/ninja-build.com"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/codeBin/ninja-build.exe"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/codeBin/ninja-build"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/codeBin/ninja.com"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/codeBin/ninja.exe"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/codeBin/ninja"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/codeBin/samu.com"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/codeBin/samu.exe"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/codeBin/samu"
       - "C:/Users/LENOVO/AppData/Local/Microsoft/WindowsApps/ninja-build.com"
       - "C:/Users/LENOVO/AppData/Local/Microsoft/WindowsApps/ninja-build.exe"
       - "C:/Users/LENOVO/AppData/Local/Microsoft/WindowsApps/ninja-build"
@@ -364,24 +384,6 @@ events:
       - "C:/Users/LENOVO/.lmstudio/bin/samu.com"
       - "C:/Users/LENOVO/.lmstudio/bin/samu.exe"
       - "C:/Users/LENOVO/.lmstudio/bin/samu"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/ninja-build.com"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/ninja-build.exe"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/ninja-build"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/ninja.com"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/ninja.exe"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/ninja"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/samu.com"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/samu.exe"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/samu"
-      - "D:/other/cursor/resources/app/bin/ninja-build.com"
-      - "D:/other/cursor/resources/app/bin/ninja-build.exe"
-      - "D:/other/cursor/resources/app/bin/ninja-build"
-      - "D:/other/cursor/resources/app/bin/ninja.com"
-      - "D:/other/cursor/resources/app/bin/ninja.exe"
-      - "D:/other/cursor/resources/app/bin/ninja"
-      - "D:/other/cursor/resources/app/bin/samu.com"
-      - "D:/other/cursor/resources/app/bin/samu.exe"
-      - "D:/other/cursor/resources/app/bin/samu"
       - "C:/Users/LENOVO/AppData/Roaming/npm/ninja-build.com"
       - "C:/Users/LENOVO/AppData/Roaming/npm/ninja-build.exe"
       - "C:/Users/LENOVO/AppData/Roaming/npm/ninja-build"
@@ -400,6 +402,24 @@ events:
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/samu.com"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/samu.exe"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/samu"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/ninja-build.com"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/ninja-build.exe"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/ninja-build"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/ninja.com"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/ninja.exe"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/ninja"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/samu.com"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/samu.exe"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/samu"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/ninja-build.com"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/ninja-build.exe"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/ninja-build"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/ninja.com"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/ninja.exe"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/ninja"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/samu.com"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/samu.exe"
+      - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/samu"
     found: false
     search_context:
       CMAKE_PREFIX_PATH:
@@ -407,6 +427,7 @@ events:
       ENV{CMAKE_PREFIX_PATH}:
         - "C:\\Qt\\6.10.2\\msvc2022_64\\lib\\cmake"
       ENV{PATH}:
+        - "c:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\resources\\helpers"
         - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
         - "C:\\windows\\system32"
         - "C:\\windows"
@@ -428,17 +449,17 @@ events:
         - "E:\\JAVASet\\apache-tomcat-9.0.87\\bin"
         - "C:\\Qt\\6.10.2\\msvc2022_64\\bin"
         - "C:\\Qt\\6.10.2\\mingw_64\\bin"
+        - "c:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\codeBin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\LENOVO\\AppData\\Local\\JetBrains\\Toolbox\\scripts"
         - "C:\\msys64\\ucrt64\\bin"
-        - "C:\\Qt\\6.10.2\\mingw_64\\bin"
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
-        - "D:\\other\\cursor\\resources\\app\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
 ...
 
 ---
@@ -516,9 +537,9 @@ events:
       - "C:/Qt/Tools/mingw1310_64/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/Ollama/"
       - "C:/Users/LENOVO/.lmstudio/bin/"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Roaming/npm/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/PrivateAssemblies/runtimes/win-x64/native/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
@@ -582,11 +603,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -665,11 +686,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -793,9 +814,9 @@ events:
       - "C:/Qt/Tools/mingw1310_64/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/Ollama/"
       - "C:/Users/LENOVO/.lmstudio/bin/"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Roaming/npm/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/PrivateAssemblies/runtimes/win-x64/native/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
@@ -853,11 +874,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -926,9 +947,9 @@ events:
       - "C:/Qt/Tools/mingw1310_64/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/Ollama/"
       - "C:/Users/LENOVO/.lmstudio/bin/"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Roaming/npm/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/PrivateAssemblies/runtimes/win-x64/native/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
@@ -1059,15 +1080,15 @@ events:
       - "C:/Users/LENOVO/.lmstudio/bin/lld-link.com"
       - "C:/Users/LENOVO/.lmstudio/bin/lld-link.exe"
       - "C:/Users/LENOVO/.lmstudio/bin/lld-link"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.com"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.exe"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/lld-link"
       - "C:/Users/LENOVO/AppData/Roaming/npm/lld-link.com"
       - "C:/Users/LENOVO/AppData/Roaming/npm/lld-link.exe"
       - "C:/Users/LENOVO/AppData/Roaming/npm/lld-link"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/lld-link.com"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/lld-link.exe"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/lld-link"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.com"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.exe"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/lld-link"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/lld-link.com"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/lld-link.exe"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/lld-link"
@@ -1135,11 +1156,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -1206,9 +1227,9 @@ events:
       - "C:/Qt/Tools/mingw1310_64/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/Ollama/"
       - "C:/Users/LENOVO/.lmstudio/bin/"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Roaming/npm/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/PrivateAssemblies/runtimes/win-x64/native/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
@@ -1266,11 +1287,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -1337,9 +1358,9 @@ events:
       - "C:/Qt/Tools/mingw1310_64/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/Ollama/"
       - "C:/Users/LENOVO/.lmstudio/bin/"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Roaming/npm/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/PrivateAssemblies/runtimes/win-x64/native/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
@@ -1418,11 +1439,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -1489,9 +1510,9 @@ events:
       - "C:/Qt/Tools/mingw1310_64/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/Ollama/"
       - "C:/Users/LENOVO/.lmstudio/bin/"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Roaming/npm/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/PrivateAssemblies/runtimes/win-x64/native/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
@@ -1549,11 +1570,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -1629,9 +1650,9 @@ events:
       - "C:/Qt/Tools/mingw1310_64/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/Ollama/"
       - "C:/Users/LENOVO/.lmstudio/bin/"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Roaming/npm/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/PrivateAssemblies/runtimes/win-x64/native/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
@@ -1740,11 +1761,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -1765,8 +1786,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-w21778"
-      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-w21778"
+      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-hmlgkq"
+      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-hmlgkq"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "-DQT_QML_DEBUG"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -1776,11 +1797,11 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-w21778'
+        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-hmlgkq'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_09896
-        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -D_MBCS  -DQT_QML_DEBUG  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_09896.dir\\CMakeCXXCompilerABI.cpp.obj /FdCMakeFiles\\cmTC_09896.dir\\ /FS -c "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"
-        [2/2] C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_09896.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_09896.dir\\CMakeCXXCompilerABI.cpp.obj  /out:cmTC_09896.exe /implib:cmTC_09896.lib /pdb:cmTC_09896.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_65d34
+        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -D_MBCS  -DQT_QML_DEBUG  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_65d34.dir\\CMakeCXXCompilerABI.cpp.obj /FdCMakeFiles\\cmTC_65d34.dir\\ /FS -c "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"
+        [2/2] C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_65d34.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_65d34.dir\\CMakeCXXCompilerABI.cpp.obj  /out:cmTC_65d34.exe /implib:cmTC_65d34.lib /pdb:cmTC_65d34.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
         
       exitCode: 0
   -
@@ -1827,8 +1848,8 @@ events:
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-nar9v6"
-      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-nar9v6"
+      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-9fkvq1"
+      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-9fkvq1"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "-DQT_QML_DEBUG"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -1838,13 +1859,13 @@ events:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-nar9v6'
+        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-9fkvq1'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_6a87d
-        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DCMAKE_HAVE_LIBC_PTHREAD -D_MBCS  -DQT_QML_DEBUG  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_6a87d.dir\\src.cxx.obj /FdCMakeFiles\\cmTC_6a87d.dir\\ /FS -c E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-nar9v6\\src.cxx
-        FAILED: CMakeFiles/cmTC_6a87d.dir/src.cxx.obj 
-        C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DCMAKE_HAVE_LIBC_PTHREAD -D_MBCS  -DQT_QML_DEBUG  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_6a87d.dir\\src.cxx.obj /FdCMakeFiles\\cmTC_6a87d.dir\\ /FS -c E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-nar9v6\\src.cxx
-        E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-nar9v6\\src.cxx(1): fatal error C1083: 无法打开包括文件: “pthread.h”: No such file or directory
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_a2052
+        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DCMAKE_HAVE_LIBC_PTHREAD -D_MBCS  -DQT_QML_DEBUG  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_a2052.dir\\src.cxx.obj /FdCMakeFiles\\cmTC_a2052.dir\\ /FS -c E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-9fkvq1\\src.cxx
+        FAILED: CMakeFiles/cmTC_a2052.dir/src.cxx.obj 
+        C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DCMAKE_HAVE_LIBC_PTHREAD -D_MBCS  -DQT_QML_DEBUG  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_a2052.dir\\src.cxx.obj /FdCMakeFiles\\cmTC_a2052.dir\\ /FS -c E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-9fkvq1\\src.cxx
+        E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-9fkvq1\\src.cxx(1): fatal error C1083: 无法打开包括文件: “pthread.h”: No such file or directory
         ninja: build stopped: subcommand failed.
         
       exitCode: 1
@@ -1863,8 +1884,8 @@ events:
     checks:
       - "Looking for pthread_create in pthreads"
     directories:
-      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-vyxb58"
-      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-vyxb58"
+      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-g3d70o"
+      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-g3d70o"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "-DQT_QML_DEBUG"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -1874,14 +1895,14 @@ events:
       variable: "CMAKE_HAVE_PTHREADS_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-vyxb58'
+        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-g3d70o'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_28f2c
-        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -D_MBCS  -DQT_QML_DEBUG -DCHECK_FUNCTION_EXISTS=pthread_create /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_28f2c.dir\\CheckFunctionExists.cxx.obj /FdCMakeFiles\\cmTC_28f2c.dir\\ /FS -c E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-vyxb58\\CheckFunctionExists.cxx
-        [2/2] C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_28f2c.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_28f2c.dir\\CheckFunctionExists.cxx.obj  /out:cmTC_28f2c.exe /implib:cmTC_28f2c.lib /pdb:cmTC_28f2c.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  pthreads.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
-        FAILED: cmTC_28f2c.exe 
-        C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_28f2c.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_28f2c.dir\\CheckFunctionExists.cxx.obj  /out:cmTC_28f2c.exe /implib:cmTC_28f2c.lib /pdb:cmTC_28f2c.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  pthreads.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
-        LINK Pass 1: command "C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_28f2c.dir\\CheckFunctionExists.cxx.obj /out:cmTC_28f2c.exe /implib:cmTC_28f2c.lib /pdb:cmTC_28f2c.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_28f2c.dir/intermediate.manifest CMakeFiles\\cmTC_28f2c.dir/manifest.res" failed (exit code 1104) with the following output:\x0d
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_20137
+        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -D_MBCS  -DQT_QML_DEBUG -DCHECK_FUNCTION_EXISTS=pthread_create /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_20137.dir\\CheckFunctionExists.cxx.obj /FdCMakeFiles\\cmTC_20137.dir\\ /FS -c E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-g3d70o\\CheckFunctionExists.cxx
+        [2/2] C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_20137.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_20137.dir\\CheckFunctionExists.cxx.obj  /out:cmTC_20137.exe /implib:cmTC_20137.lib /pdb:cmTC_20137.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  pthreads.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: cmTC_20137.exe 
+        C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_20137.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_20137.dir\\CheckFunctionExists.cxx.obj  /out:cmTC_20137.exe /implib:cmTC_20137.lib /pdb:cmTC_20137.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  pthreads.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        LINK Pass 1: command "C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_20137.dir\\CheckFunctionExists.cxx.obj /out:cmTC_20137.exe /implib:cmTC_20137.lib /pdb:cmTC_20137.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_20137.dir/intermediate.manifest CMakeFiles\\cmTC_20137.dir/manifest.res" failed (exit code 1104) with the following output:\x0d
         LINK : fatal error LNK1104: 无法打开文件“pthreads.lib”\x0d\x0d
         ninja: build stopped: subcommand failed.
         
@@ -1901,8 +1922,8 @@ events:
     checks:
       - "Looking for pthread_create in pthread"
     directories:
-      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-jagt1j"
-      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-jagt1j"
+      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-nynup8"
+      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-nynup8"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "-DQT_QML_DEBUG"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -1912,14 +1933,14 @@ events:
       variable: "CMAKE_HAVE_PTHREAD_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-jagt1j'
+        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-nynup8'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_ca120
-        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -D_MBCS  -DQT_QML_DEBUG -DCHECK_FUNCTION_EXISTS=pthread_create /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_ca120.dir\\CheckFunctionExists.cxx.obj /FdCMakeFiles\\cmTC_ca120.dir\\ /FS -c E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-jagt1j\\CheckFunctionExists.cxx
-        [2/2] C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_ca120.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_ca120.dir\\CheckFunctionExists.cxx.obj  /out:cmTC_ca120.exe /implib:cmTC_ca120.lib /pdb:cmTC_ca120.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  pthread.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
-        FAILED: cmTC_ca120.exe 
-        C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_ca120.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_ca120.dir\\CheckFunctionExists.cxx.obj  /out:cmTC_ca120.exe /implib:cmTC_ca120.lib /pdb:cmTC_ca120.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  pthread.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
-        LINK Pass 1: command "C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_ca120.dir\\CheckFunctionExists.cxx.obj /out:cmTC_ca120.exe /implib:cmTC_ca120.lib /pdb:cmTC_ca120.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_ca120.dir/intermediate.manifest CMakeFiles\\cmTC_ca120.dir/manifest.res" failed (exit code 1104) with the following output:\x0d
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_7bab7
+        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -D_MBCS  -DQT_QML_DEBUG -DCHECK_FUNCTION_EXISTS=pthread_create /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_7bab7.dir\\CheckFunctionExists.cxx.obj /FdCMakeFiles\\cmTC_7bab7.dir\\ /FS -c E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-nynup8\\CheckFunctionExists.cxx
+        [2/2] C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_7bab7.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_7bab7.dir\\CheckFunctionExists.cxx.obj  /out:cmTC_7bab7.exe /implib:cmTC_7bab7.lib /pdb:cmTC_7bab7.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  pthread.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: cmTC_7bab7.exe 
+        C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_7bab7.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_7bab7.dir\\CheckFunctionExists.cxx.obj  /out:cmTC_7bab7.exe /implib:cmTC_7bab7.lib /pdb:cmTC_7bab7.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  pthread.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        LINK Pass 1: command "C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_7bab7.dir\\CheckFunctionExists.cxx.obj /out:cmTC_7bab7.exe /implib:cmTC_7bab7.lib /pdb:cmTC_7bab7.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_7bab7.dir/intermediate.manifest CMakeFiles\\cmTC_7bab7.dir/manifest.res" failed (exit code 1104) with the following output:\x0d
         LINK : fatal error LNK1104: 无法打开文件“pthread.lib”\x0d\x0d
         ninja: build stopped: subcommand failed.
         
@@ -2039,11 +2060,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -2167,11 +2188,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -2204,8 +2225,8 @@ events:
     checks:
       - "Performing Test HAVE_STDATOMIC"
     directories:
-      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-gy6p0t"
-      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-gy6p0t"
+      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-4vnamq"
+      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-4vnamq"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "-DQT_QML_DEBUG"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -2215,11 +2236,11 @@ events:
       variable: "HAVE_STDATOMIC"
       cached: true
       stdout: |
-        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-gy6p0t'
+        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-4vnamq'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_193ef
-        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DHAVE_STDATOMIC -D_MBCS  -DQT_QML_DEBUG  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_193ef.dir\\src.cxx.obj /FdCMakeFiles\\cmTC_193ef.dir\\ /FS -c E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-gy6p0t\\src.cxx
-        [2/2] C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_193ef.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_193ef.dir\\src.cxx.obj  /out:cmTC_193ef.exe /implib:cmTC_193ef.lib /pdb:cmTC_193ef.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_fb016
+        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DHAVE_STDATOMIC -D_MBCS  -DQT_QML_DEBUG  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_fb016.dir\\src.cxx.obj /FdCMakeFiles\\cmTC_fb016.dir\\ /FS -c E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-4vnamq\\src.cxx
+        [2/2] C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_fb016.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_fb016.dir\\src.cxx.obj  /out:cmTC_fb016.exe /implib:cmTC_fb016.lib /pdb:cmTC_fb016.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
         
       exitCode: 0
   -
@@ -2339,11 +2360,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -2474,11 +2495,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -2564,9 +2585,9 @@ events:
       - "C:/Qt/Tools/mingw1310_64/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/Ollama/"
       - "C:/Users/LENOVO/.lmstudio/bin/"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Roaming/npm/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/PrivateAssemblies/runtimes/win-x64/native/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
@@ -2636,11 +2657,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -2798,11 +2819,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -2897,9 +2918,9 @@ events:
       - "C:/Qt/Tools/mingw1310_64/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/Ollama/"
       - "C:/Users/LENOVO/.lmstudio/bin/"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Roaming/npm/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/PrivateAssemblies/runtimes/win-x64/native/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
@@ -2969,9 +2990,9 @@ events:
       - "C:/Qt/Tools/mingw1310_64/bin/vulkan/vulkan.h"
       - "C:/Users/LENOVO/AppData/Local/Programs/Ollama/vulkan/vulkan.h"
       - "C:/Users/LENOVO/.lmstudio/bin/vulkan/vulkan.h"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/vulkan/vulkan.h"
       - "C:/Users/LENOVO/AppData/Roaming/npm/vulkan/vulkan.h"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/vulkan/vulkan.h"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/vulkan/vulkan.h"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/vulkan/vulkan.h"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/PrivateAssemblies/runtimes/win-x64/native/vulkan/vulkan.h"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/vulkan/vulkan.h"
@@ -3035,11 +3056,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -3095,10 +3116,9 @@ events:
       - "C:/Qt/6.10.2/msvc2022_64/lib/cmake/"
       - "/lib/"
       - "/bin/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/atlmfc/lib/x64/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/lib/x64/"
-      - "C:/Program Files (x86)/Windows Kits/10/Lib/10.0.26100.0/ucrt/x64/"
       - "C:/Program Files (x86)/Windows Kits/10/Lib/10.0.26100.0/um/x64/"
+      - "C:/Program Files (x86)/Windows Kits/10/Lib/10.0.26100.0/ucrt/x64/"
+      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/lib/x64/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/VC/vcpackages/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/TestWindow/"
@@ -3140,9 +3160,9 @@ events:
       - "C:/Qt/Tools/mingw1310_64/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/Ollama/"
       - "C:/Users/LENOVO/.lmstudio/bin/"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Roaming/npm/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/PrivateAssemblies/runtimes/win-x64/native/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
@@ -3165,10 +3185,9 @@ events:
       - "C:/Qt/6.10.2/msvc2022_64/lib/cmake/"
       - "/lib/"
       - "/bin/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/atlmfc/lib/x64/"
-      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/lib/x64/"
-      - "C:/Program Files (x86)/Windows Kits/10/Lib/10.0.26100.0/ucrt/x64/"
       - "C:/Program Files (x86)/Windows Kits/10/Lib/10.0.26100.0/um/x64/"
+      - "C:/Program Files (x86)/Windows Kits/10/Lib/10.0.26100.0/ucrt/x64/"
+      - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/lib/x64/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/VC/vcpackages/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/TestWindow/"
@@ -3210,9 +3229,9 @@ events:
       - "C:/Qt/Tools/mingw1310_64/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/Ollama/"
       - "C:/Users/LENOVO/.lmstudio/bin/"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Roaming/npm/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/PrivateAssemblies/runtimes/win-x64/native/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
@@ -3277,11 +3296,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -3298,10 +3317,9 @@ events:
         - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin"
         - "/bin"
       ENV{LIB}:
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\ATLMFC\\lib\\x64"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\lib\\x64"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\lib\\10.0.26100.0\\ucrt\\x64"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\\\lib\\10.0.26100.0\\\\um\\x64"
+        - "C:/Program Files (x86)/Windows Kits/10/Lib/10.0.26100.0/um/x64"
+        - "C:/Program Files (x86)/Windows Kits/10/Lib/10.0.26100.0/ucrt/x64"
+        - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/lib/x64"
   -
     kind: "find-v1"
     backtrace:
@@ -3379,9 +3397,9 @@ events:
       - "C:/Qt/Tools/mingw1310_64/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/Ollama/"
       - "C:/Users/LENOVO/.lmstudio/bin/"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Roaming/npm/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/PrivateAssemblies/runtimes/win-x64/native/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
@@ -3545,15 +3563,15 @@ events:
       - "C:/Users/LENOVO/.lmstudio/bin/glslc.com"
       - "C:/Users/LENOVO/.lmstudio/bin/glslc.exe"
       - "C:/Users/LENOVO/.lmstudio/bin/glslc"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/glslc.com"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/glslc.exe"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/glslc"
       - "C:/Users/LENOVO/AppData/Roaming/npm/glslc.com"
       - "C:/Users/LENOVO/AppData/Roaming/npm/glslc.exe"
       - "C:/Users/LENOVO/AppData/Roaming/npm/glslc"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/glslc.com"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/glslc.exe"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/glslc"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/glslc.com"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/glslc.exe"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/glslc"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/glslc.com"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/glslc.exe"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/glslc"
@@ -3657,11 +3675,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -3750,9 +3768,9 @@ events:
       - "C:/Qt/Tools/mingw1310_64/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/Ollama/"
       - "C:/Users/LENOVO/.lmstudio/bin/"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Roaming/npm/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/PrivateAssemblies/runtimes/win-x64/native/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
@@ -3916,15 +3934,15 @@ events:
       - "C:/Users/LENOVO/.lmstudio/bin/glslangValidator.com"
       - "C:/Users/LENOVO/.lmstudio/bin/glslangValidator.exe"
       - "C:/Users/LENOVO/.lmstudio/bin/glslangValidator"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/glslangValidator.com"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/glslangValidator.exe"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/glslangValidator"
       - "C:/Users/LENOVO/AppData/Roaming/npm/glslangValidator.com"
       - "C:/Users/LENOVO/AppData/Roaming/npm/glslangValidator.exe"
       - "C:/Users/LENOVO/AppData/Roaming/npm/glslangValidator"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/glslangValidator.com"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/glslangValidator.exe"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/glslangValidator"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/glslangValidator.com"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/glslangValidator.exe"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/glslangValidator"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/glslangValidator.com"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/glslangValidator.exe"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/glslangValidator"
@@ -4028,11 +4046,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -4161,11 +4179,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -4307,11 +4325,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -4442,11 +4460,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -4601,11 +4619,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -4991,19 +5009,19 @@ events:
         mode: "config"
         reason: "no_exist"
       -
-        path: "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/Qt6QmlCompilerPlusPrivateToolsConfig.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/qt6qmlcompilerplusprivatetools-config.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
         path: "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/Qt6QmlCompilerPlusPrivateToolsConfig.cmake"
         mode: "config"
         reason: "no_exist"
       -
         path: "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/qt6qmlcompilerplusprivatetools-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/Qt6QmlCompilerPlusPrivateToolsConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/qt6qmlcompilerplusprivatetools-config.cmake"
         mode: "config"
         reason: "no_exist"
       -
@@ -5119,11 +5137,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -5267,11 +5285,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -5410,11 +5428,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -5556,11 +5574,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -5910,11 +5928,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -6048,11 +6066,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -6191,11 +6209,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -6329,11 +6347,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -6475,11 +6493,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -7293,157 +7311,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\vcpkg"
-      CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/AttendanceServer"
-      CMAKE_SYSTEM_PREFIX_PATH:
-        - "C:/Program Files"
-        - "C:/Program Files (x86)"
-        - "C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake"
-        - "C:/Program Files (x86)/AttendanceServer"
-  -
-    kind: "find_package-v1"
-    backtrace:
-      - "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/Qt6Config.cmake:241 (find_package)"
-      - "CMakeLists.txt:7 (find_package)"
-    name: "Qt6NetWork"
-    configs:
-      -
-        filename: "Qt6NetWorkConfig.cmake"
-        kind: "cmake"
-      -
-        filename: "qt6network-config.cmake"
-        kind: "cmake"
-    version_request:
-      exact: false
-    settings:
-      required: "optional"
-      quiet: false
-      global: false
-      policy_scope: true
-      bypass_provider: false
-      names:
-        - "Qt6NetWork"
-      search_paths:
-        - "C:/Qt/6.10.2/msvc2022_64/lib/cmake"
-      path_suffixes:
-        - ""
-      paths:
-        CMAKE_FIND_USE_CMAKE_PATH: false
-        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
-        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
-        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
-        CMAKE_FIND_USE_INSTALL_PREFIX: true
-        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
-        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
-        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
-        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
-    candidates:
-      -
-        path: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/pkgRedirects/Qt6NetWorkConfig.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/pkgRedirects/qt6network-config.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6NetWorkConfig.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "C:/Qt/6.10.2/msvc2022_64/lib/cmake/qt6network-config.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6NetworkPrivate/Qt6NetWorkConfig.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6NetworkPrivate/qt6network-config.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6NetworkAuthPrivate/Qt6NetWorkConfig.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6NetworkAuthPrivate/qt6network-config.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6NetworkAuth/Qt6NetWorkConfig.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6NetworkAuth/qt6network-config.cmake"
-        mode: "config"
-        reason: "no_exist"
-    found:
-      path: "C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Network/Qt6NetworkConfig.cmake"
-      mode: "config"
-      version: "6.10.2"
-    search_context:
-      CMAKE_PREFIX_PATH:
-        - "C:/Qt/6.10.2/msvc2022_64"
-      ENV{CMAKE_PREFIX_PATH}:
-        - "C:\\Qt\\6.10.2\\msvc2022_64\\lib\\cmake"
-      ENV{PATH}:
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\VC\\VCPackages"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\MSBuild\\Current\\bin\\Roslyn"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Team Tools\\DiagnosticsHub\\Collector"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\Extensions\\Microsoft\\CodeCoverage.Console"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\\\x64"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\\\x64"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\\\MSBuild\\Current\\Bin\\amd64"
-        - "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\Tools\\"
-        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
-        - "C:\\windows\\system32"
-        - "C:\\windows"
-        - "C:\\windows\\System32\\Wbem"
-        - "C:\\windows\\System32\\WindowsPowerShell\\v1.0\\"
-        - "C:\\windows\\System32\\OpenSSH\\"
-        - "C:\\Program Files\\dotnet\\"
-        - "C:\\Program Files (x86)\\IncrediBuild"
-        - "C:\\MySql\\mysql-8.4.8-winx64\\bin"
-        - "C:\\Program Files\\Java\\jdk-17\\bin"
-        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
-        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
-        - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Program Files\\Git\\cmd"
-        - "D:\\other\\Qoder\\bin"
-        - "C:\\Program Files\\nodejs\\"
-        - "E:\\JAVASet\\apache-maven-3.8.8\\bin"
-        - "E:\\JAVASet\\apache-tomcat-9.0.87\\bin"
-        - "C:\\Qt\\6.10.2\\msvc2022_64\\bin"
-        - "C:\\Qt\\6.10.2\\mingw_64\\bin"
-        - "c:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\codeBin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Microsoft\\WindowsApps"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\JetBrains\\Toolbox\\scripts"
-        - "C:\\msys64\\ucrt64\\bin"
-        - "C:\\Qt\\6.10.2\\mingw_64\\bin"
-        - "C:\\Qt\\Tools\\mingw1310_64\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
-        - "C:\\Users\\LENOVO\\.lmstudio\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
-        - "C:\\Program Files\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -7569,11 +7441,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -7697,11 +7569,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -7835,11 +7707,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -7870,7 +7742,7 @@ events:
         required: true
         found: false
       -
-        name: "NetWork"
+        name: "Network"
         required: true
         found: false
       -
@@ -10715,11 +10587,11 @@ events:
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\PrivateAssemblies\\runtimes\\win-x64\\native"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
@@ -10795,108 +10667,13 @@ events:
         - "C:\\Users\\LENOVO\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\LENOVO\\AppData\\Local\\JetBrains\\Toolbox\\scripts"
         - "C:\\msys64\\ucrt64\\bin"
-        - "C:\\Qt\\6.10.2\\mingw_64\\bin"
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
-        - "C:\\Program Files\\CMake\\bin"
-      CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/AttendanceServer"
-  -
-    kind: "message-v1"
-    backtrace:
-      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
-      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
-      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
-      - "CMakeLists.txt:3 (project)"
-    message: |
-      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
-      Compiler: C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe 
-      Build flags: -DQT_QML_DEBUG
-      Id flags:  
-      
-      The output was:
-      2
-      用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.50.35728 版
-      版权所有(C) Microsoft Corporation。保留所有权利。
-      
-      CMakeCXXCompilerId.cpp
-      Microsoft (R) Incremental Linker Version 14.50.35728.0
-      Copyright (C) Microsoft Corporation.  All rights reserved.
-      
-      /out:CMakeCXXCompilerId.exe 
-      CMakeCXXCompilerId.obj 
-      LINK : fatal error LNK1104: 无法打开文件“LIBCMT.lib”
-      
-      
-  -
-    kind: "find-v1"
-    backtrace:
-      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
-      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
-      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
-      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
-      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
-      - "CMakeLists.txt:3 (project)"
-    mode: "file"
-    variable: "src_in"
-    description: "Path to a file."
-    settings:
-      SearchFramework: "NEVER"
-      SearchAppBundle: "NEVER"
-      CMAKE_FIND_USE_CMAKE_PATH: true
-      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
-      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
-      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
-      CMAKE_FIND_USE_INSTALL_PREFIX: true
-    names:
-      - "CMakeCXXCompilerId.cpp.in"
-    candidate_directories:
-      - "C:/Program Files/CMake/share/cmake-4.2/Modules/"
-    found: "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeCXXCompilerId.cpp.in"
-    search_context:
-      CMAKE_PREFIX_PATH:
-        - "C:/Qt/6.10.2/msvc2022_64"
-      ENV{CMAKE_PREFIX_PATH}:
-        - "C:\\Qt\\6.10.2\\msvc2022_64\\lib\\cmake"
-      ENV{PATH}:
-        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
-        - "C:\\windows\\system32"
-        - "C:\\windows"
-        - "C:\\windows\\System32\\Wbem"
-        - "C:\\windows\\System32\\WindowsPowerShell\\v1.0\\"
-        - "C:\\windows\\System32\\OpenSSH\\"
-        - "C:\\Program Files\\dotnet\\"
-        - "C:\\Program Files (x86)\\IncrediBuild"
-        - "C:\\MySql\\mysql-8.4.8-winx64\\bin"
-        - "C:\\Program Files\\Java\\jdk-17\\bin"
-        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
-        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
-        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
-        - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Program Files\\Git\\cmd"
-        - "D:\\other\\Qoder\\bin"
-        - "C:\\Program Files\\nodejs\\"
-        - "E:\\JAVASet\\apache-maven-3.8.8\\bin"
-        - "E:\\JAVASet\\apache-tomcat-9.0.87\\bin"
-        - "C:\\Qt\\6.10.2\\msvc2022_64\\bin"
-        - "C:\\Qt\\6.10.2\\mingw_64\\bin"
-        - "c:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\codeBin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Microsoft\\WindowsApps"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\JetBrains\\Toolbox\\scripts"
-        - "C:\\msys64\\ucrt64\\bin"
-        - "C:\\Qt\\6.10.2\\mingw_64\\bin"
-        - "C:\\Qt\\Tools\\mingw1310_64\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
-        - "C:\\Users\\LENOVO\\.lmstudio\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
-        - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
-        - "C:\\Program Files\\CMake\\bin"
       CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/AttendanceServer"
   -
     kind: "message-v1"
@@ -10909,7 +10686,7 @@ events:
       Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
       Compiler: C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe 
       Build flags: -DQT_QML_DEBUG
-      Id flags: -c 
+      Id flags:  
       
       The output was:
       0
@@ -10917,12 +10694,19 @@ events:
       版权所有(C) Microsoft Corporation。保留所有权利。
       
       CMakeCXXCompilerId.cpp
+      Microsoft (R) Incremental Linker Version 14.50.35728.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
       
+      /out:CMakeCXXCompilerId.exe 
+      CMakeCXXCompilerId.obj 
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.exe"
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.obj"
       
       The CXX compiler identification is MSVC, found in:
-        E:/project/AttendanceServer/out/build/debug/CMakeFiles/4.2.3/CompilerIdCXX/CMakeCXXCompilerId.obj
+        E:/project/AttendanceServer/out/build/debug/CMakeFiles/4.2.3/CompilerIdCXX/CMakeCXXCompilerId.exe
       
   -
     kind: "message-v1"
@@ -10988,9 +10772,9 @@ events:
       - "C:/Qt/Tools/mingw1310_64/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/Ollama/"
       - "C:/Users/LENOVO/.lmstudio/bin/"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Roaming/npm/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/"
     searched_directories:
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/link.com"
@@ -11026,15 +10810,13 @@ events:
         - "C:\\Users\\LENOVO\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\LENOVO\\AppData\\Local\\JetBrains\\Toolbox\\scripts"
         - "C:\\msys64\\ucrt64\\bin"
-        - "C:\\Qt\\6.10.2\\mingw_64\\bin"
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
-        - "C:\\Program Files\\CMake\\bin"
       CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/AttendanceServer"
   -
     kind: "find-v1"
@@ -11087,9 +10869,9 @@ events:
       - "C:/Qt/Tools/mingw1310_64/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/Ollama/"
       - "C:/Users/LENOVO/.lmstudio/bin/"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Roaming/npm/"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/"
     searched_directories:
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/lld-link.com"
@@ -11179,15 +10961,15 @@ events:
       - "C:/Users/LENOVO/.lmstudio/bin/lld-link.com"
       - "C:/Users/LENOVO/.lmstudio/bin/lld-link.exe"
       - "C:/Users/LENOVO/.lmstudio/bin/lld-link"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.com"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.exe"
-      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/lld-link"
       - "C:/Users/LENOVO/AppData/Roaming/npm/lld-link.com"
       - "C:/Users/LENOVO/AppData/Roaming/npm/lld-link.exe"
       - "C:/Users/LENOVO/AppData/Roaming/npm/lld-link"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/lld-link.com"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/lld-link.exe"
       - "C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/lld-link"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.com"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.exe"
+      - "C:/Users/LENOVO/AppData/Local/Programs/Microsoft VS Code/bin/lld-link"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/lld-link.com"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/lld-link.exe"
       - "C:/Users/LENOVO/AppData/Local/Programs/cursor/resources/app/bin/lld-link"
@@ -11223,15 +11005,13 @@ events:
         - "C:\\Users\\LENOVO\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\LENOVO\\AppData\\Local\\JetBrains\\Toolbox\\scripts"
         - "C:\\msys64\\ucrt64\\bin"
-        - "C:\\Qt\\6.10.2\\mingw_64\\bin"
         - "C:\\Qt\\Tools\\mingw1310_64\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\LENOVO\\.lmstudio\\bin"
-        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Roaming\\npm"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx86\\x86"
+        - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin"
-        - "C:\\Program Files\\CMake\\bin"
       CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/AttendanceServer"
   -
     kind: "try_compile-v1"
@@ -11242,8 +11022,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-ke2z0v"
-      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-ke2z0v"
+      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-rlmp5m"
+      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-rlmp5m"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "-DQT_QML_DEBUG"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -11253,47 +11033,39 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-ke2z0v'
+        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-rlmp5m'
         
-        Run Build Command(s): C:/PROGRA~1/MIB055~1/18/Insiders/Common7/IDE/COMMON~1/MICROS~1/CMake/Ninja/ninja.exe -v cmTC_8fa1e
-        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -D_MBCS  -DQT_QML_DEBUG  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_8fa1e.dir\\CMakeCXXCompilerABI.cpp.obj /FdCMakeFiles\\cmTC_8fa1e.dir\\ /FS -c "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"
-        [2/2] C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_8fa1e.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_8fa1e.dir\\CMakeCXXCompilerABI.cpp.obj  /out:cmTC_8fa1e.exe /implib:cmTC_8fa1e.lib /pdb:cmTC_8fa1e.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
-        FAILED: cmTC_8fa1e.exe 
-        C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_8fa1e.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_8fa1e.dir\\CMakeCXXCompilerABI.cpp.obj  /out:cmTC_8fa1e.exe /implib:cmTC_8fa1e.lib /pdb:cmTC_8fa1e.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
-        LINK Pass 1: command "C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_8fa1e.dir\\CMakeCXXCompilerABI.cpp.obj /out:cmTC_8fa1e.exe /implib:cmTC_8fa1e.lib /pdb:cmTC_8fa1e.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_8fa1e.dir/intermediate.manifest CMakeFiles\\cmTC_8fa1e.dir/manifest.res" failed (exit code 1104) with the following output:\x0d
-        LINK : fatal error LNK1104: 无法打开文件“kernel32.lib”\x0d\x0d
-        ninja: build stopped: subcommand failed.
+        Run Build Command(s): C:/PROGRA~1/MIB055~1/18/Insiders/Common7/IDE/COMMON~1/MICROS~1/CMake/Ninja/ninja.exe -v cmTC_00e9e
+        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -D_MBCS  -DQT_QML_DEBUG  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_00e9e.dir\\CMakeCXXCompilerABI.cpp.obj /FdCMakeFiles\\cmTC_00e9e.dir\\ /FS -c "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"
+        [2/2] C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_00e9e.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_00e9e.dir\\CMakeCXXCompilerABI.cpp.obj  /out:cmTC_00e9e.exe /implib:cmTC_00e9e.lib /pdb:cmTC_00e9e.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
         
-      exitCode: 1
+      exitCode: 0
   -
-    kind: "try_compile-v1"
+    kind: "message-v1"
     backtrace:
-      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeTestCXXCompiler.cmake:56 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerABI.cmake:253 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "CMakeLists.txt:3 (project)"
-    checks:
-      - "Check for working CXX compiler: C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe"
-    directories:
-      source: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-muhmlv"
-      binary: "E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-muhmlv"
-    cmakeVariables:
-      CMAKE_CXX_FLAGS: "-DQT_QML_DEBUG"
-      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
-      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
-      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
-    buildResult:
-      variable: "CMAKE_CXX_COMPILER_WORKS"
-      cached: true
-      stdout: |
-        Change Dir: 'E:/project/AttendanceServer/out/build/debug/CMakeFiles/CMakeScratch/TryCompile-muhmlv'
-        
-        Run Build Command(s): C:/PROGRA~1/MIB055~1/18/Insiders/Common7/IDE/COMMON~1/MICROS~1/CMake/Ninja/ninja.exe -v cmTC_7efa9
-        [1/2] C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -D_MBCS  -DQT_QML_DEBUG  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_7efa9.dir\\testCXXCompiler.cxx.obj /FdCMakeFiles\\cmTC_7efa9.dir\\ /FS -c E:\\project\\AttendanceServer\\out\\build\\debug\\CMakeFiles\\CMakeScratch\\TryCompile-muhmlv\\testCXXCompiler.cxx
-        [2/2] C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_7efa9.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_7efa9.dir\\testCXXCompiler.cxx.obj  /out:cmTC_7efa9.exe /implib:cmTC_7efa9.lib /pdb:cmTC_7efa9.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
-        FAILED: cmTC_7efa9.exe 
-        C:\\windows\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_7efa9.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_7efa9.dir\\testCXXCompiler.cxx.obj  /out:cmTC_7efa9.exe /implib:cmTC_7efa9.lib /pdb:cmTC_7efa9.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
-        LINK Pass 1: command "C:\\PROGRA~1\\MIB055~1\\18\\Insiders\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_7efa9.dir\\testCXXCompiler.cxx.obj /out:cmTC_7efa9.exe /implib:cmTC_7efa9.lib /pdb:cmTC_7efa9.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_7efa9.dir/intermediate.manifest CMakeFiles\\cmTC_7efa9.dir/manifest.res" failed (exit code 1104) with the following output:\x0d
-        LINK : fatal error LNK1104: 无法打开文件“kernel32.lib”\x0d\x0d
-        ninja: build stopped: subcommand failed.
-        
-      exitCode: 1
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        linker tool for 'CXX': C:/PROGRA~1/MIB055~1/18/Insiders/VC/Tools/MSVC/1450~1.357/bin/Hostx64/x64/link.exe
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/Internal/CMakeDetermineLinkerId.cmake:38 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerABI.cmake:299 (cmake_determine_linker_id)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Running the CXX compiler's linker: "C:/PROGRA~1/MIB055~1/18/Insiders/VC/Tools/MSVC/1450~1.357/bin/Hostx64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.50.35728.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
 ...

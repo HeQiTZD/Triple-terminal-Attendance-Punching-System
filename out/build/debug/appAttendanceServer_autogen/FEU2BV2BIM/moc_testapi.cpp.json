@@ -2,7 +2,7 @@
     "classes": [
         {
             "className": "TestApi",
-            "lineNumber": 12,
+            "lineNumber": 13,
             "methods": [
                 {
                     "access": "public",
@@ -17,7 +17,7 @@
                         }
                     ],
                     "index": 1,
-                    "lineNumber": 27,
+                    "lineNumber": 28,
                     "name": "initFaceEngine",
                     "returnType": "bool"
                 },
@@ -30,7 +30,7 @@
                         }
                     ],
                     "index": 2,
-                    "lineNumber": 28,
+                    "lineNumber": 29,
                     "name": "extractFeatureBase64",
                     "returnType": "QString"
                 },
@@ -47,9 +47,16 @@
                         }
                     ],
                     "index": 3,
-                    "lineNumber": 29,
+                    "lineNumber": 30,
                     "name": "compareFeatureBase64",
                     "returnType": "double"
+                },
+                {
+                    "access": "public",
+                    "index": 4,
+                    "lineNumber": 31,
+                    "name": "selectImageFile",
+                    "returnType": "QString"
                 },
                 {
                     "access": "public",
@@ -59,10 +66,27 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 4,
-                    "lineNumber": 31,
+                    "index": 5,
+                    "lineNumber": 33,
                     "name": "requestPersonSync",
                     "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "deviceId",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "jsonText",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 6,
+                    "lineNumber": 34,
+                    "name": "sendToClientJson",
+                    "returnType": "bool"
                 },
                 {
                     "access": "public",
@@ -72,9 +96,56 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 5,
-                    "lineNumber": 32,
+                    "index": 7,
+                    "lineNumber": 35,
                     "name": "broadcastJson",
+                    "returnType": "bool"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "employeeId",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "featureBase64",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 8,
+                    "lineNumber": 36,
+                    "name": "addFaceDataBase64",
+                    "returnType": "bool"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "employeeId",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "featureBase64",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 9,
+                    "lineNumber": 37,
+                    "name": "updateFaceDataBase64",
+                    "returnType": "bool"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "employeeId",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 10,
+                    "lineNumber": 38,
+                    "name": "deleteFaceDataByEmployeeId",
                     "returnType": "bool"
                 }
             ],
@@ -85,7 +156,7 @@
                     "designable": true,
                     "final": false,
                     "index": 0,
-                    "lineNumber": 15,
+                    "lineNumber": 16,
                     "name": "lastError",
                     "notify": "lastErrorChanged",
                     "read": "lastError",
@@ -101,7 +172,7 @@
                 {
                     "access": "public",
                     "index": 0,
-                    "lineNumber": 35,
+                    "lineNumber": 41,
                     "name": "lastErrorChanged",
                     "returnType": "void"
                 }

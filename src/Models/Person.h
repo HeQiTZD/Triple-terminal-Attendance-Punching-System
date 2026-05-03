@@ -33,9 +33,6 @@ public:
     QString position() const;
     void setPosition(const QString &position);
 
-    QByteArray faceFeature() const;
-    void setFaceFeature(const QByteArray &faceFeature);
-
     QDateTime createdAt() const;
     void setCreatedAt(const QDateTime &createdAt);
 
@@ -60,7 +57,6 @@ private:
     QString m_employeeId;
     QString m_department;
     QString m_position;
-    QByteArray m_faceFeature;
     QDateTime m_createdAt;
     QDateTime m_updatedAt;
 };

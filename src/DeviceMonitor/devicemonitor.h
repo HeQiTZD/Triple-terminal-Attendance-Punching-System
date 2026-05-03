@@ -6,26 +6,24 @@
 #include <QJsonObject>
 
 #include "../TcpServer/tcpserver.h"
-#include "../DataManager/datamanager.h"
+#include "../Services/dataservice.h"
 #include "../Protocol/protocol.h"
 
 class TcpServer;
-class DataManager;
+class DataService;
 
 class DeviceMonitor : public QObject
 {
     Q_OBJECT
 public:
-    explicit DeviceMonitor(TcpServer *tcpServer,DataManager *dataManager,QObject *parent = nullptr);
+    explicit DeviceMonitor(TcpServer *tcpServer, DataService *dataService, QObject *parent = nullptr);
 
-public slots:
-    void onClientConnected(const QString &deviceId,const QString &ipAddress);
-    void onClientDisconnected(const QString& deviceId);
-    void onDeviceStatusReceived(const QString& deviceId, const QJsonObject& status);
+private slots:
+    void onDeviceStatusChanged(const QString& deviceId, const QString& status);
 
 private:
     TcpServer* m_tcpServer;
-    DataManager* m_dataManager;
+    DataService* m_dataService;
     QTimer m_syncTimer;
 
     void sendSyncCommand(const QString& deviceId);

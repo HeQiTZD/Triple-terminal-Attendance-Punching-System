@@ -69,18 +69,6 @@ void Person::setPosition(const QString &position)
     }
 }
 
-QByteArray Person::faceFeature() const
-{
-    return m_faceFeature;
-}
-
-void Person::setFaceFeature(const QByteArray &faceFeature)
-{
-    if(faceFeature != faceFeature){
-        m_faceFeature = faceFeature;
-    }
-}
-
 QDateTime Person::createdAt() const
 {
     return m_createdAt;

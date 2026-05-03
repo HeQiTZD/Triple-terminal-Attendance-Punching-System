@@ -64,14 +64,10 @@ E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/ONL55FX3
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QIODevice \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QJsonObject \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QList \
-  C:/Qt/6.10.2/msvc2022_64/include/QtCore/QMap \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QObject \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QSaveFile \
-  C:/Qt/6.10.2/msvc2022_64/include/QtCore/QSet \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QString \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QTextStream \
-  C:/Qt/6.10.2/msvc2022_64/include/QtCore/QVariant \
-  C:/Qt/6.10.2/msvc2022_64/include/QtCore/QVariantMap \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/q17memory.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/q20functional.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/q20iterator.h \
@@ -146,7 +142,6 @@ E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/ONL55FX3
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qmap.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qmath.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qmetacontainer.h \
-  C:/Qt/6.10.2/msvc2022_64/include/QtCore/qmetaobject.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qmetatype.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qminmax.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qnamespace.h \
@@ -210,22 +205,11 @@ E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/ONL55FX3
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qutf8stringview.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/quuid.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qvariant.h \
-  C:/Qt/6.10.2/msvc2022_64/include/QtCore/qvariantmap.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qvarlengtharray.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qversiontagging.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qxptype_traits.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qyieldcpu.h \
-  C:/Qt/6.10.2/msvc2022_64/include/QtSql/QSqlDatabase \
-  C:/Qt/6.10.2/msvc2022_64/include/QtSql/QSqlError \
-  C:/Qt/6.10.2/msvc2022_64/include/QtSql/QSqlQuery \
-  C:/Qt/6.10.2/msvc2022_64/include/QtSql/qsqldatabase.h \
-  C:/Qt/6.10.2/msvc2022_64/include/QtSql/qsqlerror.h \
-  C:/Qt/6.10.2/msvc2022_64/include/QtSql/qsqlquery.h \
-  C:/Qt/6.10.2/msvc2022_64/include/QtSql/qtsql-config.h \
-  C:/Qt/6.10.2/msvc2022_64/include/QtSql/qtsqlexports.h \
-  C:/Qt/6.10.2/msvc2022_64/include/QtSql/qtsqlglobal.h \
-  E:/project/AttendanceServer/src/DataManager/datamanager.h \
   E:/project/AttendanceServer/src/Models/Person.h \
   E:/project/AttendanceServer/src/Models/attendancerecord.h \
   E:/project/AttendanceServer/src/Models/device.h \
-  E:/project/AttendanceServer/src/Models/faceData.h
+  E:/project/AttendanceServer/src/Services/dataservice.h

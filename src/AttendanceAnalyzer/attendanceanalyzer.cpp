@@ -1,40 +1,40 @@
 ﻿#include "attendanceanalyzer.h"
 
-#include "../DataManager/datamanager.h"
+#include "../Services/dataservice.h"
 #include "../Models/Person.h"
 #include "../Models/attendancerecord.h"
 
-AttendanceAnalyzer::AttendanceAnalyzer(DataManager *dataManager, QObject *parent)
-    :QObject(parent),m_dataManager(dataManager)
+AttendanceAnalyzer::AttendanceAnalyzer(DataService *dataService, QObject *parent)
+    :QObject(parent),m_dataService(dataService)
 {
-    Q_ASSERT(m_dataManager);
+    Q_ASSERT(m_dataService);
 }
 
 QJsonArray AttendanceAnalyzer::dailySummary(const QDate &start, const QDate &end, const QString &department, const QString &employeeId) const
 {
-    if(!m_dataManager->isConnected()) return{};
+    if(!m_dataService->isConnected()) return{};
 
-    // 1) 准备人员映射：personId -> Person*
-    QHash<int,Person*> personById;
-    {
-        const auto persons = m_dataManager->getAllPerson();
-        for(QObject* obj : persons){
-            auto* p = qobject_cast<Person*>(obj);
-            if(!p) continue;
-            personById.insert(p->id(),p);
-        }
+    // 1) 准备人员映射：employeeId -> Person*
+    //    DataManager 不再为返回对象设置 parent，需在函数尾部统一释放。
+    const auto personObjs = m_dataService->getAllPerson();
+    QHash<QString, Person*> personByEid;
+    for(QObject* obj : personObjs){
+        auto* p = qobject_cast<Person*>(obj);
+        if(!p) continue;
+        personByEid.insert(p->employeeId(), p);
     }
 
     // 2) 拉取明细记录（按日期区间）
     const QDateTime startDt(start,QTime(0,0,0));
     const QDateTime endDt(end,QTime(23,59,59));
-    const auto records = m_dataManager->getAttendanceRecords(startDt,endDt);
+    const auto records = m_dataService->selectAttendanceRecord(
+        QString(), startDt, endDt, QString(), QString(), QString());
 
-    // 3) 聚合：按 (date, personId) 记录最早/最晚打卡
+    // 3) 聚合：按 (date, employeeId) 记录最早/最晚打卡
     struct DayAgg
     {
         QDate date;
-        int personId;
+        QString employeeId;
         QDateTime first;
         QDateTime last;
         bool has = false;
@@ -45,15 +45,15 @@ QJsonArray AttendanceAnalyzer::dailySummary(const QDate &start, const QDate &end
         auto* r = qobject_cast<AttendanceRecord*>(obj);
         if (!r) continue;
 
-        const int pid = r->personId();
+        const QString eid = r->employeeId();
         const QDate d = r->checkTime().date();
-        const QString key = d.toString(Qt::ISODate)+"#"+QString::number(pid);
+        const QString key = d.toString(Qt::ISODate)+"#"+eid;
 
         auto it = agg.find(key);
         if(it == agg.end()){
             DayAgg a;
             a.date = d;
-            a.personId = pid;
+            a.employeeId = eid;
             a.first = r->checkTime();
             a.last = r->checkTime();
             a.has = true;
@@ -68,8 +68,8 @@ QJsonArray AttendanceAnalyzer::dailySummary(const QDate &start, const QDate &end
     // 4) 输出：按天汇总（人数/迟到/缺勤/加班）
     // 先确定“参与统计人员集合”（按 department/employeeId 过滤）
     QList<Person*> targetPersons;
-    targetPersons.reserve(personById.size());
-    for (auto it = personById.constBegin(); it != personById.constEnd(); ++it) {
+    targetPersons.reserve(personByEid.size());
+    for (auto it = personByEid.constBegin(); it != personByEid.constEnd(); ++it) {
         Person* p = it.value();
         if (!p) continue;
         if(!employeeId.isEmpty() && p->employeeId() != employeeId) continue;
@@ -89,7 +89,7 @@ QJsonArray AttendanceAnalyzer::dailySummary(const QDate &start, const QDate &end
 
         for (Person* p : targetPersons) {
             if (!p) continue;
-            const QString key = d.toString(Qt::ISODate) + "#" + QString::number(p->id());
+            const QString key = d.toString(Qt::ISODate) + "#" + p->employeeId();
             const auto it = agg.find(key);
             if (it == agg.end() || !it->has) { absent++; continue; }
 
@@ -108,34 +108,36 @@ QJsonArray AttendanceAnalyzer::dailySummary(const QDate &start, const QDate &end
         out.append(row);
     }
 
+    qDeleteAll(records);
+    qDeleteAll(personObjs);
     return out;
 }
 
 QJsonArray AttendanceAnalyzer::personSummary(const QDate &start, const QDate &end, const QString &department) const
 {
-    if(!m_dataManager->isConnected()) return{};
+    if(!m_dataService->isConnected()) return{};
 
-    //人员列表
+    //人员列表（DataManager 不再为返回对象设置 parent，需在函数尾部统一释放）
+    const auto personObjs = m_dataService->getAllPerson();
     QList<Person*> persons;
-    {
-        const auto objs = m_dataManager->getAllPerson();//获得所有人员信息
-        for(QObject* obj : objs){
-            auto* p = qobject_cast<Person*>(obj);
-            if(!p) continue;
-            if(!department.isEmpty() && p->department() != department) continue;//筛选指定部门的员工
-            persons.append(p);//添加到人员列表（部门的所有员工）
-        }
+    for(QObject* obj : personObjs){
+        auto* p = qobject_cast<Person*>(obj);
+        if(!p) continue;
+        if(!department.isEmpty() && p->department() != department) continue;//筛选指定部门的员工
+        persons.append(p);//添加到人员列表（部门的所有员工）
     }
 
     //获取指定范围内的打卡记录
-    const auto records = m_dataManager->getAttendanceRecords(QDateTime(start,QTime(0,0,0)),QDateTime(end,QTime(23,59,59)));
+    const auto records = m_dataService->selectAttendanceRecord(
+        QString(), QDateTime(start, QTime(0, 0, 0)), QDateTime(end, QTime(23, 59, 59)),
+        QString(), QString(), QString());
 
-    //(date, personId) 最早/最晚
-    QHash<QString,QPair<QDateTime,QDateTime>> dayFirstLast;// key date#pid -> (first,last) QPair<QDateTime, QDateTime>，存储这一天的第一次打卡时间和最后一次打卡时间。
+    //(date, employeeId) 最早/最晚
+    QHash<QString,QPair<QDateTime,QDateTime>> dayFirstLast;// key date#eid -> (first,last) QPair<QDateTime, QDateTime>，存储这一天的第一次打卡时间和最后一次打卡时间。
     for (QObject* obj : records) {
         auto* r = qobject_cast<AttendanceRecord*>(obj);
         if (!r) continue;
-        const QString key = r->checkTime().date().toString(Qt::ISODate) + "#" + QString::number(r->personId());//保证了每个人每一天的唯一性。
+        const QString key = r->checkTime().date().toString(Qt::ISODate) + "#" + r->employeeId();//保证了每个人每一天的唯一性。
         auto it = dayFirstLast.find(key);//查找该员工该天是否已有记录
         if (it == dayFirstLast.end()) {
             //第一次遇到 (it == ...end())：插入新记录，第一次和最后一次时间都设为当前记录时间
@@ -158,7 +160,7 @@ QJsonArray AttendanceAnalyzer::personSummary(const QDate &start, const QDate &en
         for (QDate d = start; d <= end; d = d.addDays(1)) {
             if (!isWorkday(d)) continue;
 
-            const QString key = d.toString(Qt::ISODate) + "#" + QString::number(p->id());
+            const QString key = d.toString(Qt::ISODate) + "#" + p->employeeId();
             const auto it = dayFirstLast.find(key);
             if (it == dayFirstLast.end()) { absent++; continue; }
 
@@ -168,7 +170,6 @@ QJsonArray AttendanceAnalyzer::personSummary(const QDate &start, const QDate &en
         }
 
         QJsonObject row;
-        row["personId"] = p->id();
         row["employeeId"] = p->employeeId();
         row["name"] = p->name();
         row["department"] = p->department();
@@ -179,22 +180,22 @@ QJsonArray AttendanceAnalyzer::personSummary(const QDate &start, const QDate &en
         out.append(row);
     }
 
+    qDeleteAll(records);
+    qDeleteAll(personObjs);
     return out;
 }
 
 QJsonArray AttendanceAnalyzer::departmentSummary(const QDate &start, const QDate &end) const
 {
-    if (!m_dataManager->isConnected()) return{};
+    if (!m_dataService->isConnected()) return{};
 
     //先按部门分组人员
+    const auto personObjs = m_dataService->getAllPerson();
     QHash<QString, QList<Person*>> personByDept;
-    {
-        const auto objs = m_dataManager->getAllPerson();
-        for (auto obj : objs) {
-            auto* p = qobject_cast<Person*>(obj);
-            if (!p) continue;
-            personByDept[p->department()].append(p);
-        }
+    for (auto obj : personObjs) {
+        auto* p = qobject_cast<Person*>(obj);
+        if (!p) continue;
+        personByDept[p->department()].append(p);
     }
 
     // 对每个部门调用 personSummary 的聚合逻辑（这里直接复用 daily/person 的做法更快实现）
@@ -220,6 +221,8 @@ QJsonArray AttendanceAnalyzer::departmentSummary(const QDate &start, const QDate
         row["overtime"] = overtime;
         out.append(row);
     }
+
+    qDeleteAll(personObjs);
     return out;
 }
 

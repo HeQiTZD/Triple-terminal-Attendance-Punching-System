@@ -287,9 +287,6 @@ Qt6GuiTools_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6GuiTools
 //The directory containing a CMake configuration file for Qt6Gui.
 Qt6Gui_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Gui
 
-//The directory containing a CMake configuration file for Qt6NetWork.
-Qt6NetWork_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Network
-
 //The directory containing a CMake configuration file for Qt6Network.
 Qt6Network_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Network
 
@@ -404,6 +401,8 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_EXPORT_BUILD_DATABASE
 CMAKE_EXPORT_BUILD_DATABASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_EXPORT_COMPILE_COMMANDS
+CMAKE_EXPORT_COMPILE_COMMANDS-ADVANCED:INTERNAL=1
 //Name of external makefile project generator.
 CMAKE_EXTRA_GENERATOR:INTERNAL=
 //Name of generator.

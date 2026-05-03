@@ -2,7 +2,7 @@
     "classes": [
         {
             "className": "SyncManager",
-            "lineNumber": 14,
+            "lineNumber": 15,
             "methods": [
                 {
                     "access": "public",
@@ -13,7 +13,7 @@
                         }
                     ],
                     "index": 1,
-                    "lineNumber": 19,
+                    "lineNumber": 20,
                     "name": "sendPersonSyncNow",
                     "returnType": "void"
                 }
@@ -30,7 +30,7 @@
                         }
                     ],
                     "index": 0,
-                    "lineNumber": 22,
+                    "lineNumber": 23,
                     "name": "onSynRequested",
                     "returnType": "void"
                 }

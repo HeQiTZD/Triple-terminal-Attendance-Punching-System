@@ -1,10 +1,15 @@
 ﻿#include "devicemonitor.h"
 
-DeviceMonitor::DeviceMonitor(TcpServer *tcpServer,DataManager *dataManager,QObject *parent)
-    :m_tcpServer(tcpServer),m_dataManager(dataManager)
+DeviceMonitor::DeviceMonitor(TcpServer *tcpServer, DataService *dataService, QObject *parent)
+    :m_tcpServer(tcpServer),m_dataService(dataService)
 {
     Q_ASSERT(m_tcpServer);
-    Q_ASSERT(m_dataManager);
+    Q_ASSERT(m_dataService);
+
+    // DeviceMonitor 只负责“同步触发/策略”，不负责设备状态落库。
+    // 监听数据库层的设备状态变更（由控制器层统一写库后发出）。
+    connect(m_dataService, &DataService::deviceStatusChanged,
+            this, &DeviceMonitor::onDeviceStatusChanged);
 
     // // 示例：每 5 分钟给所有在线设备下发一次“同步指令”（按需开启）
     // m_syncTimer.setInterval(5 * 60 * 1000);
@@ -16,22 +21,6 @@ DeviceMonitor::DeviceMonitor(TcpServer *tcpServer,DataManager *dataManager,QObje
     // // m_syncTimer.start();
 }
 
-void DeviceMonitor::onClientConnected(const QString &deviceId, const QString &ipAddress)
-{
-    if(m_dataManager->isConnected()){
-        m_dataManager->addOrUpdateDevice(deviceId,deviceId,ipAddress,"online");
-    }
-
-    sendSyncCommand(deviceId);
-}
-
-void DeviceMonitor::onClientDisconnected(const QString &deviceId)
-{
-    if (m_dataManager->isConnected()) {
-        m_dataManager->updateDeviceStatus(deviceId, "offline");
-    }
-}
-
 void DeviceMonitor::sendSyncCommand(const QString &deviceId)
 {
     QJsonObject cmd;
@@ -40,17 +29,10 @@ void DeviceMonitor::sendSyncCommand(const QString &deviceId)
     m_tcpServer->sendToClient(deviceId,cmd);
 }
 
-void DeviceMonitor::onDeviceStatusReceived(const QString& deviceId, const QJsonObject& status)
+void DeviceMonitor::onDeviceStatusChanged(const QString& deviceId, const QString& status)
 {
-    if(!m_dataManager->isConnected()) return;
-
-    const QString online = status.value(Protocol::kStatus).toString("online");
-    const QString deviceName = status.value("deviceName").toString(deviceId);
-    const QString ipAddress  = status.value("ipAddress").toString();
-
-    if(!ipAddress.isEmpty()){
-        m_dataManager->addOrUpdateDevice(deviceId,deviceName,ipAddress,online);
-    }else{
-        m_dataManager->updateDeviceStatus(deviceId, online);
+    // 仅在设备变为在线时触发同步（策略可扩展：节流、重试、队列等）。
+    if (status == "online") {
+        sendSyncCommand(deviceId);
     }
 }

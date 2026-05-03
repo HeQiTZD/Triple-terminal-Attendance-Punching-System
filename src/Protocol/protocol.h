@@ -16,7 +16,7 @@ static inline const QString kDeviceId = "deviceId";
 static inline const QString kStatus = "status";
 static inline const QString kMessage = "message";
 // attendance_record payload (建议字段)
-static inline const QString kPersonEmployeeId = "employeeId"; // 或 personId，二选一统一
+static inline const QString kPersonEmployeeId = "employeeId";
 static inline const QString kCheckTime = "checkTime";         // ISO8601 string
 static inline const QString kRecordStatus = "recordStatus";   // 比如 "in"/"out"/"success"/"fail"
 

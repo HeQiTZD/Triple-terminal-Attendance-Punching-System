@@ -2,7 +2,7 @@
     "classes": [
         {
             "className": "AttendanceAnalyzer",
-            "lineNumber": 14,
+            "lineNumber": 15,
             "methods": [
                 {
                     "access": "public",
@@ -26,7 +26,7 @@
                     ],
                     "index": 0,
                     "isConst": true,
-                    "lineNumber": 21,
+                    "lineNumber": 22,
                     "name": "dailySummary",
                     "returnType": "QJsonArray"
                 },
@@ -49,7 +49,7 @@
                     "index": 1,
                     "isCloned": true,
                     "isConst": true,
-                    "lineNumber": 21,
+                    "lineNumber": 22,
                     "name": "dailySummary",
                     "returnType": "QJsonArray"
                 },
@@ -68,7 +68,7 @@
                     "index": 2,
                     "isCloned": true,
                     "isConst": true,
-                    "lineNumber": 21,
+                    "lineNumber": 22,
                     "name": "dailySummary",
                     "returnType": "QJsonArray"
                 },
@@ -90,7 +90,7 @@
                     ],
                     "index": 3,
                     "isConst": true,
-                    "lineNumber": 26,
+                    "lineNumber": 27,
                     "name": "personSummary",
                     "returnType": "QJsonArray"
                 },
@@ -109,7 +109,7 @@
                     "index": 4,
                     "isCloned": true,
                     "isConst": true,
-                    "lineNumber": 26,
+                    "lineNumber": 27,
                     "name": "personSummary",
                     "returnType": "QJsonArray"
                 },
@@ -127,7 +127,7 @@
                     ],
                     "index": 5,
                     "isConst": true,
-                    "lineNumber": 30,
+                    "lineNumber": 31,
                     "name": "departmentSummary",
                     "returnType": "QJsonArray"
                 }

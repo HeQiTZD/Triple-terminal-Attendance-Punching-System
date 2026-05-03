@@ -8,7 +8,8 @@
 class AttendanceRecord : public QObject{
     Q_OBJECT
     Q_PROPERTY(int id READ id WRITE setId NOTIFY idChanged)
-    Q_PROPERTY(int personId READ personId WRITE setPersonId NOTIFY personIdChanged)
+    Q_PROPERTY(QString employeeId READ employeeId WRITE setEmployeeId NOTIFY employeeIdChanged)
+    Q_PROPERTY(QString personName READ personName WRITE setPersonName NOTIFY personNameChanged)
     Q_PROPERTY(QDateTime checkTime READ checkTime WRITE setCheckTime NOTIFY checkTimeChanged)
     Q_PROPERTY(QString deviceId READ deviceId WRITE setDeviceId NOTIFY deviceIdChanged)
     Q_PROPERTY(QString status READ status WRITE setStatus NOTIFY statusChanged)
@@ -20,8 +21,11 @@ public:
     int id() const;
     void setId(int id);
 
-    int personId() const;
-    void setPersonId(int personId);
+    QString employeeId() const;
+    void setEmployeeId(const QString &employeeId);
+
+    QString personName() const;
+    void setPersonName(const QString &personName);
 
     QDateTime checkTime() const;
     void setCheckTime(const QDateTime &checkTime);
@@ -40,7 +44,8 @@ public:
 
 signals:
     void idChanged();
-    void personIdChanged();
+    void employeeIdChanged();
+    void personNameChanged();
     void checkTimeChanged();
     void deviceIdChanged();
     void statusChanged();
@@ -48,7 +53,8 @@ signals:
 
 private:
     int m_id;
-    int m_personId;
+    QString m_employeeId;
+    QString m_personName;
     QDateTime m_checkTime;
     QString m_deviceId;
     QString m_status;

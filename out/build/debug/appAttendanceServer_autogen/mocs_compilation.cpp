@@ -9,6 +9,7 @@
 #include "3WFUWCBZX3/moc_attendancerecord.cpp"
 #include "3WFUWCBZX3/moc_device.cpp"
 #include "3WFUWCBZX3/moc_faceData.cpp"
+#include "3CTZCT2C5S/moc_dataservice.cpp"
 #include "PJ4NMIXSYY/moc_syncmanager.cpp"
 #include "I7BNQNPOMK/moc_tcpserver.cpp"
 #include "FEU2BV2BIM/moc_testapi.cpp"

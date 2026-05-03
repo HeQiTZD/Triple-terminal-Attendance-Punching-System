@@ -8,19 +8,19 @@
 #include <QTextStream>
 #include <QIODevice>
 
-#include "src/DataManager/datamanager.h"
+#include "src/Services/dataservice.h"
 #include "src/Models/Person.h"
 #include "src/Models/device.h"
 #include "src/Models/attendancerecord.h"
 
-class DataManager;
+class DataService;
 
 class ExportManager : public QObject {
 	Q_OBJECT
 	Q_PROPERTY(QString lastError READ lastError NOTIFY lastErrorChanged)
 
 public:
-	explicit ExportManager(DataManager* dataManager, QObject* parent = nullptr);
+	explicit ExportManager(DataService* dataService, QObject* parent = nullptr);
 
 	QString lastError() const { return m_lastError; }
 
@@ -39,7 +39,7 @@ signals:
 	void lastErrorChanged();
 
 private:
-	DataManager* m_dataManager = nullptr;
+	DataService* m_dataService = nullptr;
 	QString m_lastError;
 
 	void setError(const QString& err);

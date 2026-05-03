@@ -10,12 +10,13 @@
 
 class DataManager;
 class Person;
+class DataService;
 
 class AttendanceAnalyzer : public QObject
 {
     Q_OBJECT
 public:
-    explicit  AttendanceAnalyzer(DataManager* dataManager,QObject* parent = nullptr);
+    explicit  AttendanceAnalyzer(DataService* dataService,QObject* parent = nullptr);
 
     // 按天统计：输出每天的汇总（可按部门过滤，可按员工过滤）
     Q_INVOKABLE QJsonArray dailySummary(const QDate& start,const QDate& end,
@@ -35,7 +36,7 @@ public:
     void setOvertimeThresholdMinutes(int minutes);
 
 private:
-    DataManager* m_dataManager;
+    DataService* m_dataService;
     QTime m_startWork{9, 0};
     QTime m_endWork{18, 0};
     int m_lateGraceMin{5};

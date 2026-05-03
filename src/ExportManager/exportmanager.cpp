@@ -1,38 +1,41 @@
 #include "exportmanager.h"
 
-ExportManager::ExportManager(DataManager* dataManager, QObject* parent)
-	: QObject(parent),m_dataManager(dataManager)
+ExportManager::ExportManager(DataService* dataService, QObject* parent)
+	: QObject(parent),m_dataService(dataService)
 {
 }
 
 Q_INVOKABLE bool ExportManager::exportAttendanceRecordsCsv(const QString& filePath, const QDateTime& startTime, const QDateTime& endTime)
 {
-	if (!m_dataManager) {
-		setError("DataManager 未初始化");
+	if (!m_dataService) {
+		setError("DataService 未初始化");
 		return false;
 	}
-	if (!m_dataManager->isConnected()) {
+	if (!m_dataService->isConnected()) {
 		setError("数据库未连接");
 		return false;
 	}
 
-	const QList<QObject*> attendaceRecords = m_dataManager->getAttendanceRecords(startTime,endTime);
+	const QList<QObject*> attendaceRecords = m_dataService->selectAttendanceRecord(
+		QString(), startTime, endTime, QString(), QString(), QString());
 
 	QString csv;
-	csv += "id,person_id,employee_id,name,department,check_time,device_id,status,received_time\n";
+	csv += "id,employee_id,name,department,check_time,device_id,status,received_time\n";
 	for (QObject* obj : attendaceRecords) {
 		auto* attendaceRecord = qobject_cast<AttendanceRecord*>(obj);
 		if (!attendaceRecord) continue;
 
-		// 尽可能补全人员信息（不强依赖：查不到也能导出）
-		QString employeeId, name, department;
-		if (QObject* personObj = m_dataManager->getPersonById(attendaceRecord->personId())) {
-			employeeId = personObj->property("employeeId").toString();
-			name = personObj->property("name").toString();
+		const QString employeeId = attendaceRecord->employeeId();
+		const QString name = attendaceRecord->personName();
+		QString department;
+		// 姓名已由考勤查询 JOIN Person 填入 personName；部门未加入 JOIN，仍按工号查 Person。
+		QObject* personObj = m_dataService->getPersonByEmployeeId(employeeId);
+		if (personObj)
 			department = personObj->property("department").toString();
-		}
+		// DataManager 现在不再为返回对象设置 parent，C++ 调用方需自行释放。
+		delete personObj;
+
 		csv += csvEscape(QString::number(attendaceRecord->id())) + ",";
-		csv += csvEscape(QString::number(attendaceRecord->personId())) + ",";
 		csv += csvEscape(employeeId) + ",";
 		csv += csvEscape(name) + ",";
 		csv += csvEscape(department) + ",";
@@ -41,6 +44,7 @@ Q_INVOKABLE bool ExportManager::exportAttendanceRecordsCsv(const QString& filePa
 		csv += csvEscape(attendaceRecord->status()) + ",";
 		csv += csvEscape(attendaceRecord->receivedTime().toString(Qt::ISODate)) + "\n";
 	}
+	qDeleteAll(attendaceRecords);
 
 	QString err;
 	if (!writeUht8CsvFile(filePath, csv, &err, true)) {
@@ -55,17 +59,17 @@ Q_INVOKABLE bool ExportManager::exportAttendanceRecordsCsv(const QString& filePa
 Q_INVOKABLE bool ExportManager::exportPersonsCsv(const QString& filePath)
 {
 	//检查数据库是否初始化并正在连接
-	if (!m_dataManager) {
-		setError("DataManager 未初始化"); 
+	if (!m_dataService) {
+		setError("DataService 未初始化");
 		return false;
 	}
-	if (!m_dataManager->isConnected()) {
+	if (!m_dataService->isConnected()) {
 		setError("数据库未连接");
 		return false;
 	}
 
 	//获取所有人员数据，人员数据列表
-	const QList<QObject*> persons = m_dataManager->getAllPerson();
+	const QList<QObject*> persons = m_dataService->getAllPerson();
 
 	/*
 		把人员数据拼成一份 CSV 文本
@@ -91,6 +95,8 @@ Q_INVOKABLE bool ExportManager::exportPersonsCsv(const QString& filePath)
 		csv += csvEscape(person->createdAt().toString(Qt::ISODate)) + ",";
 		csv += csvEscape(person->updatedAt().toString(Qt::ISODate)) + "\n";
 	}
+	// DataManager 现在不再为返回对象设置 parent，C++ 调用方需自行释放。
+	qDeleteAll(persons);
 
 	//把 CSV 以 UTF-8（带 BOM）写入到 filePath 指定的文件
 	QString err;
@@ -105,16 +111,16 @@ Q_INVOKABLE bool ExportManager::exportPersonsCsv(const QString& filePath)
 
 Q_INVOKABLE bool ExportManager::exportDeviceCsv(const QString& filePath)
 {
-	if (!m_dataManager) {
-		setError("DataManager 未初始化");
+	if (!m_dataService) {
+		setError("DataService 未初始化");
 		return false;
 	}
-	if (!m_dataManager->isConnected()) {
+	if (!m_dataService->isConnected()) {
 		setError("数据库未连接");
 		return false;
 	}
 
-	const QList<QObject*> Devices = m_dataManager->getAllDevices();
+	const QList<QObject*> Devices = m_dataService->getAllDevices();
 
 	QString csv;
 	csv += "id,device_id,device_name,ip_address,last_online,status\n";
@@ -130,6 +136,8 @@ Q_INVOKABLE bool ExportManager::exportDeviceCsv(const QString& filePath)
 		csv += csvEscape(device->lastOnline().toString(Qt::ISODate)) + ",";
 		csv += csvEscape(device->status()) + "\n";
 	}
+	// DataManager 现在不再为返回对象设置 parent，C++ 调用方需自行释放。
+	qDeleteAll(Devices);
 
 	QString err;
 	if (!writeUht8CsvFile(filePath, csv, &err, true)) {

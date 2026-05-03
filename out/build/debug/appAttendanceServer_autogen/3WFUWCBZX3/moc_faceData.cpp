@@ -42,12 +42,12 @@ template <> constexpr inline auto FaceData::qt_create_metaobjectdata<qt_meta_tag
         "idChanged",
         "",
         "id",
-        "personIdChanged",
-        "personId",
+        "employeeIdChanged",
+        "employeeId",
+        "personNameChanged",
+        "personName",
         "featureVectorChanged",
         "featureVector",
-        "statusChanged",
-        "status",
         "createdAtChanged",
         "createdAt",
         "updatedAtChanged",
@@ -61,17 +61,17 @@ template <> constexpr inline auto FaceData::qt_create_metaobjectdata<qt_meta_tag
         QtMocHelpers::SignalData<void(int)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::Int, 3 },
         }}),
-        // Signal 'personIdChanged'
-        QtMocHelpers::SignalData<void(int)>(4, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Int, 5 },
+        // Signal 'employeeIdChanged'
+        QtMocHelpers::SignalData<void(const QString &)>(4, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 5 },
+        }}),
+        // Signal 'personNameChanged'
+        QtMocHelpers::SignalData<void(const QString &)>(6, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 7 },
         }}),
         // Signal 'featureVectorChanged'
-        QtMocHelpers::SignalData<void(const QByteArray &)>(6, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QByteArray, 7 },
-        }}),
-        // Signal 'statusChanged'
-        QtMocHelpers::SignalData<void(const QString &)>(8, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 9 },
+        QtMocHelpers::SignalData<void(const QByteArray &)>(8, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QByteArray, 9 },
         }}),
         // Signal 'createdAtChanged'
         QtMocHelpers::SignalData<void(const QDateTime &)>(10, 2, QMC::AccessPublic, QMetaType::Void, {{
@@ -89,12 +89,12 @@ template <> constexpr inline auto FaceData::qt_create_metaobjectdata<qt_meta_tag
     QtMocHelpers::UintData qt_properties {
         // property 'id'
         QtMocHelpers::PropertyData<int>(3, QMetaType::Int, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 0),
-        // property 'personId'
-        QtMocHelpers::PropertyData<int>(5, QMetaType::Int, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 1),
+        // property 'employeeId'
+        QtMocHelpers::PropertyData<QString>(5, QMetaType::QString, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 1),
+        // property 'personName'
+        QtMocHelpers::PropertyData<QString>(7, QMetaType::QString, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 2),
         // property 'featureVector'
-        QtMocHelpers::PropertyData<QByteArray>(7, QMetaType::QByteArray, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 2),
-        // property 'status'
-        QtMocHelpers::PropertyData<QString>(9, QMetaType::QString, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 3),
+        QtMocHelpers::PropertyData<QByteArray>(9, QMetaType::QByteArray, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 3),
         // property 'createdAt'
         QtMocHelpers::PropertyData<QDateTime>(11, QMetaType::QDateTime, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 4),
         // property 'updatedAt'
@@ -123,9 +123,9 @@ void FaceData::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->idChanged((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
-        case 1: _t->personIdChanged((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
-        case 2: _t->featureVectorChanged((*reinterpret_cast<std::add_pointer_t<QByteArray>>(_a[1]))); break;
-        case 3: _t->statusChanged((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 1: _t->employeeIdChanged((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 2: _t->personNameChanged((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 3: _t->featureVectorChanged((*reinterpret_cast<std::add_pointer_t<QByteArray>>(_a[1]))); break;
         case 4: _t->createdAtChanged((*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[1]))); break;
         case 5: _t->updatedAtChanged((*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[1]))); break;
         case 6: _t->featureSizeChanged((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
@@ -135,11 +135,11 @@ void FaceData::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
     if (_c == QMetaObject::IndexOfMethod) {
         if (QtMocHelpers::indexOfMethod<void (FaceData::*)(int )>(_a, &FaceData::idChanged, 0))
             return;
-        if (QtMocHelpers::indexOfMethod<void (FaceData::*)(int )>(_a, &FaceData::personIdChanged, 1))
+        if (QtMocHelpers::indexOfMethod<void (FaceData::*)(const QString & )>(_a, &FaceData::employeeIdChanged, 1))
             return;
-        if (QtMocHelpers::indexOfMethod<void (FaceData::*)(const QByteArray & )>(_a, &FaceData::featureVectorChanged, 2))
+        if (QtMocHelpers::indexOfMethod<void (FaceData::*)(const QString & )>(_a, &FaceData::personNameChanged, 2))
             return;
-        if (QtMocHelpers::indexOfMethod<void (FaceData::*)(const QString & )>(_a, &FaceData::statusChanged, 3))
+        if (QtMocHelpers::indexOfMethod<void (FaceData::*)(const QByteArray & )>(_a, &FaceData::featureVectorChanged, 3))
             return;
         if (QtMocHelpers::indexOfMethod<void (FaceData::*)(const QDateTime & )>(_a, &FaceData::createdAtChanged, 4))
             return;
@@ -152,9 +152,9 @@ void FaceData::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         void *_v = _a[0];
         switch (_id) {
         case 0: *reinterpret_cast<int*>(_v) = _t->id(); break;
-        case 1: *reinterpret_cast<int*>(_v) = _t->personId(); break;
-        case 2: *reinterpret_cast<QByteArray*>(_v) = _t->featureVector(); break;
-        case 3: *reinterpret_cast<QString*>(_v) = _t->status(); break;
+        case 1: *reinterpret_cast<QString*>(_v) = _t->employeeId(); break;
+        case 2: *reinterpret_cast<QString*>(_v) = _t->personName(); break;
+        case 3: *reinterpret_cast<QByteArray*>(_v) = _t->featureVector(); break;
         case 4: *reinterpret_cast<QDateTime*>(_v) = _t->createdAt(); break;
         case 5: *reinterpret_cast<QDateTime*>(_v) = _t->updatedAt(); break;
         case 6: *reinterpret_cast<int*>(_v) = _t->featureSize(); break;
@@ -165,9 +165,9 @@ void FaceData::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         void *_v = _a[0];
         switch (_id) {
         case 0: _t->setId(*reinterpret_cast<int*>(_v)); break;
-        case 1: _t->setPersonId(*reinterpret_cast<int*>(_v)); break;
-        case 2: _t->setFeatureVector(*reinterpret_cast<QByteArray*>(_v)); break;
-        case 3: _t->setStatus(*reinterpret_cast<QString*>(_v)); break;
+        case 1: _t->setEmployeeId(*reinterpret_cast<QString*>(_v)); break;
+        case 2: _t->setPersonName(*reinterpret_cast<QString*>(_v)); break;
+        case 3: _t->setFeatureVector(*reinterpret_cast<QByteArray*>(_v)); break;
         case 4: _t->setCreatedAt(*reinterpret_cast<QDateTime*>(_v)); break;
         case 5: _t->setUpdatedAt(*reinterpret_cast<QDateTime*>(_v)); break;
         case 6: _t->setFeatureSize(*reinterpret_cast<int*>(_v)); break;
@@ -220,19 +220,19 @@ void FaceData::idChanged(int _t1)
 }
 
 // SIGNAL 1
-void FaceData::personIdChanged(int _t1)
+void FaceData::employeeIdChanged(const QString & _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 1, nullptr, _t1);
 }
 
 // SIGNAL 2
-void FaceData::featureVectorChanged(const QByteArray & _t1)
+void FaceData::personNameChanged(const QString & _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 2, nullptr, _t1);
 }
 
 // SIGNAL 3
-void FaceData::statusChanged(const QString & _t1)
+void FaceData::featureVectorChanged(const QByteArray & _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 3, nullptr, _t1);
 }
