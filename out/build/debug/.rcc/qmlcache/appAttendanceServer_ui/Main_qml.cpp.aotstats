@@ -18,7 +18,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "personModel",
-                            "line": 39,
+                            "line": 37,
                             "message": "Cannot generate efficient code for storing an array in a non-sequence type"
                         },
                         {
@@ -26,7 +26,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "deviceModel",
-                            "line": 40,
+                            "line": 38,
                             "message": "Cannot generate efficient code for storing an array in a non-sequence type"
                         },
                         {
@@ -34,7 +34,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "attendanceModel",
-                            "line": 41,
+                            "line": 39,
                             "message": "Cannot generate efficient code for storing an array in a non-sequence type"
                         },
                         {
@@ -42,7 +42,7 @@
                             "column": 29,
                             "durationMicroseconds": 0,
                             "functionName": "faceModel",
-                            "line": 42,
+                            "line": 40,
                             "message": "Cannot generate efficient code for storing an array in a non-sequence type"
                         },
                         {
@@ -50,7 +50,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "appendLog",
-                            "line": 47,
+                            "line": 45,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -58,7 +58,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "rememberError",
-                            "line": 57,
+                            "line": 55,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -66,7 +66,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "rememberInfo",
-                            "line": 64,
+                            "line": 62,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -74,7 +74,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "logResult",
-                            "line": 71,
+                            "line": 69,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -82,7 +82,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "parseIntOrZero",
-                            "line": 77,
+                            "line": 75,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -90,7 +90,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "parseDateTime",
-                            "line": 82,
+                            "line": 80,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -98,7 +98,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "parseOptionalDateTime",
-                            "line": 87,
+                            "line": 85,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -106,7 +106,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "parseDate",
-                            "line": 95,
+                            "line": 93,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -114,7 +114,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "maskSecret",
-                            "line": 100,
+                            "line": 98,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -122,7 +122,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "jsonText",
-                            "line": 108,
+                            "line": 106,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -130,7 +130,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "describePerson",
-                            "line": 116,
+                            "line": 114,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -138,7 +138,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "describeDevice",
-                            "line": 123,
+                            "line": 121,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -146,7 +146,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "describeRecord",
-                            "line": 130,
+                            "line": 128,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -154,7 +154,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "describeFaceData",
-                            "line": 139,
+                            "line": 137,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -162,7 +162,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "refreshPersons",
-                            "line": 149,
+                            "line": 147,
                             "message": "Cannot access value for name dataService"
                         },
                         {
@@ -170,7 +170,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "refreshDevices",
-                            "line": 154,
+                            "line": 152,
                             "message": "Cannot access value for name dataService"
                         },
                         {
@@ -178,7 +178,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "refreshFaces",
-                            "line": 159,
+                            "line": 157,
                             "message": "Cannot access value for name dataService"
                         },
                         {
@@ -258,7 +258,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "onCompleted",
-                            "line": 164,
+                            "line": 162,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
                         },
                         {
@@ -266,7 +266,7 @@
                             "column": 17,
                             "durationMicroseconds": 0,
                             "functionName": "target",
-                            "line": 167,
+                            "line": 165,
                             "message": "Cannot access value for name testApi"
                         },
                         {
@@ -274,7 +274,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onLastErrorChanged",
-                            "line": 168,
+                            "line": 166,
                             "message": "Cannot access value for name testApi"
                         },
                         {
@@ -282,7 +282,7 @@
                             "column": 17,
                             "durationMicroseconds": 0,
                             "functionName": "target",
-                            "line": 174,
+                            "line": 172,
                             "message": "Cannot access value for name exportManager"
                         },
                         {
@@ -290,7 +290,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onLastErrorChanged",
-                            "line": 175,
+                            "line": 173,
                             "message": "Cannot access value for name exportManager"
                         },
                         {
@@ -298,7 +298,7 @@
                             "column": 17,
                             "durationMicroseconds": 0,
                             "functionName": "target",
-                            "line": 181,
+                            "line": 179,
                             "message": "Cannot access value for name tcpServer"
                         },
                         {
@@ -306,7 +306,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onClientConnected",
-                            "line": 182,
+                            "line": 180,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -314,7 +314,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onClientDisconnected",
-                            "line": 183,
+                            "line": 181,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -322,7 +322,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onAttendanceRecordReceived",
-                            "line": 184,
+                            "line": 182,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -330,7 +330,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onDeviceStatusReceived",
-                            "line": 185,
+                            "line": 183,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -338,7 +338,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onSyncRequested",
-                            "line": 186,
+                            "line": 184,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -346,7 +346,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onErrorOccurred",
-                            "line": 187,
+                            "line": 185,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -354,7 +354,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onIsRunningChanged",
-                            "line": 188,
+                            "line": 186,
                             "message": "Cannot access value for name tcpServer"
                         },
                         {
@@ -362,7 +362,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onClientCountChanged",
-                            "line": 189,
+                            "line": 187,
                             "message": "Cannot access value for name tcpServer"
                         },
                         {
@@ -370,7 +370,7 @@
                             "column": 17,
                             "durationMicroseconds": 0,
                             "functionName": "target",
-                            "line": 193,
+                            "line": 191,
                             "message": "Cannot access value for name dataService"
                         },
                         {
@@ -378,7 +378,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onOperationTip",
-                            "line": 194,
+                            "line": 192,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -386,7 +386,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onOperationResult",
-                            "line": 195,
+                            "line": 193,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -394,7 +394,7 @@
                             "column": 17,
                             "durationMicroseconds": 0,
                             "functionName": "target",
-                            "line": 205,
+                            "line": 203,
                             "message": "Cannot access value for name dataManager"
                         },
                         {
@@ -402,7 +402,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onConnectionStateChanged",
-                            "line": 206,
+                            "line": 204,
                             "message": "Cannot access value for name dataManager"
                         },
                         {
@@ -410,7 +410,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onErrorOccurred",
-                            "line": 207,
+                            "line": 205,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -418,7 +418,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onPersonAdded",
-                            "line": 208,
+                            "line": 206,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -426,7 +426,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onPersonDeleted",
-                            "line": 209,
+                            "line": 207,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -434,7 +434,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onAttendanceRecordAdded",
-                            "line": 210,
+                            "line": 208,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -442,7 +442,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onDeviceStatusChanged",
-                            "line": 211,
+                            "line": 209,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -450,7 +450,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onFaceDataAdded",
-                            "line": 212,
+                            "line": 210,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -458,7 +458,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onFaceDataUpdated",
-                            "line": 213,
+                            "line": 211,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -466,7 +466,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onFaceDataDeleted",
-                            "line": 214,
+                            "line": 212,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -474,7 +474,7 @@
                             "column": 22,
                             "durationMicroseconds": 0,
                             "functionName": "orientation",
-                            "line": 219,
+                            "line": 217,
                             "message": "Could not find property \"orientation\"."
                         },
                         {
@@ -482,7 +482,7 @@
                             "column": 23,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 218,
+                            "line": 216,
                             "message": "Could not find property \"fill\"."
                         },
                         {
@@ -490,7 +490,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 227,
+                            "line": 225,
                             "message": ""
                         },
                         {
@@ -498,8 +498,16 @@
                             "column": 39,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 236,
+                            "line": 234,
                             "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 39,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 241,
+                            "message": "Could not find property \"text\"."
                         },
                         {
                             "codegenResult": 2,
@@ -519,18 +527,10 @@
                         },
                         {
                             "codegenResult": 2,
-                            "column": 39,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 247,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 251,
+                            "line": 249,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -538,7 +538,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "elide",
-                            "line": 252,
+                            "line": 250,
                             "message": "Could not find property \"elide\"."
                         },
                         {
@@ -546,23 +546,23 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "text",
+                            "line": 257,
+                            "message": "Could not find property \"text\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 36,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 258,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 36,
+                            "durationMicroseconds": 0,
+                            "functionName": "elide",
                             "line": 259,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "color",
-                            "line": 260,
-                            "message": "Could not find property \"color\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "elide",
-                            "line": 261,
                             "message": "Could not find property \"elide\"."
                         },
                         {
@@ -570,7 +570,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 268,
+                            "line": 266,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -578,7 +578,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 269,
+                            "line": 267,
                             "message": "Could not find property \"color\"."
                         },
                         {
@@ -586,7 +586,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "elide",
-                            "line": 270,
+                            "line": 268,
                             "message": "Could not find property \"elide\"."
                         },
                         {
@@ -594,7 +594,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "currentIndex",
-                            "line": 291,
+                            "line": 289,
                             "message": "Cannot retrieve a non-object type by ID: tabs"
                         },
                         {
@@ -602,7 +602,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 296,
+                            "line": 294,
                             "message": ""
                         },
                         {
@@ -610,7 +610,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 303,
+                            "line": 301,
                             "message": ""
                         },
                         {
@@ -618,7 +618,7 @@
                             "column": 52,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 308,
+                            "line": 306,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -626,7 +626,7 @@
                             "column": 52,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 312,
+                            "line": 310,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -634,7 +634,7 @@
                             "column": 52,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 316,
+                            "line": 314,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -642,7 +642,7 @@
                             "column": 52,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 320,
+                            "line": 318,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -650,7 +650,7 @@
                             "column": 47,
                             "durationMicroseconds": 0,
                             "functionName": "wrapMode",
-                            "line": 335,
+                            "line": 333,
                             "message": "Could not find property \"wrapMode\"."
                         },
                         {
@@ -658,7 +658,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 333,
+                            "line": 331,
                             "message": "Could not find property \"fill\"."
                         },
                         {
@@ -666,7 +666,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 345,
+                            "line": 343,
                             "message": ""
                         },
                         {
@@ -674,7 +674,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 352,
+                            "line": 350,
                             "message": ""
                         },
                         {
@@ -682,7 +682,7 @@
                             "column": 52,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 364,
+                            "line": 362,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -690,7 +690,7 @@
                             "column": 52,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 372,
+                            "line": 370,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -698,7 +698,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 377,
+                            "line": 375,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -706,7 +706,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 386,
+                            "line": 384,
                             "message": ""
                         },
                         {
@@ -714,7 +714,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 399,
+                            "line": 397,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -722,7 +722,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 406,
+                            "line": 404,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -730,7 +730,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "wrapMode",
-                            "line": 418,
+                            "line": 416,
                             "message": "Could not find property \"wrapMode\"."
                         },
                         {
@@ -738,7 +738,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 429,
+                            "line": 427,
                             "message": ""
                         },
                         {
@@ -746,7 +746,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 436,
+                            "line": 434,
                             "message": ""
                         },
                         {
@@ -754,7 +754,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 459,
+                            "line": 457,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -762,7 +762,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 467,
+                            "line": 465,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -770,7 +770,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 475,
+                            "line": 473,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -778,7 +778,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 483,
+                            "line": 481,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -786,7 +786,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 490,
+                            "line": 488,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -794,7 +794,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 497,
+                            "line": 495,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -802,7 +802,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 502,
+                            "line": 500,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -810,7 +810,7 @@
                             "column": 44,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 513,
+                            "line": 511,
                             "message": "Cannot access value for name personModel"
                         },
                         {
@@ -818,7 +818,7 @@
                             "column": 48,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 516,
+                            "line": 514,
                             "message": "Could not find property \"width\"."
                         },
                         {
@@ -826,7 +826,7 @@
                             "column": 47,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 517,
+                            "line": 515,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -834,7 +834,7 @@
                             "column": 52,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 518,
+                            "line": 516,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -842,7 +842,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 535,
+                            "line": 533,
                             "message": ""
                         },
                         {
@@ -850,7 +850,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 542,
+                            "line": 540,
                             "message": ""
                         },
                         {
@@ -858,7 +858,7 @@
                             "column": 52,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 558,
+                            "line": 556,
                             "message": "Could not find property \"model\"."
                         },
                         {
@@ -866,7 +866,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 567,
+                            "line": 565,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -874,7 +874,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 575,
+                            "line": 573,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -882,7 +882,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 583,
+                            "line": 581,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -890,7 +890,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 590,
+                            "line": 588,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -898,7 +898,7 @@
                             "column": 52,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 605,
+                            "line": 603,
                             "message": "Could not find property \"model\"."
                         },
                         {
@@ -906,7 +906,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 610,
+                            "line": 608,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -914,7 +914,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 615,
+                            "line": 613,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -922,7 +922,7 @@
                             "column": 44,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 626,
+                            "line": 624,
                             "message": "Cannot access value for name deviceModel"
                         },
                         {
@@ -930,7 +930,7 @@
                             "column": 48,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 629,
+                            "line": 627,
                             "message": "Could not find property \"width\"."
                         },
                         {
@@ -938,7 +938,7 @@
                             "column": 47,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 630,
+                            "line": 628,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -946,7 +946,7 @@
                             "column": 52,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 631,
+                            "line": 629,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -954,7 +954,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 647,
+                            "line": 645,
                             "message": ""
                         },
                         {
@@ -962,7 +962,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 654,
+                            "line": 652,
                             "message": ""
                         },
                         {
@@ -970,7 +970,7 @@
                             "column": 84,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 664,
+                            "line": 662,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -978,7 +978,7 @@
                             "column": 81,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 668,
+                            "line": 666,
                             "message": "Could not find property \"model\"."
                         },
                         {
@@ -986,7 +986,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 685,
+                            "line": 683,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -994,7 +994,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 697,
+                            "line": 695,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1002,7 +1002,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 704,
+                            "line": 702,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1010,7 +1010,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 711,
+                            "line": 709,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1018,7 +1018,7 @@
                             "column": 44,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 735,
+                            "line": 733,
                             "message": "Cannot access value for name attendanceModel"
                         },
                         {
@@ -1026,7 +1026,7 @@
                             "column": 48,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 738,
+                            "line": 736,
                             "message": "Could not find property \"width\"."
                         },
                         {
@@ -1034,7 +1034,7 @@
                             "column": 47,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 739,
+                            "line": 737,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -1042,7 +1042,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 749,
+                            "line": 747,
                             "message": ""
                         },
                         {
@@ -1050,7 +1050,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 756,
+                            "line": 754,
                             "message": ""
                         },
                         {
@@ -1058,7 +1058,7 @@
                             "column": 103,
                             "durationMicroseconds": 0,
                             "functionName": "echoMode",
-                            "line": 764,
+                            "line": 762,
                             "message": "Could not find property \"echoMode\"."
                         },
                         {
@@ -1066,7 +1066,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 767,
+                            "line": 765,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1074,7 +1074,7 @@
                             "column": 55,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 773,
+                            "line": 771,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -1082,7 +1082,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 781,
+                            "line": 779,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1090,31 +1090,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 790,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 803,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 812,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 56,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 823,
+                            "line": 788,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1122,23 +1098,7 @@
                             "column": 55,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 828,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 55,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 829,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 55,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 830,
+                            "line": 794,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -1146,7 +1106,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 843,
+                            "line": 805,
                             "message": ""
                         },
                         {
@@ -1154,7 +1114,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 852,
+                            "line": 814,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1162,7 +1122,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 860,
+                            "line": 822,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1170,7 +1130,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 868,
+                            "line": 830,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1178,7 +1138,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 876,
+                            "line": 838,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1186,7 +1146,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 883,
+                            "line": 845,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1194,7 +1154,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 919,
+                            "line": 881,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1202,7 +1162,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 932,
+                            "line": 894,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -1210,7 +1170,7 @@
                             "column": 48,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 938,
+                            "line": 900,
                             "message": "Cannot access value for name faceModel"
                         },
                         {
@@ -1218,7 +1178,7 @@
                             "column": 52,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 941,
+                            "line": 903,
                             "message": "Could not find property \"width\"."
                         },
                         {
@@ -1226,7 +1186,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 942,
+                            "line": 904,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -1234,7 +1194,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 943,
+                            "line": 905,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1242,7 +1202,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 954,
+                            "line": 916,
                             "message": ""
                         },
                         {
@@ -1250,7 +1210,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 961,
+                            "line": 923,
                             "message": ""
                         },
                         {
@@ -1258,7 +1218,7 @@
                             "column": 52,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 968,
+                            "line": 930,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1266,7 +1226,7 @@
                             "column": 52,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 975,
+                            "line": 937,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1274,7 +1234,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 988,
+                            "line": 950,
                             "message": ""
                         },
                         {
@@ -1282,7 +1242,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 1008,
+                            "line": 970,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1290,7 +1250,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 1015,
+                            "line": 977,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1298,7 +1258,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 1022,
+                            "line": 984,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1306,7 +1266,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 1037,
+                            "line": 999,
                             "message": ""
                         },
                         {
@@ -1314,7 +1274,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 1044,
+                            "line": 1006,
                             "message": ""
                         },
                         {
@@ -1322,7 +1282,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 1065,
+                            "line": 1027,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1330,7 +1290,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 1073,
+                            "line": 1035,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1338,7 +1298,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 1081,
+                            "line": 1043,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1346,7 +1306,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "wrapMode",
-                            "line": 1095,
+                            "line": 1057,
                             "message": "Could not find property \"wrapMode\"."
                         },
                         {
@@ -1354,7 +1314,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 1112,
+                            "line": 1074,
                             "message": ""
                         },
                         {
@@ -1362,7 +1322,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 1120,
+                            "line": 1082,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1370,7 +1330,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 1124,
+                            "line": 1086,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1378,7 +1338,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "wrapMode",
-                            "line": 1134,
+                            "line": 1096,
                             "message": "Could not find property \"wrapMode\"."
                         }
                     ],

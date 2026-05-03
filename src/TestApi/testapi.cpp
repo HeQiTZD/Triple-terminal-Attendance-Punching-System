@@ -71,32 +71,6 @@ QString TestApi::extractFeatureBase64(const QString& imagePath)
     return QString::fromLatin1(feature.toBase64());
 }
 
-double TestApi::compareFeatureBase64(const QString& f1Base64, const QString& f2Base64)
-{
-    if (!m_faceDataManager) {
-        setError("FaceDataManager 未初始化");
-        return -1.0;
-    }
-    if (f1Base64.isEmpty() || f2Base64.isEmpty()) {
-        setError("特征不能为空");
-        return -1.0;
-    }
-    const QByteArray f1 = QByteArray::fromBase64(f1Base64.toLatin1());
-    const QByteArray f2 = QByteArray::fromBase64(f2Base64.toLatin1());
-    if (f1.isEmpty() || f2.isEmpty()) {
-        setError("Base64 解码失败");
-        return -1.0;
-    }
-    float similarity = 0.0f;
-    const bool ok = m_faceDataManager->compareFaceFeature(f1, f2, similarity);
-    if (!ok) {
-        setError("特征对比失败（请查看运行日志）");
-        return -1.0;
-    }
-    setError(QString());
-    return static_cast<double>(similarity);
-}
-
 QString TestApi::selectImageFile()
 {
     if (!m_faceDataManager) {

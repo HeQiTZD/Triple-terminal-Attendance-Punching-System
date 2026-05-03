@@ -39,23 +39,14 @@ public:
     void releaseEngine();
     bool isEngineInitialized() const;
 
-    // 人脸特征提取与对比
+    // 人脸特征提取
     QVector<FaceInfo> detectFace(const QImage &image);
     FaceFeature extractFeature(const QImage &image, const FaceInfo &faceInfo);
-    float compareFeatures(const FaceFeature &feature1, const FaceFeature &feature2) const;
 
     bool extractFaceFeature(const QString &imagePath, QByteArray &featureVector);
-    bool compareFaceFeature(const QByteArray &feature1, const QByteArray &feature2, float &similarity) const;
-    bool isSimilarityAboveThreshold(float similarity, float threshold = 0.8f) const;
-    bool shouldUpdateFaceFeature(const QByteArray &newFeature, const QByteArray &oldFeature) const;
 
     QString getErrorMessage(int errCode) const;
 
-    /**
-     * @brief 打开文件夹选择图片，返回选中的图片路径（实现见 cpp，不包含 QFileDialog 头文件）
-     * @param parent 父窗口指针
-     * @return 选中的图片路径，未选择返回空字符串
-     */
     QString selectImageFile(QWidget *parent = nullptr);
 
 signals:

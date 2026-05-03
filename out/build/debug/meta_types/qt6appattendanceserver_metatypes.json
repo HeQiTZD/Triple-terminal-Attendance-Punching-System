@@ -1256,25 +1256,8 @@
                     },
                     {
                         "access": "public",
-                        "arguments": [
-                            {
-                                "name": "f1Base64",
-                                "type": "QString"
-                            },
-                            {
-                                "name": "f2Base64",
-                                "type": "QString"
-                            }
-                        ],
                         "index": 3,
                         "lineNumber": 30,
-                        "name": "compareFeatureBase64",
-                        "returnType": "double"
-                    },
-                    {
-                        "access": "public",
-                        "index": 4,
-                        "lineNumber": 31,
                         "name": "selectImageFile",
                         "returnType": "QString"
                     },
@@ -1286,8 +1269,8 @@
                                 "type": "QString"
                             }
                         ],
-                        "index": 5,
-                        "lineNumber": 33,
+                        "index": 4,
+                        "lineNumber": 32,
                         "name": "requestPersonSync",
                         "returnType": "void"
                     },
@@ -1303,8 +1286,8 @@
                                 "type": "QString"
                             }
                         ],
-                        "index": 6,
-                        "lineNumber": 34,
+                        "index": 5,
+                        "lineNumber": 33,
                         "name": "sendToClientJson",
                         "returnType": "bool"
                     },
@@ -1316,9 +1299,26 @@
                                 "type": "QString"
                             }
                         ],
+                        "index": 6,
+                        "lineNumber": 34,
+                        "name": "broadcastJson",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "employeeId",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "featureBase64",
+                                "type": "QString"
+                            }
+                        ],
                         "index": 7,
                         "lineNumber": 35,
-                        "name": "broadcastJson",
+                        "name": "addFaceDataBase64",
                         "returnType": "bool"
                     },
                     {
@@ -1335,23 +1335,6 @@
                         ],
                         "index": 8,
                         "lineNumber": 36,
-                        "name": "addFaceDataBase64",
-                        "returnType": "bool"
-                    },
-                    {
-                        "access": "public",
-                        "arguments": [
-                            {
-                                "name": "employeeId",
-                                "type": "QString"
-                            },
-                            {
-                                "name": "featureBase64",
-                                "type": "QString"
-                            }
-                        ],
-                        "index": 9,
-                        "lineNumber": 37,
                         "name": "updateFaceDataBase64",
                         "returnType": "bool"
                     },
@@ -1363,8 +1346,8 @@
                                 "type": "QString"
                             }
                         ],
-                        "index": 10,
-                        "lineNumber": 38,
+                        "index": 9,
+                        "lineNumber": 37,
                         "name": "deleteFaceDataByEmployeeId",
                         "returnType": "bool"
                     }
@@ -1392,7 +1375,7 @@
                     {
                         "access": "public",
                         "index": 0,
-                        "lineNumber": 41,
+                        "lineNumber": 40,
                         "name": "lastErrorChanged",
                         "returnType": "void"
                     }
@@ -1419,14 +1402,14 @@
                     {
                         "access": "public",
                         "index": 0,
-                        "lineNumber": 62,
+                        "lineNumber": 53,
                         "name": "engineInitialized",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 1,
-                        "lineNumber": 63,
+                        "lineNumber": 54,
                         "name": "engineReleased",
                         "returnType": "void"
                     },
@@ -1439,7 +1422,7 @@
                             }
                         ],
                         "index": 2,
-                        "lineNumber": 64,
+                        "lineNumber": 55,
                         "name": "featureExtracted",
                         "returnType": "void"
                     },
@@ -1452,7 +1435,7 @@
                             }
                         ],
                         "index": 3,
-                        "lineNumber": 65,
+                        "lineNumber": 56,
                         "name": "errorOccurred",
                         "returnType": "void"
                     }
@@ -1461,7 +1444,7 @@
                     {
                         "access": "private",
                         "index": 4,
-                        "lineNumber": 68,
+                        "lineNumber": 59,
                         "name": "onEngineReleased",
                         "returnType": "void"
                     },
@@ -1474,7 +1457,7 @@
                             }
                         ],
                         "index": 5,
-                        "lineNumber": 69,
+                        "lineNumber": 60,
                         "name": "onFeatureExtracted",
                         "returnType": "void"
                     },
@@ -1487,7 +1470,7 @@
                             }
                         ],
                         "index": 6,
-                        "lineNumber": 70,
+                        "lineNumber": 61,
                         "name": "onErrorOccurred",
                         "returnType": "void"
                     }

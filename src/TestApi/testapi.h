@@ -27,7 +27,6 @@ public:
 
     Q_INVOKABLE bool initFaceEngine(const QString& appId, const QString& sdkKey);
     Q_INVOKABLE QString extractFeatureBase64(const QString& imagePath);
-    Q_INVOKABLE double compareFeatureBase64(const QString& f1Base64, const QString& f2Base64);
     Q_INVOKABLE QString selectImageFile();
 
     Q_INVOKABLE void requestPersonSync(const QString& deviceId);

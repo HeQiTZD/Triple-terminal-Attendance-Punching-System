@@ -9,14 +9,14 @@
                 {
                     "access": "public",
                     "index": 0,
-                    "lineNumber": 62,
+                    "lineNumber": 53,
                     "name": "engineInitialized",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
                     "index": 1,
-                    "lineNumber": 63,
+                    "lineNumber": 54,
                     "name": "engineReleased",
                     "returnType": "void"
                 },
@@ -29,7 +29,7 @@
                         }
                     ],
                     "index": 2,
-                    "lineNumber": 64,
+                    "lineNumber": 55,
                     "name": "featureExtracted",
                     "returnType": "void"
                 },
@@ -42,7 +42,7 @@
                         }
                     ],
                     "index": 3,
-                    "lineNumber": 65,
+                    "lineNumber": 56,
                     "name": "errorOccurred",
                     "returnType": "void"
                 }
@@ -51,7 +51,7 @@
                 {
                     "access": "private",
                     "index": 4,
-                    "lineNumber": 68,
+                    "lineNumber": 59,
                     "name": "onEngineReleased",
                     "returnType": "void"
                 },
@@ -64,7 +64,7 @@
                         }
                     ],
                     "index": 5,
-                    "lineNumber": 69,
+                    "lineNumber": 60,
                     "name": "onFeatureExtracted",
                     "returnType": "void"
                 },
@@ -77,7 +77,7 @@
                         }
                     ],
                     "index": 6,
-                    "lineNumber": 70,
+                    "lineNumber": 61,
                     "name": "onErrorOccurred",
                     "returnType": "void"
                 }

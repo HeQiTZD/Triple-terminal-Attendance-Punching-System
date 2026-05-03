@@ -185,43 +185,6 @@ FaceDataManager::FaceFeature FaceDataManager::extractFeature(const QImage &image
 }
 
 /**
- * @brief 对比两个人脸特征的相似度
- * @param feature1 第一个人脸特征
- * @param feature2 第二个人脸特征
- * @return 相似度分数（0.0-1.0）
- */
-float FaceDataManager::compareFeatures(const FaceFeature &feature1, const FaceFeature &feature2) const
-{
-    if (!m_initialized) {
-        qWarning() << "引擎未初始化";
-        return 0.0f;
-    }
-    if (feature1.size == 0 || feature2.size == 0) {
-        qWarning() << "特征数据为空";
-        return 0.0f;
-    }
-    ASF_FaceFeature sdkFeature1 = {0};
-    sdkFeature1.feature = reinterpret_cast<MByte*>(const_cast<char*>(feature1.data.data()));
-    sdkFeature1.featureSize = feature1.size;
-    ASF_FaceFeature sdkFeature2 = {0};
-    sdkFeature2.feature = reinterpret_cast<MByte*>(const_cast<char*>(feature2.data.data()));
-    sdkFeature2.featureSize = feature2.size;
-    MFloat confidence = 0.0f;
-    MRESULT result = ASFFaceFeatureCompare(
-        m_engine,
-        &sdkFeature1,
-        &sdkFeature2,
-        &confidence,
-        ASF_LIFE_PHOTO
-    );
-    if (result != MOK) {
-        qWarning() << "特征对比失败，错误码：" << result;
-        return 0.0f;
-    }
-    return confidence;
-}
-
-/**
  * @brief 从图片路径提取最大人脸特征
  * @param imagePath 图片路径
  * @param featureVector 输出特征数据
@@ -261,48 +224,6 @@ bool FaceDataManager::extractFaceFeature(const QString &imagePath, QByteArray &f
     featureVector = feat.data;
     emit featureExtracted(true);
     return true;
-}
-
-/**
- * @brief 对比两个人脸特征的相似度
- * @param feature1 特征1
- * @param feature2 特征2
- * @param similarity 输出相似度
- * @return 对比成功返回true
- */
-bool FaceDataManager::compareFaceFeature(const QByteArray &feature1, const QByteArray &feature2, float &similarity) const
-{
-    FaceFeature f1, f2;
-    f1.data = feature1;
-    f1.size = feature1.size();
-    f2.data = feature2;
-    f2.size = feature2.size();
-    similarity = compareFeatures(f1, f2);
-    return similarity > 0.0f;
-}
-
-/**
- * @brief 判断相似度是否超过阈值
- * @param similarity 相似度
- * @param threshold 阈值（默认0.8）
- * @return 超过阈值返回true
- */
-bool FaceDataManager::isSimilarityAboveThreshold(float similarity, float threshold) const
-{
-    return similarity >= threshold;
-}
-
-/**
- * @brief 判断是否应该更新人脸特征（相似度>=0.8）
- * @param newFeature 新特征
- * @param oldFeature 旧特征
- * @return 应该更新返回true
- */
-bool FaceDataManager::shouldUpdateFaceFeature(const QByteArray &newFeature, const QByteArray &oldFeature) const
-{
-    float sim = 0.0f;
-    compareFaceFeature(newFeature, oldFeature, sim);
-    return isSimilarityAboveThreshold(sim, 0.8f);
 }
 
 /**

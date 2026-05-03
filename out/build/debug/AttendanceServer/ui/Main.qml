@@ -34,8 +34,6 @@ ApplicationWindow {
     property string lastInfo: ""
     property bool faceEngineOk: false
     property bool feature1Ok: false
-    property bool feature2Ok: false
-    property real similarityValue: -1
     property var personModel: []
     property var deviceModel: []
     property var attendanceModel: []
@@ -793,46 +791,10 @@ ApplicationWindow {
                                                 logResult("提取特征 1", feature1Ok, feature1Ok ? ("长度=" + feature1Text.text.length) : testApi.lastError)
                                             }
                                         }
-                                    }
-
-                                    RowLayout {
-                                        Label { text: qsTr("图片 2") }
-                                        TextField { id: image2Path; Layout.fillWidth: true }
-                                        Button {
-                                            text: qsTr("选择")
-                                            onClicked: {
-                                                const path = testApi.selectImageFile()
-                                                if (path.length)
-                                                    image2Path.text = path
-                                                logResult("选择图片 2", path.length > 0, path)
-                                            }
-                                        }
-                                        Button {
-                                            text: qsTr("提取特征 2")
-                                            onClicked: {
-                                                feature2Text.text = testApi.extractFeatureBase64(image2Path.text)
-                                                feature2Ok = feature2Text.text.length > 0
-                                                logResult("提取特征 2", feature2Ok, feature2Ok ? ("长度=" + feature2Text.text.length) : testApi.lastError)
-                                            }
-                                        }
-                                    }
-
-                                    RowLayout {
-                                        Button {
-                                            text: qsTr("比对相似度")
-                                            onClicked: {
-                                                similarityValue = testApi.compareFeatureBase64(feature1Text.text, feature2Text.text)
-                                                logResult("比对相似度", similarityValue >= 0, similarityValue >= 0 ? ("相似度=" + similarityValue) : testApi.lastError)
-                                            }
-                                        }
-                                        Label { text: qsTr("特征1: ") + (feature1Ok ? qsTr("已提取") : qsTr("未提取")) }
-                                        Label { text: qsTr("特征2: ") + (feature2Ok ? qsTr("已提取") : qsTr("未提取")) }
-                                        Label { text: qsTr("相似度: ") + (similarityValue >= 0 ? String(similarityValue) : qsTr("暂无")) }
-                                        Item { Layout.fillWidth: true }
+                                        Label { text: qsTr("特征: ") + (feature1Ok ? qsTr("已提取") : qsTr("未提取")) }
                                     }
 
                                     TextArea { id: feature1Text; visible: false }
-                                    TextArea { id: feature2Text; visible: false }
                                 }
                             }
 
