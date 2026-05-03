@@ -74,6 +74,11 @@ bool DataManager::addPerson(const QString &name, const QString &employeeId, cons
         return false;
     }
 
+    if (!m_db.transaction()) {
+        emit operationResult(false, QString("开启事务失败：%1").arg(m_db.lastError().text()));
+        return false;
+    }
+
     QSqlQuery query(m_db);
     query.prepare(
         "INSERT INTO Person (name, employee_id, department, position) "
@@ -85,7 +90,8 @@ bool DataManager::addPerson(const QString &name, const QString &employeeId, cons
     query.bindValue(":department",department);
     query.bindValue(":position",position);
 
-    if(!query.exec()){
+    if (!query.exec()) {
+        m_db.rollback();
         // MySQL 1062: Duplicate entry，给出更友好的提示
         if (query.lastError().nativeErrorCode() == QStringLiteral("1062")) {
             emit operationResult(false, QStringLiteral("员工工号已存在：%1").arg(employeeId));
@@ -95,8 +101,13 @@ bool DataManager::addPerson(const QString &name, const QString &employeeId, cons
         return false;
     }
 
-    emit operationResult(true, "人员添加成功");
+    if (!m_db.commit()) {
+        m_db.rollback();
+        emit operationResult(false, QString("提交事务失败：%1").arg(m_db.lastError().text()));
+        return false;
+    }
 
+    emit operationResult(true, "人员添加成功");
     return true;
 }
 
@@ -107,53 +118,62 @@ bool DataManager::updatedPerson(const QString &employeeId, const QVariantMap &up
         return false;
     }
 
-    // 先找到对应的ID（按 employee_id 定位）
-    QSqlQuery selectQuery(m_db);
-    selectQuery.prepare("SELECT id FROM Person WHERE employee_id = :employee_id");
-    selectQuery.bindValue(":employee_id",employeeId);
-    if(!selectQuery.exec()){
-        emit operationResult(false, QString("查询人员失败：%1").arg(selectQuery.lastError().text()));
-        return false;
-    }
-
-    if(!selectQuery.next()){
-        emit operationTip("该员工不存在，请确认信息填写是否正确");
-        return false;
-    }
-
-    int targetId = selectQuery.value("id").toInt();
-
-    // 构建 SQL 更新语句（字段非空过滤由 DataService 完成，这里仅做白名单保护）
-    QSqlQuery query(m_db);
+    // 构建 SQL 更新片段（字段非空过滤由 DataService 完成，这里仅做白名单保护）
     QString setClause;
     QList<QPair<QString,QVariant>> bindValues;
-
     static const QSet<QString> allowedFields = {"name","department","position"};
-
-    for(auto it = updates.begin();it != updates.end();++it){
+    for (auto it = updates.begin(); it != updates.end(); ++it) {
         const QString &field = it.key();
-        if (!allowedFields.contains(field)) continue;
-        if(!setClause.isEmpty()) setClause += ", ";
-        setClause += field +"=:_" + field;
+        if (!allowedFields.contains(field))
+            continue;
+        if (!setClause.isEmpty())
+            setClause += ", ";
+        setClause += field + "=:_" + field;
         bindValues.append(qMakePair("_" + field, it.value()));
     }
-
     if (setClause.isEmpty()) {
         emit operationResult(false, "没有可更新的字段");
         return false;
     }
 
-    QString sql = QString("UPDATE Person SET %1 WHERE id = :id").arg(setClause);
-    query.prepare(sql);
-
-    for(const auto &pair:bindValues){
-        query.bindValue(pair.first,pair.second);
-    }
-    query.bindValue(":id",targetId);
-
-    if(!query.exec()){
-        emit operationResult(false, QString("修改人员失败：%1").arg(query.lastError().text()));
+    if (!m_db.transaction()) {
+        emit operationResult(false, QString("开启事务失败：%1").arg(m_db.lastError().text()));
         return false;
+    }
+
+    auto rollbackWithError = [&](const QString &msg) -> bool {
+        m_db.rollback();
+        emit operationResult(false, msg);
+        return false;
+    };
+
+    QSqlQuery selectQuery(m_db);
+    selectQuery.prepare("SELECT id FROM Person WHERE employee_id = :employee_id FOR UPDATE");
+    selectQuery.bindValue(":employee_id", employeeId);
+    if (!selectQuery.exec()) {
+        return rollbackWithError(QString("查询人员失败：%1").arg(selectQuery.lastError().text()));
+    }
+    if (!selectQuery.next()) {
+        m_db.rollback();
+        emit operationTip("该员工不存在，请确认信息填写是否正确");
+        return false;
+    }
+
+    const int targetId = selectQuery.value("id").toInt();
+
+    QSqlQuery query(m_db);
+    const QString sql = QString("UPDATE Person SET %1 WHERE id = :id").arg(setClause);
+    query.prepare(sql);
+    for (const auto &pair : bindValues) {
+        query.bindValue(pair.first, pair.second);
+    }
+    query.bindValue(":id", targetId);
+
+    if (!query.exec()) {
+        return rollbackWithError(QString("修改人员失败：%1").arg(query.lastError().text()));
+    }
+    if (!m_db.commit()) {
+        return rollbackWithError(QString("提交事务失败：%1").arg(m_db.lastError().text()));
     }
 
     emit operationResult(true, "修改成功");
@@ -408,6 +428,11 @@ bool DataManager::addAttendanceRecord(const QString &employeeId, const QDateTime
         return false;
     }
 
+    if (!m_db.transaction()) {
+        emit operationResult(false, QString("开启事务失败：%1").arg(m_db.lastError().text()));
+        return false;
+    }
+
     QSqlQuery query(m_db);
     query.prepare("INSERT INTO AttendanceRecord (employee_id, check_time, device_id, status) "
                   "VALUES (:employee_id, :check_time, :device_id, :status)");
@@ -417,11 +442,19 @@ bool DataManager::addAttendanceRecord(const QString &employeeId, const QDateTime
     query.bindValue(":status", status);
 
     if (!query.exec()) {
+        m_db.rollback();
         emit operationResult(false, QString("新增考勤记录失败：%1").arg(query.lastError().text()));
         return false;
     }
 
-    int newId = query.lastInsertId().toInt();
+    const int newId = query.lastInsertId().toInt();
+
+    if (!m_db.commit()) {
+        m_db.rollback();
+        emit operationResult(false, QString("提交事务失败：%1").arg(m_db.lastError().text()));
+        return false;
+    }
+
     emit attendanceRecordAdded(newId);
     return true;
 }
@@ -529,6 +562,11 @@ bool DataManager::addOrUpdateDevice(const QString &deviceId, const QString &devi
         return false;
     }
 
+    if (!m_db.transaction()) {
+        emit operationResult(false, QString("开启事务失败：%1").arg(m_db.lastError().text()));
+        return false;
+    }
+
     // 用 INSERT ... ON DUPLICATE KEY UPDATE 单语句完成新增/更新，避免 TOCTOU 竞态与 QSqlQuery 复用问题
     QSqlQuery query(m_db);
     query.prepare(
@@ -546,7 +584,14 @@ bool DataManager::addOrUpdateDevice(const QString &deviceId, const QString &devi
     query.bindValue(":status", status);
 
     if (!query.exec()) {
+        m_db.rollback();
         emit operationResult(false, QString("新增/更新设备失败：%1").arg(query.lastError().text()));
+        return false;
+    }
+
+    if (!m_db.commit()) {
+        m_db.rollback();
+        emit operationResult(false, QString("提交事务失败：%1").arg(m_db.lastError().text()));
         return false;
     }
 
@@ -561,18 +606,31 @@ bool DataManager::updateDeviceStatus(const QString &deviceId, const QString &sta
         return false;
     }
 
+    if (!m_db.transaction()) {
+        emit operationResult(false, QString("开启事务失败：%1").arg(m_db.lastError().text()));
+        return false;
+    }
+
     QSqlQuery query(m_db);
     query.prepare("UPDATE Device SET status=:status, last_online=NOW() WHERE device_id=:device_id");
     query.bindValue(":status", status);
     query.bindValue(":device_id", deviceId);
 
     if (!query.exec()) {
+        m_db.rollback();
         emit operationResult(false, QString("更新设备状态失败：%1").arg(query.lastError().text()));
         return false;
     }
 
     if (query.numRowsAffected() == 0) {
+        m_db.rollback();
         emit operationTip(QStringLiteral("设备不存在：%1").arg(deviceId));
+        return false;
+    }
+
+    if (!m_db.commit()) {
+        m_db.rollback();
+        emit operationResult(false, QString("提交事务失败：%1").arg(m_db.lastError().text()));
         return false;
     }
 

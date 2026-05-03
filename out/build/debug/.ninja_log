@@ -95,3 +95,17 @@
 2370	4836	7994855373386359	CMakeFiles/appAttendanceServer.dir/src/ExportManager/exportmanager.cpp.obj	57878b4db9af6b1c
 2306	5687	7994855372758526	CMakeFiles/appAttendanceServer.dir/appAttendanceServer_autogen/mocs_compilation.cpp.obj	35157d454af09d57
 5732	6481	7994855407006825	appAttendanceServer.exe	6f6ffd1ff8ce4ad3
+84	437	7994869476076228	appAttendanceServer_autogen/timestamp	4838f70d3dd67cbd
+84	437	7994869476076228	appAttendanceServer_autogen/mocs_compilation.cpp	4838f70d3dd67cbd
+84	437	7994869476076228	E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/timestamp	4838f70d3dd67cbd
+84	437	7994869476076228	E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/mocs_compilation.cpp	4838f70d3dd67cbd
+438	478	7994869479962744	meta_types/appAttendanceServer_json_file_list.txt	8c7763c6386f75eb
+438	478	7994869479962744	meta_types/appAttendanceServer_json_file_list.txt.timestamp	8c7763c6386f75eb
+438	478	7994869479962744	E:/project/AttendanceServer/out/build/debug/meta_types/appAttendanceServer_json_file_list.txt	8c7763c6386f75eb
+438	478	7994869479962744	E:/project/AttendanceServer/out/build/debug/meta_types/appAttendanceServer_json_file_list.txt.timestamp	8c7763c6386f75eb
+478	581	7994869480012733	meta_types/qt6appattendanceserver_metatypes.json.gen	5800f6387e35fbed
+478	581	7994869480012733	meta_types/qt6appattendanceserver_metatypes.json	5800f6387e35fbed
+478	581	7994869480012733	E:/project/AttendanceServer/out/build/debug/meta_types/qt6appattendanceserver_metatypes.json.gen	5800f6387e35fbed
+478	581	7994869480012733	E:/project/AttendanceServer/out/build/debug/meta_types/qt6appattendanceserver_metatypes.json	5800f6387e35fbed
+581	2328	7994869481046595	CMakeFiles/appAttendanceServer.dir/src/DataManager/datamanager.cpp.obj	b88d8c6110e061c8
+2329	2794	7994869498519109	appAttendanceServer.exe	6f6ffd1ff8ce4ad3
