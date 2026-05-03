@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 0,
                             "column": 18,
-                            "durationMicroseconds": 4000,
+                            "durationMicroseconds": 5000,
                             "functionName": "spacing",
                             "line": 13,
                             "message": ""
@@ -46,19 +46,43 @@
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
-                            "codegenResult": 0,
-                            "column": 24,
+                            "codegenResult": 2,
+                            "column": 42,
                             "durationMicroseconds": 0,
-                            "functionName": "width",
-                            "line": 41,
-                            "message": ""
+                            "functionName": "policy",
+                            "line": 40,
+                            "message": "Could not find property \"policy\"."
                         },
                         {
                             "codegenResult": 0,
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "spacing",
-                            "line": 42,
+                            "line": 45,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "left",
+                            "line": 43,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 32,
+                            "durationMicroseconds": 0,
+                            "functionName": "right",
+                            "line": 44,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 32,
+                            "durationMicroseconds": 0,
+                            "functionName": "width",
+                            "line": 52,
                             "message": ""
                         },
                         {
@@ -66,7 +90,7 @@
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "rowSpacing",
-                            "line": 51,
+                            "line": 54,
                             "message": ""
                         },
                         {
@@ -74,32 +98,8 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "columnSpacing",
-                            "line": 52,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 39,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 49,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 47,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
                             "line": 55,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 106,
-                            "durationMicroseconds": 0,
-                            "functionName": "onEditingFinished",
-                            "line": 55,
-                            "message": "Could not find signal \"editingFinished\"."
+                            "message": ""
                         },
                         {
                             "codegenResult": 2,
@@ -135,10 +135,26 @@
                         },
                         {
                             "codegenResult": 2,
+                            "column": 47,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 64,
+                            "message": "Could not find property \"text\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 106,
+                            "durationMicroseconds": 0,
+                            "functionName": "onEditingFinished",
+                            "line": 64,
+                            "message": "Could not find signal \"editingFinished\"."
+                        },
+                        {
+                            "codegenResult": 2,
                             "column": 39,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 65,
+                            "line": 68,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -146,7 +162,7 @@
                             "column": 43,
                             "durationMicroseconds": 0,
                             "functionName": "echoMode",
-                            "line": 66,
+                            "line": 69,
                             "message": "Could not find property \"echoMode\"."
                         },
                         {
@@ -154,15 +170,23 @@
                             "column": 52,
                             "durationMicroseconds": 0,
                             "functionName": "onEditingFinished",
-                            "line": 67,
+                            "line": 70,
                             "message": "Could not find signal \"editingFinished\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 32,
+                            "durationMicroseconds": 0,
+                            "functionName": "width",
+                            "line": 81,
+                            "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "rowSpacing",
-                            "line": 80,
+                            "line": 83,
                             "message": ""
                         },
                         {
@@ -170,15 +194,7 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "columnSpacing",
-                            "line": 81,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 39,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 78,
+                            "line": 84,
                             "message": ""
                         },
                         {
@@ -186,7 +202,7 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "value",
-                            "line": 86,
+                            "line": 89,
                             "message": "Could not find property \"value\"."
                         },
                         {
@@ -194,7 +210,7 @@
                             "column": 50,
                             "durationMicroseconds": 0,
                             "functionName": "onValueModified",
-                            "line": 88,
+                            "line": 91,
                             "message": "Could not find signal \"valueModified\"."
                         },
                         {
@@ -202,7 +218,7 @@
                             "column": 47,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 92,
+                            "line": 95,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -210,15 +226,23 @@
                             "column": 115,
                             "durationMicroseconds": 0,
                             "functionName": "onEditingFinished",
-                            "line": 92,
+                            "line": 95,
                             "message": "Could not find signal \"editingFinished\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 32,
+                            "durationMicroseconds": 0,
+                            "functionName": "width",
+                            "line": 105,
+                            "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "rowSpacing",
-                            "line": 104,
+                            "line": 107,
                             "message": ""
                         },
                         {
@@ -226,15 +250,7 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "columnSpacing",
-                            "line": 105,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 39,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 102,
+                            "line": 108,
                             "message": ""
                         },
                         {
@@ -242,7 +258,7 @@
                             "column": 47,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 108,
+                            "line": 111,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -250,7 +266,7 @@
                             "column": 109,
                             "durationMicroseconds": 0,
                             "functionName": "onEditingFinished",
-                            "line": 108,
+                            "line": 111,
                             "message": "Could not find signal \"editingFinished\"."
                         },
                         {
@@ -258,7 +274,7 @@
                             "column": 39,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 112,
+                            "line": 115,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -266,7 +282,7 @@
                             "column": 43,
                             "durationMicroseconds": 0,
                             "functionName": "echoMode",
-                            "line": 113,
+                            "line": 116,
                             "message": "Could not find property \"echoMode\"."
                         },
                         {
@@ -274,15 +290,23 @@
                             "column": 52,
                             "durationMicroseconds": 0,
                             "functionName": "onEditingFinished",
-                            "line": 114,
+                            "line": 117,
                             "message": "Could not find signal \"editingFinished\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 32,
+                            "durationMicroseconds": 0,
+                            "functionName": "width",
+                            "line": 128,
+                            "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "rowSpacing",
-                            "line": 127,
+                            "line": 130,
                             "message": ""
                         },
                         {
@@ -290,15 +314,7 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "columnSpacing",
-                            "line": 128,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 39,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 125,
+                            "line": 131,
                             "message": ""
                         },
                         {
@@ -306,7 +322,7 @@
                             "column": 47,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 131,
+                            "line": 134,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -314,7 +330,7 @@
                             "column": 117,
                             "durationMicroseconds": 0,
                             "functionName": "onEditingFinished",
-                            "line": 131,
+                            "line": 134,
                             "message": "Could not find signal \"editingFinished\"."
                         },
                         {
@@ -322,7 +338,7 @@
                             "column": 47,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 134,
+                            "line": 137,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -330,22 +346,6 @@
                             "column": 116,
                             "durationMicroseconds": 0,
                             "functionName": "onEditingFinished",
-                            "line": 134,
-                            "message": "Could not find signal \"editingFinished\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 47,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 137,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 114,
-                            "durationMicroseconds": 0,
-                            "functionName": "onEditingFinished",
                             "line": 137,
                             "message": "Could not find signal \"editingFinished\"."
                         },
@@ -363,6 +363,22 @@
                             "durationMicroseconds": 0,
                             "functionName": "onEditingFinished",
                             "line": 140,
+                            "message": "Could not find signal \"editingFinished\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 47,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 143,
+                            "message": "Could not find property \"text\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 114,
+                            "durationMicroseconds": 0,
+                            "functionName": "onEditingFinished",
+                            "line": 143,
                             "message": "Could not find signal \"editingFinished\"."
                         }
                     ],

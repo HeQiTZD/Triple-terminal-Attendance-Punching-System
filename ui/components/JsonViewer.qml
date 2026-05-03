@@ -91,7 +91,6 @@ Rectangle {
                 selectByMouse: true
                 font.family: Theme.fontMono
                 font.pixelSize: Theme.fontSm
-                background: Rectangle { color: "transparent" }
                 placeholderText: qsTr("（无内容）")
             }
         }

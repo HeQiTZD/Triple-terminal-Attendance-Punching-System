@@ -10,7 +10,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "statusColor",
-                            "line": 59,
+                            "line": 57,
                             "message": "Functions without type annotations won't be compiled"
                         }
                     ],

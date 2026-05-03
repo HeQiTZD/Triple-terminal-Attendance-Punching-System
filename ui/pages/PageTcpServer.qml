@@ -38,7 +38,7 @@ Item {
             title: qsTr("服务控制")
 
             RowLayout {
-                anchors.fill: parent
+                width: parent.width
                 spacing: Theme.spacingMd
 
                 LabeledField {
@@ -112,6 +112,7 @@ Item {
             Card {
                 SplitView.preferredWidth: 460
                 SplitView.minimumWidth: 300
+                stretchContent: true
                 title: qsTr("在线客户端")
                 subtitle: qsTr("点击行选择目标设备")
 
@@ -134,10 +135,11 @@ Item {
             // 右：JSON 编辑 + 操作
             Card {
                 SplitView.fillWidth: true
+                stretchContent: true
                 title: qsTr("发送 / 广播 JSON")
 
                 ColumnLayout {
-                    anchors.fill: parent
+                    width: parent.width
                     spacing: Theme.spacingMd
 
                     LabeledField {

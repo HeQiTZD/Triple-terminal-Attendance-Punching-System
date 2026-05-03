@@ -43,7 +43,7 @@ Item {
             title: qsTr("查询参数")
 
             ColumnLayout {
-                anchors.fill: parent
+                width: parent.width
                 spacing: Theme.spacingSm
 
                 GridLayout {
@@ -113,6 +113,7 @@ Item {
         Card {
             Layout.fillWidth: true
             Layout.fillHeight: true
+            stretchContent: true
             title: qsTr("结果")
 
             JsonViewer {

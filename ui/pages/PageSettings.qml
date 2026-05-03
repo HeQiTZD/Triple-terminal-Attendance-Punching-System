@@ -33,12 +33,15 @@ Item {
         }
 
         ScrollView {
+            id: settingsScroll
             Layout.fillWidth: true
             Layout.fillHeight: true
             clip: true
+            ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
 
             ColumnLayout {
-                width: parent.width
+                anchors.left: parent.left
+                anchors.right: parent.right
                 spacing: Theme.spacingMd
 
                 Card {
@@ -46,7 +49,7 @@ Item {
                     title: qsTr("数据库（仅记录，重启后由 main.cpp 使用）")
 
                     GridLayout {
-                        anchors.fill: parent
+                        width: parent.width
                         columns: 2
                         rowSpacing: Theme.spacingSm
                         columnSpacing: Theme.spacingMd
@@ -75,7 +78,7 @@ Item {
                     title: qsTr("TCP & 默认设备")
 
                     GridLayout {
-                        anchors.fill: parent
+                        width: parent.width
                         columns: 2
                         rowSpacing: Theme.spacingSm
                         columnSpacing: Theme.spacingMd
@@ -99,7 +102,7 @@ Item {
                     title: qsTr("ArcFace 授权")
 
                     GridLayout {
-                        anchors.fill: parent
+                        width: parent.width
                         columns: 2
                         rowSpacing: Theme.spacingSm
                         columnSpacing: Theme.spacingMd
@@ -122,7 +125,7 @@ Item {
                     title: qsTr("默认时间窗 & 工号")
 
                     GridLayout {
-                        anchors.fill: parent
+                        width: parent.width
                         columns: 2
                         rowSpacing: Theme.spacingSm
                         columnSpacing: Theme.spacingMd

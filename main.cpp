@@ -9,13 +9,21 @@
 #include "src/AttendanceAnalyzer/attendanceanalyzer.h"
 #include "src/Controllers/networkcontroller.h"
 #include <QApplication>
+#include <QByteArray>
 #include <QCoreApplication>
+#include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QStyleHints>
 
 int main(int argc, char *argv[])
 {
+    qputenv("QT_QUICK_CONTROLS_STYLE", QByteArrayLiteral("Fusion"));
+
     QApplication app(argc, argv);
+    if (QStyleHints *hints = QGuiApplication::styleHints())
+        hints->setColorScheme(Qt::ColorScheme::Light);
+
     QCoreApplication::setOrganizationName(QStringLiteral("AttendanceServer"));
     QCoreApplication::setOrganizationDomain(QStringLiteral("local"));
     QCoreApplication::setApplicationName(QStringLiteral("AttendanceServer"));

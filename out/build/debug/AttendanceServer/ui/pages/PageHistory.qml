@@ -90,7 +90,7 @@ Item {
             title: qsTr("过滤")
 
             RowLayout {
-                anchors.fill: parent
+                width: parent.width
                 spacing: Theme.spacingMd
 
                 LabeledField {
@@ -133,6 +133,7 @@ Item {
             Card {
                 SplitView.fillWidth: true
                 SplitView.preferredWidth: 600
+                stretchContent: true
                 title: qsTr("调用列表")
 
                 DataTable {
@@ -154,6 +155,7 @@ Item {
             Card {
                 SplitView.preferredWidth: 480
                 SplitView.minimumWidth: 320
+                stretchContent: true
                 title: qsTr("详情")
                 headerRight: [
                     Button {

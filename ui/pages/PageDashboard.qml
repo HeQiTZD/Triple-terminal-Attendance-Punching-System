@@ -53,7 +53,7 @@ Item {
                 title: qsTr("数据库连接")
 
                 ColumnLayout {
-                    anchors.fill: parent
+                    width: parent.width
                     spacing: Theme.spacingSm
                     BadgeStatus {
                         text: dataService.isConnected ? "online" : "offline"
@@ -75,7 +75,7 @@ Item {
                 title: qsTr("TCP 服务")
 
                 ColumnLayout {
-                    anchors.fill: parent
+                    width: parent.width
                     spacing: Theme.spacingSm
                     BadgeStatus {
                         text: tcpServer.isRunning ? "running" : "stopped"
@@ -95,7 +95,7 @@ Item {
                 title: qsTr("在线客户端")
 
                 ColumnLayout {
-                    anchors.fill: parent
+                    width: parent.width
                     spacing: Theme.spacingXs
                     Label {
                         text: tcpServer.clientCount
@@ -117,7 +117,7 @@ Item {
                 title: qsTr("最近日志")
 
                 ColumnLayout {
-                    anchors.fill: parent
+                    width: parent.width
                     spacing: Theme.spacingXs
                     Label {
                         text: Logger.lastMessage.length ? Logger.lastMessage : qsTr("（暂无）")
@@ -154,7 +154,7 @@ Item {
                 property int value: 0
 
                 RowLayout {
-                    anchors.fill: parent
+                    width: parent.width
                     spacing: Theme.spacingMd
 
                     Label {
@@ -179,7 +179,7 @@ Item {
                 property int value: 0
 
                 RowLayout {
-                    anchors.fill: parent
+                    width: parent.width
                     spacing: Theme.spacingMd
 
                     Label {
@@ -204,7 +204,7 @@ Item {
                 property int value: 0
 
                 RowLayout {
-                    anchors.fill: parent
+                    width: parent.width
                     spacing: Theme.spacingMd
 
                     Label {
@@ -231,7 +231,7 @@ Item {
             subtitle: qsTr("常用测试操作一键触发")
 
             Flow {
-                anchors.fill: parent
+                width: parent.width
                 spacing: Theme.spacingMd
 
                 Button {

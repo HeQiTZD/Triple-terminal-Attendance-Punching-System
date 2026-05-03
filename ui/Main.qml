@@ -13,14 +13,14 @@ ApplicationWindow {
     visible: true
     title: qsTr("AttendanceServer · 测试工作台")
 
-    // ===== 深色调色板 =====
+    // ===== 浅色应用调色板（与 Theme 一致） =====
     color: Theme.bg
     palette.window:           Theme.bg
     palette.windowText:       Theme.text
     palette.base:             Theme.surface
     palette.alternateBase:    Theme.surfaceAlt
     palette.text:             Theme.text
-    palette.button:           Theme.surface
+    palette.button:           Theme.surfaceAlt
     palette.buttonText:       Theme.text
     palette.highlight:        Theme.accent
     palette.highlightedText:  "#FFFFFF"
@@ -29,8 +29,8 @@ ApplicationWindow {
     palette.placeholderText:  Theme.textSubtle
     palette.mid:              Theme.border
     palette.midlight:         Theme.borderStrong
-    palette.shadow:           "#000000"
-    palette.dark:             Theme.bg
+    palette.shadow:           "#A0AAB8"
+    palette.dark:             Theme.borderStrong
     palette.light:            Theme.surfaceAlt
 
     // ===== 启动信号桥接（保持原 testApi/tcpServer 等的连接） =====
@@ -74,7 +74,6 @@ ApplicationWindow {
     Connections {
         target: dataManager
         function onConnectionStateChanged() { Logger.info("数据库连接状态=" + dataManager.isConnected) }
-        function onErrorOccurred(errorString) { Logger.error("数据库：" + errorString) }
         function onPersonAdded(id) { Logger.info("人员已新增 id=" + id) }
         function onPersonDeleted(id) { Logger.info("人员已删除 id=" + id) }
         function onAttendanceRecordAdded(id) { Logger.info("考勤记录已新增 id=" + id) }

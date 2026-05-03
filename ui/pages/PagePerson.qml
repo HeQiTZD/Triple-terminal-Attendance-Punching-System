@@ -57,7 +57,7 @@ Item {
             title: qsTr("人员信息")
 
             GridLayout {
-                anchors.fill: parent
+                width: parent.width
                 columns: 4
                 rowSpacing: Theme.spacingSm
                 columnSpacing: Theme.spacingMd
@@ -156,6 +156,7 @@ Item {
         Card {
             Layout.fillWidth: true
             Layout.fillHeight: true
+            stretchContent: true
             title: qsTr("人员列表")
             subtitle: qsTr("点击行加载到表单")
 

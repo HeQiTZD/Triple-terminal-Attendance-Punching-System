@@ -55,7 +55,7 @@ Item {
             title: qsTr("设备信息")
 
             ColumnLayout {
-                anchors.fill: parent
+                width: parent.width
                 spacing: Theme.spacingSm
 
                 GridLayout {
@@ -145,6 +145,7 @@ Item {
         Card {
             Layout.fillWidth: true
             Layout.fillHeight: true
+            stretchContent: true
             title: qsTr("设备列表")
 
             DataTable {

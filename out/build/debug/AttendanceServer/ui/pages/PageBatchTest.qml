@@ -205,10 +205,11 @@ Item {
             Card {
                 SplitView.preferredWidth: 380
                 SplitView.minimumWidth: 280
+                stretchContent: true
                 title: qsTr("脚本")
 
                 ColumnLayout {
-                    anchors.fill: parent
+                    width: parent.width
                     spacing: Theme.spacingSm
 
                     Repeater {
@@ -268,6 +269,7 @@ Item {
             // 右：结果
             Card {
                 SplitView.fillWidth: true
+                stretchContent: true
                 title: qsTr("执行结果")
 
                 DataTable {

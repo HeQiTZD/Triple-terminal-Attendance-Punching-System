@@ -39,7 +39,7 @@ Item {
             title: qsTr("导出设置")
 
             ColumnLayout {
-                anchors.fill: parent
+                width: parent.width
                 spacing: Theme.spacingSm
 
                 LabeledField {
@@ -83,7 +83,7 @@ Item {
             title: qsTr("导出动作")
 
             Flow {
-                anchors.fill: parent
+                width: parent.width
                 spacing: Theme.spacingMd
 
                 Button {

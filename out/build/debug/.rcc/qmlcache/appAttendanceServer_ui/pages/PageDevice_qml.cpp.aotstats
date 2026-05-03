@@ -16,7 +16,7 @@
                         {
                             "codegenResult": 2,
                             "column": 5,
-                            "durationMicroseconds": 6000,
+                            "durationMicroseconds": 5000,
                             "functionName": "refresh",
                             "line": 12,
                             "message": "Cannot access value for name dataService"
@@ -103,18 +103,18 @@
                         },
                         {
                             "codegenResult": 0,
-                            "column": 26,
+                            "column": 24,
                             "durationMicroseconds": 0,
-                            "functionName": "spacing",
-                            "line": 59,
+                            "functionName": "width",
+                            "line": 58,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
-                            "column": 31,
+                            "column": 26,
                             "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 58,
+                            "functionName": "spacing",
+                            "line": 59,
                             "message": ""
                         },
                         {
@@ -202,15 +202,15 @@
                             "column": 23,
                             "durationMicroseconds": 0,
                             "functionName": "rows",
-                            "line": 153,
+                            "line": 154,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 26,
-                            "durationMicroseconds": 1000,
+                            "durationMicroseconds": 0,
                             "functionName": "columns",
-                            "line": 154,
+                            "line": 155,
                             "message": "Cannot generate efficient code for LoadClosure"
                         },
                         {
@@ -218,7 +218,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "onRowClicked",
-                            "line": 163,
+                            "line": 164,
                             "message": "Cannot retrieve a non-object type by ID: dId"
                         },
                         {
@@ -226,7 +226,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "onRowClicked",
-                            "line": 163,
+                            "line": 164,
                             "message": ""
                         },
                         {
@@ -234,7 +234,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 152,
+                            "line": 153,
                             "message": ""
                         }
                     ],

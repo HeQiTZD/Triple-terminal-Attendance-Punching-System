@@ -61,7 +61,7 @@ Item {
             title: qsTr("ArcFace 引擎")
 
             ColumnLayout {
-                anchors.fill: parent
+                width: parent.width
                 spacing: Theme.spacingSm
 
                 RowLayout {
@@ -108,7 +108,7 @@ Item {
             title: qsTr("特征提取")
 
             ColumnLayout {
-                anchors.fill: parent
+                width: parent.width
                 spacing: Theme.spacingSm
 
                 LabeledField {
@@ -159,10 +159,11 @@ Item {
         Card {
             Layout.fillWidth: true
             Layout.fillHeight: true
+            stretchContent: true
             title: qsTr("人脸库")
 
             ColumnLayout {
-                anchors.fill: parent
+                width: parent.width
                 spacing: Theme.spacingSm
 
                 RowLayout {

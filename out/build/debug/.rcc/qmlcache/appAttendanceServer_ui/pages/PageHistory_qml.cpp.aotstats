@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 2,
                             "column": 5,
-                            "durationMicroseconds": 40000,
+                            "durationMicroseconds": 56000,
                             "functionName": "_filteredRows",
                             "line": 14,
                             "message": "function without return type annotation returns QVariantList. This may prevent proper compilation to Cpp."
@@ -48,7 +48,7 @@
                         {
                             "codegenResult": 0,
                             "column": 18,
-                            "durationMicroseconds": 3000,
+                            "durationMicroseconds": 4000,
                             "functionName": "spacing",
                             "line": 64,
                             "message": ""
@@ -87,18 +87,18 @@
                         },
                         {
                             "codegenResult": 0,
-                            "column": 26,
+                            "column": 24,
                             "durationMicroseconds": 0,
-                            "functionName": "spacing",
-                            "line": 94,
+                            "functionName": "width",
+                            "line": 93,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
-                            "column": 31,
+                            "column": 26,
                             "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 93,
+                            "functionName": "spacing",
+                            "line": 94,
                             "message": ""
                         },
                         {
@@ -138,7 +138,7 @@
                             "column": 27,
                             "durationMicroseconds": 0,
                             "functionName": "rows",
-                            "line": 141,
+                            "line": 142,
                             "message": ""
                         },
                         {
@@ -146,7 +146,7 @@
                             "column": 30,
                             "durationMicroseconds": 0,
                             "functionName": "columns",
-                            "line": 142,
+                            "line": 143,
                             "message": "Cannot generate efficient code for storing an array in a non-sequence type"
                         },
                         {
@@ -154,7 +154,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "onRowClicked",
-                            "line": 150,
+                            "line": 151,
                             "message": "Cannot load property index from QVariant."
                         },
                         {
@@ -162,7 +162,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "onRowClicked",
-                            "line": 150,
+                            "line": 151,
                             "message": ""
                         },
                         {
@@ -170,7 +170,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 140,
+                            "line": 141,
                             "message": ""
                         },
                         {
@@ -178,7 +178,7 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "enabled",
-                            "line": 162,
+                            "line": 164,
                             "message": "Could not find property \"enabled\"."
                         },
                         {
@@ -186,7 +186,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 163,
+                            "line": 165,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -194,7 +194,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "title",
-                            "line": 172,
+                            "line": 174,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
                         },
                         {
@@ -202,7 +202,7 @@
                             "column": 27,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 177,
+                            "line": 179,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
                         },
                         {
@@ -210,7 +210,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 171,
+                            "line": 173,
                             "message": ""
                         }
                     ],

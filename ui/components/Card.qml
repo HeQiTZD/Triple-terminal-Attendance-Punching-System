@@ -20,6 +20,8 @@ Rectangle {
     property string title: ""
     property string subtitle: ""
     property int padding: Theme.spacingMd
+    /// false：高度随表单等内容增长（表单页）；true：纵向占满占位，便于 DataTable/JsonViewer anchors.fill。
+    property bool stretchContent: false
     property alias headerRight: headerRightSlot.data
     default property alias contentChildren: contentItem.data
 
@@ -86,15 +88,19 @@ Rectangle {
         Item {
             id: contentWrap
             Layout.fillWidth: true
-            Layout.fillHeight: true
-            implicitHeight: contentItem.implicitHeight + 2 * root.padding
+            Layout.fillHeight: root.stretchContent
+            implicitHeight: root.stretchContent ? 1 : Math.max(contentItem.childrenRect.height + 2 * root.padding,
+                                                                  Theme.spacingMd)
 
             Item {
                 id: contentItem
-                anchors.fill: parent
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.top: parent.top
                 anchors.margins: root.padding
+                height: root.stretchContent ? Math.max(0, contentWrap.height - 2 * root.padding) : implicitHeight
                 implicitHeight: childrenRect.height
-                implicitWidth: childrenRect.width
+                clip: true
             }
         }
     }

@@ -144,7 +144,6 @@ Rectangle {
                 selectByMouse: true
                 font.family: Theme.fontMono
                 font.pixelSize: Theme.fontSm
-                background: Rectangle { color: "transparent" }
                 tabStopDistance: 16
             }
         }

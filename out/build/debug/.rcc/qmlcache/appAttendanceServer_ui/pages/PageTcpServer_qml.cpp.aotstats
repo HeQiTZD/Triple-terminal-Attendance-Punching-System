@@ -56,7 +56,7 @@
                         {
                             "codegenResult": 0,
                             "column": 18,
-                            "durationMicroseconds": 5000,
+                            "durationMicroseconds": 4000,
                             "functionName": "spacing",
                             "line": 27,
                             "message": ""
@@ -79,18 +79,18 @@
                         },
                         {
                             "codegenResult": 0,
-                            "column": 26,
+                            "column": 24,
                             "durationMicroseconds": 0,
-                            "functionName": "spacing",
-                            "line": 42,
+                            "functionName": "width",
+                            "line": 41,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
-                            "column": 31,
+                            "column": 26,
                             "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 41,
+                            "functionName": "spacing",
+                            "line": 42,
                             "message": ""
                         },
                         {
@@ -178,7 +178,7 @@
                             "column": 30,
                             "durationMicroseconds": 0,
                             "functionName": "columns",
-                            "line": 120,
+                            "line": 121,
                             "message": "Cannot generate efficient code for LoadClosure"
                         },
                         {
@@ -186,7 +186,7 @@
                             "column": 27,
                             "durationMicroseconds": 0,
                             "functionName": "rows",
-                            "line": 126,
+                            "line": 127,
                             "message": ""
                         },
                         {
@@ -194,7 +194,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "onRowClicked",
-                            "line": 128,
+                            "line": 129,
                             "message": "Cannot retrieve a non-object type by ID: targetInput"
                         },
                         {
@@ -202,7 +202,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "onRowClicked",
-                            "line": 128,
+                            "line": 129,
                             "message": ""
                         },
                         {
@@ -210,7 +210,15 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 119,
+                            "line": 120,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 28,
+                            "durationMicroseconds": 0,
+                            "functionName": "width",
+                            "line": 142,
                             "message": ""
                         },
                         {
@@ -218,15 +226,7 @@
                             "column": 30,
                             "durationMicroseconds": 0,
                             "functionName": "spacing",
-                            "line": 141,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 35,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 140,
+                            "line": 143,
                             "message": ""
                         },
                         {
@@ -234,7 +234,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 149,
+                            "line": 151,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -242,7 +242,7 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 156,
+                            "line": 158,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -250,7 +250,7 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 171,
+                            "line": 173,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -258,7 +258,7 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "spacing",
-                            "line": 187,
+                            "line": 189,
                             "message": ""
                         },
                         {
@@ -266,7 +266,7 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 191,
+                            "line": 193,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -274,7 +274,7 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 196,
+                            "line": 198,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -282,7 +282,7 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 201,
+                            "line": 203,
                             "message": "Could not find signal \"clicked\"."
                         }
                     ],

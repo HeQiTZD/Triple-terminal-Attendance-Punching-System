@@ -3,30 +3,30 @@ pragma Singleton
 import QtQuick
 
 QtObject {
-    // ===== 色板（深色 IDE 风格） =====
-    readonly property color bg:           "#1E1F22"   // 主背景
-    readonly property color surface:      "#2B2D30"   // 卡片/面板
-    readonly property color surfaceAlt:   "#26282B"   // 行交错背景
-    readonly property color sideBar:      "#212328"   // 侧边栏背景
-    readonly property color border:       "#3C3F41"   // 分隔线
-    readonly property color borderStrong: "#4C5052"
+    // ===== 色板（浅色 · 不受系统暗黑影响，与 Fusion + ColorScheme.Light 配套） =====
+    readonly property color bg:           "#F2F4F7"   // 主背景
+    readonly property color surface:      "#FFFFFF"   // 卡片/面板
+    readonly property color surfaceAlt:   "#EEF1F6"   // 行交错 / 条带
+    readonly property color sideBar:      "#E8EBF1"   // 侧边栏
+    readonly property color border:       "#D8DDE3"
+    readonly property color borderStrong: "#BFC6D2"
 
-    readonly property color text:         "#EDEDED"
-    readonly property color textMuted:    "#9DA0A6"
-    readonly property color textSubtle:   "#6F7176"
+    readonly property color text:         "#1F2937"
+    readonly property color textMuted:    "#4B5563"
+    readonly property color textSubtle:   "#6B7280"
 
-    readonly property color accent:       "#2D7FF9"
-    readonly property color accentHover:  "#3D8BFB"
-    readonly property color accentSubtle: "#1F4A8A"
+    readonly property color accent:       "#1D6BFF"
+    readonly property color accentHover:  "#3B82FF"
+    readonly property color accentSubtle: "#DBEAFE"
 
-    readonly property color success:      "#3FB950"
-    readonly property color warning:      "#D29922"
-    readonly property color danger:       "#F85149"
-    readonly property color info:         "#58A6FF"
+    readonly property color success:      "#0D8A4C"
+    readonly property color warning:      "#B45309"
+    readonly property color danger:       "#C62828"
+    readonly property color info:         "#1565C0"
 
-    readonly property color hover:        "#34373B"
-    readonly property color selected:     "#2D4F78"
-    readonly property color highlight:    "#FFD66B"
+    readonly property color hover:        "#DCE3EE"
+    readonly property color selected:     "#C7DFFF"
+    readonly property color highlight:    "#92400E"
 
     // ===== 间距 / 圆角 / 字号 =====
     readonly property int spacingXs: 4
@@ -49,13 +49,11 @@ QtObject {
     readonly property string fontFamily: "Microsoft YaHei UI"
     readonly property string fontMono:   "Consolas, 'Cascadia Mono', monospace"
 
-    // ===== 通用尺寸 =====
     readonly property int sideBarWidth: 220
     readonly property int statusBarHeight: 36
     readonly property int rowHeight: 30
     readonly property int controlHeight: 30
 
-    // ===== 工具函数 =====
     function statusColor(status) {
         const s = String(status || "").toLowerCase()
         if (s === "online" || s === "ok" || s === "running" || s === "success" || s === "pass" || s === "normal")

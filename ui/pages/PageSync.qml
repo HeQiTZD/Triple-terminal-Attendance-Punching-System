@@ -61,6 +61,7 @@ Item {
             Card {
                 SplitView.preferredWidth: 380
                 SplitView.minimumWidth: 280
+                stretchContent: true
                 title: qsTr("在线设备")
                 subtitle: qsTr("点击行选择目标")
 
@@ -80,10 +81,11 @@ Item {
 
             Card {
                 SplitView.fillWidth: true
+                stretchContent: true
                 title: qsTr("下发同步")
 
                 ColumnLayout {
-                    anchors.fill: parent
+                    width: parent.width
                     spacing: Theme.spacingMd
 
                     LabeledField {
@@ -119,9 +121,10 @@ Item {
                     Card {
                         Layout.fillWidth: true
                         Layout.fillHeight: true
+                        stretchContent: true
                         title: qsTr("说明")
                         ColumnLayout {
-                            anchors.fill: parent
+                            width: parent.width
                             spacing: Theme.spacingSm
                             Label {
                                 text: qsTr("• 同步操作会通过 TCP 把全部人员名单按协议下发给目标设备")
