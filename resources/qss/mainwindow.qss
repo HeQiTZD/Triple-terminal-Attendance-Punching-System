@@ -1,271 +1,251 @@
-/* 主窗口样式 */
+/* ======================================================
+   考勤打卡系统 - 深色科技风主题
+   配色：背景#0d1117 / 面板#161b22 / 强调#00d4ff
+   ====================================================== */
+
+/* 主窗口 */
 QMainWindow {
-    background-color: #f8f9fa;
+    background-color: #0d1117;
 }
 
-/* 中央部件样式 */
+/* 中央部件 */
 QWidget#centralwidget {
-    background-color: #f8f9fa;
+    background-color: #0d1117;
 }
 
-/* 顶部工具栏样式 - 半透明白条 */
+/* ==================== 顶部工具栏 ==================== */
 QWidget#topWidget {
-    background-color: rgba(255, 255, 255, 0.95);
-    border-bottom: 1px solid #e9ecef;
-    padding: 8px 15px;
+    background-color: #161b22;
+    border-bottom: 1px solid #00d4ff;
+    padding: 0px 4px;
 }
 
-/* 时间标签样式 */
+/* 时间标签 - 白色加粗等宽字体 */
 QLabel#timeLabel {
-    color: #495057;
-    font-size: 14px;
-    font-weight: 500;
-    padding: 5px 10px;
-    background-color: #ffffff;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 700;
+    font-family: "Consolas", "Courier New", monospace;
+    padding: 6px 14px;
+    background-color: rgba(255, 255, 255, 0.06);
     border-radius: 6px;
-    border: 1px solid #dee2e6;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    letter-spacing: 1px;
 }
 
-/* 网络状态标签样式 - 图标+文字 */
+/* 网络状态标签 */
 QLabel#networkStatusLabel {
     font-size: 13px;
-    font-weight: 500;
-    padding: 5px 12px;
+    font-weight: 600;
+    padding: 6px 14px;
     border-radius: 6px;
-    background-color: #ffffff;
-    border: 1px solid #dee2e6;
+    background-color: #21262d;
+    border: 1px solid #30363d;
 }
 
-/* 按钮通用样式 - 圆角矩形 */
+/* ==================== 按钮 ==================== */
+
+/* 通用按钮 */
 QPushButton {
-    background-color: #495057;
-    color: white;
+    background-color: #1f6feb;
+    color: #ffffff;
     border: none;
     border-radius: 6px;
-    padding: 10px 20px;
+    padding: 8px 18px;
     font-size: 13px;
-    font-weight: 500;
-    min-width: 70px;
+    font-weight: 600;
+    min-width: 60px;
 }
 
 QPushButton:hover {
-    background-color: #6c757d;
-    box-shadow: 0 2px 8px rgba(73, 80, 87, 0.3);
+    background-color: #388bfd;
 }
 
 QPushButton:pressed {
-    background-color: #343a40;
+    background-color: #1158c7;
 }
 
-/* 设置按钮样式 */
+/* 设置按钮 */
 QPushButton#settingButton {
-    background-color: #343a40;
+    background-color: #21262d;
+    color: #c9d1d9;
+    border: 1px solid #30363d;
+    padding: 7px 16px;
 }
 
 QPushButton#settingButton:hover {
-    background-color: #495057;
-    box-shadow: 0 2px 8px rgba(52, 58, 64, 0.3);
+    background-color: #30363d;
+    color: #00d4ff;
+    border-color: #00d4ff;
 }
 
-/* 窗口控制按钮样式 */
+QPushButton#settingButton:pressed {
+    background-color: #161b22;
+    color: #00d4ff;
+}
+
+/* 最小化 / 最大化按钮 */
 QPushButton#minimizeButton,
 QPushButton#maximizeButton {
     background-color: transparent;
-    color: #6c757d;
-    font-size: 18px;
+    color: #8b949e;
+    font-size: 16px;
+    font-weight: 700;
     min-width: 36px;
+    max-width: 36px;
     padding: 6px;
     border-radius: 6px;
+    border: none;
 }
 
 QPushButton#minimizeButton:hover,
 QPushButton#maximizeButton:hover {
-    background-color: rgba(108, 117, 125, 0.1);
-    color: #343a40;
+    background-color: rgba(139, 148, 158, 0.15);
+    color: #e6edf3;
 }
 
+QPushButton#minimizeButton:pressed,
+QPushButton#maximizeButton:pressed {
+    background-color: rgba(139, 148, 158, 0.25);
+}
+
+/* 关闭按钮 */
 QPushButton#closeButton {
     background-color: transparent;
-    color: #adb5bd;
-    font-size: 18px;
+    color: #8b949e;
+    font-size: 16px;
+    font-weight: 700;
     min-width: 36px;
+    max-width: 36px;
     padding: 6px;
     border-radius: 6px;
+    border: none;
 }
 
 QPushButton#closeButton:hover {
-    background-color: #dc3545;
-    color: white;
-    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+    background-color: #da3633;
+    color: #ffffff;
 }
 
-/* 左侧部件样式 - 卡片式布局 */
-QWidget#leftWidget {
-    background-color: #ffffff;
-    border-radius: 12px;
-    border: 1px solid #dee2e6;
-    margin: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+QPushButton#closeButton:pressed {
+    background-color: #b91c1c;
+    color: #ffffff;
 }
 
-/* 分组框样式 - 现代卡片式 */
-QGroupBox {
-    background-color: #ffffff;
-    border: none;
-    border-radius: 12px;
-    margin-top: 15px;
-    padding-top: 15px;
-    font-weight: 600;
-    color: #495057;
+/* ==================== 上层：识别信息横条 ==================== */
+QWidget#infoWidget {
+    background-color: #161b22;
+    border-radius: 10px;
+    border: 1px solid #21262d;
 }
 
-QGroupBox::title {
-    subcontrol-origin: margin;
-    left: 15px;
-    padding: 0 8px;
-    color: #495057;
-    font-size: 14px;
-}
+/* ==================== 标签 ==================== */
 
-/* 员工信息分组框 */
-QGroupBox#infoGroupBox {
-    background-color: #fafbfc;
-}
-
-QGroupBox#infoGroupBox::title {
-    color: #495057;
-}
-
-/* 标签样式 */
+/* 通用标签 - 强制白色，防止被系统调色板覆盖 */
 QLabel {
-    color: #495057;
+    color: #ffffff;
     font-size: 13px;
+    background-color: transparent;
 }
 
-/* 信息标签样式 */
-QLabel#employeeIdLabel,
-QLabel#nameLabel,
-QLabel#statusLabel,
-QLabel#checkTimeLabel {
-    font-weight: 500;
-    color: #6c757d;
-    min-width: 75px;
+/* 信息字段描述标签（员工号、姓名等） */
+QWidget#infoWidget QLabel#employeeIdLabel,
+QWidget#infoWidget QLabel#nameLabel,
+QWidget#infoWidget QLabel#statusLabel,
+QWidget#infoWidget QLabel#checkTimeLabel {
+    color: #8b949e;
+    font-size: 16px;
+    font-weight: 700;
+    min-width: 68px;
+    max-width: 80px;
+    background-color: transparent;
 }
 
-/* 摄像头标签样式 */
+/* 摄像头区域小标题 */
 QLabel#cameraLabel {
-    color: #495057;
-    font-size: 14px;
+    color: #adb5bd;
+    font-size: 12px;
     font-weight: 600;
-    padding: 8px;
-    background-color: #ffffff;
-    border-radius: 6px;
-    border: 1px solid #dee2e6;
-}
-
-/* 摄像头显示区域样式 - 圆角边框，深灰色背景 */
-QLabel#cameraDisplay {
-    background-color: #2a2a2a;
-    border: 2px solid #dee2e6;
-    border-radius: 12px;
-}
-
-/* 输入框样式 - 圆角无边框，底部下划线 */
-QLineEdit {
-    background-color: #ffffff;
+    letter-spacing: 1px;
+    background-color: transparent;
     border: none;
-    border-bottom: 2px solid #dee2e6;
-    border-radius: 4px;
-    padding: 10px 8px;
-    color: #495057;
+    padding: 2px 0px;
+}
+
+/* ==================== 输入框（只读） ==================== */
+QLineEdit {
+    background-color: #0d1117;
+    border: none;
+    border-bottom: 1px solid #30363d;
+    border-radius: 3px;
+    padding: 8px 6px;
+    color: #e6edf3;
     font-size: 14px;
+    font-weight: 500;
+    selection-background-color: rgba(0, 212, 255, 0.2);
 }
 
 QLineEdit:focus {
-    border-bottom: 2px solid #6c757d;
-    background-color: #f8f9fa;
+    border-bottom: 1px solid #00d4ff;
+    background-color: rgba(0, 212, 255, 0.03);
 }
 
 QLineEdit:read-only {
-    background-color: #f8f9fa;
-    border-bottom: 2px solid #e9ecef;
-    color: #6c757d;
+    background-color: #161b22;
+    border-bottom: 1px solid #21262d;
+    color: #c9d1d9;
+    font-size: 14px;
+    font-weight: 600;
 }
 
-/* 员工号输入框特殊样式 */
-QLineEdit#employeeIdEdit {
-    border-bottom: 2px solid #6c757d;
-}
-
-QLineEdit#employeeIdEdit:focus {
-    border-bottom: 2px solid #495057;
-}
-
-/* 姓名输入框特殊样式 */
-QLineEdit#nameEdit {
-    border-bottom: 2px solid #6c757d;
-}
-
-QLineEdit#nameEdit:focus {
-    border-bottom: 2px solid #495057;
-}
-
-/* 状态输入框特殊样式 */
-QLineEdit#statusEdit {
-    border-bottom: 2px solid #6c757d;
-}
-
-QLineEdit#statusEdit:focus {
-    border-bottom: 2px solid #495057;
-}
-
-/* 时间输入框特殊样式 */
-QLineEdit#checkTimeEdit {
-    border-bottom: 2px solid #6c757d;
-}
-
-QLineEdit#checkTimeEdit:focus {
-    border-bottom: 2px solid #495057;
-}
-
-/* 状态栏样式 - 半透明白条 */
-QStatusBar {
-    background-color: rgba(255, 255, 255, 0.95);
-    color: #495057;
-    border-top: 1px solid #e9ecef;
-    font-size: 12px;
-}
-
-QStatusBar::item {
+/* ==================== 信息横条：值字段 QLabel ==================== */
+QWidget#infoWidget QLabel#employeeIdEdit,
+QWidget#infoWidget QLabel#nameEdit,
+QWidget#infoWidget QLabel#statusEdit,
+QWidget#infoWidget QLabel#checkTimeEdit {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: transparent;
     border: none;
-    padding: 5px 10px;
+    padding: 0px 0px;
+    min-width: 60px;
+    max-width: 200px;
 }
 
-/* 右侧部件样式 */
-QWidget#rightWidget {
-    background-color: #ffffff;
-    border-radius: 12px;
-    border: 1px solid #dee2e6;
-    margin: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+/* ==================== 下层：摄像头面板 ==================== */
+QWidget#cameraWidget {
+    background-color: #161b22;
+    border-radius: 10px;
+    border: 1px solid #21262d;
+    margin: 0px 0px 0px 4px;
 }
 
-/* 滚动条样式 */
+/* 摄像头显示区域 - 移除边框 */
+QLabel#cameraDisplay {
+    background-color: #0a0e14;
+    color: #30363d;
+    border: none;
+}
+
+
+
+/* ==================== 滚动条 ==================== */
 QScrollBar:vertical {
-    background-color: #f8f9fa;
-    width: 10px;
-    border-radius: 5px;
+    background-color: #161b22;
+    width: 8px;
+    border-radius: 4px;
     margin: 0px;
 }
 
 QScrollBar::handle:vertical {
-    background-color: #ced4da;
-    border-radius: 5px;
+    background-color: #30363d;
+    border-radius: 4px;
     min-height: 30px;
 }
 
 QScrollBar::handle:vertical:hover {
-    background-color: #adb5bd;
+    background-color: #484f58;
 }
 
 QScrollBar::add-line:vertical,
@@ -278,22 +258,21 @@ QScrollBar::sub-page:vertical {
     background: none;
 }
 
-/* 水平滚动条 */
 QScrollBar:horizontal {
-    background-color: #f8f9fa;
-    height: 10px;
-    border-radius: 5px;
+    background-color: #161b22;
+    height: 8px;
+    border-radius: 4px;
     margin: 0px;
 }
 
 QScrollBar::handle:horizontal {
-    background-color: #ced4da;
-    border-radius: 5px;
+    background-color: #30363d;
+    border-radius: 4px;
     min-width: 30px;
 }
 
 QScrollBar::handle:horizontal:hover {
-    background-color: #adb5bd;
+    background-color: #484f58;
 }
 
 QScrollBar::add-line:horizontal,

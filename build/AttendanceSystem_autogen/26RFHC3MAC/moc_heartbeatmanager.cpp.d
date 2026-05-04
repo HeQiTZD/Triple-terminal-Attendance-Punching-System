@@ -1,5 +1,6 @@
 D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/26RFHC3MAC/moc_heartbeatmanager.cpp: D:/QTproject/AttendanceSystem/NetworkClient/heartbeatmanager.h \
   D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/moc_predefs.h \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/QDateTime \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonArray \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonDocument \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonObject \
@@ -367,4 +368,4 @@ D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/26RFHC3MAC/moc_hear
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/time.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
-  D:/QTproject/AttendanceSystem/NetworkClient/protocol.h
+  D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h

@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "FaceRecognition/facerecognizer.h"
 #include "FaceRecognition/arcfaceengine.h"
@@ -11,9 +11,16 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
     ,m_timeTimer(nullptr)
     ,setwindow(nullptr)
-    ,m_isDragging(false)
 {
     ui->setupUi(this);
+
+    //为主窗口安装事件过滤器
+    installEventFilter(this);
+
+    //为所有子控件安装事件过滤器
+    for (QWidget *child : findChildren<QWidget*>()) {
+        child->installEventFilter(this);
+    }
 
     //设置无边框窗口
     setWindowFlags(Qt::FramelessWindowHint);
@@ -237,8 +244,7 @@ void MainWindow::onRecognitionSuccess(const QString &employeeId,
 
 
 
-    // 在状态栏显示识别成功信息
-    ui->statusbar->showMessage(QString("识别成功 - 员工:%1 时间:%2").arg(employeeId, checkTime), 5000);
+
 }
 
 //处理保存打卡记录请求
@@ -249,18 +255,10 @@ void MainWindow::onSaveAttendanceRequest(const QString &employeeId, const QStrin
     if(saved){
         qDebug() << "打卡记录已保存:" << employeeId;
 
-        // 上传到服务器
-        Protocol::AttendanceRecord record;
-        record.employeeId = employeeId;
-        record.checktTime = QDateTime::currentDateTime().toString(Qt::ISODate);
-        record.status = status;
-        networkClient->uploadAttendance(record);
-
-        // 更新状态栏
-        ui->statusbar->showMessage(QString("打卡成功 - 员工:%1").arg(employeeId), 3000);
+        // 上传到服务器（AttendanceServer 协议）
+        networkClient->uploadAttendance(employeeId, status, QDateTime::currentDateTime());
     }else{
         qWarning() << "保存打卡记录失败:" << employeeId;
-        ui->statusbar->showMessage(QString("打卡失败 - 员工:%1").arg(employeeId), 3000);
     }
 }
 
@@ -276,10 +274,16 @@ void MainWindow::onNetworkStateChanged(bool isOnline)
 {
     if(isOnline){
         ui->networkStatusLabel->setText("🟢 在线");
-        ui->networkStatusLabel->setStyleSheet("color:#27ae60;font-weight:500;");
+        ui->networkStatusLabel->setStyleSheet(
+            "color:#3fb950; font-weight:600; font-size:13px;"
+            "background-color:rgba(63,185,80,0.1); border:1px solid rgba(63,185,80,0.3);"
+            "border-radius:6px; padding:5px 12px;");
     }else{
         ui->networkStatusLabel->setText("🔴 离线");
-        ui->networkStatusLabel->setStyleSheet("color:#e74c3c;font-weight:500;");
+        ui->networkStatusLabel->setStyleSheet(
+            "color:#f85149; font-weight:600; font-size:13px;"
+            "background-color:rgba(248,81,73,0.1); border:1px solid rgba(248,81,73,0.3);"
+            "border-radius:6px; padding:5px 12px;");
     }
 }
 
@@ -312,34 +316,6 @@ void MainWindow::onMaximizeButtonClicked()
 void MainWindow::onCloseButtonClicked()
 {
     close();
-}
-
-//鼠标按下事件 - 用于拖动无边框窗口
-void MainWindow::mousePressEvent(QMouseEvent *event)
-{
-    if (event->button() == Qt::LeftButton) {
-        m_dragPosition = event->globalPosition().toPoint() - frameGeometry().topLeft();
-        m_isDragging = true;
-    }
-    QMainWindow::mousePressEvent(event);
-}
-
-//鼠标移动事件 - 用于拖动无边框窗口
-void MainWindow::mouseMoveEvent(QMouseEvent *event)
-{
-    if (m_isDragging && (event->buttons() & Qt::LeftButton)) {
-        move(event->globalPosition().toPoint() - m_dragPosition);
-    }
-    QMainWindow::mouseMoveEvent(event);
-}
-
-//鼠标释放事件 - 用于拖动无边框窗口
-void MainWindow::mouseReleaseEvent(QMouseEvent *event)
-{
-    if (event->button() == Qt::LeftButton) {
-        m_isDragging = false;
-    }
-    QMainWindow::mouseReleaseEvent(event);
 }
 
 //从配置恢复窗口大小
@@ -382,4 +358,161 @@ void MainWindow::closeEvent(QCloseEvent *event)
     //保存窗口大小
     saveWindowSize();
     event->accept();
+}
+
+void MainWindow::mousePressEvent(QMouseEvent *event)
+{
+    if(event->button() == Qt::LeftButton){
+        m_currentEdge = getEdge(event->pos());
+
+        if(m_currentEdge != None){
+            //边缘拉伸
+            m_isResizing = true;
+            m_originalGeometry = geometry();
+            m_dragPosition = event->globalPos();
+            event->accept();
+        }else if(event->y() < 30){
+            //顶部拖拽
+            m_isDragging = true;
+            m_dragPosition = event->globalPos() - frameGeometry().topLeft();
+            event->accept();
+            /*
+            event->globalPos()：获取鼠标相对于整个屏幕的全局坐标。
+            frameGeometry().topLeft()：获取窗口左上角相对于屏幕的坐标。
+            两者相减，得到鼠标点击点相对于窗口左上角的偏移量，保存在 m_dragPosition 中。
+            这个偏移量是为了在拖动时，让鼠标始终 “粘” 在点击的位置，避免窗口跳动。
+        */
+        }
+    }
+}
+
+void MainWindow::mouseMoveEvent(QMouseEvent *event)
+{
+    // if(m_isDragging && event->buttons() & Qt::LeftButton){
+    //     move(event->globalPos()-m_dragPosition);
+    //     event->accept();//已经处理，停止传递
+    // }
+
+    if(m_isResizing && event->buttons() & Qt::LeftButton){
+        //处理拉伸
+        QPoint delta = event->globalPos() - m_dragPosition;
+        QRect newGeometry = m_originalGeometry;
+
+        switch(m_currentEdge){
+        case Left: newGeometry.setLeft(m_originalGeometry.left() + delta.x()); break;
+        case Right: newGeometry.setRight(m_originalGeometry.right() + delta.x()); break;
+        case Top: newGeometry.setTop(m_originalGeometry.top() + delta.y()); break;
+        case Bottom: newGeometry.setBottom(m_originalGeometry.bottom() + delta.y()); break;
+        case TopLeft: newGeometry.setTopLeft(m_originalGeometry.topLeft() + delta); break;
+        case TopRight: newGeometry.setTopRight(m_originalGeometry.topRight() + delta); break;
+        case BottomLeft: newGeometry.setBottomLeft(m_originalGeometry.bottomLeft() + delta); break;
+        case BottomRight: newGeometry.setBottomRight(m_originalGeometry.bottomRight() + delta); break;
+        default: break;
+        }
+
+        if(newGeometry.width() >= minimumWidth() && newGeometry.height() >= minimumHeight()){
+            setGeometry(newGeometry);
+        }
+        event->accept();
+    }else if(m_isDragging && event->buttons() & Qt::LeftButton){
+        //处理拖拽
+        move(event->globalPos() - m_dragPosition);
+        event->accept();
+    }else{
+        //更新光标
+        updateCursor(event->pos());
+    }
+}
+
+void MainWindow::mouseReleaseEvent(QMouseEvent *event)
+{
+    if(event->button() == Qt::LeftButton){
+        m_isResizing = false;
+        m_isDragging = false;
+        m_currentEdge = None;
+        event->accept();
+    }
+}
+
+bool MainWindow::eventFilter(QObject *watched, QEvent *event)
+{
+    //处理鼠标进入事件
+    if(event->type() == QEvent::Enter){
+        QWidget* widget = qobject_cast<QWidget*>(watched);
+        if(widget){
+            //将全局鼠标位置映射到主窗口坐标
+            QPoint globalPos = QCursor::pos();
+            QPoint windwoPos = mapFromGlobal(globalPos);
+            updateCursor(windwoPos);
+        }
+    }
+    //处理鼠标离开事件
+    else if(event->type() == QEvent::Leave){
+        setCursor(Qt::ArrowCursor);
+    }
+    //处理鼠标移动事件
+    else if(event->type() == QEvent::MouseMove){
+        QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+        QPoint windowPos;
+
+        if(watched == this){
+            windowPos = mouseEvent->pos();
+        }else{
+            QWidget *widget = qobject_cast<QWidget*>(watched);
+            if(widget){
+                windowPos = mapFromGlobal(widget->mapToGlobal(mouseEvent->pos()));
+            }
+        }
+        if(!m_isDragging && !m_isResizing){
+            updateCursor(windowPos);
+        }
+    }
+    return QMainWindow::eventFilter(watched,event);
+}
+
+void MainWindow::updateCursor(const QPoint &pos)
+{
+    Edge edge = getEdge(pos);
+    switch(edge){
+    case TopLeft:
+    case BottomRight:
+        setCursor(Qt::SizeFDiagCursor);
+        break;
+    case TopRight:
+    case BottomLeft:
+        setCursor(Qt::SizeBDiagCursor);
+        break;
+    case Top:
+    case Bottom:
+        setCursor(Qt::SizeVerCursor);
+        break;
+    case Left:
+    case Right:
+        setCursor(Qt::SizeHorCursor);
+        break;
+    case None:
+        break;
+    default:
+        setCursor(Qt::ArrowCursor);
+        break;
+    };
+}
+
+MainWindow::Edge MainWindow::getEdge(const QPoint &pos)
+{
+    const int margin = 8;
+    bool left = pos.x() < margin;
+    bool right = pos.x() > width() - margin;
+    bool top = pos.y() < margin;
+    bool bottom =pos.y() > height() - margin;
+
+    if(left && top) return TopLeft;
+    if(right && top) return TopRight;
+    if(left && bottom) return BottomLeft;
+    if(right && bottom) return BottomRight;
+    if (left) return Left;
+    if (right) return Right;
+    if (top) return Top;
+    if (bottom) return Bottom;
+    return None;
 }

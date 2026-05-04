@@ -14,6 +14,8 @@
 #include <QTimer>
 #include <QDateTime>
 #include <QMouseEvent>
+
+#include <QWidget>
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -30,6 +32,19 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+private:
+    enum Edge {
+        None = 0,
+        Left,
+        Right,
+        Top,
+        Bottom,
+        TopLeft,
+        TopRight,
+        BottomLeft,
+        BottomRight
+    };
 
 private slots:
     // 识别成功槽函数 - 更新UI显示
@@ -85,10 +100,14 @@ protected:
     void resizeEvent(QResizeEvent *event) override;
     //窗口关闭事件
     void closeEvent(QCloseEvent *event) override;
-    //鼠标事件用于拖动无边框窗口
-    void mousePressEvent(QMouseEvent *event) override;
-    void mouseMoveEvent(QMouseEvent *event) override;
-    void mouseReleaseEvent(QMouseEvent *event) override;
+
+    //窗口移动事件
+    void mousePressEvent(QMouseEvent* event) override;
+    void mouseMoveEvent(QMouseEvent* event) override;
+    void mouseReleaseEvent(QMouseEvent* event) override;
+
+    //事件过滤器
+    bool eventFilter(QObject *watched, QEvent *event) override;
 
 private:
     LocalStorage* m_db;
@@ -101,9 +120,14 @@ private:
     QThread* m_networkThread;
     QTimer* m_timeTimer;
     SetWindow* setwindow;  // 改为指针，在构造函数中创建并设置父对象
+    QPoint m_dragPosition; //记录拖拽时的鼠标位置
+    bool m_isDragging = false; //是否正在被拖拽
+    bool m_isResizing = false;
+    Edge m_currentEdge = None;
+    QRect m_originalGeometry;
 
-    //无边框窗口拖动相关
-    QPoint m_dragPosition;
-    bool m_isDragging = false;
+
+    Edge getEdge(const QPoint &pos);
+    void updateCursor(const QPoint &pos);
 };
 #endif // MAINWINDOW_H

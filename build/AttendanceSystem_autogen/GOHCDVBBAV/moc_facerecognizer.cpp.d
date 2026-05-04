@@ -505,6 +505,7 @@ D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/GOHCDVBBAV/moc_face
   D:/QTproject/AttendanceSystem/NetworkClient/messagewriter.h \
   D:/QTproject/AttendanceSystem/NetworkClient/networkclient.h \
   D:/QTproject/AttendanceSystem/NetworkClient/protocol.h \
+  D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h \
   D:/QTproject/AttendanceSystem/UI/facevideowidget.h \
   D:/QTproject/AttendanceSystem/third_party/arcface/include/amcomdef.h \
   D:/QTproject/AttendanceSystem/third_party/arcface/include/arcsoft_face_sdk.h \

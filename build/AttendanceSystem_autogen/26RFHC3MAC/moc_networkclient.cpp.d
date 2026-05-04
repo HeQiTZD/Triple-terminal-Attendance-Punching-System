@@ -460,6 +460,7 @@ D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/26RFHC3MAC/moc_netw
   D:/QTproject/AttendanceSystem/NetworkClient/messagereader.h \
   D:/QTproject/AttendanceSystem/NetworkClient/messagewriter.h \
   D:/QTproject/AttendanceSystem/NetworkClient/protocol.h \
+  D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h \
   D:/QTproject/AttendanceSystem/third_party/arcface/include/amcomdef.h \
   D:/QTproject/AttendanceSystem/third_party/arcface/include/arcsoft_face_sdk.h \
   D:/QTproject/AttendanceSystem/third_party/arcface/include/asvloffscreen.h \

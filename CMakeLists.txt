@@ -50,6 +50,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         NetworkClient/messagereader.h NetworkClient/messagereader.cpp
         NetworkClient/messagequeue.h NetworkClient/messagequeue.cpp
         NetworkClient/protocol.h NetworkClient/protocol.cpp
+        NetworkClient/serverprotocol.h NetworkClient/serverprotocol.cpp
         UI/setwindow.h UI/setwindow.cpp UI/setwindow.ui
         Config/configmanager.h Config/configmanager.cpp
         UI/facevideowidget.h UI/facevideowidget.cpp

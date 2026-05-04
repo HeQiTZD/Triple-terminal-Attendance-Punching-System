@@ -1,10 +1,10 @@
-#ifndef HEARTBEATMANAGER_H
+﻿#ifndef HEARTBEATMANAGER_H
 #define HEARTBEATMANAGER_H
 
 #include <QObject>
 #include <QTimer>
 #include <qtcpsocket.h>
-#include "protocol.h"
+#include "serverprotocol.h"
 #include <QJsonDocument>
 
 class Heartbeatmanager : public QObject

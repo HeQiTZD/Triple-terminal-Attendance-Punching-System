@@ -850,6 +850,8 @@ AttendanceSystem_autogen/timestamp: \
 	D:/QTproject/AttendanceSystem/NetworkClient/networkclient.h \
 	D:/QTproject/AttendanceSystem/NetworkClient/protocol.cpp \
 	D:/QTproject/AttendanceSystem/NetworkClient/protocol.h \
+	D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.cpp \
+	D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h \
 	D:/QTproject/AttendanceSystem/UI/facevideowidget.cpp \
 	D:/QTproject/AttendanceSystem/UI/facevideowidget.h \
 	D:/QTproject/AttendanceSystem/UI/setwindow.cpp \

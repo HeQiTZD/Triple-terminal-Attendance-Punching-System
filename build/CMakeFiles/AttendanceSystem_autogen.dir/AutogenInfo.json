@@ -9,7 +9,7 @@
 	[
 		"D:/QTproject/AttendanceSystem/CMakeLists.txt",
 		"D:/QTproject/AttendanceSystem/build/CMakeFiles/4.2.3/CMakeSystem.cmake",
-		"C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6/qt.toolchain.cmake",
+		"c:/Qt/6.10.2/mingw_64/lib/cmake/Qt6/qt.toolchain.cmake",
 		"C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeSystemSpecificInitialize.cmake",
 		"C:/Program Files/CMake/share/cmake-4.2/Modules/Platform/Windows-Initialize.cmake",
 		"D:/QTproject/AttendanceSystem/build/CMakeFiles/4.2.3/CMakeCXXCompiler.cmake",
@@ -552,6 +552,12 @@
 			null
 		],
 		[
+			"D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h",
+			"MU",
+			"26RFHC3MAC/moc_serverprotocol.cpp",
+			null
+		],
+		[
 			"D:/QTproject/AttendanceSystem/UI/facevideowidget.h",
 			"MU",
 			"KRKR4BN5RM/moc_facevideowidget.cpp",
@@ -635,7 +641,7 @@
 	"MOC_PATH_PREFIX" : false,
 	"MOC_PREDEFS_CMD" : 
 	[
-		"C:/Qt/Tools/mingw1310_64/bin/g++.exe",
+		"c:/Qt/Tools/mingw1310_64/bin/g++.exe",
 		"-std=gnu++17",
 		"-w",
 		"-dM",
@@ -728,6 +734,11 @@
 		],
 		[
 			"D:/QTproject/AttendanceSystem/NetworkClient/protocol.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.cpp",
 			"MU",
 			null
 		],

@@ -10,16 +10,12 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QStatusBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -36,45 +32,47 @@ public:
     QSpacerItem *horizontalSpacer_top;
     QLabel *networkStatusLabel;
     QPushButton *settingButton;
-    QHBoxLayout *horizontalLayout_center;
-    QWidget *leftWidget;
-    QVBoxLayout *verticalLayout_left;
-    QGroupBox *infoGroupBox;
-    QVBoxLayout *verticalLayout_info;
-    QHBoxLayout *horizontalLayout_employeeId;
+    QPushButton *minimizeButton;
+    QPushButton *maximizeButton;
+    QPushButton *closeButton;
+    QVBoxLayout *verticalLayout_content;
+    QWidget *infoWidget;
+    QHBoxLayout *horizontalLayout_info;
     QLabel *employeeIdLabel;
-    QLineEdit *employeeIdEdit;
-    QHBoxLayout *horizontalLayout_name;
+    QLabel *employeeIdEdit;
+    QSpacerItem *horizontalSpacer_1;
     QLabel *nameLabel;
-    QLineEdit *nameEdit;
-    QHBoxLayout *horizontalLayout_status;
+    QLabel *nameEdit;
+    QSpacerItem *horizontalSpacer_2;
     QLabel *statusLabel;
-    QLineEdit *statusEdit;
-    QHBoxLayout *horizontalLayout_time;
+    QLabel *statusEdit;
+    QSpacerItem *horizontalSpacer_3;
     QLabel *checkTimeLabel;
-    QLineEdit *checkTimeEdit;
-    QGroupBox *faceImageGroupBox;
-    QVBoxLayout *verticalLayout_face;
-    QLabel *faceImageLabel;
-    QWidget *rightWidget;
-    QVBoxLayout *verticalLayout_right;
+    QLabel *checkTimeEdit;
+    QWidget *cameraWidget;
+    QVBoxLayout *verticalLayout_camera;
     QLabel *cameraLabel;
     QLabel *cameraDisplay;
-    QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
         MainWindow->resize(1299, 892);
+        MainWindow->setStyleSheet(QString::fromUtf8("QMainWindow { background-color: #0d1117; }"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
+        centralwidget->setStyleSheet(QString::fromUtf8("QWidget#centralwidget { background-color: #0d1117; }"));
         verticalLayout_main = new QVBoxLayout(centralwidget);
+        verticalLayout_main->setSpacing(0);
         verticalLayout_main->setObjectName("verticalLayout_main");
+        verticalLayout_main->setContentsMargins(0, 0, 0, 0);
         topWidget = new QWidget(centralwidget);
         topWidget->setObjectName("topWidget");
+        topWidget->setMinimumSize(QSize(0, 52));
         horizontalLayout_top = new QHBoxLayout(topWidget);
         horizontalLayout_top->setObjectName("horizontalLayout_top");
+        horizontalLayout_top->setContentsMargins(15, 8, 8, 8);
         timeLabel = new QLabel(topWidget);
         timeLabel->setObjectName("timeLabel");
         QFont font;
@@ -90,126 +88,111 @@ public:
 
         networkStatusLabel = new QLabel(topWidget);
         networkStatusLabel->setObjectName("networkStatusLabel");
-        networkStatusLabel->setStyleSheet(QString::fromUtf8("color: green;"));
 
         horizontalLayout_top->addWidget(networkStatusLabel);
 
         settingButton = new QPushButton(topWidget);
         settingButton->setObjectName("settingButton");
-        QIcon icon(QIcon::fromTheme(QString::fromUtf8("configure")));
-        settingButton->setIcon(icon);
 
         horizontalLayout_top->addWidget(settingButton);
+
+        minimizeButton = new QPushButton(topWidget);
+        minimizeButton->setObjectName("minimizeButton");
+
+        horizontalLayout_top->addWidget(minimizeButton);
+
+        maximizeButton = new QPushButton(topWidget);
+        maximizeButton->setObjectName("maximizeButton");
+
+        horizontalLayout_top->addWidget(maximizeButton);
+
+        closeButton = new QPushButton(topWidget);
+        closeButton->setObjectName("closeButton");
+
+        horizontalLayout_top->addWidget(closeButton);
 
 
         verticalLayout_main->addWidget(topWidget);
 
-        horizontalLayout_center = new QHBoxLayout();
-        horizontalLayout_center->setObjectName("horizontalLayout_center");
-        leftWidget = new QWidget(centralwidget);
-        leftWidget->setObjectName("leftWidget");
-        verticalLayout_left = new QVBoxLayout(leftWidget);
-        verticalLayout_left->setObjectName("verticalLayout_left");
-        infoGroupBox = new QGroupBox(leftWidget);
-        infoGroupBox->setObjectName("infoGroupBox");
-        verticalLayout_info = new QVBoxLayout(infoGroupBox);
-        verticalLayout_info->setObjectName("verticalLayout_info");
-        horizontalLayout_employeeId = new QHBoxLayout();
-        horizontalLayout_employeeId->setObjectName("horizontalLayout_employeeId");
-        employeeIdLabel = new QLabel(infoGroupBox);
+        verticalLayout_content = new QVBoxLayout();
+        verticalLayout_content->setSpacing(8);
+        verticalLayout_content->setObjectName("verticalLayout_content");
+        verticalLayout_content->setContentsMargins(8, 8, 8, 8);
+        infoWidget = new QWidget(centralwidget);
+        infoWidget->setObjectName("infoWidget");
+        infoWidget->setMaximumSize(QSize(16777215, 90));
+        horizontalLayout_info = new QHBoxLayout(infoWidget);
+        horizontalLayout_info->setSpacing(24);
+        horizontalLayout_info->setObjectName("horizontalLayout_info");
+        horizontalLayout_info->setContentsMargins(16, 8, 16, 8);
+        employeeIdLabel = new QLabel(infoWidget);
         employeeIdLabel->setObjectName("employeeIdLabel");
 
-        horizontalLayout_employeeId->addWidget(employeeIdLabel);
+        horizontalLayout_info->addWidget(employeeIdLabel);
 
-        employeeIdEdit = new QLineEdit(infoGroupBox);
+        employeeIdEdit = new QLabel(infoWidget);
         employeeIdEdit->setObjectName("employeeIdEdit");
-        employeeIdEdit->setReadOnly(true);
 
-        horizontalLayout_employeeId->addWidget(employeeIdEdit);
+        horizontalLayout_info->addWidget(employeeIdEdit);
 
+        horizontalSpacer_1 = new QSpacerItem(20, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
-        verticalLayout_info->addLayout(horizontalLayout_employeeId);
+        horizontalLayout_info->addItem(horizontalSpacer_1);
 
-        horizontalLayout_name = new QHBoxLayout();
-        horizontalLayout_name->setObjectName("horizontalLayout_name");
-        nameLabel = new QLabel(infoGroupBox);
+        nameLabel = new QLabel(infoWidget);
         nameLabel->setObjectName("nameLabel");
 
-        horizontalLayout_name->addWidget(nameLabel);
+        horizontalLayout_info->addWidget(nameLabel);
 
-        nameEdit = new QLineEdit(infoGroupBox);
+        nameEdit = new QLabel(infoWidget);
         nameEdit->setObjectName("nameEdit");
-        nameEdit->setReadOnly(true);
 
-        horizontalLayout_name->addWidget(nameEdit);
+        horizontalLayout_info->addWidget(nameEdit);
 
+        horizontalSpacer_2 = new QSpacerItem(20, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
-        verticalLayout_info->addLayout(horizontalLayout_name);
+        horizontalLayout_info->addItem(horizontalSpacer_2);
 
-        horizontalLayout_status = new QHBoxLayout();
-        horizontalLayout_status->setObjectName("horizontalLayout_status");
-        statusLabel = new QLabel(infoGroupBox);
+        statusLabel = new QLabel(infoWidget);
         statusLabel->setObjectName("statusLabel");
 
-        horizontalLayout_status->addWidget(statusLabel);
+        horizontalLayout_info->addWidget(statusLabel);
 
-        statusEdit = new QLineEdit(infoGroupBox);
+        statusEdit = new QLabel(infoWidget);
         statusEdit->setObjectName("statusEdit");
-        statusEdit->setReadOnly(true);
 
-        horizontalLayout_status->addWidget(statusEdit);
+        horizontalLayout_info->addWidget(statusEdit);
 
+        horizontalSpacer_3 = new QSpacerItem(20, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
-        verticalLayout_info->addLayout(horizontalLayout_status);
+        horizontalLayout_info->addItem(horizontalSpacer_3);
 
-        horizontalLayout_time = new QHBoxLayout();
-        horizontalLayout_time->setObjectName("horizontalLayout_time");
-        checkTimeLabel = new QLabel(infoGroupBox);
+        checkTimeLabel = new QLabel(infoWidget);
         checkTimeLabel->setObjectName("checkTimeLabel");
 
-        horizontalLayout_time->addWidget(checkTimeLabel);
+        horizontalLayout_info->addWidget(checkTimeLabel);
 
-        checkTimeEdit = new QLineEdit(infoGroupBox);
+        checkTimeEdit = new QLabel(infoWidget);
         checkTimeEdit->setObjectName("checkTimeEdit");
-        checkTimeEdit->setReadOnly(true);
 
-        horizontalLayout_time->addWidget(checkTimeEdit);
-
-
-        verticalLayout_info->addLayout(horizontalLayout_time);
+        horizontalLayout_info->addWidget(checkTimeEdit);
 
 
-        verticalLayout_left->addWidget(infoGroupBox);
+        verticalLayout_content->addWidget(infoWidget);
 
-        faceImageGroupBox = new QGroupBox(leftWidget);
-        faceImageGroupBox->setObjectName("faceImageGroupBox");
-        verticalLayout_face = new QVBoxLayout(faceImageGroupBox);
-        verticalLayout_face->setObjectName("verticalLayout_face");
-        faceImageLabel = new QLabel(faceImageGroupBox);
-        faceImageLabel->setObjectName("faceImageLabel");
-        faceImageLabel->setMinimumSize(QSize(200, 200));
-        faceImageLabel->setStyleSheet(QString::fromUtf8("background-color: lightgray; border: 1px solid gray;"));
-        faceImageLabel->setAlignment(Qt::AlignmentFlag::AlignCenter);
-
-        verticalLayout_face->addWidget(faceImageLabel);
-
-
-        verticalLayout_left->addWidget(faceImageGroupBox);
-
-
-        horizontalLayout_center->addWidget(leftWidget);
-
-        rightWidget = new QWidget(centralwidget);
-        rightWidget->setObjectName("rightWidget");
-        verticalLayout_right = new QVBoxLayout(rightWidget);
-        verticalLayout_right->setObjectName("verticalLayout_right");
-        cameraLabel = new QLabel(rightWidget);
+        cameraWidget = new QWidget(centralwidget);
+        cameraWidget->setObjectName("cameraWidget");
+        verticalLayout_camera = new QVBoxLayout(cameraWidget);
+        verticalLayout_camera->setSpacing(4);
+        verticalLayout_camera->setObjectName("verticalLayout_camera");
+        verticalLayout_camera->setContentsMargins(0, 0, 0, 0);
+        cameraLabel = new QLabel(cameraWidget);
         cameraLabel->setObjectName("cameraLabel");
-        cameraLabel->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        cameraLabel->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
 
-        verticalLayout_right->addWidget(cameraLabel);
+        verticalLayout_camera->addWidget(cameraLabel);
 
-        cameraDisplay = new QLabel(rightWidget);
+        cameraDisplay = new QLabel(cameraWidget);
         cameraDisplay->setObjectName("cameraDisplay");
         QSizePolicy sizePolicy(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Expanding);
         sizePolicy.setHorizontalStretch(0);
@@ -217,24 +200,18 @@ public:
         sizePolicy.setHeightForWidth(cameraDisplay->sizePolicy().hasHeightForWidth());
         cameraDisplay->setSizePolicy(sizePolicy);
         cameraDisplay->setMinimumSize(QSize(640, 480));
-        cameraDisplay->setStyleSheet(QString::fromUtf8("background-color: black; color: white; border: 2px solid gray;"));
+        cameraDisplay->setStyleSheet(QString::fromUtf8("background-color: #0a0e14; color: #30363d; border: 2px solid #00d4ff;"));
         cameraDisplay->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
-        verticalLayout_right->addWidget(cameraDisplay);
+        verticalLayout_camera->addWidget(cameraDisplay);
 
 
-        horizontalLayout_center->addWidget(rightWidget);
+        verticalLayout_content->addWidget(cameraWidget);
 
-        horizontalLayout_center->setStretch(0, 1);
-        horizontalLayout_center->setStretch(1, 2);
 
-        verticalLayout_main->addLayout(horizontalLayout_center);
+        verticalLayout_main->addLayout(verticalLayout_content);
 
         MainWindow->setCentralWidget(centralwidget);
-        statusbar = new QStatusBar(MainWindow);
-        statusbar->setObjectName("statusbar");
-        statusbar->setStyleSheet(QString::fromUtf8("QStatusBar { background-color: #f0f0f0; }"));
-        MainWindow->setStatusBar(statusbar);
 
         retranslateUi(MainWindow);
 
@@ -244,17 +221,21 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "\344\272\272\350\204\270\350\257\206\345\210\253\350\200\203\345\213\244\347\263\273\347\273\237", nullptr));
-        timeLabel->setText(QCoreApplication::translate("MainWindow", "\345\275\223\345\211\215\346\227\266\351\227\264\357\274\2322024-01-01 12:00:00", nullptr));
-        networkStatusLabel->setText(QCoreApplication::translate("MainWindow", "\347\275\221\347\273\234\347\212\266\346\200\201\357\274\232\342\227\217", nullptr));
-        settingButton->setText(QCoreApplication::translate("MainWindow", "\350\256\276\347\275\256", nullptr));
-        infoGroupBox->setTitle(QCoreApplication::translate("MainWindow", "\345\221\230\345\267\245\344\277\241\346\201\257", nullptr));
+        timeLabel->setText(QCoreApplication::translate("MainWindow", "2024-01-01  12:00:00", nullptr));
+        networkStatusLabel->setText(QCoreApplication::translate("MainWindow", "\360\237\224\264 \347\246\273\347\272\277", nullptr));
+        settingButton->setText(QCoreApplication::translate("MainWindow", "\342\232\231  \350\256\276\347\275\256", nullptr));
+        minimizeButton->setText(QCoreApplication::translate("MainWindow", "\342\210\222", nullptr));
+        maximizeButton->setText(QCoreApplication::translate("MainWindow", "\342\254\234", nullptr));
+        closeButton->setText(QCoreApplication::translate("MainWindow", "\342\234\225", nullptr));
         employeeIdLabel->setText(QCoreApplication::translate("MainWindow", "\345\221\230\345\267\245\345\217\267\357\274\232", nullptr));
+        employeeIdEdit->setText(QString());
         nameLabel->setText(QCoreApplication::translate("MainWindow", "\345\247\223\345\220\215\357\274\232", nullptr));
+        nameEdit->setText(QString());
         statusLabel->setText(QCoreApplication::translate("MainWindow", "\346\211\223\345\215\241\347\212\266\346\200\201\357\274\232", nullptr));
+        statusEdit->setText(QString());
         checkTimeLabel->setText(QCoreApplication::translate("MainWindow", "\346\211\223\345\215\241\346\227\266\351\227\264\357\274\232", nullptr));
-        faceImageGroupBox->setTitle(QCoreApplication::translate("MainWindow", "\350\257\206\345\210\253\345\210\260\347\232\204\344\272\272\350\204\270", nullptr));
-        faceImageLabel->setText(QCoreApplication::translate("MainWindow", "\346\232\202\346\227\240\344\272\272\350\204\270\350\257\206\345\210\253", nullptr));
-        cameraLabel->setText(QCoreApplication::translate("MainWindow", "\346\221\204\345\203\217\345\244\264\345\256\236\346\227\266\347\224\273\351\235\242", nullptr));
+        checkTimeEdit->setText(QString());
+        cameraLabel->setText(QCoreApplication::translate("MainWindow", "\342\226\266  \345\256\236\346\227\266\347\224\273\351\235\242", nullptr));
         cameraDisplay->setText(QCoreApplication::translate("MainWindow", "\346\221\204\345\203\217\345\244\264\347\224\273\351\235\242\346\230\276\347\244\272\345\214\272\345\237\237", nullptr));
     } // retranslateUi
 

@@ -38,8 +38,8 @@ void FaceVideoWidget::paintEvent(QPaintEvent *event)
 
     // 在视频上绘制人脸框
     QPainter painter(this);
-    //setRenderHint设置渲染提示 / 渲染选项，告诉绘图引擎用什么规则绘制内容。
-    painter.setRenderHint(QPainter::Antialiasing);//QPainter::Antialiasing抗锯齿
+    //setRenderHint 设置渲染提示 / 渲染选项，告诉绘图引擎用什么规则绘制内容。
+    painter.setRenderHint(QPainter::Antialiasing);//QPainter::Antialiasing 抗锯齿
 
     QMutexLocker locker(&m_mutex);
 
@@ -52,32 +52,44 @@ void FaceVideoWidget::paintEvent(QPaintEvent *event)
     QSize frameSize = m_currentFrame.size();
     QSize widgetSize = size();
 
-    // 计算缩放比例（保持宽高比）
-    qreal scalex = (qreal)widgetSize.width()/frameSize.width();
-    qreal scaley = (qreal)widgetSize.height()/frameSize.height();
-    qreal scale = qMin(scalex,scaley);
-
-    // 计算居中显示的区域
-    int displayWidth = frameSize.width() * scale;
-    int displayHeight = frameSize.height() * scale;
-    int offsetX = (widgetSize.width() - displayWidth) / 2;
-    int offsetY = (widgetSize.height() - displayHeight) / 2;
-
-    // 绘制黑色背景（两侧留白区域）
+    // 绘制黑色背景
     painter.fillRect(rect(), Qt::black);
 
-    // 绘制视频帧
-    QRect targetRect(offsetX, offsetY, displayWidth, displayHeight);
+    // 计算保持宽高比的绘制区域（类似 Qt::KeepAspectRatioByExpanding）
+    QRect targetRect;
+    if (frameSize.width() > 0 && frameSize.height() > 0) {
+        qreal frameAspect = (qreal)frameSize.width() / frameSize.height();
+        qreal widgetAspect = (qreal)widgetSize.width() / widgetSize.height();
+        
+        if (widgetAspect > frameAspect) {
+            // 控件更宽，按高度缩放
+            int targetWidth = qRound(widgetSize.height() * frameAspect);
+            int xOffset = (widgetSize.width() - targetWidth) / 2;
+            targetRect = QRect(xOffset, 0, targetWidth, widgetSize.height());
+        } else {
+            // 控件更高，按宽度缩放
+            int targetHeight = qRound(widgetSize.width() / frameAspect);
+            int yOffset = (widgetSize.height() - targetHeight) / 2;
+            targetRect = QRect(0, yOffset, widgetSize.width(), targetHeight);
+        }
+    } else {
+        targetRect = rect();
+    }
+
+    // 绘制视频帧（保持宽高比）
     painter.drawImage(targetRect, m_currentFrame);
 
     // 绘制每个人脸框
     for (const FaceRectInfo &faceInfo:m_faceRects){
-        // 将人脸坐标从图像坐标系转换为控件坐标系
+        // 将人脸坐标从图像坐标系转换为控件坐标系（使用保持宽高比的缩放比例）
+        qreal scaleX = (qreal)targetRect.width() / frameSize.width();
+        qreal scaleY = (qreal)targetRect.height() / frameSize.height();
+        
         QRect scaledRect;
-        scaledRect.setX(faceInfo.rect.x() * scale + offsetX);
-        scaledRect.setY(faceInfo.rect.y() * scale + offsetY);
-        scaledRect.setWidth(faceInfo.rect.width() * scale);
-        scaledRect.setHeight(faceInfo.rect.height() * scale);
+        scaledRect.setX(targetRect.x() + faceInfo.rect.x() * scaleX);
+        scaledRect.setY(targetRect.y() + faceInfo.rect.y() * scaleY);
+        scaledRect.setWidth(faceInfo.rect.width() * scaleX);
+        scaledRect.setHeight(faceInfo.rect.height() * scaleY);
 
         //根据识别状态选择颜色
         if(faceInfo.recognized){

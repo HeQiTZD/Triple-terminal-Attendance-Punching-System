@@ -24,6 +24,12 @@ bool Networkclient::isConnected() const
     return m_connection->isConnect();
 }
 
+void Networkclient::setDeviceId(const QString &deviceId)
+{
+    if (deviceId.isEmpty()) return;
+    m_deviceId = deviceId;
+}
+
 //同步人员数据
 bool Networkclient::syncPersonData()
 {
@@ -32,19 +38,22 @@ bool Networkclient::syncPersonData()
         return false;
     }
 
-    QJsonObject requesData;
-    requesData["device_id"] = "device_001";
+    if(!m_writer){
+        qWarning()<<"Networkclient：writer未初始化，无法同步人员数据";
+        return false;
+    }
 
-    //Qt::ISODate 是 Qt 框架中定义的 日期时间格式枚举值 ，用于将 QDateTime 转换为 ISO 8601 标准格式 的字符串。
-    requesData["timestamp"] = QDateTime::currentDateTime().toString(Qt::ISODate);
-
-    return m_writer->send(requesData);
+    // AttendanceServer expects: {"type":"sync_request","deviceId":"..."}
+    const QJsonObject msg = ServerProtocol::buildSyncRequest(m_deviceId);
+    return m_writer->send(msg);
 }
 
 //上传打卡记录
-bool Networkclient::uploadAttendance(const Protocol::AttendanceRecord &record)
+bool Networkclient::uploadAttendance(const QString& employeeId, const QString& status, const QDateTime& checkTime)
 {
-    QJsonObject message = Protocol::createMessage(Protocol::UPLOAD_ATTENDANCE,record.toJson());
+    // AttendanceServer expects:
+    // {"type":"attendance_record","employeeId":"...","checkTime":"ISO","deviceId":"...","status":"ok"}
+    QJsonObject message = ServerProtocol::buildAttendanceRecord(employeeId, checkTime, m_deviceId, status);
 
     if(isConnected() && m_writer)
     {
@@ -65,38 +74,38 @@ bool Networkclient::uploadAttendance(const Protocol::AttendanceRecord &record)
 }
 
 //批量上传
-bool Networkclient::uploadAttendanceBatch(const QVector<Protocol::AttendanceRecord> &rocord)
+bool Networkclient::uploadAttendanceBatch(const QVector<QJsonObject> &records)
 {
-    //构建消息列表
-    QVector<QJsonObject> message;
-    for(const auto &record : rocord){
-        message.append(Protocol::createMessage(Protocol::UPLOAD_ATTENDANCE,record.toJson()));
+    if(!m_queue){
+        qWarning()<<"Networkclient：queue未初始化";
+        return false;
     }
 
-    if(isConnected() && m_writer)
-    {
+    if(!isConnected() || !m_writer){
         //网络断开，全部入队
-        for(const auto &msg : message){
+        for(const auto &msg : records){
             m_queue->enqueue(msg);
         }
         return true;
     }
 
     //网络正常，批量发送
-    int sent = m_writer->sendBatch(message);
+    int sent = m_writer->sendBatch(records);
 
     //未发送的入队
-    for(int i=sent;i<message.size();i++){
-        m_queue->enqueue(message[i]);
+    for(int i=sent;i<records.size();i++){
+        m_queue->enqueue(records[i]);
     }
 
-    return sent == message.size();
+    return sent == records.size();
 }
 
 //上报设备状态
 void Networkclient::reportDeviceStatus(const QJsonObject &status)
 {
-    QJsonObject message = Protocol::createMessage(Protocol::DEVICE_STATUS,status);
+    // `status` carries optional fields like deviceName/ipAddress; we must still set
+    // type/deviceId/status at root level for AttendanceServer.
+    QJsonObject message = ServerProtocol::buildDeviceStatus(m_deviceId, status.value("status").toString("online"), status);
 
     if(isConnected() && m_writer){
         m_writer->send(message);
@@ -122,6 +131,10 @@ void Networkclient::onConnectionConnected()
 
     //先启动消息接收，确保能收到服务器响应
     m_ready->start();
+
+    // 必须先认证，否则 AttendanceServer 不会处理多数业务消息
+    m_isAuthenticated = false;
+    m_writer->send(ServerProtocol::buildAuth(m_deviceId));
 
     //再启动心跳（确保reader已就绪，能接收心跳响应）
     m_heartbeat->setSocket(socket);
@@ -168,6 +181,7 @@ void Networkclient::onConnectionDisconnected()
     delete m_ready;
     m_ready = nullptr;
 
+    m_isAuthenticated = false;
     m_isOnline = false;
     emit disconnected();
     emit networkStateChanged(false);
@@ -195,22 +209,33 @@ void Networkclient::onConnectionStateChanged(bool isOnline)
 //消息接收处理
 void Networkclient::onMessageReceived(const QJsonObject &message)
 {
-    //解析消息类型
-    Protocol::MessageType type = Protocol::parseMessageType(message);
-
-    switch (type) {
-    case Protocol::SYNC_PERSON_RESPONSE:
-        handlePersonSynResponse(message);
+    const auto t = ServerProtocol::parseType(message);
+    switch (t) {
+    case ServerProtocol::MessageType::AuthResponse: {
+        const QString st = message.value(ServerProtocol::kStatus).toString();
+        if (st == "success") {
+            m_isAuthenticated = true;
+            qDebug() << "Networkclient: auth success, deviceId=" << m_deviceId;
+            // Optional: trigger initial sync right after auth
+            syncPersonData();
+        } else {
+            m_isAuthenticated = false;
+            qWarning() << "Networkclient: auth failed" << message;
+        }
         break;
-    case Protocol::UPLOAD_RESPONSE:
-        handleUploadResponse(message);
-        break;
-    case Protocol::HEARTBEAT:
+    }
+    case ServerProtocol::MessageType::HeartbeatResponse:
         qDebug()<<"Networkclient:收到服务器心跳响应";
         m_heartbeat->onHeartbeatResponse();
         break;
+    case ServerProtocol::MessageType::PersonSync:
+        handlePersonSynResponse(message);
+        break;
+    case ServerProtocol::MessageType::Error:
+        handleServerError(message);
+        break;
     default:
-        qWarning()<<"Networkclient：未知消息"<<Protocol::messageTypeToString(type);
+        qWarning() << "Networkclient：未知服务器消息" << message.value(ServerProtocol::kType).toString();
         break;
     }
 }
@@ -294,17 +319,18 @@ void Networkclient::processQueue()
 
 void Networkclient::handlePersonSynResponse(const QJsonObject &message)
 {
-    //解析人员数据
+    // AttendanceServer sends: {"type":"person_sync","persons":[{id,name,employeeId,department,position},...]}
+    const auto items = ServerProtocol::parsePersons(message);
+
     QVector<Protocol::PersonData> persons;
-    QJsonArray personArray = message["person"].toArray();//message["person"].toArray();获取person对应的值，QJsonValue类型
-    //toArray()转化为QJsonArray（JSON数组）
-
-    for(const auto &value:personArray){
-        QJsonObject obj = value.toObject();
-
-        //Protocol::PersonData::fromJson(obj) - 静态工厂方法
-        //这是一个 自定义的静态成员函数 ，用于从 JSON 对象创建 PersonData 实例。
-        persons.append(Protocol::PersonData::fromJson(obj));
+    persons.reserve(items.size());
+    for (const auto& it : items) {
+        Protocol::PersonData p;
+        p.employeeId = it.employeeId;
+        p.name = it.name;
+        p.faceFeature.clear(); // not provided by server yet
+        p.featureSize = 0;
+        persons.push_back(p);
     }
 
     qDebug()<<"Networkclient：收到人员数据："<<persons.size()<<"条";
@@ -332,6 +358,13 @@ void Networkclient::handleUploadResponse(const QJsonObject &message)
 
     //对外发射信号
     emit uploadFinished(success,msg);
+}
+
+void Networkclient::handleServerError(const QJsonObject &message)
+{
+    const QString msg = message.value(ServerProtocol::kMessage).toString();
+    qWarning() << "Networkclient: server error:" << msg;
+    emit uploadFinished(false, msg);
 }
 
 

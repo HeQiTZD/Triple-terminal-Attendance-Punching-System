@@ -2,8 +2,10 @@
 #define NETWORKCLIENT_H
 
 #include <QObject>
+#include <QDateTime>
 #include <QVector>
 #include "protocol.h"
+#include "serverprotocol.h"
 
 #include "connectionmanager.h"
 #include "heartbeatmanager.h"
@@ -29,9 +31,12 @@ public:
 
     //业务接口
     bool syncPersonData();//同步人员数据
-    bool uploadAttendance(const Protocol::AttendanceRecord &record);
-    bool uploadAttendanceBatch(const QVector<Protocol::AttendanceRecord> &rocord);
+    bool uploadAttendance(const QString& employeeId, const QString& status, const QDateTime& checkTime = QDateTime::currentDateTime());
+    bool uploadAttendanceBatch(const QVector<QJsonObject> &records); // already-built attendance_record messages
     void reportDeviceStatus(const QJsonObject &status);
+
+    void setDeviceId(const QString& deviceId);
+    QString deviceId() const { return m_deviceId; }
 
 
 signals:
@@ -63,6 +68,7 @@ private:
     //辅助方法
     void handlePersonSynResponse(const QJsonObject &message);
     void handleUploadResponse(const QJsonObject &message);
+    void handleServerError(const QJsonObject& message);
 
 private:
     Connectionmanager *m_connection;
@@ -71,6 +77,8 @@ private:
     Messagereader *m_ready;
     Messagequeue *m_queue;
 
+    QString m_deviceId = "device_001";
+    bool m_isAuthenticated = false;
     bool m_isOnline = false;//当前网络状态
 };
 #endif // NETWORKCLIENT_H

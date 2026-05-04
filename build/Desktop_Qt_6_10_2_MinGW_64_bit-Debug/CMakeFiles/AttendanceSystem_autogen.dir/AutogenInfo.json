@@ -553,6 +553,12 @@
 			null
 		],
 		[
+			"D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h",
+			"MU",
+			"26RFHC3MAC/moc_serverprotocol.cpp",
+			null
+		],
+		[
 			"D:/QTproject/AttendanceSystem/UI/facevideowidget.h",
 			"MU",
 			"KRKR4BN5RM/moc_facevideowidget.cpp",
@@ -734,6 +740,11 @@
 		],
 		[
 			"D:/QTproject/AttendanceSystem/NetworkClient/protocol.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.cpp",
 			"MU",
 			null
 		],

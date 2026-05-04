@@ -70,9 +70,8 @@ bool Heartbeatmanager::isRunning() const
 //辅助函数：构建心跳数据包
 QByteArray Heartbeatmanager::buildHeartbeatData()
 {
-    //使用协议层创建标准心跳消息
-    QJsonObject emptyData;
-    QJsonObject message = Protocol::createMessage(Protocol::HEARTBEAT,emptyData);
+    // AttendanceServer expects: {"type":"heartbeat"}
+    QJsonObject message = ServerProtocol::buildHeartbeat();
 
     //转为QByteArray
     QByteArray data = QJsonDocument(message).toJson(QJsonDocument::Compact);
