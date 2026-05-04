@@ -58,6 +58,8 @@ public:
     Q_INVOKABLE bool deleteFaceDataByEmployeeId(const QString& employeeId);
     Q_INVOKABLE QObject* getFaceDataByEmployeeId(const QString& employeeId);
     Q_INVOKABLE QList<QObject*> getAllFaceData();
+    // 同步场景：返回含 feature_vector 的全量数据（谨慎使用，可能很大）
+    Q_INVOKABLE QList<QObject*> getAllFaceDataWithFeature();
     Q_INVOKABLE QList<QObject*> selectFaceData(const QString& employeeId, const QDateTime& createdStart,
                                                const QDateTime& createdEnd, const QDateTime& updatedStart,
                                                const QDateTime& updatedEnd);

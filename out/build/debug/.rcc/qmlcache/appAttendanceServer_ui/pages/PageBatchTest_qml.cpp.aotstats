@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 2,
                             "column": 36,
-                            "durationMicroseconds": 1000,
+                            "durationMicroseconds": 2000,
                             "functionName": "scripts",
                             "line": 14,
                             "message": "Cannot generate efficient code for LoadClosure"
@@ -32,7 +32,7 @@
                         {
                             "codegenResult": 0,
                             "column": 18,
-                            "durationMicroseconds": 6000,
+                            "durationMicroseconds": 5000,
                             "functionName": "spacing",
                             "line": 185,
                             "message": ""

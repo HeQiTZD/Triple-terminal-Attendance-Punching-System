@@ -7,6 +7,7 @@
 #include <qtcpserver.h>
 #include <qtcpsocket.h>
 #include <qtimer.h>
+#include <QDataStream>
 
 TcpServer::TcpServer(QObject *parent):QObject(parent),m_server(new QTcpServer(this)),m_heartbeatChecker(new QTimer(this)) {
     connect(m_server,&QTcpServer::newConnection,this,&TcpServer::onNewConnection);
@@ -101,6 +102,15 @@ bool TcpServer::sendToClient(const QString &deviceId, const QJsonObject &data)
     QTcpSocket *socket = m_deviceMap[deviceId];
     sendMessage(socket,data);
     return true;
+}
+
+bool TcpServer::sendBinaryFrameToClient(const QString &deviceId, const QByteArray &payload)
+{
+    if(!m_deviceMap.contains(deviceId)){
+        return false;
+    }
+    QTcpSocket *socket = m_deviceMap[deviceId];
+    return sendBinaryFrame(socket, payload);
 }
 
 void TcpServer::brodcastsToAll(const QJsonObject &data)
@@ -238,6 +248,10 @@ void TcpServer::processMessage(QTcpSocket *socket, const QJsonObject &message)
         if(!info.isAuthenticated) return;
         updateHeartbeat(socket);
         emit syncRequested(info.deviceId);
+    }else if(type == Protocol::kSyncAck){
+        if(!info.isAuthenticated) return;
+        updateHeartbeat(socket);
+        emit syncAckReceived(info.deviceId, message);
     }
 }
 
@@ -261,6 +275,26 @@ void TcpServer::sendMessage(QTcpSocket *socket, const QJsonObject &message)
         对应另一种格式 QJsonDocument::Indented：带缩进、换行的格式化 JSON，适合调试查看。
     */
     socket->write(doc.toJson(QJsonDocument::Compact)+"\n");
+}
+
+bool TcpServer::sendBinaryFrame(QTcpSocket *socket, const QByteArray &payload)
+{
+    if(!socket || socket->state() != QAbstractSocket::ConnectedState){
+        return false;
+    }
+    if(payload.isEmpty()){
+        return false;
+    }
+
+    QByteArray frame;
+    frame.reserve(4 + payload.size());
+    QDataStream ds(&frame, QIODevice::WriteOnly);
+    ds.setByteOrder(QDataStream::BigEndian);
+    ds << static_cast<quint32>(payload.size());
+    frame.append(payload);
+
+    const qint64 wrote = socket->write(frame);
+    return wrote == frame.size();
 }
 
 void TcpServer::removeClient(QTcpSocket *socket)

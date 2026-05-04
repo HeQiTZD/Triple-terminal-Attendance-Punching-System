@@ -53,6 +53,7 @@ public:
     Q_INVOKABLE bool deleteFaceDataByEmployeeId(const QString& employeeId);
     Q_INVOKABLE QObject* getFaceDataByEmployeeId(const QString& employeeId);
     Q_INVOKABLE QList<QObject*> getAllFaceData();
+    Q_INVOKABLE QList<QObject*> getAllFaceDataWithFeature();
     Q_INVOKABLE QList<QObject*> selectFaceData(const QString& employeeId, const QDateTime& createdStart,
                                                const QDateTime& createdEnd, const QDateTime& updatedStart,
                                                const QDateTime& updatedEnd);

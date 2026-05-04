@@ -23,9 +23,17 @@ static inline const QString kRecordStatus = "recordStatus";   // 比如 "in"/"ou
 static inline const QString kSyncRequest = "sync_request";
 static inline const QString kPersonSync = "person_sync";
 static inline const QString kConfigSync = "config_sync";
+// Face data full sync (JSON header + binary frame)
+static inline const QString kFaceSyncBegin = "face_sync_begin";
+static inline const QString kFaceSyncItemHeader = "face_sync_item_header";
+static inline const QString kFaceSyncEnd = "face_sync_end";
+static inline const QString kSyncAck = "sync_ack";
 
 static inline const QString kPayload = "payload";
 static inline const QString kPersons = "persons";
+static inline const QString kEmployeeId = "employeeId";
+static inline const QString kFeatureSize = "featureSize";
+static inline const QString kPayloadLength = "payloadLength";
 }
 
 #endif // PROTOCOL_H

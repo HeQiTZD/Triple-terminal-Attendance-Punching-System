@@ -356,6 +356,13 @@
                 },
                 {
                     "access": "public",
+                    "index": 26,
+                    "lineNumber": 56,
+                    "name": "getAllFaceDataWithFeature",
+                    "returnType": "QList<QObject*>"
+                },
+                {
+                    "access": "public",
                     "arguments": [
                         {
                             "name": "employeeId",
@@ -378,8 +385,8 @@
                             "type": "QDateTime"
                         }
                     ],
-                    "index": 26,
-                    "lineNumber": 56,
+                    "index": 27,
+                    "lineNumber": 57,
                     "name": "selectFaceData",
                     "returnType": "QList<QObject*>"
                 }
@@ -407,7 +414,7 @@
                 {
                     "access": "public",
                     "index": 0,
-                    "lineNumber": 61,
+                    "lineNumber": 62,
                     "name": "connectionStateChanged",
                     "returnType": "void"
                 },
@@ -424,7 +431,7 @@
                         }
                     ],
                     "index": 1,
-                    "lineNumber": 62,
+                    "lineNumber": 63,
                     "name": "operationResult",
                     "returnType": "void"
                 },
@@ -437,7 +444,7 @@
                         }
                     ],
                     "index": 2,
-                    "lineNumber": 63,
+                    "lineNumber": 64,
                     "name": "operationTip",
                     "returnType": "void"
                 },
@@ -454,7 +461,7 @@
                         }
                     ],
                     "index": 3,
-                    "lineNumber": 64,
+                    "lineNumber": 65,
                     "name": "deviceStatusChanged",
                     "returnType": "void"
                 },
@@ -467,7 +474,7 @@
                         }
                     ],
                     "index": 4,
-                    "lineNumber": 65,
+                    "lineNumber": 66,
                     "name": "deviceRecordChanged",
                     "returnType": "void"
                 },
@@ -480,7 +487,7 @@
                         }
                     ],
                     "index": 5,
-                    "lineNumber": 66,
+                    "lineNumber": 67,
                     "name": "Data_Validation",
                     "returnType": "void"
                 }

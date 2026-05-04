@@ -40,7 +40,7 @@
                         {
                             "codegenResult": 2,
                             "column": 5,
-                            "durationMicroseconds": 2000,
+                            "durationMicroseconds": 6000,
                             "functionName": "exportJsonText",
                             "line": 48,
                             "message": "function without return type annotation returns call to method stringify, returning QJSValue. This may prevent proper compilation to Cpp."

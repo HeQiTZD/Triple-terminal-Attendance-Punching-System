@@ -1124,6 +1124,41 @@ QList<QObject*> DataManager::getAllFaceData()
     return result;
 }
 
+QList<QObject*> DataManager::getAllFaceDataWithFeature()
+{
+    QList<QObject*> result;
+
+    if (!m_isConnected) {
+        emit operationTip(QStringLiteral("数据库未连接"));
+        return result;
+    }
+
+    QSqlQuery query(m_db);
+    query.prepare(
+        "SELECT id, employee_id, feature_vector, feature_size, created_at, updated_at "
+        "FROM face_data ORDER BY created_at DESC"
+    );
+
+    if (!query.exec()) {
+        qWarning() << "Failed to query all face data(with feature):" << query.lastError().text();
+        return result;
+    }
+
+    while (query.next()) {
+        FaceData* faceData = new FaceData();
+        faceData->setId(query.value(0).toInt());
+        faceData->setEmployeeId(query.value(1).toString());
+        faceData->setFeatureVector(query.value(2).toByteArray());
+        faceData->setFeatureSize(query.value(3).toInt());
+        faceData->setCreatedAt(query.value(4).toDateTime());
+        faceData->setUpdatedAt(query.value(5).toDateTime());
+        result.append(faceData);
+    }
+
+    qDebug() << "Retrieved" << result.size() << "face data records(with feature)";
+    return result;
+}
+
 QList<QObject *> DataManager::selectFaceData(const QString &employeeId, const QDateTime &createdStart,
     const QDateTime &createdEnd, const QDateTime &updatedStart, const QDateTime &updatedEnd)
 {

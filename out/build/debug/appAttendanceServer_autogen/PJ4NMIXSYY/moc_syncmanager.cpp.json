@@ -2,7 +2,7 @@
     "classes": [
         {
             "className": "SyncManager",
-            "lineNumber": 15,
+            "lineNumber": 16,
             "methods": [
                 {
                     "access": "public",
@@ -13,8 +13,21 @@
                         }
                     ],
                     "index": 1,
-                    "lineNumber": 20,
+                    "lineNumber": 21,
                     "name": "sendPersonSyncNow",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "deviceId",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 2,
+                    "lineNumber": 22,
+                    "name": "sendFaceSyncNow",
                     "returnType": "void"
                 }
             ],
@@ -30,7 +43,7 @@
                         }
                     ],
                     "index": 0,
-                    "lineNumber": 23,
+                    "lineNumber": 25,
                     "name": "onSynRequested",
                     "returnType": "void"
                 }

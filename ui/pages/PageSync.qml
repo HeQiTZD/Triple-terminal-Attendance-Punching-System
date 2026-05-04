@@ -29,6 +29,17 @@ Item {
                 category: "sync"
             })
         }
+        function onSyncAckReceived(deviceId, ack) {
+            Logger.info("收到同步ACK：" + deviceId)
+            History.record({
+                direction: "IN",
+                target: deviceId,
+                payload: ack,
+                ok: true,
+                result: "ACK",
+                category: "sync"
+            })
+        }
     }
 
     function _record(target, args, ok) {
@@ -50,7 +61,7 @@ Item {
         ToolBarRow {
             Layout.fillWidth: true
             title: qsTr("人员同步")
-            subtitle: qsTr("向考勤客户端下发人员名单 · 监听 sync_request 事件")
+            subtitle: qsTr("向考勤客户端下发人员名单/人脸库 · 监听 sync_request 事件")
         }
 
         SplitView {
@@ -116,6 +127,14 @@ Item {
                                 page._record({ via: "syncManager.sendPersonSyncNow", deviceId: targetDevice.text }, true)
                             }
                         }
+                        Button {
+                            text: qsTr("下发人脸全量(SyncManager)")
+                            onClicked: {
+                                syncManager.sendFaceSyncNow(targetDevice.text)
+                                Logger.logResult("下发人脸全量(SyncManager)", true, "设备=" + targetDevice.text)
+                                page._record({ via: "syncManager.sendFaceSyncNow", deviceId: targetDevice.text }, true)
+                            }
+                        }
                     }
 
                     Card {
@@ -128,6 +147,12 @@ Item {
                             spacing: Theme.spacingSm
                             Label {
                                 text: qsTr("• 同步操作会通过 TCP 把全部人员名单按协议下发给目标设备")
+                                color: Theme.textMuted
+                                wrapMode: Text.WordWrap
+                                Layout.fillWidth: true
+                            }
+                            Label {
+                                text: qsTr("• 人脸同步会先发送 JSON 头(face_sync_item_header)，随后发送二进制帧(4字节长度+payload)")
                                 color: Theme.textMuted
                                 wrapMode: Text.WordWrap
                                 Layout.fillWidth: true

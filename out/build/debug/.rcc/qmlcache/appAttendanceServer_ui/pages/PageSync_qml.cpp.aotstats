@@ -26,7 +26,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "_record",
-                            "line": 34,
+                            "line": 45,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -62,11 +62,19 @@
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
+                            "codegenResult": 2,
+                            "column": 9,
+                            "durationMicroseconds": 0,
+                            "functionName": "onSyncAckReceived",
+                            "line": 32,
+                            "message": "Functions without type annotations won't be compiled"
+                        },
+                        {
                             "codegenResult": 0,
                             "column": 18,
-                            "durationMicroseconds": 8000,
+                            "durationMicroseconds": 5000,
                             "functionName": "spacing",
-                            "line": 48,
+                            "line": 59,
                             "message": ""
                         },
                         {
@@ -74,7 +82,7 @@
                             "column": 23,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 46,
+                            "line": 57,
                             "message": ""
                         },
                         {
@@ -82,7 +90,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "margins",
-                            "line": 47,
+                            "line": 58,
                             "message": ""
                         },
                         {
@@ -90,7 +98,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "orientation",
-                            "line": 59,
+                            "line": 70,
                             "message": "Could not find property \"orientation\"."
                         },
                         {
@@ -98,7 +106,7 @@
                             "column": 27,
                             "durationMicroseconds": 0,
                             "functionName": "rows",
-                            "line": 70,
+                            "line": 81,
                             "message": ""
                         },
                         {
@@ -106,7 +114,7 @@
                             "column": 30,
                             "durationMicroseconds": 0,
                             "functionName": "columns",
-                            "line": 71,
+                            "line": 82,
                             "message": "Cannot generate efficient code for LoadClosure"
                         },
                         {
@@ -114,7 +122,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "onRowClicked",
-                            "line": 78,
+                            "line": 89,
                             "message": "Cannot retrieve a non-object type by ID: targetDevice"
                         },
                         {
@@ -122,7 +130,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "onRowClicked",
-                            "line": 78,
+                            "line": 89,
                             "message": ""
                         },
                         {
@@ -130,7 +138,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 69,
+                            "line": 80,
                             "message": ""
                         },
                         {
@@ -138,7 +146,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 88,
+                            "line": 99,
                             "message": ""
                         },
                         {
@@ -146,7 +154,7 @@
                             "column": 30,
                             "durationMicroseconds": 0,
                             "functionName": "spacing",
-                            "line": 89,
+                            "line": 100,
                             "message": ""
                         },
                         {
@@ -154,7 +162,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 97,
+                            "line": 108,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -162,7 +170,7 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 104,
+                            "line": 115,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -170,7 +178,15 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 113,
+                            "line": 124,
+                            "message": "Could not find signal \"clicked\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 40,
+                            "durationMicroseconds": 0,
+                            "functionName": "onClicked",
+                            "line": 132,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -178,7 +194,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 127,
+                            "line": 146,
                             "message": ""
                         },
                         {
@@ -186,7 +202,7 @@
                             "column": 38,
                             "durationMicroseconds": 0,
                             "functionName": "spacing",
-                            "line": 128,
+                            "line": 147,
                             "message": ""
                         },
                         {
@@ -194,7 +210,7 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 131,
+                            "line": 150,
                             "message": "Could not find property \"color\"."
                         },
                         {
@@ -202,7 +218,7 @@
                             "column": 43,
                             "durationMicroseconds": 0,
                             "functionName": "wrapMode",
-                            "line": 132,
+                            "line": 151,
                             "message": "Could not find property \"wrapMode\"."
                         },
                         {
@@ -210,7 +226,7 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 137,
+                            "line": 156,
                             "message": "Could not find property \"color\"."
                         },
                         {
@@ -218,7 +234,7 @@
                             "column": 43,
                             "durationMicroseconds": 0,
                             "functionName": "wrapMode",
-                            "line": 138,
+                            "line": 157,
                             "message": "Could not find property \"wrapMode\"."
                         },
                         {
@@ -226,7 +242,7 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 143,
+                            "line": 162,
                             "message": "Could not find property \"color\"."
                         },
                         {
@@ -234,7 +250,23 @@
                             "column": 43,
                             "durationMicroseconds": 0,
                             "functionName": "wrapMode",
-                            "line": 144,
+                            "line": 163,
+                            "message": "Could not find property \"wrapMode\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 40,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 168,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 43,
+                            "durationMicroseconds": 0,
+                            "functionName": "wrapMode",
+                            "line": 169,
                             "message": "Could not find property \"wrapMode\"."
                         }
                     ],

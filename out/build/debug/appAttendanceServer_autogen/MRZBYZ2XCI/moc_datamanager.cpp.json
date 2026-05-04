@@ -314,6 +314,13 @@
                 },
                 {
                     "access": "public",
+                    "index": 29,
+                    "lineNumber": 62,
+                    "name": "getAllFaceDataWithFeature",
+                    "returnType": "QList<QObject*>"
+                },
+                {
+                    "access": "public",
                     "arguments": [
                         {
                             "name": "employeeId",
@@ -336,8 +343,8 @@
                             "type": "QDateTime"
                         }
                     ],
-                    "index": 29,
-                    "lineNumber": 61,
+                    "index": 30,
+                    "lineNumber": 63,
                     "name": "selectFaceData",
                     "returnType": "QList<QObject*>"
                 }
@@ -365,7 +372,7 @@
                 {
                     "access": "public",
                     "index": 0,
-                    "lineNumber": 66,
+                    "lineNumber": 68,
                     "name": "connectionStateChanged",
                     "returnType": "void"
                 },
@@ -382,7 +389,7 @@
                         }
                     ],
                     "index": 1,
-                    "lineNumber": 68,
+                    "lineNumber": 70,
                     "name": "operationResult",
                     "returnType": "void"
                 },
@@ -395,7 +402,7 @@
                         }
                     ],
                     "index": 2,
-                    "lineNumber": 70,
+                    "lineNumber": 72,
                     "name": "operationTip",
                     "returnType": "void"
                 },
@@ -408,7 +415,7 @@
                         }
                     ],
                     "index": 3,
-                    "lineNumber": 72,
+                    "lineNumber": 74,
                     "name": "personAdded",
                     "returnType": "void"
                 },
@@ -421,7 +428,7 @@
                         }
                     ],
                     "index": 4,
-                    "lineNumber": 73,
+                    "lineNumber": 75,
                     "name": "personDeleted",
                     "returnType": "void"
                 },
@@ -434,7 +441,7 @@
                         }
                     ],
                     "index": 5,
-                    "lineNumber": 74,
+                    "lineNumber": 76,
                     "name": "attendanceRecordAdded",
                     "returnType": "void"
                 },
@@ -451,7 +458,7 @@
                         }
                     ],
                     "index": 6,
-                    "lineNumber": 75,
+                    "lineNumber": 77,
                     "name": "deviceStatusChanged",
                     "returnType": "void"
                 },
@@ -464,7 +471,7 @@
                         }
                     ],
                     "index": 7,
-                    "lineNumber": 76,
+                    "lineNumber": 78,
                     "name": "deviceRecordChanged",
                     "returnType": "void"
                 },
@@ -481,7 +488,7 @@
                         }
                     ],
                     "index": 8,
-                    "lineNumber": 78,
+                    "lineNumber": 80,
                     "name": "faceDataAdded",
                     "returnType": "void"
                 },
@@ -498,7 +505,7 @@
                         }
                     ],
                     "index": 9,
-                    "lineNumber": 79,
+                    "lineNumber": 81,
                     "name": "faceDataUpdated",
                     "returnType": "void"
                 },
@@ -511,7 +518,7 @@
                         }
                     ],
                     "index": 10,
-                    "lineNumber": 80,
+                    "lineNumber": 82,
                     "name": "faceDataDeleted",
                     "returnType": "void"
                 }

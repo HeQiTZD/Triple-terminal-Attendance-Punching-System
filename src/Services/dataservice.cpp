@@ -289,6 +289,12 @@ QList<QObject*> DataService::getAllFaceData()
     return m_dataManager->getAllFaceData();
 }
 
+QList<QObject*> DataService::getAllFaceDataWithFeature()
+{
+    if (!ensureConnected()) return {};
+    return m_dataManager->getAllFaceDataWithFeature();
+}
+
 QList<QObject *> DataService::selectFaceData(const QString &employeeId, const QDateTime &createdStart,
     const QDateTime &createdEnd, const QDateTime &updatedStart, const QDateTime &updatedEnd)
 {

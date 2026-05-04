@@ -9,6 +9,7 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QVariantList>
+#include <QByteArray>
 
 class TcpServer : public QObject
 {
@@ -32,6 +33,8 @@ public:
 
     //向指定客户端发送数据
     Q_INVOKABLE bool sendToClient(const QString &deviceId,const QJsonObject &data);
+    // 向指定客户端发送“长度前缀”的二进制帧（4字节大端长度 + payload）
+    bool sendBinaryFrameToClient(const QString &deviceId, const QByteArray &payload);
     //广播给所有客户端
     Q_INVOKABLE void brodcastsToAll(const QJsonObject &data);
 
@@ -59,6 +62,8 @@ signals:
     void errorOccurred(const QString &errorString);
     // 让 TcpServer 把 sync_request 上报给控制层（TcpServer 新信号 + 分发）
     void syncRequested(const QString &deviceId);
+    // 设备回传同步 ACK（可用于进度/错误展示）
+    void syncAckReceived(const QString &deviceId, const QJsonObject &ack);
 
 private slots:
     // 有新客户端连接
@@ -90,6 +95,8 @@ private:
     void processMessage(QTcpSocket *socket,const QJsonObject  &message);
     //给指定客户端发 JSON 数据
     void sendMessage(QTcpSocket *socket,const QJsonObject &message);
+    //给指定客户端发二进制帧（4字节大端长度 + payload）
+    bool sendBinaryFrame(QTcpSocket *socket, const QByteArray &payload);
     //移除断开的客户端
     void removeClient(QTcpSocket *socket);
     //更新心跳时间（客户端活着就刷新）

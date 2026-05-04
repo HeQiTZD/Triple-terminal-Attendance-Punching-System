@@ -87,6 +87,7 @@ template <> constexpr inline auto DataService::qt_create_metaobjectdata<qt_meta_
         "deleteFaceDataByEmployeeId",
         "getFaceDataByEmployeeId",
         "getAllFaceData",
+        "getAllFaceDataWithFeature",
         "selectFaceData",
         "createdStart",
         "createdEnd",
@@ -193,15 +194,17 @@ template <> constexpr inline auto DataService::qt_create_metaobjectdata<qt_meta_
         }}),
         // Method 'getAllFaceData'
         QtMocHelpers::MethodData<QList<QObject*>()>(48, 2, QMC::AccessPublic, 0x80000000 | 21),
+        // Method 'getAllFaceDataWithFeature'
+        QtMocHelpers::MethodData<QList<QObject*>()>(49, 2, QMC::AccessPublic, 0x80000000 | 21),
         // Method 'selectFaceData'
-        QtMocHelpers::MethodData<QList<QObject*>(const QString &, const QDateTime &, const QDateTime &, const QDateTime &, const QDateTime &)>(49, 2, QMC::AccessPublic, 0x80000000 | 21, {{
-            { QMetaType::QString, 15 }, { QMetaType::QDateTime, 50 }, { QMetaType::QDateTime, 51 }, { QMetaType::QDateTime, 52 },
-            { QMetaType::QDateTime, 53 },
+        QtMocHelpers::MethodData<QList<QObject*>(const QString &, const QDateTime &, const QDateTime &, const QDateTime &, const QDateTime &)>(50, 2, QMC::AccessPublic, 0x80000000 | 21, {{
+            { QMetaType::QString, 15 }, { QMetaType::QDateTime, 51 }, { QMetaType::QDateTime, 52 }, { QMetaType::QDateTime, 53 },
+            { QMetaType::QDateTime, 54 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
         // property 'isConnected'
-        QtMocHelpers::PropertyData<bool>(54, QMetaType::Bool, QMC::DefaultPropertyFlags, 0),
+        QtMocHelpers::PropertyData<bool>(55, QMetaType::Bool, QMC::DefaultPropertyFlags, 0),
     };
     QtMocHelpers::UintData qt_enums {
     };
@@ -269,7 +272,9 @@ void DataService::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
             if (_a[0]) *reinterpret_cast<QObject**>(_a[0]) = std::move(_r); }  break;
         case 25: { QList<QObject*> _r = _t->getAllFaceData();
             if (_a[0]) *reinterpret_cast<QList<QObject*>*>(_a[0]) = std::move(_r); }  break;
-        case 26: { QList<QObject*> _r = _t->selectFaceData((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[3])),(*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[4])),(*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[5])));
+        case 26: { QList<QObject*> _r = _t->getAllFaceDataWithFeature();
+            if (_a[0]) *reinterpret_cast<QList<QObject*>*>(_a[0]) = std::move(_r); }  break;
+        case 27: { QList<QObject*> _r = _t->selectFaceData((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[3])),(*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[4])),(*reinterpret_cast<std::add_pointer_t<QDateTime>>(_a[5])));
             if (_a[0]) *reinterpret_cast<QList<QObject*>*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
@@ -316,14 +321,14 @@ int DataService::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 27)
+        if (_id < 28)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 27;
+        _id -= 28;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 27)
+        if (_id < 28)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 27;
+        _id -= 28;
     }
     if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::BindableProperty

@@ -165,6 +165,7 @@ E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/PJ4NMIXS
   C:/Qt/6.10.2/msvc2022_64/include/QtNetwork/qtnetworkexports.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtNetwork/qtnetworkglobal.h \
   E:/project/AttendanceServer/src/Models/Person.h \
+  E:/project/AttendanceServer/src/Models/faceData.h \
   E:/project/AttendanceServer/src/Protocol/protocol.h \
   E:/project/AttendanceServer/src/Services/dataservice.h \
   E:/project/AttendanceServer/src/TcpServer/tcpserver.h
