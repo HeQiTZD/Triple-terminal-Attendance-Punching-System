@@ -1,65 +1,12 @@
 E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/3CTZCT2C5S/moc_dataservice.cpp: E:/project/AttendanceServer/src/Services/dataservice.h \
-  C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.26100.0/ucrt/assert.h \
-  C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.26100.0/ucrt/corecrt.h \
-  C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.26100.0/ucrt/corecrt_malloc.h \
-  C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.26100.0/ucrt/corecrt_memcpy_s.h \
-  C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.26100.0/ucrt/corecrt_memory.h \
-  C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.26100.0/ucrt/corecrt_search.h \
-  C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.26100.0/ucrt/corecrt_stdio_config.h \
-  C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.26100.0/ucrt/corecrt_wstdio.h \
-  C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.26100.0/ucrt/corecrt_wstdlib.h \
-  C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.26100.0/ucrt/corecrt_wstring.h \
-  C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.26100.0/ucrt/errno.h \
-  C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.26100.0/ucrt/stddef.h \
-  C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.26100.0/ucrt/stdio.h \
-  C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.26100.0/ucrt/stdlib.h \
-  C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.26100.0/ucrt/string.h \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/algorithm \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/array \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/atomic \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/chrono \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/climits \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/cmath \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/concurrencysal.h \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/cstddef \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/cstdint \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/cstdlib \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/cstring \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/functional \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/initializer_list \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/iterator \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/limits \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/limits.h \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/list \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/map \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/memory \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/new \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/numeric \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/optional \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/sal.h \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/set \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/stdarg.h \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/stdbool.h \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/string \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/string_view \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/tuple \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/type_traits \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/unordered_map \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/unordered_set \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/utility \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/vadefs.h \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/variant \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/vcruntime.h \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/vcruntime_string.h \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/vector \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/version \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/yvals.h \
-  C:/Program\ Files/Microsoft\ Visual\ Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include/yvals_core.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QByteArray \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QDateTime \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QList \
+  C:/Qt/6.10.2/msvc2022_64/include/QtCore/QMap \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QObject \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/QString \
+  C:/Qt/6.10.2/msvc2022_64/include/QtCore/QVariant \
+  C:/Qt/6.10.2/msvc2022_64/include/QtCore/QVariantMap \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/q17memory.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/q20functional.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/q20memory.h \
@@ -177,6 +124,7 @@ E:/project/AttendanceServer/out/build/debug/appAttendanceServer_autogen/3CTZCT2C
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qtypes.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qutf8stringview.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qvariant.h \
+  C:/Qt/6.10.2/msvc2022_64/include/QtCore/qvariantmap.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qvarlengtharray.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qversiontagging.h \
   C:/Qt/6.10.2/msvc2022_64/include/QtCore/qxptype_traits.h \

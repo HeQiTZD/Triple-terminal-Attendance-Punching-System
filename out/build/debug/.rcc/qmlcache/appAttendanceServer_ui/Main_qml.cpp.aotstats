@@ -16,7 +16,7 @@
                         {
                             "codegenResult": 2,
                             "column": 37,
-                            "durationMicroseconds": 2000,
+                            "durationMicroseconds": 5000,
                             "functionName": "navItems",
                             "line": 89,
                             "message": "Cannot generate efficient code for storing an array in a non-sequence type"
@@ -176,7 +176,7 @@
                         {
                             "codegenResult": 2,
                             "column": 9,
-                            "durationMicroseconds": 8000,
+                            "durationMicroseconds": 16000,
                             "functionName": "onLastErrorChanged",
                             "line": 39,
                             "message": "Cannot access value for name testApi"
@@ -440,7 +440,7 @@
                         {
                             "codegenResult": 0,
                             "column": 30,
-                            "durationMicroseconds": 5000,
+                            "durationMicroseconds": 3000,
                             "functionName": "tcpPort",
                             "line": 164,
                             "message": ""

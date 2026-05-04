@@ -1,6 +1,8 @@
 ﻿#include "networkcontroller.h"
 #include "src/Protocol/protocol.h"
 
+#include <QVariantMap>
+
 networkcontroller::networkcontroller(TcpServer* tcpServer, DataService* dataService, QObject* parent)
     : QObject(parent), m_tcpServer(tcpServer), m_dataService(dataService)
 {
@@ -78,7 +80,15 @@ void networkcontroller::onDeviceStatusReceiced(const QString& deviceId, const QJ
     if (!ipAddress.isEmpty()) {
         m_dataService->addOrUpdateDevice(deviceId, deviceName, ipAddress, online);
     } else {
-        m_dataService->updateDeviceStatus(deviceId, online);
+        QVariantMap m;
+        QString st = online.trimmed();
+        if (st.isEmpty())
+            st = QStringLiteral("online");
+        m.insert(QStringLiteral("status"), st);
+        const QString dn = deviceName.trimmed();
+        if (!dn.isEmpty() && dn != deviceId)
+            m.insert(QStringLiteral("device_name"), dn);
+        m_dataService->updateDevice(deviceId, m);
     }
 }
 

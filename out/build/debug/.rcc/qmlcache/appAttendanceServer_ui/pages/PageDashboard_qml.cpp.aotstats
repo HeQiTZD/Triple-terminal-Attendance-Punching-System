@@ -40,7 +40,7 @@
                         {
                             "codegenResult": 0,
                             "column": 18,
-                            "durationMicroseconds": 7000,
+                            "durationMicroseconds": 6000,
                             "functionName": "spacing",
                             "line": 29,
                             "message": ""

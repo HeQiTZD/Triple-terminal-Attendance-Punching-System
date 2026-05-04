@@ -45,6 +45,7 @@ public:
     // ========== 设备管理 ==========
     Q_INVOKABLE bool addOrUpdateDevice(const QString &deviceId, const QString &deviceName,
                                        const QString &ipAddress, const QString &status);
+    bool updateDevice(const QString &deviceId, const QVariantMap &updates);
     Q_INVOKABLE bool updateDeviceStatus(const QString &deviceId, const QString &status);
     Q_INVOKABLE QList<QObject*> getAllDevices();
     Q_INVOKABLE QObject* getDeviceById(const QString &deviceId);
@@ -72,6 +73,7 @@ signals:
     void personDeleted(int id);
     void attendanceRecordAdded(int id);
     void deviceStatusChanged(const QString &devicdId,const QString &status);
+    void deviceRecordChanged(const QString &deviceId);
 
     void faceDataAdded(int id, const QString &employeeId);
     void faceDataUpdated(int id, const QString &employeeId);

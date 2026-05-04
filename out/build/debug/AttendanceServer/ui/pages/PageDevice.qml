@@ -19,10 +19,7 @@ Item {
     Connections {
         target: dataService
         function onConnectionStateChanged() { if (dataService.isConnected) page.refresh() }
-    }
-    Connections {
-        target: dataManager
-        function onDeviceStatusChanged(deviceId, status) { page.refresh() }
+        function onDeviceRecordChanged(deviceId) { page.refresh() }
     }
 
     function _record(target, args, ok) {
@@ -96,12 +93,24 @@ Item {
                         }
                     }
                     Button {
-                        text: qsTr("仅更新状态")
+                        text: qsTr("按已填写字段更新")
                         onClicked: {
-                            const ok = dataService.updateDeviceStatus(dId.text, dStatus.currentText)
-                            Logger.logResult("更新设备状态", ok, "设备=" + dId.text + " 状态=" + dStatus.currentText)
-                            page._record("dataService.updateDeviceStatus",
-                                { deviceId: dId.text, status: dStatus.currentText }, ok)
+                            const payload = {}
+                            const name = dName.text.trim()
+                            const ip = dIp.text.trim()
+                            if (name.length)
+                                payload.device_name = name
+                            if (ip.length)
+                                payload.ip_address = ip
+                            payload.status = dStatus.currentText
+                            const ok = dataService.updateDevice(dId.text, payload)
+                            Logger.logResult("更新设备(部分字段)", ok, "设备=" + dId.text)
+                            const rec = { deviceId: dId.text, status: dStatus.currentText }
+                            if (name.length)
+                                rec.device_name = name
+                            if (ip.length)
+                                rec.ip_address = ip
+                            page._record("dataService.updateDevice", rec, ok)
                             if (ok) page.refresh()
                         }
                     }

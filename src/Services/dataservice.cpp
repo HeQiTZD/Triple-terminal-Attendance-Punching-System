@@ -3,6 +3,7 @@
 #include "src/DataManager/datamanager.h"
 
 #include <QDebug>
+#include <QStringList>
 
 DataService::DataService(DataManager* dataManager, QObject* parent)
     : QObject(parent), m_dataManager(dataManager)
@@ -17,6 +18,8 @@ DataService::DataService(DataManager* dataManager, QObject* parent)
 
     connect(m_dataManager, &DataManager::deviceStatusChanged,
             this, &DataService::deviceStatusChanged);
+    connect(m_dataManager, &DataManager::deviceRecordChanged,
+            this, &DataService::deviceRecordChanged);
 
     // 只转发 DataManager 的信号到 QML（不保存错误信息）
     connect(m_dataManager, &DataManager::operationResult,
@@ -174,12 +177,41 @@ bool DataService::addOrUpdateDevice(const QString& deviceId, const QString& devi
     return m_dataManager->addOrUpdateDevice(did, deviceName.trimmed(), ipAddress.trimmed(), status.trimmed());
 }
 
-bool DataService::updateDeviceStatus(const QString& deviceId, const QString& status)
+bool DataService::updateDevice(const QString& deviceId, const QVariantMap& updates)
 {
     const QString did = deviceId.trimmed();
     if (did.isEmpty()) return false;
     if (!ensureConnected()) return false;
-    return m_dataManager->updateDeviceStatus(did, status.trimmed());
+
+    static const QStringList kKeys = {
+        QStringLiteral("device_name"),
+        QStringLiteral("ip_address"),
+        QStringLiteral("status"),
+    };
+    QVariantMap cleaned;
+    for (const QString& k : kKeys) {
+        if (!updates.contains(k))
+            continue;
+        const QString v = updates.value(k).toString().trimmed();
+        if (v.isEmpty())
+            continue;
+        cleaned.insert(k, v);
+    }
+    if (cleaned.isEmpty())
+        return false;
+
+    return m_dataManager->updateDevice(did, cleaned);
+}
+
+bool DataService::updateDeviceStatus(const QString& deviceId, const QString& status)
+{
+    const QString did = deviceId.trimmed();
+    const QString st = status.trimmed();
+    if (did.isEmpty() || st.isEmpty()) return false;
+    if (!ensureConnected()) return false;
+    QVariantMap m;
+    m.insert(QStringLiteral("status"), st);
+    return m_dataManager->updateDevice(did, m);
 }
 
 QList<QObject*> DataService::getAllDevices()

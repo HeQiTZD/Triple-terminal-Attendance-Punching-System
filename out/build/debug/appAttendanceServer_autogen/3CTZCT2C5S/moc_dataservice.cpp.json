@@ -2,7 +2,7 @@
     "classes": [
         {
             "className": "DataService",
-            "lineNumber": 11,
+            "lineNumber": 12,
             "methods": [
                 {
                     "access": "public",
@@ -24,8 +24,8 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 5,
-                    "lineNumber": 22,
+                    "index": 6,
+                    "lineNumber": 23,
                     "name": "addPerson",
                     "returnType": "bool"
                 },
@@ -49,8 +49,8 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 6,
-                    "lineNumber": 24,
+                    "index": 7,
+                    "lineNumber": 25,
                     "name": "updatedPerson",
                     "returnType": "bool"
                 },
@@ -62,15 +62,15 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 7,
-                    "lineNumber": 26,
+                    "index": 8,
+                    "lineNumber": 27,
                     "name": "deletePerson",
                     "returnType": "bool"
                 },
                 {
                     "access": "public",
-                    "index": 8,
-                    "lineNumber": 27,
+                    "index": 9,
+                    "lineNumber": 28,
                     "name": "getAllPerson",
                     "returnType": "QList<QObject*>"
                 },
@@ -82,8 +82,8 @@
                             "type": "int"
                         }
                     ],
-                    "index": 9,
-                    "lineNumber": 28,
+                    "index": 10,
+                    "lineNumber": 29,
                     "name": "getPersonById",
                     "returnType": "QObject*"
                 },
@@ -95,8 +95,8 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 10,
-                    "lineNumber": 29,
+                    "index": 11,
+                    "lineNumber": 30,
                     "name": "getPersonByEmployeeId",
                     "returnType": "QObject*"
                 },
@@ -120,8 +120,8 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 11,
-                    "lineNumber": 30,
+                    "index": 12,
+                    "lineNumber": 31,
                     "name": "selectPersons",
                     "returnType": "QList<QObject*>"
                 },
@@ -145,8 +145,8 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 12,
-                    "lineNumber": 34,
+                    "index": 13,
+                    "lineNumber": 35,
                     "name": "addAttendanceRecord",
                     "returnType": "bool"
                 },
@@ -178,8 +178,8 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 13,
-                    "lineNumber": 36,
+                    "index": 14,
+                    "lineNumber": 37,
                     "name": "selectAttendanceRecord",
                     "returnType": "QList<QObject*>"
                 },
@@ -203,9 +203,26 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 14,
-                    "lineNumber": 40,
+                    "index": 15,
+                    "lineNumber": 41,
                     "name": "addOrUpdateDevice",
+                    "returnType": "bool"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "deviceId",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "updates",
+                            "type": "QVariantMap"
+                        }
+                    ],
+                    "index": 16,
+                    "lineNumber": 43,
+                    "name": "updateDevice",
                     "returnType": "bool"
                 },
                 {
@@ -220,15 +237,15 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 15,
-                    "lineNumber": 42,
+                    "index": 17,
+                    "lineNumber": 44,
                     "name": "updateDeviceStatus",
                     "returnType": "bool"
                 },
                 {
                     "access": "public",
-                    "index": 16,
-                    "lineNumber": 43,
+                    "index": 18,
+                    "lineNumber": 45,
                     "name": "getAllDevices",
                     "returnType": "QList<QObject*>"
                 },
@@ -240,8 +257,8 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 17,
-                    "lineNumber": 44,
+                    "index": 19,
+                    "lineNumber": 46,
                     "name": "getDeviceById",
                     "returnType": "QObject*"
                 },
@@ -265,8 +282,8 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 18,
-                    "lineNumber": 45,
+                    "index": 20,
+                    "lineNumber": 47,
                     "name": "selectDevice",
                     "returnType": "QList<QObject*>"
                 },
@@ -282,8 +299,8 @@
                             "type": "QByteArray"
                         }
                     ],
-                    "index": 19,
-                    "lineNumber": 49,
+                    "index": 21,
+                    "lineNumber": 51,
                     "name": "addFaceDataByEmployeeId",
                     "returnType": "bool"
                 },
@@ -299,8 +316,8 @@
                             "type": "QByteArray"
                         }
                     ],
-                    "index": 20,
-                    "lineNumber": 50,
+                    "index": 22,
+                    "lineNumber": 52,
                     "name": "updateFaceDataByEmployeeId",
                     "returnType": "bool"
                 },
@@ -312,8 +329,8 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 21,
-                    "lineNumber": 51,
+                    "index": 23,
+                    "lineNumber": 53,
                     "name": "deleteFaceDataByEmployeeId",
                     "returnType": "bool"
                 },
@@ -325,15 +342,15 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 22,
-                    "lineNumber": 52,
+                    "index": 24,
+                    "lineNumber": 54,
                     "name": "getFaceDataByEmployeeId",
                     "returnType": "QObject*"
                 },
                 {
                     "access": "public",
-                    "index": 23,
-                    "lineNumber": 53,
+                    "index": 25,
+                    "lineNumber": 55,
                     "name": "getAllFaceData",
                     "returnType": "QList<QObject*>"
                 },
@@ -361,8 +378,8 @@
                             "type": "QDateTime"
                         }
                     ],
-                    "index": 24,
-                    "lineNumber": 54,
+                    "index": 26,
+                    "lineNumber": 56,
                     "name": "selectFaceData",
                     "returnType": "QList<QObject*>"
                 }
@@ -374,7 +391,7 @@
                     "designable": true,
                     "final": false,
                     "index": 0,
-                    "lineNumber": 14,
+                    "lineNumber": 15,
                     "name": "isConnected",
                     "notify": "connectionStateChanged",
                     "read": "isConnected",
@@ -390,7 +407,7 @@
                 {
                     "access": "public",
                     "index": 0,
-                    "lineNumber": 59,
+                    "lineNumber": 61,
                     "name": "connectionStateChanged",
                     "returnType": "void"
                 },
@@ -407,7 +424,7 @@
                         }
                     ],
                     "index": 1,
-                    "lineNumber": 60,
+                    "lineNumber": 62,
                     "name": "operationResult",
                     "returnType": "void"
                 },
@@ -420,7 +437,7 @@
                         }
                     ],
                     "index": 2,
-                    "lineNumber": 61,
+                    "lineNumber": 63,
                     "name": "operationTip",
                     "returnType": "void"
                 },
@@ -437,8 +454,21 @@
                         }
                     ],
                     "index": 3,
-                    "lineNumber": 62,
+                    "lineNumber": 64,
                     "name": "deviceStatusChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "deviceId",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 4,
+                    "lineNumber": 65,
+                    "name": "deviceRecordChanged",
                     "returnType": "void"
                 },
                 {
@@ -449,8 +479,8 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 4,
-                    "lineNumber": 63,
+                    "index": 5,
+                    "lineNumber": 66,
                     "name": "Data_Validation",
                     "returnType": "void"
                 }

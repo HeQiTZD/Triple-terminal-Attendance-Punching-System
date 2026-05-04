@@ -5,6 +5,7 @@
 #include <QDateTime>
 #include <QList>
 #include <QString>
+#include <QVariantMap>
 
 class DataManager;
 
@@ -39,6 +40,7 @@ public:
     // ========== Device ==========
     Q_INVOKABLE bool addOrUpdateDevice(const QString& deviceId, const QString& deviceName,
                                        const QString& ipAddress, const QString& status);
+    Q_INVOKABLE bool updateDevice(const QString& deviceId, const QVariantMap& updates);
     Q_INVOKABLE bool updateDeviceStatus(const QString& deviceId, const QString& status);
     Q_INVOKABLE QList<QObject*> getAllDevices();
     Q_INVOKABLE QObject* getDeviceById(const QString& deviceId);
@@ -60,6 +62,7 @@ signals:
     void operationResult(bool ok, const QString& message);
     void operationTip(const QString& message);
     void deviceStatusChanged(const QString& deviceId, const QString& status);
+    void deviceRecordChanged(const QString& deviceId);
     void Data_Validation(const QString& data_Validation);
 
 private:

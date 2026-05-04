@@ -48,7 +48,7 @@
                         {
                             "codegenResult": 2,
                             "column": 25,
-                            "durationMicroseconds": 9000,
+                            "durationMicroseconds": 10000,
                             "functionName": "implicitHeight",
                             "line": 47,
                             "message": "Cannot access value for name dlgLabel"

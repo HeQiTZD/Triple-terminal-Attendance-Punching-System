@@ -1,5 +1,7 @@
 ﻿#include "datamanager.h"
 
+#include <QStringList>
+
 namespace {
 // 使用具名连接，避免与同进程内的其它 QMYSQL 默认连接互相覆盖
 constexpr const char* kConnectionName = "AttendanceMain";
@@ -595,14 +597,35 @@ bool DataManager::addOrUpdateDevice(const QString &deviceId, const QString &devi
         return false;
     }
 
+    emit deviceRecordChanged(deviceId);
     emit deviceStatusChanged(deviceId, status);
     return true;
 }
 
-bool DataManager::updateDeviceStatus(const QString &deviceId, const QString &status)
+bool DataManager::updateDevice(const QString &deviceId, const QVariantMap &updates)
 {
     if (!m_isConnected) {
         emit operationTip(QStringLiteral("数据库未连接"));
+        return false;
+    }
+
+    static const QSet<QString> allowedFields = {
+        QStringLiteral("device_name"),
+        QStringLiteral("ip_address"),
+        QStringLiteral("status"),
+    };
+
+    QVariantMap filtered;
+    for (auto it = updates.constBegin(); it != updates.constEnd(); ++it) {
+        if (!allowedFields.contains(it.key()))
+            continue;
+        const QString v = it.value().toString().trimmed();
+        if (v.isEmpty())
+            continue;
+        filtered.insert(it.key(), v);
+    }
+    if (filtered.isEmpty()) {
+        emit operationResult(false, QStringLiteral("没有可更新的字段"));
         return false;
     }
 
@@ -611,31 +634,66 @@ bool DataManager::updateDeviceStatus(const QString &deviceId, const QString &sta
         return false;
     }
 
-    QSqlQuery query(m_db);
-    query.prepare("UPDATE Device SET status=:status, last_online=NOW() WHERE device_id=:device_id");
-    query.bindValue(":status", status);
-    query.bindValue(":device_id", deviceId);
-
-    if (!query.exec()) {
+    auto rollbackWithError = [&](const QString &msg) -> bool {
         m_db.rollback();
-        emit operationResult(false, QString("更新设备状态失败：%1").arg(query.lastError().text()));
+        emit operationResult(false, msg);
         return false;
-    }
+    };
 
-    if (query.numRowsAffected() == 0) {
+    QSqlQuery lockQuery(m_db);
+    lockQuery.prepare(QStringLiteral("SELECT id FROM Device WHERE device_id = :device_id FOR UPDATE"));
+    lockQuery.bindValue(QStringLiteral(":device_id"), deviceId);
+    if (!lockQuery.exec()) {
+        return rollbackWithError(QStringLiteral("查询设备失败：%1").arg(lockQuery.lastError().text()));
+    }
+    if (!lockQuery.next()) {
         m_db.rollback();
         emit operationTip(QStringLiteral("设备不存在：%1").arg(deviceId));
         return false;
     }
 
-    if (!m_db.commit()) {
-        m_db.rollback();
-        emit operationResult(false, QString("提交事务失败：%1").arg(m_db.lastError().text()));
-        return false;
+    QStringList sets;
+    if (filtered.contains(QStringLiteral("device_name")))
+        sets << QStringLiteral("device_name = :device_name");
+    if (filtered.contains(QStringLiteral("ip_address")))
+        sets << QStringLiteral("ip_address = :ip_address");
+    if (filtered.contains(QStringLiteral("status")))
+        sets << QStringLiteral("status = :status");
+    sets << QStringLiteral("last_online = NOW()");
+
+    const QString sql = QStringLiteral("UPDATE Device SET ") + sets.join(QStringLiteral(", "))
+        + QStringLiteral(" WHERE device_id = :device_id");
+
+    QSqlQuery query(m_db);
+    query.prepare(sql);
+    query.bindValue(QStringLiteral(":device_id"), deviceId);
+    if (filtered.contains(QStringLiteral("device_name")))
+        query.bindValue(QStringLiteral(":device_name"), filtered.value(QStringLiteral("device_name")));
+    if (filtered.contains(QStringLiteral("ip_address")))
+        query.bindValue(QStringLiteral(":ip_address"), filtered.value(QStringLiteral("ip_address")));
+    if (filtered.contains(QStringLiteral("status")))
+        query.bindValue(QStringLiteral(":status"), filtered.value(QStringLiteral("status")));
+
+    if (!query.exec()) {
+        return rollbackWithError(QStringLiteral("更新设备失败：%1").arg(query.lastError().text()));
     }
 
-    emit deviceStatusChanged(deviceId, status);
+    if (!m_db.commit()) {
+        return rollbackWithError(QStringLiteral("提交事务失败：%1").arg(m_db.lastError().text()));
+    }
+
+    emit deviceRecordChanged(deviceId);
+    if (filtered.contains(QStringLiteral("status"))) {
+        emit deviceStatusChanged(deviceId, filtered.value(QStringLiteral("status")).toString());
+    }
     return true;
+}
+
+bool DataManager::updateDeviceStatus(const QString &deviceId, const QString &status)
+{
+    QVariantMap m;
+    m.insert(QStringLiteral("status"), status);
+    return updateDevice(deviceId, m);
 }
 
 QList<QObject *> DataManager::getAllDevices()

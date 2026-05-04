@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 0,
                             "column": 18,
-                            "durationMicroseconds": 9000,
+                            "durationMicroseconds": 11000,
                             "functionName": "spacing",
                             "line": 23,
                             "message": ""
