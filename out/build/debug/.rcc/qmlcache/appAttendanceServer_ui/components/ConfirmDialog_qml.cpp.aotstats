@@ -24,7 +24,7 @@
                         {
                             "codegenResult": 0,
                             "column": 35,
-                            "durationMicroseconds": 1000,
+                            "durationMicroseconds": 0,
                             "functionName": "_bodyW",
                             "line": 31,
                             "message": ""

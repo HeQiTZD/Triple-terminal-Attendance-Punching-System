@@ -3,6 +3,13 @@
 namespace {
 // 使用具名连接，避免与同进程内的其它 QMYSQL 默认连接互相覆盖
 constexpr const char* kConnectionName = "AttendanceMain";
+
+QString sqlQuotedMysqlString(const QString &s)
+{
+    QString escaped = s;
+    escaped.replace(QLatin1Char('\''), QStringLiteral("''"));
+    return QStringLiteral("'") + escaped + QStringLiteral("'");
+}
 }
 
 DataManager::DataManager(QObject *parent) : QObject(parent),m_isConnected(false) {}
@@ -118,18 +125,16 @@ bool DataManager::updatedPerson(const QString &employeeId, const QVariantMap &up
         return false;
     }
 
-    // 构建 SQL 更新片段（字段非空过滤由 DataService 完成，这里仅做白名单保护）
+    // 构建 SQL SET 子句（字段非空过滤由 DataService 完成，这里仅做白名单保护；值用引号包裹并转义）
     QString setClause;
-    QList<QPair<QString,QVariant>> bindValues;
     static const QSet<QString> allowedFields = {"name","department","position"};
     for (auto it = updates.begin(); it != updates.end(); ++it) {
         const QString &field = it.key();
         if (!allowedFields.contains(field))
             continue;
         if (!setClause.isEmpty())
-            setClause += ", ";
-        setClause += field + "=:_" + field;
-        bindValues.append(qMakePair("_" + field, it.value()));
+            setClause += QStringLiteral(", ");
+        setClause += field + QLatin1Char('=') + sqlQuotedMysqlString(it.value().toString());
     }
     if (setClause.isEmpty()) {
         emit operationResult(false, "没有可更新的字段");
@@ -161,15 +166,10 @@ bool DataManager::updatedPerson(const QString &employeeId, const QVariantMap &up
 
     const int targetId = selectQuery.value("id").toInt();
 
+    const QString sql = QStringLiteral("UPDATE Person SET ") + setClause
+        + QStringLiteral(" WHERE id = ") + QString::number(targetId);
     QSqlQuery query(m_db);
-    const QString sql = QString("UPDATE Person SET %1 WHERE id = :id").arg(setClause);
-    query.prepare(sql);
-    for (const auto &pair : bindValues) {
-        query.bindValue(pair.first, pair.second);
-    }
-    query.bindValue(":id", targetId);
-
-    if (!query.exec()) {
+    if (!query.exec(sql)) {
         return rollbackWithError(QString("修改人员失败：%1").arg(query.lastError().text()));
     }
     if (!m_db.commit()) {

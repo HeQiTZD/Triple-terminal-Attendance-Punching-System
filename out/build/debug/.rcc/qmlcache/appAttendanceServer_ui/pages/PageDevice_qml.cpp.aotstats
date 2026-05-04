@@ -16,7 +16,7 @@
                         {
                             "codegenResult": 2,
                             "column": 5,
-                            "durationMicroseconds": 5000,
+                            "durationMicroseconds": 7000,
                             "functionName": "refresh",
                             "line": 12,
                             "message": "Cannot access value for name dataService"

@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 0,
                             "column": 12,
-                            "durationMicroseconds": 7000,
+                            "durationMicroseconds": 8000,
                             "functionName": "color",
                             "line": 14,
                             "message": ""
@@ -264,7 +264,7 @@
                         {
                             "codegenResult": 2,
                             "column": 28,
-                            "durationMicroseconds": 4000,
+                            "durationMicroseconds": 0,
                             "functionName": "color",
                             "line": 108,
                             "message": "Cannot access value for name root"
@@ -280,7 +280,7 @@
                         {
                             "codegenResult": 0,
                             "column": 33,
-                            "durationMicroseconds": 3000,
+                            "durationMicroseconds": 0,
                             "functionName": "height",
                             "line": 114,
                             "message": ""

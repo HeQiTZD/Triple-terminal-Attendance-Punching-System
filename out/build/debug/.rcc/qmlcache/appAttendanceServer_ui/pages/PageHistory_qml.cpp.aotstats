@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 2,
                             "column": 5,
-                            "durationMicroseconds": 56000,
+                            "durationMicroseconds": 47000,
                             "functionName": "_filteredRows",
                             "line": 14,
                             "message": "function without return type annotation returns QVariantList. This may prevent proper compilation to Cpp."
