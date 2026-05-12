@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
-import AttendanceServer
+import AttendanceAdmin
 
 Rectangle {
     id: root
@@ -11,10 +11,6 @@ Rectangle {
     border.width: 0
     implicitHeight: Theme.statusBarHeight
 
-    property bool dbConnected: false
-    property bool tcpRunning: false
-    property int  tcpPort: 0
-    property int  clientCount: 0
     property string lastError: ""
     property string lastInfo: ""
 
@@ -26,55 +22,16 @@ Rectangle {
         anchors.rightMargin: Theme.spacingMd
         spacing: Theme.spacingLg
 
-        // 数据库
-        RowLayout {
-            spacing: 6
-            BadgeStatus {
-                text: root.dbConnected ? "online" : "offline"
-                width: 12; height: 12
-                dotOnly: true
-            }
-            Label {
-                text: qsTr("数据库 ") + (root.dbConnected ? qsTr("已连接") : qsTr("未连接"))
-                color: Theme.text
-                font.pixelSize: Theme.fontSm
-                font.family: Theme.fontFamily
-            }
-        }
-
-        Rectangle { width: 1; Layout.fillHeight: true; color: Theme.border }
-
-        // TCP
-        RowLayout {
-            spacing: 6
-            BadgeStatus {
-                text: root.tcpRunning ? "online" : "offline"
-                width: 12; height: 12
-                dotOnly: true
-            }
-            Label {
-                text: root.tcpRunning
-                      ? (qsTr("TCP 监听 :") + root.tcpPort)
-                      : qsTr("TCP 未运行")
-                color: Theme.text
-                font.pixelSize: Theme.fontSm
-                font.family: Theme.fontFamily
-            }
-        }
-
-        Rectangle { width: 1; Layout.fillHeight: true; color: Theme.border }
-
-        // 客户端数
         Label {
-            text: qsTr("在线客户端：") + root.clientCount
+            text: qsTr("考勤管理端")
             color: Theme.text
             font.pixelSize: Theme.fontSm
             font.family: Theme.fontFamily
+            font.bold: true
         }
 
         Item { Layout.fillWidth: true }
 
-        // 错误/提示
         Label {
             text: root.lastError.length
                   ? (qsTr("错误：") + root.lastError)

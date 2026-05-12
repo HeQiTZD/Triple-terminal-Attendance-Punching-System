@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
-import AttendanceServer
+import AttendanceAdmin
 
 /*
   JSON 只读展示：等宽字体 + 复制 / 保存到文件按钮。
@@ -62,16 +62,6 @@ Rectangle {
                     flat: true
                     enabled: ta.text.length > 0
                     onClicked: { ta.selectAll(); ta.copy(); ta.deselect() }
-                }
-                Button {
-                    text: qsTr("保存…")
-                    flat: true
-                    enabled: ta.text.length > 0
-                    onClicked: {
-                        const path = testApi.selectSaveFile(qsTr("另存 JSON"), "result.json", "JSON (*.json);;所有文件 (*)")
-                        if (!path) return
-                        testApi.writeTextFile(path, ta.text)
-                    }
                 }
             }
         }

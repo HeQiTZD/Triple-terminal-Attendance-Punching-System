@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
-import AttendanceServer
+import AttendanceAdmin
 
 /*
   JSON 编辑器：等宽字体 + 工具条（格式化、压缩、校验、清空、从文件读、复制）。
@@ -95,19 +95,6 @@ Rectangle {
                     text: qsTr("清空")
                     flat: true
                     onClicked: { ta.text = ""; root._setStatus("已清空", Theme.textMuted) }
-                }
-                Button {
-                    text: qsTr("从文件…")
-                    flat: true
-                    onClicked: {
-                        const path = testApi.selectOpenFile(qsTr("打开 JSON"), "JSON (*.json);;所有文件 (*)")
-                        if (!path) return
-                        const text = testApi.readTextFile(path)
-                        if (text.length) {
-                            ta.text = text
-                            root._setStatus("已从文件加载：" + path, Theme.success)
-                        }
-                    }
                 }
                 Button {
                     text: qsTr("复制")

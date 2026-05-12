@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
-import AttendanceServer
+import AttendanceAdmin
 
 /*
   侧边栏导航：

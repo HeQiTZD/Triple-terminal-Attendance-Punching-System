@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
-import AttendanceServer
+import AttendanceAdmin
 
 Item {
     id: page
@@ -43,21 +43,6 @@ Item {
         function onEntryAdded() { page.rows = page._filteredRows() }
     }
 
-    function _replay(entry) {
-        const cat = entry.category
-        if (cat === "tcp" && entry.direction === "OUT") {
-            if (entry.target === "<broadcast>") {
-                const ok = testApi.broadcastJson(entry.payload)
-                Logger.logResult("重放：广播", ok, "")
-            } else {
-                const ok = testApi.sendToClientJson(entry.target, entry.payload)
-                Logger.logResult("重放：发送", ok, "设备=" + entry.target)
-            }
-        } else {
-            Logger.warn("当前条目暂不支持重放：" + entry.target)
-        }
-    }
-
     ColumnLayout {
         anchors.fill: parent
         anchors.margins: Theme.spacingLg
@@ -66,18 +51,8 @@ Item {
         ToolBarRow {
             Layout.fillWidth: true
             title: qsTr("请求 / 响应历史")
-            subtitle: qsTr("所有调用与 TCP 收发记录 · 支持重放、保存、导出")
+            subtitle: qsTr("所有调用与 TCP 收发记录")
             actions: [
-                Button {
-                    text: qsTr("导出 JSON")
-                    onClicked: {
-                        const path = testApi.selectSaveFile(qsTr("导出历史"),
-                            "history-" + Qt.formatDateTime(new Date(), "yyyyMMdd-HHmmss") + ".json",
-                            "JSON (*.json);;所有文件 (*)")
-                        if (!path) return
-                        testApi.writeTextFile(path, History.exportJsonText())
-                    }
-                },
                 Button {
                     text: qsTr("清空")
                     onClicked: { History.clear(); page.rows = page._filteredRows() }
@@ -107,14 +82,10 @@ Item {
                         Layout.fillWidth: true
                         model: [
                             { text: qsTr("全部"), value: "" },
-                            { text: "tcp",       value: "tcp" },
                             { text: "person",    value: "person" },
                             { text: "device",    value: "device" },
                             { text: "attendance",value: "attendance" },
                             { text: "face",      value: "face" },
-                            { text: "sync",      value: "sync" },
-                            { text: "export",    value: "export" },
-                            { text: "analytics", value: "analytics" },
                             { text: "other",     value: "other" }
                         ]
                         textRole: "text"
@@ -157,17 +128,6 @@ Item {
                 SplitView.minimumWidth: 320
                 stretchContent: true
                 title: qsTr("详情")
-                headerRight: [
-                    Button {
-                        text: qsTr("重放")
-                        flat: true
-                        enabled: page.selectedIndex >= 0
-                        onClicked: {
-                            const e = History.get(page.selectedIndex)
-                            if (e) page._replay(e)
-                        }
-                    }
-                ]
 
                 JsonViewer {
                     anchors.fill: parent

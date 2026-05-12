@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 
-import AttendanceServer
+import AttendanceAdmin
 
 Rectangle {
     id: root

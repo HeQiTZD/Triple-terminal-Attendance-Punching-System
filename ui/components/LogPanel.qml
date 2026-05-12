@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
-import AttendanceServer
+import AttendanceAdmin
 
 Rectangle {
     id: root
@@ -70,17 +70,6 @@ Rectangle {
                     font.pixelSize: Theme.fontXs
                 }
 
-                Button {
-                    text: qsTr("导出")
-                    flat: true
-                    onClicked: {
-                        const path = testApi.selectSaveFile(qsTr("导出日志"),
-                            "log-" + Qt.formatDateTime(new Date(), "yyyyMMdd-HHmmss") + ".txt",
-                            "文本 (*.txt);;所有文件 (*)")
-                        if (!path) return
-                        testApi.writeTextFile(path, Logger.toText(root.filterLevel >= 0 ? root.filterLevel : undefined))
-                    }
-                }
                 Button {
                     text: qsTr("清空")
                     flat: true
