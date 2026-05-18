@@ -7,16 +7,25 @@ import AttendanceAdmin
 Item {
     id: page
 
-    required property var personServer
+    required property var userServer
     required property var sessionManager
     property var deniedDialog: null
     signal serviceResult(string apiType, int code, string message)
 
-    readonly property bool canUpdate: sessionManager && sessionManager.hasPermission("person.update")
+    property string passwordHint: ""
+
+    readonly property bool formReadOnly: !sessionManager
+        || (!sessionManager.hasPermission("user.update")
+            && !sessionManager.hasPermission("user.create"))  // viewer：只读
 
     function _query() {
-        personServer.queryPersons(pName.text.trim(), pEmp.text.trim(),
-                                  pDept.text.trim(), pPos.text.trim(), "", "")
+        userServer.queryUsers(uEmp.text.trim(), "")
+    }
+
+    function _passwordError(pw, required) {
+        if (!required && !pw.length)
+            return ""
+        return PermissionCatalog.validatePassword(pw)
     }
 
     ColumnLayout {
@@ -26,150 +35,157 @@ Item {
 
         ToolBarRow {
             Layout.fillWidth: true
-            title: qsTr("人员管理")
-            subtitle: qsTr("新增 / 修改 / 删除 / 查询人员")
+            title: qsTr("用户账号")
+            subtitle: qsTr("工号登录账号 · 密码 ≥8 位且含字母与数字")
         }
 
         Card {
             Layout.fillWidth: true
-            title: qsTr("人员信息")
+            title: qsTr("账号信息")
 
             GridLayout {
                 width: parent.width
-                columns: 4
+                columns: 3
                 rowSpacing: Theme.spacingSm
                 columnSpacing: Theme.spacingMd
 
-                LabeledField { label: qsTr("姓名"); Layout.fillWidth: true
-                    TextField {
-                        id: pName
-                        readOnly: !page.canUpdate
-                        placeholderText: qsTr("张三")
-                        Layout.fillWidth: true
-                    }
-                }
                 LabeledField { label: qsTr("工号"); Layout.fillWidth: true
                     TextField {
-                        id: pEmp
-                        readOnly: !page.canUpdate
-                        placeholderText: qsTr("EMP001")
+                        id: uEmp
+                        readOnly: page.formReadOnly
                         Layout.fillWidth: true
                     }
                 }
-                LabeledField { label: qsTr("部门"); Layout.fillWidth: true
+                LabeledField { label: qsTr("显示名称"); Layout.fillWidth: true
                     TextField {
-                        id: pDept
-                        readOnly: !page.canUpdate
-                        placeholderText: qsTr("研发部")
+                        id: uName
+                        readOnly: page.formReadOnly
                         Layout.fillWidth: true
                     }
                 }
-                LabeledField { label: qsTr("岗位"); Layout.fillWidth: true
+                LabeledField { label: qsTr("密码"); Layout.fillWidth: true
                     TextField {
-                        id: pPos
-                        readOnly: !page.canUpdate
-                        placeholderText: qsTr("工程师")
+                        id: uPwd
+                        echoMode: TextInput.Password
+                        placeholderText: qsTr("留空表示不修改")
+                        readOnly: page.formReadOnly
                         Layout.fillWidth: true
                     }
                 }
 
+                Label {
+                    Layout.columnSpan: 3
+                    Layout.fillWidth: true
+                    visible: page.passwordHint.length > 0
+                    text: page.passwordHint
+                    color: Theme.danger
+                    font.pixelSize: Theme.fontSm
+                }
+
                 Row {
-                    Layout.columnSpan: 4
+                    Layout.columnSpan: 3
                     spacing: Theme.spacingSm
+
                     PermissionButton {
                         sessionManager: page.sessionManager
-                        requiredPermission: "person.create"
+                        requiredPermission: "user.create"
                         deniedDialog: page.deniedDialog
                         text: qsTr("新增")
                         highlighted: true
-                        enabled: !personServer.busy
+                        enabled: !userServer.busy
                         onClicked: guardedClick(function() {
-                            personServer.createPerson(pName.text.trim(), pEmp.text.trim(),
-                                                      pDept.text.trim(), pPos.text.trim())
+                            const err = page._passwordError(uPwd.text, true)
+                            if (err.length) { page.passwordHint = err; return }
+                            page.passwordHint = ""
+                            userServer.createUser(uEmp.text.trim(), uPwd.text, uName.text.trim())
                         })
                     }
                     PermissionButton {
                         sessionManager: page.sessionManager
-                        requiredPermission: "person.update"
+                        requiredPermission: "user.update"
                         deniedDialog: page.deniedDialog
                         text: qsTr("修改")
-                        enabled: !personServer.busy
+                        enabled: !userServer.busy
                         onClicked: guardedClick(function() {
-                            personServer.updatePerson(pEmp.text.trim(), pName.text.trim(),
-                                                      pDept.text.trim(), pPos.text.trim())
+                            if (!uPwd.text.length && !uName.text.trim().length) {
+                                page.passwordHint = qsTr("请填写新名称或新密码")
+                                return
+                            }
+                            const err = page._passwordError(uPwd.text, false)
+                            if (err.length) { page.passwordHint = err; return }
+                            page.passwordHint = ""
+                            userServer.updateUser(uEmp.text.trim(), uName.text.trim(), uPwd.text)
                         })
                     }
                     PermissionButton {
                         sessionManager: page.sessionManager
-                        requiredPermission: "person.delete"
+                        requiredPermission: "user.delete"
                         deniedDialog: page.deniedDialog
                         text: qsTr("删除")
-                        enabled: !personServer.busy
+                        enabled: !userServer.busy
                         onClicked: guardedClick(function() { confirm.open() })
                     }
                     PermissionButton {
                         sessionManager: page.sessionManager
-                        requiredPermission: "person.read"
+                        requiredPermission: "user.read"
                         deniedDialog: page.deniedDialog
                         text: qsTr("查询")
-                        enabled: !personServer.busy
+                        enabled: !userServer.busy
                         onClicked: guardedClick(page._query)
                     }
                     PermissionButton {
                         sessionManager: page.sessionManager
-                        requiredPermission: "person.read"
+                        requiredPermission: "user.read"
                         deniedDialog: page.deniedDialog
                         text: qsTr("清空表单")
                         flat: true
                         onClicked: guardedClick(function() {
-                            pName.text = ""; pEmp.text = ""; pDept.text = ""; pPos.text = ""
+                            uEmp.text = ""; uName.text = ""; uPwd.text = ""; page.passwordHint = ""
                         })
                     }
                 }
             }
+
         }
 
         Card {
             Layout.fillWidth: true
             Layout.fillHeight: true
             stretchContent: true
-            title: qsTr("人员列表")
-            subtitle: page.canUpdate ? qsTr("点击行加载到表单") : qsTr("只读列表")
+            title: qsTr("用户列表")
 
             DataTable {
-                id: table
                 anchors.fill: parent
-                rows: personServer.records
+                rows: userServer.records
                 columns: [
                     { key: "id", title: "ID", width: 60, align: "right" },
                     { key: "employeeId", title: qsTr("工号"), width: 120 },
-                    { key: "name", title: qsTr("姓名"), width: 120 },
-                    { key: "department", title: qsTr("部门"), width: 140 },
-                    { key: "position", title: qsTr("岗位"), width: 140 },
+                    { key: "name", title: qsTr("名称"), width: 140 },
                     { key: "createdAt", title: qsTr("创建时间"), width: 170 },
-                    { key: "updatedAt", title: qsTr("更新时间") }
+                    { key: "lastLoginTime", title: qsTr("最近登录") }
                 ]
                 onRowClicked: function(idx, row) {
-                    if (!page.canUpdate) return
-                    pName.text = row.name || ""
-                    pEmp.text = row.employeeId || ""
-                    pDept.text = row.department || ""
-                    pPos.text = row.position || ""
+                    if (!sessionManager.hasPermission("user.update"))
+                        return
+                    uEmp.text = row.employeeId || ""
+                    uName.text = row.name || ""
+                    uPwd.text = ""
+                    page.passwordHint = ""
                 }
             }
         }
     }
 
-    BusyOverlay { busy: personServer.busy }
+    BusyOverlay { busy: userServer.busy }
 
     ConfirmDialog {
         id: confirm
-        message: qsTr("确认删除工号 ") + pEmp.text + qsTr(" 的人员？")
-        onAccepted: personServer.deletePerson(pEmp.text.trim())
+        message: qsTr("确认删除用户 ") + uEmp.text + "？"
+        onAccepted: userServer.deleteUser(uEmp.text.trim())
     }
 
     Connections {
-        target: personServer
+        target: userServer
         function onOperationSucceeded(apiType, message) {
             page.serviceResult(apiType, 0, message)
             if (apiType.indexOf("create") >= 0 || apiType.indexOf("update") >= 0

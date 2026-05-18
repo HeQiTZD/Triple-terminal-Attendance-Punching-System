@@ -17,6 +17,9 @@ set_source_files_properties(
     ui/models/Logger.qml
     ui/models/History.qml
     ui/models/Presets.qml
+    ui/models/ErrorCatalog.qml
+    ui/models/PermissionCatalog.qml
+    ui/models/PushFeed.qml
     PROPERTIES
         QT_QML_SINGLETON_TYPE TRUE
 )
@@ -29,7 +32,12 @@ qt_add_qml_module(appAttendanceAdmin
         ui/models/Logger.qml
         ui/models/History.qml
         ui/models/Presets.qml
+        ui/models/ErrorCatalog.qml
+        ui/models/PermissionCatalog.qml
+        ui/models/PushFeed.qml
         ui/components/Card.qml
+        ui/components/LoginDialog.qml
+        ui/components/BusyOverlay.qml
         ui/components/SideBar.qml
         ui/components/StatusBar.qml
         ui/components/BadgeStatus.qml
@@ -40,6 +48,8 @@ qt_add_qml_module(appAttendanceAdmin
         ui/components/DataTable.qml
         ui/components/LogPanel.qml
         ui/components/ConfirmDialog.qml
+        ui/components/PermissionButton.qml
+        ui/components/PermissionDeniedDialog.qml
         ui/pages/PageDashboard.qml
         ui/pages/PagePerson.qml
         ui/pages/PageDevice.qml
@@ -47,6 +57,9 @@ qt_add_qml_module(appAttendanceAdmin
         ui/pages/PageFace.qml
         ui/pages/PageHistory.qml
         ui/pages/PageSettings.qml
+        ui/pages/PageUser.qml
+        ui/pages/PageRbac.qml
+        ui/pages/PageEvents.qml
     SOURCES
         src/Models/Person.h src/Models/Person.cpp
         src/Models/attendancerecord.h src/Models/attendancerecord.cpp
@@ -59,6 +72,9 @@ qt_add_qml_module(appAttendanceAdmin
         src/Attendance/AttendanceService.h src/Attendance/AttendanceService.cpp
         src/Rbac/RbacServer.h src/Rbac/RbacServer.cpp 
         src/Event/EventSubscriptionService.h src/Event/EventSubscriptionService.cpp
+        src/Face/FaceServer.h src/Face/FaceServer.cpp
+        src/Device/DeviceServer.h src/Device/DeviceServer.cpp
+        src/User/UserServer.h src/User/UserServer.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

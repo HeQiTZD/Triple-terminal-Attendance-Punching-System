@@ -135,6 +135,8 @@ QString TcpConnectionManager::sendMessage(const QJsonObject &message, ResponseCa
         timer->start(m_config.requestTimeoutMs);
     }
 
+    emit jsonMessageSent(sanitizeForHistory(msg));
+
     QJsonDocument doc(msg);
     QByteArray data = doc.toJson(QJsonDocument::Compact);
     data.append('\n');
@@ -431,8 +433,23 @@ void TcpConnectionManager::processJsonLine(const QByteArray &line)
     }
 }
 
+QJsonObject TcpConnectionManager::sanitizeForHistory(const QJsonObject &message)
+{
+    QJsonObject copy = message;
+    if (copy.contains(::Protocol::kData) && copy[::Protocol::kData].isObject()) {
+        QJsonObject data = copy[::Protocol::kData].toObject();
+        if (data.contains(::Protocol::kPassword)) {
+            data[::Protocol::kPassword] = QStringLiteral("***");
+            copy[::Protocol::kData] = data;
+        }
+    }
+    return copy;
+}
+
 void TcpConnectionManager::processReceivedMessage(const QJsonObject &message)
 {
+    emit jsonMessageReceived(sanitizeForHistory(message));
+
     // 匹配待处理的请求
     QString inReplyTo = message[::Protocol::kInReplyTo].toString();
     if (!inReplyTo.isEmpty()) {
@@ -455,13 +472,33 @@ void TcpConnectionManager::processReceivedMessage(const QJsonObject &message)
 
 void TcpConnectionManager::cleanupPendingRequests()
 {
+    if (m_cleaningPendingRequests || m_pendingRequests.isEmpty())
+        return;
+
+    m_cleaningPendingRequests = true;
+
+    QList<PendingRequest> pending;
+    pending.reserve(m_pendingRequests.size());
     for (auto it = m_pendingRequests.begin(); it != m_pendingRequests.end(); ++it) {
-        if (it.value().callback) {
-            it.value().callback(QJsonObject{}); // 通知超时
-        }
-        delete it.value().timer;
+        pending.append(std::move(it.value()));
     }
     m_pendingRequests.clear();
+
+    for (PendingRequest &req : pending) {
+        if (req.timer) {
+            req.timer->stop();
+            delete req.timer;
+            req.timer = nullptr;
+        }
+    }
+
+    m_cleaningPendingRequests = false;
+
+    const QJsonObject timeoutResponse;
+    for (PendingRequest &req : pending) {
+        if (req.callback)
+            req.callback(timeoutResponse);
+    }
 }
 
 int TcpConnectionManager::nextReconnectDelayMs() const

@@ -1,4 +1,4 @@
-#ifndef TCPCONNECTIONMANAGER_H
+﻿#ifndef TCPCONNECTIONMANAGER_H
 #define TCPCONNECTIONMANAGER_H
 
 #include <QObject>
@@ -71,6 +71,9 @@ signals:
                        const QStringList &permissions);
     void authFailed(int code, const QString &msg);
     void messageReceived(const QJsonObject &message);
+    /** 每条 JSON 行发出/收到时触发，供 QML History 记录（密码已脱敏） */
+    void jsonMessageSent(const QJsonObject &message);
+    void jsonMessageReceived(const QJsonObject &message);
     void binaryFrameReceived(const QByteArray &payload);
     void errorOccurred(const QString &error);
     void heartbeatAcknowledged();
@@ -95,6 +98,7 @@ private:
     void processJsonLine(const QByteArray &line);
     void processReceivedMessage(const QJsonObject &message);
     void cleanupPendingRequests();
+    static QJsonObject sanitizeForHistory(const QJsonObject &message);
     int nextReconnectDelayMs() const;
 
     struct PendingRequest {
@@ -115,6 +119,7 @@ private:
     int m_heartbeatSec                = 30;
     int m_reconnectAttempts           = 0;
     qint64 m_binaryExpectedBytes      = 0;
+    bool m_cleaningPendingRequests    = false;
 };
 
 #endif // TCPCONNECTIONMANAGER_H

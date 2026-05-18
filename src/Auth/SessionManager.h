@@ -21,7 +21,6 @@ class SessionManager : public QObject
 
 public:
     explicit SessionManager(QObject *parent = nullptr);
-    ~SessionManager() override;
 
     void setTcpManager(TcpConnectionManager *tcp);
 

@@ -69,6 +69,11 @@ inline const QString kUserDelete  = QStringLiteral("user.delete");
 inline const QString kFaceQuery             = QStringLiteral("face.query");
 inline const QString kFaceDelete            = QStringLiteral("face.delete");
 inline const QString kFaceRegisterHeader    = QStringLiteral("face.register.header");
+inline const QString kFaceRegister          = QStringLiteral("face.register");
+inline const QString kPhotoBase64           = QStringLiteral("photoBase64");
+inline const QString kOverwrite             = QStringLiteral("overwrite");
+inline const QString kIsNew                 = QStringLiteral("isNew");
+inline const QString kFaceRect              = QStringLiteral("faceRect");
 
 // ── RBAC role ──
 inline const QString kRoleCreate  = QStringLiteral("role.create");

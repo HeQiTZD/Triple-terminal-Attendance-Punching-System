@@ -15,7 +15,9 @@ Rectangle {
 
     property var items: []
     property int currentIndex: 0
+    property bool showLogout: false
     signal navigated(int index)
+    signal logoutRequested()
 
     implicitWidth: Theme.sideBarWidth
 
@@ -57,7 +59,7 @@ Rectangle {
                         font.family: Theme.fontFamily
                     }
                     Label {
-                        text: qsTr("Test Workbench")
+                        text: qsTr("管理端")
                         color: Theme.textMuted
                         font.pixelSize: Theme.fontXs
                         font.family: Theme.fontFamily
@@ -156,6 +158,17 @@ Rectangle {
         }
 
         Rectangle { Layout.fillWidth: true; height: 1; color: Theme.border }
+
+        Button {
+            Layout.fillWidth: true
+            Layout.leftMargin: Theme.spacingSm
+            Layout.rightMargin: Theme.spacingSm
+            Layout.bottomMargin: Theme.spacingXs
+            visible: root.showLogout
+            text: qsTr("退出登录")
+            flat: true
+            onClicked: root.logoutRequested()
+        }
 
         Label {
             Layout.fillWidth: true

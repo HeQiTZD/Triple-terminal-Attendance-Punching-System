@@ -7,13 +7,6 @@ SessionManager::SessionManager(QObject *parent)
 {
 }
 
-SessionManager::~SessionManager()
-{
-    if (m_tcp) {
-        QObject::disconnect(m_tcp, nullptr, this, nullptr);
-    }
-}
-
 void SessionManager::setTcpManager(TcpConnectionManager *tcp)
 {
     if (m_tcp == tcp)

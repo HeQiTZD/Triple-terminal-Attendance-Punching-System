@@ -29,6 +29,13 @@ QVariantList RbacServer::parseRoleRecords(const QJsonObject& dataObj) {
 		row[kIsSystem] = o.value(kIsSystem).toBool();
 		row[kCreatedAt] = o.value(kCreatedAt).toString();
 		row[kUpdatedAt] = o.value(kUpdatedAt).toString();
+		if (o.contains(kPermissions)) {
+			QVariantList perms;
+			const QJsonArray permArr = o.value(kPermissions).toArray();
+			for (const QJsonValue &pv : permArr)
+				perms.append(pv.toString());
+			row[kPermissions] = perms;
+		}
 		out.append(row);
 	}
 	return out;

@@ -10,7 +10,7 @@ QtObject {
         id: sett
         category: "AttendanceAdmin"
         property string serverHost: "127.0.0.1"
-        property int serverPort: 8080
+        property int serverPort: 9527
         property string defaultDeviceId: "DEV001"
         property string defaultEmployeeId: "EMP001"
         property string defaultStartTime: "2026-04-01 00:00:00"
@@ -28,7 +28,7 @@ QtObject {
 
     function reset() {
         sett.serverHost = "127.0.0.1"
-        sett.serverPort = 8080
+        sett.serverPort = 9527
         sett.defaultDeviceId = "DEV001"
         sett.defaultEmployeeId = "EMP001"
         sett.defaultStartTime = "2026-04-01 00:00:00"

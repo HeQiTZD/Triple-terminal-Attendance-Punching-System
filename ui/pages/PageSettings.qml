@@ -7,6 +7,11 @@ import AttendanceAdmin
 Item {
     id: page
 
+    property var sessionManager
+    property var deniedDialog: null
+
+    property bool showPermDetails: false
+
     ColumnLayout {
         anchors.fill: parent
         anchors.margins: Theme.spacingLg
@@ -43,6 +48,73 @@ Item {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 spacing: Theme.spacingMd
+
+                Card {
+                    Layout.fillWidth: true
+                    title: qsTr("会话")
+
+                    RowLayout {
+                        width: parent.width
+                        spacing: Theme.spacingMd
+
+                        Label {
+                            text: sessionManager && sessionManager.isLoggedIn
+                                  ? (qsTr("已登录：") + (sessionManager.currentUsername || ""))
+                                  : qsTr("未登录")
+                            color: Theme.text
+                            font.pixelSize: Theme.fontMd
+                            Layout.fillWidth: true
+                        }
+                        Button {
+                            visible: sessionManager && sessionManager.isLoggedIn
+                            text: qsTr("退出登录")
+                            onClicked: sessionManager.logout()
+                        }
+                        Button {
+                            visible: sessionManager && sessionManager.isLoggedIn
+                            text: qsTr("刷新权限")
+                            onClicked: sessionManager.refreshPermissions()
+                        }
+                    }
+                }
+
+                Card {
+                    Layout.fillWidth: true
+                    visible: sessionManager && sessionManager.isLoggedIn
+                    title: qsTr("认证信息")
+
+                    ColumnLayout {
+                        width: parent.width
+                        spacing: Theme.spacingSm
+
+                        Label {
+                            text: qsTr("角色：") + sessionManager.roles.join(", ")
+                            color: Theme.text
+                            font.pixelSize: Theme.fontSm
+                            wrapMode: Text.WordWrap
+                            Layout.fillWidth: true
+                        }
+                        Label {
+                            text: qsTr("权限数：") + sessionManager.permissions.length
+                            color: Theme.textMuted
+                            font.pixelSize: Theme.fontSm
+                        }
+                        Button {
+                            text: page.showPermDetails ? qsTr("收起权限列表") : qsTr("展开权限列表")
+                            flat: true
+                            onClicked: page.showPermDetails = !page.showPermDetails
+                        }
+                        Label {
+                            visible: page.showPermDetails
+                            text: sessionManager.permissions.join("\n")
+                            color: Theme.textMuted
+                            font.pixelSize: Theme.fontXs
+                            font.family: Theme.fontMono
+                            wrapMode: Text.WordWrap
+                            Layout.fillWidth: true
+                        }
+                    }
+                }
 
                 Card {
                     Layout.fillWidth: true
