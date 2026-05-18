@@ -28,6 +28,7 @@ qt_add_qml_module(appAttendanceAdmin
     URI AttendanceAdmin
     QML_FILES
         ui/Main.qml
+        ui/LoginPage.qml
         ui/theme/Theme.qml
         ui/models/Logger.qml
         ui/models/History.qml
@@ -36,7 +37,6 @@ qt_add_qml_module(appAttendanceAdmin
         ui/models/PermissionCatalog.qml
         ui/models/PushFeed.qml
         ui/components/Card.qml
-        ui/components/LoginDialog.qml
         ui/components/BusyOverlay.qml
         ui/components/SideBar.qml
         ui/components/StatusBar.qml
@@ -48,6 +48,7 @@ qt_add_qml_module(appAttendanceAdmin
         ui/components/DataTable.qml
         ui/components/LogPanel.qml
         ui/components/ConfirmDialog.qml
+        ui/components/LoginServerSettingsDialog.qml
         ui/components/PermissionButton.qml
         ui/components/PermissionDeniedDialog.qml
         ui/pages/PageDashboard.qml

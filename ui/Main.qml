@@ -6,12 +6,26 @@ import AttendanceAdmin
 
 ApplicationWindow {
     id: win
-    width: 1480
-    height: 920
-    minimumWidth: 1100
-    minimumHeight: 700
+
+    readonly property int loginWindowWidth: 400
+    readonly property int loginWindowHeight: 542
+    readonly property int mainWindowWidth: 1480
+    readonly property int mainWindowHeight: 920
+
+    width: sessionManager.isLoggedIn ? mainWindowWidth : loginWindowWidth
+    height: sessionManager.isLoggedIn ? mainWindowHeight : loginWindowHeight
+    minimumWidth: sessionManager.isLoggedIn ? 1100 : loginWindowWidth
+    minimumHeight: sessionManager.isLoggedIn ? 700 : loginWindowHeight
+    maximumWidth: sessionManager.isLoggedIn ? 16777215 : loginWindowWidth
+    maximumHeight: sessionManager.isLoggedIn ? 16777215 : loginWindowHeight
+    flags: sessionManager.isLoggedIn
+           ? (Qt.Window | Qt.WindowTitleHint | Qt.WindowSystemMenuHint
+              | Qt.WindowMinimizeButtonHint | Qt.WindowMaximizeButtonHint | Qt.WindowCloseButtonHint)
+           : (Qt.Window | Qt.FramelessWindowHint)
     visible: true
-    title: qsTr("AttendanceAdmin · 考勤管理端")
+    title: sessionManager.isLoggedIn
+           ? qsTr("AttendanceAdmin · 考勤管理端")
+           : qsTr("AttendanceAdmin · 登录")
 
     required property var sessionManager
     required property var tcpManager
@@ -100,10 +114,30 @@ ApplicationWindow {
             currentPageKey = "dashboard"
     }
 
+    function _applyWindowMode() {
+        if (sessionManager.isLoggedIn) {
+            minimumWidth = 1100
+            minimumHeight = 700
+            maximumWidth = 16777215
+            maximumHeight = 16777215
+            width = mainWindowWidth
+            height = mainWindowHeight
+            flags = Qt.Window | Qt.WindowTitleHint | Qt.WindowSystemMenuHint
+                    | Qt.WindowMinimizeButtonHint | Qt.WindowMaximizeButtonHint | Qt.WindowCloseButtonHint
+        } else {
+            minimumWidth = loginWindowWidth
+            minimumHeight = loginWindowHeight
+            maximumWidth = loginWindowWidth
+            maximumHeight = loginWindowHeight
+            width = loginWindowWidth
+            height = loginWindowHeight
+            flags = Qt.Window | Qt.FramelessWindowHint
+        }
+    }
+
     Component.onCompleted: {
+        _applyWindowMode()
         Logger.info("管理端已启动")
-        if (!sessionManager.isLoggedIn)
-            loginDlg.open()
     }
 
     PermissionDeniedDialog { id: permissionDenied }
@@ -111,7 +145,11 @@ ApplicationWindow {
     Connections {
         target: sessionManager
         function onPermissionsChanged() { win._syncPageFromPermissions() }
-        function onLoggedOut() { loginDlg.open() }
+        function onLoggedInChanged() { win._applyWindowMode() }
+        function onLoggedOut() {
+            win.currentPageKey = "dashboard"
+            win._applyWindowMode()
+        }
     }
 
     Connections {
@@ -142,14 +180,20 @@ ApplicationWindow {
         }
     }
 
-    LoginDialog {
-        id: loginDlg
-        sessionManager: win.sessionManager
-    }
-
-    SplitView {
+    StackLayout {
         anchors.fill: parent
-        orientation: Qt.Vertical
+        currentIndex: sessionManager.isLoggedIn ? 1 : 0
+
+        LoginPage {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            sessionManager: win.sessionManager
+        }
+
+        SplitView {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            orientation: Qt.Vertical
 
         SplitView {
             SplitView.fillWidth: true
@@ -257,6 +301,7 @@ ApplicationWindow {
             SplitView.preferredHeight: 200
             SplitView.minimumHeight: 100
             SplitView.maximumHeight: 600
+        }
         }
     }
 }
