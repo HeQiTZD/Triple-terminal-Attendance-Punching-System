@@ -15,22 +15,51 @@ Rectangle {
 
     property var items: []
     property int currentIndex: 0
+    property var sessionManager: null
     property bool showLogout: false
     signal navigated(int index)
     signal logoutRequested()
 
     implicitWidth: Theme.sideBarWidth
 
+    readonly property string userName: {
+        if (!sessionManager || !sessionManager.isLoggedIn)
+            return ""
+        return sessionManager.currentUsername || ""
+    }
+
+    readonly property string roleSummary: {
+        if (!sessionManager || !sessionManager.isLoggedIn)
+            return ""
+        if (sessionManager) {
+            const _p = sessionManager.permissions
+            const _r = sessionManager.roles
+            void _p
+            void _r
+        }
+        return PermissionCatalog.formatRoles(sessionManager)
+    }
+
     ColumnLayout {
         anchors.fill: parent
         spacing: 0
 
-        // ===== Logo / 标题 =====
         Item {
             Layout.fillWidth: true
             Layout.preferredHeight: 56
 
+            MouseArea {
+                anchors.fill: parent
+                acceptedButtons: Qt.LeftButton
+                onPressed: function(mouse) {
+                    const w = Window.window
+                    if (w && typeof w.startSystemMove === "function")
+                        w.startSystemMove()
+                }
+            }
+
             RowLayout {
+                z: 1
                 anchors.fill: parent
                 anchors.leftMargin: Theme.spacingMd
                 anchors.rightMargin: Theme.spacingMd
@@ -85,9 +114,8 @@ Rectangle {
                 required property var modelData
                 required property int index
                 width: ListView.view.width
-                height: modelData.group ? 26 : 36
+                height: modelData.group ? 26 : 38
 
-                // 分组小标题
                 Label {
                     visible: !!row.modelData.group
                     text: row.modelData.group ? row.modelData.group : ""
@@ -100,12 +128,11 @@ Rectangle {
                     anchors.verticalCenter: parent.verticalCenter
                 }
 
-                // 普通条目
                 Rectangle {
                     visible: !row.modelData.group
                     anchors.fill: parent
-                    anchors.leftMargin: 4
-                    anchors.rightMargin: 4
+                    anchors.leftMargin: 6
+                    anchors.rightMargin: 6
                     radius: Theme.radiusSm
                     color: row.index === root.currentIndex
                            ? Theme.selected
@@ -113,7 +140,7 @@ Rectangle {
 
                     Rectangle {
                         width: 3
-                        height: parent.height - 6
+                        height: parent.height - 8
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter
                         radius: 1.5
@@ -122,7 +149,7 @@ Rectangle {
 
                     RowLayout {
                         anchors.fill: parent
-                        anchors.leftMargin: 14
+                        anchors.leftMargin: 12
                         anchors.rightMargin: 8
                         spacing: 8
 
@@ -130,7 +157,7 @@ Rectangle {
                             text: row.modelData.icon ? row.modelData.icon : "•"
                             color: row.index === root.currentIndex ? Theme.accentHover : Theme.textMuted
                             font.pixelSize: Theme.fontMd
-                            Layout.preferredWidth: 16
+                            Layout.preferredWidth: 20
                         }
                         Label {
                             text: row.modelData.label
@@ -157,6 +184,52 @@ Rectangle {
             }
         }
 
+        Rectangle {
+            Layout.fillWidth: true
+            height: 1
+            color: Theme.border
+            visible: root.showLogout && root.userName.length > 0
+        }
+
+        Rectangle {
+            Layout.fillWidth: true
+            Layout.leftMargin: Theme.spacingSm
+            Layout.rightMargin: Theme.spacingSm
+            Layout.preferredHeight: userBlock.implicitHeight + Theme.spacingMd * 2
+            visible: root.showLogout && root.userName.length > 0
+            radius: Theme.radiusSm
+            color: Theme.surface
+            border.color: Theme.border
+            border.width: 1
+
+            ColumnLayout {
+                id: userBlock
+                anchors.fill: parent
+                anchors.margins: Theme.spacingSm
+                spacing: 2
+
+                Label {
+                    text: root.userName
+                    color: Theme.text
+                    font.pixelSize: Theme.fontSm
+                    font.bold: true
+                    font.family: Theme.fontFamily
+                    elide: Text.ElideRight
+                    Layout.fillWidth: true
+                }
+                Label {
+                    text: root.roleSummary
+                    color: Theme.textMuted
+                    font.pixelSize: Theme.fontXs
+                    font.family: Theme.fontFamily
+                    wrapMode: Text.WordWrap
+                    maximumLineCount: 2
+                    elide: Text.ElideRight
+                    Layout.fillWidth: true
+                }
+            }
+        }
+
         Rectangle { Layout.fillWidth: true; height: 1; color: Theme.border }
 
         Button {
@@ -173,7 +246,7 @@ Rectangle {
         Label {
             Layout.fillWidth: true
             Layout.margins: Theme.spacingMd
-            text: qsTr("v0.1 · Qt 6 · QML")
+            text: qsTr("v0.1 · Qt 6")
             color: Theme.textSubtle
             font.pixelSize: Theme.fontXs
             font.family: Theme.fontFamily

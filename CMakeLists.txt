@@ -49,8 +49,12 @@ qt_add_qml_module(appAttendanceAdmin
         ui/components/LogPanel.qml
         ui/components/ConfirmDialog.qml
         ui/components/LoginServerSettingsDialog.qml
+        ui/components/WindowCaptionButtons.qml
         ui/components/PermissionButton.qml
         ui/components/PermissionDeniedDialog.qml
+        ui/components/PermissionChipRow.qml
+        ui/components/PageAccessPlaceholder.qml
+        ui/components/PageHost.qml
         ui/pages/PageDashboard.qml
         ui/pages/PagePerson.qml
         ui/pages/PageDevice.qml

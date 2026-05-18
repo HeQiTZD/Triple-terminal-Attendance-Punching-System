@@ -327,9 +327,10 @@ Item {
         target: rbacServer
         function onOperationSucceeded(apiType, message) {
             page.serviceResult(apiType, 0, message)
-            if (apiType.indexOf("role.") === 0)
+            // 仅写操作后刷新；role.query / user.role.query 也会触发 operationSucceeded，不能再次 query
+            if (apiType === "role.create" || apiType === "role.update" || apiType === "role.delete")
                 rbacServer.queryRoles()
-            if (apiType.indexOf("user.role") === 0)
+            if (apiType === "user.role.assign" || apiType === "user.role.revoke")
                 rbacServer.queryUserRoles(userIdSpin.value)
         }
         function onOperationFailed(apiType, code, message) {

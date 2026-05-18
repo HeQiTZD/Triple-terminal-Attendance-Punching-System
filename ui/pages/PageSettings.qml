@@ -12,6 +12,16 @@ Item {
 
     property bool showPermDetails: false
 
+    readonly property bool canViewAuthDetails: {
+        if (sessionManager) {
+            const _p = sessionManager.permissions
+            const _r = sessionManager.roles
+            void _p
+            void _r
+        }
+        return PermissionCatalog.canViewFullPermissions(sessionManager)
+    }
+
     ColumnLayout {
         anchors.fill: parent
         anchors.margins: Theme.spacingLg
@@ -88,29 +98,41 @@ Item {
                         spacing: Theme.spacingSm
 
                         Label {
-                            text: qsTr("角色：") + sessionManager.roles.join(", ")
+                            text: qsTr("角色：") + PermissionCatalog.formatRoles(sessionManager)
                             color: Theme.text
                             font.pixelSize: Theme.fontSm
                             wrapMode: Text.WordWrap
                             Layout.fillWidth: true
                         }
+
                         Label {
+                            visible: !page.canViewAuthDetails
+                            text: qsTr("详细权限列表仅对拥有「查询用户」权限或超级管理员可见。")
+                            color: Theme.textMuted
+                            font.pixelSize: Theme.fontSm
+                            wrapMode: Text.WordWrap
+                            Layout.fillWidth: true
+                        }
+
+                        Label {
+                            visible: page.canViewAuthDetails
                             text: qsTr("权限数：") + sessionManager.permissions.length
                             color: Theme.textMuted
                             font.pixelSize: Theme.fontSm
                         }
+
                         Button {
+                            visible: page.canViewAuthDetails
                             text: page.showPermDetails ? qsTr("收起权限列表") : qsTr("展开权限列表")
                             flat: true
                             onClicked: page.showPermDetails = !page.showPermDetails
                         }
-                        Label {
-                            visible: page.showPermDetails
-                            text: sessionManager.permissions.join("\n")
-                            color: Theme.textMuted
-                            font.pixelSize: Theme.fontXs
-                            font.family: Theme.fontMono
-                            wrapMode: Text.WordWrap
+
+                        PermissionChipRow {
+                            visible: page.canViewAuthDetails && page.showPermDetails
+                            sessionManager: page.sessionManager
+                            maxVisible: 64
+                            showOverflow: false
                             Layout.fillWidth: true
                         }
                     }

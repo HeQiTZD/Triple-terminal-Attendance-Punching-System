@@ -18,10 +18,7 @@ ApplicationWindow {
     minimumHeight: sessionManager.isLoggedIn ? 700 : loginWindowHeight
     maximumWidth: sessionManager.isLoggedIn ? 16777215 : loginWindowWidth
     maximumHeight: sessionManager.isLoggedIn ? 16777215 : loginWindowHeight
-    flags: sessionManager.isLoggedIn
-           ? (Qt.Window | Qt.WindowTitleHint | Qt.WindowSystemMenuHint
-              | Qt.WindowMinimizeButtonHint | Qt.WindowMaximizeButtonHint | Qt.WindowCloseButtonHint)
-           : (Qt.Window | Qt.FramelessWindowHint)
+    flags: Qt.Window | Qt.FramelessWindowHint
     visible: true
     title: sessionManager.isLoggedIn
            ? qsTr("AttendanceAdmin · 考勤管理端")
@@ -58,7 +55,15 @@ ApplicationWindow {
 
     property string currentPageKey: "dashboard"
 
-    readonly property var filteredNavItems: PermissionCatalog.filteredNavItems(sessionManager)
+    readonly property var filteredNavItems: {
+        if (sessionManager) {
+            const _p = sessionManager.permissions
+            const _r = sessionManager.roles
+            void _p
+            void _r
+        }
+        return PermissionCatalog.filteredNavItems(sessionManager)
+    }
 
     readonly property int sidebarCurrentIndex: {
         for (let i = 0; i < filteredNavItems.length; ++i) {
@@ -103,7 +108,9 @@ ApplicationWindow {
 
     function navigateTo(key) {
         if (!PermissionCatalog.canAccessNav(key, sessionManager)) {
-            permissionDenied.openFor(key)
+            permissionDenied.openFor(
+                PermissionCatalog.navLabelForKey(key) + " — "
+                + PermissionCatalog.accessRequirementHint(key))
             return
         }
         currentPageKey = key
@@ -111,7 +118,7 @@ ApplicationWindow {
 
     function _syncPageFromPermissions() {
         if (!PermissionCatalog.canAccessNav(currentPageKey, sessionManager))
-            currentPageKey = "dashboard"
+            currentPageKey = PermissionCatalog.defaultPageKey(sessionManager)
     }
 
     function _applyWindowMode() {
@@ -122,8 +129,7 @@ ApplicationWindow {
             maximumHeight = 16777215
             width = mainWindowWidth
             height = mainWindowHeight
-            flags = Qt.Window | Qt.WindowTitleHint | Qt.WindowSystemMenuHint
-                    | Qt.WindowMinimizeButtonHint | Qt.WindowMaximizeButtonHint | Qt.WindowCloseButtonHint
+            flags = Qt.Window | Qt.FramelessWindowHint
         } else {
             minimumWidth = loginWindowWidth
             minimumHeight = loginWindowHeight
@@ -145,7 +151,12 @@ ApplicationWindow {
     Connections {
         target: sessionManager
         function onPermissionsChanged() { win._syncPageFromPermissions() }
+        function onRolesChanged() { win._syncPageFromPermissions() }
         function onLoggedInChanged() { win._applyWindowMode() }
+        function onLoggedIn() {
+            win.currentPageKey = PermissionCatalog.defaultPageKey(win.sessionManager)
+            win._syncPageFromPermissions()
+        }
         function onLoggedOut() {
             win.currentPageKey = "dashboard"
             win._applyWindowMode()
@@ -207,11 +218,12 @@ ApplicationWindow {
                 SplitView.minimumWidth: 180
                 items: win.filteredNavItems
                 currentIndex: win.sidebarCurrentIndex
+                sessionManager: win.sessionManager
                 showLogout: sessionManager.isLoggedIn
                 onNavigated: function(idx) {
                     const item = win.filteredNavItems[idx]
                     if (item && item.key)
-                        win.currentPageKey = item.key
+                        win.navigateTo(item.key)
                 }
                 onLogoutRequested: sessionManager.logout()
             }
@@ -228,71 +240,22 @@ ApplicationWindow {
                     lastInfo: Logger.lastInfo
                 }
 
-                StackLayout {
-                    id: stack
+                PageHost {
+                    id: pageHost
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    currentIndex: PermissionCatalog.stackIndexForKey(win.currentPageKey)
-
-                    PageDashboard {
-                        sessionManager: win.sessionManager
-                        eventService: win.eventService
-                        onNavigateRequested: function(key) { win.navigateTo(key) }
-                    }
-                    PagePerson {
-                        personServer: win.personServer
-                        sessionManager: win.sessionManager
-                        deniedDialog: permissionDenied
-                        onServiceResult: (apiType, code, msg) =>
-                            win._handleServiceOp(apiType, code, msg, "person")
-                    }
-                    PageDevice {
-                        deviceServer: win.deviceServer
-                        sessionManager: win.sessionManager
-                        deniedDialog: permissionDenied
-                        onServiceResult: (apiType, code, msg) =>
-                            win._handleServiceOp(apiType, code, msg, "device")
-                    }
-                    PageAttendance {
-                        attendanceService: win.attendanceService
-                        sessionManager: win.sessionManager
-                        deniedDialog: permissionDenied
-                        onServiceResult: (apiType, code, msg) =>
-                            win._handleServiceOp(apiType, code, msg, "attendance")
-                    }
-                    PageFace {
-                        faceServer: win.faceServer
-                        sessionManager: win.sessionManager
-                        deniedDialog: permissionDenied
-                        onServiceResult: (apiType, code, msg) =>
-                            win._handleServiceOp(apiType, code, msg, "face")
-                    }
-                    PageUser {
-                        userServer: win.userServer
-                        sessionManager: win.sessionManager
-                        deniedDialog: permissionDenied
-                        onServiceResult: (apiType, code, msg) =>
-                            win._handleServiceOp(apiType, code, msg, "user")
-                    }
-                    PageRbac {
-                        rbacServer: win.rbacServer
-                        sessionManager: win.sessionManager
-                        deniedDialog: permissionDenied
-                        onServiceResult: (apiType, code, msg) =>
-                            win._handleServiceOp(apiType, code, msg, "rbac")
-                    }
-                    PageEvents {
-                        eventService: win.eventService
-                        sessionManager: win.sessionManager
-                        deniedDialog: permissionDenied
-                        onServiceResult: (apiType, code, msg) =>
-                            win._handleServiceOp(apiType, code, msg, "event")
-                    }
-                    PageHistory {}
-                    PageSettings {
-                        sessionManager: win.sessionManager
-                        deniedDialog: permissionDenied
-                    }
+                    pageKey: win.currentPageKey
+                    sessionManager: win.sessionManager
+                    personServer: win.personServer
+                    deviceServer: win.deviceServer
+                    attendanceService: win.attendanceService
+                    faceServer: win.faceServer
+                    userServer: win.userServer
+                    rbacServer: win.rbacServer
+                    eventService: win.eventService
+                    deniedDialog: permissionDenied
+                    onServiceResult: (apiType, code, msg, category) =>
+                        win._handleServiceOp(apiType, code, msg, category)
                 }
             }
         }

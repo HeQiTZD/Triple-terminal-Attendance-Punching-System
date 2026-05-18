@@ -107,6 +107,14 @@ Item {
                     font.bold: true
                     font.family: Theme.fontFamily
                 }
+
+                Label {
+                    Layout.alignment: Qt.AlignHCenter
+                    text: qsTr("登录后按角色自动加载可用功能")
+                    color: Theme.textMuted
+                    font.pixelSize: Theme.fontXs
+                    font.family: Theme.fontFamily
+                }
             }
 
             ColumnLayout {

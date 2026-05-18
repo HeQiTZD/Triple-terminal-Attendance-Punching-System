@@ -120,6 +120,7 @@ private:
     int m_reconnectAttempts           = 0;
     qint64 m_binaryExpectedBytes      = 0;
     bool m_cleaningPendingRequests    = false;
+    int m_authGeneration              = 0;
 };
 
 #endif // TCPCONNECTIONMANAGER_H

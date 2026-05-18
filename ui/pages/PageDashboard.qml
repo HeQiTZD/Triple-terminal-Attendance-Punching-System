@@ -8,13 +8,103 @@ Item {
     id: page
 
     required property var sessionManager
+    property var personServer
+    property var deviceServer
+    property var attendanceService
     property var eventService
-    signal navigateRequested(string pageKey)
 
     readonly property int connState: sessionManager ? sessionManager.connectionState : 0
-    readonly property string connLabel: ErrorCatalog.connectionStateLabel(connState)
-    readonly property int subscribedCount: eventService
-        ? eventService.subscribedTopics.length : 0
+
+    readonly property bool canReadPerson: PermissionCatalog.hasPerm(sessionManager, "person.read")
+    readonly property bool canReadDevice: PermissionCatalog.hasPerm(sessionManager, "device.read")
+    readonly property bool canReadAttendance: PermissionCatalog.hasPerm(sessionManager, "attendance.read")
+
+    readonly property int employeeCount: {
+        if (!canReadPerson || !personServer)
+            return 0
+        return personServer.records.length
+    }
+
+    readonly property int onlineDeviceCount: {
+        if (!canReadDevice || !deviceServer)
+            return 0
+        let n = 0
+        const rec = deviceServer.records
+        for (let i = 0; i < rec.length; ++i) {
+            if (rec[i].status === "online")
+                n++
+        }
+        return n
+    }
+
+    readonly property int todayPunchCount: countTodayUniquePunches(
+        attendanceService ? attendanceService.records : [])
+
+    readonly property bool canViewHistory: {
+        if (sessionManager) {
+            const _p = sessionManager.permissions
+            void _p
+        }
+        return PermissionCatalog.canAccessNav("history", sessionManager)
+    }
+
+    readonly property bool canViewEvents: {
+        if (sessionManager) {
+            const _p = sessionManager.permissions
+            void _p
+        }
+        return PermissionCatalog.canAccessNav("events", sessionManager)
+    }
+
+    function countTodayUniquePunches(records) {
+        const prefix = Qt.formatDateTime(new Date(), "yyyy-MM-dd")
+        const seen = {}
+        let n = 0
+        for (let i = 0; i < records.length; ++i) {
+            const t = records[i].checkTime || ""
+            if (!t.startsWith(prefix))
+                continue
+            const eid = records[i].employeeId || ""
+            if (!eid || seen[eid])
+                continue
+            seen[eid] = true
+            n++
+        }
+        return n
+    }
+
+    function refreshStats() {
+        if (!sessionManager || !sessionManager.isLoggedIn || page.connState !== 3)
+            return
+        if (page.canReadPerson && personServer)
+            personServer.queryPersons("", "", "", "", "", "")
+        if (page.canReadDevice && deviceServer)
+            deviceServer.queryDevices("", "", "")
+        if (page.canReadAttendance && attendanceService)
+            attendanceService.query(-1, "", "", "", "", "")
+    }
+
+    function statDisplayText(hasPermission) {
+        if (!sessionManager || !sessionManager.isLoggedIn)
+            return "—"
+        if (!hasPermission)
+            return qsTr("无权限")
+        return ""
+    }
+
+    Component.onCompleted: page.refreshStats()
+
+    Connections {
+        target: sessionManager
+        function onLoggedInChanged() {
+            if (sessionManager && sessionManager.isLoggedIn)
+                page.refreshStats()
+        }
+        function onConnectionStateChanged() {
+            if (sessionManager && sessionManager.connectionState === 3)
+                page.refreshStats()
+        }
+    }
 
     ColumnLayout {
         anchors.fill: parent
@@ -23,78 +113,27 @@ Item {
 
         ToolBarRow {
             Layout.fillWidth: true
-            title: qsTr("概览")
-            subtitle: qsTr("连接状态、权限摘要与最近动态")
+            title: PermissionCatalog.welcomeTitle(sessionManager)
         }
 
         GridLayout {
             Layout.fillWidth: true
-            columns: 4
+            columns: 3
             rowSpacing: Theme.spacingMd
             columnSpacing: Theme.spacingMd
 
             Card {
                 Layout.fillWidth: true
                 Layout.preferredHeight: 110
-                title: qsTr("服务器连接")
-
-                ColumnLayout {
-                    width: parent.width
-                    spacing: Theme.spacingSm
-                    BadgeStatus {
-                        text: page.connLabel
-                        accent: {
-                            switch (page.connState) {
-                            case 3: return Theme.success
-                            case 2: return Theme.info
-                            case 1: return Theme.warning
-                            default: return Theme.danger
-                            }
-                        }
-                    }
-                    Label {
-                        text: sessionManager && sessionManager.isLoggedIn
-                              ? qsTr("已认证，可进行数据管理")
-                              : qsTr("请先登录")
-                        color: Theme.text
-                        font.pixelSize: Theme.fontMd
-                    }
-                }
-            }
-
-            Card {
-                Layout.fillWidth: true
-                Layout.preferredHeight: 110
-                title: qsTr("当前用户 / 角色")
-
-                ColumnLayout {
-                    width: parent.width
-                    spacing: Theme.spacingXs
-                    Label {
-                        text: sessionManager && sessionManager.isLoggedIn
-                              ? (sessionManager.currentUsername || "—")
-                              : qsTr("未登录")
-                        color: Theme.text
-                        font.pixelSize: Theme.fontMd
-                    }
-                    Label {
-                        visible: sessionManager && sessionManager.roles.length > 0
-                        text: sessionManager.roles.join(", ")
-                        color: Theme.textMuted
-                        font.pixelSize: Theme.fontSm
-                        wrapMode: Text.WordWrap
-                        Layout.fillWidth: true
-                    }
-                }
-            }
-
-            Card {
-                Layout.fillWidth: true
-                Layout.preferredHeight: 110
-                title: qsTr("已订阅主题")
+                title: qsTr("员工人数")
 
                 Label {
-                    text: String(page.subscribedCount)
+                    text: {
+                        const placeholder = page.statDisplayText(page.canReadPerson)
+                        if (placeholder.length)
+                            return placeholder
+                        return String(page.employeeCount)
+                    }
                     color: Theme.text
                     font.pixelSize: Theme.fontXl
                     font.bold: true
@@ -104,60 +143,36 @@ Item {
             Card {
                 Layout.fillWidth: true
                 Layout.preferredHeight: 110
-                title: qsTr("今日推送")
+                title: qsTr("今日打卡人数")
 
                 Label {
-                    text: String(PushFeed.todayCount)
+                    text: {
+                        const placeholder = page.statDisplayText(page.canReadAttendance)
+                        if (placeholder.length)
+                            return placeholder
+                        return String(page.todayPunchCount)
+                    }
                     color: Theme.text
                     font.pixelSize: Theme.fontXl
                     font.bold: true
                 }
             }
-        }
 
-        Card {
-            Layout.fillWidth: true
-            title: qsTr("权限摘要")
-            visible: sessionManager && sessionManager.isLoggedIn
+            Card {
+                Layout.fillWidth: true
+                Layout.preferredHeight: 110
+                title: qsTr("设备连接数量")
 
-            ColumnLayout {
-                width: parent.width
-                spacing: Theme.spacingXs
                 Label {
-                    text: qsTr("权限数：") + sessionManager.permissions.length
-                          + "  ·  " + qsTr("可管理：")
-                          + PermissionCatalog.managedModulesSummary(sessionManager)
+                    text: {
+                        const placeholder = page.statDisplayText(page.canReadDevice)
+                        if (placeholder.length)
+                            return placeholder
+                        return String(page.onlineDeviceCount)
+                    }
                     color: Theme.text
-                    font.pixelSize: Theme.fontSm
-                    wrapMode: Text.WordWrap
-                    Layout.fillWidth: true
-                }
-            }
-        }
-
-        Card {
-            Layout.fillWidth: true
-            title: qsTr("快捷操作")
-
-            Row {
-                spacing: Theme.spacingSm
-                PermissionButton {
-                    sessionManager: page.sessionManager
-                    requiredPermission: "person.read"
-                    text: qsTr("人员查询")
-                    onClicked: page.navigateRequested("person")
-                }
-                PermissionButton {
-                    sessionManager: page.sessionManager
-                    requiredPermission: "attendance.read"
-                    text: qsTr("考勤查询")
-                    onClicked: page.navigateRequested("attendance")
-                }
-                PermissionButton {
-                    sessionManager: page.sessionManager
-                    requiredPermission: "face.register"
-                    text: qsTr("人脸注册")
-                    onClicked: page.navigateRequested("face")
+                    font.pixelSize: Theme.fontXl
+                    font.bold: true
                 }
             }
         }
@@ -166,12 +181,14 @@ Item {
             Layout.fillWidth: true
             Layout.fillHeight: true
             spacing: Theme.spacingMd
+            visible: page.canViewHistory || page.canViewEvents
 
             Card {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 stretchContent: true
                 title: qsTr("最近调用")
+                visible: page.canViewHistory
 
                 ListView {
                     anchors.fill: parent
@@ -203,6 +220,7 @@ Item {
                 Layout.fillHeight: true
                 stretchContent: true
                 title: qsTr("最近推送")
+                visible: page.canViewEvents
 
                 ListView {
                     anchors.fill: parent

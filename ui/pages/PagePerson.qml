@@ -12,7 +12,7 @@ Item {
     property var deniedDialog: null
     signal serviceResult(string apiType, int code, string message)
 
-    readonly property bool canUpdate: sessionManager && sessionManager.hasPermission("person.update")
+    readonly property bool canUpdate: PermissionCatalog.hasPerm(sessionManager, "person.update")
 
     function _query() {
         personServer.queryPersons(pName.text.trim(), pEmp.text.trim(),

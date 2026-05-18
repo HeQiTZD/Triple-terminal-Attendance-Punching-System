@@ -54,7 +54,7 @@ Item {
                     }
                     CheckBox {
                         id: overwriteCb
-                        visible: sessionManager && sessionManager.hasPermission("face.register")
+                        visible: PermissionCatalog.hasPerm(sessionManager, "face.register")
                         text: qsTr("覆盖已有")
                         checked: page.overwriteFace
                         onCheckedChanged: page.overwriteFace = checked

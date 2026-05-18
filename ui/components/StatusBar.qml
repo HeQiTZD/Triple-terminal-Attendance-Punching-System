@@ -16,42 +16,45 @@ Rectangle {
     property string lastInfo: ""
 
     readonly property int connState: sessionManager ? sessionManager.connectionState : 0
-    readonly property string connLabel: ErrorCatalog.connectionStateLabel(connState)
+    readonly property bool serverConnected: root.connState === 3
+
     readonly property string userLabel: {
         if (!sessionManager || !sessionManager.isLoggedIn)
             return ""
         const u = sessionManager.currentUsername || ""
-        const roles = sessionManager.roles
-        const role = roles && roles.length > 0 ? roles[0] : ""
-        return role ? (u + " · " + role) : u
+        if (sessionManager) {
+            const _p = sessionManager.permissions
+            const _r = sessionManager.roles
+            void _p
+            void _r
+        }
+        const roleText = PermissionCatalog.formatRoles(sessionManager)
+        return u + (roleText.length ? (" · " + roleText) : "")
     }
 
     Rectangle { width: parent.width; height: 1; color: Theme.border; anchors.bottom: parent.bottom }
+
+    MouseArea {
+        anchors.fill: parent
+        anchors.rightMargin: captionButtons.width + Theme.spacingMd
+        acceptedButtons: Qt.LeftButton
+        onPressed: function(mouse) {
+            const w = Window.window
+            if (w && typeof w.startSystemMove === "function")
+                w.startSystemMove()
+        }
+    }
 
     RowLayout {
         anchors.fill: parent
         anchors.leftMargin: Theme.spacingMd
         anchors.rightMargin: Theme.spacingMd
         spacing: Theme.spacingMd
-
-        Label {
-            text: qsTr("考勤管理端")
-            color: Theme.text
-            font.pixelSize: Theme.fontSm
-            font.family: Theme.fontFamily
-            font.bold: true
-        }
+        z: 1
 
         BadgeStatus {
-            text: root.connLabel
-            accent: {
-                switch (root.connState) {
-                case 3: return Theme.success
-                case 2: return Theme.info
-                case 1: return Theme.warning
-                default: return Theme.danger
-                }
-            }
+            text: root.serverConnected ? qsTr("服务器已连接") : qsTr("服务器未连接")
+            accent: root.serverConnected ? Theme.success : Theme.danger
         }
 
         Label {
@@ -60,20 +63,30 @@ Rectangle {
             color: Theme.textMuted
             font.pixelSize: Theme.fontSm
             font.family: Theme.fontFamily
+            elide: Text.ElideRight
+            Layout.maximumWidth: 360
         }
 
-        Item { Layout.fillWidth: true }
-
         Label {
+            visible: root.lastError.length > 0 || root.lastInfo.length > 0
             text: root.lastError.length
                   ? (qsTr("错误：") + root.lastError)
-                  : (root.lastInfo.length ? (qsTr("提示：") + root.lastInfo) : "")
+                  : (qsTr("提示：") + root.lastInfo)
             color: root.lastError.length ? Theme.danger : Theme.textMuted
             font.pixelSize: Theme.fontSm
             font.family: Theme.fontFamily
             elide: Text.ElideRight
-            Layout.maximumWidth: 520
-            horizontalAlignment: Text.AlignRight
+            Layout.maximumWidth: 480
         }
+
+        Item { Layout.fillWidth: true }
+    }
+
+    WindowCaptionButtons {
+        id: captionButtons
+        z: 2
+        anchors.right: parent.right
+        anchors.rightMargin: Theme.spacingXs
+        anchors.verticalCenter: parent.verticalCenter
     }
 }

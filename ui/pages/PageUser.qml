@@ -15,8 +15,8 @@ Item {
     property string passwordHint: ""
 
     readonly property bool formReadOnly: !sessionManager
-        || (!sessionManager.hasPermission("user.update")
-            && !sessionManager.hasPermission("user.create"))  // viewer：只读
+        || (!PermissionCatalog.hasPerm(sessionManager, "user.update")
+            && !PermissionCatalog.hasPerm(sessionManager, "user.create"))  // viewer：只读
 
     function _query() {
         userServer.queryUsers(uEmp.text.trim(), "")
@@ -165,7 +165,7 @@ Item {
                     { key: "lastLoginTime", title: qsTr("最近登录") }
                 ]
                 onRowClicked: function(idx, row) {
-                    if (!sessionManager.hasPermission("user.update"))
+                    if (!PermissionCatalog.hasPerm(sessionManager, "user.update"))
                         return
                     uEmp.text = row.employeeId || ""
                     uName.text = row.name || ""

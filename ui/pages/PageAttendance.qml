@@ -14,9 +14,8 @@ Item {
 
     property int tabIndex: 0
 
-    readonly property bool hasLiveRead: sessionManager && sessionManager.hasPermission("attendance.read")
-    readonly property bool hasArchiveRead: sessionManager
-        && sessionManager.hasPermission("attendance.archive.read")
+    readonly property bool hasLiveRead: PermissionCatalog.hasPerm(sessionManager, "attendance.read")
+    readonly property bool hasArchiveRead: PermissionCatalog.hasPerm(sessionManager, "attendance.archive.read")
 
     function _liveQuery() {
         attendanceService.query(-1, empId.text.trim(), checkTime.text.trim(),

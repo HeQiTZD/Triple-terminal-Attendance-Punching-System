@@ -1,9 +1,32 @@
 #include "TcpConnectionManager.h"
+#include "../Protocol/protocol.h"
 #include <QJsonDocument>
 #include <QUuid>
 #include <QDateTime>
 #include <QtEndian>
 #include <algorithm>
+
+static QStringList parseStringOrKeyedArray(const QJsonArray &arr, const QString &objectKeyField)
+{
+    QStringList result;
+    for (const auto &v : arr) {
+        if (v.isString()) {
+            const QString s = v.toString();
+            if (!s.isEmpty())
+                result.append(s);
+            continue;
+        }
+        if (!v.isObject())
+            continue;
+        const QJsonObject o = v.toObject();
+        QString key = o.value(objectKeyField).toString();
+        if (key.isEmpty())
+            key = o.value(QStringLiteral("key")).toString();
+        if (!key.isEmpty())
+            result.append(key);
+    }
+    return result;
+}
 
 static const int kMaxJsonLineSize = 1 * 1024 * 1024;   // 1 MB
 static const int kMaxBinaryPayload = 16 * 1024 * 1024;  // 16 MB
@@ -64,6 +87,8 @@ void TcpConnectionManager::connectToServer(const ConnectionConfig &config)
         disconnectFromServer();
     }
 
+    ++m_authGeneration;
+
     m_config = config;
     m_sessionToken.clear();
     m_roles.clear();
@@ -81,6 +106,8 @@ void TcpConnectionManager::connectToServer(const ConnectionConfig &config)
 
 void TcpConnectionManager::disconnectFromServer()
 {
+    ++m_authGeneration;
+
     stopHeartbeat();
     cancelReconnect();
     resetReconnectAttempts();
@@ -359,7 +386,11 @@ void TcpConnectionManager::sendAuth()
         { ::Protocol::kPassword, m_config.password }
     };
 
-    sendMessage(auth, [this](const QJsonObject &response) {
+    const int authGeneration = m_authGeneration;
+    sendMessage(auth, [this, authGeneration](const QJsonObject &response) {
+        if (authGeneration != m_authGeneration)
+            return;
+
         if (response.isEmpty()) {
             emit errorOccurred(QStringLiteral("Auth request timed out"));
             disconnectFromServer();
@@ -374,15 +405,10 @@ void TcpConnectionManager::sendAuth()
                 m_sessionToken = data[::Protocol::kSessionToken].toString();
                 m_heartbeatSec = data[::Protocol::kHeartbeatSec].toInt(30);
 
-                QJsonArray rolesArr = data[::Protocol::kRoles].toArray();
-                m_roles.clear();
-                for (const auto &v : rolesArr)
-                    m_roles.append(v.toString());
-
-                QJsonArray permsArr = data[::Protocol::kPermissions].toArray();
-                m_permissions.clear();
-                for (const auto &v : permsArr)
-                    m_permissions.append(v.toString());
+                m_roles = parseStringOrKeyedArray(
+                    data[::Protocol::kRoles].toArray(), ::Protocol::kRoleKey);
+                m_permissions = parseStringOrKeyedArray(
+                    data[::Protocol::kPermissions].toArray(), ::Protocol::kPermKey);
 
                 emit sessionTokenChanged();
                 emit rolesChanged();

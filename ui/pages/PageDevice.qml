@@ -12,7 +12,7 @@ Item {
     property var deniedDialog: null
     signal serviceResult(string apiType, int code, string message)
 
-    readonly property bool canUpdate: sessionManager && sessionManager.hasPermission("device.update")
+    readonly property bool canUpdate: PermissionCatalog.hasPerm(sessionManager, "device.update")
 
     function _query() {
         deviceServer.queryDevices(dId.text.trim(), dName.text.trim(), dIp.text.trim())
@@ -141,7 +141,7 @@ Item {
 
         Card {
             Layout.fillWidth: true
-            visible: sessionManager && sessionManager.hasPermission("device.command")
+            visible: PermissionCatalog.hasPerm(sessionManager, "device.command")
             title: qsTr("设备指令")
 
             ColumnLayout {

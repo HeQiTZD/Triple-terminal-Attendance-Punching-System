@@ -33,7 +33,7 @@ public:
 
     Q_INVOKABLE void login(const QString &host, int port,
                            const QString &username, const QString &password,
-                           const QString &clientId = QStringLiteral("admin_001"));
+                           const QString &clientId = QString());
     Q_INVOKABLE void logout();
     Q_INVOKABLE bool hasPermission(const QString &permKey) const;
     Q_INVOKABLE bool hasRole(const QString &roleKey) const;
@@ -74,6 +74,7 @@ private:
     QStringList m_roles;
     QStringList m_permissions;
     QString m_currentUsername;
+    int m_authEpoch = 0;
 };
 
 #endif // SESSIONMANAGER_H
