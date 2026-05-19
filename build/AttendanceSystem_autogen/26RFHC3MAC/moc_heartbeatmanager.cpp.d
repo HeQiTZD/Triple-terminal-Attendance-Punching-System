@@ -1,13 +1,7 @@
 D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/26RFHC3MAC/moc_heartbeatmanager.cpp: D:/QTproject/AttendanceSystem/NetworkClient/heartbeatmanager.h \
   D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/moc_predefs.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/QDateTime \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonArray \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonDocument \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonObject \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QObject \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/QString \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QTimer \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/QVector \
   C:/Qt/6.10.2/mingw_64/include/QtCore/q17memory.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/q20functional.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/q20iterator.h \
@@ -33,9 +27,6 @@ D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/26RFHC3MAC/moc_hear
   C:/Qt/6.10.2/mingw_64/include/QtCore/qbytearrayalgorithms.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qbytearraylist.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qbytearrayview.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/qcalendar.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/qcborcommon.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/qcborvalue.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qchar.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qcompare.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qcompare_impl.h \
@@ -49,10 +40,8 @@ D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/26RFHC3MAC/moc_hear
   C:/Qt/6.10.2/mingw_64/include/QtCore/qcontiguouscache.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qdarwinhelpers.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qdatastream.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/qdatetime.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qdeadlinetimer.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qdebug.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/qendian.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qeventloop.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qexceptionhandling.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qflags.h \
@@ -69,14 +58,8 @@ D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/26RFHC3MAC/moc_hear
   C:/Qt/6.10.2/mingw_64/include/QtCore/qiodevicebase.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qiterable.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qiterator.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/qjsonarray.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/qjsondocument.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/qjsonobject.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/qjsonparseerror.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/qjsonvalue.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qlatin1stringview.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qlist.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/qlocale.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qlogging.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qmalloc.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qmap.h \
@@ -94,7 +77,6 @@ D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/26RFHC3MAC/moc_hear
   C:/Qt/6.10.2/mingw_64/include/QtCore/qpair.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qprocessordetection.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qrefcount.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/qregularexpression.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qscopedpointer.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qscopeguard.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qset.h \
@@ -140,15 +122,13 @@ D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/26RFHC3MAC/moc_hear
   C:/Qt/6.10.2/mingw_64/include/QtCore/qtversionchecks.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qtypeinfo.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qtypes.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/qurl.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qutf8stringview.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/quuid.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qvariant.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qvarlengtharray.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/qvector.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qversiontagging.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qxptype_traits.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qyieldcpu.h \
+  C:/Qt/6.10.2/mingw_64/include/QtNetwork/QTcpSocket \
   C:/Qt/6.10.2/mingw_64/include/QtNetwork/qabstractsocket.h \
   C:/Qt/6.10.2/mingw_64/include/QtNetwork/qhostaddress.h \
   C:/Qt/6.10.2/mingw_64/include/QtNetwork/qtcpsocket.h \
@@ -367,5 +347,4 @@ D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/26RFHC3MAC/moc_hear
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/sys/types.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/time.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h \
-  C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
-  D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h
+  C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h

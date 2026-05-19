@@ -23,8 +23,14 @@ set(PROJECT_SOURCES
         mainwindow.ui
         LocalStorage/localstorage.cpp
         LocalStorage/localstorage.h
-
-
+        LocalStorage/FaceFeatureRepository.cpp
+        LocalStorage/FaceFeatureRepository.h
+        LocalStorage/AttendanceOutboxRepository.cpp
+        LocalStorage/AttendanceOutboxRepository.h
+        LocalStorage/SyncMetaRepository.cpp
+        LocalStorage/SyncMetaRepository.h
+        LocalStorage/DeviceLocalRepository.cpp
+        LocalStorage/DeviceLocalRepository.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -32,6 +38,10 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
         LocalStorage/localstorage.h LocalStorage/localstorage.cpp
+        LocalStorage/FaceFeatureRepository.h LocalStorage/FaceFeatureRepository.cpp
+        LocalStorage/AttendanceOutboxRepository.h LocalStorage/AttendanceOutboxRepository.cpp
+        LocalStorage/SyncMetaRepository.h LocalStorage/SyncMetaRepository.cpp
+        LocalStorage/DeviceLocalRepository.h LocalStorage/DeviceLocalRepository.cpp
         CameraCapture/cameracapture.h CameraCapture/cameracapture.cpp
         CameraCapture/videoframecapture.h CameraCapture/videoframecapture.cpp
         CameraCapture/videoframeconverter.h CameraCapture/videoframeconverter.cpp

@@ -504,6 +504,30 @@
 			null
 		],
 		[
+			"D:/QTproject/AttendanceSystem/LocalStorage/AttendanceOutboxRepository.h",
+			"MU",
+			"S44JC2R4SP/moc_AttendanceOutboxRepository.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/LocalStorage/DeviceLocalRepository.h",
+			"MU",
+			"S44JC2R4SP/moc_DeviceLocalRepository.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/LocalStorage/FaceFeatureRepository.h",
+			"MU",
+			"S44JC2R4SP/moc_FaceFeatureRepository.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/LocalStorage/SyncMetaRepository.h",
+			"MU",
+			"S44JC2R4SP/moc_SyncMetaRepository.cpp",
+			null
+		],
+		[
 			"D:/QTproject/AttendanceSystem/LocalStorage/localstorage.h",
 			"MU",
 			"S44JC2R4SP/moc_localstorage.cpp",
@@ -694,6 +718,26 @@
 		],
 		[
 			"D:/QTproject/AttendanceSystem/FaceRecognition/facerecognizer.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/LocalStorage/AttendanceOutboxRepository.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/LocalStorage/DeviceLocalRepository.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/LocalStorage/FaceFeatureRepository.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/LocalStorage/SyncMetaRepository.cpp",
 			"MU",
 			null
 		],

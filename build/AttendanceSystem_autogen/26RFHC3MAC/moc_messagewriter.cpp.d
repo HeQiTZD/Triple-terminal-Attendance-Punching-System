@@ -1,7 +1,7 @@
 D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/26RFHC3MAC/moc_messagewriter.cpp: D:/QTproject/AttendanceSystem/NetworkClient/messagewriter.h \
   D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/moc_predefs.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonObject \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/Qobject \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/QObject \
   C:/Qt/6.10.2/mingw_64/include/QtCore/q17memory.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/q20functional.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/q20iterator.h \

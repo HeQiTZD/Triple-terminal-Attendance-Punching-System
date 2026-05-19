@@ -42,16 +42,24 @@ template <> constexpr inline auto Connectionmanager::qt_create_metaobjectdata<qt
         "connected",
         "",
         "disconnected",
-        "errorOccurred",
-        "errorString",
         "stateChanged",
         "isConnected",
+        "connectionStateChanged",
+        "ConnectionState",
+        "oldState",
+        "newState",
+        "errorOccurred",
+        "errorString",
         "onSocketConnected",
         "onSocketDisconnected",
         "onSocketError",
         "QAbstractSocket::SocketError",
         "error",
-        "onReconnectTimeout"
+        "onReconnectTimeout",
+        "Disconnected",
+        "Connecting",
+        "Connected",
+        "Authenticated"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -59,28 +67,39 @@ template <> constexpr inline auto Connectionmanager::qt_create_metaobjectdata<qt
         QtMocHelpers::SignalData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
         // Signal 'disconnected'
         QtMocHelpers::SignalData<void()>(3, 2, QMC::AccessPublic, QMetaType::Void),
-        // Signal 'errorOccurred'
-        QtMocHelpers::SignalData<void(const QString &)>(4, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 5 },
-        }}),
         // Signal 'stateChanged'
-        QtMocHelpers::SignalData<void(bool)>(6, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Bool, 7 },
+        QtMocHelpers::SignalData<void(bool)>(4, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Bool, 5 },
+        }}),
+        // Signal 'connectionStateChanged'
+        QtMocHelpers::SignalData<void(enum ConnectionState, enum ConnectionState)>(6, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 7, 8 }, { 0x80000000 | 7, 9 },
+        }}),
+        // Signal 'errorOccurred'
+        QtMocHelpers::SignalData<void(const QString &)>(10, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 11 },
         }}),
         // Slot 'onSocketConnected'
-        QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(12, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onSocketDisconnected'
-        QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(13, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onSocketError'
-        QtMocHelpers::SlotData<void(QAbstractSocket::SocketError)>(10, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { 0x80000000 | 11, 12 },
+        QtMocHelpers::SlotData<void(QAbstractSocket::SocketError)>(14, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 15, 16 },
         }}),
         // Slot 'onReconnectTimeout'
-        QtMocHelpers::SlotData<void()>(13, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(17, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
     QtMocHelpers::UintData qt_enums {
+        // enum 'ConnectionState'
+        QtMocHelpers::EnumData<enum ConnectionState>(7, 7, QMC::EnumIsScoped).add({
+            {   18, ConnectionState::Disconnected },
+            {   19, ConnectionState::Connecting },
+            {   20, ConnectionState::Connected },
+            {   21, ConnectionState::Authenticated },
+        }),
     };
     return QtMocHelpers::metaObjectData<Connectionmanager, qt_meta_tag_ZN17ConnectionmanagerE_t>(QMC::MetaObjectFlag{}, qt_stringData,
             qt_methods, qt_properties, qt_enums);
@@ -102,19 +121,20 @@ void Connectionmanager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         switch (_id) {
         case 0: _t->connected(); break;
         case 1: _t->disconnected(); break;
-        case 2: _t->errorOccurred((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
-        case 3: _t->stateChanged((*reinterpret_cast<std::add_pointer_t<bool>>(_a[1]))); break;
-        case 4: _t->onSocketConnected(); break;
-        case 5: _t->onSocketDisconnected(); break;
-        case 6: _t->onSocketError((*reinterpret_cast<std::add_pointer_t<QAbstractSocket::SocketError>>(_a[1]))); break;
-        case 7: _t->onReconnectTimeout(); break;
+        case 2: _t->stateChanged((*reinterpret_cast<std::add_pointer_t<bool>>(_a[1]))); break;
+        case 3: _t->connectionStateChanged((*reinterpret_cast<std::add_pointer_t<enum ConnectionState>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<enum ConnectionState>>(_a[2]))); break;
+        case 4: _t->errorOccurred((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 5: _t->onSocketConnected(); break;
+        case 6: _t->onSocketDisconnected(); break;
+        case 7: _t->onSocketError((*reinterpret_cast<std::add_pointer_t<QAbstractSocket::SocketError>>(_a[1]))); break;
+        case 8: _t->onReconnectTimeout(); break;
         default: ;
         }
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-        case 6:
+        case 7:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
             case 0:
@@ -128,9 +148,11 @@ void Connectionmanager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
             return;
         if (QtMocHelpers::indexOfMethod<void (Connectionmanager::*)()>(_a, &Connectionmanager::disconnected, 1))
             return;
-        if (QtMocHelpers::indexOfMethod<void (Connectionmanager::*)(const QString & )>(_a, &Connectionmanager::errorOccurred, 2))
+        if (QtMocHelpers::indexOfMethod<void (Connectionmanager::*)(bool )>(_a, &Connectionmanager::stateChanged, 2))
             return;
-        if (QtMocHelpers::indexOfMethod<void (Connectionmanager::*)(bool )>(_a, &Connectionmanager::stateChanged, 3))
+        if (QtMocHelpers::indexOfMethod<void (Connectionmanager::*)(ConnectionState , ConnectionState )>(_a, &Connectionmanager::connectionStateChanged, 3))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (Connectionmanager::*)(const QString & )>(_a, &Connectionmanager::errorOccurred, 4))
             return;
     }
 }
@@ -154,14 +176,14 @@ int Connectionmanager::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 8)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     }
     return _id;
 }
@@ -179,14 +201,20 @@ void Connectionmanager::disconnected()
 }
 
 // SIGNAL 2
-void Connectionmanager::errorOccurred(const QString & _t1)
+void Connectionmanager::stateChanged(bool _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 2, nullptr, _t1);
 }
 
 // SIGNAL 3
-void Connectionmanager::stateChanged(bool _t1)
+void Connectionmanager::connectionStateChanged(ConnectionState _t1, ConnectionState _t2)
 {
-    QMetaObject::activate<void>(this, &staticMetaObject, 3, nullptr, _t1);
+    QMetaObject::activate<void>(this, &staticMetaObject, 3, nullptr, _t1, _t2);
+}
+
+// SIGNAL 4
+void Connectionmanager::errorOccurred(const QString & _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 4, nullptr, _t1);
 }
 QT_WARNING_POP
