@@ -6,7 +6,6 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtCore/QDebug \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QDir \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonArray \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonDocument \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonObject \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QList \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QMutex \
@@ -21,7 +20,6 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtCore/QTime \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QTimer \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QVector \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/Qobject \
   C:/Qt/6.10.2/mingw_64/include/QtCore/q17memory.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/q20functional.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/q20iterator.h \
@@ -534,7 +532,6 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   D:/QTproject/AttendanceSystem/NetworkClient/messagereader.h \
   D:/QTproject/AttendanceSystem/NetworkClient/messagewriter.h \
   D:/QTproject/AttendanceSystem/NetworkClient/networkclient.h \
-  D:/QTproject/AttendanceSystem/NetworkClient/protocol.h \
   D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h \
   D:/QTproject/AttendanceSystem/UI/facevideowidget.h \
   D:/QTproject/AttendanceSystem/UI/setwindow.h \

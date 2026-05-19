@@ -790,7 +790,6 @@ D:/QTproject/AttendanceSystem/FaceRecognition/facerecognizer.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QDebug
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QDir
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonArray
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonDocument
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonObject
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QMutex
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QObject
@@ -800,7 +799,6 @@ D:/QTproject/AttendanceSystem/FaceRecognition/facerecognizer.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QString
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QTimer
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QVector
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QObject
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/q17memory.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/q20functional.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/q20iterator.h
@@ -1289,7 +1287,6 @@ D:/QTproject/AttendanceSystem/FaceRecognition/facerecognizer.h
  mdp:D:/QTproject/AttendanceSystem/NetworkClient/messagereader.h
  mdp:D:/QTproject/AttendanceSystem/NetworkClient/messagewriter.h
  mdp:D:/QTproject/AttendanceSystem/NetworkClient/networkclient.h
- mdp:D:/QTproject/AttendanceSystem/NetworkClient/protocol.h
  mdp:D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h
  mdp:D:/QTproject/AttendanceSystem/UI/facevideowidget.h
  mdp:D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceSystem_autogen/moc_predefs.h
@@ -2456,7 +2453,7 @@ D:/QTproject/AttendanceSystem/LocalStorage/localstorage.h
  mdp:C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h
  mdp:C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wctype.h
  mdp:D:/QTproject/AttendanceSystem/LocalStorage/localstorage.h
- mdp:D:/QTproject/AttendanceSystem/NetworkClient/protocol.h
+ mdp:D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h
  mdp:D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceSystem_autogen/moc_predefs.h
 D:/QTproject/AttendanceSystem/NetworkClient/connectionmanager.h
  mmc:Q_OBJECT
@@ -2813,14 +2810,8 @@ D:/QTproject/AttendanceSystem/NetworkClient/connectionmanager.h
 D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h
 D:/QTproject/AttendanceSystem/NetworkClient/heartbeatmanager.h
  mmc:Q_OBJECT
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QDateTime
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonArray
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonDocument
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonObject
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QObject
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QString
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QTimer
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QVector
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/q17memory.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/q20functional.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/q20iterator.h
@@ -2846,9 +2837,6 @@ D:/QTproject/AttendanceSystem/NetworkClient/heartbeatmanager.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qbytearrayalgorithms.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qbytearraylist.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qbytearrayview.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qcalendar.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qcborcommon.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qcborvalue.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qchar.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qcompare.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qcompare_impl.h
@@ -2862,10 +2850,8 @@ D:/QTproject/AttendanceSystem/NetworkClient/heartbeatmanager.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qcontiguouscache.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qdarwinhelpers.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qdatastream.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qdatetime.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qdeadlinetimer.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qdebug.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qendian.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qeventloop.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qexceptionhandling.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qflags.h
@@ -2882,14 +2868,8 @@ D:/QTproject/AttendanceSystem/NetworkClient/heartbeatmanager.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qiodevicebase.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qiterable.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qiterator.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qjsonarray.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qjsondocument.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qjsonobject.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qjsonparseerror.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qjsonvalue.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qlatin1stringview.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qlist.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qlocale.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qlogging.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qmalloc.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qmap.h
@@ -2907,7 +2887,6 @@ D:/QTproject/AttendanceSystem/NetworkClient/heartbeatmanager.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qpair.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qprocessordetection.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qrefcount.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qregularexpression.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qscopedpointer.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qscopeguard.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qset.h
@@ -2953,15 +2932,13 @@ D:/QTproject/AttendanceSystem/NetworkClient/heartbeatmanager.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qtversionchecks.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qtypeinfo.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qtypes.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qurl.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qutf8stringview.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/quuid.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qvariant.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qvarlengtharray.h
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qvector.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qversiontagging.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qxptype_traits.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qyieldcpu.h
+ mdp:C:/Qt/6.10.2/mingw_64/include/QtNetwork/QTcpSocket
  mdp:C:/Qt/6.10.2/mingw_64/include/QtNetwork/qabstractsocket.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtNetwork/qhostaddress.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtNetwork/qtcpsocket.h
@@ -3182,7 +3159,6 @@ D:/QTproject/AttendanceSystem/NetworkClient/heartbeatmanager.h
  mdp:C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h
  mdp:C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h
  mdp:D:/QTproject/AttendanceSystem/NetworkClient/heartbeatmanager.h
- mdp:D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h
  mdp:D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceSystem_autogen/moc_predefs.h
 D:/QTproject/AttendanceSystem/NetworkClient/messagereader.h
  mmc:Q_OBJECT
@@ -3912,7 +3888,6 @@ D:/QTproject/AttendanceSystem/NetworkClient/networkclient.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QDebug
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QDir
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonArray
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonDocument
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonObject
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QMutex
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QObject
@@ -3921,7 +3896,6 @@ D:/QTproject/AttendanceSystem/NetworkClient/networkclient.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QString
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QTimer
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QVector
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QObject
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/q17memory.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/q20functional.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/q20iterator.h
@@ -4366,7 +4340,6 @@ D:/QTproject/AttendanceSystem/NetworkClient/networkclient.h
  mdp:D:/QTproject/AttendanceSystem/NetworkClient/messagereader.h
  mdp:D:/QTproject/AttendanceSystem/NetworkClient/messagewriter.h
  mdp:D:/QTproject/AttendanceSystem/NetworkClient/networkclient.h
- mdp:D:/QTproject/AttendanceSystem/NetworkClient/protocol.h
  mdp:D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h
  mdp:D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceSystem_autogen/moc_predefs.h
  mdp:D:/QTproject/AttendanceSystem/third_party/arcface/include/amcomdef.h
@@ -5492,7 +5465,6 @@ D:/QTproject/AttendanceSystem/mainwindow.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QDebug
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QDir
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonArray
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonDocument
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonObject
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QList
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QMutex
@@ -5507,7 +5479,6 @@ D:/QTproject/AttendanceSystem/mainwindow.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QTime
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QTimer
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QVector
- mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QObject
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/q17memory.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/q20functional.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/q20iterator.h
@@ -6020,7 +5991,6 @@ D:/QTproject/AttendanceSystem/mainwindow.h
  mdp:D:/QTproject/AttendanceSystem/NetworkClient/messagereader.h
  mdp:D:/QTproject/AttendanceSystem/NetworkClient/messagewriter.h
  mdp:D:/QTproject/AttendanceSystem/NetworkClient/networkclient.h
- mdp:D:/QTproject/AttendanceSystem/NetworkClient/protocol.h
  mdp:D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h
  mdp:D:/QTproject/AttendanceSystem/UI/facevideowidget.h
  mdp:D:/QTproject/AttendanceSystem/UI/setwindow.h

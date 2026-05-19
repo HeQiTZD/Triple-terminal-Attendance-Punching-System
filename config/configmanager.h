@@ -63,6 +63,16 @@ public:
     void setLateAllowance(int minutes) { m_lateAllowance = minutes; }
     void setEarlyLeaveAllowance(int minutes) { m_earlyLeaveAllowance = minutes; }
 
+    // 设备信息 - Getter
+    QString getDeviceId() const { return m_deviceId; }
+    QString getDeviceKey() const { return m_deviceKey; }
+    QString getFwVersion() const { return m_fwVersion; }
+
+    // 设备信息 - Setter
+    void setDeviceId(const QString &id) { m_deviceId = id; }
+    void setDeviceKey(const QString &key) { m_deviceKey = key; }
+    void setFwVersion(const QString &ver) { m_fwVersion = ver; }
+
     // 存储设置 - Getter
     QString getDatabasePath() const { return m_databasePath; }
     QString getLogPath() const { return m_logPath; }
@@ -126,6 +136,11 @@ private:
     // 存储设置
     QString m_databasePath;
     QString m_logPath;
+
+    // 设备信息
+    QString m_deviceId;
+    QString m_deviceKey;
+    QString m_fwVersion;
 
     // 主窗口尺寸
     int m_mainWindowWidth;

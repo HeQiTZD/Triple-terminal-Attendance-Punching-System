@@ -1,10 +1,9 @@
-﻿#ifndef NETWORKCLIENT_H
+#ifndef NETWORKCLIENT_H
 #define NETWORKCLIENT_H
 
 #include <QObject>
 #include <QDateTime>
 #include <QVector>
-#include "protocol.h"
 #include "serverprotocol.h"
 
 #include "connectionmanager.h"
@@ -24,61 +23,82 @@ class Networkclient : public QObject
 public:
     static Networkclient* instance();
 
-    //连接管理
-    bool connectToServer(const QString &ip,quint16 port);
+    // 连接管理
+    bool connectToServer(const QString &ip, quint16 port);
     void disconnect();
     bool isConnected() const;
+    bool isAuthenticated() const { return m_isAuthenticated; }
 
-    //业务接口
-    bool syncPersonData();//同步人员数据
-    bool uploadAttendance(const QString& employeeId, const QString& status, const QDateTime& checkTime = QDateTime::currentDateTime());
-    bool uploadAttendanceBatch(const QVector<QJsonObject> &records); // already-built attendance_record messages
+    // 业务接口
+    bool syncPersonData();
+    bool uploadAttendance(const QString& employeeId, const QString& status,
+                          const QDateTime& checkTime = QDateTime::currentDateTime());
+    bool uploadAttendanceBatch(const QVector<QJsonObject> &records);
     void reportDeviceStatus(const QJsonObject &status);
 
+    // 设备身份
     void setDeviceId(const QString& deviceId);
     QString deviceId() const { return m_deviceId; }
+    void setDeviceKey(const QString& deviceKey);
+    QString deviceKey() const { return m_deviceKey; }
+    QString sessionToken() const { return m_sessionToken; }
 
+    void setDeviceName(const QString& name) { m_deviceName = name; }
+    QString deviceName() const { return m_deviceName; }
 
 signals:
-    //连接状态
+    // 连接状态
     void connected();
     void disconnected();
     void networkStateChanged(bool isOnline);
 
-    //业务数据
-    void personDataReceived(const QVector<Protocol::PersonData> &persons);
-    void uploadFinished(bool success,const QString &message);
+    // 认证
+    void authSuccess();
+    void authFailed(int code, const QString &message);
+
+    // 业务数据
+    void personDataReceived(const QVector<ServerProtocol::PersonData> &persons);
+    void uploadFinished(bool success, const QString &message);
+    void faceSyncItemReceived(const QJsonObject &header, const QByteArray &payload);
 
 private slots:
-    //内部处理槽 - 接收子模块信号，处理逻辑后发送新信号
-    void onConnectionConnected();//处理连接成功
-    void onConnectionDisconnected();//处理断开连接
-    void onConnectionStateChanged(bool isOnline);//处理连接状态变化
+    void onConnectionConnected();
+    void onConnectionDisconnected();
+    void onConnectionStateChanged(bool isOnline);
 
-    void onMessageReceived(const QJsonObject &message);//处理接收消息
-    void onHeartbeatTimeout();//处理心跳超时
-    void onSendError();//处理发送错误
-    void onSendHeartbeat(const QByteArray &data);//处理心跳发送
+    void onMessageReceived(const QJsonObject &message);
+    void onBinaryFrameReceived(const QJsonObject &header, const QByteArray &payload);
+    void onHeartbeatTimeout();
+    void onSendError();
+    void onSendHeartbeat(const QByteArray &data);
 
 private:
     explicit Networkclient(QObject *parent = nullptr);
-    void setupConnections();//连接各模块信号槽
-    void processQueue();//处理队列中的消息
+    void setupConnections();
+    void processQueue();
+    void loadDeviceConfig();
 
-    //辅助方法
+    void handleAuthResponse(const QJsonObject &message);
     void handlePersonSynResponse(const QJsonObject &message);
     void handleUploadResponse(const QJsonObject &message);
     void handleServerError(const QJsonObject& message);
+    void sendDeviceStatusReport();
 
 private:
     Connectionmanager *m_connection;
-    Heartbeatmanager *m_heartbeat;
-    Messagewriter *m_writer;
-    Messagereader *m_ready;
-    Messagequeue *m_queue;
+    Heartbeatmanager   *m_heartbeat;
+    Messagewriter      *m_writer;
+    Messagereader      *m_ready;
+    Messagequeue       *m_queue;
 
-    QString m_deviceId = "device_001";
+    QString m_deviceId    = QStringLiteral("device_001");
+    QString m_deviceKey;
+    QString m_sessionToken;
+    QString m_deviceName;
+    QString m_fwVersion   = QStringLiteral("1.0.0");
+
     bool m_isAuthenticated = false;
-    bool m_isOnline = false;//当前网络状态
+    bool m_isOnline        = false;
 };
+
 #endif // NETWORKCLIENT_H

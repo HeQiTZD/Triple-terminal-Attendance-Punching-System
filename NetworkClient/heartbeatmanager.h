@@ -1,43 +1,52 @@
-﻿#ifndef HEARTBEATMANAGER_H
+#ifndef HEARTBEATMANAGER_H
 #define HEARTBEATMANAGER_H
 
 #include <QObject>
 #include <QTimer>
-#include <qtcpsocket.h>
-#include "serverprotocol.h"
-#include <QJsonDocument>
+#include <QTcpSocket>
 
 class Heartbeatmanager : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit Heartbeatmanager(QObject* parent = nullptr);
+    explicit Heartbeatmanager(QObject *parent = nullptr);
 
     void setSocket(QTcpSocket *socket);
 
-    //启动/停止心跳
-    void start(int intervalMs = 3000);
+    /// 启动心跳（heartbeatSec 从 auth_response 获取，默认 30 s）
+    void start(int heartbeatSec = 30);
     void stop();
-    bool isRunning() const;//状态查询
-    QByteArray buildHeartbeatData();
-    
-    //收到心跳响应后调用，重置等待状态
+    bool isRunning() const;
+
+    /// 动态更新心跳间隔（auth 成功后由 Networkclient 调用）
+    void setHeartbeatInterval(int heartbeatSec);
+
+    /// 收到任意消息时调用 —— 重置超时计时器
+    void onAnyMessage();
+
+    /// 收到心跳响应时调用
     void onHeartbeatResponse();
 
+    QByteArray buildHeartbeatData();
+
 signals:
-    void heartbeattimeout(); //心跳超时，需要重连
+    void heartbeattimeout();
     void sendHeartbeat(const QByteArray &data);
 
 private slots:
     void onTimeout();
 
 private:
-    QTcpSocket* m_socket;
-    QTimer* m_timer;//心跳发送定时器
-    QTimer* m_timeroutTimer;//超时检测定时器
-    bool m_waitingResponse;//标记是否正在等待响应
+    QTcpSocket *m_socket    = nullptr;
+    QTimer     *m_timer     = nullptr;  // 心跳发送定时器（周期性）
+    QTimer     *m_timeoutTimer = nullptr; // 超时检测定时器（单次）
+    bool        m_waitingResponse = false;
 
+    int m_heartbeatSec      = 30;       // 心跳间隔（秒）
+    int m_timeoutThresholdMs = 90000;   // 超时阈值 = heartbeatSec × graceMultiplier
+
+    static constexpr int kGraceMultiplier = 3;
 };
 
 #endif // HEARTBEATMANAGER_H

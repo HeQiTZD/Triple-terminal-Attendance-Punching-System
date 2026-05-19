@@ -77,6 +77,12 @@ void ConfigManager::loadConfig()
     m_earlyLeaveAllowance = m_settings->value("EarlyLeaveAllowance", DEFAULT_EARLY_LEAVE_ALLOWANCE).toInt();
     m_settings->endGroup();
 
+    m_settings->beginGroup("Device");
+    m_deviceId = m_settings->value("DeviceId", "").toString();
+    m_deviceKey = m_settings->value("DeviceKey", "").toString();
+    m_fwVersion = m_settings->value("FwVersion", "1.0.0").toString();
+    m_settings->endGroup();
+
     m_settings->beginGroup("Storage");
     m_databasePath = m_settings->value("DatabasePath", "").toString();
     m_logPath = m_settings->value("LogPath", "").toString();
@@ -113,6 +119,12 @@ void ConfigManager::saveConfig()
     m_settings->setValue("WorkEndTime", m_workEndTime.toString("HH:mm"));
     m_settings->setValue("LateAllowance", m_lateAllowance);
     m_settings->setValue("EarlyLeaveAllowance", m_earlyLeaveAllowance);
+    m_settings->endGroup();
+
+    m_settings->beginGroup("Device");
+    m_settings->setValue("DeviceId", m_deviceId);
+    m_settings->setValue("DeviceKey", m_deviceKey);
+    m_settings->setValue("FwVersion", m_fwVersion);
     m_settings->endGroup();
 
     m_settings->beginGroup("Storage");
@@ -158,6 +170,10 @@ void ConfigManager::restoreDefaults()
     m_workEndTime = QTime(18, 0);
     m_lateAllowance = DEFAULT_LATE_ALLOWANCE;
     m_earlyLeaveAllowance = DEFAULT_EARLY_LEAVE_ALLOWANCE;
+
+    // 设备信息默认值
+    if (m_deviceId.isEmpty()) m_deviceId = QStringLiteral("device_001");
+    m_fwVersion = QStringLiteral("1.0.0");
 
     // 存储设置路径不清空
     // m_databasePath, m_logPath 保持当前值

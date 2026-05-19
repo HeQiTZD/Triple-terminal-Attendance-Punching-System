@@ -1,109 +1,150 @@
-﻿#include "connectionmanager.h"
+#include "connectionmanager.h"
+
+// ---------------------------------------------------------------------------
+// Construction
+// ---------------------------------------------------------------------------
 
 Connectionmanager::Connectionmanager(QObject *parent)
-    :QObject(parent),
-     m_socket(new QTcpSocket(this)),
-     m_reconnectTimer(new QTimer(this)),
-     m_reconnectCount(0)
+    : QObject(parent)
+    , m_socket(new QTcpSocket(this))
+    , m_reconnectTimer(new QTimer(this))
 {
-    //连接QTcpSocket信号到内部槽
-    connect(m_socket,&QTcpSocket::connected,this,&Connectionmanager::onSocketConnected);
-    connect(m_socket,&QTcpSocket::disconnected,this,&Connectionmanager::onSocketDisconnected);
-    connect(m_socket,&QTcpSocket::errorOccurred,this,&Connectionmanager::onSocketError);
-    //重连定时器信号
-    connect(m_reconnectTimer,&QTimer::timeout,this,&Connectionmanager::onReconnectTimeout);
+    connect(m_socket, &QTcpSocket::connected,       this, &Connectionmanager::onSocketConnected);
+    connect(m_socket, &QTcpSocket::disconnected,    this, &Connectionmanager::onSocketDisconnected);
+    connect(m_socket, &QTcpSocket::errorOccurred,   this, &Connectionmanager::onSocketError);
 
-    //设置定时器为单次触发
     m_reconnectTimer->setSingleShot(true);
+    connect(m_reconnectTimer, &QTimer::timeout, this, &Connectionmanager::onReconnectTimeout);
 }
+
+// ---------------------------------------------------------------------------
+// Public API
+// ---------------------------------------------------------------------------
 
 bool Connectionmanager::connectToHost(const QString &ip, quint16 port)
 {
-    m_ip = ip;
+    m_ip   = ip;
     m_port = port;
-    m_reconnectCount = 0;
+    m_reconnectCount   = 0;
+    m_manualDisconnect = false;
 
-    //如果已连接。先断开
-    if(m_socket->state() == QAbstractSocket::ConnectedState){
+    if (m_socket->state() == QAbstractSocket::ConnectedState)
         m_socket->disconnectFromHost();
-    }
 
-    //发起连接
-    m_socket->connectToHost(m_ip,m_port);
+    setState(ConnectionState::Connecting);
+    m_socket->connectToHost(m_ip, m_port);
 
-    //等待连接结果
-    return m_socket->state() == QAbstractSocket::ConnectingState || m_socket->state() == QAbstractSocket::ConnectedState;
+    return m_socket->state() == QAbstractSocket::ConnectingState
+        || m_socket->state() == QAbstractSocket::ConnectedState;
 }
 
 void Connectionmanager::disconnect()
 {
+    m_manualDisconnect = true;
     m_reconnectTimer->stop();
-    m_reconnectCount = MAX_RECONNECT;//标记为主动断开
+    m_reconnectCount = kMaxReconnect;          // 阻止自动重连
     m_socket->disconnectFromHost();
+    setState(ConnectionState::Disconnected);
 }
 
-bool Connectionmanager::isConnect()
+bool Connectionmanager::isConnect() const
 {
-    return m_socket->state() == QAbstractSocket::ConnectedState;
+    return m_state == ConnectionState::Connected
+        || m_state == ConnectionState::Authenticated;
 }
 
-QTcpSocket *Connectionmanager::socket() const
+Connectionmanager::ConnectionState Connectionmanager::state() const
+{
+    return m_state;
+}
+
+void Connectionmanager::setAuthenticated(bool authenticated)
+{
+    if (authenticated && m_state == ConnectionState::Connected) {
+        setState(ConnectionState::Authenticated);
+    } else if (!authenticated && m_state == ConnectionState::Authenticated) {
+        setState(ConnectionState::Connected);
+    }
+}
+
+QTcpSocket* Connectionmanager::socket() const
 {
     return m_socket;
 }
 
+// ---------------------------------------------------------------------------
+// State machine
+// ---------------------------------------------------------------------------
+
+void Connectionmanager::setState(ConnectionState newState)
+{
+    if (m_state == newState)
+        return;
+
+    const ConnectionState old = m_state;
+    m_state = newState;
+
+    emit connectionStateChanged(old, newState);
+
+    // 向后兼容信号
+    if (newState == ConnectionState::Connected || newState == ConnectionState::Authenticated) {
+        if (old == ConnectionState::Connecting || old == ConnectionState::Disconnected)
+            emit connected();
+        emit stateChanged(true);
+    } else if (newState == ConnectionState::Disconnected) {
+        if (old != ConnectionState::Disconnected)
+            emit disconnected();
+        emit stateChanged(false);
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Socket callbacks
+// ---------------------------------------------------------------------------
+
 void Connectionmanager::onSocketConnected()
 {
-    //连接成功，重置重连次数
     m_reconnectCount = 0;
-
-    //通知上层
-    emit connected();
-    emit stateChanged(true);
+    setState(ConnectionState::Connected);
 }
 
 void Connectionmanager::onSocketDisconnected()
 {
-    emit disconnected();
-    emit stateChanged(false);
+    // 已经在 setAuthenticated 或 主动 disconnect 中设置过状态就不再重复
+    if (m_state != ConnectionState::Disconnected)
+        setState(ConnectionState::Disconnected);
 
-    //判断是否重连
-    //条件：重连次数未达到最大次数且不是主动断开
-    if(m_reconnectCount < MAX_RECONNECT){
-        int delayMa = qMin(1000 * (1 << m_reconnectCount),30000);//最大30秒
-
-        m_reconnectTimer->start(delayMa);
+    // 指数退避重连：1 s × 2^n，最大 30 s，最多 5 次
+    if (!m_manualDisconnect && m_reconnectCount < kMaxReconnect) {
+        const int delayMs = qMin(kBaseReconnectMs * (1 << m_reconnectCount), kMaxReconnectMs);
+        m_reconnectTimer->start(delayMs);
     }
 }
 
 void Connectionmanager::onSocketError(QAbstractSocket::SocketError error)
 {
     QString errorStr;
-    switch(error){
+    switch (error) {
     case QAbstractSocket::ConnectionRefusedError:
-        errorStr = "连接被拒绝，服务器未启动";
-        break;
+        errorStr = QStringLiteral("连接被拒绝，服务器未启动");     break;
     case QAbstractSocket::RemoteHostClosedError:
-        errorStr = "远程主机关闭连接";
-            break;
+        errorStr = QStringLiteral("远程主机关闭连接");             break;
     case QAbstractSocket::HostNotFoundError:
-        errorStr = "主机未找到，请检查IP地址";
-        break;
+        errorStr = QStringLiteral("主机未找到，请检查IP地址");      break;
     case QAbstractSocket::SocketTimeoutError:
-        errorStr = "连接超时";
-        break;
+        errorStr = QStringLiteral("连接超时");                     break;
     case QAbstractSocket::NetworkError:
-        errorStr = "网络错误";
-        break;
+        errorStr = QStringLiteral("网络错误");                     break;
     default:
-        errorStr = QString("未知错误：%1").arg(error);
+        errorStr = QStringLiteral("未知错误：%1").arg(static_cast<int>(error));
     }
 
-    emit this->errorOccurred(errorStr);
+    emit errorOccurred(errorStr);
 }
 
 void Connectionmanager::onReconnectTimeout()
 {
     m_reconnectCount++;
-    m_socket->connectToHost(m_ip,m_port);
+    setState(ConnectionState::Connecting);
+    m_socket->connectToHost(m_ip, m_port);
 }

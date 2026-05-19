@@ -1,112 +1,175 @@
-﻿#include "messagereader.h"
+#include "messagereader.h"
 
-Messagereader::Messagereader(QTcpSocket *socket,QObject *parent):
-    QObject(parent),
-    m_socket(socket)
+#include <QJsonDocument>
+#include <QJsonParseError>
+
+// ---------------------------------------------------------------------------
+// Construction
+// ---------------------------------------------------------------------------
+
+Messagereader::Messagereader(QTcpSocket *socket, QObject *parent)
+    : QObject(parent)
+    , m_socket(socket)
 {
-    //参数校验
-    if(!m_socket){
-        qWarning()<<"Messagereader: socket为空";
-    }
+    if (!m_socket)
+        qWarning() << "Messagereader: socket为空";
 }
+
+// ---------------------------------------------------------------------------
+// start / stop
+// ---------------------------------------------------------------------------
 
 void Messagereader::start()
 {
-    if(!m_socket){
-        qWarning()<<"消息接收无法功能无法启动,socket为空";
+    if (!m_socket) {
+        qWarning() << "消息接收功能无法启动, socket为空";
         return;
     }
 
-    /*
-        连接socket的readyRead信号
-        当socket有数据可读时，自动调用onReadyRead（）
-    */
-    connect(m_socket,&QTcpSocket::readyRead,this,&Messagereader::onReadyRead);
-    qDebug()<<"开始接收数据";
+    connect(m_socket, &QTcpSocket::readyRead, this, &Messagereader::onReadyRead);
+    qDebug() << "Messagereader: 开始接收数据";
 }
 
 void Messagereader::stop()
 {
-    //断开信号,停止接收
-    disconnect(m_socket,&QTcpSocket::readyRead,this,&Messagereader::onReadyRead);
-    qDebug()<<"停止接收数据";
+    disconnect(m_socket, &QTcpSocket::readyRead, this, &Messagereader::onReadyRead);
+
+    // 重置状态，确保下次 start 从干净状态开始
+    m_buffer.clear();
+    m_mode = Mode::Line;
+    m_pendingBinaryHeader = QJsonObject();
+
+    qDebug() << "Messagereader: 停止接收数据";
 }
+
+// ---------------------------------------------------------------------------
+// onReadyRead — state machine
+// ---------------------------------------------------------------------------
 
 void Messagereader::onReadyRead()
 {
-    //检查socket是否有效
-    if(!m_socket || m_socket->state() != QAbstractSocket::ConnectedState){
+    if (!m_socket || m_socket->state() != QAbstractSocket::ConnectedState)
         return;
-    }
-    
-    //读取所有可用数据到缓冲区
+
     QByteArray newData = m_socket->readAll();
     m_buffer.append(newData);
 
-    //尝试解析缓冲区里的数据
-    //循环处理可能存在的多条消息
-    while(true){
-        QJsonObject message;
-        if(tryParseMessage(&message)){
-            //解析成功
-            emit messageReceived(message);
-        }else{
-            //没有完整消息，退出循环等待更多数据
-            break;
+    // ---------- 缓冲区上限 ----------
+    if (m_buffer.size() > kMaxBufferSize) {
+        qWarning() << "Messagereader: 缓冲区溢出" << m_buffer.size();
+        emit parseError(QStringLiteral("接收缓冲区溢出"));
+        m_buffer.clear();
+        m_mode = Mode::Line;
+        return;
+    }
+
+    // ---------- 主循环 ----------
+    while (true) {
+        if (m_mode == Mode::Line) {
+            QJsonObject message;
+            if (!tryParseLine(&message))
+                break; // 需要更多数据
+
+            // face.sync.item.header 触发二进制模式切换
+            const QString type = message.value(QStringLiteral("type")).toString();
+            if (type == QLatin1StringView("face.sync.item.header")) {
+                m_pendingBinaryHeader = message;
+                m_mode = Mode::Binary;
+                // 不发射 messageReceived — 等二进制帧收完后统一发射
+            } else {
+                emit messageReceived(message);
+            }
+        } else {
+            if (!tryParseBinaryFrame())
+                break; // 需要更多数据
+            // tryParseBinaryFrame 已发射 binaryFrameReceived 并切回 LineMode
         }
     }
-
 }
 
-bool Messagereader::tryParseMessage(QJsonObject *outMessage)
+// ---------------------------------------------------------------------------
+// LineMode — 按 \n 分隔解析 JSON
+// ---------------------------------------------------------------------------
+
+bool Messagereader::tryParseLine(QJsonObject *outMessage)
 {
-    //查找换行符（消息分割符号）
-    //MessageWrite发送时会在每条消息后添加分隔符（\n）
-    int newlineindex = m_buffer.indexOf('\n');//indexof() 在一个字符串或容器中查找指定元素或子串第一次出现的位置（索引）
+    const int nl = m_buffer.indexOf('\n');
+    if (nl == -1)
+        return false; // 消息不完整
 
-    if(newlineindex == -1){
-        //没有找到换行符，消息不完整
-        //等待下次接收更多数据
+    QByteArray line = m_buffer.left(nl);
+    m_buffer.remove(0, nl + 1);
+
+    if (line.isEmpty())
+        return tryParseLine(outMessage); // 跳过空行
+
+    QJsonParseError parseErr;
+    QJsonDocument doc = QJsonDocument::fromJson(line, &parseErr);
+
+    if (parseErr.error != QJsonParseError::NoError) {
+        const QString errStr = QStringLiteral("JSON解析失败：%1 (位置 %2)")
+                                   .arg(parseErr.errorString())
+                                   .arg(parseErr.offset);
+        qWarning() << "Messagereader:" << errStr;
+        qWarning() << "原始数据:" << line;
+        emit parseError(errStr);
         return false;
     }
 
-    //提取一条完整的消息，不包括换行符
-    QByteArray messageData = m_buffer.left(newlineindex);
-
-    //从缓冲区移除已处理的消息，包括换行符
-    m_buffer.remove(0,newlineindex+1);
-
-    if(messageData.isEmpty()){
-        //跳过空消息，继续尝试解析下一条
-        return tryParseMessage(outMessage);
-    }
-
-    //JSON解析
-    QJsonParseError parseErrors;
-    QJsonDocument doc = QJsonDocument::fromJson(messageData,&parseErrors);
-
-    if(parseErrors.error != QJsonParseError::NoError){
-        //JSON解析失败
-        QString errorStr = QString("JSON解析失败：%1(位置：%2)").arg(parseErrors.errorString()).arg(parseErrors.offset);
-        qWarning()<<"Messageready:"<<errorStr;
-        qWarning()<<"原始数据:"<<messageData;
-
-        emit parseError(errorStr);
-    }
-
-    if(!doc.isObject()){
-        //不是JSON对象
-        QString errorStr = "解析结果不是JSON对象";
-        qWarning()<<"MessageReady:"<<errorStr;
+    if (!doc.isObject()) {
+        qWarning() << "Messagereader: 解析结果不是JSON对象";
         return false;
     }
 
-    /*
-        doc.object() 是 Qt 中 QJsonDocument 类的一个成员函数，
-        它的作用是获取文档内部存储的 JSON 对象数据，并将其作为一个
-        QJsonObject 类型的值返回。
-    */
-    //解析成功
-    *outMessage = doc.object();//
+    *outMessage = doc.object();
+    return true;
+}
+
+// ---------------------------------------------------------------------------
+// BinaryMode — 4 字节 BE 长度前缀 + payload
+// ---------------------------------------------------------------------------
+
+bool Messagereader::tryParseBinaryFrame()
+{
+    // 需要至少 4 字节长度前缀
+    if (m_buffer.size() < kLengthPrefixLen)
+        return false;
+
+    // 读取 4 字节大端无符号整数
+    const auto *raw = reinterpret_cast<const quint8 *>(m_buffer.constData());
+    const quint32 payloadLen = (static_cast<quint32>(raw[0]) << 24)
+                             | (static_cast<quint32>(raw[1]) << 16)
+                             | (static_cast<quint32>(raw[2]) << 8)
+                             | (static_cast<quint32>(raw[3]));
+
+    // 校验 featureSize（如 header 提供了该字段）
+    const int expectedSize = m_pendingBinaryHeader.value(QStringLiteral("featureSize")).toInt();
+    if (expectedSize > 0 && static_cast<int>(payloadLen) != expectedSize) {
+        qWarning() << "Messagereader: 二进制载荷大小不匹配, 预期"
+                   << expectedSize << "实际" << payloadLen;
+    }
+
+    // 载荷过大保护
+    if (payloadLen > static_cast<quint32>(kMaxBufferSize)) {
+        qWarning() << "Messagereader: 二进制载荷过大" << payloadLen;
+        emit parseError(QStringLiteral("二进制载荷超出上限"));
+        m_buffer.clear();
+        m_mode = Mode::Line;
+        return false;
+    }
+
+    const int totalNeeded = kLengthPrefixLen + static_cast<int>(payloadLen);
+    if (m_buffer.size() < totalNeeded)
+        return false; // 载荷未收完
+
+    // 提取 payload
+    const QByteArray payload = m_buffer.mid(kLengthPrefixLen, static_cast<int>(payloadLen));
+    m_buffer.remove(0, totalNeeded);
+
+    emit binaryFrameReceived(m_pendingBinaryHeader, payload);
+
+    // 切回行模式
+    m_pendingBinaryHeader = QJsonObject();
+    m_mode = Mode::Line;
     return true;
 }

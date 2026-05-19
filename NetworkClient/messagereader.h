@@ -1,4 +1,4 @@
-﻿#ifndef MESSAGEREADER_H
+#ifndef MESSAGEREADER_H
 #define MESSAGEREADER_H
 
 #include <QObject>
@@ -10,50 +10,40 @@ class Messagereader : public QObject
     Q_OBJECT
 
 public:
-    explicit Messagereader(QTcpSocket *socket,QObject *parent = nullptr);
+    explicit Messagereader(QTcpSocket *socket, QObject *parent = nullptr);
 
-    //开始接收
     void start();
-    //停止接收
     void stop();
 
 signals:
-    //接收消息信号
-    void messageReceived(const QJsonObject &message);//成功解析JSON消息后发送
-    //发生错误信号
-    void parseError(const QString error);//解析JSON失败时
+    /// 成功解析一条 JSON 行消息（LineMode）
+    void messageReceived(const QJsonObject &message);
+
+    /// 接收到完整二进制帧：header 为 face.sync.item.header JSON，payload 为特征 BLOB
+    void binaryFrameReceived(const QJsonObject &header, const QByteArray &payload);
+
+    /// JSON 解析失败
+    void parseError(const QString error);
 
 private slots:
-    void onReadyRead();//socket有数据可读时，作用读取数据到缓冲区，尝试解析
+    void onReadyRead();
 
 private:
-    bool tryParseMessage(QJsonObject *outMessage);//尝试解析
+    enum class Mode {
+        Line,   // 默认：按 \n 分隔解析 JSON 行
+        Binary  // 等待 4 字节 BE 长度前缀 + payload
+    };
 
-private:
-    QTcpSocket *m_socket;//套接字对象
-    QByteArray m_buffer;//缓存接收到的字节数据，处理粘包
+    bool tryParseLine(QJsonObject *outMessage);
+    bool tryParseBinaryFrame();
+
+    QTcpSocket *m_socket;
+    QByteArray m_buffer;
+    Mode       m_mode = Mode::Line;
+    QJsonObject m_pendingBinaryHeader; // 收到 face.sync.item.header 后暂存
+
+    static constexpr int kMaxBufferSize   = 1048576 + 4096; // 1 MiB + 4 KiB
+    static constexpr int kLengthPrefixLen = 4;              // BE uint32
 };
 
 #endif // MESSAGEREADER_H
-
-/*设计思路
-┌─────────────────────────────────────────┐
-│           Messagereader                 │
-│            消息读取器                    │
-├─────────────────────────────────────────┤
-│                                         │
-│  1. socket 有数据 → onReadyRead()       │
-│                                         │
-│  2. 读取数据到 m_buffer                 │
-│                                         │
-│  3. tryParseMessage() 按 \n 分割        │
-│                                         │
-│  4. JSON 解析成功 → emit messageReceived │
-│                                         │
-│  5. JSON 解析失败 → emit parseError      │
-│                                         │
-└─────────────────────────────────────────┘
-        ↑                          ↓
-   网络数据流入               解析后的消息
-   (QTcpSocket)              (QJsonObject)
-*/

@@ -5,7 +5,6 @@ AttendanceSystem_autogen/timestamp: \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QDebug \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QDir \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonArray \
-	C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonDocument \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonObject \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QList \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QMutex \
