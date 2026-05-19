@@ -19,7 +19,7 @@ Item {
 
     function _liveQuery() {
         attendanceService.query(-1, empId.text.trim(), checkTime.text.trim(),
-                                devId.text.trim(), status.currentText, "")
+                                devId.text.trim(), status.currentValue, "")
     }
 
     ColumnLayout {
@@ -85,8 +85,16 @@ Item {
                             LabeledField { label: qsTr("状态"); Layout.fillWidth: true
                                 ComboBox {
                                     id: status
-                                    model: ["normal", "late", "early", "absent", "manual"]
                                     Layout.fillWidth: true
+                                    model: [
+                                        { text: qsTr("正常"), value: "normal" },
+                                        { text: qsTr("迟到"), value: "late" },
+                                        { text: qsTr("早退"), value: "early" },
+                                        { text: qsTr("缺勤"), value: "absent" },
+                                        { text: qsTr("补签"), value: "manual" }
+                                    ]
+                                    textRole: "text"
+                                    valueRole: "value"
                                 }
                             }
                         }
@@ -103,7 +111,7 @@ Item {
                                 onClicked: guardedClick(function() {
                                     attendanceService.createRecord(
                                         empId.text.trim(), checkTime.text.trim(),
-                                        status.currentText, devId.text.trim())
+                                        status.currentValue, devId.text.trim())
                                 })
                             }
                             PermissionButton {
@@ -142,7 +150,12 @@ Item {
                             { key: "employeeId", title: qsTr("工号"), width: 100 },
                             { key: "checkTime", title: qsTr("打卡时间"), width: 170 },
                             { key: "deviceId", title: qsTr("设备 ID"), width: 130 },
-                            { key: "status", title: qsTr("状态"), width: 80 },
+                            {
+                                key: "status",
+                                title: qsTr("状态"),
+                                width: 80,
+                                formatter: function(v) { return Theme.formatAttendanceStatus(v) }
+                            },
                             { key: "receivedTime", title: qsTr("接收时间") }
                         ]
                     }

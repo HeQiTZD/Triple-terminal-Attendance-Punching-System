@@ -4,7 +4,7 @@ project(AttendanceAdmin VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick Core Gui Network Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Quick Core Gui Network Widgets Charts)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -54,6 +54,7 @@ qt_add_qml_module(appAttendanceAdmin
         ui/components/PermissionDeniedDialog.qml
         ui/components/PermissionChipRow.qml
         ui/components/PageAccessPlaceholder.qml
+        ui/components/AttendanceStatusPieChart.qml
         ui/components/PageHost.qml
         ui/pages/PageDashboard.qml
         ui/pages/PagePerson.qml
@@ -98,6 +99,7 @@ target_link_libraries(appAttendanceAdmin
             Qt6::Gui
             Qt6::Network
             Qt6::Widgets
+            Qt6::Charts
 )
 
 include(GNUInstallDirs)

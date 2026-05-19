@@ -11,13 +11,14 @@ Item {
     property var personServer
     property var deviceServer
     property var attendanceService
-    property var eventService
 
     readonly property int connState: sessionManager ? sessionManager.connectionState : 0
 
     readonly property bool canReadPerson: PermissionCatalog.hasPerm(sessionManager, "person.read")
     readonly property bool canReadDevice: PermissionCatalog.hasPerm(sessionManager, "device.read")
     readonly property bool canReadAttendance: PermissionCatalog.hasPerm(sessionManager, "attendance.read")
+
+    readonly property string todayDatePrefix: Qt.formatDateTime(new Date(), "yyyy-MM-dd")
 
     readonly property int employeeCount: {
         if (!canReadPerson || !personServer)
@@ -40,24 +41,130 @@ Item {
     readonly property int todayPunchCount: countTodayUniquePunches(
         attendanceService ? attendanceService.records : [])
 
-    readonly property bool canViewHistory: {
-        if (sessionManager) {
-            const _p = sessionManager.permissions
-            void _p
-        }
-        return PermissionCatalog.canAccessNav("history", sessionManager)
+    readonly property var todayAttendanceRows: {
+        if (!page.canReadAttendance || !attendanceService)
+            return []
+        const _records = attendanceService.records
+        void _records
+        return page.buildTodayAttendanceRows()
     }
 
-    readonly property bool canViewEvents: {
-        if (sessionManager) {
-            const _p = sessionManager.permissions
-            void _p
+    readonly property var statusPieSlices: {
+        if (!page.canReadAttendance || !attendanceService)
+            return []
+        const _records = attendanceService.records
+        void _records
+        if (page.canReadPerson && personServer) {
+            const _persons = personServer.records
+            void _persons
         }
-        return PermissionCatalog.canAccessNav("events", sessionManager)
+        return page.buildStatusPieSlices()
+    }
+
+    readonly property bool hasTodayAttendanceData: page.statusPieSlices.length > 0
+
+    function todayRecords(records) {
+        const prefix = page.todayDatePrefix
+        const out = []
+        for (let i = 0; i < records.length; ++i) {
+            const r = records[i]
+            if ((r.checkTime || "").startsWith(prefix))
+                out.push(r)
+        }
+        return out
+    }
+
+    function personNameByEmployeeId(empId) {
+        if (!empId || !page.canReadPerson || !personServer)
+            return "—"
+        const rec = personServer.records
+        for (let i = 0; i < rec.length; ++i) {
+            if (rec[i].employeeId === empId)
+                return rec[i].name || "—"
+        }
+        return "—"
+    }
+
+    function buildTodayAttendanceRows() {
+        if (!page.canReadAttendance || !attendanceService)
+            return []
+        const today = page.todayRecords(attendanceService.records)
+        today.sort(function(a, b) {
+            return (b.checkTime || "").localeCompare(a.checkTime || "")
+        })
+        const limited = today.slice(0, 20)
+        const rows = []
+        for (let i = 0; i < limited.length; ++i) {
+            const r = limited[i]
+            rows.push({
+                employeeId: r.employeeId || "",
+                personName: page.personNameByEmployeeId(r.employeeId || ""),
+                checkTime: r.checkTime || "",
+                status: r.status || "",
+                statusLabel: Theme.formatAttendanceStatus(r.status),
+                deviceId: r.deviceId || ""
+            })
+        }
+        return rows
+    }
+
+    function pieChartStatusKey(status) {
+        const s = String(status || "unknown").toLowerCase()
+        if (s === "manual")
+            return "normal"
+        return s
+    }
+
+    function buildStatusPieSlices() {
+        if (!page.canReadAttendance || !attendanceService)
+            return []
+        const today = page.todayRecords(attendanceService.records)
+        const latestByEmp = {}
+        for (let i = 0; i < today.length; ++i) {
+            const r = today[i]
+            const eid = r.employeeId || ""
+            if (!eid)
+                continue
+            if (!latestByEmp[eid] || (r.checkTime || "") > (latestByEmp[eid].checkTime || ""))
+                latestByEmp[eid] = r
+        }
+        const counts = {}
+        const empIds = Object.keys(latestByEmp)
+        for (let i = 0; i < empIds.length; ++i) {
+            const key = page.pieChartStatusKey(latestByEmp[empIds[i]].status)
+            counts[key] = (counts[key] || 0) + 1
+        }
+        const order = ["normal", "late", "early", "absent", "unknown"]
+        const slices = []
+        for (let i = 0; i < order.length; ++i) {
+            const status = order[i]
+            const n = counts[status]
+            if (!n)
+                continue
+            slices.push({
+                status: status,
+                label: Theme.formatAttendanceStatus(status),
+                value: n,
+                color: Theme.attendancePieColor(status)
+            })
+        }
+        const statusKeys = Object.keys(counts)
+        for (let i = 0; i < statusKeys.length; ++i) {
+            const status = statusKeys[i]
+            if (order.indexOf(status) >= 0)
+                continue
+            slices.push({
+                status: status,
+                label: Theme.formatAttendanceStatus(status),
+                value: counts[status],
+                color: Theme.attendancePieColor(status)
+            })
+        }
+        return slices
     }
 
     function countTodayUniquePunches(records) {
-        const prefix = Qt.formatDateTime(new Date(), "yyyy-MM-dd")
+        const prefix = page.todayDatePrefix
         const seen = {}
         let n = 0
         for (let i = 0; i < records.length; ++i) {
@@ -90,6 +197,10 @@ Item {
         if (!hasPermission)
             return qsTr("无权限")
         return ""
+    }
+
+    function attendanceSectionPlaceholder() {
+        return page.statDisplayText(page.canReadAttendance)
     }
 
     Component.onCompleted: page.refreshStats()
@@ -178,39 +289,49 @@ Item {
         }
 
         RowLayout {
+            id: middleRow
             Layout.fillWidth: true
             Layout.fillHeight: true
             spacing: Theme.spacingMd
-            visible: page.canViewHistory || page.canViewEvents
 
             Card {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
+                Layout.preferredWidth: middleRow.width * 0.62
                 stretchContent: true
-                title: qsTr("最近调用")
-                visible: page.canViewHistory
+                title: qsTr("今日打卡动态")
 
-                ListView {
+                Item {
                     anchors.fill: parent
-                    clip: true
-                    model: History.model
-                    orientation: ListView.Vertical
-                    delegate: Item {
-                        required property int index
-                        width: ListView.view.width
-                        height: rowLbl.implicitHeight + 8
-                        readonly property var entry: History.get(index)
-                        Label {
-                            id: rowLbl
-                            width: parent.width - Theme.spacingMd * 2
-                            x: Theme.spacingMd
-                            anchors.verticalCenter: parent.verticalCenter
-                            text: entry ? ("[" + entry.time + "] " + entry.direction + " " + entry.target) : ""
-                            color: entry && entry.ok ? Theme.textMuted : Theme.danger
-                            font.pixelSize: Theme.fontXs
-                            font.family: Theme.fontMono
-                            elide: Text.ElideRight
-                        }
+
+                    Label {
+                        anchors.centerIn: parent
+                        visible: page.attendanceSectionPlaceholder().length > 0
+                        text: page.attendanceSectionPlaceholder()
+                        color: Theme.textMuted
+                        font.pixelSize: Theme.fontMd
+                        font.family: Theme.fontFamily
+                    }
+
+                    DataTable {
+                        anchors.fill: parent
+                        visible: page.canReadAttendance
+                        rows: page.todayAttendanceRows
+                        emptyText: qsTr("今日暂无打卡记录")
+                        columns: [
+                            { key: "employeeId", title: qsTr("工号"), width: 100 },
+                            { key: "personName", title: qsTr("姓名"), width: 100 },
+                            { key: "checkTime", title: qsTr("打卡时间"), width: 170 },
+                            {
+                                key: "statusLabel",
+                                title: qsTr("状态"),
+                                width: 80,
+                                formatter: function(v, row) {
+                                    return row.statusLabel || Theme.formatAttendanceStatus(row.status)
+                                }
+                            },
+                            { key: "deviceId", title: qsTr("设备 ID") }
+                        ]
                     }
                 }
             }
@@ -218,30 +339,35 @@ Item {
             Card {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
+                Layout.preferredWidth: middleRow.width * 0.38
                 stretchContent: true
-                title: qsTr("最近推送")
-                visible: page.canViewEvents
+                title: qsTr("今日打卡分布")
 
-                ListView {
+                Item {
                     anchors.fill: parent
-                    clip: true
-                    model: PushFeed.model
-                    delegate: Item {
-                        required property int index
-                        width: ListView.view.width
-                        height: lbl.implicitHeight + 8
-                        readonly property var entry: PushFeed.model.get(index)
-                        Label {
-                            id: lbl
-                            width: parent.width - Theme.spacingMd * 2
-                            x: Theme.spacingMd
-                            anchors.verticalCenter: parent.verticalCenter
-                            text: entry ? ("[" + entry.time + "] " + entry.type) : ""
-                            color: Theme.textMuted
-                            font.pixelSize: Theme.fontXs
-                            font.family: Theme.fontMono
-                            elide: Text.ElideRight
-                        }
+
+                    Label {
+                        anchors.centerIn: parent
+                        visible: page.attendanceSectionPlaceholder().length > 0
+                        text: page.attendanceSectionPlaceholder()
+                        color: Theme.textMuted
+                        font.pixelSize: Theme.fontMd
+                        font.family: Theme.fontFamily
+                    }
+
+                    Label {
+                        anchors.centerIn: parent
+                        visible: page.canReadAttendance && !page.hasTodayAttendanceData
+                        text: qsTr("今日暂无打卡数据")
+                        color: Theme.textMuted
+                        font.pixelSize: Theme.fontMd
+                        font.family: Theme.fontFamily
+                    }
+
+                    AttendanceStatusPieChart {
+                        anchors.fill: parent
+                        visible: page.canReadAttendance && page.hasTodayAttendanceData
+                        slices: page.statusPieSlices
                     }
                 }
             }

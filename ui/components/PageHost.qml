@@ -68,7 +68,6 @@ Item {
             personServer: host.personServer
             deviceServer: host.deviceServer
             attendanceService: host.attendanceService
-            eventService: host.eventService
         }
     }
 

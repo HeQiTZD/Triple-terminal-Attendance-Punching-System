@@ -24,6 +24,12 @@ QtObject {
     readonly property color danger:       "#C62828"
     readonly property color info:         "#1565C0"
 
+    // 仪表盘饼图专用色（与 success/warning 解耦）
+    readonly property color pieNormal:    "#16a34a"
+    readonly property color pieLate:      "#f97316"
+    readonly property color pieEarly:     "#8b5cf6"
+    readonly property color pieAbsent:    "#ef4444"
+
     readonly property color hover:        "#DCE3EE"
     readonly property color selected:     "#C7DFFF"
     readonly property color highlight:    "#92400E"
@@ -65,5 +71,33 @@ QtObject {
         if (s === "manual" || s === "info")
             return info
         return textMuted
+    }
+
+    function attendancePieColor(status) {
+        const s = String(status || "").toLowerCase()
+        if (s === "normal" || s === "manual")
+            return pieNormal
+        if (s === "late")
+            return pieLate
+        if (s === "early")
+            return pieEarly
+        if (s === "absent")
+            return pieAbsent
+        return textMuted
+    }
+
+    function formatAttendanceStatus(code) {
+        const s = String(code || "").toLowerCase()
+        switch (s) {
+        case "normal": return qsTr("正常")
+        case "late": return qsTr("迟到")
+        case "early": return qsTr("早退")
+        case "absent": return qsTr("缺勤")
+        case "manual": return qsTr("补签")
+        default:
+            if (!code)
+                return "—"
+            return String(code)
+        }
     }
 }
