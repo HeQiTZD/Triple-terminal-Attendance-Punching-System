@@ -1,7 +1,5 @@
 #pragma once
 
-#include <QDateTime>
-#include <QSqlDatabase>
 #include <QString>
 
 struct SyncMeta {
@@ -15,7 +13,7 @@ struct SyncMeta {
 
 class SyncMetaRepository {
 public:
-    explicit SyncMetaRepository(QSqlDatabase &db);
+    explicit SyncMetaRepository(const QString &dbPath);
 
     void ensureRow();
 
@@ -30,5 +28,5 @@ public:
     bool updateFaceCount(int count);
 
 private:
-    QSqlDatabase &m_db;
+    QString m_dbPath;
 };

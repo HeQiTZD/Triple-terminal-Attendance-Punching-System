@@ -560,7 +560,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "qt_private_link_library_targets::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-qt_private_link_library_targets-Debug-dbb24af3402e1157a873.json",
+					"jsonFile" : "target-qt_private_link_library_targets-Debug-3458ce6f0ea6e69e0c4a.json",
 					"name" : "qt_private_link_library_targets",
 					"projectIndex" : 0
 				}
@@ -772,7 +772,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "AttendanceSystem::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-AttendanceSystem-Debug-1a33560f6cc9ffc7cb8d.json",
+					"jsonFile" : "target-AttendanceSystem-Debug-1d13d6ca09a8425294ef.json",
 					"name" : "AttendanceSystem",
 					"projectIndex" : 0
 				},

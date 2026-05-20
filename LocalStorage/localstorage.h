@@ -45,6 +45,7 @@ private:
     bool ensureSchemaVersionTable();
 
     QSqlDatabase m_db;
+    QString m_dbPath;
     static QMutex s_mutex;
     static LocalStorage* s_instance;
 

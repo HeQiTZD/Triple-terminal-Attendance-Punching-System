@@ -32,6 +32,8 @@ void SetWindow::setupConnections()
     connect(ui->btnFace, &QPushButton::clicked, this, &SetWindow::onNavButtonClicked);
     connect(ui->btnAttendance, &QPushButton::clicked, this, &SetWindow::onNavButtonClicked);
     connect(ui->btnStorage, &QPushButton::clicked, this, &SetWindow::onNavButtonClicked);
+    connect(ui->btnDevice, &QPushButton::clicked, this, &SetWindow::onNavButtonClicked);
+    connect(ui->btnSync, &QPushButton::clicked, this, &SetWindow::onNavButtonClicked);
 
     // 功能按钮信号连接
     connect(ui->btnRestore, &QPushButton::clicked, this, &SetWindow::onBtnRestoreClicked);
@@ -59,6 +61,10 @@ void SetWindow::onNavButtonClicked()
         switchToPage(2);
     } else if (btn == ui->btnStorage) {
         switchToPage(3);
+    } else if (btn == ui->btnDevice) {
+        switchToPage(4);
+    } else if (btn == ui->btnSync) {
+        switchToPage(5);
     }
 }
 
@@ -71,6 +77,8 @@ void SetWindow::switchToPage(int index)
     ui->btnFace->setChecked(index == 1);
     ui->btnAttendance->setChecked(index == 2);
     ui->btnStorage->setChecked(index == 3);
+    ui->btnDevice->setChecked(index == 4);
+    ui->btnSync->setChecked(index == 5);
 }
 
 void SetWindow::onBtnRestoreClicked()
@@ -127,7 +135,17 @@ void SetWindow::restoreDefaults()
     m_earlyLeaveAllowance = DEFAULT_EARLY_LEAVE_ALLOWANCE;
 
     // 恢复存储设置（路径不清空）
-    // m_databasePath, m_logPath, m_cachePath 保持当前值
+    // m_databasePath, m_logPath 保持当前值
+
+    // 恢复设备信息
+    m_deviceId = QString();
+    m_deviceKey = QString();
+    m_fwVersion = QStringLiteral("1.0.0");
+    m_deviceName = QString();
+
+    // 恢复同步设置
+    m_autoSyncOnConnect = true;
+    m_syncTimeout = 300;
 
     // 更新UI显示
     saveToUI();
@@ -328,6 +346,16 @@ void SetWindow::loadFromUI()
     // 存储设置
     m_databasePath = ui->lineEditDbPath->text();
     m_logPath = ui->lineEditLogPath->text();
+
+    // 设备信息
+    m_deviceId = ui->lineEditDeviceId->text();
+    m_deviceKey = ui->lineEditDeviceKey->text();
+    m_fwVersion = ui->lineEditFwVersion->text();
+    m_deviceName = ui->lineEditDeviceName->text();
+
+    // 同步设置
+    m_autoSyncOnConnect = ui->checkBoxAutoSync->isChecked();
+    m_syncTimeout = ui->spinBoxSyncTimeout->value();
 }
 
 // 将成员变量值设置到UI控件
@@ -357,6 +385,16 @@ void SetWindow::saveToUI()
     // 存储设置
     ui->lineEditDbPath->setText(m_databasePath);
     ui->lineEditLogPath->setText(m_logPath);
+
+    // 设备信息
+    ui->lineEditDeviceId->setText(m_deviceId);
+    ui->lineEditDeviceKey->setText(m_deviceKey);
+    ui->lineEditFwVersion->setText(m_fwVersion);
+    ui->lineEditDeviceName->setText(m_deviceName);
+
+    // 同步设置
+    ui->checkBoxAutoSync->setChecked(m_autoSyncOnConnect);
+    ui->spinBoxSyncTimeout->setValue(m_syncTimeout);
 }
 
 // 从配置文件加载设置
@@ -387,7 +425,17 @@ void SetWindow::loadFromConfig()
     // 存储设置
     m_databasePath = config->getDatabasePath();
     m_logPath = config->getLogPath();
-    
+
+    // 设备信息
+    m_deviceId = config->getDeviceId();
+    m_deviceKey = config->getDeviceKey();
+    m_fwVersion = config->getFwVersion();
+    m_deviceName = config->getDeviceName();
+
+    // 同步设置
+    m_autoSyncOnConnect = config->getAutoSyncOnConnect();
+    m_syncTimeout = config->getSyncTimeout();
+
     // 如果数据库路径为空，使用默认路径
     if(m_databasePath.isEmpty()){
         m_databasePath = ConfigManager::getDefaultDatabasePath();
@@ -430,6 +478,16 @@ void SetWindow::saveToConfig()
     config->setDatabasePath(m_databasePath);
     config->setLogPath(m_logPath);
 
+    // 设备信息
+    config->setDeviceId(m_deviceId);
+    config->setDeviceKey(m_deviceKey);
+    config->setFwVersion(m_fwVersion);
+    config->setDeviceName(m_deviceName);
+
+    // 同步设置
+    config->setAutoSyncOnConnect(m_autoSyncOnConnect);
+    config->setSyncTimeout(m_syncTimeout);
+
     // 保存到文件
     config->saveConfig();
 }
@@ -452,25 +510,20 @@ void SetWindow::onBtnTestConnectionClicked()
     ui->labelConnectionStatus->setText("正在连接...");
     ui->labelConnectionStatus->setStyleSheet("color: orange;");
     
-    // 获取NetworkClient实例
+    // 获取NetworkClient实例（注意：它在另一个线程中，必须通过 QueuedConnection 调用）
     Networkclient *client = Networkclient::instance();
-    
-    // 先断开现有连接
-    if (client->isConnected()) {
-        client->disconnect();
-    }
-    
+
     // 连接信号（一次性连接，用于本次测试）
     connect(client, &Networkclient::connected, this, [=]() {
         ui->labelConnectionStatus->setText("✓ 已连接");
         ui->labelConnectionStatus->setStyleSheet("color: green; font-weight: bold;");
         ui->btnTestConnection->setText("已连接");
         ui->btnDisconnect->setEnabled(true);
-        
-        QMessageBox::information(this, "连接成功", 
+
+        QMessageBox::information(this, "连接成功",
             QString("已成功连接到服务器\n地址: %1:%2").arg(serverIP).arg(serverPort));
     }, Qt::SingleShotConnection);
-    
+
     connect(client, &Networkclient::disconnected, this, [=]() {
         ui->labelConnectionStatus->setText("未连接");
         ui->labelConnectionStatus->setStyleSheet("color: red; font-weight: bold;");
@@ -478,32 +531,80 @@ void SetWindow::onBtnTestConnectionClicked()
         ui->btnTestConnection->setText("连接服务器");
         ui->btnDisconnect->setEnabled(false);
     }, Qt::SingleShotConnection);
-    
-    // 尝试连接
-    if (!client->connectToServer(serverIP, static_cast<quint16>(serverPort))) {
-        ui->labelConnectionStatus->setText("✗ 连接失败");
-        ui->labelConnectionStatus->setStyleSheet("color: red; font-weight: bold;");
-        ui->btnTestConnection->setEnabled(true);
-        ui->btnTestConnection->setText("连接服务器");
-        
-        QMessageBox::critical(this, "连接失败", "无法连接到服务器，请检查地址和端口");
-    }
+
+    // 异步调用：先断开再连接（networkClient 在另一个线程，必须用 QueuedConnection）
+    QMetaObject::invokeMethod(client, [=]() {
+        if (client->isConnected()) {
+            client->disconnect();
+        }
+        if (!client->connectToServer(serverIP, static_cast<quint16>(serverPort))) {
+            // 连接失败，通过信号回到主线程更新UI
+            QMetaObject::invokeMethod(this, [=]() {
+                ui->labelConnectionStatus->setText("✗ 连接失败");
+                ui->labelConnectionStatus->setStyleSheet("color: red; font-weight: bold;");
+                ui->btnTestConnection->setEnabled(true);
+                ui->btnTestConnection->setText("连接服务器");
+
+                QMessageBox::critical(this, "连接失败", "无法连接到服务器，请检查地址和端口");
+            }, Qt::QueuedConnection);
+        }
+    }, Qt::QueuedConnection);
+}
+
+// ---- 设备信息 ----
+
+QString SetWindow::getDeviceId() const { return m_deviceId; }
+QString SetWindow::getDeviceKey() const { return m_deviceKey; }
+QString SetWindow::getFwVersion() const { return m_fwVersion; }
+QString SetWindow::getDeviceName() const { return m_deviceName; }
+
+void SetWindow::setDeviceId(const QString &id) {
+    m_deviceId = id;
+    ui->lineEditDeviceId->setText(id);
+}
+void SetWindow::setDeviceKey(const QString &key) {
+    m_deviceKey = key;
+    ui->lineEditDeviceKey->setText(key);
+}
+void SetWindow::setFwVersion(const QString &ver) {
+    m_fwVersion = ver;
+    ui->lineEditFwVersion->setText(ver);
+}
+void SetWindow::setDeviceName(const QString &name) {
+    m_deviceName = name;
+    ui->lineEditDeviceName->setText(name);
+}
+
+// ---- 同步设置 ----
+
+bool SetWindow::getAutoSyncOnConnect() const { return m_autoSyncOnConnect; }
+int  SetWindow::getSyncTimeout() const { return m_syncTimeout; }
+
+void SetWindow::setAutoSyncOnConnect(bool enabled) {
+    m_autoSyncOnConnect = enabled;
+    ui->checkBoxAutoSync->setChecked(enabled);
+}
+void SetWindow::setSyncTimeout(int seconds) {
+    m_syncTimeout = seconds;
+    ui->spinBoxSyncTimeout->setValue(seconds);
 }
 
 // 断开连接按钮槽函数
 void SetWindow::onBtnDisconnectClicked()
 {
     Networkclient *client = Networkclient::instance();
-    
-    if (client->isConnected()) {
-        client->disconnect();
-        
-        ui->labelConnectionStatus->setText("未连接");
-        ui->labelConnectionStatus->setStyleSheet("color: red; font-weight: bold;");
-        ui->btnTestConnection->setEnabled(true);
-        ui->btnTestConnection->setText("连接服务器");
-        ui->btnDisconnect->setEnabled(false);
-        
-        QMessageBox::information(this, "断开连接", "已断开与服务器的连接");
-    }
+
+    // 异步调用 disconnect（client 在另一个线程）
+    QMetaObject::invokeMethod(client, [=]() {
+        if (client->isConnected()) {
+            client->disconnect();
+        }
+    }, Qt::QueuedConnection);
+
+    // 立即更新UI（断开信号会通过 disconnected 信号回来更新UI）
+    ui->labelConnectionStatus->setText("未连接");
+    ui->labelConnectionStatus->setStyleSheet("color: red; font-weight: bold;");
+    ui->btnTestConnection->setEnabled(true);
+    ui->btnTestConnection->setText("连接服务器");
+    ui->btnDisconnect->setEnabled(false);
 }

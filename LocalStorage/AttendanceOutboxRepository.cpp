@@ -1,16 +1,18 @@
 #include "AttendanceOutboxRepository.h"
+#include "../Utils/DatabaseManager.h"
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QDebug>
 
-AttendanceOutboxRepository::AttendanceOutboxRepository(QSqlDatabase &db)
-    : m_db(db)
+AttendanceOutboxRepository::AttendanceOutboxRepository(const QString &dbPath)
+    : m_dbPath(dbPath)
 {
 }
 
 bool AttendanceOutboxRepository::enqueue(const OutboxRecord &record)
 {
-    QSqlQuery query(m_db);
+    QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
+    QSqlQuery query(db);
     query.prepare("INSERT INTO attendance_outbox "
                   "(client_msg_id, employee_id, check_time, status, photo_blob, photo_size, state) "
                   "VALUES (:cid, :eid, :time, :status, :photo, :psize, :state)");
@@ -32,7 +34,8 @@ bool AttendanceOutboxRepository::enqueue(const OutboxRecord &record)
 QVector<OutboxRecord> AttendanceOutboxRepository::fetchPending(int limit)
 {
     QVector<OutboxRecord> result;
-    QSqlQuery query(m_db);
+    QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
+    QSqlQuery query(db);
     query.prepare("SELECT id, client_msg_id, employee_id, check_time, status, "
                   "photo_blob, photo_size, retry_count, last_error, state "
                   "FROM attendance_outbox WHERE state IN ('pending','failed') "
@@ -64,7 +67,8 @@ QVector<OutboxRecord> AttendanceOutboxRepository::fetchPending(int limit)
 bool AttendanceOutboxRepository::markState(int id, const QString &state,
                                            const QString &lastError)
 {
-    QSqlQuery query(m_db);
+    QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
+    QSqlQuery query(db);
     query.prepare("UPDATE attendance_outbox SET state = :st, last_error = :err WHERE id = :id");
     query.bindValue(":st",  state);
     query.bindValue(":err", lastError);
@@ -79,7 +83,8 @@ bool AttendanceOutboxRepository::markState(int id, const QString &state,
 
 bool AttendanceOutboxRepository::incrementRetry(int id, const QString &lastError)
 {
-    QSqlQuery query(m_db);
+    QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
+    QSqlQuery query(db);
     query.prepare("UPDATE attendance_outbox SET retry_count = retry_count + 1, "
                   "last_error = :err WHERE id = :id");
     query.bindValue(":err", lastError);
@@ -94,7 +99,8 @@ bool AttendanceOutboxRepository::incrementRetry(int id, const QString &lastError
 
 bool AttendanceOutboxRepository::markDead(int id, const QString &reason)
 {
-    QSqlQuery query(m_db);
+    QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
+    QSqlQuery query(db);
     query.prepare("UPDATE attendance_outbox SET state = 'dead', last_error = :err WHERE id = :id");
     query.bindValue(":err", reason);
     query.bindValue(":id",  id);
@@ -108,7 +114,8 @@ bool AttendanceOutboxRepository::markDead(int id, const QString &reason)
 
 bool AttendanceOutboxRepository::remove(int id)
 {
-    QSqlQuery query(m_db);
+    QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
+    QSqlQuery query(db);
     query.prepare("DELETE FROM attendance_outbox WHERE id = :id");
     query.bindValue(":id", id);
 
@@ -121,7 +128,8 @@ bool AttendanceOutboxRepository::remove(int id)
 
 bool AttendanceOutboxRepository::removeByClientMsgId(const QString &clientMsgId)
 {
-    QSqlQuery query(m_db);
+    QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
+    QSqlQuery query(db);
     query.prepare("DELETE FROM attendance_outbox WHERE client_msg_id = :cid");
     query.bindValue(":cid", clientMsgId);
 
@@ -135,7 +143,8 @@ bool AttendanceOutboxRepository::removeByClientMsgId(const QString &clientMsgId)
 OutboxRecord AttendanceOutboxRepository::findByClientMsgId(const QString &clientMsgId)
 {
     OutboxRecord r;
-    QSqlQuery query(m_db);
+    QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
+    QSqlQuery query(db);
     query.prepare("SELECT id, client_msg_id, employee_id, check_time, status, "
                   "photo_blob, photo_size, retry_count, last_error, state "
                   "FROM attendance_outbox WHERE client_msg_id = :cid");
@@ -158,7 +167,8 @@ OutboxRecord AttendanceOutboxRepository::findByClientMsgId(const QString &client
 
 int AttendanceOutboxRepository::pendingCount()
 {
-    QSqlQuery query(m_db);
+    QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
+    QSqlQuery query(db);
     if (query.exec("SELECT COUNT(*) FROM attendance_outbox WHERE state IN ('pending','failed')")
         && query.next()) {
         return query.value(0).toInt();

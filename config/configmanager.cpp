@@ -75,12 +75,20 @@ void ConfigManager::loadConfig()
     m_workEndTime = QTime::fromString(workEndStr, "HH:mm");
     m_lateAllowance = m_settings->value("LateAllowance", DEFAULT_LATE_ALLOWANCE).toInt();
     m_earlyLeaveAllowance = m_settings->value("EarlyLeaveAllowance", DEFAULT_EARLY_LEAVE_ALLOWANCE).toInt();
+    m_maxRetryCount = m_settings->value("MaxRetryCount", DEFAULT_MAX_RETRY_COUNT).toInt();
+    m_retryBackoffBaseMs = m_settings->value("RetryBackoffBaseMs", DEFAULT_RETRY_BACKOFF_BASE_MS).toInt();
     m_settings->endGroup();
 
     m_settings->beginGroup("Device");
     m_deviceId = m_settings->value("DeviceId", "").toString();
     m_deviceKey = m_settings->value("DeviceKey", "").toString();
     m_fwVersion = m_settings->value("FwVersion", "1.0.0").toString();
+    m_deviceName = m_settings->value("DeviceName", "").toString();
+    m_settings->endGroup();
+
+    m_settings->beginGroup("Sync");
+    m_autoSyncOnConnect = m_settings->value("AutoSyncOnConnect", DEFAULT_AUTO_SYNC_ON_CONNECT).toBool();
+    m_syncTimeout = m_settings->value("SyncTimeout", DEFAULT_SYNC_TIMEOUT).toInt();
     m_settings->endGroup();
 
     m_settings->beginGroup("Storage");
@@ -119,12 +127,20 @@ void ConfigManager::saveConfig()
     m_settings->setValue("WorkEndTime", m_workEndTime.toString("HH:mm"));
     m_settings->setValue("LateAllowance", m_lateAllowance);
     m_settings->setValue("EarlyLeaveAllowance", m_earlyLeaveAllowance);
+    m_settings->setValue("MaxRetryCount", m_maxRetryCount);
+    m_settings->setValue("RetryBackoffBaseMs", m_retryBackoffBaseMs);
     m_settings->endGroup();
 
     m_settings->beginGroup("Device");
     m_settings->setValue("DeviceId", m_deviceId);
     m_settings->setValue("DeviceKey", m_deviceKey);
     m_settings->setValue("FwVersion", m_fwVersion);
+    m_settings->setValue("DeviceName", m_deviceName);
+    m_settings->endGroup();
+
+    m_settings->beginGroup("Sync");
+    m_settings->setValue("AutoSyncOnConnect", m_autoSyncOnConnect);
+    m_settings->setValue("SyncTimeout", m_syncTimeout);
     m_settings->endGroup();
 
     m_settings->beginGroup("Storage");
@@ -173,7 +189,16 @@ void ConfigManager::restoreDefaults()
 
     // 设备信息默认值
     if (m_deviceId.isEmpty()) m_deviceId = QStringLiteral("device_001");
+    m_deviceName = QString();
     m_fwVersion = QStringLiteral("1.0.0");
+
+    // 同步设置默认值
+    m_autoSyncOnConnect = DEFAULT_AUTO_SYNC_ON_CONNECT;
+    m_syncTimeout = DEFAULT_SYNC_TIMEOUT;
+
+    // 考勤重试默认值
+    m_maxRetryCount = DEFAULT_MAX_RETRY_COUNT;
+    m_retryBackoffBaseMs = DEFAULT_RETRY_BACKOFF_BASE_MS;
 
     // 存储设置路径不清空
     // m_databasePath, m_logPath 保持当前值

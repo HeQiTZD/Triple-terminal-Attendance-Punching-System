@@ -15,7 +15,7 @@ class VideoFrameCapture : public QObject
     Q_OBJECT
 
 public:
-    VideoFrameCapture();
+    explicit VideoFrameCapture(QObject *parent = nullptr);
     void captureFrame(QCamera *camera);
 
 private:

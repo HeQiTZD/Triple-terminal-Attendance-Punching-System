@@ -1,10 +1,11 @@
 #include "FaceFeatureRepository.h"
+#include "../Utils/DatabaseManager.h"
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QDebug>
 
-FaceFeatureRepository::FaceFeatureRepository(QSqlDatabase &db)
-    : m_db(db)
+FaceFeatureRepository::FaceFeatureRepository(const QString &dbPath)
+    : m_dbPath(dbPath)
 {
 }
 
@@ -13,7 +14,8 @@ bool FaceFeatureRepository::insertOrReplace(const QString &employeeId,
                                             int featureSize,
                                             int syncGeneration)
 {
-    QSqlQuery query(m_db);
+    QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
+    QSqlQuery query(db);
     query.prepare("INSERT OR REPLACE INTO face_feature "
                   "(employee_id, feature_blob, feature_size, updated_at, sync_generation) "
                   "VALUES (:eid, :blob, :size, datetime('now'), :gen)");
@@ -32,7 +34,8 @@ bool FaceFeatureRepository::insertOrReplace(const QString &employeeId,
 bool FaceFeatureRepository::insertOrReplaceBatch(const QVector<FaceFeatureRecord> &records,
                                                  int syncGeneration)
 {
-    QSqlQuery query(m_db);
+    QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
+    QSqlQuery query(db);
     query.prepare("INSERT OR REPLACE INTO face_feature "
                   "(employee_id, feature_blob, feature_size, updated_at, sync_generation) "
                   "VALUES (:eid, :blob, :size, datetime('now'), :gen)");
@@ -53,7 +56,8 @@ bool FaceFeatureRepository::insertOrReplaceBatch(const QVector<FaceFeatureRecord
 QVector<FaceFeatureRecord> FaceFeatureRepository::loadByGeneration(int generation)
 {
     QVector<FaceFeatureRecord> result;
-    QSqlQuery query(m_db);
+    QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
+    QSqlQuery query(db);
     query.prepare("SELECT employee_id, feature_blob, feature_size "
                   "FROM face_feature WHERE sync_generation = :gen");
     query.bindValue(":gen", generation);
@@ -81,7 +85,8 @@ QVector<FaceFeatureRecord> FaceFeatureRepository::loadByGeneration(int generatio
 
 bool FaceFeatureRepository::deleteStale(int currentGeneration)
 {
-    QSqlQuery query(m_db);
+    QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
+    QSqlQuery query(db);
     query.prepare("DELETE FROM face_feature WHERE sync_generation != :gen");
     query.bindValue(":gen", currentGeneration);
 
@@ -95,7 +100,8 @@ bool FaceFeatureRepository::deleteStale(int currentGeneration)
 
 int FaceFeatureRepository::countByGeneration(int generation)
 {
-    QSqlQuery query(m_db);
+    QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
+    QSqlQuery query(db);
     query.prepare("SELECT COUNT(*) FROM face_feature WHERE sync_generation = :gen");
     query.bindValue(":gen", generation);
 
@@ -107,7 +113,8 @@ int FaceFeatureRepository::countByGeneration(int generation)
 
 bool FaceFeatureRepository::clearAll()
 {
-    QSqlQuery query(m_db);
+    QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
+    QSqlQuery query(db);
     if (!query.exec("DELETE FROM face_feature")) {
         qWarning() << "FaceFeatureRepository clearAll failed:" << query.lastError().text();
         return false;

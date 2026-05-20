@@ -65,6 +65,26 @@ public:
     void setDatabasePath(const QString &path);
     void setLogPath(const QString &path);
 
+    // 设备信息 - Getter
+    QString getDeviceId() const;
+    QString getDeviceKey() const;
+    QString getFwVersion() const;
+    QString getDeviceName() const;
+
+    // 设备信息 - Setter
+    void setDeviceId(const QString &id);
+    void setDeviceKey(const QString &key);
+    void setFwVersion(const QString &ver);
+    void setDeviceName(const QString &name);
+
+    // 同步设置 - Getter
+    bool getAutoSyncOnConnect() const;
+    int getSyncTimeout() const;
+
+    // 同步设置 - Setter
+    void setAutoSyncOnConnect(bool enabled);
+    void setSyncTimeout(int seconds);
+
     // 从UI控件加载值到成员变量
     void loadFromUI();
     // 将成员变量值设置到UI控件
@@ -121,6 +141,16 @@ private:
     // 存储设置
     QString m_databasePath;                 // 数据库路径
     QString m_logPath;                      // 日志路径
+
+    // 设备信息
+    QString m_deviceId;                     // 设备 ID
+    QString m_deviceKey;                    // 设备密钥
+    QString m_fwVersion = QStringLiteral("1.0.0");  // 固件版本
+    QString m_deviceName;                   // 设备名称
+
+    // 同步设置
+    bool m_autoSyncOnConnect = true;        // 连接后自动同步
+    int  m_syncTimeout = 300;               // 同步超时（秒）
 
     // 默认值常量
     static constexpr const char* DEFAULT_SERVER_IP = "192.168.1.100";

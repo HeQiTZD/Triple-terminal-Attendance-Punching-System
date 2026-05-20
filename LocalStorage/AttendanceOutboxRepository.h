@@ -2,7 +2,6 @@
 
 #include <QByteArray>
 #include <QDateTime>
-#include <QSqlDatabase>
 #include <QString>
 #include <QVector>
 
@@ -21,7 +20,7 @@ struct OutboxRecord {
 
 class AttendanceOutboxRepository {
 public:
-    explicit AttendanceOutboxRepository(QSqlDatabase &db);
+    explicit AttendanceOutboxRepository(const QString &dbPath);
 
     bool enqueue(const OutboxRecord &record);
 
@@ -41,5 +40,5 @@ public:
     int pendingCount();
 
 private:
-    QSqlDatabase &m_db;
+    QString m_dbPath;
 };

@@ -16,10 +16,6 @@ FaceRecognizer::FaceRecognizer()
 
 FaceRecognizer::~FaceRecognizer()
 {
-    if(videoCapture){
-        delete videoCapture;
-        videoCapture = nullptr;
-    }
 }
 
 void FaceRecognizer::init()
@@ -32,7 +28,13 @@ void FaceRecognizer::init()
     QString appid = config->getAppId();
     QString sdkKey = config->getSdkKey();
 
+    if (appid.isEmpty() || sdkKey.isEmpty()) {
+        qWarning() << "FaceRecognizer: AppId 或 SdkKey 为空，跳过引擎初始化";
+        return;
+    }
+
     if (!arcEngine->initialize(appid, sdkKey)) {
+        qWarning() << "FaceRecognizer: ArcFace 引擎初始化失败";
         return;
     }
 
@@ -45,6 +47,11 @@ void FaceRecognizer::init()
 void FaceRecognizer::WanZhengYeWuLiuCheng(QImage image)
 {
     QMutexLocker locker(&m_mutex); // 保护成员变量
+
+    // 引擎未初始化时跳过处理
+    if (!arcEngine || !arcEngine->isInitialized()) {
+        return;
+    }
 
     // 确保图像有效
     if (image.isNull()) {

@@ -77,12 +77,11 @@ private:
 
 private:
     arcfaceengine* arcEngine = nullptr;//人脸功能实例
-    VideoFrameCapture* videoCapture = nullptr;//捕获实例,通过其他路径传入
     FaceDatabaseManager* dataBase = nullptr;//内存加载特征，特征对比实例
 
 private:
     //状态机相关
-    RecognitionState m_currentState = RecognitionState::LOST;
+    RecognitionState m_currentState = RecognitionState::IDLE;
     QString m_lastRecognizedId;// 上次识别的人员ID
     QDateTime m_recognitionTime;// 上次识别时间
     QTimer* m_cooldownTimer = nullptr;// 冷却定时器

@@ -112,19 +112,19 @@ protected:
     bool eventFilter(QObject *watched, QEvent *event) override;
 
 private:
-    LocalStorage* m_db;
-    FaceRecognizer* m_FaceRecognizer;
-    Networkclient* networkClient;
-    SyncManager* m_syncManager;
-    CommandHandler* m_commandHandler;
-    AttendanceReporter* m_attendanceReporter;
-    CameraCapture* m_CameraCapture;
-    VideoFrameCapture* m_VideoFrameCapture;
-    QWidget* m_VideoWidget;
-    QThread* m_faceThread;
-    QThread* m_networkThread;
-    QTimer* m_timeTimer;
-    SetWindow* setwindow;
+    LocalStorage* m_db = nullptr;
+    FaceRecognizer* m_FaceRecognizer = nullptr;
+    Networkclient* networkClient = nullptr;
+    SyncManager* m_syncManager = nullptr;
+    CommandHandler* m_commandHandler = nullptr;
+    AttendanceReporter* m_attendanceReporter = nullptr;
+    CameraCapture* m_CameraCapture = nullptr;
+    VideoFrameCapture* m_VideoFrameCapture = nullptr;
+    QWidget* m_VideoWidget = nullptr;
+    QThread* m_faceThread = nullptr;
+    QThread* m_networkThread = nullptr;
+    QTimer* m_timeTimer = nullptr;
+    SetWindow* setwindow = nullptr;
     QPoint m_dragPosition; //记录拖拽时的鼠标位置
     bool m_isDragging = false; //是否正在被拖拽
     bool m_isResizing = false;

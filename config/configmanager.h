@@ -67,11 +67,29 @@ public:
     QString getDeviceId() const { return m_deviceId; }
     QString getDeviceKey() const { return m_deviceKey; }
     QString getFwVersion() const { return m_fwVersion; }
+    QString getDeviceName() const { return m_deviceName; }
 
     // 设备信息 - Setter
     void setDeviceId(const QString &id) { m_deviceId = id; }
     void setDeviceKey(const QString &key) { m_deviceKey = key; }
     void setFwVersion(const QString &ver) { m_fwVersion = ver; }
+    void setDeviceName(const QString &name) { m_deviceName = name; }
+
+    // 同步设置 - Getter
+    bool getAutoSyncOnConnect() const { return m_autoSyncOnConnect; }
+    int getSyncTimeout() const { return m_syncTimeout; }
+
+    // 同步设置 - Setter
+    void setAutoSyncOnConnect(bool enabled) { m_autoSyncOnConnect = enabled; }
+    void setSyncTimeout(int seconds) { m_syncTimeout = seconds; }
+
+    // 考勤重试设置 - Getter
+    int getMaxRetryCount() const { return m_maxRetryCount; }
+    int getRetryBackoffBaseMs() const { return m_retryBackoffBaseMs; }
+
+    // 考勤重试设置 - Setter
+    void setMaxRetryCount(int count) { m_maxRetryCount = count; }
+    void setRetryBackoffBaseMs(int ms) { m_retryBackoffBaseMs = ms; }
 
     // 存储设置 - Getter
     QString getDatabasePath() const { return m_databasePath; }
@@ -141,6 +159,15 @@ private:
     QString m_deviceId;
     QString m_deviceKey;
     QString m_fwVersion;
+    QString m_deviceName;
+
+    // 同步设置
+    bool m_autoSyncOnConnect;
+    int m_syncTimeout;
+
+    // 考勤重试设置
+    int m_maxRetryCount;
+    int m_retryBackoffBaseMs;
 
     // 主窗口尺寸
     int m_mainWindowWidth;
@@ -157,6 +184,10 @@ private:
     static constexpr int DEFAULT_EARLY_LEAVE_ALLOWANCE = 15;
     static constexpr int DEFAULT_MAIN_WINDOW_WIDTH = 1200;
     static constexpr int DEFAULT_MAIN_WINDOW_HEIGHT = 800;
+    static constexpr bool DEFAULT_AUTO_SYNC_ON_CONNECT = true;
+    static constexpr int DEFAULT_SYNC_TIMEOUT = 300;
+    static constexpr int DEFAULT_MAX_RETRY_COUNT = 5;
+    static constexpr int DEFAULT_RETRY_BACKOFF_BASE_MS = 2000;
 };
 
 #endif // CONFIGMANAGER_H

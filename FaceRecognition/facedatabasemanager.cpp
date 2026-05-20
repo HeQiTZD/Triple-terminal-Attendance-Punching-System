@@ -13,8 +13,12 @@ FaceDatabaseManager::FaceDatabaseManager(QObject *parent)
 FaceDatabaseManager* FaceDatabaseManager::instance()
 {
     static FaceDatabaseManager* s_instance = nullptr;
+    static QMutex s_mutex;
     if (!s_instance) {
-        s_instance = new FaceDatabaseManager();
+        QMutexLocker locker(&s_mutex);
+        if (!s_instance) {
+            s_instance = new FaceDatabaseManager();
+        }
     }
     return s_instance;
 }

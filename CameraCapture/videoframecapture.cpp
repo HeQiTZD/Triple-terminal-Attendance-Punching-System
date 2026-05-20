@@ -1,8 +1,9 @@
 ﻿#include "videoframecapture.h"
 #include "videoframeconverter.h"
 
-VideoFrameCapture::VideoFrameCapture() {
-
+VideoFrameCapture::VideoFrameCapture(QObject *parent)
+    : QObject(parent)
+{
 }
 
 void VideoFrameCapture::captureFrame(QCamera *camera)
@@ -21,7 +22,7 @@ void VideoFrameCapture::setCamera()
 {
     if(camera){
         //创建媒体捕获会话
-        captureSession = new QMediaCaptureSession();
+        captureSession = new QMediaCaptureSession(this);
         captureSession->setCamera(camera);
 
         // 创建自定义视频控件（用于显示视频帧和人脸框）

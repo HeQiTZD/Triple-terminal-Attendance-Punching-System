@@ -67,6 +67,12 @@
 },
 {
   "directory": "D:/QTproject/AttendanceSystem/build",
+  "command": "c:\\Qt\\Tools\\mingw1310_64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIAWIDGETS_LIB -DQT_MULTIMEDIA_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -ID:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/include -ID:/QTproject/AttendanceSystem/third_party/arcface/include -isystem C:/Qt/6.10.2/mingw_64/include/QtCore -isystem C:/Qt/6.10.2/mingw_64/include -isystem C:/Qt/6.10.2/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.10.2/mingw_64/include/QtWidgets -isystem C:/Qt/6.10.2/mingw_64/include/QtGui -isystem C:/Qt/6.10.2/mingw_64/include/QtNetwork -isystem C:/Qt/6.10.2/mingw_64/include/QtSql -isystem C:/Qt/6.10.2/mingw_64/include/QtMultimedia -isystem C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets -DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g -std=gnu++17 -o CMakeFiles\\AttendanceSystem.dir\\Utils\\Logger.cpp.obj -c D:\\QTproject\\AttendanceSystem\\Utils\\Logger.cpp",
+  "file": "D:/QTproject/AttendanceSystem/Utils/Logger.cpp",
+  "output": "D:/QTproject/AttendanceSystem/build/CMakeFiles/AttendanceSystem.dir/Utils/Logger.cpp.obj"
+},
+{
+  "directory": "D:/QTproject/AttendanceSystem/build",
   "command": "c:\\Qt\\Tools\\mingw1310_64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIAWIDGETS_LIB -DQT_MULTIMEDIA_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -ID:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/include -ID:/QTproject/AttendanceSystem/third_party/arcface/include -isystem C:/Qt/6.10.2/mingw_64/include/QtCore -isystem C:/Qt/6.10.2/mingw_64/include -isystem C:/Qt/6.10.2/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.10.2/mingw_64/include/QtWidgets -isystem C:/Qt/6.10.2/mingw_64/include/QtGui -isystem C:/Qt/6.10.2/mingw_64/include/QtNetwork -isystem C:/Qt/6.10.2/mingw_64/include/QtSql -isystem C:/Qt/6.10.2/mingw_64/include/QtMultimedia -isystem C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets -DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g -std=gnu++17 -o CMakeFiles\\AttendanceSystem.dir\\CameraCapture\\cameracapture.cpp.obj -c D:\\QTproject\\AttendanceSystem\\CameraCapture\\cameracapture.cpp",
   "file": "D:/QTproject/AttendanceSystem/CameraCapture/cameracapture.cpp",
   "output": "D:/QTproject/AttendanceSystem/build/CMakeFiles/AttendanceSystem.dir/CameraCapture/cameracapture.cpp.obj"
@@ -142,12 +148,6 @@
   "command": "c:\\Qt\\Tools\\mingw1310_64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIAWIDGETS_LIB -DQT_MULTIMEDIA_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -ID:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/include -ID:/QTproject/AttendanceSystem/third_party/arcface/include -isystem C:/Qt/6.10.2/mingw_64/include/QtCore -isystem C:/Qt/6.10.2/mingw_64/include -isystem C:/Qt/6.10.2/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.10.2/mingw_64/include/QtWidgets -isystem C:/Qt/6.10.2/mingw_64/include/QtGui -isystem C:/Qt/6.10.2/mingw_64/include/QtNetwork -isystem C:/Qt/6.10.2/mingw_64/include/QtSql -isystem C:/Qt/6.10.2/mingw_64/include/QtMultimedia -isystem C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets -DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g -std=gnu++17 -o CMakeFiles\\AttendanceSystem.dir\\NetworkClient\\messagequeue.cpp.obj -c D:\\QTproject\\AttendanceSystem\\NetworkClient\\messagequeue.cpp",
   "file": "D:/QTproject/AttendanceSystem/NetworkClient/messagequeue.cpp",
   "output": "D:/QTproject/AttendanceSystem/build/CMakeFiles/AttendanceSystem.dir/NetworkClient/messagequeue.cpp.obj"
-},
-{
-  "directory": "D:/QTproject/AttendanceSystem/build",
-  "command": "c:\\Qt\\Tools\\mingw1310_64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIAWIDGETS_LIB -DQT_MULTIMEDIA_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -ID:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/include -ID:/QTproject/AttendanceSystem/third_party/arcface/include -isystem C:/Qt/6.10.2/mingw_64/include/QtCore -isystem C:/Qt/6.10.2/mingw_64/include -isystem C:/Qt/6.10.2/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.10.2/mingw_64/include/QtWidgets -isystem C:/Qt/6.10.2/mingw_64/include/QtGui -isystem C:/Qt/6.10.2/mingw_64/include/QtNetwork -isystem C:/Qt/6.10.2/mingw_64/include/QtSql -isystem C:/Qt/6.10.2/mingw_64/include/QtMultimedia -isystem C:/Qt/6.10.2/mingw_64/include/QtMultimediaWidgets -DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g -std=gnu++17 -o CMakeFiles\\AttendanceSystem.dir\\NetworkClient\\protocol.cpp.obj -c D:\\QTproject\\AttendanceSystem\\NetworkClient\\protocol.cpp",
-  "file": "D:/QTproject/AttendanceSystem/NetworkClient/protocol.cpp",
-  "output": "D:/QTproject/AttendanceSystem/build/CMakeFiles/AttendanceSystem.dir/NetworkClient/protocol.cpp.obj"
 },
 {
   "directory": "D:/QTproject/AttendanceSystem/build",

@@ -37,6 +37,8 @@ set(PROJECT_SOURCES
         Command/CommandHandler.h
         Attendance/AttendanceReporter.cpp
         Attendance/AttendanceReporter.h
+        Utils/Logger.cpp
+        Utils/Logger.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -65,7 +67,6 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         NetworkClient/messagewriter.h NetworkClient/messagewriter.cpp
         NetworkClient/messagereader.h NetworkClient/messagereader.cpp
         NetworkClient/messagequeue.h NetworkClient/messagequeue.cpp
-        NetworkClient/protocol.h NetworkClient/protocol.cpp
         NetworkClient/serverprotocol.h NetworkClient/serverprotocol.cpp
         UI/setwindow.h UI/setwindow.cpp UI/setwindow.ui
         Config/configmanager.h Config/configmanager.cpp
@@ -73,6 +74,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Sync/SyncManager.h Sync/SyncManager.cpp
         Command/CommandHandler.h Command/CommandHandler.cpp
         Attendance/AttendanceReporter.h Attendance/AttendanceReporter.cpp
+        Utils/Logger.h Utils/Logger.cpp
         resources/resources.qrc
 
 

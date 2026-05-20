@@ -1,6 +1,5 @@
 #pragma once
 
-#include <QSqlDatabase>
 #include <QString>
 
 struct DeviceLocalInfo {
@@ -12,7 +11,7 @@ struct DeviceLocalInfo {
 
 class DeviceLocalRepository {
 public:
-    explicit DeviceLocalRepository(QSqlDatabase &db);
+    explicit DeviceLocalRepository(const QString &dbPath);
 
     void ensureRow(const QString &deviceId,
                    const QString &deviceName = {},
@@ -26,5 +25,5 @@ public:
     bool updateFwVersion(const QString &fwVersion);
 
 private:
-    QSqlDatabase &m_db;
+    QString m_dbPath;
 };

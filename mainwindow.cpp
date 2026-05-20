@@ -201,9 +201,10 @@ void MainWindow::init()
     m_CameraCapture = new CameraCapture();
     if(!m_CameraCapture->initCamera()){
         qWarning() << "摄像头初始化失败";
+        m_VideoFrameCapture = nullptr;
         return;
-    };
-    m_VideoFrameCapture = new VideoFrameCapture();
+    }
+    m_VideoFrameCapture = new VideoFrameCapture(this);
     m_VideoFrameCapture->captureFrame(m_CameraCapture->getCamera());
 
     //多线程 - 将人脸识别移到独立线程
@@ -215,6 +216,10 @@ void MainWindow::init()
 //显示摄像头画面
 void MainWindow::InfoWidget()
 {
+    if (!m_VideoFrameCapture) {
+        qWarning() << "InfoWidget: VideoFrameCapture 未初始化";
+        return;
+    }
     m_VideoWidget = m_VideoFrameCapture->getVideoWidget();
     ui->cameraDisplay->setLayout(new QVBoxLayout());
     ui->cameraDisplay->layout()->addWidget(m_VideoWidget);
@@ -223,6 +228,11 @@ void MainWindow::InfoWidget()
 //开启人脸识别
 void MainWindow::FaceFeatureStart()
 {
+    if (!m_FaceRecognizer || !m_VideoFrameCapture) {
+        qWarning() << "FaceFeatureStart: FaceRecognizer 或 VideoFrameCapture 未初始化";
+        return;
+    }
+
     // 连接视频帧捕获到人脸识别器
     connect(m_VideoFrameCapture, &VideoFrameCapture::frameCaptured,
             m_FaceRecognizer, &FaceRecognizer::WanZhengYeWuLiuCheng);
@@ -432,12 +442,12 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             //边缘拉伸
             m_isResizing = true;
             m_originalGeometry = geometry();
-            m_dragPosition = event->globalPos();
+            m_dragPosition = event->globalPosition().toPoint();
             event->accept();
-        }else if(event->y() < 30){
+        }else if(event->position().y() < 30){
             //顶部拖拽
             m_isDragging = true;
-            m_dragPosition = event->globalPos() - frameGeometry().topLeft();
+            m_dragPosition = event->globalPosition().toPoint() - frameGeometry().topLeft();
             event->accept();
             /*
             event->globalPos()：获取鼠标相对于整个屏幕的全局坐标。
@@ -458,7 +468,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
 
     if(m_isResizing && event->buttons() & Qt::LeftButton){
         //处理拉伸
-        QPoint delta = event->globalPos() - m_dragPosition;
+        QPoint delta = event->globalPosition().toPoint() - m_dragPosition;
         QRect newGeometry = m_originalGeometry;
 
         switch(m_currentEdge){
@@ -479,7 +489,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
         event->accept();
     }else if(m_isDragging && event->buttons() & Qt::LeftButton){
         //处理拖拽
-        move(event->globalPos() - m_dragPosition);
+        move(event->globalPosition().toPoint() - m_dragPosition);
         event->accept();
     }else{
         //更新光标

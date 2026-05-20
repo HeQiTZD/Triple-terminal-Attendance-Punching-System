@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "Config/configmanager.h"
+#include "Utils/Logger.h"
 #include <QApplication>
 #include <QImage>
 #include <QStyleFactory>
@@ -70,6 +71,10 @@ int main(int argc, char *argv[])
     
     // 检查并创建必要的目录（数据库目录、日志目录）
     config->ensureDirectoriesExist();
+
+    // 初始化日志系统
+    Logger::instance()->setLogFilePath(config->getLogPath());
+    LOG_INFO("AttendanceSystem starting");
 
     MainWindow w;
     w.show();

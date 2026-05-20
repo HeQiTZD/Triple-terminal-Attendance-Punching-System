@@ -134,8 +134,8 @@ private:
     QTimer *m_outboxRetryTimer = nullptr;
     int     m_outboxRetryRound = 0;
 
-    static constexpr int kMaxRetryCount      = 5;
-    static constexpr int kRetryBackoffBaseMs = 2000;
+    int m_maxRetryCount      = 5;
+    int m_retryBackoffBaseMs = 2000;
 };
 
 #endif // NETWORKCLIENT_H

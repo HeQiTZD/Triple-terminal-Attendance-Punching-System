@@ -1,7 +1,6 @@
 #pragma once
 
 #include <QByteArray>
-#include <QSqlDatabase>
 #include <QString>
 #include <QVector>
 
@@ -13,7 +12,7 @@ struct FaceFeatureRecord {
 
 class FaceFeatureRepository {
 public:
-    explicit FaceFeatureRepository(QSqlDatabase &db);
+    explicit FaceFeatureRepository(const QString &dbPath);
 
     bool insertOrReplace(const QString &employeeId,
                          const QByteArray &featureBlob,
@@ -32,5 +31,5 @@ public:
     bool clearAll();
 
 private:
-    QSqlDatabase &m_db;
+    QString m_dbPath;
 };

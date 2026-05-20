@@ -583,12 +583,6 @@
 			null
 		],
 		[
-			"D:/QTproject/AttendanceSystem/NetworkClient/protocol.h",
-			"MU",
-			"26RFHC3MAC/moc_protocol.cpp",
-			null
-		],
-		[
 			"D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h",
 			"MU",
 			"26RFHC3MAC/moc_serverprotocol.cpp",
@@ -610,6 +604,12 @@
 			"D:/QTproject/AttendanceSystem/UI/setwindow.h",
 			"MU",
 			"KRKR4BN5RM/moc_setwindow.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/Utils/Logger.h",
+			"MU",
+			"3AKZUBQRRA/moc_Logger.cpp",
 			null
 		],
 		[
@@ -811,11 +811,6 @@
 			null
 		],
 		[
-			"D:/QTproject/AttendanceSystem/NetworkClient/protocol.cpp",
-			"MU",
-			null
-		],
-		[
 			"D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.cpp",
 			"MU",
 			null
@@ -823,6 +818,7 @@
 		[ "D:/QTproject/AttendanceSystem/Sync/SyncManager.cpp", "MU", null ],
 		[ "D:/QTproject/AttendanceSystem/UI/facevideowidget.cpp", "MU", null ],
 		[ "D:/QTproject/AttendanceSystem/UI/setwindow.cpp", "MU", null ],
+		[ "D:/QTproject/AttendanceSystem/Utils/Logger.cpp", "MU", null ],
 		[ "D:/QTproject/AttendanceSystem/config/configmanager.cpp", "MU", null ],
 		[ "D:/QTproject/AttendanceSystem/main.cpp", "MU", null ],
 		[ "D:/QTproject/AttendanceSystem/mainwindow.cpp", "MU", null ]

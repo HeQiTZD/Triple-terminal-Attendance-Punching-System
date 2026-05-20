@@ -45,7 +45,7 @@ bool arcfaceengine::initialize(const QString &appId, const QString &sdkKey)
     // 步骤2：初始化引擎
     // combinedMask：指定引擎支持的功能（人脸检测 + 人脸识别 + 年龄 + 性别）
     MInt32 combinedMask = ASF_FACE_DETECT | ASF_FACERECOGNITION | ASF_AGE | ASF_GENDER;
-    
+
     // ASF_DETECT_MODE_VIDEO：视频模式，支持人脸追踪
     // ASF_OP_0_ONLY：人脸角度检测范围（0度，即正脸）
     // 16：最小人脸尺寸（像素），越小能检测到越小的人脸，但速度越慢
@@ -96,7 +96,7 @@ MInt32 arcfaceengine::getPixelFormat(const QImage &image)
 QVector<arcfaceengine::FaceInfo> arcfaceengine::detectFace(const QImage &image)
 {
     QVector<FaceInfo> faceInfos;
-    
+
     // 前置检查
     if (!m_initialized) {
         qWarning() << "引擎未初始化";
@@ -107,13 +107,11 @@ QVector<arcfaceengine::FaceInfo> arcfaceengine::detectFace(const QImage &image)
         return faceInfos;
     }
 
-
-
     // 步骤1：图像格式转换
     // Qt的Format_RGB888是R-G-B顺序，但SDK可能需要B-G-R顺序
     // 先转为RGB888，再交换R和B通道
     QImage tempImage = image.convertToFormat(QImage::Format_RGB888);
-    
+
     // 交换R和B通道（RGB -> BGR）
     m_convertedImage = QImage(tempImage.size(), QImage::Format_RGB888);
     for (int y = 0; y < tempImage.height(); ++y) {
@@ -142,8 +140,6 @@ QVector<arcfaceengine::FaceInfo> arcfaceengine::detectFace(const QImage &image)
     asvl.i32Height = m_convertedImage.height();         // 图像高度
     asvl.ppu8Plane[0] = m_convertedImage.bits();        // 图像数据指针
     asvl.pi32Pitch[0] = m_convertedImage.bytesPerLine();// 每行字节数（可能有填充）
-
-
 
     // 步骤4：调用SDK人脸检测
     ASF_MultiFaceInfo detectedFaces = {0};
@@ -189,7 +185,7 @@ arcfaceengine::FaceFeature arcfaceengine::extractFeature(const QImage &image, co
 
     // 图像格式转换（RGB -> BGR）
     QImage tempImage = image.convertToFormat(QImage::Format_RGB888);
-    
+
     m_convertedImage = QImage(tempImage.size(), QImage::Format_RGB888);
     for (int y = 0; y < tempImage.height(); ++y) {
         const uchar* srcLine = tempImage.scanLine(y);

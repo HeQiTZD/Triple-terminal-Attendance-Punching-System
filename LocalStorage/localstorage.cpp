@@ -1,5 +1,6 @@
 #include "localstorage.h"
 #include "../Config/configmanager.h"
+#include "../Utils/DatabaseManager.h"
 
 #include <QCoreApplication>
 #include <QDebug>
@@ -145,6 +146,8 @@ bool LocalStorage::connectDatabse()
         qDebug() << "数据库目录创建成功:" << dbDir;
     }
 
+    m_dbPath = dbFilePath;
+
     m_db = QSqlDatabase::addDatabase("QSQLITE");
     m_db.setDatabaseName(dbFilePath);
 
@@ -169,10 +172,10 @@ bool LocalStorage::connectDatabse()
     }
 
     // Create repositories
-    m_faceFeatures = new FaceFeatureRepository(m_db);
-    m_outbox       = new AttendanceOutboxRepository(m_db);
-    m_syncMeta     = new SyncMetaRepository(m_db);
-    m_deviceLocal  = new DeviceLocalRepository(m_db);
+    m_faceFeatures = new FaceFeatureRepository(m_dbPath);
+    m_outbox       = new AttendanceOutboxRepository(m_dbPath);
+    m_syncMeta     = new SyncMetaRepository(m_dbPath);
+    m_deviceLocal  = new DeviceLocalRepository(m_dbPath);
 
     // Ensure single-row tables have their rows
     m_syncMeta->ensureRow();
@@ -228,18 +231,86 @@ bool LocalStorage::runInitialSchema()
 {
     qDebug() << "执行初始 Schema 建表...";
 
-    // Drop old tables if they exist
+    // Drop all tables (since we're doing a fresh start)
     {
         QSqlQuery q(m_db);
+        q.exec("DROP TABLE IF EXISTS face_feature");
+        q.exec("DROP TABLE IF EXISTS attendance_outbox");
+        q.exec("DROP TABLE IF EXISTS sync_meta");
+        q.exec("DROP TABLE IF EXISTS device_local");
+        q.exec("DROP TABLE IF EXISTS schema_version");
         q.exec("DROP TABLE IF EXISTS AttendanceRecord");
         q.exec("DROP TABLE IF EXISTS Person");
     }
 
-    // Execute the initial DDL
+    // Execute each statement separately (SQLite doesn't support multiple statements in one exec)
+    QStringList statements = {
+        R"SQL(
+        CREATE TABLE IF NOT EXISTS face_feature (
+            employee_id     TEXT NOT NULL PRIMARY KEY,
+            feature_blob    BLOB NOT NULL,
+            feature_size    INTEGER NOT NULL,
+            updated_at      DATETIME DEFAULT CURRENT_TIMESTAMP,
+            sync_generation INTEGER NOT NULL DEFAULT 0
+        ))SQL",
+
+        "CREATE INDEX IF NOT EXISTS idx_facefeature_sync_gen ON face_feature(sync_generation)",
+
+        R"SQL(
+        CREATE TABLE IF NOT EXISTS attendance_outbox (
+            id             INTEGER PRIMARY KEY AUTOINCREMENT,
+            client_msg_id  TEXT NOT NULL UNIQUE,
+            employee_id    TEXT NOT NULL,
+            check_time     DATETIME NOT NULL,
+            status         TEXT NOT NULL DEFAULT 'ok',
+            photo_blob     BLOB,
+            photo_size     INTEGER DEFAULT 0,
+            created_at     DATETIME DEFAULT CURRENT_TIMESTAMP,
+            retry_count    INTEGER NOT NULL DEFAULT 0,
+            last_error     TEXT,
+            state          TEXT NOT NULL DEFAULT 'pending'
+                CHECK (state IN ('pending','sending','failed','dead'))
+        ))SQL",
+
+        "CREATE INDEX IF NOT EXISTS idx_outbox_state ON attendance_outbox(state)",
+        "CREATE INDEX IF NOT EXISTS idx_outbox_employee_id ON attendance_outbox(employee_id)",
+
+        R"SQL(
+        CREATE TABLE IF NOT EXISTS sync_meta (
+            id                       INTEGER PRIMARY KEY CHECK (id = 1),
+            current_generation       INTEGER NOT NULL DEFAULT 1,
+            staging_generation       INTEGER NOT NULL DEFAULT 0,
+            last_sync_request_msg_id TEXT,
+            last_sync_ok_at          DATETIME,
+            last_sync_status         TEXT,
+            face_count               INTEGER DEFAULT 0
+        ))SQL",
+
+        R"SQL(
+        CREATE TABLE IF NOT EXISTS device_local (
+            id          INTEGER PRIMARY KEY CHECK (id = 1),
+            device_id   TEXT NOT NULL,
+            device_name TEXT NOT NULL DEFAULT '',
+            ip_address  TEXT NOT NULL DEFAULT '',
+            fw_version  TEXT NOT NULL DEFAULT '1.0.0'
+        ))SQL",
+
+        R"SQL(
+        CREATE TABLE IF NOT EXISTS schema_version (
+            version    INTEGER PRIMARY KEY,
+            applied_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        ))SQL",
+
+        "INSERT OR REPLACE INTO schema_version (version) VALUES (1)"
+    };
+
     QSqlQuery q(m_db);
-    if (!q.exec(QLatin1String(kInitialSchema))) {
-        qWarning() << "初始 Schema 执行失败:" << q.lastError().text();
-        return false;
+    for (const QString &stmt : statements) {
+        if (!q.exec(stmt)) {
+            qWarning() << "初始 Schema 执行失败:" << q.lastError().text();
+            qWarning() << "失败的SQL:" << stmt.left(50) << "...";
+            return false;
+        }
     }
 
     return true;
@@ -253,20 +324,21 @@ bool LocalStorage::syncPersons(const QVector<ServerProtocol::PersonData> &person
 {
     QMutexLocker locker(&s_mutex);
 
-    if (!m_db.isOpen()) {
+    QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
+    if (!db.isOpen()) {
         qDebug() << "数据库未连接";
         emit personsSyncFailed("数据库未连接");
         return false;
     }
 
-    if (!m_db.transaction()) {
-        qDebug() << "开启事务失败:" << m_db.lastError().text();
+    if (!db.transaction()) {
+        qDebug() << "开启事务失败:" << db.lastError().text();
         emit personsSyncFailed("开启事务失败");
         return false;
     }
 
     // Only persist face features to device — personal info stays on server
-    QSqlQuery query(m_db);
+    QSqlQuery query(db);
     query.prepare("INSERT OR REPLACE INTO face_feature "
                   "(employee_id, feature_blob, feature_size, updated_at, sync_generation) "
                   "VALUES (:eid, :blob, :size, datetime('now'), 1)");
@@ -283,16 +355,16 @@ bool LocalStorage::syncPersons(const QVector<ServerProtocol::PersonData> &person
         if (!query.exec()) {
             qWarning() << "插入人脸特征失败:" << query.lastError().text()
                        << "employeeId:" << person.employeeId;
-            m_db.rollback();
+            db.rollback();
             emit personsSyncFailed(QString("插入人脸特征失败: %1").arg(person.employeeId));
             return false;
         }
         successCount++;
     }
 
-    if (!m_db.commit()) {
-        qWarning() << "提交事务失败:" << m_db.lastError().text();
-        m_db.rollback();
+    if (!db.commit()) {
+        qWarning() << "提交事务失败:" << db.lastError().text();
+        db.rollback();
         emit personsSyncFailed("提交事务失败");
         return false;
     }

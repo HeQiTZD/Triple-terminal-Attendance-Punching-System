@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
@@ -36,6 +37,8 @@ public:
     QPushButton *btnFace;
     QPushButton *btnAttendance;
     QPushButton *btnStorage;
+    QPushButton *btnDevice;
+    QPushButton *btnSync;
     QSpacerItem *navSpacer;
     QWidget *contentWidget;
     QVBoxLayout *contentLayout;
@@ -116,6 +119,33 @@ public:
     QLineEdit *lineEditLogPath;
     QPushButton *btnBrowseLog;
     QSpacerItem *storageSpacer;
+    QWidget *pageDevice;
+    QVBoxLayout *devicePageLayout;
+    QGroupBox *deviceGroup;
+    QVBoxLayout *deviceLayout;
+    QHBoxLayout *deviceIdLayout;
+    QLabel *labelDeviceId;
+    QLineEdit *lineEditDeviceId;
+    QHBoxLayout *deviceKeyLayout;
+    QLabel *labelDeviceKey;
+    QLineEdit *lineEditDeviceKey;
+    QHBoxLayout *fwVersionLayout;
+    QLabel *labelFwVersion;
+    QLineEdit *lineEditFwVersion;
+    QHBoxLayout *deviceNameLayout;
+    QLabel *labelDeviceName;
+    QLineEdit *lineEditDeviceName;
+    QSpacerItem *deviceSpacer;
+    QWidget *pageSync;
+    QVBoxLayout *syncPageLayout;
+    QGroupBox *syncGroup;
+    QVBoxLayout *syncLayout;
+    QCheckBox *checkBoxAutoSync;
+    QHBoxLayout *syncTimeoutLayout;
+    QLabel *labelSyncTimeout;
+    QSpinBox *spinBoxSyncTimeout;
+    QSpacerItem *syncTimeoutSpacer;
+    QSpacerItem *syncSpacer;
     QHBoxLayout *buttonLayout;
     QPushButton *btnRestore;
     QSpacerItem *buttonSpacer;
@@ -172,6 +202,22 @@ public:
         btnStorage->setAutoExclusive(true);
 
         navLayout->addWidget(btnStorage);
+
+        btnDevice = new QPushButton(navWidget);
+        btnDevice->setObjectName("btnDevice");
+        btnDevice->setMinimumSize(QSize(0, 45));
+        btnDevice->setCheckable(true);
+        btnDevice->setAutoExclusive(true);
+
+        navLayout->addWidget(btnDevice);
+
+        btnSync = new QPushButton(navWidget);
+        btnSync->setObjectName("btnSync");
+        btnSync->setMinimumSize(QSize(0, 45));
+        btnSync->setCheckable(true);
+        btnSync->setAutoExclusive(true);
+
+        navLayout->addWidget(btnSync);
 
         navSpacer = new QSpacerItem(0, 0, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
@@ -581,6 +627,140 @@ public:
         storagePageLayout->addItem(storageSpacer);
 
         stackedWidget->addWidget(pageStorage);
+        pageDevice = new QWidget();
+        pageDevice->setObjectName("pageDevice");
+        devicePageLayout = new QVBoxLayout(pageDevice);
+        devicePageLayout->setSpacing(20);
+        devicePageLayout->setObjectName("devicePageLayout");
+        devicePageLayout->setContentsMargins(0, 0, 0, 0);
+        deviceGroup = new QGroupBox(pageDevice);
+        deviceGroup->setObjectName("deviceGroup");
+        deviceLayout = new QVBoxLayout(deviceGroup);
+        deviceLayout->setSpacing(15);
+        deviceLayout->setObjectName("deviceLayout");
+        deviceIdLayout = new QHBoxLayout();
+        deviceIdLayout->setObjectName("deviceIdLayout");
+        labelDeviceId = new QLabel(deviceGroup);
+        labelDeviceId->setObjectName("labelDeviceId");
+        labelDeviceId->setMinimumSize(QSize(100, 0));
+
+        deviceIdLayout->addWidget(labelDeviceId);
+
+        lineEditDeviceId = new QLineEdit(deviceGroup);
+        lineEditDeviceId->setObjectName("lineEditDeviceId");
+        lineEditDeviceId->setReadOnly(true);
+
+        deviceIdLayout->addWidget(lineEditDeviceId);
+
+
+        deviceLayout->addLayout(deviceIdLayout);
+
+        deviceKeyLayout = new QHBoxLayout();
+        deviceKeyLayout->setObjectName("deviceKeyLayout");
+        labelDeviceKey = new QLabel(deviceGroup);
+        labelDeviceKey->setObjectName("labelDeviceKey");
+        labelDeviceKey->setMinimumSize(QSize(100, 0));
+
+        deviceKeyLayout->addWidget(labelDeviceKey);
+
+        lineEditDeviceKey = new QLineEdit(deviceGroup);
+        lineEditDeviceKey->setObjectName("lineEditDeviceKey");
+        lineEditDeviceKey->setEchoMode(QLineEdit::EchoMode::Password);
+
+        deviceKeyLayout->addWidget(lineEditDeviceKey);
+
+
+        deviceLayout->addLayout(deviceKeyLayout);
+
+        fwVersionLayout = new QHBoxLayout();
+        fwVersionLayout->setObjectName("fwVersionLayout");
+        labelFwVersion = new QLabel(deviceGroup);
+        labelFwVersion->setObjectName("labelFwVersion");
+        labelFwVersion->setMinimumSize(QSize(100, 0));
+
+        fwVersionLayout->addWidget(labelFwVersion);
+
+        lineEditFwVersion = new QLineEdit(deviceGroup);
+        lineEditFwVersion->setObjectName("lineEditFwVersion");
+        lineEditFwVersion->setReadOnly(true);
+
+        fwVersionLayout->addWidget(lineEditFwVersion);
+
+
+        deviceLayout->addLayout(fwVersionLayout);
+
+        deviceNameLayout = new QHBoxLayout();
+        deviceNameLayout->setObjectName("deviceNameLayout");
+        labelDeviceName = new QLabel(deviceGroup);
+        labelDeviceName->setObjectName("labelDeviceName");
+        labelDeviceName->setMinimumSize(QSize(100, 0));
+
+        deviceNameLayout->addWidget(labelDeviceName);
+
+        lineEditDeviceName = new QLineEdit(deviceGroup);
+        lineEditDeviceName->setObjectName("lineEditDeviceName");
+
+        deviceNameLayout->addWidget(lineEditDeviceName);
+
+
+        deviceLayout->addLayout(deviceNameLayout);
+
+
+        devicePageLayout->addWidget(deviceGroup);
+
+        deviceSpacer = new QSpacerItem(0, 0, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+
+        devicePageLayout->addItem(deviceSpacer);
+
+        stackedWidget->addWidget(pageDevice);
+        pageSync = new QWidget();
+        pageSync->setObjectName("pageSync");
+        syncPageLayout = new QVBoxLayout(pageSync);
+        syncPageLayout->setSpacing(20);
+        syncPageLayout->setObjectName("syncPageLayout");
+        syncPageLayout->setContentsMargins(0, 0, 0, 0);
+        syncGroup = new QGroupBox(pageSync);
+        syncGroup->setObjectName("syncGroup");
+        syncLayout = new QVBoxLayout(syncGroup);
+        syncLayout->setSpacing(15);
+        syncLayout->setObjectName("syncLayout");
+        checkBoxAutoSync = new QCheckBox(syncGroup);
+        checkBoxAutoSync->setObjectName("checkBoxAutoSync");
+        checkBoxAutoSync->setChecked(true);
+
+        syncLayout->addWidget(checkBoxAutoSync);
+
+        syncTimeoutLayout = new QHBoxLayout();
+        syncTimeoutLayout->setObjectName("syncTimeoutLayout");
+        labelSyncTimeout = new QLabel(syncGroup);
+        labelSyncTimeout->setObjectName("labelSyncTimeout");
+        labelSyncTimeout->setMinimumSize(QSize(100, 0));
+
+        syncTimeoutLayout->addWidget(labelSyncTimeout);
+
+        spinBoxSyncTimeout = new QSpinBox(syncGroup);
+        spinBoxSyncTimeout->setObjectName("spinBoxSyncTimeout");
+        spinBoxSyncTimeout->setMinimum(60);
+        spinBoxSyncTimeout->setMaximum(600);
+        spinBoxSyncTimeout->setValue(300);
+
+        syncTimeoutLayout->addWidget(spinBoxSyncTimeout);
+
+        syncTimeoutSpacer = new QSpacerItem(0, 0, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        syncTimeoutLayout->addItem(syncTimeoutSpacer);
+
+
+        syncLayout->addLayout(syncTimeoutLayout);
+
+
+        syncPageLayout->addWidget(syncGroup);
+
+        syncSpacer = new QSpacerItem(0, 0, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+
+        syncPageLayout->addItem(syncSpacer);
+
+        stackedWidget->addWidget(pageSync);
 
         contentLayout->addWidget(stackedWidget);
 
@@ -628,6 +808,8 @@ public:
         btnFace->setText(QCoreApplication::translate("SetWindow", "\344\272\272\350\204\270\350\257\206\345\210\253", nullptr));
         btnAttendance->setText(QCoreApplication::translate("SetWindow", "\350\200\203\345\213\244\350\247\204\345\210\231", nullptr));
         btnStorage->setText(QCoreApplication::translate("SetWindow", "\345\255\230\345\202\250\350\256\276\347\275\256", nullptr));
+        btnDevice->setText(QCoreApplication::translate("SetWindow", "\350\256\276\345\244\207\344\277\241\346\201\257", nullptr));
+        btnSync->setText(QCoreApplication::translate("SetWindow", "\345\220\214\346\255\245\350\256\276\347\275\256", nullptr));
         networkGroup->setTitle(QCoreApplication::translate("SetWindow", "\347\275\221\347\273\234\350\277\236\346\216\245\350\256\276\347\275\256", nullptr));
         ipLabel->setText(QCoreApplication::translate("SetWindow", "\346\234\215\345\212\241\345\231\250\345\234\260\345\235\200", nullptr));
         lineEditIP->setPlaceholderText(QCoreApplication::translate("SetWindow", "\344\276\213\345\246\202: 192.168.1.100", nullptr));
@@ -664,6 +846,19 @@ public:
         logPathLabel->setText(QCoreApplication::translate("SetWindow", "\346\227\245\345\277\227\350\267\257\345\276\204", nullptr));
         lineEditLogPath->setPlaceholderText(QCoreApplication::translate("SetWindow", "\350\257\267\351\200\211\346\213\251\346\227\245\345\277\227\346\226\207\344\273\266\344\277\235\345\255\230\350\267\257\345\276\204", nullptr));
         btnBrowseLog->setText(QCoreApplication::translate("SetWindow", "\346\265\217\350\247\210...", nullptr));
+        deviceGroup->setTitle(QCoreApplication::translate("SetWindow", "\350\256\276\345\244\207\344\277\241\346\201\257", nullptr));
+        labelDeviceId->setText(QCoreApplication::translate("SetWindow", "\350\256\276\345\244\207 ID", nullptr));
+        lineEditDeviceId->setPlaceholderText(QCoreApplication::translate("SetWindow", "\350\256\276\345\244\207\345\224\257\344\270\200\346\240\207\350\257\206", nullptr));
+        labelDeviceKey->setText(QCoreApplication::translate("SetWindow", "\350\256\276\345\244\207\345\257\206\351\222\245", nullptr));
+        lineEditDeviceKey->setPlaceholderText(QCoreApplication::translate("SetWindow", "\350\257\267\350\276\223\345\205\245\350\256\276\345\244\207\345\257\206\351\222\245", nullptr));
+        labelFwVersion->setText(QCoreApplication::translate("SetWindow", "\345\233\272\344\273\266\347\211\210\346\234\254", nullptr));
+        lineEditFwVersion->setPlaceholderText(QCoreApplication::translate("SetWindow", "\345\233\272\344\273\266\347\211\210\346\234\254\345\217\267", nullptr));
+        labelDeviceName->setText(QCoreApplication::translate("SetWindow", "\350\256\276\345\244\207\345\220\215\347\247\260", nullptr));
+        lineEditDeviceName->setPlaceholderText(QCoreApplication::translate("SetWindow", "\350\257\267\350\276\223\345\205\245\350\256\276\345\244\207\345\220\215\347\247\260", nullptr));
+        syncGroup->setTitle(QCoreApplication::translate("SetWindow", "\345\220\214\346\255\245\350\256\276\347\275\256", nullptr));
+        checkBoxAutoSync->setText(QCoreApplication::translate("SetWindow", "\350\277\236\346\216\245\345\220\216\350\207\252\345\212\250\345\220\214\346\255\245", nullptr));
+        labelSyncTimeout->setText(QCoreApplication::translate("SetWindow", "\345\220\214\346\255\245\350\266\205\346\227\266", nullptr));
+        spinBoxSyncTimeout->setSuffix(QCoreApplication::translate("SetWindow", " \347\247\222", nullptr));
         btnRestore->setText(QCoreApplication::translate("SetWindow", "\346\201\242\345\244\215\351\273\230\350\256\244", nullptr));
         btnCancel->setText(QCoreApplication::translate("SetWindow", "\345\217\226\346\266\210", nullptr));
         btnSave->setText(QCoreApplication::translate("SetWindow", "\344\277\235\345\255\230\350\256\276\347\275\256", nullptr));

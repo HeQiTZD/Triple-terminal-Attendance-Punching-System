@@ -1,10 +1,11 @@
 #include "DeviceLocalRepository.h"
+#include "../Utils/DatabaseManager.h"
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QDebug>
 
-DeviceLocalRepository::DeviceLocalRepository(QSqlDatabase &db)
-    : m_db(db)
+DeviceLocalRepository::DeviceLocalRepository(const QString &dbPath)
+    : m_dbPath(dbPath)
 {
 }
 
@@ -12,7 +13,8 @@ void DeviceLocalRepository::ensureRow(const QString &deviceId,
                                       const QString &deviceName,
                                       const QString &fwVersion)
 {
-    QSqlQuery query(m_db);
+    QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
+    QSqlQuery query(db);
     query.prepare("INSERT OR IGNORE INTO device_local (id, device_id, device_name, fw_version) "
                   "VALUES (1, :did, :dn, :fw)");
     query.bindValue(":did", deviceId);
@@ -27,7 +29,8 @@ void DeviceLocalRepository::ensureRow(const QString &deviceId,
 DeviceLocalInfo DeviceLocalRepository::get()
 {
     DeviceLocalInfo info;
-    QSqlQuery query(m_db);
+    QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
+    QSqlQuery query(db);
     query.prepare("SELECT device_id, device_name, ip_address, fw_version FROM device_local WHERE id = 1");
 
     if (query.exec() && query.next()) {
@@ -41,7 +44,8 @@ DeviceLocalInfo DeviceLocalRepository::get()
 
 bool DeviceLocalRepository::updateDeviceId(const QString &deviceId)
 {
-    QSqlQuery query(m_db);
+    QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
+    QSqlQuery query(db);
     query.prepare("UPDATE device_local SET device_id = :v WHERE id = 1");
     query.bindValue(":v", deviceId);
     if (!query.exec()) {
@@ -53,7 +57,8 @@ bool DeviceLocalRepository::updateDeviceId(const QString &deviceId)
 
 bool DeviceLocalRepository::updateDeviceName(const QString &deviceName)
 {
-    QSqlQuery query(m_db);
+    QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
+    QSqlQuery query(db);
     query.prepare("UPDATE device_local SET device_name = :v WHERE id = 1");
     query.bindValue(":v", deviceName);
     if (!query.exec()) {
@@ -65,7 +70,8 @@ bool DeviceLocalRepository::updateDeviceName(const QString &deviceName)
 
 bool DeviceLocalRepository::updateIpAddress(const QString &ipAddress)
 {
-    QSqlQuery query(m_db);
+    QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
+    QSqlQuery query(db);
     query.prepare("UPDATE device_local SET ip_address = :v WHERE id = 1");
     query.bindValue(":v", ipAddress);
     if (!query.exec()) {
@@ -77,7 +83,8 @@ bool DeviceLocalRepository::updateIpAddress(const QString &ipAddress)
 
 bool DeviceLocalRepository::updateFwVersion(const QString &fwVersion)
 {
-    QSqlQuery query(m_db);
+    QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
+    QSqlQuery query(db);
     query.prepare("UPDATE device_local SET fw_version = :v WHERE id = 1");
     query.bindValue(":v", fwVersion);
     if (!query.exec()) {
