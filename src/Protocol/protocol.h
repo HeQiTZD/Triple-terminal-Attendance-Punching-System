@@ -59,6 +59,10 @@ inline const QString kDeviceDelete   = QStringLiteral("device.delete");
 inline const QString kDeviceCommand  = QStringLiteral("device.command");
 inline const QString kDeviceStatus   = QStringLiteral("device.status");
 
+// ── config deploy ──
+inline const QString kConfigDeploy         = QStringLiteral("config.deploy");
+inline const QString kConfigDeployResponse = QStringLiteral("config.deploy.response");
+
 // ── user ──
 inline const QString kUserCreate  = QStringLiteral("user.create");
 inline const QString kUserQuery   = QStringLiteral("user.query");
@@ -128,6 +132,13 @@ inline const QString kResource      = QStringLiteral("resource");
 inline const QString kUserId        = QStringLiteral("userId");
 inline const QString kCommand       = QStringLiteral("command");
 inline const QString kParams        = QStringLiteral("params");
+inline const QString kTargetDevices = QStringLiteral("targetDevices");
+inline const QString kConfigContent = QStringLiteral("configContent");
+inline const QString kConfigVersion = QStringLiteral("configVersion");
+inline const QString kConfigHash    = QStringLiteral("configHash");
+inline const QString kDeployId      = QStringLiteral("deployId");
+inline const QString kTargets       = QStringLiteral("targets");
+inline const QString kForwardMsgId  = QStringLiteral("forwardMsgId");
 inline const QString kTopics        = QStringLiteral("topics");
 inline const QString kFound         = QStringLiteral("found");
 inline const QString kFeatureSize   = QStringLiteral("featureSize");

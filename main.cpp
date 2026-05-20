@@ -8,6 +8,7 @@
 
 #include "src/Attendance/AttendanceService.h"
 #include "src/Auth/SessionManager.h"
+#include "src/Config/ConfigDeployServer.h"
 #include "src/Device/DeviceServer.h"
 #include "src/Event/EventSubscriptionService.h"
 #include "src/Face/FaceServer.h"
@@ -49,6 +50,8 @@ int main(int argc, char *argv[])
     personServer->setTcpManager(tcpManager);
     auto *deviceServer = new DeviceServer(&app);
     deviceServer->setTcpManager(tcpManager);
+    auto *configDeployServer = new ConfigDeployServer(&app);
+    configDeployServer->setTcpManager(tcpManager);
     auto *attendanceService = new AttendanceService(&app);
     attendanceService->setTcpManager(tcpManager);
     auto *faceServer = new FaceServer(&app);
@@ -71,6 +74,7 @@ int main(int argc, char *argv[])
         { QStringLiteral("tcpManager"), QVariant::fromValue(tcpManager) },
         { QStringLiteral("personServer"), QVariant::fromValue(personServer) },
         { QStringLiteral("deviceServer"), QVariant::fromValue(deviceServer) },
+        { QStringLiteral("configDeployServer"), QVariant::fromValue(configDeployServer) },
         { QStringLiteral("attendanceService"), QVariant::fromValue(attendanceService) },
         { QStringLiteral("faceServer"), QVariant::fromValue(faceServer) },
         { QStringLiteral("rbacServer"), QVariant::fromValue(rbacServer) },

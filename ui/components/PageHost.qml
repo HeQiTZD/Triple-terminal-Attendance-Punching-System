@@ -13,6 +13,7 @@ Item {
     required property var sessionManager
     property var personServer
     property var deviceServer
+    property var configDeployServer
     property var attendanceService
     property var faceServer
     property var userServer
@@ -42,6 +43,7 @@ Item {
             case "dashboard":  return compDashboard
             case "person":     return compPerson
             case "device":     return compDevice
+            case "configDeploy": return compConfigDeploy
             case "attendance": return compAttendance
             case "face":       return compFace
             case "user":       return compUser
@@ -90,6 +92,18 @@ Item {
             deniedDialog: host.deniedDialog
             onServiceResult: (apiType, code, msg) =>
                 host.serviceResult(apiType, code, msg, "device")
+        }
+    }
+
+    Component {
+        id: compConfigDeploy
+        PageConfigDeploy {
+            configDeployServer: host.configDeployServer
+            deviceServer: host.deviceServer
+            sessionManager: host.sessionManager
+            deniedDialog: host.deniedDialog
+            onServiceResult: (apiType, code, msg) =>
+                host.serviceResult(apiType, code, msg, "config")
         }
     }
 

@@ -28,6 +28,7 @@ ApplicationWindow {
     required property var tcpManager
     required property var personServer
     required property var deviceServer
+    required property var configDeployServer
     required property var attendanceService
     required property var faceServer
     required property var rbacServer
@@ -248,6 +249,7 @@ ApplicationWindow {
                     sessionManager: win.sessionManager
                     personServer: win.personServer
                     deviceServer: win.deviceServer
+                    configDeployServer: win.configDeployServer
                     attendanceService: win.attendanceService
                     faceServer: win.faceServer
                     userServer: win.userServer

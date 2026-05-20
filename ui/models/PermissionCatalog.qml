@@ -6,7 +6,7 @@ QtObject {
     id: root
 
     readonly property var pageOrder: [
-        "dashboard", "person", "device", "attendance", "face",
+        "dashboard", "person", "device", "configDeploy", "attendance", "face",
         "user", "rbac", "events", "history", "settings"
     ]
 
@@ -42,6 +42,7 @@ QtObject {
         case "device.update":             return qsTr("修改设备")
         case "device.delete":             return qsTr("删除设备")
         case "device.command":            return qsTr("设备指令")
+        case "config.deploy":             return qsTr("配置下发")
         case "user.create":               return qsTr("新增用户")
         case "user.read":                 return qsTr("查询用户")
         case "user.update":               return qsTr("修改用户")
@@ -113,6 +114,7 @@ QtObject {
         switch (key) {
         case "person":     return permissionDisplayName("person.read")
         case "device":     return permissionDisplayName("device.read")
+        case "configDeploy": return permissionDisplayName("config.deploy")
         case "attendance": return permissionDisplayName("attendance.read")
                              + " / " + permissionDisplayName("attendance.archive.read")
         case "face":       return permissionDisplayName("face.read")
@@ -132,6 +134,7 @@ QtObject {
         { group: qsTr("数据管理") },
         { key: "person", label: qsTr("人员管理"), icon: "👤" },
         { key: "device", label: qsTr("设备管理"), icon: "⬡" },
+        { key: "configDeploy", label: qsTr("配置下发"), icon: "⇪" },
         { key: "attendance", label: qsTr("考勤记录"), icon: "📋" },
         { key: "face", label: qsTr("人脸库"), icon: "◎" },
 
@@ -159,6 +162,8 @@ QtObject {
             return hasPerm(sessionManager, "person.read")
         case "device":
             return hasPerm(sessionManager, "device.read")
+        case "configDeploy":
+            return hasPerm(sessionManager, "config.deploy")
         case "attendance":
             return hasPerm(sessionManager, "attendance.read")
                 || hasPerm(sessionManager, "attendance.archive.read")

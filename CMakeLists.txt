@@ -59,6 +59,7 @@ qt_add_qml_module(appAttendanceAdmin
         ui/pages/PageDashboard.qml
         ui/pages/PagePerson.qml
         ui/pages/PageDevice.qml
+        ui/pages/PageConfigDeploy.qml
         ui/pages/PageAttendance.qml
         ui/pages/PageFace.qml
         ui/pages/PageHistory.qml
@@ -80,6 +81,7 @@ qt_add_qml_module(appAttendanceAdmin
         src/Event/EventSubscriptionService.h src/Event/EventSubscriptionService.cpp
         src/Face/FaceServer.h src/Face/FaceServer.cpp
         src/Device/DeviceServer.h src/Device/DeviceServer.cpp
+        src/Config/ConfigDeployServer.h src/Config/ConfigDeployServer.cpp
         src/User/UserServer.h src/User/UserServer.cpp
 )
 
