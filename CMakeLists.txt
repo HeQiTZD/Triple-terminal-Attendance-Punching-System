@@ -31,6 +31,12 @@ set(PROJECT_SOURCES
         LocalStorage/SyncMetaRepository.h
         LocalStorage/DeviceLocalRepository.cpp
         LocalStorage/DeviceLocalRepository.h
+        Sync/SyncManager.cpp
+        Sync/SyncManager.h
+        Command/CommandHandler.cpp
+        Command/CommandHandler.h
+        Attendance/AttendanceReporter.cpp
+        Attendance/AttendanceReporter.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -64,6 +70,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         UI/setwindow.h UI/setwindow.cpp UI/setwindow.ui
         Config/configmanager.h Config/configmanager.cpp
         UI/facevideowidget.h UI/facevideowidget.cpp
+        Sync/SyncManager.h Sync/SyncManager.cpp
+        Command/CommandHandler.h Command/CommandHandler.cpp
+        Attendance/AttendanceReporter.h Attendance/AttendanceReporter.cpp
         resources/resources.qrc
 
 

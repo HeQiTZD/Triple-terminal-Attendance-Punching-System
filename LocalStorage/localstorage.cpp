@@ -314,7 +314,7 @@ bool LocalStorage::addAttendanceRecord(const QString &employeeId, const QString 
     OutboxRecord record;
     record.clientMsgId = QUuid::createUuid().toString(QUuid::WithoutBraces);
     record.employeeId  = employeeId;
-    record.checkTime   = QDateTime::currentDateTime().toString(Qt::ISODate);
+    record.checkTime   = QDateTime::currentDateTime().toString(QStringLiteral("yyyy-MM-dd HH:mm:ss"));
     record.status      = status;
     record.state       = QStringLiteral("pending");
 

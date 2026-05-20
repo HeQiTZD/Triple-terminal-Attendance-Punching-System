@@ -143,7 +143,8 @@ bool Messagereader::tryParseBinaryFrame()
                              | (static_cast<quint32>(raw[3]));
 
     // 校验 featureSize（如 header 提供了该字段）
-    const int expectedSize = m_pendingBinaryHeader.value(QStringLiteral("featureSize")).toInt();
+    const QJsonObject headerData = m_pendingBinaryHeader.value(QStringLiteral("data")).toObject();
+    const int expectedSize = headerData.value(QStringLiteral("featureSize")).toInt();
     if (expectedSize > 0 && static_cast<int>(payloadLen) != expectedSize) {
         qWarning() << "Messagereader: 二进制载荷大小不匹配, 预期"
                    << expectedSize << "实际" << payloadLen;

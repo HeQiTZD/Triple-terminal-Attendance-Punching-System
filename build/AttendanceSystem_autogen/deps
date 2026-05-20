@@ -782,6 +782,8 @@ AttendanceSystem_autogen/timestamp: \
 	C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/time.h \
 	C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h \
 	C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
+	D:/QTproject/AttendanceSystem/Attendance/AttendanceReporter.cpp \
+	D:/QTproject/AttendanceSystem/Attendance/AttendanceReporter.h \
 	D:/QTproject/AttendanceSystem/CMakeLists.txt \
 	D:/QTproject/AttendanceSystem/CameraCapture/cameracapture.cpp \
 	D:/QTproject/AttendanceSystem/CameraCapture/cameracapture.h \
@@ -789,6 +791,8 @@ AttendanceSystem_autogen/timestamp: \
 	D:/QTproject/AttendanceSystem/CameraCapture/videoframecapture.h \
 	D:/QTproject/AttendanceSystem/CameraCapture/videoframeconverter.cpp \
 	D:/QTproject/AttendanceSystem/CameraCapture/videoframeconverter.h \
+	D:/QTproject/AttendanceSystem/Command/CommandHandler.cpp \
+	D:/QTproject/AttendanceSystem/Command/CommandHandler.h \
 	D:/QTproject/AttendanceSystem/Config/configmanager.cpp \
 	D:/QTproject/AttendanceSystem/Config/configmanager.h \
 	D:/QTproject/AttendanceSystem/FaceRecognition/arcfaceengine.cpp \
@@ -825,6 +829,8 @@ AttendanceSystem_autogen/timestamp: \
 	D:/QTproject/AttendanceSystem/NetworkClient/protocol.h \
 	D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.cpp \
 	D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h \
+	D:/QTproject/AttendanceSystem/Sync/SyncManager.cpp \
+	D:/QTproject/AttendanceSystem/Sync/SyncManager.h \
 	D:/QTproject/AttendanceSystem/UI/facevideowidget.cpp \
 	D:/QTproject/AttendanceSystem/UI/facevideowidget.h \
 	D:/QTproject/AttendanceSystem/UI/setwindow.cpp \

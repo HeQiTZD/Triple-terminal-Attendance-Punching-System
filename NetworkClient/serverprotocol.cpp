@@ -127,14 +127,34 @@ QJsonObject buildSyncRequest(const QString& deviceId)
 QJsonObject buildAttendanceReport(const QString& employeeId,
                                   const QDateTime& checkTime,
                                   const QString& deviceId,
-                                  const QString& status)
+                                  const QString& status,
+                                  bool awaitPhoto,
+                                  const QString& clientMsgId)
 {
     QJsonObject data;
     data[QStringLiteral("employeeId")] = employeeId;
-    data[QStringLiteral("checkTime")]  = checkTime.toString(Qt::ISODate);
+    data[QStringLiteral("checkTime")]  = checkTime.toString(QStringLiteral("yyyy-MM-dd HH:mm:ss"));
     data[QStringLiteral("deviceId")]   = deviceId;
     data[QStringLiteral("status")]     = status;
-    return buildEnvelope(kTypeAttendanceReport, deviceId, data).toJson();
+    if (awaitPhoto)
+        data[QStringLiteral("awaitPhoto")] = true;
+
+    Envelope env = buildEnvelope(kTypeAttendanceReport, deviceId, data);
+    if (!clientMsgId.isEmpty())
+        env.msgId = clientMsgId;  // 幂等: 重试保持相同 msgId
+    return env.toJson();
+}
+
+QJsonObject buildAttendancePhotoHeader(const QString& deviceId,
+                                       const QString& employeeId,
+                                       int payloadLength)
+{
+    QJsonObject data;
+    data[QStringLiteral("employeeId")]    = employeeId;
+    data[QStringLiteral("payloadLength")] = payloadLength;
+    data[QStringLiteral("contentType")]   = QStringLiteral("image/jpeg");
+    data[QStringLiteral("payloadEncoding")] = QStringLiteral("raw");
+    return buildEnvelope(kTypeAttendancePhotoHeader, deviceId, data).toJson();
 }
 
 QJsonObject buildDeviceStatusReport(const QString& deviceId,

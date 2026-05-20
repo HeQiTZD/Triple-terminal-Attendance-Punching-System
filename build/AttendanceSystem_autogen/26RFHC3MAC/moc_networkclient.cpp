@@ -58,6 +58,12 @@ template <> constexpr inline auto Networkclient::qt_create_metaobjectdata<qt_met
         "QJsonObject",
         "header",
         "payload",
+        "attendanceReportResult",
+        "employeeId",
+        "deviceCommandReceived",
+        "personSyncReceived",
+        "faceSyncBeginReceived",
+        "faceSyncEndReceived",
         "onConnectionConnected",
         "onConnectionDisconnected",
         "onConnectionStateChanged",
@@ -66,7 +72,8 @@ template <> constexpr inline auto Networkclient::qt_create_metaobjectdata<qt_met
         "onHeartbeatTimeout",
         "onSendError",
         "onSendHeartbeat",
-        "data"
+        "data",
+        "onOutboxRetryTick"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -96,30 +103,52 @@ template <> constexpr inline auto Networkclient::qt_create_metaobjectdata<qt_met
         QtMocHelpers::SignalData<void(const QJsonObject &, const QByteArray &)>(15, 2, QMC::AccessPublic, QMetaType::Void, {{
             { 0x80000000 | 16, 17 }, { QMetaType::QByteArray, 18 },
         }}),
+        // Signal 'attendanceReportResult'
+        QtMocHelpers::SignalData<void(const QString &, bool, const QString &)>(19, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 20 }, { QMetaType::Bool, 14 }, { QMetaType::QString, 9 },
+        }}),
+        // Signal 'deviceCommandReceived'
+        QtMocHelpers::SignalData<void(const QJsonObject &)>(21, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 16, 9 },
+        }}),
+        // Signal 'personSyncReceived'
+        QtMocHelpers::SignalData<void(const QJsonObject &)>(22, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 16, 9 },
+        }}),
+        // Signal 'faceSyncBeginReceived'
+        QtMocHelpers::SignalData<void(const QJsonObject &)>(23, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 16, 9 },
+        }}),
+        // Signal 'faceSyncEndReceived'
+        QtMocHelpers::SignalData<void(const QJsonObject &)>(24, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 16, 9 },
+        }}),
         // Slot 'onConnectionConnected'
-        QtMocHelpers::SlotData<void()>(19, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(25, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onConnectionDisconnected'
-        QtMocHelpers::SlotData<void()>(20, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(26, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onConnectionStateChanged'
-        QtMocHelpers::SlotData<void(bool)>(21, 2, QMC::AccessPrivate, QMetaType::Void, {{
+        QtMocHelpers::SlotData<void(bool)>(27, 2, QMC::AccessPrivate, QMetaType::Void, {{
             { QMetaType::Bool, 5 },
         }}),
         // Slot 'onMessageReceived'
-        QtMocHelpers::SlotData<void(const QJsonObject &)>(22, 2, QMC::AccessPrivate, QMetaType::Void, {{
+        QtMocHelpers::SlotData<void(const QJsonObject &)>(28, 2, QMC::AccessPrivate, QMetaType::Void, {{
             { 0x80000000 | 16, 9 },
         }}),
         // Slot 'onBinaryFrameReceived'
-        QtMocHelpers::SlotData<void(const QJsonObject &, const QByteArray &)>(23, 2, QMC::AccessPrivate, QMetaType::Void, {{
+        QtMocHelpers::SlotData<void(const QJsonObject &, const QByteArray &)>(29, 2, QMC::AccessPrivate, QMetaType::Void, {{
             { 0x80000000 | 16, 17 }, { QMetaType::QByteArray, 18 },
         }}),
         // Slot 'onHeartbeatTimeout'
-        QtMocHelpers::SlotData<void()>(24, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(30, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onSendError'
-        QtMocHelpers::SlotData<void()>(25, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(31, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onSendHeartbeat'
-        QtMocHelpers::SlotData<void(const QByteArray &)>(26, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::QByteArray, 27 },
+        QtMocHelpers::SlotData<void(const QByteArray &)>(32, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::QByteArray, 33 },
         }}),
+        // Slot 'onOutboxRetryTick'
+        QtMocHelpers::SlotData<void()>(34, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -151,14 +180,20 @@ void Networkclient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 5: _t->personDataReceived((*reinterpret_cast<std::add_pointer_t<QList<ServerProtocol::PersonData>>>(_a[1]))); break;
         case 6: _t->uploadFinished((*reinterpret_cast<std::add_pointer_t<bool>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2]))); break;
         case 7: _t->faceSyncItemReceived((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QByteArray>>(_a[2]))); break;
-        case 8: _t->onConnectionConnected(); break;
-        case 9: _t->onConnectionDisconnected(); break;
-        case 10: _t->onConnectionStateChanged((*reinterpret_cast<std::add_pointer_t<bool>>(_a[1]))); break;
-        case 11: _t->onMessageReceived((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
-        case 12: _t->onBinaryFrameReceived((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QByteArray>>(_a[2]))); break;
-        case 13: _t->onHeartbeatTimeout(); break;
-        case 14: _t->onSendError(); break;
-        case 15: _t->onSendHeartbeat((*reinterpret_cast<std::add_pointer_t<QByteArray>>(_a[1]))); break;
+        case 8: _t->attendanceReportResult((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<bool>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3]))); break;
+        case 9: _t->deviceCommandReceived((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
+        case 10: _t->personSyncReceived((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
+        case 11: _t->faceSyncBeginReceived((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
+        case 12: _t->faceSyncEndReceived((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
+        case 13: _t->onConnectionConnected(); break;
+        case 14: _t->onConnectionDisconnected(); break;
+        case 15: _t->onConnectionStateChanged((*reinterpret_cast<std::add_pointer_t<bool>>(_a[1]))); break;
+        case 16: _t->onMessageReceived((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
+        case 17: _t->onBinaryFrameReceived((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QByteArray>>(_a[2]))); break;
+        case 18: _t->onHeartbeatTimeout(); break;
+        case 19: _t->onSendError(); break;
+        case 20: _t->onSendHeartbeat((*reinterpret_cast<std::add_pointer_t<QByteArray>>(_a[1]))); break;
+        case 21: _t->onOutboxRetryTick(); break;
         default: ;
         }
     }
@@ -178,6 +213,16 @@ void Networkclient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         if (QtMocHelpers::indexOfMethod<void (Networkclient::*)(bool , const QString & )>(_a, &Networkclient::uploadFinished, 6))
             return;
         if (QtMocHelpers::indexOfMethod<void (Networkclient::*)(const QJsonObject & , const QByteArray & )>(_a, &Networkclient::faceSyncItemReceived, 7))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (Networkclient::*)(const QString & , bool , const QString & )>(_a, &Networkclient::attendanceReportResult, 8))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (Networkclient::*)(const QJsonObject & )>(_a, &Networkclient::deviceCommandReceived, 9))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (Networkclient::*)(const QJsonObject & )>(_a, &Networkclient::personSyncReceived, 10))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (Networkclient::*)(const QJsonObject & )>(_a, &Networkclient::faceSyncBeginReceived, 11))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (Networkclient::*)(const QJsonObject & )>(_a, &Networkclient::faceSyncEndReceived, 12))
             return;
     }
 }
@@ -201,14 +246,14 @@ int Networkclient::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 16)
+        if (_id < 22)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 16;
+        _id -= 22;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 16)
+        if (_id < 22)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 16;
+        _id -= 22;
     }
     return _id;
 }
@@ -259,5 +304,35 @@ void Networkclient::uploadFinished(bool _t1, const QString & _t2)
 void Networkclient::faceSyncItemReceived(const QJsonObject & _t1, const QByteArray & _t2)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 7, nullptr, _t1, _t2);
+}
+
+// SIGNAL 8
+void Networkclient::attendanceReportResult(const QString & _t1, bool _t2, const QString & _t3)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 8, nullptr, _t1, _t2, _t3);
+}
+
+// SIGNAL 9
+void Networkclient::deviceCommandReceived(const QJsonObject & _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 9, nullptr, _t1);
+}
+
+// SIGNAL 10
+void Networkclient::personSyncReceived(const QJsonObject & _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 10, nullptr, _t1);
+}
+
+// SIGNAL 11
+void Networkclient::faceSyncBeginReceived(const QJsonObject & _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 11, nullptr, _t1);
+}
+
+// SIGNAL 12
+void Networkclient::faceSyncEndReceived(const QJsonObject & _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 12, nullptr, _t1);
 }
 QT_WARNING_POP

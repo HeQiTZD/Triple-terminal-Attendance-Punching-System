@@ -477,9 +477,11 @@ D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/EWIEGA46WW/moc_main
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/time.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
+  D:/QTproject/AttendanceSystem/Attendance/AttendanceReporter.h \
   D:/QTproject/AttendanceSystem/CameraCapture/cameracapture.h \
   D:/QTproject/AttendanceSystem/CameraCapture/videoframecapture.h \
   D:/QTproject/AttendanceSystem/CameraCapture/videoframeconverter.h \
+  D:/QTproject/AttendanceSystem/Command/CommandHandler.h \
   D:/QTproject/AttendanceSystem/FaceRecognition/arcfaceengine.h \
   D:/QTproject/AttendanceSystem/FaceRecognition/facedatabasemanager.h \
   D:/QTproject/AttendanceSystem/FaceRecognition/facerecognizer.h \
@@ -495,6 +497,7 @@ D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/EWIEGA46WW/moc_main
   D:/QTproject/AttendanceSystem/NetworkClient/messagewriter.h \
   D:/QTproject/AttendanceSystem/NetworkClient/networkclient.h \
   D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h \
+  D:/QTproject/AttendanceSystem/Sync/SyncManager.h \
   D:/QTproject/AttendanceSystem/UI/facevideowidget.h \
   D:/QTproject/AttendanceSystem/UI/setwindow.h \
   D:/QTproject/AttendanceSystem/third_party/arcface/include/amcomdef.h \

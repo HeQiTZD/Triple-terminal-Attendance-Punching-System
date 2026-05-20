@@ -6,7 +6,9 @@
 #include "FaceRecognition/facerecognizer.h"
 #include "UI/setwindow.h"
 #include "LocalStorage/localstorage.h"
-#include "UI/setwindow.h"
+#include "Sync/SyncManager.h"
+#include "Command/CommandHandler.h"
+#include "Attendance/AttendanceReporter.h"
 
 #include <QMainWindow>
 #include <QThread>
@@ -113,13 +115,16 @@ private:
     LocalStorage* m_db;
     FaceRecognizer* m_FaceRecognizer;
     Networkclient* networkClient;
+    SyncManager* m_syncManager;
+    CommandHandler* m_commandHandler;
+    AttendanceReporter* m_attendanceReporter;
     CameraCapture* m_CameraCapture;
     VideoFrameCapture* m_VideoFrameCapture;
     QWidget* m_VideoWidget;
     QThread* m_faceThread;
     QThread* m_networkThread;
     QTimer* m_timeTimer;
-    SetWindow* setwindow;  // 改为指针，在构造函数中创建并设置父对象
+    SetWindow* setwindow;
     QPoint m_dragPosition; //记录拖拽时的鼠标位置
     bool m_isDragging = false; //是否正在被拖拽
     bool m_isResizing = false;

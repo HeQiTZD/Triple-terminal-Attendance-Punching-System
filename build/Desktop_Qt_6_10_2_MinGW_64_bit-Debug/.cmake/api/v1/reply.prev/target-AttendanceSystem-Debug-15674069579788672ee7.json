@@ -50,7 +50,7 @@
 			{
 				"command" : 3,
 				"file" : 1,
-				"line" : 37,
+				"line" : 43,
 				"parent" : 0
 			},
 			{
@@ -74,7 +74,7 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 87,
+				"line" : 97,
 				"parent" : 0
 			},
 			{
@@ -236,7 +236,7 @@
 			{
 				"command" : 10,
 				"file" : 1,
-				"line" : 83,
+				"line" : 93,
 				"parent" : 0
 			}
 		]
@@ -385,15 +385,15 @@
 				9,
 				11,
 				13,
-				16,
-				18,
-				20,
+				15,
+				17,
+				19,
 				22,
-				23,
+				24,
 				26,
+				28,
 				29,
-				31,
-				33,
+				32,
 				35,
 				37,
 				39,
@@ -401,9 +401,12 @@
 				43,
 				45,
 				47,
-				50,
-				52,
-				57
+				49,
+				51,
+				53,
+				56,
+				58,
+				63
 			]
 		}
 	],
@@ -533,15 +536,15 @@
 				9,
 				11,
 				13,
-				16,
-				18,
-				20,
+				15,
+				17,
+				19,
 				22,
-				23,
+				24,
 				26,
+				28,
 				29,
-				31,
-				33,
+				32,
 				35,
 				37,
 				39,
@@ -549,9 +552,12 @@
 				43,
 				45,
 				47,
-				50,
-				52,
-				57
+				49,
+				51,
+				53,
+				56,
+				58,
+				63
 			]
 		},
 		{
@@ -564,16 +570,16 @@
 				10,
 				12,
 				14,
-				15,
-				17,
-				19,
+				16,
+				18,
+				20,
 				21,
-				24,
+				23,
 				25,
 				27,
-				28,
 				30,
-				32,
+				31,
+				33,
 				34,
 				36,
 				38,
@@ -581,10 +587,13 @@
 				42,
 				44,
 				46,
-				49,
-				51,
-				54,
-				55
+				48,
+				50,
+				52,
+				55,
+				57,
+				60,
+				61
 			]
 		},
 		{
@@ -592,29 +601,29 @@
 			"sourceIndexes" : 
 			[
 				4,
-				48
+				54
 			]
 		},
 		{
 			"name" : "Resources",
 			"sourceIndexes" : 
 			[
-				53
+				59
 			]
 		},
 		{
 			"name" : "",
 			"sourceIndexes" : 
 			[
-				56
+				62
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				58,
-				59
+				64,
+				65
 			]
 		}
 	],
@@ -702,6 +711,39 @@
 		{
 			"backtrace" : 4,
 			"path" : "LocalStorage/DeviceLocalRepository.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "Sync/SyncManager.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Sync/SyncManager.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "Command/CommandHandler.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Command/CommandHandler.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "Attendance/AttendanceReporter.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Attendance/AttendanceReporter.h",
 			"sourceGroupIndex" : 1
 		},
 		{

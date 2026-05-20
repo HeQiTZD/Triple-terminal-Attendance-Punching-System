@@ -127,6 +127,76 @@ void MainWindow::init()
     m_FaceRecognizer = new FaceRecognizer();
     m_FaceRecognizer->init();
 
+    // ---- 阶段三新模块 ----
+
+    // SyncManager
+    m_syncManager = new SyncManager(this);
+    connect(m_syncManager, &SyncManager::sendMessage, this, [=](const QJsonObject &msg) {
+        QMetaObject::invokeMethod(networkClient, [=]() {
+            networkClient->sendJson(msg);
+        }, Qt::QueuedConnection);
+    });
+    connect(m_syncManager, &SyncManager::requestFaceDbReload, this, [=]() {
+        QMetaObject::invokeMethod(FaceDatabaseManager::instance(), "reload", Qt::QueuedConnection);
+    });
+
+    // CommandHandler
+    m_commandHandler = new CommandHandler(this);
+    connect(m_commandHandler, &CommandHandler::sendMessage, this, [=](const QJsonObject &msg) {
+        QMetaObject::invokeMethod(networkClient, [=]() {
+            networkClient->sendJson(msg);
+        }, Qt::QueuedConnection);
+    });
+    connect(m_commandHandler, &CommandHandler::resyncRequested, m_syncManager, &SyncManager::requestSync);
+
+    // AttendanceReporter
+    m_attendanceReporter = new AttendanceReporter(this);
+    connect(networkClient, &Networkclient::attendanceReportResult,
+            m_attendanceReporter, &AttendanceReporter::onReportResult, Qt::QueuedConnection);
+    connect(networkClient, &Networkclient::networkStateChanged,
+            m_attendanceReporter, &AttendanceReporter::onConnectionStateChanged, Qt::QueuedConnection);
+
+    // 将 Networkclient 信号路由到 SyncManager / CommandHandler
+    // person.sync (Networkclient 已有 personDataReceived，直接连接到 SyncManager)
+    connect(networkClient, &Networkclient::personDataReceived, this, [=](const QVector<ServerProtocol::PersonData> &) {
+        // person.sync 的处理已在 handlePersonSynResponse 中完成持久化
+        // SyncManager 通过直接调用 handlePersonSync 处理
+    });
+    // face sync 信号由 Networkclient::faceSyncItemReceived 连接
+    connect(networkClient, &Networkclient::faceSyncItemReceived, this, [=](const QJsonObject &header, const QByteArray &payload) {
+        QMetaObject::invokeMethod(m_syncManager, [=]() {
+            m_syncManager->handleFaceItem(header, payload);
+        }, Qt::QueuedConnection);
+    });
+    // device.command
+    connect(networkClient, &Networkclient::deviceCommandReceived, this, [=](const QJsonObject &msg) {
+        QMetaObject::invokeMethod(m_commandHandler, [=]() {
+            m_commandHandler->handleCommand(msg);
+        }, Qt::QueuedConnection);
+    });
+
+    // 认证成功后触发同步
+    connect(networkClient, &Networkclient::authSuccess, this, [=]() {
+        QMetaObject::invokeMethod(m_syncManager, "requestSync", Qt::QueuedConnection);
+    });
+
+    // 同步流路由到 SyncManager
+    connect(networkClient, &Networkclient::personSyncReceived, this, [=](const QJsonObject &msg) {
+        QMetaObject::invokeMethod(m_syncManager, [=]() {
+            m_syncManager->handlePersonSync(msg);
+        }, Qt::QueuedConnection);
+    });
+    connect(networkClient, &Networkclient::faceSyncBeginReceived, this, [=](const QJsonObject &msg) {
+        QMetaObject::invokeMethod(m_syncManager, [=]() {
+            m_syncManager->handleFaceSyncBegin(msg);
+        }, Qt::QueuedConnection);
+    });
+    connect(networkClient, &Networkclient::faceSyncEndReceived, this, [=](const QJsonObject &msg) {
+        QMetaObject::invokeMethod(m_syncManager, [=]() {
+            m_syncManager->handleFaceSyncEnd(msg);
+        }, Qt::QueuedConnection);
+    });
+
     //摄像头初始化
     m_CameraCapture = new CameraCapture();
     if(!m_CameraCapture->initCamera()){
@@ -250,16 +320,9 @@ void MainWindow::onRecognitionSuccess(const QString &employeeId,
 //处理保存打卡记录请求
 void MainWindow::onSaveAttendanceRequest(const QString &employeeId, const QString &status)
 {
-    bool saved = m_db->addAttendanceRecord(employeeId,status);
-
-    if(saved){
-        qDebug() << "打卡记录已保存:" << employeeId;
-
-        // 上传到服务器（AttendanceServer 协议）
-        networkClient->uploadAttendance(employeeId, status, QDateTime::currentDateTime());
-    }else{
-        qWarning() << "保存打卡记录失败:" << employeeId;
-    }
+    // 通过 AttendanceReporter 上报（outbox 持久化 + 异步发送 + 重试）
+    const QString msgId = m_attendanceReporter->report(employeeId, status, QDateTime::currentDateTime());
+    qDebug() << "打卡记录已提交:" << employeeId << "msgId:" << msgId;
 }
 
 //更新时间显示

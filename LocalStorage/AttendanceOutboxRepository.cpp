@@ -119,6 +119,43 @@ bool AttendanceOutboxRepository::remove(int id)
     return true;
 }
 
+bool AttendanceOutboxRepository::removeByClientMsgId(const QString &clientMsgId)
+{
+    QSqlQuery query(m_db);
+    query.prepare("DELETE FROM attendance_outbox WHERE client_msg_id = :cid");
+    query.bindValue(":cid", clientMsgId);
+
+    if (!query.exec()) {
+        qWarning() << "AttendanceOutboxRepository removeByClientMsgId failed:" << query.lastError().text();
+        return false;
+    }
+    return true;
+}
+
+OutboxRecord AttendanceOutboxRepository::findByClientMsgId(const QString &clientMsgId)
+{
+    OutboxRecord r;
+    QSqlQuery query(m_db);
+    query.prepare("SELECT id, client_msg_id, employee_id, check_time, status, "
+                  "photo_blob, photo_size, retry_count, last_error, state "
+                  "FROM attendance_outbox WHERE client_msg_id = :cid");
+    query.bindValue(":cid", clientMsgId);
+
+    if (query.exec() && query.next()) {
+        r.id          = query.value(0).toInt();
+        r.clientMsgId = query.value(1).toString();
+        r.employeeId  = query.value(2).toString();
+        r.checkTime   = query.value(3).toString();
+        r.status      = query.value(4).toString();
+        r.photoBlob   = query.value(5).toByteArray();
+        r.photoSize   = query.value(6).toInt();
+        r.retryCount  = query.value(7).toInt();
+        r.lastError   = query.value(8).toString();
+        r.state       = query.value(9).toString();
+    }
+    return r;
+}
+
 int AttendanceOutboxRepository::pendingCount()
 {
     QSqlQuery query(m_db);

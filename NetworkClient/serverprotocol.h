@@ -134,7 +134,13 @@ QJsonObject buildSyncRequest(const QString& deviceId);
 QJsonObject buildAttendanceReport(const QString& employeeId,
                                   const QDateTime& checkTime,
                                   const QString& deviceId,
-                                  const QString& status = QStringLiteral("ok"));
+                                  const QString& status = QStringLiteral("ok"),
+                                  bool awaitPhoto = false,
+                                  const QString& clientMsgId = {});
+
+QJsonObject buildAttendancePhotoHeader(const QString& deviceId,
+                                       const QString& employeeId,
+                                       int payloadLength);
 
 /// deviceName / ipAddress / fwVersion map to standard payload keys;
 /// extra is merged on top for custom fields.

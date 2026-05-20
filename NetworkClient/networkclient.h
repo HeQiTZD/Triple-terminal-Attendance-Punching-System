@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QDateTime>
+#include <QTimer>
 #include <QVector>
 #include "serverprotocol.h"
 
@@ -31,10 +32,24 @@ public:
 
     // 业务接口
     bool syncPersonData();
-    bool uploadAttendance(const QString& employeeId, const QString& status,
-                          const QDateTime& checkTime = QDateTime::currentDateTime());
+
+    /// 考勤上报 — 写入 outbox 后异步发送，返回 client_msg_id（幂等键）
+    QString uploadAttendance(const QString& employeeId, const QString& status,
+                             const QDateTime& checkTime = QDateTime::currentDateTime());
+
+    /// 带照片的考勤上报
+    QString uploadAttendanceWithPhoto(const QString& employeeId, const QString& status,
+                                      const QByteArray& photoJpeg,
+                                      const QDateTime& checkTime = QDateTime::currentDateTime());
+
     bool uploadAttendanceBatch(const QVector<QJsonObject> &records);
     void reportDeviceStatus(const QJsonObject &status);
+
+    /// 公开 outbox 处理（AttendanceReporter 触发重试）
+    void retryOutbox();
+
+    /// 发送任意 JSON 消息（SyncManager/CommandHandler 使用）
+    bool sendJson(const QJsonObject &message);
 
     // 设备身份
     void setDeviceId(const QString& deviceId);
@@ -61,6 +76,17 @@ signals:
     void uploadFinished(bool success, const QString &message);
     void faceSyncItemReceived(const QJsonObject &header, const QByteArray &payload);
 
+    /// 单条考勤上报结果（含 employeeId）
+    void attendanceReportResult(const QString &employeeId, bool success, const QString &message);
+
+    /// 接收到远程指令
+    void deviceCommandReceived(const QJsonObject &message);
+
+    // 同步流信号（路由到 SyncManager）
+    void personSyncReceived(const QJsonObject &message);
+    void faceSyncBeginReceived(const QJsonObject &message);
+    void faceSyncEndReceived(const QJsonObject &message);
+
 private slots:
     void onConnectionConnected();
     void onConnectionDisconnected();
@@ -71,6 +97,7 @@ private slots:
     void onHeartbeatTimeout();
     void onSendError();
     void onSendHeartbeat(const QByteArray &data);
+    void onOutboxRetryTick();
 
 private:
     explicit Networkclient(QObject *parent = nullptr);
@@ -83,6 +110,9 @@ private:
     void handleUploadResponse(const QJsonObject &message);
     void handleServerError(const QJsonObject& message);
     void sendDeviceStatusReport();
+
+    // ---- outbox 处理 ----
+    void processOutbox();
 
 private:
     Connectionmanager *m_connection;
@@ -99,6 +129,13 @@ private:
 
     bool m_isAuthenticated = false;
     bool m_isOnline        = false;
+
+    // outbox 重试
+    QTimer *m_outboxRetryTimer = nullptr;
+    int     m_outboxRetryRound = 0;
+
+    static constexpr int kMaxRetryCount      = 5;
+    static constexpr int kRetryBackoffBaseMs = 2000;
 };
 
 #endif // NETWORKCLIENT_H

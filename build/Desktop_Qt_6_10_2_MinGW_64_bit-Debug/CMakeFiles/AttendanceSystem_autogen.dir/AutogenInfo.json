@@ -463,6 +463,12 @@
 	"HEADERS" : 
 	[
 		[
+			"D:/QTproject/AttendanceSystem/Attendance/AttendanceReporter.h",
+			"MU",
+			"2U2FJKSWPG/moc_AttendanceReporter.cpp",
+			null
+		],
+		[
 			"D:/QTproject/AttendanceSystem/CameraCapture/cameracapture.h",
 			"MU",
 			"MA724YNRNK/moc_cameracapture.cpp",
@@ -478,6 +484,12 @@
 			"D:/QTproject/AttendanceSystem/CameraCapture/videoframeconverter.h",
 			"MU",
 			"MA724YNRNK/moc_videoframeconverter.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/Command/CommandHandler.h",
+			"MU",
+			"A7AZSKOVAF/moc_CommandHandler.cpp",
 			null
 		],
 		[
@@ -580,6 +592,12 @@
 			"D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h",
 			"MU",
 			"26RFHC3MAC/moc_serverprotocol.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/Sync/SyncManager.h",
+			"MU",
+			"NAKN55ZUSP/moc_SyncManager.cpp",
 			null
 		],
 		[
@@ -693,6 +711,11 @@
 	"SOURCES" : 
 	[
 		[
+			"D:/QTproject/AttendanceSystem/Attendance/AttendanceReporter.cpp",
+			"MU",
+			null
+		],
+		[
 			"D:/QTproject/AttendanceSystem/CameraCapture/cameracapture.cpp",
 			"MU",
 			null
@@ -704,6 +727,11 @@
 		],
 		[
 			"D:/QTproject/AttendanceSystem/CameraCapture/videoframeconverter.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/Command/CommandHandler.cpp",
 			"MU",
 			null
 		],
@@ -792,6 +820,7 @@
 			"MU",
 			null
 		],
+		[ "D:/QTproject/AttendanceSystem/Sync/SyncManager.cpp", "MU", null ],
 		[ "D:/QTproject/AttendanceSystem/UI/facevideowidget.cpp", "MU", null ],
 		[ "D:/QTproject/AttendanceSystem/UI/setwindow.cpp", "MU", null ],
 		[ "D:/QTproject/AttendanceSystem/config/configmanager.cpp", "MU", null ],
