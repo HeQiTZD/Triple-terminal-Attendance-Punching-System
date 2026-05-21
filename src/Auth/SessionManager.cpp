@@ -56,6 +56,10 @@ void SessionManager::setTcpManager(TcpConnectionManager *tcp)
                 this, &SessionManager::onTcpAuthenticated);
         connect(m_tcp, &TcpConnectionManager::authFailed,
                 this, &SessionManager::onTcpAuthFailed);
+        connect(m_tcp, &TcpConnectionManager::tokenRefreshed,
+                this, &SessionManager::onTcpTokenRefreshed);
+        connect(m_tcp, &TcpConnectionManager::tokenRefreshFailed,
+                this, &SessionManager::onTcpTokenRefreshFailed);
         connect(m_tcp, &TcpConnectionManager::messageReceived,
                 this, &SessionManager::onTcpMessageReceived);
         connect(m_tcp, &TcpConnectionManager::errorOccurred,
@@ -66,6 +70,10 @@ void SessionManager::setTcpManager(TcpConnectionManager *tcp)
 bool SessionManager::isLoggedIn() const { return m_isLoggedIn; }
 
 QString SessionManager::sessionToken() const { return m_sessionToken; }
+
+QString SessionManager::accessToken() const { return m_accessToken; }
+
+QString SessionManager::refreshToken() const { return m_refreshToken; }
 
 QStringList SessionManager::roles() const { return m_roles; }
 
@@ -155,15 +163,29 @@ void SessionManager::refreshPermissions()
     });
 }
 
+void SessionManager::refreshTokens()
+{
+    if (!m_tcp) {
+        emit errorOccurred(QStringLiteral("TCP manager not initialized"));
+        return;
+    }
+
+    m_tcp->refreshTokens();
+}
+
 void SessionManager::clearSession()
 {
     m_isLoggedIn = false;
     m_sessionToken.clear();
+    m_accessToken.clear();
+    m_refreshToken.clear();
     m_roles.clear();
     m_permissions.clear();
     m_currentUsername.clear();
 
     emit sessionTokenChanged();
+    emit accessTokenChanged();
+    emit refreshTokenChanged();
     emit rolesChanged();
     emit permissionsChanged();
     emit currentUsernameChanged();
@@ -212,6 +234,8 @@ void SessionManager::onTcpAuthenticated(const QString &token,
     }
 
     m_sessionToken = token;
+    m_accessToken = m_tcp->accessToken();
+    m_refreshToken = m_tcp->refreshToken();
     m_roles = roleList;
     m_permissions = permList;
 
@@ -219,6 +243,8 @@ void SessionManager::onTcpAuthenticated(const QString &token,
     m_isLoggedIn = true;
 
     emit sessionTokenChanged();
+    emit accessTokenChanged();
+    emit refreshTokenChanged();
     emit rolesChanged();
     emit permissionsChanged();
     if (!wasLoggedIn)
@@ -226,6 +252,22 @@ void SessionManager::onTcpAuthenticated(const QString &token,
 
     emit loggedIn(m_sessionToken, m_roles, m_permissions);
     refreshPermissions();
+}
+
+void SessionManager::onTcpTokenRefreshed(const QString &accessToken, const QString &refreshToken)
+{
+    m_accessToken = accessToken;
+    m_refreshToken = refreshToken;
+
+    emit accessTokenChanged();
+    emit refreshTokenChanged();
+    emit tokenRefreshed(accessToken, refreshToken);
+}
+
+void SessionManager::onTcpTokenRefreshFailed(int code, const QString &msg)
+{
+    emit tokenRefreshFailed(code, msg);
+    emit errorOccurred(QStringLiteral("Token refresh failed: %1").arg(msg));
 }
 
 void SessionManager::onTcpAuthFailed(int code, const QString &msg)

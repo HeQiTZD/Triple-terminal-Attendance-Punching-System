@@ -47,6 +47,11 @@ TcpConnectionManager::TcpConnectionManager(QObject *parent)
     connect(m_reconnectTimer, &QTimer::timeout,
             this, &TcpConnectionManager::onReconnectTimeout);
 
+    m_tokenRefreshTimer = new QTimer(this);
+    m_tokenRefreshTimer->setSingleShot(true);
+    connect(m_tokenRefreshTimer, &QTimer::timeout,
+            this, &TcpConnectionManager::refreshTokens);
+
     connect(m_socket, &QTcpSocket::connected,
             this, &TcpConnectionManager::onSocketConnected);
     connect(m_socket, &QTcpSocket::disconnected,
@@ -71,6 +76,10 @@ bool TcpConnectionManager::isAuthenticated() const { return m_state == Connectio
 
 QString TcpConnectionManager::sessionToken() const { return m_sessionToken; }
 
+QString TcpConnectionManager::accessToken() const { return m_accessToken; }
+
+QString TcpConnectionManager::refreshToken() const { return m_refreshToken; }
+
 QStringList TcpConnectionManager::roles() const { return m_roles; }
 
 QStringList TcpConnectionManager::permissions() const { return m_permissions; }
@@ -91,6 +100,9 @@ void TcpConnectionManager::connectToServer(const ConnectionConfig &config)
 
     m_config = config;
     m_sessionToken.clear();
+    m_accessToken.clear();
+    m_refreshToken.clear();
+    m_tokenExpiresAt = 0;
     m_roles.clear();
     m_permissions.clear();
     m_readBuffer.clear();
@@ -98,6 +110,7 @@ void TcpConnectionManager::connectToServer(const ConnectionConfig &config)
 
     cancelReconnect();
     cleanupPendingRequests();
+    m_tokenRefreshTimer->stop();
 
     setState(ConnectionState::Connecting);
     emit errorOccurred(QStringLiteral("Connecting to %1:%2...").arg(config.host).arg(config.port));
@@ -111,6 +124,7 @@ void TcpConnectionManager::disconnectFromServer()
     stopHeartbeat();
     cancelReconnect();
     resetReconnectAttempts();
+    m_tokenRefreshTimer->stop();
 
     if (m_socket->state() != QAbstractSocket::UnconnectedState) {
         m_socket->disconnectFromHost();
@@ -120,6 +134,9 @@ void TcpConnectionManager::disconnectFromServer()
     }
 
     m_sessionToken.clear();
+    m_accessToken.clear();
+    m_refreshToken.clear();
+    m_tokenExpiresAt = 0;
     m_roles.clear();
     m_permissions.clear();
     m_readBuffer.clear();
@@ -144,6 +161,12 @@ QString TcpConnectionManager::sendMessage(const QJsonObject &message, ResponseCa
         msg[::Protocol::kMsgId] = QUuid::createUuid().toString(QUuid::WithoutBraces);
     if (!msg.contains(::Protocol::kTs))
         msg[::Protocol::kTs] = QDateTime::currentMSecsSinceEpoch();
+
+    // 自动添加 JWT token（认证消息除外）
+    QString type = msg[::Protocol::kType].toString();
+    if (type != ::Protocol::kAuth && type != ::Protocol::kTokenRefresh) {
+        addTokenToMessage(msg);
+    }
 
     QString msgId = msg[::Protocol::kMsgId].toString();
 
@@ -343,9 +366,14 @@ void TcpConnectionManager::setState(ConnectionState newState)
         emit authenticatedChanged();
     if (newState == ConnectionState::Disconnected) {
         m_sessionToken.clear();
+        m_accessToken.clear();
+        m_refreshToken.clear();
+        m_tokenExpiresAt = 0;
         m_roles.clear();
         m_permissions.clear();
         emit sessionTokenChanged();
+        emit accessTokenChanged();
+        emit refreshTokenChanged();
         emit rolesChanged();
         emit permissionsChanged();
     }
@@ -410,14 +438,30 @@ void TcpConnectionManager::sendAuth()
                 m_sessionToken = data[::Protocol::kSessionToken].toString();
                 m_heartbeatSec = data[::Protocol::kHeartbeatSec].toInt(30);
 
+                // 提取 JWT token
+                m_accessToken = data[::Protocol::kAccessToken].toString();
+                m_refreshToken = data[::Protocol::kRefreshToken].toString();
+                m_tokenExpiresAt = data[::Protocol::kExpiresAt].toVariant().toLongLong();
+
                 m_roles = parseStringOrKeyedArray(
                     data[::Protocol::kRoles].toArray(), ::Protocol::kRoleKey);
                 m_permissions = parseStringOrKeyedArray(
                     data[::Protocol::kPermissions].toArray(), ::Protocol::kPermKey);
 
                 emit sessionTokenChanged();
+                emit accessTokenChanged();
+                emit refreshTokenChanged();
                 emit rolesChanged();
                 emit permissionsChanged();
+
+                // 设置 token 刷新定时器（提前 5 分钟刷新）
+                if (m_tokenExpiresAt > 0) {
+                    qint64 now = QDateTime::currentMSecsSinceEpoch() / 1000;
+                    int refreshIn = static_cast<int>(m_tokenExpiresAt - now - 300); // 提前5分钟
+                    if (refreshIn > 0) {
+                        m_tokenRefreshTimer->start(refreshIn * 1000);
+                    }
+                }
 
                 setState(ConnectionState::Authenticated);
                 resetReconnectAttempts();
@@ -452,6 +496,14 @@ void TcpConnectionManager::processJsonLine(const QByteArray &line)
     }
 
     QJsonObject msg = doc.object();
+
+    // 检查是否是 token 刷新响应
+    QString type = msg[::Protocol::kType].toString();
+    if (type == ::Protocol::kTokenRefreshResponse) {
+        handleTokenRefreshResponse(msg);
+        return;
+    }
+
     processReceivedMessage(msg);
 
     // 检查是否有二进制帧跟随
@@ -480,6 +532,17 @@ QJsonObject TcpConnectionManager::sanitizeForHistory(const QJsonObject &message)
 void TcpConnectionManager::processReceivedMessage(const QJsonObject &message)
 {
     emit jsonMessageReceived(sanitizeForHistory(message));
+
+    // 检查是否是 token 错误（需要刷新 token）
+    int code = message[::Protocol::kCode].toInt(-1);
+    if (code == ::Protocol::ErrorCode::kTokenExpired ||
+        code == ::Protocol::ErrorCode::kTokenInvalid) {
+        // Token 过期或无效，尝试刷新
+        if (!m_refreshToken.isEmpty()) {
+            refreshTokens();
+            return;
+        }
+    }
 
     // 匹配待处理的请求
     QString inReplyTo = message[::Protocol::kInReplyTo].toString();
@@ -529,6 +592,72 @@ void TcpConnectionManager::cleanupPendingRequests()
     for (PendingRequest &req : pending) {
         if (req.callback)
             req.callback(timeoutResponse);
+    }
+}
+
+void TcpConnectionManager::refreshTokens()
+{
+    if (m_refreshToken.isEmpty()) {
+        emit tokenRefreshFailed(::Protocol::ErrorCode::kRefreshTokenInvalid,
+                               QStringLiteral("No refresh token available"));
+        return;
+    }
+
+    QJsonObject refreshMsg;
+    refreshMsg[::Protocol::kType] = ::Protocol::kTokenRefresh;
+    refreshMsg[::Protocol::kData] = QJsonObject{
+        { ::Protocol::kRefreshToken, m_refreshToken }
+    };
+
+    sendMessage(refreshMsg, [this](const QJsonObject &response) {
+        handleTokenRefreshResponse(response);
+    });
+}
+
+void TcpConnectionManager::handleTokenRefreshResponse(const QJsonObject &response)
+{
+    if (response.isEmpty()) {
+        emit tokenRefreshFailed(::Protocol::ErrorCode::kRefreshTokenInvalid,
+                               QStringLiteral("Token refresh timed out"));
+        return;
+    }
+
+    int code = response[::Protocol::kCode].toInt(-1);
+    if (code == ::Protocol::ErrorCode::kSuccess) {
+        QJsonObject data = response[::Protocol::kData].toObject();
+        m_accessToken = data[::Protocol::kAccessToken].toString();
+        m_refreshToken = data[::Protocol::kRefreshToken].toString();
+        m_tokenExpiresAt = data[::Protocol::kExpiresAt].toVariant().toLongLong();
+
+        emit accessTokenChanged();
+        emit refreshTokenChanged();
+
+        // 重新设置 token 刷新定时器
+        if (m_tokenExpiresAt > 0) {
+            qint64 now = QDateTime::currentMSecsSinceEpoch() / 1000;
+            int refreshIn = static_cast<int>(m_tokenExpiresAt - now - 300); // 提前5分钟
+            if (refreshIn > 0) {
+                m_tokenRefreshTimer->start(refreshIn * 1000);
+            }
+        }
+
+        emit tokenRefreshed(m_accessToken, m_refreshToken);
+    } else {
+        QString msg = response[::Protocol::kMsg].toString();
+        emit tokenRefreshFailed(code, msg);
+
+        // 如果刷新失败，可能需要重新登录
+        if (code == ::Protocol::ErrorCode::kRefreshTokenInvalid) {
+            m_tokenRefreshTimer->stop();
+            // 可以选择断开连接或提示用户重新登录
+        }
+    }
+}
+
+void TcpConnectionManager::addTokenToMessage(QJsonObject &message)
+{
+    if (!m_accessToken.isEmpty()) {
+        message[::Protocol::kAccessToken] = m_accessToken;
     }
 }
 

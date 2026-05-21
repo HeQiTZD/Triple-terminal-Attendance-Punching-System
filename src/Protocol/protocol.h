@@ -31,6 +31,13 @@ inline const QString kHeartbeatSec    = QStringLiteral("heartbeatSec");
 inline const QString kRoles           = QStringLiteral("roles");
 inline const QString kPermissions     = QStringLiteral("permissions");
 
+// ── JWT auth ──
+inline const QString kAccessToken     = QStringLiteral("accessToken");
+inline const QString kRefreshToken    = QStringLiteral("refreshToken");
+inline const QString kExpiresAt       = QStringLiteral("expiresAt");
+inline const QString kTokenRefresh    = QStringLiteral("token.refresh");
+inline const QString kTokenRefreshResponse = QStringLiteral("token.refresh.response");
+
 // ── heartbeat ──
 inline const QString kHeartbeat          = QStringLiteral("heartbeat");
 inline const QString kHeartbeatResponse  = QStringLiteral("heartbeat_response");
@@ -172,6 +179,10 @@ namespace ErrorCode {
     constexpr int kNotAuthenticated      = 2001;
     constexpr int kAuthFailed            = 2002;
     constexpr int kDuplicateSession      = 2003;
+    constexpr int kTokenInvalid          = 2004;
+    constexpr int kTokenExpired          = 2005;
+    constexpr int kRefreshTokenInvalid   = 2006;
+    constexpr int kInsufficientPermissions = 2007;
     constexpr int kForbidden             = 3001;
     constexpr int kBusinessValidation    = 4000;
     constexpr int kEmployeeNotFound      = 4001;

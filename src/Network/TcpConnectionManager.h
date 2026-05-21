@@ -16,6 +16,8 @@ class TcpConnectionManager : public QObject
     Q_PROPERTY(ConnectionState connectionState READ connectionState NOTIFY stateChanged)
     Q_PROPERTY(bool isAuthenticated READ isAuthenticated NOTIFY authenticatedChanged)
     Q_PROPERTY(QString sessionToken READ sessionToken NOTIFY sessionTokenChanged)
+    Q_PROPERTY(QString accessToken READ accessToken NOTIFY accessTokenChanged)
+    Q_PROPERTY(QString refreshToken READ refreshToken NOTIFY refreshTokenChanged)
     Q_PROPERTY(QStringList roles READ roles NOTIFY rolesChanged)
     Q_PROPERTY(QStringList permissions READ permissions NOTIFY permissionsChanged)
 
@@ -48,6 +50,8 @@ public:
     ConnectionState connectionState() const;
     bool isAuthenticated() const;
     QString sessionToken() const;
+    QString accessToken() const;
+    QString refreshToken() const;
     QStringList roles() const;
     QStringList permissions() const;
     const ConnectionConfig &config() const;
@@ -57,12 +61,15 @@ public slots:
     void disconnectFromServer();
     QString sendMessage(const QJsonObject &message, ResponseCallback callback = nullptr);
     void sendBinaryFrame(const QByteArray &payload);
+    void refreshTokens();
 
 signals:
     void stateChanged(TcpConnectionManager::ConnectionState oldState,
                       TcpConnectionManager::ConnectionState newState);
     void authenticatedChanged();
     void sessionTokenChanged();
+    void accessTokenChanged();
+    void refreshTokenChanged();
     void rolesChanged();
     void permissionsChanged();
 
@@ -70,6 +77,8 @@ signals:
                        const QStringList &roles,
                        const QStringList &permissions);
     void authFailed(int code, const QString &msg);
+    void tokenRefreshed(const QString &accessToken, const QString &refreshToken);
+    void tokenRefreshFailed(int code, const QString &msg);
     void messageReceived(const QJsonObject &message);
     /** 每条 JSON 行发出/收到时触发，供 QML History 记录（密码已脱敏） */
     void jsonMessageSent(const QJsonObject &message);
@@ -98,6 +107,8 @@ private:
     void processJsonLine(const QByteArray &line);
     void processReceivedMessage(const QJsonObject &message);
     void cleanupPendingRequests();
+    void handleTokenRefreshResponse(const QJsonObject &response);
+    void addTokenToMessage(QJsonObject &message);
     static QJsonObject sanitizeForHistory(const QJsonObject &message);
     int nextReconnectDelayMs() const;
 
@@ -109,11 +120,15 @@ private:
     QTcpSocket *m_socket              = nullptr;
     QTimer *m_heartbeatTimer          = nullptr;
     QTimer *m_reconnectTimer          = nullptr;
+    QTimer *m_tokenRefreshTimer       = nullptr;
     QByteArray m_readBuffer;
     QMap<QString, PendingRequest> m_pendingRequests;
     ConnectionState m_state           = ConnectionState::Disconnected;
     ConnectionConfig m_config;
     QString m_sessionToken;
+    QString m_accessToken;
+    QString m_refreshToken;
+    qint64 m_tokenExpiresAt           = 0;
     QStringList m_roles;
     QStringList m_permissions;
     int m_heartbeatSec                = 30;

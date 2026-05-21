@@ -14,6 +14,8 @@ class SessionManager : public QObject
 
     Q_PROPERTY(bool isLoggedIn READ isLoggedIn NOTIFY loggedInChanged)
     Q_PROPERTY(QString sessionToken READ sessionToken NOTIFY sessionTokenChanged)
+    Q_PROPERTY(QString accessToken READ accessToken NOTIFY accessTokenChanged)
+    Q_PROPERTY(QString refreshToken READ refreshToken NOTIFY refreshTokenChanged)
     Q_PROPERTY(QStringList roles READ roles NOTIFY rolesChanged)
     Q_PROPERTY(QStringList permissions READ permissions NOTIFY permissionsChanged)
     Q_PROPERTY(QString currentUsername READ currentUsername NOTIFY currentUsernameChanged)
@@ -26,6 +28,8 @@ public:
 
     bool isLoggedIn() const;
     QString sessionToken() const;
+    QString accessToken() const;
+    QString refreshToken() const;
     QStringList roles() const;
     QStringList permissions() const;
     QString currentUsername() const;
@@ -42,6 +46,8 @@ public:
 signals:
     void loggedInChanged();
     void sessionTokenChanged();
+    void accessTokenChanged();
+    void refreshTokenChanged();
     void rolesChanged();
     void permissionsChanged();
     void currentUsernameChanged();
@@ -52,8 +58,13 @@ signals:
                   const QStringList &permissions);
     void loggedOut();
     void loginFailed(int code, const QString &message);
+    void tokenRefreshed(const QString &accessToken, const QString &refreshToken);
+    void tokenRefreshFailed(int code, const QString &message);
     void permissionsRefreshed(const QStringList &permissions);
     void errorOccurred(const QString &error);
+
+public slots:
+    void refreshTokens();
 
 private slots:
     void onTcpStateChanged(int oldState, int newState);
@@ -61,6 +72,8 @@ private slots:
                             const QStringList &roleList,
                             const QStringList &permList);
     void onTcpAuthFailed(int code, const QString &msg);
+    void onTcpTokenRefreshed(const QString &accessToken, const QString &refreshToken);
+    void onTcpTokenRefreshFailed(int code, const QString &msg);
     void onTcpMessageReceived(const QJsonObject &message);
     void onTcpError(const QString &error);
 
@@ -71,6 +84,8 @@ private:
     TcpConnectionManager *m_tcp = nullptr;
     bool m_isLoggedIn = false;
     QString m_sessionToken;
+    QString m_accessToken;
+    QString m_refreshToken;
     QStringList m_roles;
     QStringList m_permissions;
     QString m_currentUsername;
