@@ -948,9 +948,6 @@
                </item>
                <item>
                 <widget class="QLineEdit" name="lineEditDeviceId">
-                 <property name="readOnly">
-                  <bool>true</bool>
-                 </property>
                  <property name="placeholderText">
                   <string>设备唯一标识</string>
                  </property>

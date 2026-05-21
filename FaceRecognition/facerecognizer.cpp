@@ -1,4 +1,5 @@
 #include "facerecognizer.h"
+#include "../Attendance/AttendanceRuleEngine.h"
 #include "../Config/configmanager.h"
 
 FaceRecognizer::FaceRecognizer()
@@ -159,8 +160,10 @@ void FaceRecognizer::perfromRecognition(QImage &image)
     }
 
     QString employeeId = m_bestMatch.first;
-    QString status = "正常";
-    QString checkTime = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
+    QDateTime currentCheckTime = QDateTime::currentDateTime();
+    AttendanceCheckResult checkResult = AttendanceRuleEngine::instance()->evaluateWithEmployee(employeeId, currentCheckTime);
+    QString status = checkResult.status;
+    QString checkTime = currentCheckTime.toString("yyyy-MM-dd hh:mm:ss");
 
     // 裁剪人脸区域图像用于显示
     QImage faceImage;
@@ -171,6 +174,12 @@ void FaceRecognizer::perfromRecognition(QImage &image)
         if(!faceRect.isEmpty()){
             faceImage = image.copy(faceRect);
         }
+    }
+
+    if (!checkResult.isValid) {
+        emit recognitionFailed(checkResult.message);
+        setState(RecognitionState::IDLE);
+        return;
     }
 
     // 检查是否重复识别

@@ -4,6 +4,7 @@
 #include "FaceRecognition/arcfaceengine.h"
 #include "NetworkClient/networkclient.h"
 #include "Config/configmanager.h"
+#include "Attendance/AttendanceConfigSyncHandler.h"
 #include "UI/facevideowidget.h"
 #include <QCloseEvent>
 MainWindow::MainWindow(QWidget *parent)
@@ -122,6 +123,8 @@ void MainWindow::init()
     if(!m_db->connectDatabse()){
         return;
     };
+
+    AttendanceConfigSyncHandler::instance()->initialize();
 
     //人脸识别引擎,加载特征到内存
     m_FaceRecognizer = new FaceRecognizer();
@@ -430,7 +433,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 {
     //保存窗口大小
     saveWindowSize();
-    event->accept();
+    event->accept(); 
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)

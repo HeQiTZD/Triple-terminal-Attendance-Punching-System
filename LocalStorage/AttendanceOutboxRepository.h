@@ -36,6 +36,7 @@ public:
 
     bool removeByClientMsgId(const QString &clientMsgId);
     OutboxRecord findByClientMsgId(const QString &clientMsgId);
+    OutboxRecord findLatestByEmployeeId(const QString &employeeId);
 
     int pendingCount();
 

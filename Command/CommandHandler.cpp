@@ -5,6 +5,8 @@
 #include <QDebug>
 #include <QTimer>
 
+#include "../Attendance/AttendanceConfigSyncHandler.h"
+#include "../Config/configmanager.h"
 #include "../LocalStorage/localstorage.h"
 #include "../NetworkClient/serverprotocol.h"
 
@@ -62,6 +64,50 @@ void CommandHandler::handleCommand(const QJsonObject &message)
 
         sendAck(forwardMsgId, command, true, QStringLiteral("success"));
         emit resyncRequested();
+        return;
+    }
+
+    // -----------------------------------------------------------------------
+    // update_attendance_config — 更新本地考勤规则
+    // -----------------------------------------------------------------------
+    if (command == QLatin1String("update_attendance_config")
+        || command == QLatin1String("reload_rules")) {
+        QJsonObject ruleConfig = params;
+        if (params.contains(QStringLiteral("config")) || params.contains(QStringLiteral("attendance"))) {
+            ruleConfig = params;
+        } else if (data.contains(QStringLiteral("config")) || data.contains(QStringLiteral("attendance"))) {
+            ruleConfig = data;
+        }
+
+        const bool applied = AttendanceConfigSyncHandler::instance()->applyConfig(ruleConfig);
+        sendAck(forwardMsgId, command, applied,
+                applied ? QStringLiteral("success") : QStringLiteral("attendance config apply failed"));
+        return;
+    }
+
+    // -----------------------------------------------------------------------
+    // update_config — 更新设备配置文件
+    // -----------------------------------------------------------------------
+    if (command == QLatin1String("update_config")
+        || command == QLatin1String("reload_config")) {
+        const QString configContent = params.value(QStringLiteral("config")).toString();
+        const QString configVersion = params.value(QStringLiteral("configVersion")).toString();
+        const QString configHash = params.value(QStringLiteral("configHash")).toString();
+
+        if (configContent.isEmpty()) {
+            sendAck(forwardMsgId, command, false,
+                    QStringLiteral("missing config content"));
+            return;
+        }
+
+        qDebug() << "CommandHandler: 收到配置文件更新指令，内容长度:" << configContent.size();
+
+        QString errorMessage;
+        const bool applied = ConfigManager::instance()->applyRemoteConfig(
+            configContent, configVersion, configHash, &errorMessage);
+
+        sendAck(forwardMsgId, command, applied,
+                applied ? QStringLiteral("success") : errorMessage);
         return;
     }
 

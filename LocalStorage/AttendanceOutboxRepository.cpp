@@ -165,6 +165,32 @@ OutboxRecord AttendanceOutboxRepository::findByClientMsgId(const QString &client
     return r;
 }
 
+OutboxRecord AttendanceOutboxRepository::findLatestByEmployeeId(const QString &employeeId)
+{
+    OutboxRecord r;
+    QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
+    QSqlQuery query(db);
+    query.prepare("SELECT id, client_msg_id, employee_id, check_time, status, "
+                  "photo_blob, photo_size, retry_count, last_error, state "
+                  "FROM attendance_outbox WHERE employee_id = :eid "
+                  "ORDER BY datetime(check_time) DESC, id DESC LIMIT 1");
+    query.bindValue(":eid", employeeId);
+
+    if (query.exec() && query.next()) {
+        r.id          = query.value(0).toInt();
+        r.clientMsgId = query.value(1).toString();
+        r.employeeId  = query.value(2).toString();
+        r.checkTime   = query.value(3).toString();
+        r.status      = query.value(4).toString();
+        r.photoBlob   = query.value(5).toByteArray();
+        r.photoSize   = query.value(6).toInt();
+        r.retryCount  = query.value(7).toInt();
+        r.lastError   = query.value(8).toString();
+        r.state       = query.value(9).toString();
+    }
+    return r;
+}
+
 int AttendanceOutboxRepository::pendingCount()
 {
     QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);

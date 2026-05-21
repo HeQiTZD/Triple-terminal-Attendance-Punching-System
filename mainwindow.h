@@ -9,6 +9,7 @@
 #include "Sync/SyncManager.h"
 #include "Command/CommandHandler.h"
 #include "Attendance/AttendanceReporter.h"
+#include "Config/configmanager.h"
 
 #include <QMainWindow>
 #include <QThread>

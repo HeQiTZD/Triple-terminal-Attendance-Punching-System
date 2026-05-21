@@ -35,6 +35,14 @@ set(PROJECT_SOURCES
         Sync/SyncManager.h
         Command/CommandHandler.cpp
         Command/CommandHandler.h
+        Attendance/AttendanceConfigParser.cpp
+        Attendance/AttendanceConfigParser.h
+        Attendance/AttendanceConfigSyncHandler.cpp
+        Attendance/AttendanceConfigSyncHandler.h
+        Attendance/AttendanceConfigValidator.cpp
+        Attendance/AttendanceConfigValidator.h
+        Attendance/AttendanceRuleEngine.cpp
+        Attendance/AttendanceRuleEngine.h
         Attendance/AttendanceReporter.cpp
         Attendance/AttendanceReporter.h
         Utils/Logger.cpp
@@ -73,6 +81,10 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         UI/facevideowidget.h UI/facevideowidget.cpp
         Sync/SyncManager.h Sync/SyncManager.cpp
         Command/CommandHandler.h Command/CommandHandler.cpp
+        Attendance/AttendanceConfigParser.h Attendance/AttendanceConfigParser.cpp
+        Attendance/AttendanceConfigSyncHandler.h Attendance/AttendanceConfigSyncHandler.cpp
+        Attendance/AttendanceConfigValidator.h Attendance/AttendanceConfigValidator.cpp
+        Attendance/AttendanceRuleEngine.h Attendance/AttendanceRuleEngine.cpp
         Attendance/AttendanceReporter.h Attendance/AttendanceReporter.cpp
         Utils/Logger.h Utils/Logger.cpp
         resources/resources.qrc

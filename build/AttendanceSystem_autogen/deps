@@ -52,6 +52,7 @@ AttendanceSystem_autogen/timestamp: \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QSize \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QSizeF \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QString \
+	C:/Qt/6.10.2/mingw_64/include/QtCore/QStringList \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QThread \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QTime \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QTimer \
@@ -782,8 +783,16 @@ AttendanceSystem_autogen/timestamp: \
 	C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/time.h \
 	C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h \
 	C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
+	D:/QTproject/AttendanceSystem/Attendance/AttendanceConfigParser.cpp \
+	D:/QTproject/AttendanceSystem/Attendance/AttendanceConfigParser.h \
+	D:/QTproject/AttendanceSystem/Attendance/AttendanceConfigSyncHandler.cpp \
+	D:/QTproject/AttendanceSystem/Attendance/AttendanceConfigSyncHandler.h \
+	D:/QTproject/AttendanceSystem/Attendance/AttendanceConfigValidator.cpp \
+	D:/QTproject/AttendanceSystem/Attendance/AttendanceConfigValidator.h \
 	D:/QTproject/AttendanceSystem/Attendance/AttendanceReporter.cpp \
 	D:/QTproject/AttendanceSystem/Attendance/AttendanceReporter.h \
+	D:/QTproject/AttendanceSystem/Attendance/AttendanceRuleEngine.cpp \
+	D:/QTproject/AttendanceSystem/Attendance/AttendanceRuleEngine.h \
 	D:/QTproject/AttendanceSystem/CMakeLists.txt \
 	D:/QTproject/AttendanceSystem/CameraCapture/cameracapture.cpp \
 	D:/QTproject/AttendanceSystem/CameraCapture/cameracapture.h \

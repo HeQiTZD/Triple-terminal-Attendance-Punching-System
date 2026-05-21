@@ -11,6 +11,7 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtCore/QPair \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QQueue \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QRect \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/QSettings \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QSize \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QSizeF \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QString \
@@ -120,6 +121,7 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtCore/qscopedpointer.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qscopeguard.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qset.h \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/qsettings.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qshareddata.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qshareddata_impl.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qsharedpointer.h \
@@ -482,6 +484,7 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   D:/QTproject/AttendanceSystem/CameraCapture/videoframecapture.h \
   D:/QTproject/AttendanceSystem/CameraCapture/videoframeconverter.h \
   D:/QTproject/AttendanceSystem/Command/CommandHandler.h \
+  D:/QTproject/AttendanceSystem/Config/configmanager.h \
   D:/QTproject/AttendanceSystem/FaceRecognition/arcfaceengine.h \
   D:/QTproject/AttendanceSystem/FaceRecognition/facedatabasemanager.h \
   D:/QTproject/AttendanceSystem/FaceRecognition/facerecognizer.h \

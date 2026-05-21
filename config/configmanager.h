@@ -54,20 +54,46 @@ public:
     // 考勤规则设置 - Getter
     QTime getWorkStartTime() const { return m_workStartTime; }
     QTime getWorkEndTime() const { return m_workEndTime; }
+    int getCheckInStartOffset() const { return m_checkInStartOffset; }
     int getLateAllowance() const { return m_lateAllowance; }
     int getEarlyLeaveAllowance() const { return m_earlyLeaveAllowance; }
+    int getCheckOutEndOffset() const { return m_checkOutEndOffset; }
+    bool isFlexibleWorkEnabled() const { return m_flexibleWorkEnabled; }
+    int getFlexibleRange() const { return m_flexibleRange; }
+    QTime getCoreWorkStart() const { return m_coreWorkStart; }
+    QTime getCoreWorkEnd() const { return m_coreWorkEnd; }
+    bool isLunchBreakEnabled() const { return m_lunchBreakEnabled; }
+    QTime getLunchBreakStart() const { return m_lunchBreakStart; }
+    QTime getLunchBreakEnd() const { return m_lunchBreakEnd; }
+    int getMinCheckInterval() const { return m_minCheckInterval; }
+    bool isCrossDayAllowed() const { return m_allowCrossDay; }
+    int getMaxWorkHours() const { return m_maxWorkHours; }
 
     // 考勤规则设置 - Setter
     void setWorkStartTime(const QTime &time) { m_workStartTime = time; }
     void setWorkEndTime(const QTime &time) { m_workEndTime = time; }
+    void setCheckInStartOffset(int minutes) { m_checkInStartOffset = minutes; }
     void setLateAllowance(int minutes) { m_lateAllowance = minutes; }
     void setEarlyLeaveAllowance(int minutes) { m_earlyLeaveAllowance = minutes; }
+    void setCheckOutEndOffset(int minutes) { m_checkOutEndOffset = minutes; }
+    void setFlexibleWorkEnabled(bool enabled) { m_flexibleWorkEnabled = enabled; }
+    void setFlexibleRange(int minutes) { m_flexibleRange = minutes; }
+    void setCoreWorkStart(const QTime &time) { m_coreWorkStart = time; }
+    void setCoreWorkEnd(const QTime &time) { m_coreWorkEnd = time; }
+    void setLunchBreakEnabled(bool enabled) { m_lunchBreakEnabled = enabled; }
+    void setLunchBreakStart(const QTime &time) { m_lunchBreakStart = time; }
+    void setLunchBreakEnd(const QTime &time) { m_lunchBreakEnd = time; }
+    void setMinCheckInterval(int seconds) { m_minCheckInterval = seconds; }
+    void setAllowCrossDay(bool enabled) { m_allowCrossDay = enabled; }
+    void setMaxWorkHours(int hours) { m_maxWorkHours = hours; }
 
     // 设备信息 - Getter
     QString getDeviceId() const { return m_deviceId; }
     QString getDeviceKey() const { return m_deviceKey; }
     QString getFwVersion() const { return m_fwVersion; }
     QString getDeviceName() const { return m_deviceName; }
+    QString getConfigVersion() const { return m_configVersion; }
+    QString getConfigHash() const { return m_configHash; }
 
     // 设备信息 - Setter
     void setDeviceId(const QString &id) { m_deviceId = id; }
@@ -118,6 +144,12 @@ public:
     // 检查并创建必要的目录（数据库目录、日志目录）
     void ensureDirectoriesExist();
 
+    // 从管理端接收的新配置覆盖 config.ini
+    bool applyRemoteConfig(const QString &configContent,
+                           const QString &configVersion,
+                           const QString &configHash,
+                           QString *errorMessage = nullptr);
+
 private:
     explicit ConfigManager(QObject *parent = nullptr);
     ~ConfigManager();
@@ -126,10 +158,12 @@ private:
     ConfigManager& operator=(const ConfigManager&) = delete;
 
     QString getConfigFilePath() const;
+    QString getLocalConfigFilePath() const;
 
 private:
     static ConfigManager* s_instance;
-    QSettings* m_settings;
+    QSettings* m_settings;      // config.ini - 可远程覆盖的配置
+    QSettings* m_localSettings; // local.ini - 本机配置
 
     // 网络连接设置
     QString m_serverIP;
@@ -148,8 +182,20 @@ private:
     // 考勤规则设置
     QTime m_workStartTime;
     QTime m_workEndTime;
+    int m_checkInStartOffset;
     int m_lateAllowance;
     int m_earlyLeaveAllowance;
+    int m_checkOutEndOffset;
+    bool m_flexibleWorkEnabled;
+    int m_flexibleRange;
+    QTime m_coreWorkStart;
+    QTime m_coreWorkEnd;
+    bool m_lunchBreakEnabled;
+    QTime m_lunchBreakStart;
+    QTime m_lunchBreakEnd;
+    int m_minCheckInterval;
+    bool m_allowCrossDay;
+    int m_maxWorkHours;
 
     // 存储设置
     QString m_databasePath;
@@ -160,6 +206,8 @@ private:
     QString m_deviceKey;
     QString m_fwVersion;
     QString m_deviceName;
+    QString m_configVersion;
+    QString m_configHash;
 
     // 同步设置
     bool m_autoSyncOnConnect;
@@ -180,8 +228,16 @@ private:
     static constexpr int DEFAULT_FACE_THRESHOLD = 80;
     static constexpr int DEFAULT_MAX_FACE_COUNT = 5;
     static constexpr int DEFAULT_RECOGNIZE_TIMEOUT = 10;
+    static constexpr int DEFAULT_CHECK_IN_START_OFFSET = 120;
     static constexpr int DEFAULT_LATE_ALLOWANCE = 15;
     static constexpr int DEFAULT_EARLY_LEAVE_ALLOWANCE = 15;
+    static constexpr int DEFAULT_CHECK_OUT_END_OFFSET = 180;
+    static constexpr bool DEFAULT_FLEXIBLE_WORK_ENABLED = false;
+    static constexpr int DEFAULT_FLEXIBLE_RANGE = 30;
+    static constexpr bool DEFAULT_LUNCH_BREAK_ENABLED = true;
+    static constexpr int DEFAULT_MIN_CHECK_INTERVAL = 60;
+    static constexpr bool DEFAULT_ALLOW_CROSS_DAY = false;
+    static constexpr int DEFAULT_MAX_WORK_HOURS = 12;
     static constexpr int DEFAULT_MAIN_WINDOW_WIDTH = 1200;
     static constexpr int DEFAULT_MAIN_WINDOW_HEIGHT = 800;
     static constexpr bool DEFAULT_AUTO_SYNC_ON_CONNECT = true;

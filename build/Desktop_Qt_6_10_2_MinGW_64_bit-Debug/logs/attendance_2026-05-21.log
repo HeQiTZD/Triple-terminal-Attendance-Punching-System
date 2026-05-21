@@ -1,0 +1,66 @@
+[2026-05-21 08:59:19.285] [INFO] [main.cpp:77 int main(int, char**)] AttendanceSystem starting
+[2026-05-21 08:59:19.299] [INFO] [networkclient.cpp:551 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=device_001
+[2026-05-21 08:59:19.312] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-21 08:59:24.631] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-21 09:19:22.662] [INFO] [main.cpp:77 int main(int, char**)] AttendanceSystem starting
+[2026-05-21 09:19:22.673] [INFO] [networkclient.cpp:551 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=device_001
+[2026-05-21 09:19:22.677] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-21 09:19:28.402] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-21 14:32:54.944] [INFO] [main.cpp:77 int main(int, char**)] AttendanceSystem starting
+[2026-05-21 14:32:54.955] [INFO] [networkclient.cpp:551 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=device_001
+[2026-05-21 14:32:54.958] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-21 14:33:03.454] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-21 14:33:58.545] [INFO] [main.cpp:77 int main(int, char**)] AttendanceSystem starting
+[2026-05-21 14:33:58.556] [INFO] [networkclient.cpp:551 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=device_001
+[2026-05-21 14:33:58.561] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-21 14:34:04.471] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-21 14:34:04.484] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-21 14:34:05.823] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-21 14:38:39.049] [INFO] [main.cpp:77 int main(int, char**)] AttendanceSystem starting
+[2026-05-21 14:38:39.061] [INFO] [networkclient.cpp:551 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=device_001
+[2026-05-21 14:38:39.064] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-21 14:38:44.776] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-21 15:00:30.105] [INFO] [main.cpp:77 int main(int, char**)] AttendanceSystem starting
+[2026-05-21 15:00:30.112] [INFO] [networkclient.cpp:551 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=device_001
+[2026-05-21 15:00:30.127] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-21 15:00:48.606] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-21 15:00:48.620] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-21 15:03:25.227] [INFO] [networkclient.cpp:423 void Networkclient::handleAuthResponse(const QJsonObject&)] auth 成功, deviceId=device_001 heartbeatSec=30
+[2026-05-21 15:03:25.237] [DEBUG] [networkclient.cpp:340 void Networkclient::onMessageReceived(const QJsonObject&)] 收到服务器心跳响应
+[2026-05-21 15:03:55.238] [DEBUG] [networkclient.cpp:340 void Networkclient::onMessageReceived(const QJsonObject&)] 收到服务器心跳响应
+[2026-05-21 15:04:25.234] [DEBUG] [networkclient.cpp:340 void Networkclient::onMessageReceived(const QJsonObject&)] 收到服务器心跳响应
+[2026-05-21 15:04:38.378] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-21 15:04:50.822] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-21 15:04:50.825] [WARNING] [networkclient.cpp:837 void Networkclient::handleServerError(const QJsonObject&)] server error, code=6002
+[2026-05-21 15:06:01.690] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-21 15:06:06.875] [INFO] [main.cpp:77 int main(int, char**)] AttendanceSystem starting
+[2026-05-21 15:06:06.882] [INFO] [networkclient.cpp:551 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=device_001
+[2026-05-21 15:06:06.895] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-21 15:06:06.908] [WARNING] [networkclient.cpp:837 void Networkclient::handleServerError(const QJsonObject&)] server error, code=6002
+[2026-05-21 15:06:29.938] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-21 15:06:29.952] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-21 15:06:29.955] [WARNING] [networkclient.cpp:837 void Networkclient::handleServerError(const QJsonObject&)] server error, code=6002
+[2026-05-21 15:15:16.494] [INFO] [main.cpp:77 int main(int, char**)] AttendanceSystem starting
+[2026-05-21 15:15:16.501] [INFO] [networkclient.cpp:551 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=device_001
+[2026-05-21 21:30:42.801] [INFO] [main.cpp:77 int main(int, char**)] AttendanceSystem starting
+[2026-05-21 21:30:42.811] [INFO] [networkclient.cpp:551 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=device_001
+[2026-05-21 21:37:09.187] [INFO] [main.cpp:77 int main(int, char**)] AttendanceSystem starting
+[2026-05-21 21:37:09.196] [INFO] [networkclient.cpp:551 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=device_001
+[2026-05-21 21:37:55.817] [INFO] [main.cpp:77 int main(int, char**)] AttendanceSystem starting
+[2026-05-21 21:37:55.831] [INFO] [networkclient.cpp:551 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=DEV000-text
+[2026-05-21 21:38:13.484] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-21 21:40:00.568] [INFO] [networkclient.cpp:423 void Networkclient::handleAuthResponse(const QJsonObject&)] auth 成功, deviceId=DEV000-text heartbeatSec=30
+[2026-05-21 21:40:00.585] [DEBUG] [networkclient.cpp:340 void Networkclient::onMessageReceived(const QJsonObject&)] 收到服务器心跳响应
+[2026-05-21 21:40:30.565] [DEBUG] [networkclient.cpp:340 void Networkclient::onMessageReceived(const QJsonObject&)] 收到服务器心跳响应
+[2026-05-21 21:41:00.557] [DEBUG] [networkclient.cpp:340 void Networkclient::onMessageReceived(const QJsonObject&)] 收到服务器心跳响应
+[2026-05-21 21:41:30.559] [DEBUG] [networkclient.cpp:340 void Networkclient::onMessageReceived(const QJsonObject&)] 收到服务器心跳响应
+[2026-05-21 21:42:00.561] [DEBUG] [networkclient.cpp:340 void Networkclient::onMessageReceived(const QJsonObject&)] 收到服务器心跳响应
+[2026-05-21 21:42:30.559] [DEBUG] [networkclient.cpp:340 void Networkclient::onMessageReceived(const QJsonObject&)] 收到服务器心跳响应
+[2026-05-21 21:43:00.557] [DEBUG] [networkclient.cpp:340 void Networkclient::onMessageReceived(const QJsonObject&)] 收到服务器心跳响应
+[2026-05-21 21:43:30.559] [DEBUG] [networkclient.cpp:340 void Networkclient::onMessageReceived(const QJsonObject&)] 收到服务器心跳响应
+[2026-05-21 21:44:00.561] [DEBUG] [networkclient.cpp:340 void Networkclient::onMessageReceived(const QJsonObject&)] 收到服务器心跳响应
+[2026-05-21 21:44:30.560] [DEBUG] [networkclient.cpp:340 void Networkclient::onMessageReceived(const QJsonObject&)] 收到服务器心跳响应
+[2026-05-21 21:45:00.558] [DEBUG] [networkclient.cpp:340 void Networkclient::onMessageReceived(const QJsonObject&)] 收到服务器心跳响应
+[2026-05-21 21:45:30.559] [DEBUG] [networkclient.cpp:340 void Networkclient::onMessageReceived(const QJsonObject&)] 收到服务器心跳响应
+[2026-05-21 21:46:00.565] [DEBUG] [networkclient.cpp:340 void Networkclient::onMessageReceived(const QJsonObject&)] 收到服务器心跳响应
+[2026-05-21 21:46:24.396] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源

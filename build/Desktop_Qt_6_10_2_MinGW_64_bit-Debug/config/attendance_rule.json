@@ -1,0 +1,26 @@
+{
+    "checksum": "sha256:5a83ed8ec8ba2335d05571eb3a5ec071d8ffa558f4024b92bc89134be4752c89",
+    "config": {
+        "attendance": {
+            "allowCrossDay": false,
+            "checkInStartOffset": 120,
+            "checkOutEndOffset": 180,
+            "coreWorkEnd": "16:00",
+            "coreWorkStart": "10:00",
+            "earlyLeaveAllowance": 15,
+            "flexibleRange": 30,
+            "flexibleWorkEnabled": false,
+            "lateAllowance": 15,
+            "lunchBreakEnabled": true,
+            "lunchBreakEnd": "13:00",
+            "lunchBreakStart": "12:00",
+            "maxWorkHours": 12,
+            "minCheckInterval": 60,
+            "workEndTime": "18:00",
+            "workStartTime": "09:00"
+        }
+    },
+    "deviceId": "DEV000-text",
+    "generatedAt": "2026-05-21T13:37:55Z",
+    "signature": ""
+}

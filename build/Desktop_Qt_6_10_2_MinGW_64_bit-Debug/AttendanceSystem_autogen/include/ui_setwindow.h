@@ -648,7 +648,6 @@ public:
 
         lineEditDeviceId = new QLineEdit(deviceGroup);
         lineEditDeviceId->setObjectName("lineEditDeviceId");
-        lineEditDeviceId->setReadOnly(true);
 
         deviceIdLayout->addWidget(lineEditDeviceId);
 

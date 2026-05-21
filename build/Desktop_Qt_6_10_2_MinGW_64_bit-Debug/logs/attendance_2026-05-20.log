@@ -207,3 +207,182 @@
 [2026-05-20 17:46:59.975] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
 [2026-05-20 17:47:00.975] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
 [2026-05-20 17:47:00.976] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:11.245] [INFO] [main.cpp:77 int main(int, char**)] AttendanceSystem starting
+[2026-05-20 19:51:11.255] [INFO] [networkclient.cpp:551 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=device_001
+[2026-05-20 19:51:11.258] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:11.258] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:33.823] [INFO] [main.cpp:77 int main(int, char**)] AttendanceSystem starting
+[2026-05-20 19:51:33.836] [INFO] [networkclient.cpp:551 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=device_001
+[2026-05-20 19:51:33.851] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:33.851] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:34.864] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:34.864] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:35.864] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:35.866] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:36.864] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:36.864] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:37.866] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:37.867] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:38.864] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:38.865] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:39.869] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:39.870] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:40.879] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:40.880] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:41.879] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:41.879] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:42.880] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:42.882] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:43.879] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:43.881] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:44.879] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:44.879] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:45.880] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:45.880] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:46.880] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:46.880] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:47.879] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:47.880] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:48.880] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:48.881] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:49.883] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:49.883] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:50.879] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:50.880] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:51.880] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:51.880] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:52.879] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:52.879] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:53.880] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:53.881] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:54.881] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:54.881] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:55.879] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:55.880] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:56.883] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:56.887] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:57.902] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:57.902] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:58.910] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:58.913] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:51:59.911] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:51:59.912] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:52:00.912] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:52:00.912] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:52:01.911] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:52:01.911] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:52:02.911] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:52:02.912] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:52:03.912] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:52:03.913] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:52:04.912] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:52:04.912] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 19:52:05.911] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 19:52:05.912] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:31:55.640] [INFO] [main.cpp:77 int main(int, char**)] AttendanceSystem starting
+[2026-05-20 20:31:55.653] [INFO] [networkclient.cpp:551 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=device_001
+[2026-05-20 20:31:55.657] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:31:55.658] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:32:37.063] [INFO] [main.cpp:77 int main(int, char**)] AttendanceSystem starting
+[2026-05-20 20:32:37.071] [INFO] [networkclient.cpp:551 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=device_001
+[2026-05-20 20:32:37.074] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:32:37.074] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:32:53.631] [INFO] [main.cpp:77 int main(int, char**)] AttendanceSystem starting
+[2026-05-20 20:32:53.638] [INFO] [networkclient.cpp:551 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=device_001
+[2026-05-20 20:32:53.651] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:32:53.651] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:32:54.664] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:32:54.665] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:32:55.661] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:32:55.661] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:32:56.660] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:32:56.660] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:32:57.665] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:32:57.667] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:32:58.677] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:32:58.678] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:32:59.677] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:32:59.677] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:33:00.676] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:33:00.678] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:33:01.677] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:33:01.678] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:33:02.676] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:33:02.676] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:33:03.677] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:33:03.677] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:33:04.676] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:33:04.676] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:33:05.675] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:33:05.675] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:33:06.679] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:33:06.679] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:33:07.677] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:33:07.678] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:33:08.677] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:33:08.678] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:33:09.677] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:33:09.678] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:33:10.678] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:33:10.678] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:33:11.676] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:33:11.676] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:33:12.676] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:33:12.676] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:33:13.678] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:33:13.679] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:33:14.677] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:33:14.677] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:33:15.677] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:33:15.678] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:33:16.675] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:33:16.675] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:33:17.676] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:33:17.676] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:33:18.677] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:33:18.677] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:33:19.677] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:33:19.677] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:33:20.677] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:33:20.677] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:33:21.678] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:33:21.678] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:33:22.679] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:33:22.680] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 20:33:23.687] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 20:33:23.688] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 22:25:58.598] [INFO] [main.cpp:77 int main(int, char**)] AttendanceSystem starting
+[2026-05-20 22:25:58.611] [INFO] [networkclient.cpp:551 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=device_001
+[2026-05-20 22:29:51.577] [INFO] [main.cpp:77 int main(int, char**)] AttendanceSystem starting
+[2026-05-20 22:29:51.589] [INFO] [networkclient.cpp:551 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=device_001
+[2026-05-20 22:30:35.690] [INFO] [main.cpp:77 int main(int, char**)] AttendanceSystem starting
+[2026-05-20 22:30:35.701] [INFO] [networkclient.cpp:551 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=device_001
+[2026-05-20 22:30:35.714] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 22:30:35.715] [WARNING] [networkclient.cpp:837 void Networkclient::handleServerError(const QJsonObject&)] server error, code=2002
+[2026-05-20 22:30:48.804] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 22:30:48.815] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 22:30:48.816] [WARNING] [networkclient.cpp:837 void Networkclient::handleServerError(const QJsonObject&)] server error, code=2002
+[2026-05-20 22:50:27.132] [INFO] [main.cpp:77 int main(int, char**)] AttendanceSystem starting
+[2026-05-20 22:50:27.144] [INFO] [networkclient.cpp:551 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=device_001
+[2026-05-20 22:51:00.716] [INFO] [main.cpp:77 int main(int, char**)] AttendanceSystem starting
+[2026-05-20 22:51:00.729] [INFO] [networkclient.cpp:551 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=device_001
+[2026-05-20 22:51:00.742] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 22:51:05.512] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 22:51:05.525] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 22:51:06.251] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 22:51:18.688] [INFO] [main.cpp:77 int main(int, char**)] AttendanceSystem starting
+[2026-05-20 22:51:18.698] [INFO] [networkclient.cpp:551 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=device_001
+[2026-05-20 22:51:18.714] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 22:51:23.793] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 22:55:31.331] [INFO] [main.cpp:77 int main(int, char**)] AttendanceSystem starting
+[2026-05-20 22:55:31.343] [INFO] [networkclient.cpp:551 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=device_001
+[2026-05-20 22:55:31.357] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 22:55:36.312] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 23:04:33.935] [INFO] [main.cpp:77 int main(int, char**)] AttendanceSystem starting
+[2026-05-20 23:04:33.946] [INFO] [networkclient.cpp:551 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=device_001
+[2026-05-20 23:04:33.950] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 23:04:39.115] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源
+[2026-05-20 23:20:06.809] [INFO] [main.cpp:77 int main(int, char**)] AttendanceSystem starting
+[2026-05-20 23:20:06.823] [INFO] [networkclient.cpp:551 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=device_001
+[2026-05-20 23:20:06.830] [INFO] [networkclient.cpp:243 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-20 23:20:12.162] [INFO] [networkclient.cpp:275 void Networkclient::onConnectionDisconnected()] 连接断开，清理资源

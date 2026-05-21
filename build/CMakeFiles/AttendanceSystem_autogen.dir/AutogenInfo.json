@@ -456,9 +456,33 @@
 	"HEADERS" : 
 	[
 		[
+			"D:/QTproject/AttendanceSystem/Attendance/AttendanceConfigParser.h",
+			"MU",
+			"2U2FJKSWPG/moc_AttendanceConfigParser.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/Attendance/AttendanceConfigSyncHandler.h",
+			"MU",
+			"2U2FJKSWPG/moc_AttendanceConfigSyncHandler.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/Attendance/AttendanceConfigValidator.h",
+			"MU",
+			"2U2FJKSWPG/moc_AttendanceConfigValidator.cpp",
+			null
+		],
+		[
 			"D:/QTproject/AttendanceSystem/Attendance/AttendanceReporter.h",
 			"MU",
 			"2U2FJKSWPG/moc_AttendanceReporter.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/Attendance/AttendanceRuleEngine.h",
+			"MU",
+			"2U2FJKSWPG/moc_AttendanceRuleEngine.cpp",
 			null
 		],
 		[
@@ -704,7 +728,27 @@
 	"SOURCES" : 
 	[
 		[
+			"D:/QTproject/AttendanceSystem/Attendance/AttendanceConfigParser.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/Attendance/AttendanceConfigSyncHandler.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/Attendance/AttendanceConfigValidator.cpp",
+			"MU",
+			null
+		],
+		[
 			"D:/QTproject/AttendanceSystem/Attendance/AttendanceReporter.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/Attendance/AttendanceRuleEngine.cpp",
 			"MU",
 			null
 		],
