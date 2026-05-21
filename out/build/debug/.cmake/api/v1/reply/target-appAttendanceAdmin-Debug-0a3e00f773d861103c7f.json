@@ -1,0 +1,3231 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "appAttendanceAdmin.exe"
+		},
+		{
+			"path" : "appAttendanceAdmin.pdb"
+		}
+	],
+	"backtrace" : 4,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"_qt_internal_create_executable",
+			"qt6_add_executable",
+			"qt_add_executable",
+			"install",
+			"target_link_libraries",
+			"qt6_add_qml_module",
+			"qt_add_qml_module",
+			"set_target_properties",
+			"include",
+			"find_package",
+			"__find_dependency_common",
+			"find_dependency",
+			"_qt_internal_find_qt_dependencies",
+			"add_dependencies",
+			"_qt_internal_qml_copy_files_to_build_dir",
+			"_qt_internal_write_deferred_qmlls_build_ini_file",
+			"_qt_internal_scan_qml_imports",
+			"_qt_internal_generate_deploy_qml_imports_script",
+			"cmake_language",
+			"_qt_internal_finalize_executable",
+			"qt6_finalize_target",
+			"_qt_internal_target_enable_qmlcachegen",
+			"qt6_target_qml_sources",
+			"add_custom_command",
+			"_qt_internal_qml_type_registration",
+			"_qt_internal_process_resource",
+			"qt6_add_resources",
+			"qt6_extract_metatypes",
+			"_qt_internal_ensure_tooling_target",
+			"target_include_directories",
+			"target_sources",
+			"set_source_files_properties",
+			"__qt_propagate_generated_resource",
+			"_qt_internal_expose_deferred_files_to_ide"
+		],
+		"files" : 
+		[
+			"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Core/Qt6CoreMacros.cmake",
+			"CMakeLists.txt",
+			"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Qml/Qt6QmlMacros.cmake",
+			"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Network/Qt6NetworkTargets.cmake",
+			"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Network/Qt6NetworkConfig.cmake",
+			"C:/Program Files/Microsoft Visual Studio/18/Insiders/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeFindDependencyMacro.cmake",
+			"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake",
+			"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Qml/Qt6QmlDependencies.cmake",
+			"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Qml/Qt6QmlConfig.cmake",
+			"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Quick/Qt6QuickDependencies.cmake",
+			"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Quick/Qt6QuickConfig.cmake",
+			"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/Qt6Config.cmake",
+			"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Quick/Qt6QuickTargets.cmake",
+			"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Charts/Qt6ChartsTargets.cmake",
+			"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Charts/Qt6ChartsConfig.cmake",
+			"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Core/Qt6CoreTargets.cmake",
+			"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Core/Qt6CoreConfig.cmake",
+			"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateTargets.cmake",
+			"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateConfig.cmake",
+			"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake",
+			"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Qml/Qt6QmlTargets.cmake",
+			"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Gui/Qt6GuiTargets.cmake",
+			"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Gui/Qt6GuiConfig.cmake",
+			"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Qml/Qt6QmlMacros.cmake:1099:EVAL",
+			"C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Core/Qt6CoreMacros.cmake:848:EVAL"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 11,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 1014,
+				"parent" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 673,
+				"parent" : 2
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 749,
+				"parent" : 3
+			},
+			{
+				"command" : 4,
+				"file" : 1,
+				"line" : 108,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 1,
+				"line" : 98,
+				"parent" : 0
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 27,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 2,
+				"line" : 1417,
+				"parent" : 7
+			},
+			{
+				"command" : 5,
+				"file" : 2,
+				"line" : 618,
+				"parent" : 8
+			},
+			{
+				"command" : 10,
+				"file" : 1,
+				"line" : 7,
+				"parent" : 0
+			},
+			{
+				"file" : 11,
+				"parent" : 10
+			},
+			{
+				"command" : 10,
+				"file" : 11,
+				"line" : 241,
+				"parent" : 11
+			},
+			{
+				"file" : 10,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 10,
+				"line" : 40,
+				"parent" : 13
+			},
+			{
+				"file" : 9,
+				"parent" : 14
+			},
+			{
+				"command" : 13,
+				"file" : 9,
+				"line" : 50,
+				"parent" : 15
+			},
+			{
+				"command" : 12,
+				"file" : 6,
+				"line" : 142,
+				"parent" : 16
+			},
+			{
+				"command" : 11,
+				"file" : 5,
+				"line" : 125,
+				"parent" : 17
+			},
+			{
+				"command" : 10,
+				"file" : 5,
+				"line" : 93,
+				"parent" : 18
+			},
+			{
+				"file" : 8,
+				"parent" : 19
+			},
+			{
+				"command" : 9,
+				"file" : 8,
+				"line" : 43,
+				"parent" : 20
+			},
+			{
+				"file" : 7,
+				"parent" : 21
+			},
+			{
+				"command" : 13,
+				"file" : 7,
+				"line" : 50,
+				"parent" : 22
+			},
+			{
+				"command" : 12,
+				"file" : 6,
+				"line" : 142,
+				"parent" : 23
+			},
+			{
+				"command" : 11,
+				"file" : 5,
+				"line" : 125,
+				"parent" : 24
+			},
+			{
+				"command" : 10,
+				"file" : 5,
+				"line" : 93,
+				"parent" : 25
+			},
+			{
+				"file" : 4,
+				"parent" : 26
+			},
+			{
+				"command" : 9,
+				"file" : 4,
+				"line" : 52,
+				"parent" : 27
+			},
+			{
+				"file" : 3,
+				"parent" : 28
+			},
+			{
+				"command" : 8,
+				"file" : 3,
+				"line" : 61,
+				"parent" : 29
+			},
+			{
+				"command" : 9,
+				"file" : 10,
+				"line" : 52,
+				"parent" : 13
+			},
+			{
+				"file" : 12,
+				"parent" : 31
+			},
+			{
+				"command" : 8,
+				"file" : 12,
+				"line" : 61,
+				"parent" : 32
+			},
+			{
+				"command" : 10,
+				"file" : 11,
+				"line" : 241,
+				"parent" : 11
+			},
+			{
+				"file" : 14,
+				"parent" : 34
+			},
+			{
+				"command" : 9,
+				"file" : 14,
+				"line" : 52,
+				"parent" : 35
+			},
+			{
+				"file" : 13,
+				"parent" : 36
+			},
+			{
+				"command" : 8,
+				"file" : 13,
+				"line" : 61,
+				"parent" : 37
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 674,
+				"parent" : 2
+			},
+			{
+				"command" : 12,
+				"file" : 6,
+				"line" : 142,
+				"parent" : 16
+			},
+			{
+				"command" : 11,
+				"file" : 5,
+				"line" : 125,
+				"parent" : 40
+			},
+			{
+				"command" : 10,
+				"file" : 5,
+				"line" : 93,
+				"parent" : 41
+			},
+			{
+				"file" : 16,
+				"parent" : 42
+			},
+			{
+				"command" : 9,
+				"file" : 16,
+				"line" : 54,
+				"parent" : 43
+			},
+			{
+				"file" : 15,
+				"parent" : 44
+			},
+			{
+				"command" : 8,
+				"file" : 15,
+				"line" : 61,
+				"parent" : 45
+			},
+			{
+				"command" : 9,
+				"file" : 16,
+				"line" : 42,
+				"parent" : 43
+			},
+			{
+				"file" : 19,
+				"parent" : 47
+			},
+			{
+				"command" : 13,
+				"file" : 19,
+				"line" : 51,
+				"parent" : 48
+			},
+			{
+				"command" : 12,
+				"file" : 6,
+				"line" : 142,
+				"parent" : 49
+			},
+			{
+				"command" : 11,
+				"file" : 5,
+				"line" : 125,
+				"parent" : 50
+			},
+			{
+				"command" : 10,
+				"file" : 5,
+				"line" : 93,
+				"parent" : 51
+			},
+			{
+				"file" : 18,
+				"parent" : 52
+			},
+			{
+				"command" : 9,
+				"file" : 18,
+				"line" : 52,
+				"parent" : 53
+			},
+			{
+				"file" : 17,
+				"parent" : 54
+			},
+			{
+				"command" : 8,
+				"file" : 17,
+				"line" : 61,
+				"parent" : 55
+			},
+			{
+				"command" : 9,
+				"file" : 8,
+				"line" : 55,
+				"parent" : 20
+			},
+			{
+				"file" : 20,
+				"parent" : 57
+			},
+			{
+				"command" : 8,
+				"file" : 20,
+				"line" : 61,
+				"parent" : 58
+			},
+			{
+				"command" : 12,
+				"file" : 6,
+				"line" : 142,
+				"parent" : 16
+			},
+			{
+				"command" : 11,
+				"file" : 5,
+				"line" : 125,
+				"parent" : 60
+			},
+			{
+				"command" : 10,
+				"file" : 5,
+				"line" : 93,
+				"parent" : 61
+			},
+			{
+				"file" : 22,
+				"parent" : 62
+			},
+			{
+				"command" : 9,
+				"file" : 22,
+				"line" : 52,
+				"parent" : 63
+			},
+			{
+				"file" : 21,
+				"parent" : 64
+			},
+			{
+				"command" : 8,
+				"file" : 21,
+				"line" : 61,
+				"parent" : 65
+			},
+			{
+				"command" : 15,
+				"file" : 2,
+				"line" : 970,
+				"parent" : 8
+			},
+			{
+				"command" : 14,
+				"file" : 2,
+				"line" : 3083,
+				"parent" : 67
+			},
+			{
+				"command" : 15,
+				"file" : 2,
+				"line" : 976,
+				"parent" : 8
+			},
+			{
+				"command" : 14,
+				"file" : 2,
+				"line" : 3083,
+				"parent" : 69
+			},
+			{
+				"file" : 1,
+				"line" : -1,
+				"parent" : 0
+			},
+			{
+				"command" : 16,
+				"file" : 23,
+				"line" : 1,
+				"parent" : 71
+			},
+			{
+				"command" : 14,
+				"file" : 2,
+				"line" : 1387,
+				"parent" : 72
+			},
+			{
+				"command" : 21,
+				"file" : 24,
+				"line" : 1,
+				"parent" : 71
+			},
+			{
+				"command" : 20,
+				"file" : 0,
+				"line" : 879,
+				"parent" : 74
+			},
+			{
+				"command" : 19,
+				"file" : 0,
+				"line" : 801,
+				"parent" : 75
+			},
+			{
+				"command" : 18,
+				"file" : 0,
+				"line" : 801,
+				"parent" : 76
+			},
+			{
+				"command" : 17,
+				"file" : 2,
+				"line" : 4777,
+				"parent" : 77
+			},
+			{
+				"command" : 14,
+				"file" : 2,
+				"line" : 4552,
+				"parent" : 78
+			},
+			{
+				"command" : 23,
+				"file" : 2,
+				"line" : 960,
+				"parent" : 8
+			},
+			{
+				"command" : 22,
+				"file" : 2,
+				"line" : 3691,
+				"parent" : 80
+			},
+			{
+				"command" : 5,
+				"file" : 2,
+				"line" : 1845,
+				"parent" : 81
+			},
+			{
+				"command" : 25,
+				"file" : 2,
+				"line" : 835,
+				"parent" : 8
+			},
+			{
+				"command" : 24,
+				"file" : 2,
+				"line" : 4146,
+				"parent" : 83
+			},
+			{
+				"command" : 24,
+				"file" : 2,
+				"line" : 1816,
+				"parent" : 81
+			},
+			{
+				"command" : 27,
+				"file" : 2,
+				"line" : 887,
+				"parent" : 8
+			},
+			{
+				"command" : 26,
+				"file" : 0,
+				"line" : 405,
+				"parent" : 86
+			},
+			{
+				"command" : 24,
+				"file" : 0,
+				"line" : 2564,
+				"parent" : 87
+			},
+			{
+				"command" : 28,
+				"file" : 2,
+				"line" : 4041,
+				"parent" : 83
+			},
+			{
+				"command" : 24,
+				"file" : 0,
+				"line" : 1484,
+				"parent" : 89
+			},
+			{
+				"command" : 24,
+				"file" : 0,
+				"line" : 1542,
+				"parent" : 89
+			},
+			{
+				"command" : 29,
+				"file" : 2,
+				"line" : 956,
+				"parent" : 8
+			},
+			{
+				"command" : 14,
+				"file" : 2,
+				"line" : 3105,
+				"parent" : 92
+			},
+			{
+				"command" : 30,
+				"file" : 2,
+				"line" : 4216,
+				"parent" : 83
+			},
+			{
+				"command" : 30,
+				"file" : 2,
+				"line" : 4246,
+				"parent" : 83
+			},
+			{
+				"command" : 31,
+				"file" : 0,
+				"line" : 1579,
+				"parent" : 89
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 4207,
+				"parent" : 83
+			},
+			{
+				"command" : 32,
+				"file" : 2,
+				"line" : 4238,
+				"parent" : 83
+			},
+			{
+				"command" : 33,
+				"file" : 0,
+				"line" : 2625,
+				"parent" : 87
+			},
+			{
+				"command" : 31,
+				"file" : 0,
+				"line" : 2165,
+				"parent" : 99
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 934,
+				"parent" : 8
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 1844,
+				"parent" : 81
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 80
+			},
+			{
+				"command" : 31,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 80
+			},
+			{
+				"command" : 27,
+				"file" : 2,
+				"line" : 3839,
+				"parent" : 80
+			},
+			{
+				"command" : 26,
+				"file" : 0,
+				"line" : 405,
+				"parent" : 183
+			},
+			{
+				"command" : 33,
+				"file" : 0,
+				"line" : 2625,
+				"parent" : 184
+			},
+			{
+				"command" : 31,
+				"file" : 0,
+				"line" : 2165,
+				"parent" : 185
+			},
+			{
+				"command" : 27,
+				"file" : 2,
+				"line" : 3893,
+				"parent" : 80
+			},
+			{
+				"command" : 26,
+				"file" : 0,
+				"line" : 405,
+				"parent" : 187
+			},
+			{
+				"command" : 33,
+				"file" : 0,
+				"line" : 2625,
+				"parent" : 188
+			},
+			{
+				"command" : 31,
+				"file" : 0,
+				"line" : 2165,
+				"parent" : 189
+			},
+			{
+				"command" : 34,
+				"file" : 0,
+				"line" : 873,
+				"parent" : 74
+			},
+			{
+				"command" : 31,
+				"file" : 0,
+				"line" : 2290,
+				"parent" : 191
+			}
+		]
+	},
+	"codemodelVersion" : 
+	{
+		"major" : 2,
+		"minor" : 10
+	},
+	"compileDependencies" : 
+	[
+		{
+			"backtrace" : 39,
+			"id" : "Qt6::Core::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 9,
+			"id" : "Qt6::Qml::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 82,
+			"id" : "Qt6::Qml::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 82,
+			"id" : "Qt6::Core::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 6,
+			"id" : "Qt6::Quick::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 6,
+			"id" : "Qt6::Core::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 6,
+			"id" : "Qt6::Gui::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 6,
+			"id" : "Qt6::Network::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 6,
+			"id" : "Qt6::Widgets::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 6,
+			"id" : "Qt6::Charts::@6890427a1f51a3e7e1df"
+		}
+	],
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-DQT_QML_DEBUG /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd"
+				},
+				{
+					"backtrace" : 39,
+					"fragment" : "-Zc:__cplusplus"
+				},
+				{
+					"backtrace" : 39,
+					"fragment" : "-permissive-"
+				},
+				{
+					"backtrace" : 39,
+					"fragment" : "-utf-8"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 6,
+					"define" : "QT_CHARTS_LIB"
+				},
+				{
+					"backtrace" : 39,
+					"define" : "QT_CORE_LIB"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "QT_GUI_LIB"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "QT_NETWORK_LIB"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "QT_OPENGLWIDGETS_LIB"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "QT_OPENGL_LIB"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "QT_QMLINTEGRATION_LIB"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "QT_QML_LIB"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "QT_QUICK_LIB"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "QT_WIDGETS_LIB"
+				},
+				{
+					"backtrace" : 39,
+					"define" : "UNICODE"
+				},
+				{
+					"backtrace" : 39,
+					"define" : "WIN32"
+				},
+				{
+					"backtrace" : 39,
+					"define" : "WIN64"
+				},
+				{
+					"backtrace" : 39,
+					"define" : "_ENABLE_EXTENDED_ALIGNED_STORAGE"
+				},
+				{
+					"backtrace" : 39,
+					"define" : "_UNICODE"
+				},
+				{
+					"backtrace" : 39,
+					"define" : "_WIN64"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 0,
+					"path" : "E:/project/AttendanceServer/out/build/debug/appAttendanceAdmin_autogen/include"
+				},
+				{
+					"backtrace" : 94,
+					"path" : "E:/project/AttendanceServer"
+				},
+				{
+					"backtrace" : 95,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.2/msvc2022_64/include/QtQml"
+				},
+				{
+					"backtrace" : 95,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.2/msvc2022_64/include"
+				},
+				{
+					"backtrace" : 95,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.2/msvc2022_64/include/QtCore"
+				},
+				{
+					"backtrace" : 95,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.2/msvc2022_64/mkspecs/win32-msvc"
+				},
+				{
+					"backtrace" : 95,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.2/msvc2022_64/include/QtQmlIntegration"
+				},
+				{
+					"backtrace" : 95,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.2/msvc2022_64/include/QtNetwork"
+				},
+				{
+					"backtrace" : 6,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.2/msvc2022_64/include/QtQuick"
+				},
+				{
+					"backtrace" : 6,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.2/msvc2022_64/include/QtGui"
+				},
+				{
+					"backtrace" : 6,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.2/msvc2022_64/include/QtOpenGL"
+				},
+				{
+					"backtrace" : 6,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.2/msvc2022_64/include/QtWidgets"
+				},
+				{
+					"backtrace" : 6,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.2/msvc2022_64/include/QtCharts"
+				},
+				{
+					"backtrace" : 6,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.2/msvc2022_64/include/QtOpenGLWidgets"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					39
+				],
+				"standard" : "17"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				4,
+				6,
+				8,
+				10,
+				12,
+				15,
+				17,
+				19,
+				21,
+				23,
+				25,
+				27,
+				29,
+				31,
+				33,
+				35,
+				36,
+				38,
+				40,
+				42,
+				44,
+				46,
+				48,
+				50,
+				52,
+				54,
+				56,
+				58,
+				60,
+				62,
+				64,
+				66,
+				68,
+				70,
+				72,
+				74,
+				76,
+				78,
+				80,
+				82,
+				84,
+				86,
+				88,
+				90,
+				92,
+				94,
+				96,
+				98,
+				100,
+				102,
+				104,
+				106,
+				108,
+				110,
+				112,
+				114,
+				115,
+				116
+			]
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-DQT_QML_DEBUG /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd"
+				},
+				{
+					"backtrace" : 39,
+					"fragment" : "-Zc:__cplusplus"
+				},
+				{
+					"backtrace" : 39,
+					"fragment" : "-permissive-"
+				},
+				{
+					"backtrace" : 39,
+					"fragment" : "-utf-8"
+				},
+				{
+					"backtrace" : 98,
+					"fragment" : "/bigobj"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 6,
+					"define" : "QT_CHARTS_LIB"
+				},
+				{
+					"backtrace" : 39,
+					"define" : "QT_CORE_LIB"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "QT_GUI_LIB"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "QT_NETWORK_LIB"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "QT_OPENGLWIDGETS_LIB"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "QT_OPENGL_LIB"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "QT_QMLINTEGRATION_LIB"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "QT_QML_LIB"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "QT_QUICK_LIB"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "QT_WIDGETS_LIB"
+				},
+				{
+					"backtrace" : 39,
+					"define" : "UNICODE"
+				},
+				{
+					"backtrace" : 39,
+					"define" : "WIN32"
+				},
+				{
+					"backtrace" : 39,
+					"define" : "WIN64"
+				},
+				{
+					"backtrace" : 39,
+					"define" : "_ENABLE_EXTENDED_ALIGNED_STORAGE"
+				},
+				{
+					"backtrace" : 39,
+					"define" : "_UNICODE"
+				},
+				{
+					"backtrace" : 39,
+					"define" : "_WIN64"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 0,
+					"path" : "E:/project/AttendanceServer/out/build/debug/appAttendanceAdmin_autogen/include"
+				},
+				{
+					"backtrace" : 94,
+					"path" : "E:/project/AttendanceServer"
+				},
+				{
+					"backtrace" : 95,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.2/msvc2022_64/include/QtQml"
+				},
+				{
+					"backtrace" : 95,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.2/msvc2022_64/include"
+				},
+				{
+					"backtrace" : 95,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.2/msvc2022_64/include/QtCore"
+				},
+				{
+					"backtrace" : 95,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.2/msvc2022_64/mkspecs/win32-msvc"
+				},
+				{
+					"backtrace" : 95,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.2/msvc2022_64/include/QtQmlIntegration"
+				},
+				{
+					"backtrace" : 95,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.2/msvc2022_64/include/QtNetwork"
+				},
+				{
+					"backtrace" : 6,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.2/msvc2022_64/include/QtQuick"
+				},
+				{
+					"backtrace" : 6,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.2/msvc2022_64/include/QtGui"
+				},
+				{
+					"backtrace" : 6,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.2/msvc2022_64/include/QtOpenGL"
+				},
+				{
+					"backtrace" : 6,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.2/msvc2022_64/include/QtWidgets"
+				},
+				{
+					"backtrace" : 6,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.2/msvc2022_64/include/QtCharts"
+				},
+				{
+					"backtrace" : 6,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.2/msvc2022_64/include/QtOpenGLWidgets"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					39
+				],
+				"standard" : "17"
+			},
+			"sourceIndexes" : 
+			[
+				3
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 68,
+			"id" : "appAttendanceAdmin_copy_qml::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 70,
+			"id" : "appAttendanceAdmin_copy_res::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 73,
+			"id" : "generate_qmlls_build_ini_file::@6890427a1f51a3e7e1df"
+		},
+		{
+			"id" : "appAttendanceAdmin_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 79,
+			"id" : "appAttendanceAdmin_qmlimportscan::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "appAttendanceAdmin_autogen::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "appAttendanceAdmin::@6890427a1f51a3e7e1df",
+	"install" : 
+	{
+		"destinations" : 
+		[
+			{
+				"backtrace" : 5,
+				"path" : "bin"
+			}
+		],
+		"prefix" : 
+		{
+			"path" : "C:/Program Files (x86)/AttendanceAdmin"
+		}
+	},
+	"interfaceSources" : 
+	[
+		{
+			"isGenerated" : true,
+			"path" : "out/build/debug/meta_types/qt6appattendanceadmin_metatypes.json",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-DQT_QML_DEBUG /Zi /Ob0 /Od /RTC1 -MDd",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "/machine:x64 /debug /INCREMENTAL",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "/subsystem:windows",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "C:\\Qt\\6.10.2\\msvc2022_64\\lib\\Qt6Quickd.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "C:\\Qt\\6.10.2\\msvc2022_64\\lib\\Qt6Chartsd.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 9,
+				"fragment" : "C:\\Qt\\6.10.2\\msvc2022_64\\lib\\Qt6Qmld.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "C:\\Qt\\6.10.2\\msvc2022_64\\lib\\Qt6Networkd.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 30,
+				"fragment" : "ws2_32.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 33,
+				"fragment" : "user32.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 38,
+				"fragment" : "C:\\Qt\\6.10.2\\msvc2022_64\\lib\\Qt6OpenGLWidgetsd.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "C:\\Qt\\6.10.2\\msvc2022_64\\lib\\Qt6Widgetsd.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 33,
+				"fragment" : "C:\\Qt\\6.10.2\\msvc2022_64\\lib\\Qt6OpenGLd.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "C:\\Qt\\6.10.2\\msvc2022_64\\lib\\Qt6Guid.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 39,
+				"fragment" : "C:\\Qt\\6.10.2\\msvc2022_64\\lib\\Qt6Cored.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 46,
+				"fragment" : "mpr.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 46,
+				"fragment" : "userenv.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 56,
+				"fragment" : "C:\\Qt\\6.10.2\\msvc2022_64\\lib\\Qt6EntryPointd.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 59,
+				"fragment" : "shell32.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 66,
+				"fragment" : "d3d11.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 66,
+				"fragment" : "dxgi.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 66,
+				"fragment" : "dxguid.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 66,
+				"fragment" : "d3d12.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"linkLibraries" : 
+	[
+		{
+			"backtrace" : 39,
+			"id" : "Qt6::Core::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 9,
+			"id" : "Qt6::Qml::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 82,
+			"id" : "Qt6::Qml::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 82,
+			"id" : "Qt6::Core::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 6,
+			"id" : "Qt6::Quick::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 6,
+			"id" : "Qt6::Core::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 6,
+			"id" : "Qt6::Gui::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 6,
+			"id" : "Qt6::Network::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 6,
+			"id" : "Qt6::Widgets::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 6,
+			"id" : "Qt6::Charts::@6890427a1f51a3e7e1df"
+		}
+	],
+	"name" : "appAttendanceAdmin",
+	"nameOnDisk" : "appAttendanceAdmin.exe",
+	"orderDependencies" : 
+	[
+		{
+			"backtrace" : 84,
+			"id" : "Qt6::qmltyperegistrar::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 85,
+			"id" : "Qt6::qmlcachegen::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 88,
+			"id" : "Qt6::rcc::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 90,
+			"id" : "Qt6::cmake_automoc_parser::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 91,
+			"id" : "Qt6::moc::@6890427a1f51a3e7e1df"
+		},
+		{
+			"id" : "Qt6::uic::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 93,
+			"id" : "appAttendanceAdmin_tooling::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 73,
+			"id" : "generate_qmlls_build_ini_file::@6890427a1f51a3e7e1df"
+		},
+		{
+			"id" : "appAttendanceAdmin_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 79,
+			"id" : "appAttendanceAdmin_qmlimportscan::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "appAttendanceAdmin_autogen::@6890427a1f51a3e7e1df"
+		}
+	],
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"interfaceSourceIndexes" : 
+			[
+				0
+			],
+			"name" : "Source Files\\Generated",
+			"sourceIndexes" : 
+			[
+				0,
+				2,
+				3,
+				4,
+				35,
+				36,
+				38,
+				40,
+				42,
+				44,
+				46,
+				48,
+				50,
+				52,
+				54,
+				56,
+				58,
+				60,
+				62,
+				64,
+				66,
+				68,
+				70,
+				72,
+				74,
+				76,
+				78,
+				80,
+				82,
+				84,
+				86,
+				88,
+				90,
+				92,
+				94,
+				96,
+				98,
+				100,
+				102,
+				104,
+				106,
+				108,
+				110,
+				112,
+				114,
+				115,
+				116,
+				117,
+				119,
+				120,
+				126,
+				175,
+				176,
+				177,
+				178,
+				179,
+				180,
+				181,
+				182,
+				183
+			]
+		},
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				1,
+				6,
+				8,
+				10,
+				12,
+				15,
+				17,
+				19,
+				21,
+				23,
+				25,
+				27,
+				29,
+				31,
+				33,
+				34,
+				37,
+				39,
+				41,
+				43,
+				45,
+				47,
+				49,
+				51,
+				53,
+				55,
+				57,
+				59,
+				61,
+				63,
+				65,
+				67,
+				69,
+				71,
+				73,
+				75,
+				77,
+				79,
+				81,
+				83,
+				85,
+				87,
+				89,
+				91,
+				93,
+				95,
+				97,
+				99,
+				101,
+				103,
+				105,
+				107,
+				109,
+				111,
+				113
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				5,
+				7,
+				9,
+				11,
+				13,
+				14,
+				16,
+				18,
+				20,
+				22,
+				24,
+				26,
+				28,
+				30,
+				32
+			]
+		},
+		{
+			"name" : "Resources",
+			"sourceIndexes" : 
+			[
+				118,
+				121,
+				122,
+				123,
+				124,
+				125
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				127,
+				128,
+				129,
+				130,
+				131,
+				132,
+				133,
+				134,
+				135,
+				136,
+				137,
+				138,
+				139,
+				140,
+				141,
+				142,
+				143,
+				144,
+				145,
+				146,
+				147,
+				148,
+				149,
+				150,
+				151,
+				152,
+				153,
+				154,
+				155,
+				156,
+				157,
+				158,
+				159,
+				160,
+				161,
+				162,
+				163,
+				164,
+				165,
+				166,
+				167,
+				168,
+				169,
+				170,
+				171,
+				172,
+				173,
+				174
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/appAttendanceAdmin_autogen/mocs_compilation.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "main.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 96,
+			"isGenerated" : true,
+			"path" : "out/build/debug/meta_types/qt6appattendanceadmin_metatypes.json.gen",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 97,
+			"compileGroupIndex" : 1,
+			"isGenerated" : true,
+			"path" : "out/build/debug/appattendanceadmin_qmltyperegistrations.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 100,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.qt/rcc/qrc_qmake_AttendanceAdmin.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 101,
+			"path" : "src/Models/Person.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 101,
+			"compileGroupIndex" : 0,
+			"path" : "src/Models/Person.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 101,
+			"path" : "src/Models/attendancerecord.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 101,
+			"compileGroupIndex" : 0,
+			"path" : "src/Models/attendancerecord.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 101,
+			"path" : "src/Models/device.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 101,
+			"compileGroupIndex" : 0,
+			"path" : "src/Models/device.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 101,
+			"path" : "src/Models/faceData.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 101,
+			"compileGroupIndex" : 0,
+			"path" : "src/Models/faceData.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 101,
+			"path" : "src/Protocol/protocol.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 101,
+			"path" : "src/Network/TcpConnectionManager.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 101,
+			"compileGroupIndex" : 0,
+			"path" : "src/Network/TcpConnectionManager.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 101,
+			"path" : "src/Auth/SessionManager.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 101,
+			"compileGroupIndex" : 0,
+			"path" : "src/Auth/SessionManager.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 101,
+			"path" : "src/Person/PersonServer.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 101,
+			"compileGroupIndex" : 0,
+			"path" : "src/Person/PersonServer.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 101,
+			"path" : "src/Attendance/AttendanceService.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 101,
+			"compileGroupIndex" : 0,
+			"path" : "src/Attendance/AttendanceService.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 101,
+			"path" : "src/Rbac/RbacServer.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 101,
+			"compileGroupIndex" : 0,
+			"path" : "src/Rbac/RbacServer.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 101,
+			"path" : "src/Event/EventSubscriptionService.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 101,
+			"compileGroupIndex" : 0,
+			"path" : "src/Event/EventSubscriptionService.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 101,
+			"path" : "src/Face/FaceServer.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 101,
+			"compileGroupIndex" : 0,
+			"path" : "src/Face/FaceServer.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 101,
+			"path" : "src/Device/DeviceServer.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 101,
+			"compileGroupIndex" : 0,
+			"path" : "src/Device/DeviceServer.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 101,
+			"path" : "src/Config/ConfigDeployServer.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 101,
+			"compileGroupIndex" : 0,
+			"path" : "src/Config/ConfigDeployServer.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 101,
+			"path" : "src/User/UserServer.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 101,
+			"compileGroupIndex" : 0,
+			"path" : "src/User/UserServer.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 102,
+			"path" : "ui/Main.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 103,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_qmlcache_loader.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 104,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/Main_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 105,
+			"path" : "ui/LoginPage.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 106,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/LoginPage_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 107,
+			"path" : "ui/theme/Theme.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 108,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/theme/Theme_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 109,
+			"path" : "ui/models/Logger.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 110,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/models/Logger_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 111,
+			"path" : "ui/models/History.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 112,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/models/History_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 113,
+			"path" : "ui/models/Presets.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 114,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/models/Presets_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 115,
+			"path" : "ui/models/ErrorCatalog.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 116,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/models/ErrorCatalog_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 117,
+			"path" : "ui/models/PermissionCatalog.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 118,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/models/PermissionCatalog_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 119,
+			"path" : "ui/models/PushFeed.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 120,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/models/PushFeed_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 121,
+			"path" : "ui/components/Card.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 122,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/Card_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 123,
+			"path" : "ui/components/BusyOverlay.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 124,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/BusyOverlay_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 125,
+			"path" : "ui/components/SideBar.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 126,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/SideBar_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 127,
+			"path" : "ui/components/StatusBar.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 128,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/StatusBar_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 129,
+			"path" : "ui/components/BadgeStatus.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 130,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/BadgeStatus_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 131,
+			"path" : "ui/components/LabeledField.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 132,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/LabeledField_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 133,
+			"path" : "ui/components/ToolBarRow.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 134,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/ToolBarRow_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 135,
+			"path" : "ui/components/JsonEditor.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 136,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/JsonEditor_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 137,
+			"path" : "ui/components/JsonViewer.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 138,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/JsonViewer_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 139,
+			"path" : "ui/components/DataTable.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 140,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/DataTable_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 141,
+			"path" : "ui/components/LogPanel.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 142,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/LogPanel_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 143,
+			"path" : "ui/components/ConfirmDialog.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 144,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/ConfirmDialog_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 145,
+			"path" : "ui/components/LoginServerSettingsDialog.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 146,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/LoginServerSettingsDialog_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 147,
+			"path" : "ui/components/WindowCaptionButtons.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 148,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/WindowCaptionButtons_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 149,
+			"path" : "ui/components/PermissionButton.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 150,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/PermissionButton_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 151,
+			"path" : "ui/components/PermissionDeniedDialog.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 152,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/PermissionDeniedDialog_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 153,
+			"path" : "ui/components/PermissionChipRow.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 154,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/PermissionChipRow_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 155,
+			"path" : "ui/components/PageAccessPlaceholder.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 156,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/PageAccessPlaceholder_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 157,
+			"path" : "ui/components/AttendanceStatusPieChart.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 158,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/AttendanceStatusPieChart_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 159,
+			"path" : "ui/components/PageHost.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 160,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/PageHost_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 161,
+			"path" : "ui/pages/PageDashboard.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 162,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/pages/PageDashboard_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 163,
+			"path" : "ui/pages/PagePerson.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 164,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/pages/PagePerson_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 165,
+			"path" : "ui/pages/PageDevice.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 166,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/pages/PageDevice_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 167,
+			"path" : "ui/pages/PageConfigDeploy.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 168,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/pages/PageConfigDeploy_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 169,
+			"path" : "ui/pages/PageAttendance.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 170,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/pages/PageAttendance_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 171,
+			"path" : "ui/pages/PageFace.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 172,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/pages/PageFace_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 173,
+			"path" : "ui/pages/PageHistory.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 174,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/pages/PageHistory_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 175,
+			"path" : "ui/pages/PageSettings.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 176,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/pages/PageSettings_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 177,
+			"path" : "ui/pages/PageUser.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 178,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/pages/PageUser_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 179,
+			"path" : "ui/pages/PageRbac.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 180,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/pages/PageRbac_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 181,
+			"path" : "ui/pages/PageEvents.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 182,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/pages/PageEvents_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 186,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.qt/rcc/qrc_appAttendanceAdmin_raw_qml_0.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 190,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.qt/rcc/qrc_appAttendanceAdmin_raw_qml_0_extra_qmldirs.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 192,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.qt/rcc/qmake_AttendanceAdmin.qrc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 192,
+			"isGenerated" : true,
+			"path" : "out/build/debug/AttendanceAdmin/qmldir",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 192,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.qt/rcc/appAttendanceAdmin_raw_qml_0.qrc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 192,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.qt/rcc/appAttendanceAdmin_raw_qml_0_extra_qmldirs.qrc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 192,
+			"isGenerated" : true,
+			"path" : "out/build/debug/AttendanceAdmin/ui/qmldir",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 192,
+			"isGenerated" : true,
+			"path" : "out/build/debug/AttendanceAdmin/ui/theme/qmldir",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 192,
+			"isGenerated" : true,
+			"path" : "out/build/debug/AttendanceAdmin/ui/models/qmldir",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 192,
+			"isGenerated" : true,
+			"path" : "out/build/debug/AttendanceAdmin/ui/components/qmldir",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 192,
+			"isGenerated" : true,
+			"path" : "out/build/debug/AttendanceAdmin/ui/pages/qmldir",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/appAttendanceAdmin_autogen/timestamp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/meta_types/qt6appattendanceadmin_metatypes.json.gen.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/appattendanceadmin_qmltyperegistrations.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.qt/rcc/qrc_qmake_AttendanceAdmin.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_qmlcache_loader.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/Main_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/LoginPage_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/theme/Theme_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/models/Logger_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/models/History_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/models/Presets_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/models/ErrorCatalog_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/models/PermissionCatalog_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/models/PushFeed_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/Card_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/BusyOverlay_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/SideBar_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/StatusBar_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/BadgeStatus_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/LabeledField_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/ToolBarRow_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/JsonEditor_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/JsonViewer_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/DataTable_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/LogPanel_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/ConfirmDialog_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/LoginServerSettingsDialog_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/WindowCaptionButtons_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/PermissionButton_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/PermissionDeniedDialog_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/PermissionChipRow_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/PageAccessPlaceholder_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/AttendanceStatusPieChart_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/components/PageHost_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/pages/PageDashboard_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/pages/PagePerson_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/pages/PageDevice_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/pages/PageConfigDeploy_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/pages/PageAttendance_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/pages/PageFace_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/pages/PageHistory_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/pages/PageSettings_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/pages/PageUser_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/pages/PageRbac_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.rcc/qmlcache/appAttendanceAdmin_ui/pages/PageEvents_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.qt/rcc/qrc_appAttendanceAdmin_raw_qml_0.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/.qt/rcc/qrc_appAttendanceAdmin_raw_qml_0_extra_qmldirs.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/appAttendanceAdmin_autogen/timestamp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "out/build/debug/meta_types/appAttendanceAdmin_json_file_list.txt.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 39,
+			"path" : "C:/Qt/6.10.2/msvc2022_64/metatypes/qt6core_metatypes.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"path" : "C:/Qt/6.10.2/msvc2022_64/metatypes/qt6qml_metatypes.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"path" : "C:/Qt/6.10.2/msvc2022_64/metatypes/qt6network_metatypes.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"path" : "C:/Qt/6.10.2/msvc2022_64/metatypes/qt6quick_metatypes.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"path" : "C:/Qt/6.10.2/msvc2022_64/metatypes/qt6gui_metatypes.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"path" : "C:/Qt/6.10.2/msvc2022_64/metatypes/qt6opengl_metatypes.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"path" : "C:/Qt/6.10.2/msvc2022_64/metatypes/qt6widgets_metatypes.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"path" : "C:/Qt/6.10.2/msvc2022_64/metatypes/qt6charts_metatypes.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"path" : "C:/Qt/6.10.2/msvc2022_64/metatypes/qt6openglwidgets_metatypes.json",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}

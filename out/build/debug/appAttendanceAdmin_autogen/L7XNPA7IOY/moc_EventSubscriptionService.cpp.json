@@ -1,0 +1,171 @@
+{
+    "classes": [
+        {
+            "className": "EventSubscriptionService",
+            "lineNumber": 12,
+            "methods": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "topice",
+                            "type": "QStringList"
+                        }
+                    ],
+                    "index": 7,
+                    "lineNumber": 25,
+                    "name": "subscribe",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "topice",
+                            "type": "QStringList"
+                        }
+                    ],
+                    "index": 8,
+                    "lineNumber": 26,
+                    "name": "unsubscribe",
+                    "returnType": "void"
+                }
+            ],
+            "object": true,
+            "properties": [
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 0,
+                    "lineNumber": 15,
+                    "name": "busy",
+                    "notify": "busyChanged",
+                    "read": "busy",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "bool",
+                    "user": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 1,
+                    "lineNumber": 16,
+                    "name": "subscribedTopics",
+                    "notify": "subscribedTopicsChanged",
+                    "read": "subscribedTopics",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "QStringList",
+                    "user": false
+                }
+            ],
+            "qualifiedClassName": "EventSubscriptionService",
+            "signals": [
+                {
+                    "access": "public",
+                    "index": 0,
+                    "lineNumber": 29,
+                    "name": "busyChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 1,
+                    "lineNumber": 30,
+                    "name": "subscribedTopicsChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "apiType",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "message",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 2,
+                    "lineNumber": 32,
+                    "name": "operationSucceeded",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "apiType",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "code",
+                            "type": "int"
+                        },
+                        {
+                            "name": "message",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 3,
+                    "lineNumber": 33,
+                    "name": "operationFailed",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "messageType",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "data",
+                            "type": "QVariantMap"
+                        }
+                    ],
+                    "index": 4,
+                    "lineNumber": 36,
+                    "name": "serverPushReceived",
+                    "returnType": "void"
+                }
+            ],
+            "slots": [
+                {
+                    "access": "private",
+                    "arguments": [
+                        {
+                            "name": "messageType",
+                            "type": "QJsonObject"
+                        }
+                    ],
+                    "index": 5,
+                    "lineNumber": 39,
+                    "name": "onTcpMessageReceived",
+                    "returnType": "void"
+                },
+                {
+                    "access": "private",
+                    "index": 6,
+                    "lineNumber": 40,
+                    "name": "onAuthenticatedChanged",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "EventSubscriptionService.h",
+    "outputRevision": 69
+}

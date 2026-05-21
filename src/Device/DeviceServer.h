@@ -32,6 +32,7 @@ public:
                                   const QString &ipAddress,
                                   const QString &status);
     Q_INVOKABLE void deleteDevice(const QString &deviceId);
+    Q_INVOKABLE void approveDevice(const QString &deviceId);
     Q_INVOKABLE void sendCommand(const QString &deviceId,
                                  const QString &command,
                                  const QString &paramsJson);

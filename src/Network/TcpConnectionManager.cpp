@@ -200,12 +200,15 @@ void TcpConnectionManager::onSocketDisconnected()
     m_readBuffer.clear();
     m_binaryExpectedBytes = 0;
 
+    // 在 setState(Disconnected) 之前保存，因为 setState 会清空 m_sessionToken
+    const bool wasAuthenticated = !m_sessionToken.isEmpty();
+
     if (m_state >= ConnectionState::Connected) {
         setState(ConnectionState::Disconnected);
     }
 
     // 如果之前已认证过，尝试自动重连
-    if (!m_sessionToken.isEmpty()) {
+    if (wasAuthenticated) {
         scheduleReconnect();
     }
 }
@@ -267,8 +270,10 @@ void TcpConnectionManager::onSocketErrorOccurred(QAbstractSocket::SocketError er
     emit errorOccurred(m_socket->errorString());
 
     if (m_state == ConnectionState::Connecting) {
+        // 必须在 setState 之前保存，因为 setState(Disconnected) 会清空 m_sessionToken
+        const bool wasAuthenticated = !m_sessionToken.isEmpty();
         setState(ConnectionState::Disconnected);
-        if (!m_sessionToken.isEmpty()) {
+        if (wasAuthenticated) {
             scheduleReconnect();
         }
     }

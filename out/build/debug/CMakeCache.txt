@@ -15,23 +15,23 @@
 ########################
 
 //Value Computed by CMake
-AttendanceServer_BINARY_DIR:STATIC=E:/project/AttendanceServer/out/build/debug
+AttendanceAdmin_BINARY_DIR:STATIC=E:/project/AttendanceServer/out/build/debug
 
 //Value Computed by CMake
-AttendanceServer_IS_TOP_LEVEL:STATIC=ON
+AttendanceAdmin_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-AttendanceServer_SOURCE_DIR:STATIC=E:/project/AttendanceServer
+AttendanceAdmin_SOURCE_DIR:STATIC=E:/project/AttendanceServer
 
 //Path to a program.
-CMAKE_AR:FILEPATH=C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/lib.exe
+CMAKE_AR:FILEPATH=C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/lib.exe
 
 //Choose the type of build, options are: None Debug Release RelWithDebInfo
 // MinSizeRel ...
 CMAKE_BUILD_TYPE:STRING=Debug
 
 //CXX compiler
-CMAKE_CXX_COMPILER:STRING=C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe
+CMAKE_CXX_COMPILER:STRING=C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe
 
 //Flags used by the CXX compiler during all build types.
 CMAKE_CXX_FLAGS:STRING=-DQT_QML_DEBUG
@@ -112,7 +112,7 @@ CMAKE_INSTALL_MANDIR:PATH=
 CMAKE_INSTALL_OLDINCLUDEDIR:PATH=/usr/include
 
 //Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/AttendanceServer
+CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/AttendanceAdmin
 
 //Run-time variable data (LOCALSTATEDIR/run)
 CMAKE_INSTALL_RUNSTATEDIR:PATH=
@@ -127,7 +127,7 @@ CMAKE_INSTALL_SHAREDSTATEDIR:PATH=com
 CMAKE_INSTALL_SYSCONFDIR:PATH=etc
 
 //Path to a program.
-CMAKE_LINKER:FILEPATH=C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/link.exe
+CMAKE_LINKER:FILEPATH=C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/link.exe
 
 //make program
 CMAKE_MAKE_PROGRAM:FILEPATH=C:/PROGRA~1/MIB055~1/18/Insiders/Common7/IDE/COMMON~1/MICROS~1/CMake/Ninja/ninja.exe
@@ -168,7 +168,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=AttendanceServer
+CMAKE_PROJECT_NAME:STATIC=AttendanceAdmin
 
 //Value Computed by CMake
 CMAKE_PROJECT_SPDX_LICENSE:STATIC=
@@ -266,6 +266,9 @@ QT_ADDITIONAL_HOST_PACKAGES_PREFIX_PATH:STRING=
 //Additional directories where find(Qt6 ...) components are searched
 QT_ADDITIONAL_PACKAGES_PREFIX_PATH:STRING=
 
+//The directory containing a CMake configuration file for Qt6Charts.
+Qt6Charts_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Charts
+
 //The directory containing a CMake configuration file for Qt6Concurrent.
 Qt6Concurrent_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Concurrent
 
@@ -289,6 +292,9 @@ Qt6Gui_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Gui
 
 //The directory containing a CMake configuration file for Qt6Network.
 Qt6Network_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Network
+
+//The directory containing a CMake configuration file for Qt6OpenGLWidgets.
+Qt6OpenGLWidgets_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6OpenGLWidgets
 
 //The directory containing a CMake configuration file for Qt6OpenGL.
 Qt6OpenGL_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6OpenGL
@@ -322,9 +328,6 @@ Qt6QuickTools_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6QuickTools
 
 //The directory containing a CMake configuration file for Qt6Quick.
 Qt6Quick_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Quick
-
-//The directory containing a CMake configuration file for Qt6Sql.
-Qt6Sql_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Sql
 
 //The directory containing a CMake configuration file for Qt6WidgetsTools.
 Qt6WidgetsTools_DIR:PATH=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6WidgetsTools
@@ -458,8 +461,6 @@ CMAKE_INSTALL_SYSCONFDIR-ADVANCED:INTERNAL=1
 CMAKE_LINKER-ADVANCED:INTERNAL=1
 //Name of CMakeLists files to read
 CMAKE_LIST_FILE_NAME:INTERNAL=CMakeLists.txt
-//ADVANCED property for variable: CMAKE_MAKE_PROGRAM
-CMAKE_MAKE_PROGRAM-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS
 CMAKE_MODULE_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS_DEBUG
@@ -589,6 +590,24 @@ QT_FEATURE_calendarwidget:INTERNAL=ON
 QT_FEATURE_cborstreamreader:INTERNAL=ON
 //Qt feature: cborstreamwriter (from target Qt6::Core)
 QT_FEATURE_cborstreamwriter:INTERNAL=ON
+//Qt feature: charts_area_chart (from target Qt6::Charts)
+QT_FEATURE_charts_area_chart:INTERNAL=ON
+//Qt feature: charts_bar_chart (from target Qt6::Charts)
+QT_FEATURE_charts_bar_chart:INTERNAL=ON
+//Qt feature: charts_boxplot_chart (from target Qt6::Charts)
+QT_FEATURE_charts_boxplot_chart:INTERNAL=ON
+//Qt feature: charts_candlestick_chart (from target Qt6::Charts)
+QT_FEATURE_charts_candlestick_chart:INTERNAL=ON
+//Qt feature: charts_datetime_axis (from target Qt6::Charts)
+QT_FEATURE_charts_datetime_axis:INTERNAL=ON
+//Qt feature: charts_line_chart (from target Qt6::Charts)
+QT_FEATURE_charts_line_chart:INTERNAL=ON
+//Qt feature: charts_pie_chart (from target Qt6::Charts)
+QT_FEATURE_charts_pie_chart:INTERNAL=ON
+//Qt feature: charts_scatter_chart (from target Qt6::Charts)
+QT_FEATURE_charts_scatter_chart:INTERNAL=ON
+//Qt feature: charts_spline_chart (from target Qt6::Charts)
+QT_FEATURE_charts_spline_chart:INTERNAL=ON
 //Qt feature: checkbox (from target Qt6::Widgets)
 QT_FEATURE_checkbox:INTERNAL=ON
 //Qt feature: clipboard (from target Qt6::Gui)
@@ -1224,8 +1243,6 @@ QT_FEATURE_splashscreen:INTERNAL=ON
 QT_FEATURE_splitter:INTERNAL=ON
 //Qt feature: sql (from target Qt6::Core)
 QT_FEATURE_sql:INTERNAL=ON
-//Qt feature: sqlmodel (from target Qt6::Sql)
-QT_FEATURE_sqlmodel:INTERNAL=ON
 //Qt feature: sse2 (from target Qt6::Core)
 QT_FEATURE_sse2:INTERNAL=ON
 //Qt feature: sse3 (from target Qt6::Core)
@@ -1505,6 +1522,6 @@ Vulkan_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Vulkan_LIBRARY
 Vulkan_LIBRARY-ADVANCED:INTERNAL=1
 //CMAKE_INSTALL_PREFIX during last run
-_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=C:/Program Files (x86)/AttendanceServer
+_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=C:/Program Files (x86)/AttendanceAdmin
 __qt_qml_macros_module_base_dir:INTERNAL=C:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6Qml
 

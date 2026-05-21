@@ -190,6 +190,41 @@ void DeviceServer::deleteDevice(const QString &deviceId)
     });
 }
 
+void DeviceServer::approveDevice(const QString &deviceId)
+{
+    if (!m_tcp || !m_tcp->isAuthenticated()) {
+        emit operationFailed(kDeviceAuthApprove, -1, QStringLiteral("未连接或未认证"));
+        return;
+    }
+
+    if (deviceId.trimmed().isEmpty()) {
+        emit operationFailed(kDeviceAuthApprove, -1, QStringLiteral("请选择待认证设备"));
+        return;
+    }
+
+    QJsonObject data;
+    data[kDeviceId] = deviceId.trimmed();
+
+    QJsonObject msg;
+    msg[kType] = kDeviceAuthApprove;
+    msg[kData] = data;
+
+    setBusy(true);
+    m_tcp->sendMessage(msg, [this](const QJsonObject &resp) {
+        setBusy(false);
+        if (resp.isEmpty()) {
+            emit operationFailed(kDeviceAuthApprove, -1, QStringLiteral("请求超时"));
+            return;
+        }
+        const int code = resp.value(kCode).toInt(-1);
+        const QString text = resp.value(kMsg).toString();
+        if (code == ErrorCode::kSuccess)
+            emit operationSucceeded(kDeviceAuthApprove, text.isEmpty() ? QStringLiteral("ok") : text);
+        else
+            emit operationFailed(kDeviceAuthApprove, code, text);
+    });
+}
+
 void DeviceServer::sendCommand(const QString &deviceId,
                                const QString &command,
                                const QString &paramsJson)

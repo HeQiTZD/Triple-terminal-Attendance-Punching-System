@@ -58,6 +58,7 @@ inline const QString kDeviceUpdate   = QStringLiteral("device.update");
 inline const QString kDeviceDelete   = QStringLiteral("device.delete");
 inline const QString kDeviceCommand  = QStringLiteral("device.command");
 inline const QString kDeviceStatus   = QStringLiteral("device.status");
+inline const QString kDeviceAuthApprove = QStringLiteral("device.auth.approve");
 
 // ── config deploy ──
 inline const QString kConfigDeploy         = QStringLiteral("config.deploy");
