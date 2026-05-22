@@ -7,6 +7,7 @@
 #include "Attendance/AttendanceConfigSyncHandler.h"
 #include "UI/facevideowidget.h"
 #include <QCloseEvent>
+#include <QMessageBox>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -94,6 +95,22 @@ void MainWindow::initNetworkClient()
     m_networkThread = new QThread(this);
     networkClient->moveToThread(m_networkThread);
     m_networkThread->start();
+
+    // 新增：处理设备待审核信号
+    connect(networkClient, &Networkclient::devicePendingAuth,
+            this, [this]() {
+                // 显示待审核提示
+                QMessageBox::information(this, tr("设备待审核"),
+                    tr("设备正在等待管理员审核，请稍后重试。\n\n"
+                       "请联系管理员在管理端进行设备认证。"));
+
+                // 设置定时重试（30秒后重新连接）
+                QTimer::singleShot(30000, this, [this]() {
+                    if (networkClient && !networkClient->isAuthenticated()) {
+                        startNetworkConnection();
+                    }
+                });
+            }, Qt::QueuedConnection);
 }
 
 //启动网络连接（在信号连接之后调用）
@@ -151,6 +168,20 @@ void MainWindow::init()
         }, Qt::QueuedConnection);
     });
     connect(m_commandHandler, &CommandHandler::resyncRequested, m_syncManager, &SyncManager::requestSync);
+
+    // 远程配置应用后，检测 DeviceKey 是否变更，若变更则重连
+    connect(m_commandHandler, &CommandHandler::configApplied, this, [=](const QString &) {
+        // 重新加载设备密钥，若密钥已变更则触发重连以验证
+        ConfigManager *cfg = ConfigManager::instance();
+        const QString newKey = cfg->getDeviceKey();
+        if (newKey != networkClient->deviceKey() && !newKey.isEmpty()) {
+            qDebug() << "Config applied: DeviceKey changed, scheduling reconnect";
+            networkClient->setDeviceKey(newKey);
+            QMetaObject::invokeMethod(networkClient, [=]() {
+                networkClient->scheduleReconnect();
+            }, Qt::QueuedConnection);
+        }
+    });
 
     // AttendanceReporter
     m_attendanceReporter = new AttendanceReporter(this);
