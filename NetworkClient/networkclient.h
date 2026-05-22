@@ -16,6 +16,8 @@
 
 #include "../LocalStorage/localstorage.h"
 #include "../FaceRecognition/facedatabasemanager.h"
+#include "../Auth/tokenmanager.h"
+#include "../Auth/tokenrefresher.h"
 
 class Networkclient : public QObject
 {
@@ -61,6 +63,9 @@ public:
     void setDeviceName(const QString& name) { m_deviceName = name; }
     QString deviceName() const { return m_deviceName; }
 
+    // JWT 令牌
+    TokenManager* tokenManager() const { return m_tokenManager; }
+
 signals:
     // 连接状态
     void connected();
@@ -87,6 +92,9 @@ signals:
     void faceSyncBeginReceived(const QJsonObject &message);
     void faceSyncEndReceived(const QJsonObject &message);
 
+    // JWT 令牌刷新响应
+    void tokenRefreshResponse(const QJsonObject &message);
+
 private slots:
     void onConnectionConnected();
     void onConnectionDisconnected();
@@ -109,7 +117,11 @@ private:
     void handlePersonSynResponse(const QJsonObject &message);
     void handleUploadResponse(const QJsonObject &message);
     void handleServerError(const QJsonObject& message);
+    void handleTokenRefreshResponse(const QJsonObject &message);
     void sendDeviceStatusReport();
+
+    // 添加令牌到消息
+    QJsonObject addTokenToMessage(const QJsonObject &message);
 
     // ---- outbox 处理 ----
     void processOutbox();
@@ -120,6 +132,10 @@ private:
     Messagewriter      *m_writer;
     Messagereader      *m_ready;
     Messagequeue       *m_queue;
+
+    // JWT 令牌管理
+    TokenManager    *m_tokenManager;
+    TokenRefresher  *m_tokenRefresher;
 
     QString m_deviceId    = QStringLiteral("device_001");
     QString m_deviceKey;

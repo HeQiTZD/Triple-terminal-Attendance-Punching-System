@@ -276,6 +276,11 @@ void Networkclient::onConnectionDisconnected()
 
     m_heartbeat->stop();
 
+    // 停止令牌刷新器
+    if (m_tokenRefresher) {
+        m_tokenRefresher->stopAutoRefresh();
+    }
+
     if (m_ready) {
         m_ready->stop();
         m_ready->disconnect(this);
@@ -362,6 +367,9 @@ void Networkclient::onMessageReceived(const QJsonObject &message)
         qDebug() << "Networkclient: 收到远程指令";
         emit deviceCommandReceived(message);
         break;
+    case ServerProtocol::MessageType::TokenRefreshResponse:
+        handleTokenRefreshResponse(message);
+        break;
     case ServerProtocol::MessageType::Error:
         handleServerError(message);
         break;
@@ -401,18 +409,38 @@ void Networkclient::handleAuthResponse(const QJsonObject &message)
         m_isAuthenticated = true;
         m_connection->setAuthenticated(true);
 
-        // sessionToken
+        // 获取响应数据
+        const QJsonObject data = message.value(QStringLiteral("data")).toObject();
+
+        // sessionToken (兼容旧版本)
         m_sessionToken = message.value(QStringLiteral("sessionToken")).toString();
         if (m_sessionToken.isEmpty()) {
-            const QJsonObject d = message.value(QStringLiteral("data")).toObject();
-            m_sessionToken = d.value(QStringLiteral("sessionToken")).toString();
+            m_sessionToken = data.value(QStringLiteral("sessionToken")).toString();
+        }
+
+        // JWT 令牌
+        const QString accessToken = data.value(QStringLiteral("accessToken")).toString();
+        const QString refreshToken = data.value(QStringLiteral("refreshToken")).toString();
+        const int expiresIn = data.value(QStringLiteral("expiresIn")).toInt(3600);
+
+        if (!accessToken.isEmpty() && !refreshToken.isEmpty()) {
+            // 存储 JWT 令牌
+            TokenManager::TokenPair tokens;
+            tokens.accessToken = accessToken;
+            tokens.refreshToken = refreshToken;
+            tokens.expiresIn = expiresIn;
+            m_tokenManager->storeTokens(tokens);
+
+            // 启动自动刷新
+            m_tokenRefresher->startAutoRefresh();
+
+            LOG_INFO(QStringLiteral("JWT 令牌已存储, expiresIn=%1").arg(expiresIn));
         }
 
         // 心跳间隔
         int heartbeatSec = message.value(QStringLiteral("heartbeatSec")).toInt(0);
         if (heartbeatSec == 0) {
-            const QJsonObject d = message.value(QStringLiteral("data")).toObject();
-            heartbeatSec = d.value(QStringLiteral("heartbeatSec")).toInt(0);
+            heartbeatSec = data.value(QStringLiteral("heartbeatSec")).toInt(0);
         }
         if (heartbeatSec > 0)
             m_heartbeat->setHeartbeatInterval(heartbeatSec);
@@ -540,6 +568,8 @@ Networkclient::Networkclient(QObject *parent)
     , m_writer(nullptr)
     , m_ready(nullptr)
     , m_queue(new Messagequeue(this))
+    , m_tokenManager(new TokenManager(this))
+    , m_tokenRefresher(nullptr)
     , m_isOnline(false)
     , m_outboxRetryTimer(new QTimer(this))
 {
@@ -548,6 +578,10 @@ Networkclient::Networkclient(QObject *parent)
 
     setupConnections();
     loadDeviceConfig();
+
+    // 初始化令牌刷新器（延迟初始化，因为需要 this 指针）
+    m_tokenRefresher = new TokenRefresher(this, m_tokenManager, this);
+
     LOG_INFO(QStringLiteral("Networkclient 初始化完成, deviceId=%1").arg(m_deviceId));
 }
 
@@ -622,7 +656,13 @@ bool Networkclient::sendJson(const QJsonObject &message)
         qWarning() << "Networkclient::sendJson: writer 未初始化";
         return false;
     }
-    return m_writer->send(message);
+    // 自动添加 JWT 令牌（认证消息除外）
+    QJsonObject msg = message;
+    QString type = msg.value(QStringLiteral("type")).toString();
+    if (type != QStringLiteral("auth") && type != QStringLiteral("token.refresh")) {
+        msg = addTokenToMessage(msg);
+    }
+    return m_writer->send(msg);
 }
 
 // ---------------------------------------------------------------------------
@@ -857,4 +897,22 @@ void Networkclient::handleServerError(const QJsonObject &message)
     }
 
     emit uploadFinished(false, message.value(ServerProtocol::kMessage).toString());
+}
+
+void Networkclient::handleTokenRefreshResponse(const QJsonObject &message)
+{
+    qDebug() << "Networkclient: 收到令牌刷新响应";
+    emit tokenRefreshResponse(message);
+}
+
+QJsonObject Networkclient::addTokenToMessage(const QJsonObject &message)
+{
+    // 如果有 JWT 访问令牌，添加到消息中
+    QString token = m_tokenManager->accessToken();
+    if (!token.isEmpty()) {
+        QJsonObject modified = message;
+        modified[QStringLiteral("token")] = token;
+        return modified;
+    }
+    return message;
 }

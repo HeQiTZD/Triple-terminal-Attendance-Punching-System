@@ -23,6 +23,7 @@ public:
     // 连接控制
     bool connectToHost(const QString &ip, quint16 port);
     void disconnect();
+    void scheduleReconnect(); // 断开当前连接但保留自动重连能力（用于密钥更新后重连）
     bool isConnect() const;
     ConnectionState state() const;
 

@@ -76,6 +76,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         NetworkClient/messagereader.h NetworkClient/messagereader.cpp
         NetworkClient/messagequeue.h NetworkClient/messagequeue.cpp
         NetworkClient/serverprotocol.h NetworkClient/serverprotocol.cpp
+        Auth/tokenmanager.h Auth/tokenmanager.cpp
+        Auth/tokenrefresher.h Auth/tokenrefresher.cpp
         UI/setwindow.h UI/setwindow.cpp UI/setwindow.ui
         Config/configmanager.h Config/configmanager.cpp
         UI/facevideowidget.h UI/facevideowidget.cpp

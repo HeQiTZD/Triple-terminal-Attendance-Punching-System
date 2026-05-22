@@ -58,6 +58,10 @@ inline constexpr const char* kTypeFaceSyncBegin     = "face.sync.begin";
 inline constexpr const char* kTypeFaceSyncItemHeader = "face.sync.item.header";
 inline constexpr const char* kTypeFaceSyncEnd       = "face.sync.end";
 
+// JWT Token
+inline constexpr const char* kTypeTokenRefresh       = "token.refresh";
+inline constexpr const char* kTypeTokenRefreshResponse = "token.refresh.response";
+
 // ============================================================
 // Roles
 // ============================================================
@@ -74,6 +78,10 @@ inline constexpr int kCodePayloadTooLarge   = 1002;
 inline constexpr int kCodeNotAuthenticated  = 2001;
 inline constexpr int kCodeAuthFailed        = 2002;
 inline constexpr int kCodeDuplicateSession  = 2003;
+inline constexpr int kCodeTokenInvalid      = 2004;
+inline constexpr int kCodeTokenExpired      = 2005;
+inline constexpr int kCodeRefreshTokenInvalid = 2006;
+inline constexpr int kCodeInsufficientPermissions = 2007;
 inline constexpr int kCodeForbidden         = 3001;
 inline constexpr int kCodeEmployeeNotFound  = 4001;
 inline constexpr int kCodeDeviceOffline     = 5001;
@@ -106,6 +114,7 @@ enum class MessageType {
     AttendanceReportResponse,
     DeviceStatusReportResponse,
     DeviceCommand,
+    TokenRefreshResponse,
     Error,
     Unknown
 };
@@ -155,6 +164,8 @@ QJsonObject buildCommandAck(const QString& deviceId,
                             const QString& command,
                             bool success,
                             const QString& message = {});
+
+QJsonObject buildTokenRefreshRequest(const QString& refreshToken);
 
 // ============================================================
 // Data structs

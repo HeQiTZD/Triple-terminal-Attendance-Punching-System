@@ -213,6 +213,8 @@ MessageType parseType(const QJsonObject& msg)
         return MessageType::DeviceStatusReportResponse;
     if (t == QLatin1StringView(kTypeDeviceCommand))
         return MessageType::DeviceCommand;
+    if (t == QLatin1StringView(kTypeTokenRefreshResponse))
+        return MessageType::TokenRefreshResponse;
     if (t == QLatin1StringView(kTypeError))
         return MessageType::Error;
     return MessageType::Unknown;
@@ -297,6 +299,17 @@ AttendanceRecord AttendanceRecord::fromJson(const QJsonObject& obj)
     r.checkTime  = obj.value(QStringLiteral("checkTime")).toString();
     r.status     = obj.value(QStringLiteral("status")).toString();
     return r;
+}
+
+// ============================================================
+// Token refresh
+// ============================================================
+
+QJsonObject buildTokenRefreshRequest(const QString& refreshToken)
+{
+    QJsonObject data;
+    data[QStringLiteral("refreshToken")] = refreshToken;
+    return buildEnvelope(kTypeTokenRefresh, QString(), data).toJson();
 }
 
 } // namespace ServerProtocol

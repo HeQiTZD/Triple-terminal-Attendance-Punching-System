@@ -47,6 +47,14 @@ void Connectionmanager::disconnect()
     setState(ConnectionState::Disconnected);
 }
 
+void Connectionmanager::scheduleReconnect()
+{
+    m_manualDisconnect = false;
+    m_reconnectCount   = 0;
+    m_reconnectTimer->stop();
+    m_socket->disconnectFromHost();
+}
+
 bool Connectionmanager::isConnect() const
 {
     return m_state == ConnectionState::Connected
