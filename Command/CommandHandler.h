@@ -26,6 +26,9 @@ signals:
     /// 触发安全重启（reboot 指令）
     void rebootRequested();
 
+    /// 远程配置应用成功（用于检测 DeviceKey 等关键变更）
+    void configApplied(const QString &configVersion);
+
 private:
     void sendAck(const QString &inReplyTo,
                  const QString &command,

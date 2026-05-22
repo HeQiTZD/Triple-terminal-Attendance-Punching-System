@@ -108,6 +108,10 @@ void CommandHandler::handleCommand(const QJsonObject &message)
 
         sendAck(forwardMsgId, command, applied,
                 applied ? QStringLiteral("success") : errorMessage);
+
+        if (applied) {
+            emit configApplied(configVersion);
+        }
         return;
     }
 
