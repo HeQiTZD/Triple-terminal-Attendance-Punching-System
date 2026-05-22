@@ -75,6 +75,7 @@ signals:
     // 认证
     void authSuccess();
     void authFailed(int code, const QString &message);
+    void devicePendingAuth();  // 设备待审核信号
 
     // 业务数据
     void personDataReceived(const QVector<ServerProtocol::PersonData> &persons);
@@ -106,6 +107,7 @@ private slots:
     void onSendError();
     void onSendHeartbeat(const QByteArray &data);
     void onOutboxRetryTick();
+    void scheduleReconnect();
 
 private:
     explicit Networkclient(QObject *parent = nullptr);

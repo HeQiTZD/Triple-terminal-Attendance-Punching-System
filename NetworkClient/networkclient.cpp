@@ -437,6 +437,23 @@ void Networkclient::handleAuthResponse(const QJsonObject &message)
             LOG_INFO(QStringLiteral("JWT 令牌已存储, expiresIn=%1").arg(expiresIn));
         }
 
+        // 新增：检查是否收到新密钥
+        const QString newDeviceKey = data.value(QStringLiteral("deviceKey")).toString();
+        if (!newDeviceKey.isEmpty() && newDeviceKey != m_deviceKey) {
+            // 更新本地密钥
+            const QString oldKey = m_deviceKey;
+            m_deviceKey = newDeviceKey;
+            ConfigManager::instance()->setDeviceKey(newDeviceKey);
+            ConfigManager::instance()->saveConfig();
+
+            qDebug() << "Device key updated from server:" << newDeviceKey
+                     << "old:" << oldKey << "- scheduling reconnect to verify";
+
+            // 延迟断开重连，让新密钥立即接受服务端验证
+            QTimer::singleShot(300, this, &Networkclient::scheduleReconnect);
+            return;  // 不继续执行后续的正常认证成功逻辑，交给重连
+        }
+
         // 心跳间隔
         int heartbeatSec = message.value(QStringLiteral("heartbeatSec")).toInt(0);
         if (heartbeatSec == 0) {
@@ -463,11 +480,19 @@ void Networkclient::handleAuthResponse(const QJsonObject &message)
         emit authSuccess();
 
     } else if (code == ServerProtocol::kCodeAuthFailed) {
-        // ---------- 2002：认证失败（凭据错误）----------
+        // ---------- 2002：认证失败（凭据错误或待审核）----------
         m_isAuthenticated = false;
-        const QString msg = message.value(QStringLiteral("msg")).toString();
-        LOG_ERROR(QStringLiteral("auth 失败 (2002), 凭据无效: %1").arg(msg));
-        emit authFailed(code, msg);
+        const QString msgText = message.value(QStringLiteral("msg")).toString();
+
+        // 新增：检查是否为设备待审核状态
+        if (msgText.contains(QStringLiteral("pending authorization"))) {
+            // 设备待审核提示
+            qDebug() << "Device pending authorization, waiting for admin approval";
+            emit devicePendingAuth();
+        } else {
+            LOG_ERROR(QStringLiteral("auth 失败 (2002), 凭据无效: %1").arg(msgText));
+            emit authFailed(code, msgText);
+        }
 
     } else if (code == ServerProtocol::kCodeDuplicateSession) {
         // ---------- 2003：重复会话 ----------
@@ -755,6 +780,12 @@ void Networkclient::onOutboxRetryTick()
     if (m_isAuthenticated && m_writer) {
         processOutbox();
     }
+}
+
+void Networkclient::scheduleReconnect()
+{
+    LOG_INFO("密钥已更新，正在断开并重连以验证新密钥...");
+    m_connection->scheduleReconnect();
 }
 
 // ---------------------------------------------------------------------------
