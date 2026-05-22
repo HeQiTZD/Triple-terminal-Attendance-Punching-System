@@ -406,8 +406,6 @@ void Networkclient::handleAuthResponse(const QJsonObject &message)
 
     if (code == ServerProtocol::kCodeOk) {
         // ---------- 认证成功 ----------
-        m_isAuthenticated = true;
-        m_connection->setAuthenticated(true);
 
         // 获取响应数据
         const QJsonObject data = message.value(QStringLiteral("data")).toObject();
@@ -446,8 +444,8 @@ void Networkclient::handleAuthResponse(const QJsonObject &message)
             ConfigManager::instance()->setDeviceKey(newDeviceKey);
             ConfigManager::instance()->saveConfig();
 
-            qDebug() << "Device key updated from server:" << newDeviceKey
-                     << "old:" << oldKey << "- scheduling reconnect to verify";
+            LOG_INFO(QStringLiteral("Device key updated from server: %1 old: %2 - scheduling reconnect to verify")
+                         .arg(newDeviceKey, oldKey));
 
             // 延迟断开重连，让新密钥立即接受服务端验证
             QTimer::singleShot(300, this, &Networkclient::scheduleReconnect);
@@ -461,6 +459,10 @@ void Networkclient::handleAuthResponse(const QJsonObject &message)
         }
         if (heartbeatSec > 0)
             m_heartbeat->setHeartbeatInterval(heartbeatSec);
+
+        // 认证成功后设置状态
+        m_isAuthenticated = true;
+        m_connection->setAuthenticated(true);
 
         // 认证成功后启动心跳
         m_heartbeat->start(heartbeatSec > 0 ? heartbeatSec : 30);
