@@ -52,7 +52,12 @@ void Connectionmanager::scheduleReconnect()
     m_manualDisconnect = false;
     m_reconnectCount   = 0;
     m_reconnectTimer->stop();
-    m_socket->disconnectFromHost();
+    if (m_socket->state() == QAbstractSocket::ConnectedState) {
+        m_socket->disconnectFromHost();
+    } else {
+        // Socket already disconnected — start reconnect with minimal delay
+        m_reconnectTimer->start(kBaseReconnectMs);
+    }
 }
 
 bool Connectionmanager::isConnect() const
