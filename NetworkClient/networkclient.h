@@ -96,6 +96,9 @@ signals:
     // JWT 令牌刷新响应
     void tokenRefreshResponse(const QJsonObject &message);
 
+public slots:
+    void scheduleReconnect();
+
 private slots:
     void onConnectionConnected();
     void onConnectionDisconnected();
@@ -107,7 +110,6 @@ private slots:
     void onSendError();
     void onSendHeartbeat(const QByteArray &data);
     void onOutboxRetryTick();
-    void scheduleReconnect();
 
 private:
     explicit Networkclient(QObject *parent = nullptr);
