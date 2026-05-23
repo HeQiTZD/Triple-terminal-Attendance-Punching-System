@@ -1,15 +1,9 @@
-﻿#include "videoframeconverter.h"
+#include "videoframeconverter.h"
 #include <QTransform>
 #include <QDebug>
 
 VideoFrameConverter::VideoFrameConverter() {}
 
-/**
- * @brief 将视频帧转换为QImage
- *
- * 使用 Qt6 内置的 QVideoFrame::toImage() 进行转换，
- * 内部自动处理所有像素格式的色彩空间转换和行对齐。
- */
 QImage VideoFrameConverter::convertToQImage(const QVideoFrame frame)
 {
     if (!frame.isValid()) {
@@ -17,7 +11,6 @@ QImage VideoFrameConverter::convertToQImage(const QVideoFrame frame)
         return QImage();
     }
 
-    // 使用 Qt6 内置方法，正确处理 NV12/YUV420P/YUYV 等所有格式的色彩转换
     QVideoFrame cloneFrame = frame;
     QImage image = cloneFrame.toImage();
 
@@ -26,7 +19,23 @@ QImage VideoFrameConverter::convertToQImage(const QVideoFrame frame)
         return QImage();
     }
 
-    // 旋转 180°
-    image = image.transformed(QTransform().rotate(180));
+    if (m_rotationAngle != 0) {
+        image = image.transformed(QTransform().rotate(m_rotationAngle));
+    }
     return image;
+}
+
+void VideoFrameConverter::setRotation(int degrees)
+{
+    int clamped = degrees % 360;
+    if (clamped < 0) clamped += 360;
+    clamped = (clamped / 90) * 90;
+    if (clamped != m_rotationAngle) {
+        m_rotationAngle = clamped;
+    }
+}
+
+int VideoFrameConverter::rotation() const
+{
+    return m_rotationAngle;
 }
