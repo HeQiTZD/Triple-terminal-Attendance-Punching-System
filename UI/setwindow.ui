@@ -605,6 +605,81 @@
            </widget>
           </item>
           <item>
+           <widget class="QGroupBox" name="rotationGroup">
+            <property name="title">
+             <string>摄像头方向</string>
+            </property>
+            <layout class="QVBoxLayout" name="rotationGroupLayout">
+             <property name="spacing">
+              <number>10</number>
+             </property>
+             <item>
+              <layout class="QHBoxLayout" name="rotationLayout">
+               <item>
+                <widget class="QLabel" name="labelRotation">
+                 <property name="minimumSize">
+                  <size>
+                   <width>120</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>当前角度</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEditRotation">
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>80</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btnRotate">
+                 <property name="text">
+                  <string>旋转 90°</string>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="rotationSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QLabel" name="labelRotationHint">
+               <property name="text">
+                <string>每次点击旋转 90°（0° → 90° → 180° → 270° 循环）</string>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: #888888; font-size: 11px;</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
            <spacer name="faceSpacer">
             <property name="orientation">
              <enum>Qt::Orientation::Vertical</enum>
