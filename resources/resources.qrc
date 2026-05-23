@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/qss">
         <file>qss/mainwindow.qss</file>
+        <file alias="qss/theme.qss">qss/theme.qss</file>
     </qresource>
 </RCC>
