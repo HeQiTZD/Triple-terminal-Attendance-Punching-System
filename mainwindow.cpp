@@ -63,7 +63,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     //创建设置窗口，设置父对象为主窗口，这样关闭主窗口时会自动关闭设置窗口
     setwindow = new SetWindow(this);
-    m_frameConverter = new VideoFrameConverter(this);
+    m_frameConverter = new VideoFrameConverter();
     setwindow->setFrameConverter(m_frameConverter);
 
     //从配置恢复窗口大小
@@ -119,6 +119,7 @@ MainWindow::~MainWindow()
         m_networkThread->quit();
         m_networkThread->wait();
     }
+    delete m_frameConverter;
     delete ui;
 }
 
