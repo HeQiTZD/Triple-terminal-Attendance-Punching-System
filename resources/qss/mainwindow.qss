@@ -33,16 +33,6 @@ QLabel#timeLabel {
     letter-spacing: 1px;
 }
 
-/* 网络状态标签 */
-QLabel#networkStatusLabel {
-    font-size: 13px;
-    font-weight: 600;
-    padding: 6px 14px;
-    border-radius: 6px;
-    background-color: #21262d;
-    border: 1px solid #30363d;
-}
-
 /* ==================== 按钮 ==================== */
 
 /* 通用按钮 */
@@ -65,73 +55,6 @@ QPushButton:pressed {
     background-color: #1158c7;
 }
 
-/* 设置按钮 */
-QPushButton#settingButton {
-    background-color: #21262d;
-    color: #c9d1d9;
-    border: 1px solid #30363d;
-    padding: 7px 16px;
-}
-
-QPushButton#settingButton:hover {
-    background-color: #30363d;
-    color: #00d4ff;
-    border-color: #00d4ff;
-}
-
-QPushButton#settingButton:pressed {
-    background-color: #161b22;
-    color: #00d4ff;
-}
-
-/* 最小化 / 最大化按钮 */
-QPushButton#minimizeButton,
-QPushButton#maximizeButton {
-    background-color: transparent;
-    color: #8b949e;
-    font-size: 16px;
-    font-weight: 700;
-    min-width: 36px;
-    max-width: 36px;
-    padding: 6px;
-    border-radius: 6px;
-    border: none;
-}
-
-QPushButton#minimizeButton:hover,
-QPushButton#maximizeButton:hover {
-    background-color: rgba(139, 148, 158, 0.15);
-    color: #e6edf3;
-}
-
-QPushButton#minimizeButton:pressed,
-QPushButton#maximizeButton:pressed {
-    background-color: rgba(139, 148, 158, 0.25);
-}
-
-/* 关闭按钮 */
-QPushButton#closeButton {
-    background-color: transparent;
-    color: #8b949e;
-    font-size: 16px;
-    font-weight: 700;
-    min-width: 36px;
-    max-width: 36px;
-    padding: 6px;
-    border-radius: 6px;
-    border: none;
-}
-
-QPushButton#closeButton:hover {
-    background-color: #da3633;
-    color: #ffffff;
-}
-
-QPushButton#closeButton:pressed {
-    background-color: #b91c1c;
-    color: #ffffff;
-}
-
 /* ==================== 上层：识别信息横条 ==================== */
 QWidget#infoWidget {
     background-color: #161b22;
@@ -145,19 +68,6 @@ QWidget#infoWidget {
 QLabel {
     color: #ffffff;
     font-size: 13px;
-    background-color: transparent;
-}
-
-/* 信息字段描述标签（员工号、姓名等） */
-QWidget#infoWidget QLabel#employeeIdLabel,
-QWidget#infoWidget QLabel#nameLabel,
-QWidget#infoWidget QLabel#statusLabel,
-QWidget#infoWidget QLabel#checkTimeLabel {
-    color: #8b949e;
-    font-size: 16px;
-    font-weight: 700;
-    min-width: 68px;
-    max-width: 80px;
     background-color: transparent;
 }
 
@@ -198,21 +108,6 @@ QLineEdit:read-only {
     font-weight: 600;
 }
 
-/* ==================== 信息横条：值字段 QLabel ==================== */
-QWidget#infoWidget QLabel#employeeIdEdit,
-QWidget#infoWidget QLabel#nameEdit,
-QWidget#infoWidget QLabel#statusEdit,
-QWidget#infoWidget QLabel#checkTimeEdit {
-    color: #ffffff;
-    font-size: 20px;
-    font-weight: 700;
-    background-color: transparent;
-    border: none;
-    padding: 0px 0px;
-    min-width: 60px;
-    max-width: 200px;
-}
-
 /* ==================== 下层：摄像头面板 ==================== */
 QWidget#cameraWidget {
     background-color: #161b22;
@@ -227,8 +122,6 @@ QLabel#cameraDisplay {
     color: #30363d;
     border: none;
 }
-
-
 
 /* ==================== 滚动条 ==================== */
 QScrollBar:vertical {
