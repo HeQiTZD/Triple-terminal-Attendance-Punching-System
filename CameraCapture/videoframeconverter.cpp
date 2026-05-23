@@ -26,7 +26,7 @@ QImage VideoFrameConverter::convertToQImage(const QVideoFrame frame)
         return QImage();
     }
 
-    // 顺时针旋转 90°，横屏转竖屏
-    image = image.transformed(QTransform().rotate(90));
+    // 旋转 180°
+    image = image.transformed(QTransform().rotate(180));
     return image;
 }
