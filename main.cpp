@@ -6,6 +6,10 @@
 #include <QStyleHints>
 #include <cstdio>
 
+#ifdef Q_OS_WIN
+#include <windows.h>
+#endif
+
 static void qtMessageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     Q_UNUSED(context)
