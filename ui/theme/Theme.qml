@@ -28,7 +28,7 @@ QtObject {
 
     // ===== 状态色 =====
     readonly property color success:      "#0D8A4C"
-    readonly property color warning:      "#B45309"
+    readonly property color warning:      "#9A3E04"
     readonly property color danger:       "#C62828"
     readonly property color info:         "#1565C0"
 
@@ -69,7 +69,7 @@ QtObject {
     readonly property int fontXxl: 22
 
     // ===== 字体族 =====
-    readonly property string fontFamily: "Microsoft YaHei UI"
+    readonly property string fontFamily: "'Segoe UI', 'Microsoft YaHei UI', 'PingFang SC', sans-serif"
     readonly property string fontMono:   "Consolas, 'Cascadia Mono', monospace"
 
     // ===== 布局尺寸 =====
