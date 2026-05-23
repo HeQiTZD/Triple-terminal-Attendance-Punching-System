@@ -1,5 +1,6 @@
 #include "setwindow.h"
 #include "ui_setwindow.h"
+#include "../CameraCapture/videoframeconverter.h"
 #include "../Config/configmanager.h"
 #include "../NetworkClient/networkclient.h"
 #include "UI/Theme/ThemeManager.h"
@@ -88,6 +89,15 @@ SetWindow::SetWindow(QWidget *parent)
         ThemeManager::lighten(tm->color(DesignTokens::Semantic::bgElevated), 0.10f).name(),
         ThemeManager::darken(tm->color(DesignTokens::Semantic::bgElevated), 0.10f).name(),
         true);
+
+    // 旋转按钮 → Primary
+    applyButtonTheme(ui->btnRotate,
+        tm->colorHex(DesignTokens::Semantic::brandPrimary),
+        "#ffffff",
+        "",
+        tm->colorHex(DesignTokens::Semantic::brandPrimaryHover),
+        tm->colorHex(DesignTokens::Semantic::brandPrimaryActive),
+        false);
 }
 
 SetWindow::~SetWindow()
@@ -116,6 +126,7 @@ void SetWindow::setupConnections()
     // 连接测试按钮信号连接
     connect(ui->btnTestConnection, &QPushButton::clicked, this, &SetWindow::onBtnTestConnectionClicked);
     connect(ui->btnDisconnect, &QPushButton::clicked, this, &SetWindow::onBtnDisconnectClicked);
+    connect(ui->btnRotate, &QPushButton::clicked, this, &SetWindow::onBtnRotateClicked);
 }
 
 void SetWindow::onNavButtonClicked()
@@ -216,6 +227,7 @@ void SetWindow::restoreDefaults()
     // 恢复同步设置
     m_autoSyncOnConnect = true;
     m_syncTimeout = 300;
+    m_cameraRotation = 0;
 
     // 更新UI显示
     saveToUI();
@@ -465,6 +477,8 @@ void SetWindow::saveToUI()
     // 同步设置
     ui->checkBoxAutoSync->setChecked(m_autoSyncOnConnect);
     ui->spinBoxSyncTimeout->setValue(m_syncTimeout);
+
+    updateRotationDisplay();
 }
 
 // 从配置文件加载设置
@@ -505,6 +519,7 @@ void SetWindow::loadFromConfig()
     // 同步设置
     m_autoSyncOnConnect = config->getAutoSyncOnConnect();
     m_syncTimeout = config->getSyncTimeout();
+    m_cameraRotation = config->getCameraRotation();
 
     // 如果数据库路径为空，使用默认路径
     if(m_databasePath.isEmpty()){
@@ -677,4 +692,31 @@ void SetWindow::onBtnDisconnectClicked()
     ui->btnTestConnection->setEnabled(true);
     ui->btnTestConnection->setText("连接服务器");
     ui->btnDisconnect->setEnabled(false);
+}
+
+void SetWindow::setFrameConverter(VideoFrameConverter *converter)
+{
+    m_converter = converter;
+    if (m_converter) {
+        m_converter->setRotation(m_cameraRotation);
+    }
+}
+
+void SetWindow::updateRotationDisplay()
+{
+    ui->lineEditRotation->setText(QString::number(m_cameraRotation) + "°");
+}
+
+void SetWindow::onBtnRotateClicked()
+{
+    m_cameraRotation = (m_cameraRotation + 90) % 360;
+
+    if (m_converter) {
+        m_converter->setRotation(m_cameraRotation);
+    }
+
+    updateRotationDisplay();
+
+    ConfigManager::instance()->setCameraRotation(m_cameraRotation);
+    ConfigManager::instance()->saveConfig();
 }

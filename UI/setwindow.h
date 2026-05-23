@@ -5,6 +5,8 @@
 #include <QString>
 #include <QTime>
 
+class VideoFrameConverter;
+
 namespace Ui {
 class SetWindow;
 }
@@ -91,6 +93,7 @@ public:
     void saveToUI();
     // 恢复所有设置为默认值
     void restoreDefaults();
+    void setFrameConverter(VideoFrameConverter *converter);
     // 从配置文件加载设置
     void loadFromConfig();
     // 保存设置到配置文件
@@ -110,12 +113,15 @@ private slots:
     // 连接测试按钮槽函数
     void onBtnTestConnectionClicked();
     void onBtnDisconnectClicked();  // 断开连接
+    void onBtnRotateClicked();      // 旋转摄像头
 
 private:
     void setupConnections();
     void switchToPage(int index);
 
 private:
+    void updateRotationDisplay();
+
     Ui::SetWindow *ui;
 
     // 网络连接设置
@@ -151,6 +157,8 @@ private:
     // 同步设置
     bool m_autoSyncOnConnect = true;        // 连接后自动同步
     int  m_syncTimeout = 300;               // 同步超时（秒）
+    VideoFrameConverter* m_converter = nullptr;
+    int m_cameraRotation = 0;
 
     // 默认值常量
     static constexpr const char* DEFAULT_SERVER_IP = "192.168.1.100";
