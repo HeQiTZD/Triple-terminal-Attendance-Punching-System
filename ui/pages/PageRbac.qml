@@ -175,7 +175,6 @@ Item {
     }
 
     function _loadRoleIntoForm(row) {
-        selectedRoleIndex = -1
         isCreatingRole = false
         formDirty = false
         if (!row) {
