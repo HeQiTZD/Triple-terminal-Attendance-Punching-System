@@ -18,7 +18,7 @@ QtObject {
 
     // ===== 文字色板 =====
     readonly property color text:         "#1F2937"
-    readonly property color textMuted:    "#4B5563"
+    readonly property color textMuted:    "#3D4551"
     readonly property color textSubtle:   "#6B7280"
 
     // ===== 主色 =====
@@ -39,7 +39,7 @@ QtObject {
     readonly property color pieAbsent:    "#ef4444"
 
     // ===== 交互状态色 =====
-    readonly property color hover:        "#DCE3EE"
+    readonly property color hover:        "#CBD5E1"
     readonly property color selected:     "#C7DFFF"
     readonly property color highlight:    "#92400E"
 
