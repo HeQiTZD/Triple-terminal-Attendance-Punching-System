@@ -254,198 +254,269 @@ Item {
         rbacServer.queryPermissions()
     }
 
-    RowLayout {
+    ColumnLayout {
         anchors.fill: parent
         anchors.margins: Theme.spacingLg
         spacing: Theme.spacingMd
 
-        Card {
-            Layout.preferredWidth: 320
-            Layout.fillHeight: true
-            stretchContent: true
-            title: qsTr("用户列表")
+        ToolBarRow {
+            Layout.fillWidth: true
+            title: page.currentTab === 0 ? qsTr("用户权限") : qsTr("角色管理")
+            subtitle: page.currentTab === 0 ? qsTr("分配和撤销用户角色") : qsTr("创建、修改和删除角色")
+        }
 
-            ColumnLayout {
-                anchors.fill: parent
-                spacing: Theme.spacingSm
+        // ── Tab 切换 ──
+        Row {
+            spacing: 0
+            Layout.fillWidth: true
 
-                PermissionButton {
-                    sessionManager: page.sessionManager
-                    requiredPermission: "user.read"
-                    deniedDialog: page.deniedDialog
-                    text: qsTr("刷新")
-                    enabled: !userServer.busy
-                    onClicked: guardedClick(function() { userServer.queryUsers("", "") })
+            Rectangle {
+                width: 140; height: 32
+                radius: Theme.radiusSm
+                color: page.currentTab === 0 ? Theme.accent : Theme.surfaceAlt
+                Text {
+                    anchors.centerIn: parent
+                    text: qsTr("用户权限分配")
+                    color: page.currentTab === 0 ? "#FFFFFF" : Theme.textMuted
+                    font.pixelSize: Theme.fontSm
+                    font.family: Theme.fontFamily
                 }
-
-                ListView {
-                    Layout.fillWidth: true
-                    Layout.fillHeight: true
-                    clip: true
-                    model: userServer.records
-                    ScrollBar.vertical: ScrollBar { policy: ScrollBar.AsNeeded }
-                    delegate: Rectangle {
-                        required property int index
-                        required property var modelData
-                        width: ListView.view.width
-                        height: 40
-                        color: page.selectedUserId === (modelData.id != null ? modelData.id : -1)
-                               ? Theme.selected : (ma.containsMouse ? Theme.hover : "transparent")
-                        radius: Theme.radiusSm
-
-                        Column {
-                            anchors.left: parent.left
-                            anchors.leftMargin: Theme.spacingSm
-                            anchors.verticalCenter: parent.verticalCenter
-
-                            Label {
-                                text: (modelData.name || modelData.employeeId || "")
-                                color: Theme.text
-                                font.pixelSize: Theme.fontSm
-                            }
-                            Label {
-                                text: modelData.employeeId || ""
-                                color: Theme.textMuted
-                                font.pixelSize: Theme.fontXs
-                            }
-                        }
-
-                        MouseArea {
-                            id: ma
-                            anchors.fill: parent
-                            hoverEnabled: true
-                            onClicked: {
-                                page.selectedUserId = modelData.id != null ? modelData.id : -1
-                                page.selectedUserName = modelData.name || ""
-                                page.selectedUserEmployeeId = modelData.employeeId || ""
-                                rbacServer.queryUserRoles(page.selectedUserId)
-                            }
-                        }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: page.currentTab = 0
+                }
+            }
+            Rectangle {
+                width: 100; height: 32
+                radius: Theme.radiusSm
+                color: page.currentTab === 1 ? Theme.accent : Theme.surfaceAlt
+                Text {
+                    anchors.centerIn: parent
+                    text: qsTr("角色管理")
+                    color: page.currentTab === 1 ? "#FFFFFF" : Theme.textMuted
+                    font.pixelSize: Theme.fontSm
+                    font.family: Theme.fontFamily
+                }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        page.currentTab = 1
+                        page._refreshRoles()
                     }
                 }
             }
         }
 
-        Card {
+        StackLayout {
             Layout.fillWidth: true
             Layout.fillHeight: true
-            stretchContent: true
-            title: qsTr("用户权限")
+            currentIndex: page.currentTab
 
-            ColumnLayout {
-                anchors.fill: parent
-                spacing: Theme.spacingMd
+            // ── Tab 0: 用户权限分配 ──
+            Item {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
 
-                Label {
-                    visible: page.selectedUserId < 0
-                    text: qsTr("请在左侧选择一个用户")
-                    color: Theme.textMuted
-                    font.pixelSize: Theme.fontMd
-                    font.family: Theme.fontFamily
-                    Layout.fillWidth: true
-                }
+                RowLayout {
+                    anchors.fill: parent
+                    spacing: Theme.spacingMd
 
-                GridLayout {
-                    visible: page.selectedUserId >= 0
-                    Layout.fillWidth: true
-                    columns: 2
-                    rowSpacing: Theme.spacingSm
-                    columnSpacing: Theme.spacingMd
+                    Card {
+                        Layout.preferredWidth: 320
+                        Layout.fillHeight: true
+                        stretchContent: true
+                        title: qsTr("用户列表")
 
-                    LabeledField {
-                        label: qsTr("用户 ID")
-                        Layout.fillWidth: true
-                        Label {
-                            text: page.selectedUserEmployeeId || "—"
-                            color: Theme.text
-                            font.pixelSize: Theme.fontSm
-                            font.family: Theme.fontFamily
-                            Layout.fillWidth: true
-                        }
-                    }
-                    LabeledField {
-                        label: qsTr("姓名")
-                        Layout.fillWidth: true
-                        Label {
-                            text: page.selectedUserName || "—"
-                            color: Theme.text
-                            font.pixelSize: Theme.fontSm
-                            font.family: Theme.fontFamily
-                            Layout.fillWidth: true
-                        }
-                    }
-                }
+                        ColumnLayout {
+                            anchors.fill: parent
+                            spacing: Theme.spacingSm
 
-                Label {
-                    visible: page.selectedUserId >= 0
-                    text: {
-                        const keys = Object.keys(selectedRoles).filter(k => selectedRoles[k])
-                        if (keys.length === 0)
-                            return qsTr("当前角色：无")
-                        const names = keys.map(k => {
-                            const rec = rbacServer.roleRecords
-                            for (let i = 0; i < rec.length; ++i) {
-                                if (rec[i].roleKey === k)
-                                    return rec[i].roleName || k
+                            PermissionButton {
+                                sessionManager: page.sessionManager
+                                requiredPermission: "user.read"
+                                deniedDialog: page.deniedDialog
+                                text: qsTr("刷新")
+                                enabled: !userServer.busy
+                                onClicked: guardedClick(function() { userServer.queryUsers("", "") })
                             }
-                            return k
-                        })
-                        return qsTr("当前角色：") + names.join("、")
-                    }
-                    color: Theme.text
-                    font.pixelSize: Theme.fontSm
-                    font.family: Theme.fontFamily
-                    wrapMode: Text.WordWrap
-                    Layout.fillWidth: true
-                }
 
-                Label {
-                    visible: page.selectedUserId >= 0
-                    text: qsTr("角色列表")
-                    color: Theme.textMuted
-                    font.pixelSize: Theme.fontSm
-                    font.family: Theme.fontFamily
-                }
+                            ListView {
+                                Layout.fillWidth: true
+                                Layout.fillHeight: true
+                                clip: true
+                                model: userServer.records
+                                ScrollBar.vertical: ScrollBar { policy: ScrollBar.AsNeeded }
+                                delegate: Rectangle {
+                                    required property int index
+                                    required property var modelData
+                                    width: ListView.view.width
+                                    height: 40
+                                    color: page.selectedUserId === (modelData.id != null ? modelData.id : -1)
+                                           ? Theme.selected : (ma.containsMouse ? Theme.hover : "transparent")
+                                    radius: Theme.radiusSm
 
-                ScrollView {
-                    visible: page.selectedUserId >= 0
-                    Layout.fillWidth: true
-                    Layout.fillHeight: true
-                    clip: true
-                    ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+                                    Column {
+                                        anchors.left: parent.left
+                                        anchors.leftMargin: Theme.spacingSm
+                                        anchors.verticalCenter: parent.verticalCenter
 
-                    Flow {
-                        width: parent.width
-                        spacing: Theme.spacingXs
+                                        Label {
+                                            text: (modelData.name || modelData.employeeId || "")
+                                            color: Theme.text
+                                            font.pixelSize: Theme.fontSm
+                                        }
+                                        Label {
+                                            text: modelData.employeeId || ""
+                                            color: Theme.textMuted
+                                            font.pixelSize: Theme.fontXs
+                                        }
+                                    }
 
-                        Repeater {
-                            model: rbacServer.roleRecords
-                            delegate: CheckBox {
-                                required property var modelData
-                                text: {
-                                    const name = modelData.roleName || ""
-                                    const key = modelData.roleKey || ""
-                                    if (name && key)
-                                        return name + " (" + key + ")"
-                                    return name || key
+                                    MouseArea {
+                                        id: ma
+                                        anchors.fill: parent
+                                        hoverEnabled: true
+                                        onClicked: {
+                                            page.selectedUserId = modelData.id != null ? modelData.id : -1
+                                            page.selectedUserName = modelData.name || ""
+                                            page.selectedUserEmployeeId = modelData.employeeId || ""
+                                            rbacServer.queryUserRoles(page.selectedUserId)
+                                        }
+                                    }
                                 }
-                                checked: page._roleChecked(modelData.roleKey || "")
-                                onCheckedChanged: page._setRole(modelData.roleKey || "", checked)
+                            }
+                        }
+                    }
+
+                    Card {
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
+                        stretchContent: true
+                        title: qsTr("用户权限")
+
+                        ColumnLayout {
+                            anchors.fill: parent
+                            spacing: Theme.spacingMd
+
+                            Label {
+                                visible: page.selectedUserId < 0
+                                text: qsTr("请在左侧选择一个用户")
+                                color: Theme.textMuted
+                                font.pixelSize: Theme.fontMd
+                                font.family: Theme.fontFamily
+                                Layout.fillWidth: true
+                            }
+
+                            GridLayout {
+                                visible: page.selectedUserId >= 0
+                                Layout.fillWidth: true
+                                columns: 2
+                                rowSpacing: Theme.spacingSm
+                                columnSpacing: Theme.spacingMd
+
+                                LabeledField {
+                                    label: qsTr("用户 ID")
+                                    Layout.fillWidth: true
+                                    Label {
+                                        text: page.selectedUserEmployeeId || "—"
+                                        color: Theme.text
+                                        font.pixelSize: Theme.fontSm
+                                        font.family: Theme.fontFamily
+                                        Layout.fillWidth: true
+                                    }
+                                }
+                                LabeledField {
+                                    label: qsTr("姓名")
+                                    Layout.fillWidth: true
+                                    Label {
+                                        text: page.selectedUserName || "—"
+                                        color: Theme.text
+                                        font.pixelSize: Theme.fontSm
+                                        font.family: Theme.fontFamily
+                                        Layout.fillWidth: true
+                                    }
+                                }
+                            }
+
+                            Label {
+                                visible: page.selectedUserId >= 0
+                                text: {
+                                    const keys = Object.keys(selectedRoles).filter(k => selectedRoles[k])
+                                    if (keys.length === 0)
+                                        return qsTr("当前角色：无")
+                                    const names = keys.map(k => {
+                                        const rec = rbacServer.roleRecords
+                                        for (let i = 0; i < rec.length; ++i) {
+                                            if (rec[i].roleKey === k)
+                                                return rec[i].roleName || k
+                                        }
+                                        return k
+                                    })
+                                    return qsTr("当前角色：") + names.join("、")
+                                }
+                                color: Theme.text
+                                font.pixelSize: Theme.fontSm
+                                font.family: Theme.fontFamily
+                                wrapMode: Text.WordWrap
+                                Layout.fillWidth: true
+                            }
+
+                            Label {
+                                visible: page.selectedUserId >= 0
+                                text: qsTr("角色列表")
+                                color: Theme.textMuted
+                                font.pixelSize: Theme.fontSm
+                                font.family: Theme.fontFamily
+                            }
+
+                            ScrollView {
+                                visible: page.selectedUserId >= 0
+                                Layout.fillWidth: true
+                                Layout.fillHeight: true
+                                clip: true
+                                ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+
+                                Flow {
+                                    width: parent.width
+                                    spacing: Theme.spacingXs
+
+                                    Repeater {
+                                        model: rbacServer.roleRecords
+                                        delegate: CheckBox {
+                                            required property var modelData
+                                            text: {
+                                                const name = modelData.roleName || ""
+                                                const key = modelData.roleKey || ""
+                                                if (name && key)
+                                                    return name + " (" + key + ")"
+                                                return name || key
+                                            }
+                                            checked: page._roleChecked(modelData.roleKey || "")
+                                            onCheckedChanged: page._setRole(modelData.roleKey || "", checked)
+                                        }
+                                    }
+                                }
+                            }
+
+                            PermissionButton {
+                                visible: page.selectedUserId >= 0
+                                sessionManager: page.sessionManager
+                                requiredRole: "super_admin"
+                                deniedDialog: page.deniedDialog
+                                text: qsTr("保存角色变更")
+                                highlighted: true
+                                enabled: page.rolesDirty && !rbacServer.busy
+                                onClicked: guardedClick(function() { page._saveRoles() })
                             }
                         }
                     }
                 }
+            }
 
-                PermissionButton {
-                    visible: page.selectedUserId >= 0
-                    sessionManager: page.sessionManager
-                    requiredRole: "super_admin"
-                    deniedDialog: page.deniedDialog
-                    text: qsTr("保存角色变更")
-                    highlighted: true
-                    enabled: page.rolesDirty && !rbacServer.busy
-                    onClicked: guardedClick(function() { page._saveRoles() })
-                }
+            // ── Tab 1: 角色管理 ──
+            Item {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
             }
         }
     }
