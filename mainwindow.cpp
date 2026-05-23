@@ -351,9 +351,27 @@ void MainWindow::FaceFeatureStart()
 
     connect(m_FaceRecognizer,&FaceRecognizer::faceDetected,this,[=](const QVector<arcfaceengine::FaceInfo> &faceInfos){
         QVector<FaceRectInfo> rectinfos;
+        int rotation = m_frameConverter ? m_frameConverter->rotation() : 0;
+        int imgW = m_VideoFrameCapture->getCurrentFrame().width();
+        int imgH = m_VideoFrameCapture->getCurrentFrame().height();
+
         for(const auto &info : faceInfos){
             FaceRectInfo rectInfo;
-            rectInfo.rect = info.rect;
+            if (rotation == 90) {
+                rectInfo.rect = QRect(info.rect.y(),
+                                      imgW - info.rect.x() - info.rect.width(),
+                                      info.rect.height(), info.rect.width());
+            } else if (rotation == 180) {
+                rectInfo.rect = QRect(imgW - info.rect.x() - info.rect.width(),
+                                      imgH - info.rect.y() - info.rect.height(),
+                                      info.rect.width(), info.rect.height());
+            } else if (rotation == 270) {
+                rectInfo.rect = QRect(imgH - info.rect.y() - info.rect.height(),
+                                      info.rect.x(),
+                                      info.rect.height(), info.rect.width());
+            } else {
+                rectInfo.rect = info.rect;
+            }
             rectInfo.name = "";
             rectInfo.recognized = (m_FaceRecognizer->getbestMatch().second>0.8);
             rectinfos.append(rectInfo);
@@ -366,8 +384,8 @@ void MainWindow::FaceFeatureStart()
         }
     });
 
-    // 连接视频帧信号，更新当前帧
-    connect(m_VideoFrameCapture,&VideoFrameCapture::frameCaptured,this,[=](const QImage &frame){
+    // 连接显示用信号（已旋转），更新当前帧
+    connect(m_VideoFrameCapture,&VideoFrameCapture::frameForDisplay,this,[=](const QImage &frame){
         FaceVideoWidget* faceWidget = qobject_cast<FaceVideoWidget*> (m_VideoWidget);
         if(faceWidget){
             faceWidget->setCurrentFrame(frame);

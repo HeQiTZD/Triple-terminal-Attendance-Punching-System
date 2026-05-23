@@ -51,16 +51,21 @@ QWidget *VideoFrameCapture::getVideoWidget() const
 //处理视频帧
 void VideoFrameCapture::processFrame(const QVideoFrame &frame)
 {
-    QImage image;
-    if (m_converter) {
-        image = m_converter->convertToQImage(frame);
-    } else {
-        image = VideoFrameConverter().convertToQImage(frame);
-    }
+    // 始终用无旋转转换 → 给 FaceRecognizer（人脸检测需要正立图像）
+    QImage rawImage = VideoFrameConverter().convertToQImage(frame);
 
-    if (!image.isNull() && image.width() > 0 && image.height() > 0) {
-        currentFrame = image;
+    if (!rawImage.isNull() && rawImage.width() > 0 && rawImage.height() > 0) {
+        currentFrame = rawImage;
         emit frameCaptured(currentFrame);
+
+        // 显示用：应用旋转
+        QImage displayImage;
+        if (m_converter && m_converter->rotation() != 0) {
+            displayImage = m_converter->convertToQImage(frame);
+        } else {
+            displayImage = rawImage;
+        }
+        emit frameForDisplay(displayImage);
     }
 }
 

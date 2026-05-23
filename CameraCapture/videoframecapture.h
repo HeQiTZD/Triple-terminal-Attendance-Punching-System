@@ -40,7 +40,8 @@ private slots:
     void processFrame(const QVideoFrame &frame);//处理捕获到的帧
 
 public: signals:
-    void frameCaptured(QImage image);//捕获成功信号
+    void frameCaptured(QImage image);//捕获成功信号 (不旋转，给 FaceRecognizer)
+    void frameForDisplay(QImage image);//显示用信号 (已旋转，给 FaceVideoWidget)
 
 };
 
