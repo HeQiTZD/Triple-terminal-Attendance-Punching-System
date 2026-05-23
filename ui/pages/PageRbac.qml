@@ -514,9 +514,55 @@ Item {
             }
 
             // ── Tab 1: 角色管理 ──
-            Item {
+            ColumnLayout {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
+                spacing: Theme.spacingMd
+
+                Card {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 220
+                    stretchContent: true
+                    title: qsTr("角色列表")
+
+                    headerRight: Row {
+                        spacing: Theme.spacingSm
+                        PermissionButton {
+                            sessionManager: page.sessionManager
+                            requiredRole: "super_admin"
+                            deniedDialog: page.deniedDialog
+                            text: qsTr("新建角色")
+                            highlighted: true
+                            enabled: !rbacServer.busy
+                            onClicked: guardedClick(page._beginCreateRole)
+                        }
+                        PermissionButton {
+                            sessionManager: page.sessionManager
+                            requiredRole: "super_admin"
+                            deniedDialog: page.deniedDialog
+                            text: qsTr("刷新")
+                            enabled: !rbacServer.busy
+                            onClicked: guardedClick(page._refreshRoles)
+                        }
+                    }
+
+                    DataTable {
+                        anchors.fill: parent
+                        rows: rbacServer.roleRecords
+                        columns: [
+                            { key: "roleKey", title: qsTr("角色标识"), width: 140 },
+                            { key: "roleName", title: qsTr("角色名称"), width: 120 },
+                            { key: "description", title: qsTr("描述") },
+                            { key: "isSystem", title: qsTr("系统角色"), width: 80,
+                              formatter: function(v) { return v ? qsTr("系统") : "—" } },
+                            { key: "createdAt", title: qsTr("创建时间"), width: 160 }
+                        ]
+                        onRowClicked: function(idx, row) {
+                            page.selectedRoleIndex = idx
+                            page._loadRoleIntoForm(row)
+                        }
+                    }
+                }
             }
         }
     }
