@@ -2,9 +2,11 @@
 #include "../Network/TcpConnectionManager.h"
 #include "../Protocol/protocol.h"
 
+#include <QFile>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QTextStream>
 
 using namespace Protocol;
 
@@ -352,4 +354,19 @@ void AttendanceService::deleteArchive(const QString& employeeId)
         else
             emit operationFailed(kAttendanceArchiveDelete, code, text);
         });
+}
+
+void AttendanceService::exportToFile(const QString& filePath, const QString& content)
+{
+    QFile file(filePath);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        emit operationFailed(QStringLiteral("attendance.export"), -1,
+                             QStringLiteral("无法打开文件: ") + file.errorString());
+        return;
+    }
+    QTextStream stream(&file);
+    stream.setEncoding(QStringConverter::Utf8);
+    stream << content;
+    file.close();
+    emit operationSucceeded(QStringLiteral("attendance.export"), QStringLiteral("导出成功"));
 }
