@@ -6,10 +6,6 @@
 #include <QStyleHints>
 #include <cstdio>
 
-#ifdef Q_OS_WIN
-#include <windows.h>
-#endif
-
 static void qtMessageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     Q_UNUSED(context)
@@ -44,6 +40,7 @@ int main(int argc, char *argv[])
 {
     qInstallMessageHandler(qtMessageHandler);
     qputenv("QT_QUICK_CONTROLS_STYLE", QByteArrayLiteral("Fusion"));
+    qputenv("QSG_RHI_BACKEND", "d3d11");
     fprintf(stderr, "DEBUG: 1 QApplication creating...\n");
     fflush(stderr);
 

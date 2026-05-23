@@ -14,10 +14,10 @@ ApplicationWindow {
 
     width: sessionManager.isLoggedIn ? mainWindowWidth : loginWindowWidth
     height: sessionManager.isLoggedIn ? mainWindowHeight : loginWindowHeight
-    minimumWidth: sessionManager.isLoggedIn ? 1100 : loginWindowWidth
-    minimumHeight: sessionManager.isLoggedIn ? 700 : loginWindowHeight
-    maximumWidth: sessionManager.isLoggedIn ? 16777215 : loginWindowWidth
-    maximumHeight: sessionManager.isLoggedIn ? 16777215 : loginWindowHeight
+    minimumWidth: sessionManager.isLoggedIn ? mainWindowWidth : loginWindowWidth
+    minimumHeight: sessionManager.isLoggedIn ? mainWindowHeight : loginWindowHeight
+    maximumWidth: sessionManager.isLoggedIn ? mainWindowWidth : loginWindowWidth
+    maximumHeight: sessionManager.isLoggedIn ? mainWindowHeight : loginWindowHeight
     flags: Qt.Window | Qt.FramelessWindowHint
     visible: true
     title: sessionManager.isLoggedIn
@@ -55,24 +55,6 @@ ApplicationWindow {
     palette.light:            Theme.surfaceAlt
 
     property string currentPageKey: "dashboard"
-
-    readonly property real aspectRatio: 1480.0 / 920.0
-    property real _prevW: 0
-    property real _prevH: 0
-
-    function clampSize() {
-        if (!sessionManager.isLoggedIn) return
-        if (width !== _prevW) {
-            height = Math.round(width / aspectRatio)
-        } else if (height !== _prevH) {
-            width = Math.round(height * aspectRatio)
-        }
-        _prevW = width
-        _prevH = height
-    }
-
-    onWidthChanged: clampSize()
-    onHeightChanged: clampSize()
 
     readonly property var filteredNavItems: {
         if (sessionManager) {
@@ -142,10 +124,10 @@ ApplicationWindow {
 
     function _applyWindowMode() {
         if (sessionManager.isLoggedIn) {
-            minimumWidth = 1100
-            minimumHeight = 700
-            maximumWidth = 16777215
-            maximumHeight = 16777215
+            minimumWidth = mainWindowWidth
+            minimumHeight = mainWindowHeight
+            maximumWidth = mainWindowWidth
+            maximumHeight = mainWindowHeight
             width = mainWindowWidth
             height = mainWindowHeight
         } else {
