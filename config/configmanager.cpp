@@ -94,6 +94,7 @@ void ConfigManager::loadConfig()
         m_faceThreshold = m_settings->value("FaceThreshold", DEFAULT_FACE_THRESHOLD).toInt();
         m_maxFaceCount = m_settings->value("MaxFaceCount", DEFAULT_MAX_FACE_COUNT).toInt();
         m_recognizeTimeout = m_settings->value("RecognizeTimeout", DEFAULT_RECOGNIZE_TIMEOUT).toInt();
+        m_cameraRotation = m_settings->value("CameraRotation", DEFAULT_CAMERA_ROTATION).toInt();
         m_appId = m_settings->value("AppId", "").toString();
         m_sdkKey = m_settings->value("SdkKey", "").toString();
         m_settings->endGroup();
@@ -166,6 +167,7 @@ void ConfigManager::saveConfig()
         m_settings->setValue("FaceThreshold", m_faceThreshold);
         m_settings->setValue("MaxFaceCount", m_maxFaceCount);
         m_settings->setValue("RecognizeTimeout", m_recognizeTimeout);
+        m_settings->setValue("CameraRotation", m_cameraRotation);
         m_settings->setValue("AppId", m_appId);
         m_settings->setValue("SdkKey", m_sdkKey);
         m_settings->endGroup();
@@ -255,6 +257,7 @@ void ConfigManager::restoreDefaults()
     m_faceThreshold = DEFAULT_FACE_THRESHOLD;
     m_maxFaceCount = DEFAULT_MAX_FACE_COUNT;
     m_recognizeTimeout = DEFAULT_RECOGNIZE_TIMEOUT;
+    m_cameraRotation = DEFAULT_CAMERA_ROTATION;
 
     // 恢复考勤规则设置
     m_workStartTime = QTime(9, 0);

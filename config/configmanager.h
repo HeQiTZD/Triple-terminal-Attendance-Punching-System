@@ -37,11 +37,13 @@ public:
     int getFaceThreshold() const { return m_faceThreshold; }
     int getMaxFaceCount() const { return m_maxFaceCount; }
     int getRecognizeTimeout() const { return m_recognizeTimeout; }
+    int getCameraRotation() const { return m_cameraRotation; }
 
     // 人脸识别设置 - Setter
     void setFaceThreshold(int threshold) { m_faceThreshold = threshold; }
     void setMaxFaceCount(int count) { m_maxFaceCount = count; }
     void setRecognizeTimeout(int timeout) { m_recognizeTimeout = timeout; }
+    void setCameraRotation(int degrees) { m_cameraRotation = degrees; }
 
     // ArcFace SDK配置 - Getter
     QString getAppId() const { return m_appId; }
@@ -174,6 +176,7 @@ private:
     int m_faceThreshold;
     int m_maxFaceCount;
     int m_recognizeTimeout;
+    int m_cameraRotation;
 
     // ArcFace SDK配置
     QString m_appId;
@@ -228,6 +231,7 @@ private:
     static constexpr int DEFAULT_FACE_THRESHOLD = 80;
     static constexpr int DEFAULT_MAX_FACE_COUNT = 5;
     static constexpr int DEFAULT_RECOGNIZE_TIMEOUT = 10;
+    static constexpr int DEFAULT_CAMERA_ROTATION = 0;
     static constexpr int DEFAULT_CHECK_IN_START_OFFSET = 120;
     static constexpr int DEFAULT_LATE_ALLOWANCE = 15;
     static constexpr int DEFAULT_EARLY_LEAVE_ALLOWANCE = 15;
