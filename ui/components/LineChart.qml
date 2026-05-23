@@ -5,13 +5,15 @@ import QtQuick.Layouts
 Item {
     id: chart
 
-    property var chartData: []
+    property var chartData: []       // [{ label, value }]
     property string title: ""
     property string xAxisLabel: ""
     property string yAxisLabel: ""
     property bool showGrid: true
     property bool showPoints: true
     property bool showArea: false
+    property color lineColor: Theme.primary
+    property color areaColor: Qt.rgba(0.11, 0.42, 1.0, 0.12)
     property int animationDuration: 300
 
     implicitWidth: parent ? parent.width : 400
@@ -23,8 +25,7 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-        color: Theme.surface
-        radius: Theme.radiusMd
+        color: "transparent"
 
         ColumnLayout {
             anchors.fill: parent
@@ -51,7 +52,7 @@ Item {
                     anchors.fill: parent
                     antialiasing: true
 
-                    property var animationProgress: 0
+                    property real animationProgress: 0
                     NumberAnimation {
                         id: animation
                         target: canvas
@@ -66,18 +67,28 @@ Item {
                         var ctx = getContext("2d")
                         ctx.clearRect(0, 0, width, height)
 
-                        if (!chart.chartData || chart.chartData.length === 0)
+                        if (!chart.chartData || chart.chartData.length < 2)
                             return
 
                         const padding = chart.chartPadding
                         const chartW = chart.chartWidth
                         const chartH = chart.chartHeight
 
+                        let maxValue = 0
+                        let minValue = Infinity
+                        for (let i = 0; i < chart.chartData.length; i++) {
+                            const v = chart.chartData[i].value || 0
+                            if (v > maxValue) maxValue = v
+                            if (v < minValue) minValue = v
+                        }
+                        if (maxValue === minValue) maxValue = minValue + 1
+                        const range = maxValue - minValue
+
+                        // Grid
                         if (chart.showGrid) {
                             ctx.strokeStyle = Theme.border
                             ctx.lineWidth = 1
                             ctx.setLineDash([2, 2])
-
                             for (let i = 0; i <= 5; i++) {
                                 const y = padding + (chartH / 5) * i
                                 ctx.beginPath()
@@ -85,99 +96,75 @@ Item {
                                 ctx.lineTo(padding + chartW, y)
                                 ctx.stroke()
                             }
-
                             ctx.setLineDash([])
                         }
 
-                        let maxValue = 0
-                        let minValue = 0
-                        for (let i = 0; i < chart.chartData.length; i++) {
-                            const value = chart.chartData[i].value || 0
-                            if (value > maxValue) maxValue = value
-                            if (value < minValue) minValue = value
-                        }
-
-                        if (maxValue === minValue) {
-                            maxValue = minValue + 100
-                            minValue = 0
-                        }
-
-                        const range = maxValue - minValue
-                        const pointSpacing = chartW / (chart.chartData.length - 1 || 1)
-
-                        if (chart.showArea) {
-                            ctx.fillStyle = Theme.primarySubtle
-                            ctx.globalAlpha = 0.3 * canvas.animationProgress
-                            ctx.beginPath()
-                            ctx.moveTo(padding, padding + chartH)
-
-                            for (let i = 0; i < chart.chartData.length; i++) {
-                                const x = padding + i * pointSpacing
-                                const value = chart.chartData[i].value || 0
-                                const y = padding + chartH - ((value - minValue) / range) * chartH * canvas.animationProgress
-                                ctx.lineTo(x, y)
-                            }
-
-                            ctx.lineTo(padding + (chart.chartData.length - 1) * pointSpacing, padding + chartH)
-                            ctx.closePath()
-                            ctx.fill()
-                            ctx.globalAlpha = 1.0
-                        }
-
-                        ctx.strokeStyle = Theme.primary
-                        ctx.lineWidth = 2
-                        ctx.lineCap = "round"
-                        ctx.lineJoin = "round"
-                        ctx.beginPath()
-
-                        for (let i = 0; i < chart.chartData.length; i++) {
-                            const x = padding + i * pointSpacing
-                            const value = chart.chartData[i].value || 0
-                            const y = padding + chartH - ((value - minValue) / range) * chartH * canvas.animationProgress
-
-                            if (i === 0) {
-                                ctx.moveTo(x, y)
-                            } else {
-                                ctx.lineTo(x, y)
-                            }
-                        }
-
-                        ctx.stroke()
-
-                        if (chart.showPoints) {
-                            for (let i = 0; i < chart.chartData.length; i++) {
-                                const x = padding + i * pointSpacing
-                                const value = chart.chartData[i].value || 0
-                                const y = padding + chartH - ((value - minValue) / range) * chartH * canvas.animationProgress
-
-                                ctx.fillStyle = Theme.surface
-                                ctx.beginPath()
-                                ctx.arc(x, y, 4, 0, Math.PI * 2)
-                                ctx.fill()
-
-                                ctx.strokeStyle = Theme.primary
-                                ctx.lineWidth = 2
-                                ctx.beginPath()
-                                ctx.arc(x, y, 4, 0, Math.PI * 2)
-                                ctx.stroke()
-                            }
-                        }
-
+                        // Y-axis labels
                         ctx.fillStyle = Theme.textMuted
                         ctx.font = `${Theme.fontSm}px ${Theme.fontFamily}`
-                        ctx.textAlign = "center"
-
-                        for (let i = 0; i < chart.chartData.length; i++) {
-                            const x = padding + i * pointSpacing
-                            const label = chart.chartData[i].label || ""
-                            ctx.fillText(label, x, padding + chartH + 20)
-                        }
-
                         ctx.textAlign = "right"
                         for (let i = 0; i <= 5; i++) {
                             const value = maxValue - (range / 5) * i
                             const y = padding + (chartH / 5) * i
                             ctx.fillText(Math.round(value).toString(), padding - 8, y + 4)
+                        }
+
+                        // X-axis labels
+                        const pointCount = chart.chartData.length
+                        const xStep = pointCount > 1 ? chartW / (pointCount - 1) : chartW
+                        ctx.textAlign = "center"
+                        for (let i = 0; i < pointCount; i++) {
+                            const x = padding + xStep * i
+                            const label = chart.chartData[i].label || ""
+                            ctx.fillText(label, x, padding + chartH + 15)
+                        }
+
+                        // Area fill
+                        if (chart.showArea) {
+                            ctx.fillStyle = chart.areaColor
+                            ctx.beginPath()
+                            const x0 = padding
+                            const y0 = padding + chartH - ((chart.chartData[0].value - minValue) / range * chartH) * canvas.animationProgress
+                            ctx.moveTo(x0, padding + chartH)
+                            ctx.lineTo(x0, y0)
+                            for (let i = 1; i < pointCount; i++) {
+                                const x = padding + xStep * i
+                                const y = padding + chartH - ((chart.chartData[i].value - minValue) / range * chartH) * canvas.animationProgress
+                                ctx.lineTo(x, y)
+                            }
+                            const xEnd = padding + xStep * (pointCount - 1)
+                            ctx.lineTo(xEnd, padding + chartH)
+                            ctx.closePath()
+                            ctx.fill()
+                        }
+
+                        // Line
+                        ctx.strokeStyle = chart.lineColor
+                        ctx.lineWidth = 2
+                        ctx.lineJoin = "round"
+                        ctx.lineCap = "round"
+                        ctx.beginPath()
+                        for (let i = 0; i < pointCount; i++) {
+                            const x = padding + xStep * i
+                            const y = padding + chartH - ((chart.chartData[i].value - minValue) / range * chartH) * canvas.animationProgress
+                            if (i === 0) ctx.moveTo(x, y)
+                            else ctx.lineTo(x, y)
+                        }
+                        ctx.stroke()
+
+                        // Data points
+                        if (chart.showPoints) {
+                            for (let i = 0; i < pointCount; i++) {
+                                const x = padding + xStep * i
+                                const y = padding + chartH - ((chart.chartData[i].value - minValue) / range * chartH) * canvas.animationProgress
+                                ctx.fillStyle = Theme.surface
+                                ctx.strokeStyle = chart.lineColor
+                                ctx.lineWidth = 2
+                                ctx.beginPath()
+                                ctx.arc(x, y, 4, 0, 2 * Math.PI)
+                                ctx.fill()
+                                ctx.stroke()
+                            }
                         }
                     }
 
@@ -188,9 +175,9 @@ Item {
                     Connections {
                         target: chart
                         function onChartDataChanged() {
-                            animationProgress = 0
+                            canvas.animationProgress = 0
                             animation.running = true
-                            requestPaint()
+                            canvas.requestPaint()
                         }
                     }
                 }
@@ -199,42 +186,37 @@ Item {
                     id: hoverArea
                     anchors.fill: parent
                     hoverEnabled: true
-
                     property int hoveredIndex: -1
 
                     ToolTip {
-                        id: tooltip
-                        visible: hoverArea.hoveredIndex >= 0 && hoverArea.hoveredIndex < chart.chartData.length
+                        visible: hoverArea.containsMouse && hoverArea.hoveredIndex >= 0
+                                 && hoverArea.hoveredIndex < chart.chartData.length
                         text: {
-                            if (hoverArea.hoveredIndex < 0 || hoverArea.hoveredIndex >= chart.chartData.length)
-                                return ""
-                            const item = chart.chartData[hoverArea.hoveredIndex]
+                            const idx = hoverArea.hoveredIndex
+                            if (idx < 0 || idx >= chart.chartData.length) return ""
+                            const item = chart.chartData[idx]
                             return `${item.label || ""}: ${item.value || 0}`
                         }
                     }
 
-                    onMouseXChanged: {
+                    onPositionChanged: function(mouse) {
                         const padding = chart.chartPadding
-                        const chartW = chart.chartWidth
-                        const pointSpacing = chartW / (chart.chartData.length - 1 || 1)
-
-                        hoveredIndex = Math.round((mouseX - padding) / pointSpacing)
-
-                        if (hoveredIndex < 0 || hoveredIndex >= chart.chartData.length)
-                            hoveredIndex = -1
+                        const pointCount = chart.chartData.length
+                        const xStep = pointCount > 1 ? chart.chartWidth / (pointCount - 1) : chart.chartWidth
+                        let closest = -1
+                        let minDist = 12
+                        for (let i = 0; i < pointCount; i++) {
+                            const px = padding + xStep * i
+                            const dist = Math.abs(mouse.x - px)
+                            if (dist < minDist) {
+                                minDist = dist
+                                closest = i
+                            }
+                        }
+                        hoveredIndex = closest
                     }
 
-                    onMouseYChanged: {
-                        const padding = chart.chartPadding
-                        const chartH = chart.chartHeight
-
-                        if (hoveredIndex >= 0 && (mouseY < padding || mouseY > padding + chartH))
-                            hoveredIndex = -1
-                    }
-
-                    onExited: {
-                        hoveredIndex = -1
-                    }
+                    onExited: { hoveredIndex = -1 }
                 }
             }
         }
