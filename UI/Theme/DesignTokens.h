@@ -16,10 +16,10 @@ namespace Primitive {
     inline constexpr const char* gray400 = "#94a3b8";
     inline constexpr const char* gray500 = "#64748b";
     inline constexpr const char* gray600 = "#475569";
-    inline constexpr const char* gray700 = "#334155";
-    inline constexpr const char* gray800 = "#1e293b";
-    inline constexpr const char* gray900 = "#0f172a";
-    inline constexpr const char* gray950 = "#020617";
+    inline constexpr const char* gray700 = "#3d4e64";
+    inline constexpr const char* gray800 = "#2d3c50";
+    inline constexpr const char* gray900 = "#1f2b3b";
+    inline constexpr const char* gray950 = "#151e2b";
 
     // Blues
     inline constexpr const char* blue400 = "#60a5fa";

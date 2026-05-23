@@ -1,21 +1,21 @@
 /* ======================================================
-   考勤打卡系统 - 深色科技风主题
-   配色：背景#0d1117 / 面板#161b22 / 强调#00d4ff
+   考勤打卡系统 - 中灰蓝专业主题
+   配色：背景#151e2b / 面板#1f2b3b / 强调#00d4ff
    ====================================================== */
 
 /* 主窗口 */
 QMainWindow {
-    background-color: #0d1117;
+    background-color: #151e2b;
 }
 
 /* 中央部件 */
 QWidget#centralwidget {
-    background-color: #0d1117;
+    background-color: #151e2b;
 }
 
 /* ==================== 顶部工具栏 ==================== */
 QWidget#topWidget {
-    background-color: #161b22;
+    background-color: #1f2b3b;
     border-bottom: 1px solid #00d4ff;
     padding: 0px 4px;
 }
@@ -57,9 +57,9 @@ QPushButton:pressed {
 
 /* ==================== 上层：识别信息横条 ==================== */
 QWidget#infoWidget {
-    background-color: #161b22;
+    background-color: #1f2b3b;
     border-radius: 10px;
-    border: 1px solid #21262d;
+    border: 1px solid #2d3c50;
 }
 
 /* ==================== 标签 ==================== */
@@ -84,9 +84,9 @@ QLabel#cameraLabel {
 
 /* ==================== 输入框（只读） ==================== */
 QLineEdit {
-    background-color: #0d1117;
+    background-color: #151e2b;
     border: none;
-    border-bottom: 1px solid #30363d;
+    border-bottom: 1px solid #3d4e64;
     border-radius: 3px;
     padding: 8px 6px;
     color: #e6edf3;
@@ -101,8 +101,8 @@ QLineEdit:focus {
 }
 
 QLineEdit:read-only {
-    background-color: #161b22;
-    border-bottom: 1px solid #21262d;
+    background-color: #1f2b3b;
+    border-bottom: 1px solid #2d3c50;
     color: #c9d1d9;
     font-size: 14px;
     font-weight: 600;
@@ -110,29 +110,29 @@ QLineEdit:read-only {
 
 /* ==================== 下层：摄像头面板 ==================== */
 QWidget#cameraWidget {
-    background-color: #161b22;
+    background-color: #1f2b3b;
     border-radius: 10px;
-    border: 1px solid #21262d;
+    border: 1px solid #2d3c50;
     margin: 0px 0px 0px 4px;
 }
 
 /* 摄像头显示区域 - 移除边框 */
 QLabel#cameraDisplay {
-    background-color: #0a0e14;
-    color: #30363d;
+    background-color: #151e2b;
+    color: #3d4e64;
     border: none;
 }
 
 /* ==================== 滚动条 ==================== */
 QScrollBar:vertical {
-    background-color: #161b22;
+    background-color: #1f2b3b;
     width: 8px;
     border-radius: 4px;
     margin: 0px;
 }
 
 QScrollBar::handle:vertical {
-    background-color: #30363d;
+    background-color: #3d4e64;
     border-radius: 4px;
     min-height: 30px;
 }
@@ -152,14 +152,14 @@ QScrollBar::sub-page:vertical {
 }
 
 QScrollBar:horizontal {
-    background-color: #161b22;
+    background-color: #1f2b3b;
     height: 8px;
     border-radius: 4px;
     margin: 0px;
 }
 
 QScrollBar::handle:horizontal {
-    background-color: #30363d;
+    background-color: #3d4e64;
     border-radius: 4px;
     min-width: 30px;
 }

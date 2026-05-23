@@ -4,13 +4,13 @@
 
 /* ---------- 全局滚动条 ---------- */
 QScrollBar:vertical {
-    background-color: #0f172a;
+    background-color: #1f2b3b;
     width: 8px;
     border-radius: 4px;
     margin: 0px;
 }
 QScrollBar::handle:vertical {
-    background-color: #334155;
+    background-color: #3d4e64;
     border-radius: 4px;
     min-height: 30px;
 }
@@ -27,13 +27,13 @@ QScrollBar::sub-page:vertical {
 }
 
 QScrollBar:horizontal {
-    background-color: #0f172a;
+    background-color: #1f2b3b;
     height: 8px;
     border-radius: 4px;
     margin: 0px;
 }
 QScrollBar::handle:horizontal {
-    background-color: #334155;
+    background-color: #3d4e64;
     border-radius: 4px;
     min-width: 30px;
 }
@@ -51,9 +51,9 @@ QScrollBar::sub-page:horizontal {
 
 /* ---------- Tooltip ---------- */
 QToolTip {
-    background-color: #1e293b;
+    background-color: #2d3c50;
     color: #f8fafc;
-    border: 1px solid #334155;
+    border: 1px solid #3d4e64;
     border-radius: 6px;
     padding: 6px 10px;
     font-size: 12px;
@@ -67,9 +67,9 @@ QPushButton:focus-visible {
 
 /* ---------- 菜单 ---------- */
 QMenu {
-    background-color: #0f172a;
+    background-color: #1f2b3b;
     color: #f8fafc;
-    border: 1px solid #334155;
+    border: 1px solid #3d4e64;
     border-radius: 6px;
     padding: 4px 0;
 }
@@ -77,5 +77,5 @@ QMenu::item {
     padding: 6px 24px;
 }
 QMenu::item:selected {
-    background-color: #1e293b;
+    background-color: #2d3c50;
 }

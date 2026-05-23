@@ -29,23 +29,23 @@ int main(int argc, char *argv[])
 
     // 设置深色调色板，与 mainwindow.qss 深色科技风主题一致
     QPalette palette;
-    palette.setColor(QPalette::Window,          QColor(0x0d, 0x11, 0x17));
+    palette.setColor(QPalette::Window,          QColor(0x15, 0x1e, 0x2b));
     palette.setColor(QPalette::WindowText,      Qt::white);
-    palette.setColor(QPalette::Base,            QColor(0x16, 0x1b, 0x22));
-    palette.setColor(QPalette::AlternateBase,   QColor(0x21, 0x26, 0x2d));
-    palette.setColor(QPalette::ToolTipBase,     QColor(0x16, 0x1b, 0x22));
+    palette.setColor(QPalette::Base,            QColor(0x1f, 0x2b, 0x3b));
+    palette.setColor(QPalette::AlternateBase,   QColor(0x2d, 0x3c, 0x50));
+    palette.setColor(QPalette::ToolTipBase,     QColor(0x1f, 0x2b, 0x3b));
     palette.setColor(QPalette::ToolTipText,     Qt::white);
     palette.setColor(QPalette::Text,            Qt::white);
-    palette.setColor(QPalette::Button,          QColor(0x21, 0x26, 0x2d));
+    palette.setColor(QPalette::Button,          QColor(0x2d, 0x3c, 0x50));
     palette.setColor(QPalette::ButtonText,      Qt::white);
     palette.setColor(QPalette::BrightText,      Qt::white);
     palette.setColor(QPalette::Highlight,       QColor(0x1f, 0x6f, 0xeb));
     palette.setColor(QPalette::HighlightedText, Qt::white);
     palette.setColor(QPalette::Link,            QColor(0x00, 0xd4, 0xff));
-    palette.setColor(QPalette::Midlight,        QColor(0x30, 0x36, 0x3d));
-    palette.setColor(QPalette::Dark,            QColor(0x0d, 0x11, 0x17));
-    palette.setColor(QPalette::Mid,             QColor(0x21, 0x26, 0x2d));
-    palette.setColor(QPalette::Shadow,          QColor(0x00, 0x00, 0x00));
+    palette.setColor(QPalette::Midlight,        QColor(0x3d, 0x4e, 0x64));
+    palette.setColor(QPalette::Dark,            QColor(0x15, 0x1e, 0x2b));
+    palette.setColor(QPalette::Mid,             QColor(0x2d, 0x3c, 0x50));
+    palette.setColor(QPalette::Shadow,          QColor(0x0d, 0x15, 0x20));
     a.setPalette(palette);
 
     // 初始化 UI 令牌系统
