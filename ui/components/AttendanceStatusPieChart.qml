@@ -34,7 +34,7 @@ Item {
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.bottom: legendRow.top
+        anchors.bottom: parent.bottom
         color: "transparent"
 
         ChartView {
@@ -155,76 +155,6 @@ Item {
                     Layout.alignment: Qt.AlignHCenter
                 }
             }
-        }
-    }
-
-    RowLayout {
-        id: legendRow
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        height: 30
-        spacing: Theme.spacingLg
-        visible: root.slices && root.slices.length > 0
-
-        Item {
-            Layout.fillWidth: true
-        }
-
-        Repeater {
-            model: root.slices
-
-            delegate: RowLayout {
-                id: legendDelegate
-                required property var modelData
-
-                spacing: Theme.spacingXs
-
-                Rectangle {
-                    width: 12
-                    height: 12
-                    radius: 3
-                    color: legendDelegate.modelData.color
-                    Layout.alignment: Qt.AlignVCenter
-                }
-
-                Text {
-                    text: legendDelegate.modelData.label || legendDelegate.modelData.status || ""
-                    color: Theme.textMuted
-                    font.pixelSize: Theme.fontSm
-                    font.family: Theme.fontFamily
-                    elide: Text.ElideRight
-                    Layout.maximumWidth: 60
-                    Layout.alignment: Qt.AlignVCenter
-
-                    Behavior on color {
-                        ColorAnimation {
-                            duration: 150
-                        }
-                    }
-                }
-
-                Text {
-                    text: legendDelegate.modelData.value !== undefined
-                          ? String(legendDelegate.modelData.value)
-                          : String(legendDelegate.modelData.count || 0)
-                    color: Theme.text
-                    font.pixelSize: Theme.fontSm
-                    font.family: Theme.fontFamily
-                    font.bold: true
-                    Layout.alignment: Qt.AlignVCenter
-
-                    Behavior on color {
-                        ColorAnimation {
-                            duration: 150
-                        }
-                    }
-                }
-            }
-        }
-
-        Item {
-            Layout.fillWidth: true
         }
     }
 

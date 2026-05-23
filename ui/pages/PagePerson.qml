@@ -14,6 +14,25 @@ Item {
 
     readonly property bool canUpdate: PermissionCatalog.hasPerm(sessionManager, "person.update")
 
+    property string confirmAction: ""
+
+    function _openConfirm(action) {
+        confirmAction = action
+        confirm.open()
+    }
+
+    function _confirmText() {
+        const emp = pEmp.text.trim() || qsTr("(空)")
+        const name = pName.text.trim()
+        const info = name ? emp + " " + name : emp
+        switch (confirmAction) {
+        case "create": return qsTr("确认新增人员 ") + info + "？"
+        case "update": return qsTr("确认修改人员 ") + info + "？"
+        case "delete": return qsTr("确认删除人员 ") + info + "？"
+        default: return ""
+        }
+    }
+
     function _query() {
         personServer.queryPersons(pName.text.trim(), pEmp.text.trim(),
                                   pDept.text.trim(), pPos.text.trim(), "", "")
@@ -27,7 +46,6 @@ Item {
         ToolBarRow {
             Layout.fillWidth: true
             title: qsTr("人员管理")
-            subtitle: qsTr("新增 / 修改 / 删除 / 查询人员")
         }
 
         Card {
@@ -44,7 +62,6 @@ Item {
                     TextField {
                         id: pName
                         readOnly: !page.canUpdate
-                        placeholderText: qsTr("张三")
                         Layout.fillWidth: true
                     }
                 }
@@ -52,7 +69,6 @@ Item {
                     TextField {
                         id: pEmp
                         readOnly: !page.canUpdate
-                        placeholderText: qsTr("EMP001")
                         Layout.fillWidth: true
                     }
                 }
@@ -60,7 +76,6 @@ Item {
                     TextField {
                         id: pDept
                         readOnly: !page.canUpdate
-                        placeholderText: qsTr("研发部")
                         Layout.fillWidth: true
                     }
                 }
@@ -68,7 +83,6 @@ Item {
                     TextField {
                         id: pPos
                         readOnly: !page.canUpdate
-                        placeholderText: qsTr("工程师")
                         Layout.fillWidth: true
                     }
                 }
@@ -84,8 +98,7 @@ Item {
                         highlighted: true
                         enabled: !personServer.busy
                         onClicked: guardedClick(function() {
-                            personServer.createPerson(pName.text.trim(), pEmp.text.trim(),
-                                                      pDept.text.trim(), pPos.text.trim())
+                            page._openConfirm("create")
                         })
                     }
                     PermissionButton {
@@ -95,8 +108,7 @@ Item {
                         text: qsTr("修改")
                         enabled: !personServer.busy
                         onClicked: guardedClick(function() {
-                            personServer.updatePerson(pEmp.text.trim(), pName.text.trim(),
-                                                      pDept.text.trim(), pPos.text.trim())
+                            page._openConfirm("update")
                         })
                     }
                     PermissionButton {
@@ -105,7 +117,7 @@ Item {
                         deniedDialog: page.deniedDialog
                         text: qsTr("删除")
                         enabled: !personServer.busy
-                        onClicked: guardedClick(function() { confirm.open() })
+                        onClicked: guardedClick(function() { page._openConfirm("delete") })
                     }
                     PermissionButton {
                         sessionManager: page.sessionManager
@@ -141,7 +153,8 @@ Item {
                 anchors.fill: parent
                 rows: personServer.records
                 columns: [
-                    { key: "id", title: "ID", width: 60, align: "right" },
+                    { key: "id", title: qsTr("序号"), width: 60, align: "right",
+                      formatter: function(v, row, idx) { return String(idx + 1) } },
                     { key: "employeeId", title: qsTr("工号"), width: 120 },
                     { key: "name", title: qsTr("姓名"), width: 120 },
                     { key: "department", title: qsTr("部门"), width: 140 },
@@ -162,10 +175,113 @@ Item {
 
     BusyOverlay { busy: personServer.busy }
 
-    ConfirmDialog {
+    Popup {
         id: confirm
-        message: qsTr("确认删除工号 ") + pEmp.text + qsTr(" 的人员？")
-        onAccepted: personServer.deletePerson(pEmp.text.trim())
+        parent: page
+        modal: true
+        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
+        padding: Theme.spacingLg
+
+        readonly property real _w: Math.min(420, parent ? parent.width - 48 : 372)
+
+        x: parent ? Math.round((parent.width - _w) / 2) : 0
+        y: parent ? Math.round((parent.height - (_h > 0 ? _h : 120)) / 2) : 0
+        width: _w
+
+        readonly property real _h: implicitHeight > 0 ? implicitHeight : height
+
+        background: Rectangle {
+            color: Theme.surface
+            border.color: Theme.border
+            border.width: 1
+            radius: Theme.radiusMd
+        }
+
+        contentItem: ColumnLayout {
+            spacing: Theme.spacingMd
+            Label {
+                Layout.fillWidth: true
+                text: page._confirmText()
+                wrapMode: Text.WordWrap
+                color: Theme.text
+                font.pixelSize: Theme.fontMd
+                font.family: Theme.fontFamily
+            }
+            RowLayout {
+                Layout.alignment: Qt.AlignRight
+                spacing: Theme.spacingSm
+                Button {
+                    text: qsTr("取消")
+                    flat: true
+                    onClicked: {
+                        confirm.close()
+                        page.confirmAction = ""
+                    }
+                }
+                Button {
+                    text: qsTr("确认")
+                    highlighted: true
+                    onClicked: {
+                        const emp = pEmp.text.trim()
+                        if (page.confirmAction === "create")
+                            personServer.createPerson(pName.text.trim(), emp,
+                                                      pDept.text.trim(), pPos.text.trim())
+                        else if (page.confirmAction === "update")
+                            personServer.updatePerson(emp, pName.text.trim(),
+                                                      pDept.text.trim(), pPos.text.trim())
+                        else if (page.confirmAction === "delete")
+                            personServer.deletePerson(emp)
+                        confirm.close()
+                        page.confirmAction = ""
+                    }
+                }
+            }
+        }
+    }
+
+    Popup {
+        id: toast
+        parent: page
+        modal: false
+        closePolicy: Popup.NoAutoClose
+        padding: Theme.spacingMd
+
+        property bool isError: false
+        readonly property real _w: Math.min(360, parent ? parent.width - 48 : 312)
+
+        x: parent ? Math.round((parent.width - _w) / 2) : 0
+        y: parent ? Theme.spacingMd : 0
+        width: _w
+
+        background: Rectangle {
+            color: toast.isError ? Theme.danger : Theme.success
+            radius: Theme.radiusMd
+            opacity: 0.92
+        }
+
+        contentItem: Label {
+            id: toastLabel
+            text: ""
+            color: "white"
+            font.pixelSize: Theme.fontMd
+            font.family: Theme.fontFamily
+            wrapMode: Text.WordWrap
+            horizontalAlignment: Text.AlignHCenter
+            Layout.fillWidth: true
+        }
+
+        Timer {
+            id: toastTimer
+            interval: 2200
+            onTriggered: toast.close()
+        }
+
+        function show(msg, isErr) {
+            toastLabel.text = msg
+            toast.isError = isErr
+            toast.open()
+            toastTimer.restart()
+        }
     }
 
     Connections {
@@ -173,11 +289,14 @@ Item {
         function onOperationSucceeded(apiType, message) {
             page.serviceResult(apiType, 0, message)
             if (apiType.indexOf("create") >= 0 || apiType.indexOf("update") >= 0
-                    || apiType.indexOf("delete") >= 0)
+                    || apiType.indexOf("delete") >= 0) {
                 page._query()
+                toast.show(message || qsTr("操作成功"), false)
+            }
         }
         function onOperationFailed(apiType, code, message) {
             page.serviceResult(apiType, code, message)
+            toast.show(ErrorCatalog.messageForCode(code, message) || message || qsTr("操作失败"), true)
         }
     }
 }

@@ -36,7 +36,6 @@ Item {
         ToolBarRow {
             Layout.fillWidth: true
             title: qsTr("用户账号")
-            subtitle: qsTr("工号登录账号 · 密码 ≥8 位且含字母与数字")
         }
 
         Card {

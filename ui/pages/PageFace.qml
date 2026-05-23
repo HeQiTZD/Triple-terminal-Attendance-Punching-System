@@ -29,99 +29,78 @@ Item {
         ToolBarRow {
             Layout.fillWidth: true
             title: qsTr("人脸数据管理")
-            subtitle: qsTr("按工号查询 / 注册 / 删除（Base64 照片）")
+        }
+
+        RowLayout {
+            Layout.fillWidth: true
+            spacing: Theme.spacingMd
+
+            LabeledField {
+                label: qsTr("工号")
+                Layout.preferredWidth: 240
+                TextField {
+                    id: faceEmp
+                    text: Presets.defaultEmployeeId
+                    Layout.fillWidth: true
+                }
+            }
+            CheckBox {
+                id: overwriteCb
+                visible: PermissionCatalog.hasPerm(sessionManager, "face.register")
+                text: qsTr("覆盖已有")
+                checked: page.overwriteFace
+                onCheckedChanged: page.overwriteFace = checked
+            }
+
+            Item { Layout.fillWidth: true }
+
+            PermissionButton {
+                sessionManager: page.sessionManager
+                requiredPermission: "face.read"
+                deniedDialog: page.deniedDialog
+                text: qsTr("查询")
+                enabled: !faceServer.busy && faceEmp.text.trim().length > 0
+                onClicked: guardedClick(function() {
+                    faceServer.queryFace(faceEmp.text.trim())
+                })
+            }
+            PermissionButton {
+                sessionManager: page.sessionManager
+                requiredPermission: "face.register"
+                deniedDialog: page.deniedDialog
+                text: qsTr("注册人脸")
+                highlighted: true
+                enabled: !faceServer.busy && faceEmp.text.trim().length > 0
+                onClicked: guardedClick(function() { photoDialog.open() })
+            }
+            PermissionButton {
+                sessionManager: page.sessionManager
+                requiredPermission: "face.delete"
+                deniedDialog: page.deniedDialog
+                text: qsTr("删除")
+                enabled: !faceServer.busy && faceServer.lastFound
+                onClicked: guardedClick(function() { confirm.open() })
+            }
         }
 
         Card {
             Layout.fillWidth: true
-            title: qsTr("人脸操作")
+            Layout.fillHeight: true
+            stretchContent: true
+            title: qsTr("人脸数据")
 
-            ColumnLayout {
-                width: parent.width
-                spacing: Theme.spacingMd
-
-                RowLayout {
-                    Layout.fillWidth: true
-
-                    LabeledField {
-                        label: qsTr("工号")
-                        Layout.fillWidth: true
-                        TextField {
-                            id: faceEmp
-                            text: Presets.defaultEmployeeId
-                            Layout.fillWidth: true
-                        }
-                    }
-                    CheckBox {
-                        id: overwriteCb
-                        visible: PermissionCatalog.hasPerm(sessionManager, "face.register")
-                        text: qsTr("覆盖已有")
-                        checked: page.overwriteFace
-                        onCheckedChanged: page.overwriteFace = checked
-                    }
-                }
-
-                RowLayout {
-                    Layout.fillWidth: true
-                    spacing: Theme.spacingSm
-
-                    PermissionButton {
-                        sessionManager: page.sessionManager
-                        requiredPermission: "face.read"
-                        deniedDialog: page.deniedDialog
-                        text: qsTr("查询")
-                        enabled: !faceServer.busy && faceEmp.text.trim().length > 0
-                        onClicked: guardedClick(function() {
-                            faceServer.queryFace(faceEmp.text.trim())
-                        })
-                    }
-                    PermissionButton {
-                        sessionManager: page.sessionManager
-                        requiredPermission: "face.register"
-                        deniedDialog: page.deniedDialog
-                        text: qsTr("注册人脸")
-                        highlighted: true
-                        enabled: !faceServer.busy && faceEmp.text.trim().length > 0
-                        onClicked: guardedClick(function() { photoDialog.open() })
-                    }
-                    PermissionButton {
-                        sessionManager: page.sessionManager
-                        requiredPermission: "face.delete"
-                        deniedDialog: page.deniedDialog
-                        text: qsTr("删除")
-                        enabled: !faceServer.busy && faceServer.lastFound
-                        onClicked: guardedClick(function() { confirm.open() })
-                    }
-                }
-
-                Label {
-                    Layout.fillWidth: true
-                    wrapMode: Text.WordWrap
-                    visible: faceServer.lastFound
-                    text: qsTr("最近查询：特征长度 %1 · 更新 %2")
-                          .arg(faceServer.lastRecord.featureSize || "-")
-                          .arg(faceServer.lastRecord.updatedAt || "-")
-                    color: Theme.textMuted
-                    font.pixelSize: Theme.fontSm
-                }
-
-                Frame {
-                    Layout.fillWidth: true
-                    Layout.fillHeight: true
-
-                    DataTable {
-                        anchors.fill: parent
-                        rows: page._rowsFromServer()
-                        columns: [
-                            { key: "employeeId", title: qsTr("工号"), width: 120 },
-                            { key: "featureSize", title: qsTr("特征长度"), width: 100, align: "right" },
-                            { key: "createdAt", title: qsTr("创建时间"), width: 170 },
-                            { key: "updatedAt", title: qsTr("更新时间") }
-                        ]
-                        onRowClicked: function(idx, row) {
-                            faceEmp.text = row.employeeId || ""
-                        }
-                    }
+            DataTable {
+                anchors.fill: parent
+                rows: page._rowsFromServer()
+                emptyText: qsTr("输入工号查询人脸数据")
+                columns: [
+                    { key: "employeeId", title: qsTr("工号"), width: 130 },
+                    { key: "featureSize", title: qsTr("特征长度"), width: 100, align: "right" },
+                    { key: "createdAt", title: qsTr("创建时间"), width: 180 },
+                    { key: "updatedAt", title: qsTr("更新时间"), width: 180 }
+                ]
+                onRowClicked: function(idx, row) {
+                    faceEmp.text = row.employeeId || ""
                 }
             }
         }

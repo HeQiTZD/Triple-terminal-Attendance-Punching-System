@@ -137,12 +137,11 @@ QtObject {
 
         { group: qsTr("账号与权限") },
         { key: "user", label: qsTr("用户账号"), icon: "⚿" },
-        { key: "rbac", label: qsTr("角色权限"), icon: "⛨" },
+        { key: "rbac", label: qsTr("用户权限"), icon: "⛨" },
 
         { group: qsTr("系统") },
         { key: "events", label: qsTr("事件中心"), icon: "⚡" },
         { key: "history", label: qsTr("调用历史"), icon: "≡" },
-        { key: "settings", label: qsTr("连接与预设"), icon: "⚙" }
     ]
 
     function canAccessNav(key, sessionManager) {

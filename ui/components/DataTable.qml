@@ -6,7 +6,7 @@ import AttendanceAdmin
 
 /*
   通用数据表格：
-    columns: [{ key, title, width?, align?, formatter?: function(v, row) }]
+    columns: [{ key, title, width?, align?, formatter?: function(v, row, index) }]
     rows:    JS 数组，每个元素是普通对象或 QObject（通过属性访问）
   支持：行高亮、行选中（currentRow / selectedRow）、双击、右键菜单（复制行 JSON）。
 */
@@ -24,34 +24,79 @@ Rectangle {
     property var selectedRow: currentRow >= 0 && currentRow < (rows ? rows.length : 0) ? rows[currentRow] : null
     property string emptyText: qsTr("（无数据）")
     property bool stripeRows: true
+    property int minColWidth: 40
 
     signal rowClicked(int index, var row)
     signal rowDoubleClicked(int index, var row)
 
-    function _formatCell(col, row) {
-        if (!col || !row) return ""
-        let v
-        try { v = row[col.key] } catch (e) { v = "" }
-        if (col.formatter)
-            return col.formatter(v, row)
-        if (v === undefined || v === null) return ""
-        if (v instanceof Date) return Qt.formatDateTime(v, "yyyy-MM-dd HH:mm:ss")
-        return String(v)
+    // 拖拽调整列宽
+    property var _userWidths: ({})
+    property int _dragIdx: -1
+    property real _dragStartX: 0
+    property real _dragStartW: 0
+    property real _dragNextStartW: 0
+    property int _widthVersion: 0
+
+    function _beginDrag(idx, mouseX) {
+        _dragIdx = idx
+        _dragStartX = mouseX
+        _dragStartW = _colWidth(idx, root.width)
+        _dragNextStartW = idx + 1 < columns.length ? _colWidth(idx + 1, root.width) : 0
     }
 
-    function _columnWidth(col, totalWidth) {
-        if (col.width && col.width > 0) return col.width
-        // 默认平均分配
+    function _doDrag(mouseX) {
+        if (_dragIdx < 0) return
+        const delta = mouseX - _dragStartX
+        const newW = Math.max(minColWidth, _dragStartW + delta)
+        _userWidths[_dragIdx] = newW
+        _widthVersion++
+    }
+
+    function _endDrag() {
+        _dragIdx = -1
+    }
+
+    function _colWidth(idx, totalWidth) {
+        void _widthVersion
+        if (_userWidths[idx] !== undefined)
+            return _userWidths[idx]
+        const col = columns[idx]
+        if (col && col.width && col.width > 0)
+            return col.width
+        // 平均分配
         let fixedTotal = 0
         let flexCount = 0
         for (let i = 0; i < columns.length; ++i) {
-            if (columns[i].width && columns[i].width > 0)
+            if (_userWidths[i] !== undefined)
+                fixedTotal += _userWidths[i]
+            else if (columns[i].width && columns[i].width > 0)
                 fixedTotal += columns[i].width
             else
                 ++flexCount
         }
         const remain = Math.max(120, totalWidth - fixedTotal - 16)
         return flexCount > 0 ? Math.max(80, Math.floor(remain / flexCount)) : 120
+    }
+
+    function _formatCell(col, row, idx) {
+        if (!col || !row) return ""
+        let v
+        try { v = row[col.key] } catch (e) { v = "" }
+        if (col.formatter)
+            return col.formatter(v, row, idx !== undefined ? idx : -1)
+        if (v === undefined || v === null) return ""
+        if (v instanceof Date) return Qt.formatDateTime(v, "yyyy-MM-dd HH:mm:ss")
+        return String(v)
+    }
+
+    function _columnWidth(col, totalWidth) {
+        // 保持兼容旧 API
+        for (let i = 0; i < columns.length; ++i) {
+            if (columns[i] === col)
+                return _colWidth(i, totalWidth)
+        }
+        if (col.width && col.width > 0) return col.width
+        return 120
     }
 
     ColumnLayout {
@@ -74,13 +119,14 @@ Rectangle {
                     model: root.columns
                     delegate: Item {
                         required property var modelData
-                        width: root._columnWidth(modelData, root.width)
+                        required property int index
+                        width: root._colWidth(index, root.width)
                         height: parent.height
 
                         Label {
                             anchors.fill: parent
                             anchors.leftMargin: 6
-                            anchors.rightMargin: 6
+                            anchors.rightMargin: 10
                             text: modelData.title || modelData.key
                             color: Theme.text
                             font.pixelSize: Theme.fontSm
@@ -91,6 +137,24 @@ Rectangle {
                                                  modelData.align === "center" ? Text.AlignHCenter :
                                                  Text.AlignLeft
                             elide: Text.ElideRight
+                        }
+
+                        // 拖拽手柄
+                        Rectangle {
+                            anchors.right: parent.right
+                            anchors.top: parent.top
+                            anchors.bottom: parent.bottom
+                            width: 6
+                            color: "transparent"
+                            z: 1
+
+                            MouseArea {
+                                anchors.fill: parent
+                                cursorShape: Qt.SplitHCursor
+                                onPressed: function(mouse) { root._beginDrag(index, mouse.x) }
+                                onPositionChanged: function(mouse) { root._doDrag(mouse.x) }
+                                onReleased: root._endDrag()
+                            }
                         }
 
                         Rectangle {
@@ -139,14 +203,15 @@ Rectangle {
                         model: root.columns
                         delegate: Item {
                             required property var modelData
-                            width: root._columnWidth(modelData, root.width)
+                            required property int index
+                            width: root._colWidth(index, root.width)
                             height: parent.height
 
                             Label {
                                 anchors.fill: parent
                                 anchors.leftMargin: 6
                                 anchors.rightMargin: 6
-                                text: root._formatCell(modelData, rowItem.modelData)
+                                text: root._formatCell(modelData, rowItem.modelData, rowItem.index)
                                 color: rowItem.index === root.currentRow ? Theme.text : Theme.textMuted
                                 font.pixelSize: Theme.fontSm
                                 font.family: Theme.fontFamily
@@ -185,7 +250,7 @@ Rectangle {
                             const obj = {}
                             for (let i = 0; i < root.columns.length; ++i) {
                                 const c = root.columns[i]
-                                obj[c.key] = root._formatCell(c, rowItem.modelData)
+                                obj[c.key] = root._formatCell(c, rowItem.modelData, rowItem.index)
                             }
                             tmpEdit.text = JSON.stringify(obj)
                             tmpEdit.selectAll()

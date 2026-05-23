@@ -1,0 +1,98 @@
+<h2>角色权限管理 — 页面布局方案</h2>
+<p class="subtitle">当前 PageRbac 只做用户↔角色分配。新增功能：创建角色、删除角色、修改角色权限。</p>
+
+<div class="section">
+  <h3>方案 A：Tab 切换（推荐）</h3>
+  <p>在左上角加两个 Tab："用户权限分配" 和 "角色管理"，各占独立视图，逻辑清晰互不干扰。</p>
+  <div class="mockup">
+    <div class="mockup-header">PageRbac — Tab 布局</div>
+    <div class="mockup-body" style="padding:16px;background:#F2F4F7;">
+      <div style="display:flex;gap:8px;margin-bottom:12px;">
+        <div class="mock-button" style="background:#1D6BFF;color:#fff;">用户权限分配</div>
+        <div class="mock-button">角色管理</div>
+      </div>
+      <div style="display:flex;gap:12px;background:#fff;border-radius:6px;padding:12px;border:1px solid #D8DDE3;">
+        <div style="width:280px;background:#EEF1F6;border-radius:4px;padding:8px;">
+          <div style="font-size:12px;color:#6B7280;margin-bottom:8px;">用户列表</div>
+          <div style="height:24px;background:#fff;margin-bottom:4px;border-radius:3px;"></div>
+          <div style="height:24px;background:#fff;margin-bottom:4px;border-radius:3px;"></div>
+          <div style="height:24px;background:#fff;margin-bottom:4px;border-radius:3px;"></div>
+        </div>
+        <div style="flex:1;background:#EEF1F6;border-radius:4px;padding:8px;">
+          <div style="font-size:12px;color:#6B7280;margin-bottom:8px;">角色分配（CheckBox 列表）</div>
+          <div style="height:20px;width:120px;background:#DBEAFE;border-radius:3px;margin-bottom:4px;"></div>
+          <div style="height:20px;width:140px;background:#fff;border-radius:3px;margin-bottom:4px;"></div>
+          <div style="height:20px;width:100px;background:#fff;border-radius:3px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>方案 B：单页上下分区</h3>
+  <p>在现有用户-角色分配下方增加"角色管理"区域，全部内容在一页内可滚动。</p>
+  <div class="mockup">
+    <div class="mockup-header">PageRbac — 分区布局</div>
+    <div class="mockup-body" style="padding:16px;background:#F2F4F7;">
+      <div style="background:#fff;border-radius:6px;padding:12px;margin-bottom:12px;border:1px solid #D8DDE3;">
+        <div style="font-size:13px;font-weight:bold;color:#1F2937;margin-bottom:8px;">用户权限分配</div>
+        <div style="display:flex;gap:12px;">
+          <div style="width:240px;height:80px;background:#EEF1F6;border-radius:4px;"></div>
+          <div style="flex:1;height:80px;background:#EEF1F6;border-radius:4px;"></div>
+        </div>
+      </div>
+      <div style="background:#fff;border-radius:6px;padding:12px;border:1px solid #D8DDE3;">
+        <div style="font-size:13px;font-weight:bold;color:#1F2937;margin-bottom:8px;">角色管理</div>
+        <div style="display:flex;gap:12px;">
+          <div style="width:240px;height:100px;background:#EEF1F6;border-radius:4px;"></div>
+          <div style="flex:1;height:100px;background:#EEF1F6;border-radius:4px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>方案 C：独立新页面</h3>
+  <p>角色管理作为单独的导航页面（导航栏新增"角色管理"条目），与 PageRbac 完全独立。</p>
+  <div class="mockup">
+    <div class="mockup-header">新页面 — 独立布局</div>
+    <div class="mockup-body" style="padding:16px;background:#F2F4F7;">
+      <div style="display:flex;gap:8px;margin-bottom:12px;">
+        <div class="mock-nav" style="width:180px;">◆ 仪表盘<br>☺ 人员管理<br>⬡ 设备管理<br>⛨ 用户权限<br><span style="background:#DBEAFE;padding:0 4px;">⛨ 角色管理 ✦新</span></div>
+        <div style="flex:1;background:#fff;border-radius:6px;padding:12px;border:1px solid #D8DDE3;">
+          <div style="font-size:13px;font-weight:bold;margin-bottom:8px;">角色管理</div>
+          <div style="display:flex;gap:12px;">
+            <div style="width:280px;height:200px;background:#EEF1F6;border-radius:4px;"></div>
+            <div style="flex:1;height:200px;background:#EEF1F6;border-radius:4px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Tab 切换（推荐）</h3>
+      <p>同一页面两个 Tab，代码集中在一个文件，切换快，用户无需重新导航</p>
+    </div>
+  </div>
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>上下分区</h3>
+      <p>一页内全部可见，适合内容不多的场景，但可能显得拥挤</p>
+    </div>
+  </div>
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>独立新页面</h3>
+      <p>最清晰的代码隔离，但有导航层级冗余（两个权限相关页面）</p>
+    </div>
+  </div>
+</div>

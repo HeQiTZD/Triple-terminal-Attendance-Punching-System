@@ -22,24 +22,6 @@ Rectangle {
 
     implicitWidth: Theme.sideBarWidth
 
-    readonly property string userName: {
-        if (!sessionManager || !sessionManager.isLoggedIn)
-            return ""
-        return sessionManager.currentUsername || ""
-    }
-
-    readonly property string roleSummary: {
-        if (!sessionManager || !sessionManager.isLoggedIn)
-            return ""
-        if (sessionManager) {
-            const _p = sessionManager.permissions
-            const _r = sessionManager.roles
-            void _p
-            void _r
-        }
-        return PermissionCatalog.formatRoles(sessionManager)
-    }
-
     ColumnLayout {
         anchors.fill: parent
         spacing: 0
@@ -65,34 +47,13 @@ Rectangle {
                 anchors.rightMargin: Theme.spacingMd
                 spacing: Theme.spacingSm
 
-                Rectangle {
-                    width: 28; height: 28
-                    radius: 6
-                    color: Theme.accent
-                    Label {
-                        anchors.centerIn: parent
-                        text: "A"
-                        color: "white"
-                        font.bold: true
-                        font.pixelSize: 16
-                    }
-                }
-                ColumnLayout {
-                    spacing: 0
-                    Layout.fillWidth: true
-                    Label {
-                        text: qsTr("Attendance")
-                        color: Theme.text
-                        font.pixelSize: Theme.fontMd
-                        font.bold: true
-                        font.family: Theme.fontFamily
-                    }
-                    Label {
-                        text: qsTr("管理端")
-                        color: Theme.textMuted
-                        font.pixelSize: Theme.fontXs
-                        font.family: Theme.fontFamily
-                    }
+                Label {
+                    text: qsTr("考勤管理系统")
+                    color: Theme.text
+                    font.pixelSize: Theme.fontMd
+                    font.bold: true
+                    font.family: Theme.fontFamily
+                    Layout.alignment: Qt.AlignVCenter
                 }
             }
         }
@@ -153,11 +114,15 @@ Rectangle {
                         anchors.rightMargin: 8
                         spacing: 8
 
+                        property bool isLargeIcon: row.modelData.key === "dashboard"
+                                                  || row.modelData.key === "face"
+                                                  || row.modelData.key === "configDeploy"
+
                         Label {
                             text: row.modelData.icon ? row.modelData.icon : "•"
                             color: row.index === root.currentIndex ? Theme.accentHover : Theme.textMuted
-                            font.pixelSize: Theme.fontMd
-                            Layout.preferredWidth: 20
+                            font.pixelSize: isLargeIcon ? 32 : Theme.fontXxl
+                            Layout.preferredWidth: isLargeIcon ? 42 : 32
                         }
                         Label {
                             text: row.modelData.label
@@ -180,52 +145,6 @@ Rectangle {
                             root.navigated(row.index)
                         }
                     }
-                }
-            }
-        }
-
-        Rectangle {
-            Layout.fillWidth: true
-            height: 1
-            color: Theme.border
-            visible: root.showLogout && root.userName.length > 0
-        }
-
-        Rectangle {
-            Layout.fillWidth: true
-            Layout.leftMargin: Theme.spacingSm
-            Layout.rightMargin: Theme.spacingSm
-            Layout.preferredHeight: userBlock.implicitHeight + Theme.spacingMd * 2
-            visible: root.showLogout && root.userName.length > 0
-            radius: Theme.radiusSm
-            color: Theme.surface
-            border.color: Theme.border
-            border.width: 1
-
-            ColumnLayout {
-                id: userBlock
-                anchors.fill: parent
-                anchors.margins: Theme.spacingSm
-                spacing: 2
-
-                Label {
-                    text: root.userName
-                    color: Theme.text
-                    font.pixelSize: Theme.fontSm
-                    font.bold: true
-                    font.family: Theme.fontFamily
-                    elide: Text.ElideRight
-                    Layout.fillWidth: true
-                }
-                Label {
-                    text: root.roleSummary
-                    color: Theme.textMuted
-                    font.pixelSize: Theme.fontXs
-                    font.family: Theme.fontFamily
-                    wrapMode: Text.WordWrap
-                    maximumLineCount: 2
-                    elide: Text.ElideRight
-                    Layout.fillWidth: true
                 }
             }
         }

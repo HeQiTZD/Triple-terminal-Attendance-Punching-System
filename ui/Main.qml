@@ -211,6 +211,7 @@ ApplicationWindow {
                 id: side
                 SplitView.preferredWidth: Theme.sideBarWidth
                 SplitView.minimumWidth: 180
+                SplitView.maximumWidth: 350
                 items: win.filteredNavItems
                 currentIndex: win.sidebarCurrentIndex
                 sessionManager: win.sessionManager
@@ -231,8 +232,6 @@ ApplicationWindow {
                 StatusBar {
                     Layout.fillWidth: true
                     sessionManager: win.sessionManager
-                    lastError: Logger.lastError
-                    lastInfo: Logger.lastInfo
                 }
 
                 PageHost {
