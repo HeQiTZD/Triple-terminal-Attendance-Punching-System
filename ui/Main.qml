@@ -56,6 +56,24 @@ ApplicationWindow {
 
     property string currentPageKey: "dashboard"
 
+    readonly property real aspectRatio: 1480.0 / 920.0
+    property real _prevW: 0
+    property real _prevH: 0
+
+    function clampSize() {
+        if (!sessionManager.isLoggedIn) return
+        if (width !== _prevW) {
+            height = Math.round(width / aspectRatio)
+        } else if (height !== _prevH) {
+            width = Math.round(height * aspectRatio)
+        }
+        _prevW = width
+        _prevH = height
+    }
+
+    onWidthChanged: clampSize()
+    onHeightChanged: clampSize()
+
     readonly property var filteredNavItems: {
         if (sessionManager) {
             const _p = sessionManager.permissions
@@ -130,7 +148,6 @@ ApplicationWindow {
             maximumHeight = 16777215
             width = mainWindowWidth
             height = mainWindowHeight
-            flags = Qt.Window | Qt.FramelessWindowHint
         } else {
             minimumWidth = loginWindowWidth
             minimumHeight = loginWindowHeight
@@ -138,7 +155,6 @@ ApplicationWindow {
             maximumHeight = loginWindowHeight
             width = loginWindowWidth
             height = loginWindowHeight
-            flags = Qt.Window | Qt.FramelessWindowHint
         }
     }
 
@@ -255,4 +271,5 @@ ApplicationWindow {
             }
         }
     }
+
 }
