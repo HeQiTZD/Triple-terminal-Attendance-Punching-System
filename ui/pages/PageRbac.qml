@@ -13,6 +13,82 @@ Item {
     property var deniedDialog: null
     signal serviceResult(string apiType, int code, string message)
 
+    // ── Tab 状态 ──
+    property int currentTab: 0 // 0=用户权限分配, 1=角色管理
+
+    // ── 角色管理状态 ──
+    property int selectedRoleIndex: -1
+    property bool isCreatingRole: false
+    property var checkedPermissions: ({})
+    property string formRoleKey: ""
+    property string formRoleName: ""
+    property string formDescription: ""
+    property bool formIsSystem: false
+    property bool formDirty: false
+
+    // ── 权限分组（按模块） ──
+    readonly property var permissionGroups: [
+        {
+            name: qsTr("人员管理"),
+            perms: [
+                { key: "person.read", label: qsTr("查询人员") },
+                { key: "person.create", label: qsTr("新增人员") },
+                { key: "person.update", label: qsTr("修改人员") },
+                { key: "person.delete", label: qsTr("删除人员") }
+            ]
+        },
+        {
+            name: qsTr("考勤记录"),
+            perms: [
+                { key: "attendance.read", label: qsTr("查询考勤") },
+                { key: "attendance.create", label: qsTr("录入考勤") },
+                { key: "attendance.update", label: qsTr("修改考勤") },
+                { key: "attendance.delete", label: qsTr("删除考勤") }
+            ]
+        },
+        {
+            name: qsTr("考勤归档"),
+            perms: [
+                { key: "attendance.archive.read", label: qsTr("查询归档") },
+                { key: "attendance.archive.delete", label: qsTr("删除归档") }
+            ]
+        },
+        {
+            name: qsTr("设备管理"),
+            perms: [
+                { key: "device.read", label: qsTr("查询设备") },
+                { key: "device.create", label: qsTr("新增设备") },
+                { key: "device.update", label: qsTr("修改设备") },
+                { key: "device.delete", label: qsTr("删除设备") },
+                { key: "device.command", label: qsTr("设备指令") }
+            ]
+        },
+        {
+            name: qsTr("用户账号"),
+            perms: [
+                { key: "user.read", label: qsTr("查询用户") },
+                { key: "user.create", label: qsTr("新增用户") },
+                { key: "user.update", label: qsTr("修改用户") },
+                { key: "user.delete", label: qsTr("删除用户") }
+            ]
+        },
+        {
+            name: qsTr("人脸库"),
+            perms: [
+                { key: "face.read", label: qsTr("查询人脸") },
+                { key: "face.register", label: qsTr("注册人脸") },
+                { key: "face.delete", label: qsTr("删除人脸") }
+            ]
+        },
+        {
+            name: qsTr("其他"),
+            perms: [
+                { key: "config.deploy", label: qsTr("配置下发") },
+                { key: "event.subscribe", label: qsTr("订阅事件") }
+            ]
+        }
+    ]
+
     property int selectedUserId: -1
     property string selectedUserName: ""
     property string selectedUserEmployeeId: ""
