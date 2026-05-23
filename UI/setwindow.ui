@@ -339,9 +339,6 @@
                  <property name="text">
                   <string>连接服务器</string>
                  </property>
-                 <property name="styleSheet">
-                  <string notr="true">background-color: #4CAF50; color: white;</string>
-                 </property>
                 </widget>
                </item>
                <item>
@@ -351,9 +348,6 @@
                  </property>
                  <property name="text">
                   <string>断开连接</string>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">background-color: #f44336; color: white;</string>
                  </property>
                 </widget>
                </item>

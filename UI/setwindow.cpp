@@ -2,6 +2,8 @@
 #include "ui_setwindow.h"
 #include "../Config/configmanager.h"
 #include "../NetworkClient/networkclient.h"
+#include "UI/Theme/ThemeManager.h"
+#include "UI/Theme/DesignTokens.h"
 #include <QMessageBox>
 #include <QTcpSocket>
 #include <QTimer>
@@ -18,6 +20,74 @@ SetWindow::SetWindow(QWidget *parent)
 
     setupConnections();
     loadFromConfig();
+
+    // ---- 应用 ActionButton 主题样式 ----
+    auto applyButtonTheme = [](QPushButton* btn, const QString& bgHex, const QString& fgHex,
+                                const QString& borderHex, const QString& hoverBgHex,
+                                const QString& activeBgHex, bool hasBorder) {
+        auto* tm = ThemeManager::instance();
+        int r = tm->radius("md");
+        btn->setStyleSheet(QString(
+            "QPushButton {"
+            "  background-color: %1; color: %2;"
+            "  border: %3; border-radius: %4px;"
+            "  padding: 6px 16px; font-size: 13px; font-weight: 600;"
+            "  min-height: 28px;"
+            "}"
+            "QPushButton:hover { background-color: %5; }"
+            "QPushButton:pressed { background-color: %6; }"
+            "QPushButton:disabled { opacity: 0.5; }"
+        ).arg(bgHex).arg(fgHex)
+         .arg(hasBorder ? QString("1px solid %1").arg(borderHex) : QString("none"))
+         .arg(r).arg(hoverBgHex).arg(activeBgHex));
+    };
+
+    auto* tm = ThemeManager::instance();
+
+    // 连接服务器按钮 → Primary
+    applyButtonTheme(ui->btnTestConnection,
+        tm->colorHex(DesignTokens::Semantic::brandPrimary),
+        "#ffffff",
+        "",
+        tm->colorHex(DesignTokens::Semantic::brandPrimaryHover),
+        tm->colorHex(DesignTokens::Semantic::brandPrimaryActive),
+        false);
+
+    // 断开连接按钮 → Danger
+    applyButtonTheme(ui->btnDisconnect,
+        "transparent",
+        tm->colorHex(DesignTokens::Semantic::semDanger),
+        tm->colorHex(DesignTokens::Semantic::semDanger),
+        QString("rgba(220,38,38,0.15)"),
+        QString("rgba(220,38,38,0.25)"),
+        true);
+
+    // 保存设置按钮 → Primary
+    applyButtonTheme(ui->btnSave,
+        tm->colorHex(DesignTokens::Semantic::brandPrimary),
+        "#ffffff",
+        "",
+        tm->colorHex(DesignTokens::Semantic::brandPrimaryHover),
+        tm->colorHex(DesignTokens::Semantic::brandPrimaryActive),
+        false);
+
+    // 取消按钮 → Secondary
+    applyButtonTheme(ui->btnCancel,
+        tm->colorHex(DesignTokens::Semantic::bgElevated),
+        tm->colorHex(DesignTokens::Semantic::textPrimary),
+        tm->colorHex(DesignTokens::Semantic::borderDefault),
+        ThemeManager::lighten(tm->color(DesignTokens::Semantic::bgElevated), 0.10f).name(),
+        ThemeManager::darken(tm->color(DesignTokens::Semantic::bgElevated), 0.10f).name(),
+        true);
+
+    // 恢复默认按钮 → Secondary
+    applyButtonTheme(ui->btnRestore,
+        tm->colorHex(DesignTokens::Semantic::bgElevated),
+        tm->colorHex(DesignTokens::Semantic::textPrimary),
+        tm->colorHex(DesignTokens::Semantic::borderDefault),
+        ThemeManager::lighten(tm->color(DesignTokens::Semantic::bgElevated), 0.10f).name(),
+        ThemeManager::darken(tm->color(DesignTokens::Semantic::bgElevated), 0.10f).name(),
+        true);
 }
 
 SetWindow::~SetWindow()
