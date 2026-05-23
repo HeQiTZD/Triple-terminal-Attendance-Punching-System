@@ -356,9 +356,9 @@ void AttendanceService::deleteArchive(const QString& employeeId)
         });
 }
 
-void AttendanceService::exportToFile(const QString& filePath, const QString& content)
+void AttendanceService::exportToFile(const QUrl& fileUrl, const QString& content)
 {
-    QFile file(filePath);
+    QFile file(fileUrl.toLocalFile());
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
         emit operationFailed(QStringLiteral("attendance.export"), -1,
                              QStringLiteral("无法打开文件: ") + file.errorString());

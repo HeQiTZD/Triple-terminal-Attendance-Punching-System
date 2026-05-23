@@ -56,7 +56,7 @@ public:
     Q_INVOKABLE void deleteArchive(const QString& employeeId);
 
     // 导出文件到本地（客户端侧写文件），成功后 emit operationSucceeded("attendance.export", ...)
-    Q_INVOKABLE void exportToFile(const QString& filePath, const QString& content);
+    Q_INVOKABLE void exportToFile(const QUrl& fileUrl, const QString& content);
 
 signals:
     void busyChanged();
