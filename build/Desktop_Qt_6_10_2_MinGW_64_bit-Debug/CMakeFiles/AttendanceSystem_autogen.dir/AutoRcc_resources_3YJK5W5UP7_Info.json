@@ -7,7 +7,11 @@
 	"CROSS_CONFIG" : false,
 	"GENERATOR" : "Ninja",
 	"INCLUDE_DIR" : "D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceSystem_autogen/include",
-	"INPUTS" : [ "D:/QTproject/AttendanceSystem/resources/qss/mainwindow.qss" ],
+	"INPUTS" : 
+	[
+		"D:/QTproject/AttendanceSystem/resources/qss/theme.qss",
+		"D:/QTproject/AttendanceSystem/resources/qss/mainwindow.qss"
+	],
 	"LOCK_FILE" : "D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/CMakeFiles/AttendanceSystem_autogen.dir/AutoRcc_resources_3YJK5W5UP7_Lock.lock",
 	"MULTI_CONFIG" : false,
 	"OPTIONS" : [ "--no-zstd", "-name", "resources" ],

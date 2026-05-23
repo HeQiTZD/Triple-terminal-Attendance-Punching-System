@@ -4,7 +4,7 @@
 
 #include <QDebug>
 
-TokenRefresher::TokenRefresher(NetworkClient *client, TokenManager *tokenManager,
+TokenRefresher::TokenRefresher(Networkclient *client, TokenManager *tokenManager,
                                QObject *parent)
     : QObject(parent)
     , m_client(client)
@@ -86,6 +86,6 @@ void TokenRefresher::onTokenRefreshResponse(const QJsonObject &response)
 void TokenRefresher::setupConnections()
 {
     // 连接 NetworkClient 的信号
-    connect(m_client, &NetworkClient::tokenRefreshResponse,
+    connect(m_client, &Networkclient::tokenRefreshResponse,
             this, &TokenRefresher::onTokenRefreshResponse);
 }

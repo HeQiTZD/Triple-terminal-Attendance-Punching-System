@@ -45,6 +45,8 @@ template <> constexpr inline auto CommandHandler::qt_create_metaobjectdata<qt_me
         "message",
         "resyncRequested",
         "rebootRequested",
+        "configApplied",
+        "configVersion",
         "handleCommand"
     };
 
@@ -57,8 +59,12 @@ template <> constexpr inline auto CommandHandler::qt_create_metaobjectdata<qt_me
         QtMocHelpers::SignalData<void()>(5, 2, QMC::AccessPublic, QMetaType::Void),
         // Signal 'rebootRequested'
         QtMocHelpers::SignalData<void()>(6, 2, QMC::AccessPublic, QMetaType::Void),
+        // Signal 'configApplied'
+        QtMocHelpers::SignalData<void(const QString &)>(7, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 8 },
+        }}),
         // Slot 'handleCommand'
-        QtMocHelpers::SlotData<void(const QJsonObject &)>(7, 2, QMC::AccessPublic, QMetaType::Void, {{
+        QtMocHelpers::SlotData<void(const QJsonObject &)>(9, 2, QMC::AccessPublic, QMetaType::Void, {{
             { 0x80000000 | 3, 4 },
         }}),
     };
@@ -87,7 +93,8 @@ void CommandHandler::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 0: _t->sendMessage((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
         case 1: _t->resyncRequested(); break;
         case 2: _t->rebootRequested(); break;
-        case 3: _t->handleCommand((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
+        case 3: _t->configApplied((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 4: _t->handleCommand((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
         default: ;
         }
     }
@@ -97,6 +104,8 @@ void CommandHandler::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         if (QtMocHelpers::indexOfMethod<void (CommandHandler::*)()>(_a, &CommandHandler::resyncRequested, 1))
             return;
         if (QtMocHelpers::indexOfMethod<void (CommandHandler::*)()>(_a, &CommandHandler::rebootRequested, 2))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (CommandHandler::*)(const QString & )>(_a, &CommandHandler::configApplied, 3))
             return;
     }
 }
@@ -120,14 +129,14 @@ int CommandHandler::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 5;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 5)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 4;
+        _id -= 5;
     }
     return _id;
 }
@@ -148,5 +157,11 @@ void CommandHandler::resyncRequested()
 void CommandHandler::rebootRequested()
 {
     QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
+}
+
+// SIGNAL 3
+void CommandHandler::configApplied(const QString & _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 3, nullptr, _t1);
 }
 QT_WARNING_POP

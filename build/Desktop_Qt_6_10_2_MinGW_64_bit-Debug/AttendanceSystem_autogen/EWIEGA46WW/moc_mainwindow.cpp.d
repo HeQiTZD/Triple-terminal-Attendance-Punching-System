@@ -251,8 +251,11 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtSql/qtsqlexports.h \
   C:/Qt/6.10.2/mingw_64/include/QtSql/qtsqlglobal.h \
   C:/Qt/6.10.2/mingw_64/include/QtWidgets/QMainWindow \
+  C:/Qt/6.10.2/mingw_64/include/QtWidgets/QPushButton \
   C:/Qt/6.10.2/mingw_64/include/QtWidgets/QWidget \
+  C:/Qt/6.10.2/mingw_64/include/QtWidgets/qabstractbutton.h \
   C:/Qt/6.10.2/mingw_64/include/QtWidgets/qmainwindow.h \
+  C:/Qt/6.10.2/mingw_64/include/QtWidgets/qpushbutton.h \
   C:/Qt/6.10.2/mingw_64/include/QtWidgets/qsizepolicy.h \
   C:/Qt/6.10.2/mingw_64/include/QtWidgets/qtabwidget.h \
   C:/Qt/6.10.2/mingw_64/include/QtWidgets/qtwidgets-config.h \
@@ -480,6 +483,8 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
   D:/QTproject/AttendanceSystem/Attendance/AttendanceReporter.h \
+  D:/QTproject/AttendanceSystem/Auth/tokenmanager.h \
+  D:/QTproject/AttendanceSystem/Auth/tokenrefresher.h \
   D:/QTproject/AttendanceSystem/CameraCapture/cameracapture.h \
   D:/QTproject/AttendanceSystem/CameraCapture/videoframecapture.h \
   D:/QTproject/AttendanceSystem/CameraCapture/videoframeconverter.h \
@@ -501,6 +506,10 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   D:/QTproject/AttendanceSystem/NetworkClient/networkclient.h \
   D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h \
   D:/QTproject/AttendanceSystem/Sync/SyncManager.h \
+  D:/QTproject/AttendanceSystem/UI/Components/ActionButton.h \
+  D:/QTproject/AttendanceSystem/UI/Components/IconButton.h \
+  D:/QTproject/AttendanceSystem/UI/Components/InfoField.h \
+  D:/QTproject/AttendanceSystem/UI/Components/StatusIndicator.h \
   D:/QTproject/AttendanceSystem/UI/facevideowidget.h \
   D:/QTproject/AttendanceSystem/UI/setwindow.h \
   D:/QTproject/AttendanceSystem/third_party/arcface/include/amcomdef.h \

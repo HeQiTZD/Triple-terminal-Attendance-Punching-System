@@ -74,7 +74,7 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 114,
+				"line" : 125,
 				"parent" : 0
 			},
 			{
@@ -236,7 +236,7 @@
 			{
 				"command" : 10,
 				"file" : 1,
-				"line" : 110,
+				"line" : 120,
 				"parent" : 0
 			}
 		]
@@ -314,6 +314,10 @@
 				{
 					"backtrace" : 0,
 					"path" : "D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceSystem_autogen/include"
+				},
+				{
+					"backtrace" : 35,
+					"path" : "D:/QTproject/AttendanceSystem"
 				},
 				{
 					"backtrace" : 35,
@@ -408,20 +412,30 @@
 				57,
 				59,
 				61,
-				64,
-				66,
-				71
+				63,
+				65,
+				68,
+				70,
+				72,
+				74,
+				76,
+				78,
+				80,
+				82,
+				84,
+				86,
+				91
 			]
 		}
 	],
 	"dependencies" : 
 	[
 		{
-			"id" : "AttendanceSystem_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
-		},
-		{
 			"backtrace" : 0,
 			"id" : "AttendanceSystem_autogen::@6890427a1f51a3e7e1df"
+		},
+		{
+			"id" : "AttendanceSystem_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "AttendanceSystem::@6890427a1f51a3e7e1df",
@@ -563,9 +577,19 @@
 				57,
 				59,
 				61,
-				64,
-				66,
-				71
+				63,
+				65,
+				68,
+				70,
+				72,
+				74,
+				76,
+				78,
+				80,
+				82,
+				84,
+				86,
+				91
 			]
 		},
 		{
@@ -602,10 +626,20 @@
 				56,
 				58,
 				60,
-				63,
-				65,
-				68,
-				69
+				62,
+				64,
+				67,
+				69,
+				71,
+				73,
+				75,
+				77,
+				79,
+				81,
+				83,
+				85,
+				88,
+				89
 			]
 		},
 		{
@@ -613,29 +647,29 @@
 			"sourceIndexes" : 
 			[
 				4,
-				62
+				66
 			]
 		},
 		{
 			"name" : "Resources",
 			"sourceIndexes" : 
 			[
-				67
+				87
 			]
 		},
 		{
 			"name" : "",
 			"sourceIndexes" : 
 			[
-				70
+				90
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				72,
-				73
+				92,
+				93
 			]
 		}
 	],
@@ -974,6 +1008,28 @@
 		},
 		{
 			"backtrace" : 4,
+			"path" : "Auth/tokenmanager.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "Auth/tokenmanager.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Auth/tokenrefresher.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "Auth/tokenrefresher.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
 			"path" : "UI/setwindow.h",
 			"sourceGroupIndex" : 1
 		},
@@ -1008,6 +1064,94 @@
 			"backtrace" : 4,
 			"compileGroupIndex" : 0,
 			"path" : "UI/facevideowidget.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "UI/Theme/ThemeManager.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "UI/Theme/ThemeManager.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "UI/Components/ActionButton.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "UI/Components/ActionButton.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "UI/Components/IconButton.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "UI/Components/IconButton.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "UI/Components/StatusIndicator.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "UI/Components/StatusIndicator.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "UI/Components/InfoField.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "UI/Components/InfoField.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "UI/Components/InfoCard.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "UI/Components/InfoCard.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "UI/Components/SectionPanel.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "UI/Components/SectionPanel.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "UI/Components/ToastNotification.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "UI/Components/ToastNotification.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

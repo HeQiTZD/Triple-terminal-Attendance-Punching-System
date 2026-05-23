@@ -490,6 +490,22 @@
 			"value" : ""
 		},
 		{
+			"name" : "CMAKE_EXPORT_BUILD_DATABASE",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Enable/Disable output of build database during the build."
+				}
+			],
+			"type" : "BOOL",
+			"value" : ""
+		},
+		{
 			"name" : "CMAKE_EXPORT_COMPILE_COMMANDS",
 			"properties" : 
 			[
@@ -886,6 +902,18 @@
 			"value" : "C:/Qt/Tools/mingw1310_64/bin/ld.exe"
 		},
 		{
+			"name" : "CMAKE_LIST_FILE_NAME",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Name of CMakeLists files to read"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "CMakeLists.txt"
+		},
+		{
 			"name" : "CMAKE_MAKE_PROGRAM",
 			"properties" : 
 			[
@@ -1066,6 +1094,18 @@
 			"value" : "C:/Qt/6.10.2/mingw_64"
 		},
 		{
+			"name" : "CMAKE_PROJECT_COMPAT_VERSION",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : ""
+		},
+		{
 			"name" : "CMAKE_PROJECT_DESCRIPTION",
 			"properties" : 
 			[
@@ -1112,6 +1152,18 @@
 			],
 			"type" : "STATIC",
 			"value" : "AttendanceSystem"
+		},
+		{
+			"name" : "CMAKE_PROJECT_SPDX_LICENSE",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : ""
 		},
 		{
 			"name" : "CMAKE_PROJECT_VERSION",

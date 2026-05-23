@@ -302,14 +302,12 @@ public:
         testLayout->setObjectName("testLayout");
         btnTestConnection = new QPushButton(networkGroup);
         btnTestConnection->setObjectName("btnTestConnection");
-        btnTestConnection->setStyleSheet(QString::fromUtf8("background-color: #4CAF50; color: white;"));
 
         testLayout->addWidget(btnTestConnection);
 
         btnDisconnect = new QPushButton(networkGroup);
         btnDisconnect->setObjectName("btnDisconnect");
         btnDisconnect->setEnabled(false);
-        btnDisconnect->setStyleSheet(QString::fromUtf8("background-color: #f44336; color: white;"));
 
         testLayout->addWidget(btnDisconnect);
 
