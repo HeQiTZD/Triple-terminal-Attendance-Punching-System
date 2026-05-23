@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtQuick.Dialogs
 
 import AttendanceAdmin
 
@@ -17,47 +18,38 @@ Item {
     readonly property bool hasLiveRead: PermissionCatalog.hasPerm(sessionManager, "attendance.read")
     readonly property bool hasArchiveRead: PermissionCatalog.hasPerm(sessionManager, "attendance.archive.read")
 
-    readonly property var archiveStatusChartData: {
-        if (!page.hasArchiveRead || !attendanceService)
-            return []
-        return page.buildArchiveStatusChart()
-    }
-
     function _liveQuery() {
         attendanceService.query(-1, empId.text.trim(), checkTime.text.trim(),
                                 devId.text.trim(), status.currentValue, "")
     }
 
-    function buildArchiveStatusChart() {
-        if (!attendanceService || !attendanceService.archiveRecords)
-            return []
-
-        const records = attendanceService.archiveRecords
-        const statusCounts = {}
-
-        for (let i = 0; i < records.length; ++i) {
-            const status = records[i].status || "unknown"
-            if (!statusCounts[status]) {
-                statusCounts[status] = 0
+    function _generateCsv() {
+        const records = attendanceService.records
+        if (!records || !records.length)
+            return ""
+        // UTF-8 BOM
+        var csv = "﻿"
+        // Header
+        csv += qsTr("序号") + "," + qsTr("工号") + "," + qsTr("打卡时间") + ","
+            + qsTr("设备ID") + "," + qsTr("状态") + "\n"
+        for (var i = 0; i < records.length; i++) {
+            var r = records[i]
+            var row = [
+                String(i + 1),
+                r.employeeId || "",
+                r.checkTime || "",
+                r.deviceId || "",
+                Theme.formatAttendanceStatus(r.status)
+            ]
+            // Escape commas and quotes
+            for (var j = 0; j < row.length; j++) {
+                if (row[j].indexOf(",") >= 0 || row[j].indexOf("\"") >= 0) {
+                    row[j] = "\"" + row[j].replace(/"/g, "\"\"") + "\""
+                }
             }
-            statusCounts[status]++
+            csv += row.join(",") + "\n"
         }
-
-        const result = []
-        const statusOrder = ["normal", "late", "early", "absent", "manual"]
-
-        for (let i = 0; i < statusOrder.length; i++) {
-            const status = statusOrder[i]
-            if (statusCounts[status] && statusCounts[status] > 0) {
-                result.push({
-                    label: Theme.formatAttendanceStatus(status),
-                    value: statusCounts[status],
-                    color: Theme.attendancePieColor(status)
-                })
-            }
-        }
-
-        return result
+        return csv
     }
 
     ColumnLayout {
@@ -68,7 +60,6 @@ Item {
         ToolBarRow {
             Layout.fillWidth: true
             title: qsTr("考勤记录")
-            subtitle: qsTr("实时考勤与归档查询")
         }
 
         TabBar {
@@ -108,17 +99,16 @@ Item {
                             columnSpacing: Theme.spacingMd
 
                             LabeledField { label: qsTr("员工工号"); Layout.fillWidth: true
-                                TextField { id: empId; text: Presets.defaultEmployeeId; Layout.fillWidth: true }
+                                TextField { id: empId; Layout.fillWidth: true }
                             }
                             LabeledField { label: qsTr("打卡时间"); Layout.fillWidth: true
                                 TextField {
                                     id: checkTime
-                                    text: Qt.formatDateTime(new Date(), "yyyy-MM-dd HH:mm:ss")
                                     Layout.fillWidth: true
                                 }
                             }
                             LabeledField { label: qsTr("设备 ID"); Layout.fillWidth: true
-                                TextField { id: devId; text: Presets.defaultDeviceId; Layout.fillWidth: true }
+                                TextField { id: devId; Layout.fillWidth: true }
                             }
                             LabeledField { label: qsTr("状态"); Layout.fillWidth: true
                                 ComboBox {
@@ -180,11 +170,26 @@ Item {
                     stretchContent: true
                     title: qsTr("实时记录")
 
+                    headerRight: Row {
+                        spacing: Theme.spacingSm
+                        PermissionButton {
+                            sessionManager: page.sessionManager
+                            requiredPermission: "attendance.read"
+                            deniedDialog: page.deniedDialog
+                            text: qsTr("导出 CSV")
+                            enabled: attendanceService.records
+                                     && attendanceService.records.length > 0
+                                     && !attendanceService.busy
+                            onClicked: guardedClick(function() { exportDialog.open() })
+                        }
+                    }
+
                     DataTable {
                         anchors.fill: parent
                         rows: attendanceService.records
                         columns: [
-                            { key: "id", title: "ID", width: 60, align: "right" },
+                            { key: "id", title: qsTr("序号"), width: 60, align: "right",
+                              formatter: function(v, row, idx) { return String(idx + 1) } },
                             { key: "employeeId", title: qsTr("工号"), width: 100 },
                             { key: "checkTime", title: qsTr("打卡时间"), width: 170 },
                             { key: "deviceId", title: qsTr("设备 ID"), width: 130 },
@@ -196,6 +201,21 @@ Item {
                             },
                             { key: "receivedTime", title: qsTr("接收时间") }
                         ]
+                    }
+                }
+
+                FileDialog {
+                    id: exportDialog
+                    title: qsTr("导出 CSV")
+                    nameFilters: [qsTr("CSV 文件 (*.csv)")]
+                    fileMode: FileDialog.SaveFile
+                    defaultSuffix: "csv"
+                    currentFile: "attendance_" + qsTr("实时记录") + "_"
+                                 + Qt.formatDateTime(new Date(), "yyyyMMdd") + ".csv"
+                    onAccepted: {
+                        const csv = page._generateCsv()
+                        if (csv.length > 0)
+                            attendanceService.exportToFile(selectedFile, csv)
                     }
                 }
             }
@@ -248,58 +268,30 @@ Item {
                     }
                 }
 
-                RowLayout {
+                Card {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    spacing: Theme.spacingMd
+                    stretchContent: true
+                    title: qsTr("归档列表")
 
-                    Card {
-                        Layout.fillWidth: true
-                        Layout.fillHeight: true
-                        stretchContent: true
-                        title: qsTr("归档列表")
-
-                        DataTable {
-                            anchors.fill: parent
-                            rows: attendanceService.archiveRecords
-                            columns: [
-                                { key: "id", title: "ID", width: 60, align: "right" },
-                                { key: "employeeId", title: qsTr("工号"), width: 100 },
-                                { key: "personName", title: qsTr("姓名"), width: 100 },
-                                { key: "department", title: qsTr("部门"), width: 100 },
-                                { key: "checkTime", title: qsTr("打卡时间"), width: 160 },
-                                { key: "archivedAt", title: qsTr("归档时间"), width: 160 },
-                                { key: "archiveReason", title: qsTr("原因") }
-                            ]
-                        }
-                    }
-
-                    Card {
-                        Layout.fillWidth: true
-                        Layout.fillHeight: true
-                        Layout.preferredWidth: 300
-                        title: qsTr("归档状态分布")
-
-                        Item {
-                            anchors.fill: parent
-
-                            Label {
-                                anchors.centerIn: parent
-                                visible: page.archiveStatusChartData.length === 0
-                                text: qsTr("暂无归档数据")
-                                color: Theme.textMuted
-                                font.pixelSize: Theme.fontMd
-                                font.family: Theme.fontFamily
+                    DataTable {
+                        anchors.fill: parent
+                        rows: attendanceService.archiveRecords
+                        columns: [
+                            { key: "id", title: qsTr("序号"), width: 60, align: "right",
+                              formatter: function(v, row, idx) { return String(idx + 1) } },
+                            { key: "employeeId", title: qsTr("工号"), width: 100 },
+                            { key: "personName", title: qsTr("姓名"), width: 100 },
+                            { key: "department", title: qsTr("部门"), width: 100 },
+                            { key: "checkTime", title: qsTr("打卡时间"), width: 160 },
+                            { key: "archivedAt", title: qsTr("归档时间"), width: 160 },
+                            { key: "archiveReason", title: qsTr("原因"),
+                                formatter: function(v) {
+                                    if (v === "employee_deleted") return qsTr("员工离职")
+                                    return v || "—"
+                                }
                             }
-
-                            AttendanceStatusPieChart {
-                                id: archivePieChart
-                                anchors.fill: parent
-                                anchors.margins: Theme.spacingMd
-                                visible: page.archiveStatusChartData.length > 0
-                                slices: page.archiveStatusChartData
-                            }
-                        }
+                        ]
                     }
                 }
             }
