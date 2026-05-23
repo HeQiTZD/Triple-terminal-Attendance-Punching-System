@@ -82,6 +82,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Config/configmanager.h Config/configmanager.cpp
         UI/facevideowidget.h UI/facevideowidget.cpp
         UI/Theme/ThemeManager.h UI/Theme/ThemeManager.cpp
+        UI/Components/ActionButton.h UI/Components/ActionButton.cpp
         Sync/SyncManager.h Sync/SyncManager.cpp
         Command/CommandHandler.h Command/CommandHandler.cpp
         Attendance/AttendanceConfigParser.h Attendance/AttendanceConfigParser.cpp
@@ -111,6 +112,7 @@ set(ARCFACE_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/third_party/arcface/include)
 set(ARCFACE_LIB_DIR ${CMAKE_SOURCE_DIR}/third_party/arcface/lib)
 
 target_include_directories(AttendanceSystem PRIVATE
+    ${CMAKE_SOURCE_DIR}
     ${ARCFACE_INCLUDE_DIR}
 )
 
