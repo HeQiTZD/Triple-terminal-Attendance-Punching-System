@@ -87,6 +87,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         UI/Components/StatusIndicator.h UI/Components/StatusIndicator.cpp
         UI/Components/InfoField.h UI/Components/InfoField.cpp
         UI/Components/InfoCard.h UI/Components/InfoCard.cpp
+        UI/Components/SectionPanel.h UI/Components/SectionPanel.cpp
         Sync/SyncManager.h Sync/SyncManager.cpp
         Command/CommandHandler.h Command/CommandHandler.cpp
         Attendance/AttendanceConfigParser.h Attendance/AttendanceConfigParser.cpp
