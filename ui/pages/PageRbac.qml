@@ -784,6 +784,31 @@ Item {
             if (apiType === "user.role.assign" || apiType === "user.role.revoke") {
                 rbacServer.queryUserRoles(page.selectedUserId)
             }
+            // ── 角色 CRUD 处理 ──
+            if (apiType === "role.create") {
+                // 新建角色后如有权限选择，调用 updateRole 设置权限
+                const perms = page._collectCheckedPerms()
+                if (perms.length > 0) {
+                    const fields = {}
+                    fields["permissions"] = perms
+                    rbacServer.updateRole(page.formRoleKey, fields)
+                } else {
+                    page._clearRoleForm()
+                    page._refreshRoles()
+                }
+            }
+            if (apiType === "role.update") {
+                page.formDirty = false
+                page._refreshRoles()
+                if (page.isCreatingRole) {
+                    // 新建角色后的权限更新完成
+                    page._clearRoleForm()
+                }
+            }
+            if (apiType === "role.delete") {
+                page._clearRoleForm()
+                page._refreshRoles()
+            }
         }
         function onOperationFailed(apiType, code, message) {
             page.serviceResult(apiType, code, message)
