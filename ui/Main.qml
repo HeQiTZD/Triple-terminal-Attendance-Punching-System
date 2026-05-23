@@ -1,4 +1,4 @@
-﻿import QtQuick
+import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
@@ -205,12 +205,6 @@ ApplicationWindow {
         SplitView {
             Layout.fillWidth: true
             Layout.fillHeight: true
-            orientation: Qt.Vertical
-
-        SplitView {
-            SplitView.fillWidth: true
-            SplitView.fillHeight: true
-            SplitView.preferredHeight: 700
             orientation: Qt.Horizontal
 
             SideBar {
@@ -260,13 +254,6 @@ ApplicationWindow {
                         win._handleServiceOp(apiType, code, msg, category)
                 }
             }
-        }
-
-        LogPanel {
-            SplitView.preferredHeight: 200
-            SplitView.minimumHeight: 100
-            SplitView.maximumHeight: 600
-        }
         }
     }
 }

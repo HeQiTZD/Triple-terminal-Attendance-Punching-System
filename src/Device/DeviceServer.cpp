@@ -45,6 +45,7 @@ QVariantList DeviceServer::parseRecords(const QJsonObject &dataObj)
 
 void DeviceServer::createDevice(const QString &deviceId,
                                 const QString &deviceName,
+                                const QString &deviceKey,
                                 const QString &ipAddress,
                                 const QString &status)
 {
@@ -56,6 +57,9 @@ void DeviceServer::createDevice(const QString &deviceId,
     QJsonObject data;
     data[kDeviceId] = deviceId;
     data[kDeviceName] = deviceName;
+    if (!deviceKey.isEmpty()) {
+        data[QStringLiteral("deviceKey")] = deviceKey;
+    }
     data[kIpAddress] = ipAddress;
     data[kStatus] = status.isEmpty() ? QStringLiteral("offline") : status;
 
@@ -190,41 +194,6 @@ void DeviceServer::deleteDevice(const QString &deviceId)
     });
 }
 
-void DeviceServer::approveDevice(const QString &deviceId)
-{
-    if (!m_tcp || !m_tcp->isAuthenticated()) {
-        emit operationFailed(kDeviceAuthApprove, -1, QStringLiteral("未连接或未认证"));
-        return;
-    }
-
-    if (deviceId.trimmed().isEmpty()) {
-        emit operationFailed(kDeviceAuthApprove, -1, QStringLiteral("请选择待认证设备"));
-        return;
-    }
-
-    QJsonObject data;
-    data[kDeviceId] = deviceId.trimmed();
-
-    QJsonObject msg;
-    msg[kType] = kDeviceAuthApprove;
-    msg[kData] = data;
-
-    setBusy(true);
-    m_tcp->sendMessage(msg, [this](const QJsonObject &resp) {
-        setBusy(false);
-        if (resp.isEmpty()) {
-            emit operationFailed(kDeviceAuthApprove, -1, QStringLiteral("请求超时"));
-            return;
-        }
-        const int code = resp.value(kCode).toInt(-1);
-        const QString text = resp.value(kMsg).toString();
-        if (code == ErrorCode::kSuccess)
-            emit operationSucceeded(kDeviceAuthApprove, text.isEmpty() ? QStringLiteral("ok") : text);
-        else
-            emit operationFailed(kDeviceAuthApprove, code, text);
-    });
-}
-
 void DeviceServer::sendCommand(const QString &deviceId,
                                const QString &command,
                                const QString &paramsJson)
@@ -267,4 +236,34 @@ void DeviceServer::sendCommand(const QString &deviceId,
         else
             emit operationFailed(kDeviceCommand, code, text);
     });
+}
+
+void DeviceServer::handleDeviceStatusPush(const QString &deviceId, const QString &status, const QString &ipAddress)
+{
+    // 更新本地缓存的设备状态
+    bool found = false;
+    for (int i = 0; i < m_records.size(); ++i) {
+        QVariantMap row = m_records[i].toMap();
+        if (row[QStringLiteral("deviceId")].toString() == deviceId) {
+            row[QStringLiteral("status")] = status;
+            if (!ipAddress.isEmpty()) {
+                row[QStringLiteral("ipAddress")] = ipAddress;
+            }
+            if (status == QStringLiteral("online")) {
+                row[QStringLiteral("lastOnline")] = QDateTime::currentDateTime().toString(Qt::ISODate);
+            }
+            m_records[i] = row;
+            found = true;
+            break;
+        }
+    }
+
+    // 如果设备不在缓存中，可能需要重新查询
+    if (!found && status == QStringLiteral("online")) {
+        // 设备可能是新上线的，触发重新查询
+        queryDevices(QString(), QString(), QString());
+    }
+
+    emit recordsChanged();
+    emit deviceStatusChanged(deviceId, status, ipAddress);
 }

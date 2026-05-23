@@ -38,7 +38,7 @@ Item {
 
             ColumnLayout {
                 width: parent.width
-                spacing: Theme.spacingSm
+                spacing: Theme.spacingMd
 
                 RowLayout {
                     Layout.fillWidth: true
@@ -59,12 +59,18 @@ Item {
                         checked: page.overwriteFace
                         onCheckedChanged: page.overwriteFace = checked
                     }
+                }
+
+                RowLayout {
+                    Layout.fillWidth: true
+                    spacing: Theme.spacingSm
+
                     PermissionButton {
                         sessionManager: page.sessionManager
                         requiredPermission: "face.read"
                         deniedDialog: page.deniedDialog
                         text: qsTr("查询")
-                        enabled: !faceServer.busy
+                        enabled: !faceServer.busy && faceEmp.text.trim().length > 0
                         onClicked: guardedClick(function() {
                             faceServer.queryFace(faceEmp.text.trim())
                         })
@@ -75,7 +81,7 @@ Item {
                         deniedDialog: page.deniedDialog
                         text: qsTr("注册人脸")
                         highlighted: true
-                        enabled: !faceServer.busy
+                        enabled: !faceServer.busy && faceEmp.text.trim().length > 0
                         onClicked: guardedClick(function() { photoDialog.open() })
                     }
                     PermissionButton {
@@ -83,7 +89,7 @@ Item {
                         requiredPermission: "face.delete"
                         deniedDialog: page.deniedDialog
                         text: qsTr("删除")
-                        enabled: !faceServer.busy
+                        enabled: !faceServer.busy && faceServer.lastFound
                         onClicked: guardedClick(function() { confirm.open() })
                     }
                 }
@@ -99,18 +105,22 @@ Item {
                     font.pixelSize: Theme.fontSm
                 }
 
-                DataTable {
+                Frame {
                     Layout.fillWidth: true
-                    Layout.preferredHeight: 120
-                    rows: page._rowsFromServer()
-                    columns: [
-                        { key: "employeeId", title: qsTr("工号"), width: 120 },
-                        { key: "featureSize", title: qsTr("特征长度"), width: 100, align: "right" },
-                        { key: "createdAt", title: qsTr("创建时间"), width: 170 },
-                        { key: "updatedAt", title: qsTr("更新时间") }
-                    ]
-                    onRowClicked: function(idx, row) {
-                        faceEmp.text = row.employeeId || ""
+                    Layout.fillHeight: true
+
+                    DataTable {
+                        anchors.fill: parent
+                        rows: page._rowsFromServer()
+                        columns: [
+                            { key: "employeeId", title: qsTr("工号"), width: 120 },
+                            { key: "featureSize", title: qsTr("特征长度"), width: 100, align: "right" },
+                            { key: "createdAt", title: qsTr("创建时间"), width: 170 },
+                            { key: "updatedAt", title: qsTr("更新时间") }
+                        ]
+                        onRowClicked: function(idx, row) {
+                            faceEmp.text = row.employeeId || ""
+                        }
                     }
                 }
             }

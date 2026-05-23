@@ -6,6 +6,29 @@
 #include <QStyleHints>
 #include <cstdio>
 
+#ifdef Q_OS_WIN
+#include <windows.h>
+#endif
+
+static void qtMessageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
+{
+    Q_UNUSED(context)
+    QByteArray localMsg = msg.toLocal8Bit();
+    QByteArray full;
+    switch (type) {
+    case QtDebugMsg:    full = "[QT DEBUG] " + localMsg + "\n"; break;
+    case QtInfoMsg:     full = "[QT INFO]  " + localMsg + "\n"; break;
+    case QtWarningMsg:  full = "[QT WARN]  " + localMsg + "\n"; break;
+    case QtCriticalMsg: full = "[QT CRIT]  " + localMsg + "\n"; break;
+    case QtFatalMsg:    full = "[QT FATAL] " + localMsg + "\n"; break;
+    }
+#ifdef Q_OS_WIN
+    OutputDebugStringA(full.constData());
+#endif
+    fprintf(stderr, "%s", full.constData());
+    fflush(stderr);
+}
+
 #include "src/Attendance/AttendanceService.h"
 #include "src/Auth/SessionManager.h"
 #include "src/Config/ConfigDeployServer.h"
@@ -19,6 +42,7 @@
 
 int main(int argc, char *argv[])
 {
+    qInstallMessageHandler(qtMessageHandler);
     qputenv("QT_QUICK_CONTROLS_STYLE", QByteArrayLiteral("Fusion"));
     fprintf(stderr, "DEBUG: 1 QApplication creating...\n");
     fflush(stderr);
@@ -65,9 +89,32 @@ int main(int argc, char *argv[])
     fprintf(stderr, "DEBUG: 6 All services created\n");
     fflush(stderr);
 
+    // 连接设备状态推送到 DeviceServer
+    QObject::connect(eventService, &EventSubscriptionService::serverPushReceived,
+                     deviceServer, [deviceServer](const QString &messageType, const QVariantMap &data) {
+                         if (messageType == QStringLiteral("device.status.push")) {
+                             const QString deviceId = data.value(QStringLiteral("deviceId")).toString();
+                             const QString status = data.value(QStringLiteral("status")).toString();
+                             const QString ipAddress = data.value(QStringLiteral("ipAddress")).toString();
+                             deviceServer->handleDeviceStatusPush(deviceId, status, ipAddress);
+                         }
+                     });
+
     QQmlApplicationEngine engine;
     fprintf(stderr, "DEBUG: 7 QQmlApplicationEngine created, setting properties...\n");
     fflush(stderr);
+
+    QObject::connect(&engine, &QQmlApplicationEngine::warnings, [](const QList<QQmlError> &warnings) {
+        for (const QQmlError &e : warnings) {
+            const QString msg = QStringLiteral("QML WARNING: %1 (line %2, col %3)")
+                .arg(e.description(), QString::number(e.line()), QString::number(e.column()));
+            qWarning() << msg.toLocal8Bit().constData();
+        }
+    });
+    QObject::connect(&engine, &QQmlApplicationEngine::objectCreationFailed, [](
+                         const QUrl &url) {
+        qCritical() << "QML object creation FAILED for:" << url.toString().toLocal8Bit().constData();
+    });
 
     engine.setInitialProperties({
         { QStringLiteral("sessionManager"), QVariant::fromValue(sessionManager) },

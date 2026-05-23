@@ -7,7 +7,7 @@ QtObject {
 
     readonly property var pageOrder: [
         "dashboard", "person", "device", "configDeploy", "attendance", "face",
-        "user", "rbac", "events", "history", "settings"
+        "user", "rbac", "settings"
     ]
 
     function roleDisplayName(roleKey) {
@@ -120,8 +120,6 @@ QtObject {
         case "face":       return permissionDisplayName("face.read")
         case "user":       return permissionDisplayName("user.read")
         case "rbac":       return roleDisplayName("super_admin")
-        case "events":     return permissionDisplayName("event.subscribe")
-        case "history":    return qsTr("任一业务模块读取权限或用户查询权限")
         case "settings":   return qsTr("已登录")
         default:           return ""
         }
@@ -155,9 +153,6 @@ QtObject {
         case "dashboard":
         case "settings":
             return true
-        case "history":
-            return hasPerm(sessionManager, "user.read")
-                || hasAnyModuleRead(sessionManager)
         case "person":
             return hasPerm(sessionManager, "person.read")
         case "device":
@@ -173,8 +168,6 @@ QtObject {
             return hasPerm(sessionManager, "user.read")
         case "rbac":
             return hasRoleKey(sessionManager, "super_admin")
-        case "events":
-            return hasPerm(sessionManager, "event.subscribe")
         default:
             return false
         }
@@ -279,7 +272,6 @@ QtObject {
         if (hasPerm(sessionManager, "face.read")) labels.push(qsTr("人脸"))
         if (hasPerm(sessionManager, "user.read")) labels.push(qsTr("用户"))
         if (hasRoleKey(sessionManager, "super_admin")) labels.push(qsTr("RBAC"))
-        if (hasPerm(sessionManager, "event.subscribe")) labels.push(qsTr("事件"))
         return labels.length ? labels.join(" · ") : qsTr("仅概览与连接设置")
     }
 

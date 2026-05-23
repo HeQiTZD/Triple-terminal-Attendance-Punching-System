@@ -163,8 +163,8 @@ Item {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        height: 26
-        spacing: Theme.spacingMd
+        height: 30
+        spacing: Theme.spacingLg
         visible: root.slices && root.slices.length > 0
 
         Item {
@@ -181,9 +181,9 @@ Item {
                 spacing: Theme.spacingXs
 
                 Rectangle {
-                    width: 10
-                    height: 10
-                    radius: 5
+                    width: 12
+                    height: 12
+                    radius: 3
                     color: legendDelegate.modelData.color
                     Layout.alignment: Qt.AlignVCenter
                 }
@@ -194,7 +194,31 @@ Item {
                     font.pixelSize: Theme.fontSm
                     font.family: Theme.fontFamily
                     elide: Text.ElideRight
-                    Layout.maximumWidth: 56
+                    Layout.maximumWidth: 60
+                    Layout.alignment: Qt.AlignVCenter
+
+                    Behavior on color {
+                        ColorAnimation {
+                            duration: 150
+                        }
+                    }
+                }
+
+                Text {
+                    text: legendDelegate.modelData.value !== undefined
+                          ? String(legendDelegate.modelData.value)
+                          : String(legendDelegate.modelData.count || 0)
+                    color: Theme.text
+                    font.pixelSize: Theme.fontSm
+                    font.family: Theme.fontFamily
+                    font.bold: true
+                    Layout.alignment: Qt.AlignVCenter
+
+                    Behavior on color {
+                        ColorAnimation {
+                            duration: 150
+                        }
+                    }
                 }
             }
         }

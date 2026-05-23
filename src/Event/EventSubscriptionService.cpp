@@ -190,8 +190,15 @@ void EventSubscriptionService::onTcpMessageReceived(const QJsonObject& message)
 
 void EventSubscriptionService::onAuthenticatedChanged()
 {
-	if (m_tcp && m_tcp->isAuthenticated()) return;
+	if (m_tcp && m_tcp->isAuthenticated()) {
+		// 认证成功后自动订阅设备状态和考勤推送
+		QStringList autoSubscribeTopics;
+		autoSubscribeTopics << QStringLiteral("device") << QStringLiteral("attendance");
+		subscribe(autoSubscribeTopics);
+		return;
+	}
 
+	// 断开连接时清理订阅列表
 	if (!m_subscribedTopics.isEmpty()) {
 		m_subscribedTopics.clear();
 		emit subscribedTopicsChanged();

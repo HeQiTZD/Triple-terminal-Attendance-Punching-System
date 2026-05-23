@@ -54,6 +54,14 @@ void Device::setStatus(const QString &status) {
     }
 }
 
+QString Device::deviceKey() const { return m_deviceKey; }
+void Device::setDeviceKey(const QString &deviceKey) {
+    if (m_deviceKey != deviceKey) {
+        m_deviceKey = deviceKey;
+        emit deviceKeyChanged();
+    }
+}
+
 QJsonObject Device::toJson() const
 {
     QJsonObject json;
@@ -63,6 +71,7 @@ QJsonObject Device::toJson() const
     json["ipAddress"] = m_ipAddress;
     json["lastOnline"] = m_lastOnline.toString(Qt::ISODate);
     json["status"] = m_status;
+    json["deviceKey"] = m_deviceKey;
     return json;
 }
 
@@ -75,5 +84,6 @@ Device* Device::fromJson(const QJsonObject &json, QObject *parent)
     device->setIpAddress(json["ipAddress"].toString());
     device->setLastOnline(QDateTime::fromString(json["lastOnline"].toString(), Qt::ISODate));
     device->setStatus(json["status"].toString());
+    device->setDeviceKey(json["deviceKey"].toString());
     return device;
 }

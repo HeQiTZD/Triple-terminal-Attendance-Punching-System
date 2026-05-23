@@ -13,8 +13,6 @@ Item {
     signal serviceResult(string apiType, int code, string message)
 
     readonly property bool canUpdate: PermissionCatalog.hasPerm(sessionManager, "device.update")
-    readonly property bool isPendingAuthSelected: dStatus.currentText === "pending_auth"
-
     function _query() {
         deviceServer.queryDevices(dId.text.trim(), dName.text.trim(), dIp.text.trim())
     }
@@ -85,11 +83,20 @@ Item {
                             Layout.fillWidth: true
                         }
                     }
+                    LabeledField { label: qsTr("密钥"); Layout.fillWidth: true
+                        TextField {
+                            id: dKey
+                            readOnly: !page.canUpdate
+                            echoMode: TextInput.Password
+                            placeholderText: qsTr("设备密钥")
+                            Layout.fillWidth: true
+                        }
+                    }
                     LabeledField { label: qsTr("状态"); Layout.fillWidth: true
                         ComboBox {
                             id: dStatus
                             enabled: page.canUpdate
-                            model: ["pending_auth", "online", "offline", "maintenance"]
+                            model: ["online", "offline", "maintenance"]
                             Layout.fillWidth: true
                         }
                     }
@@ -106,7 +113,7 @@ Item {
                         enabled: !deviceServer.busy
                         onClicked: guardedClick(function() {
                             deviceServer.createDevice(dId.text.trim(), dName.text.trim(),
-                                                      dIp.text.trim(), page._statusText())
+                                                      dKey.text.trim(), dIp.text.trim(), page._statusText())
                         })
                     }
                     PermissionButton {
@@ -135,19 +142,6 @@ Item {
                         text: qsTr("删除")
                         enabled: !deviceServer.busy
                         onClicked: guardedClick(function() { confirm.open() })
-                    }
-                    PermissionButton {
-                        sessionManager: page.sessionManager
-                        requiredPermission: "device.update"
-                        deniedDialog: page.deniedDialog
-                        text: qsTr("认证通过")
-                        highlighted: true
-                        enabled: !deviceServer.busy
-                                 && page.isPendingAuthSelected
-                                 && dId.text.trim().length > 0
-                        onClicked: guardedClick(function() {
-                            deviceServer.approveDevice(dId.text.trim())
-                        })
                     }
                 }
             }
@@ -243,7 +237,7 @@ Item {
         function onOperationSucceeded(apiType, message) {
             page.serviceResult(apiType, 0, message)
             if (apiType.indexOf("create") >= 0 || apiType.indexOf("update") >= 0
-                    || apiType.indexOf("delete") >= 0 || apiType.indexOf("auth.approve") >= 0)
+                    || apiType.indexOf("delete") >= 0)
                 page._query()
         }
         function onOperationFailed(apiType, code, message) {

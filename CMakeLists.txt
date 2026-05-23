@@ -1,4 +1,4 @@
-﻿cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.16)
 
 project(AttendanceAdmin VERSION 0.1 LANGUAGES CXX)
 
@@ -55,6 +55,11 @@ qt_add_qml_module(appAttendanceAdmin
         ui/components/PermissionChipRow.qml
         ui/components/PageAccessPlaceholder.qml
         ui/components/AttendanceStatusPieChart.qml
+        ui/components/LineChart.qml
+        ui/components/BarChart.qml
+        ui/components/ChartLegend.qml
+        ui/components/ChartContainer.qml
+        ui/components/StatCard.qml
         ui/components/PageHost.qml
         ui/pages/PageDashboard.qml
         ui/pages/PagePerson.qml
@@ -62,11 +67,9 @@ qt_add_qml_module(appAttendanceAdmin
         ui/pages/PageConfigDeploy.qml
         ui/pages/PageAttendance.qml
         ui/pages/PageFace.qml
-        ui/pages/PageHistory.qml
         ui/pages/PageSettings.qml
         ui/pages/PageUser.qml
         ui/pages/PageRbac.qml
-        ui/pages/PageEvents.qml
     SOURCES
         src/Models/Person.h src/Models/Person.cpp
         src/Models/attendancerecord.h src/Models/attendancerecord.cpp

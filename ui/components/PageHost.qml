@@ -48,8 +48,6 @@ Item {
             case "face":       return compFace
             case "user":       return compUser
             case "rbac":       return compRbac
-            case "events":     return compEvents
-            case "history":    return compHistory
             case "settings":   return compSettings
             default:           return null
             }
@@ -149,22 +147,6 @@ Item {
             onServiceResult: (apiType, code, msg) =>
                 host.serviceResult(apiType, code, msg, "rbac")
         }
-    }
-
-    Component {
-        id: compEvents
-        PageEvents {
-            eventService: host.eventService
-            sessionManager: host.sessionManager
-            deniedDialog: host.deniedDialog
-            onServiceResult: (apiType, code, msg) =>
-                host.serviceResult(apiType, code, msg, "event")
-        }
-    }
-
-    Component {
-        id: compHistory
-        PageHistory {}
     }
 
     Component {

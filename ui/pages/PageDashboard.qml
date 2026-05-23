@@ -63,6 +63,20 @@ Item {
 
     readonly property bool hasTodayAttendanceData: page.statusPieSlices.length > 0
 
+    readonly property var weeklyTrendData: {
+        if (!page.canReadAttendance || !attendanceService)
+            return []
+        return page.buildWeeklyTrendData()
+    }
+
+    readonly property var departmentComparisonData: {
+        if (!page.canReadAttendance || !attendanceService)
+            return []
+        return page.buildDepartmentComparisonData()
+    }
+
+    readonly property bool hasTrendData: page.weeklyTrendData.length > 0
+
     function todayRecords(records) {
         const prefix = page.todayDatePrefix
         const out = []
@@ -178,6 +192,92 @@ Item {
             n++
         }
         return n
+    }
+
+    function buildWeeklyTrendData() {
+        if (!page.canReadAttendance || !attendanceService)
+            return []
+
+        const records = attendanceService.records
+        const days = []
+        const today = new Date()
+
+        for (let i = 6; i >= 0; i--) {
+            const date = new Date(today)
+            date.setDate(date.getDate() - i)
+            const dateStr = Qt.formatDateTime(date, "yyyy-MM-dd")
+            days.push({
+                date: dateStr,
+                label: Qt.formatDateTime(date, "MM/dd"),
+                value: 0
+            })
+        }
+
+        const prefix = Qt.formatDateTime(new Date(today), "yyyy-MM-dd")
+        const weekAgo = days[0].date
+
+        for (let i = 0; i < records.length; ++i) {
+            const r = records[i]
+            const checkTime = r.checkTime || ""
+            if (checkTime < weekAgo || checkTime >= prefix + " 24:00:00")
+                continue
+
+            for (let j = 0; j < days.length; ++j) {
+                if (checkTime.startsWith(days[j].date)) {
+                    days[j].value++
+                    break
+                }
+            }
+        }
+
+        return days
+    }
+
+    function buildDepartmentComparisonData() {
+        if (!page.canReadAttendance || !attendanceService || !page.canReadPerson || !personServer)
+            return []
+
+        const records = attendanceService.records
+        const departmentCounts = {}
+
+        for (let i = 0; i < records.length; ++i) {
+            const r = records[i]
+            const empId = r.employeeId || ""
+            const person = page.findPersonByEmployeeId(empId)
+            const dept = person ? (person.department || qsTr("未分配")) : qsTr("未分配")
+
+            if (!departmentCounts[dept]) {
+                departmentCounts[dept] = 0
+            }
+            departmentCounts[dept]++
+        }
+
+        const result = []
+        const keys = Object.keys(departmentCounts)
+        for (let i = 0; i < keys.length && i < 8; i++) {
+            result.push({
+                label: keys[i],
+                value: departmentCounts[keys[i]],
+                color: Theme.chartColor(i)
+            })
+        }
+
+        result.sort(function(a, b) {
+            return b.value - a.value
+        })
+
+        return result
+    }
+
+    function findPersonByEmployeeId(empId) {
+        if (!empId || !personServer)
+            return null
+        const rec = personServer.records
+        for (let i = 0; i < rec.length; ++i) {
+            if (rec[i].employeeId === empId)
+                return rec[i]
+        }
+        return null
     }
 
     function refreshStats() {
@@ -368,6 +468,64 @@ Item {
                         anchors.fill: parent
                         visible: page.canReadAttendance && page.hasTodayAttendanceData
                         slices: page.statusPieSlices
+                    }
+                }
+            }
+        }
+
+        RowLayout {
+            id: trendRow
+            Layout.fillWidth: true
+            Layout.preferredHeight: 280
+            spacing: Theme.spacingMd
+            visible: page.canReadAttendance && page.hasTrendData
+
+            Card {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                Layout.preferredWidth: trendRow.width * 0.55
+                stretchContent: true
+                title: qsTr("近 7 天打卡趋势")
+
+                LineChart {
+                    anchors.fill: parent
+                    anchors.margins: Theme.spacingMd
+                    chartData: page.weeklyTrendData
+                    xAxisLabel: qsTr("日期")
+                    yAxisLabel: qsTr("打卡次数")
+                    showGrid: true
+                    showPoints: true
+                    showArea: true
+                    title: ""
+                }
+            }
+
+            Card {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                Layout.preferredWidth: trendRow.width * 0.45
+                stretchContent: true
+                title: qsTr("部门打卡分布")
+
+                ColumnLayout {
+                    anchors.fill: parent
+                    anchors.margins: Theme.spacingMd
+                    spacing: Theme.spacingMd
+
+                    BarChart {
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
+                        chartData: page.departmentComparisonData
+                        horizontal: false
+                        showGrid: true
+                        showValues: true
+                        title: ""
+                    }
+
+                    ChartLegend {
+                        Layout.alignment: Qt.AlignHCenter
+                        items: page.departmentComparisonData
+                        horizontal: true
                     }
                 }
             }

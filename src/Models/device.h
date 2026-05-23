@@ -14,6 +14,7 @@ class Device : public QObject
     Q_PROPERTY(QString ipAddress READ ipAddress WRITE setIpAddress NOTIFY ipAddressChanged)
     Q_PROPERTY(QDateTime lastOnline READ lastOnline WRITE setLastOnline NOTIFY lastOnlineChanged)
     Q_PROPERTY(QString status READ status WRITE setStatus NOTIFY statusChanged)
+    Q_PROPERTY(QString deviceKey READ deviceKey WRITE setDeviceKey NOTIFY deviceKeyChanged)
 
 public:
     explicit Device(QObject *parent = nullptr);
@@ -36,6 +37,9 @@ public:
     QString status() const;
     void setStatus(const QString &status);
 
+    QString deviceKey() const;
+    void setDeviceKey(const QString &deviceKey);
+
     QJsonObject toJson() const;
     static Device* fromJson(const QJsonObject &json, QObject *parent = nullptr);
 
@@ -47,6 +51,8 @@ signals:
     void lastOnlineChanged();
     void statusChanged();
 
+    void deviceKeyChanged();
+
 private:
     int m_id;
     QString m_deviceId;
@@ -54,6 +60,7 @@ private:
     QString m_ipAddress;
     QDateTime m_lastOnline;
     QString m_status; // "online", "offline"
+    QString m_deviceKey;
 };
 
 #endif // DEVICE_H

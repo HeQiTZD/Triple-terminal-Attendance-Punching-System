@@ -22,6 +22,7 @@ public:
 
     Q_INVOKABLE void createDevice(const QString &deviceId,
                                   const QString &deviceName,
+                                  const QString &deviceKey,
                                   const QString &ipAddress,
                                   const QString &status);
     Q_INVOKABLE void queryDevices(const QString &deviceId,
@@ -32,16 +33,19 @@ public:
                                   const QString &ipAddress,
                                   const QString &status);
     Q_INVOKABLE void deleteDevice(const QString &deviceId);
-    Q_INVOKABLE void approveDevice(const QString &deviceId);
     Q_INVOKABLE void sendCommand(const QString &deviceId,
                                  const QString &command,
                                  const QString &paramsJson);
+
+    // 处理设备状态推送
+    void handleDeviceStatusPush(const QString &deviceId, const QString &status, const QString &ipAddress);
 
 signals:
     void busyChanged();
     void recordsChanged();
     void operationSucceeded(const QString &apiType, const QString &message);
     void operationFailed(const QString &apiType, int code, const QString &message);
+    void deviceStatusChanged(const QString &deviceId, const QString &status, const QString &ipAddress);
 
 private:
     void setBusy(bool v);

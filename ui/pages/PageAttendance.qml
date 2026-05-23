@@ -17,9 +17,47 @@ Item {
     readonly property bool hasLiveRead: PermissionCatalog.hasPerm(sessionManager, "attendance.read")
     readonly property bool hasArchiveRead: PermissionCatalog.hasPerm(sessionManager, "attendance.archive.read")
 
+    readonly property var archiveStatusChartData: {
+        if (!page.hasArchiveRead || !attendanceService)
+            return []
+        return page.buildArchiveStatusChart()
+    }
+
     function _liveQuery() {
         attendanceService.query(-1, empId.text.trim(), checkTime.text.trim(),
                                 devId.text.trim(), status.currentValue, "")
+    }
+
+    function buildArchiveStatusChart() {
+        if (!attendanceService || !attendanceService.archiveRecords)
+            return []
+
+        const records = attendanceService.archiveRecords
+        const statusCounts = {}
+
+        for (let i = 0; i < records.length; ++i) {
+            const status = records[i].status || "unknown"
+            if (!statusCounts[status]) {
+                statusCounts[status] = 0
+            }
+            statusCounts[status]++
+        }
+
+        const result = []
+        const statusOrder = ["normal", "late", "early", "absent", "manual"]
+
+        for (let i = 0; i < statusOrder.length; i++) {
+            const status = statusOrder[i]
+            if (statusCounts[status] && statusCounts[status] > 0) {
+                result.push({
+                    label: Theme.formatAttendanceStatus(status),
+                    value: statusCounts[status],
+                    color: Theme.attendancePieColor(status)
+                })
+            }
+        }
+
+        return result
     }
 
     ColumnLayout {
@@ -210,24 +248,58 @@ Item {
                     }
                 }
 
-                Card {
+                RowLayout {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    stretchContent: true
-                    title: qsTr("归档列表")
+                    spacing: Theme.spacingMd
 
-                    DataTable {
-                        anchors.fill: parent
-                        rows: attendanceService.archiveRecords
-                        columns: [
-                            { key: "id", title: "ID", width: 60, align: "right" },
-                            { key: "employeeId", title: qsTr("工号"), width: 100 },
-                            { key: "personName", title: qsTr("姓名"), width: 100 },
-                            { key: "department", title: qsTr("部门"), width: 100 },
-                            { key: "checkTime", title: qsTr("打卡时间"), width: 160 },
-                            { key: "archivedAt", title: qsTr("归档时间"), width: 160 },
-                            { key: "archiveReason", title: qsTr("原因") }
-                        ]
+                    Card {
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
+                        stretchContent: true
+                        title: qsTr("归档列表")
+
+                        DataTable {
+                            anchors.fill: parent
+                            rows: attendanceService.archiveRecords
+                            columns: [
+                                { key: "id", title: "ID", width: 60, align: "right" },
+                                { key: "employeeId", title: qsTr("工号"), width: 100 },
+                                { key: "personName", title: qsTr("姓名"), width: 100 },
+                                { key: "department", title: qsTr("部门"), width: 100 },
+                                { key: "checkTime", title: qsTr("打卡时间"), width: 160 },
+                                { key: "archivedAt", title: qsTr("归档时间"), width: 160 },
+                                { key: "archiveReason", title: qsTr("原因") }
+                            ]
+                        }
+                    }
+
+                    Card {
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
+                        Layout.preferredWidth: 300
+                        title: qsTr("归档状态分布")
+
+                        Item {
+                            anchors.fill: parent
+
+                            Label {
+                                anchors.centerIn: parent
+                                visible: page.archiveStatusChartData.length === 0
+                                text: qsTr("暂无归档数据")
+                                color: Theme.textMuted
+                                font.pixelSize: Theme.fontMd
+                                font.family: Theme.fontFamily
+                            }
+
+                            AttendanceStatusPieChart {
+                                id: archivePieChart
+                                anchors.fill: parent
+                                anchors.margins: Theme.spacingMd
+                                visible: page.archiveStatusChartData.length > 0
+                                slices: page.archiveStatusChartData
+                            }
+                        }
                     }
                 }
             }
