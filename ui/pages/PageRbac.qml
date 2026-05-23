@@ -563,6 +563,211 @@ Item {
                         }
                     }
                 }
+
+                // ── 空状态提示 ──
+                Card {
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+                    visible: page.selectedRoleIndex < 0 && !page.isCreatingRole
+                    stretchContent: true
+                    Label {
+                        anchors.centerIn: parent
+                        text: qsTr("请在上方选择一个角色以查看和编辑其详细信息")
+                        color: Theme.textSubtle
+                        font.pixelSize: Theme.fontMd
+                        font.family: Theme.fontFamily
+                    }
+                }
+
+                // ── 角色详情（选中或新建） ──
+                Card {
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+                    visible: page.selectedRoleIndex >= 0 || page.isCreatingRole
+                    stretchContent: true
+
+                    title: page.isCreatingRole
+                           ? qsTr("新建角色")
+                           : qsTr("角色详情") + " · " + page.formRoleKey
+
+                    headerRight: Row {
+                        spacing: Theme.spacingSm
+
+                        PermissionButton {
+                            visible: !page.isCreatingRole
+                            sessionManager: page.sessionManager
+                            requiredRole: "super_admin"
+                            deniedDialog: page.deniedDialog
+                            text: qsTr("保存修改")
+                            highlighted: true
+                            enabled: page.formDirty && !rbacServer.busy
+                            onClicked: guardedClick(page._saveRole)
+                        }
+                        PermissionButton {
+                            sessionManager: page.sessionManager
+                            requiredRole: "super_admin"
+                            deniedDialog: page.deniedDialog
+                            text: qsTr("创建角色")
+                            highlighted: true
+                            visible: page.isCreatingRole
+                            enabled: page.formRoleKey.length > 0
+                                     && page.formRoleName.length > 0
+                                     && !rbacServer.busy
+                            onClicked: guardedClick(page._createRole)
+                        }
+                        PermissionButton {
+                            sessionManager: page.sessionManager
+                            requiredRole: "super_admin"
+                            deniedDialog: page.deniedDialog
+                            text: qsTr("取消")
+                            flat: true
+                            visible: page.isCreatingRole
+                            onClicked: guardedClick(page._clearRoleForm)
+                        }
+                        PermissionButton {
+                            visible: !page.isCreatingRole && !page.formIsSystem
+                            sessionManager: page.sessionManager
+                            requiredRole: "super_admin"
+                            deniedDialog: page.deniedDialog
+                            text: qsTr("删除角色")
+                            enabled: !rbacServer.busy
+                            onClicked: guardedClick(function() { roleDeleteConfirm.open() })
+                        }
+                    }
+
+                    Flickable {
+                        anchors.fill: parent
+                        contentHeight: detailColumn.implicitHeight
+                        clip: true
+                        ScrollBar.vertical: ScrollBar { policy: ScrollBar.AsNeeded }
+
+                        ColumnLayout {
+                            id: detailColumn
+                            width: parent.width
+                            spacing: Theme.spacingMd
+
+                            // ── 表单字段 ──
+                            GridLayout {
+                                Layout.fillWidth: true
+                                columns: 3
+                                rowSpacing: Theme.spacingSm
+                                columnSpacing: Theme.spacingMd
+
+                                LabeledField {
+                                    label: qsTr("角色标识")
+                                    Layout.fillWidth: true
+                                    TextField {
+                                        id: roleKeyField
+                                        text: page.formRoleKey
+                                        readOnly: !page.isCreatingRole
+                                        enabled: page.isCreatingRole
+                                        Layout.fillWidth: true
+                                        onTextChanged: {
+                                            if (page.isCreatingRole) {
+                                                page.formRoleKey = text
+                                                page.formDirty = true
+                                            }
+                                        }
+                                    }
+                                }
+                                LabeledField {
+                                    label: qsTr("角色名称")
+                                    Layout.fillWidth: true
+                                    TextField {
+                                        id: roleNameField
+                                        text: page.formRoleName
+                                        Layout.fillWidth: true
+                                        onTextChanged: {
+                                            page.formRoleName = text
+                                            if (!page.isCreatingRole)
+                                                page.formDirty = true
+                                        }
+                                    }
+                                }
+                                LabeledField {
+                                    label: qsTr("描述")
+                                    Layout.fillWidth: true
+                                    TextField {
+                                        id: roleDescField
+                                        text: page.formDescription
+                                        Layout.fillWidth: true
+                                        onTextChanged: {
+                                            page.formDescription = text
+                                            if (!page.isCreatingRole)
+                                                page.formDirty = true
+                                        }
+                                    }
+                                }
+                            }
+
+                            // ── 权限分配 ──
+                            Label {
+                                text: qsTr("权限分配")
+                                color: Theme.text
+                                font.pixelSize: Theme.fontLg
+                                font.family: Theme.fontFamily
+                                font.bold: true
+                                Layout.fillWidth: true
+                            }
+
+                            Flow {
+                                Layout.fillWidth: true
+                                spacing: Theme.spacingMd
+
+                                Repeater {
+                                    model: page.permissionGroups
+                                    delegate: Rectangle {
+                                        required property var modelData
+                                        width: 200
+                                        height: permColumn.implicitHeight + Theme.spacingSm * 2
+                                        color: Theme.surfaceAlt
+                                        radius: Theme.radiusSm
+                                        border.color: Theme.border
+                                        border.width: 1
+
+                                        Column {
+                                            id: permColumn
+                                            anchors.left: parent.left
+                                            anchors.right: parent.right
+                                            anchors.top: parent.top
+                                            anchors.margins: Theme.spacingSm
+                                            spacing: 2
+
+                                            Label {
+                                                text: modelData.name
+                                                color: Theme.text
+                                                font.pixelSize: Theme.fontSm
+                                                font.family: Theme.fontFamily
+                                                font.bold: true
+                                                width: parent.width
+                                            }
+
+                                            Repeater {
+                                                model: modelData.perms
+                                                delegate: CheckBox {
+                                                    required property var modelData
+                                                    text: modelData.label || modelData.key
+                                                    font.pixelSize: Theme.fontXs
+                                                    font.family: Theme.fontFamily
+                                                    checked: page._permChecked(modelData.key)
+                                                    onCheckedChanged: page._setPerm(modelData.key, checked)
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // ── 删除确认对话框 ──
+                ConfirmDialog {
+                    id: roleDeleteConfirm
+                    message: qsTr("确认删除角色 ") + page.formRoleKey + "？\n" +
+                             qsTr("删除后，已分配该角色的用户将失去对应权限。")
+                    onAccepted: page._deleteRole()
+                }
             }
         }
     }
