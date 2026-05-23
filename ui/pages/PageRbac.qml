@@ -147,9 +147,111 @@ Item {
         }
     }
 
+    // ── 角色管理辅助函数 ──
+
+    function _permChecked(permKey) {
+        return !!checkedPermissions[permKey]
+    }
+
+    function _setPerm(permKey, on) {
+        if (!!checkedPermissions[permKey] === on)
+            return
+        const next = Object.assign({}, checkedPermissions)
+        if (on)
+            next[permKey] = true
+        else
+            delete next[permKey]
+        checkedPermissions = next
+        formDirty = true
+    }
+
+    function _collectCheckedPerms() {
+        const keys = []
+        for (const k in checkedPermissions) {
+            if (checkedPermissions[k])
+                keys.push(k)
+        }
+        return keys
+    }
+
+    function _loadRoleIntoForm(row) {
+        selectedRoleIndex = -1
+        isCreatingRole = false
+        formDirty = false
+        if (!row) {
+            formRoleKey = ""
+            formRoleName = ""
+            formDescription = ""
+            formIsSystem = false
+            checkedPermissions = {}
+            return
+        }
+        formRoleKey = row.roleKey || ""
+        formRoleName = row.roleName || ""
+        formDescription = row.description || ""
+        formIsSystem = !!(row.isSystem)
+        const perms = row.permissions
+        const map = {}
+        if (Array.isArray(perms)) {
+            for (let i = 0; i < perms.length; ++i)
+                map[perms[i]] = true
+        }
+        checkedPermissions = map
+    }
+
+    function _clearRoleForm() {
+        selectedRoleIndex = -1
+        isCreatingRole = false
+        formDirty = false
+        formRoleKey = ""
+        formRoleName = ""
+        formDescription = ""
+        formIsSystem = false
+        checkedPermissions = {}
+    }
+
+    function _beginCreateRole() {
+        selectedRoleIndex = -1
+        isCreatingRole = true
+        formDirty = false
+        formRoleKey = ""
+        formRoleName = ""
+        formDescription = ""
+        formIsSystem = false
+        checkedPermissions = {}
+    }
+
+    function _saveRole() {
+        if (!formDirty)
+            return
+        const fields = {}
+        fields["roleName"] = formRoleName
+        fields["description"] = formDescription
+        fields["permissions"] = _collectCheckedPerms()
+        rbacServer.updateRole(formRoleKey, fields)
+    }
+
+    function _createRole() {
+        if (!formRoleKey.length || !formRoleName.length)
+            return
+        rbacServer.createRole(formRoleKey, formRoleName, formDescription)
+    }
+
+    function _deleteRole() {
+        if (!formRoleKey.length)
+            return
+        rbacServer.deleteRole(formRoleKey)
+    }
+
+    function _refreshRoles() {
+        rbacServer.queryRoles()
+        rbacServer.queryPermissions()
+    }
+
     Component.onCompleted: {
         userServer.queryUsers("", "")
         rbacServer.queryRoles()
+        rbacServer.queryPermissions()
     }
 
     RowLayout {
