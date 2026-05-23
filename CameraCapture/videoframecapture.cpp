@@ -51,10 +51,20 @@ QWidget *VideoFrameCapture::getVideoWidget() const
 //处理视频帧
 void VideoFrameCapture::processFrame(const QVideoFrame &frame)
 {
-    QImage image = VideoFrameConverter::convertToQImage(frame);
-    
+    QImage image;
+    if (m_converter) {
+        image = m_converter->convertToQImage(frame);
+    } else {
+        image = VideoFrameConverter().convertToQImage(frame);
+    }
+
     if (!image.isNull() && image.width() > 0 && image.height() > 0) {
         currentFrame = image;
         emit frameCaptured(currentFrame);
     }
+}
+
+void VideoFrameCapture::setFrameConverter(VideoFrameConverter *converter)
+{
+    m_converter = converter;
 }

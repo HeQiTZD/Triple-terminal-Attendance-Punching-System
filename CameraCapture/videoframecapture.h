@@ -10,6 +10,7 @@
 
 #include "cameracapture.h"
 #include "../UI/facevideowidget.h"
+class VideoFrameConverter;
 class VideoFrameCapture : public QObject
 {
     Q_OBJECT
@@ -24,6 +25,7 @@ private:
 public:
     QImage getCurrentFrame() const;//对外提供捕获的视频帧接口
     QWidget* getVideoWidget() const;//对外提供摄像头预览接口
+    void setFrameConverter(VideoFrameConverter *converter);
 
 private:
     QMediaCaptureSession *captureSession;//媒体捕获会话
@@ -32,6 +34,7 @@ private:
     QImage currentFrame;//当前捕获的视频帧
     FaceVideoWidget* videoWidget;//预览控件，返回捕获帧实例
     CameraCapture cameraCaptrue;//摄像头类的实例化
+    VideoFrameConverter *m_converter = nullptr;
 
 private slots:
     void processFrame(const QVideoFrame &frame);//处理捕获到的帧
