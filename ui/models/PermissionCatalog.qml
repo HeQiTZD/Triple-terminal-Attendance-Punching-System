@@ -130,15 +130,15 @@ QtObject {
         { key: "dashboard", label: qsTr("仪表盘"), icon: "◆" },
 
         { group: qsTr("数据管理") },
-        { key: "person", label: qsTr("人员管理"), icon: "👤" },
+        { key: "person", label: qsTr("人员管理"), icon: "☺" },
         { key: "device", label: qsTr("设备管理"), icon: "⬡" },
-        { key: "configDeploy", label: qsTr("配置下发"), icon: "⇪" },
-        { key: "attendance", label: qsTr("考勤记录"), icon: "📋" },
+        { key: "configDeploy", label: qsTr("配置下发"), icon: "⇧" },
+        { key: "attendance", label: qsTr("考勤记录"), icon: "☰" },
         { key: "face", label: qsTr("人脸库"), icon: "◎" },
 
         { group: qsTr("账号与权限") },
-        { key: "user", label: qsTr("用户账号"), icon: "🔑" },
-        { key: "rbac", label: qsTr("角色权限"), icon: "🛡" },
+        { key: "user", label: qsTr("用户账号"), icon: "⚿" },
+        { key: "rbac", label: qsTr("角色权限"), icon: "⛨" },
 
         { group: qsTr("系统") },
         { key: "events", label: qsTr("事件中心"), icon: "⚡" },
