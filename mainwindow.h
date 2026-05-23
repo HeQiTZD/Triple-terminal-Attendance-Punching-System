@@ -10,6 +10,10 @@
 #include "Command/CommandHandler.h"
 #include "Attendance/AttendanceReporter.h"
 #include "Config/configmanager.h"
+#include "UI/Components/ActionButton.h"
+#include "UI/Components/IconButton.h"
+#include "UI/Components/StatusIndicator.h"
+#include "UI/Components/InfoField.h"
 
 #include <QMainWindow>
 #include <QThread>
@@ -93,6 +97,9 @@ private:
     //初始化网络状态显示
     void initNetWorkStatus();
 
+    //初始化信息字段组件
+    void initInfoFields();
+
     //从配置恢复窗口大小
     void restoreWindowSize();
     //保存窗口大小到配置
@@ -131,6 +138,14 @@ private:
     bool m_isResizing = false;
     Edge m_currentEdge = None;
     QRect m_originalGeometry;
+
+    // UI 组件 (replacing raw widgets)
+    StatusIndicator* m_statusIndicator = nullptr;
+    InfoField* m_fieldEmployeeId = nullptr;
+    InfoField* m_fieldName = nullptr;
+    InfoField* m_fieldStatus = nullptr;
+    InfoField* m_fieldCheckTime = nullptr;
+    IconButton* m_btnMaximize = nullptr;
 
 
     Edge getEdge(const QPoint &pos);

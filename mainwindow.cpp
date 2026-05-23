@@ -24,6 +24,39 @@ MainWindow::MainWindow(QWidget *parent)
         child->installEventFilter(this);
     }
 
+    // 隐藏旧的窗口控制按钮，用 IconButton 替换
+    ui->minimizeButton->hide();
+    ui->maximizeButton->hide();
+    ui->closeButton->hide();
+
+    // 创建新的 IconButton
+    auto* btnMin = new IconButton(IconButton::Minimize, ui->topWidget);
+    m_btnMaximize = new IconButton(IconButton::Maximize, ui->topWidget);
+    auto* btnClose = new IconButton(IconButton::Close, ui->topWidget);
+
+    // 插入到 topWidget 布局中
+    QHBoxLayout* topLayout = qobject_cast<QHBoxLayout*>(ui->topWidget->layout());
+    if (topLayout) {
+        topLayout->addWidget(btnMin);
+        topLayout->addWidget(m_btnMaximize);
+        topLayout->addWidget(btnClose);
+    }
+
+    connect(btnMin, &QPushButton::clicked, this, &MainWindow::onMinimizeButtonClicked);
+    connect(m_btnMaximize, &QPushButton::clicked, this, &MainWindow::onMaximizeButtonClicked);
+    connect(btnClose, &QPushButton::clicked, this, &MainWindow::onCloseButtonClicked);
+
+    // 替换设置按钮
+    ui->settingButton->hide();
+    auto* btnSettings = new ActionButton(QStringLiteral("⚙  设置"), ActionButton::Secondary, ui->topWidget);
+    if (topLayout) {
+        int idx = topLayout->indexOf(ui->settingButton);
+        if (idx >= 0) {
+            topLayout->insertWidget(idx, btnSettings);
+        }
+    }
+    connect(btnSettings, &QPushButton::clicked, this, &MainWindow::onSetPushButten);
+
     //设置无边框窗口
     setWindowFlags(Qt::FramelessWindowHint);
 
@@ -44,6 +77,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     //初始化其他模块（数据库、人脸识别、摄像头等）
     init();
+    initInfoFields();
     InfoWidget();
     FaceFeatureStart();
 
@@ -259,6 +293,33 @@ void MainWindow::InfoWidget()
     ui->cameraDisplay->layout()->addWidget(m_VideoWidget);
 }
 
+//初始化信息字段组件
+void MainWindow::initInfoFields()
+{
+    // 隐藏旧的 label
+    ui->employeeIdLabel->hide();
+    ui->employeeIdEdit->hide();
+    ui->nameLabel->hide();
+    ui->nameEdit->hide();
+    ui->statusLabel->hide();
+    ui->statusEdit->hide();
+    ui->checkTimeLabel->hide();
+    ui->checkTimeEdit->hide();
+
+    QHBoxLayout* infoLayout = qobject_cast<QHBoxLayout*>(ui->infoWidget->layout());
+    if (!infoLayout) return;
+
+    m_fieldEmployeeId = new InfoField(QStringLiteral("员工号："), ui->infoWidget);
+    m_fieldName       = new InfoField(QStringLiteral("姓名："),   ui->infoWidget);
+    m_fieldStatus     = new InfoField(QStringLiteral("打卡状态："), ui->infoWidget);
+    m_fieldCheckTime  = new InfoField(QStringLiteral("打卡时间："), ui->infoWidget);
+
+    infoLayout->addWidget(m_fieldEmployeeId);
+    infoLayout->addWidget(m_fieldName);
+    infoLayout->addWidget(m_fieldStatus);
+    infoLayout->addWidget(m_fieldCheckTime);
+}
+
 //开启人脸识别
 void MainWindow::FaceFeatureStart()
 {
@@ -321,19 +382,33 @@ void MainWindow::initTimeDisplay()
 //网络状态初始化
 void MainWindow::initNetWorkStatus()
 {
-    //使用Qt::QueuedConnection确保跨线程安全（networkClient在另一个线程）
-    connect(networkClient, &Networkclient::networkStateChanged, 
+    // 隐藏旧的 QLabel
+    ui->networkStatusLabel->hide();
+
+    // 创建 StatusIndicator 组件
+    m_statusIndicator = new StatusIndicator(ui->topWidget);
+    m_statusIndicator->setLabel(QStringLiteral("离线"));
+    m_statusIndicator->setState(StatusIndicator::Offline);
+
+    // 插入到布局中原 networkStatusLabel 的位置
+    QHBoxLayout* topLayout = qobject_cast<QHBoxLayout*>(ui->topWidget->layout());
+    if (topLayout) {
+        int idx = topLayout->indexOf(ui->networkStatusLabel);
+        if (idx >= 0) {
+            topLayout->insertWidget(idx, m_statusIndicator);
+        }
+    }
+
+    // 连接信号
+    connect(networkClient, &Networkclient::networkStateChanged,
             this, &MainWindow::onNetworkStateChanged, Qt::QueuedConnection);
-    
-    //使用Qt::QueuedConnection连接connected和disconnected信号
     connect(networkClient, &Networkclient::connected, this, [=](){
         qDebug() << "网络已连接";
     }, Qt::QueuedConnection);
     connect(networkClient, &Networkclient::disconnected, this, [=](){
         qDebug() << "网络已断开";
     }, Qt::QueuedConnection);
-    
-    //初始状态设为离线
+
     onNetworkStateChanged(false);
 }
 
@@ -344,21 +419,10 @@ void MainWindow::onRecognitionSuccess(const QString &employeeId,
                                       const QString &checkTime,
                                       const QImage &faceImage)
 {
-    // 更新员工号
-    ui->employeeIdEdit->setText(employeeId);
-
-    // 更新姓名
-    ui->nameEdit->setText(name);
-
-    // 更新打卡状态
-    ui->statusEdit->setText(status);
-
-    // 更新打卡时间
-    ui->checkTimeEdit->setText(checkTime);
-
-
-
-
+    if (m_fieldEmployeeId) m_fieldEmployeeId->setValue(employeeId);
+    if (m_fieldName)       m_fieldName->setValue(name);
+    if (m_fieldStatus)     m_fieldStatus->setValue(status);
+    if (m_fieldCheckTime)  m_fieldCheckTime->setValue(checkTime);
 }
 
 //处理保存打卡记录请求
@@ -379,18 +443,13 @@ void MainWindow::updateTimeDisplay()
 
 void MainWindow::onNetworkStateChanged(bool isOnline)
 {
-    if(isOnline){
-        ui->networkStatusLabel->setText("🟢 在线");
-        ui->networkStatusLabel->setStyleSheet(
-            "color:#3fb950; font-weight:600; font-size:13px;"
-            "background-color:rgba(63,185,80,0.1); border:1px solid rgba(63,185,80,0.3);"
-            "border-radius:6px; padding:5px 12px;");
-    }else{
-        ui->networkStatusLabel->setText("🔴 离线");
-        ui->networkStatusLabel->setStyleSheet(
-            "color:#f85149; font-weight:600; font-size:13px;"
-            "background-color:rgba(248,81,73,0.1); border:1px solid rgba(248,81,73,0.3);"
-            "border-radius:6px; padding:5px 12px;");
+    if (!m_statusIndicator) return;
+    if (isOnline) {
+        m_statusIndicator->setState(StatusIndicator::Online);
+        m_statusIndicator->setLabel(QStringLiteral("在线"));
+    } else {
+        m_statusIndicator->setState(StatusIndicator::Offline);
+        m_statusIndicator->setLabel(QStringLiteral("离线"));
     }
 }
 
@@ -412,10 +471,11 @@ void MainWindow::onMaximizeButtonClicked()
 {
     if (isMaximized()) {
         showNormal();
-        ui->maximizeButton->setText("⬜");
     } else {
         showMaximized();
-        ui->maximizeButton->setText("⬝");
+    }
+    if (m_btnMaximize) {
+        m_btnMaximize->reflectWindowState(isMaximized());
     }
 }
 
