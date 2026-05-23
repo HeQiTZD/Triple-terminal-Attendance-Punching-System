@@ -138,4 +138,34 @@ QtObject {
     function chartColor(index) {
         return chartColors[index % chartColors.length]
     }
+
+    // ===== 暗色模式色板（远期启用） =====
+    readonly property color darkBg:           "#0F172A"
+    readonly property color darkSurface:      "#1E293B"
+    readonly property color darkSurfaceAlt:   "#273449"
+    readonly property color darkSideBar:      "#162032"
+    readonly property color darkBorder:       "#334155"
+    readonly property color darkBorderStrong: "#475569"
+
+    readonly property color darkText:         "#F1F5F9"
+    readonly property color darkTextMuted:    "#94A3B8"
+    readonly property color darkTextSubtle:   "#64748B"
+
+    readonly property color darkHover:        "#334155"
+    readonly property color darkSelected:     "#1E3A5F"
+
+    readonly property color darkShadowLight:  Qt.rgba(0, 0, 0, 0.30)
+    readonly property color darkShadowMedium: Qt.rgba(0, 0, 0, 0.45)
+    readonly property color darkShadowStrong: Qt.rgba(0, 0, 0, 0.60)
+
+    readonly property var darkChartColors: [
+        "#3B82F6",
+        "#22C55E",
+        "#F97316",
+        "#A78BFA",
+        "#EF4444",
+        "#06B6D4",
+        "#84CC16",
+        "#F59E0B"
+    ]
 }
