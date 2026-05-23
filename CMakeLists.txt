@@ -83,6 +83,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         UI/facevideowidget.h UI/facevideowidget.cpp
         UI/Theme/ThemeManager.h UI/Theme/ThemeManager.cpp
         UI/Components/ActionButton.h UI/Components/ActionButton.cpp
+        UI/Components/IconButton.h UI/Components/IconButton.cpp
         Sync/SyncManager.h Sync/SyncManager.cpp
         Command/CommandHandler.h Command/CommandHandler.cpp
         Attendance/AttendanceConfigParser.h Attendance/AttendanceConfigParser.cpp
