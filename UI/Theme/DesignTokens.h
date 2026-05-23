@@ -1,9 +1,7 @@
 #ifndef DESIGNTOKENS_H
 #define DESIGNTOKENS_H
 
-#include <QColor>
 #include <QString>
-#include <QHash>
 
 namespace DesignTokens {
 
