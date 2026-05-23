@@ -6,6 +6,7 @@
 #include "Config/configmanager.h"
 #include "Attendance/AttendanceConfigSyncHandler.h"
 #include "UI/facevideowidget.h"
+#include "CameraCapture/videoframeconverter.h"
 #include <QCloseEvent>
 #include <QMessageBox>
 MainWindow::MainWindow(QWidget *parent)
@@ -62,6 +63,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     //创建设置窗口，设置父对象为主窗口，这样关闭主窗口时会自动关闭设置窗口
     setwindow = new SetWindow(this);
+    m_frameConverter = new VideoFrameConverter(this);
+    setwindow->setFrameConverter(m_frameConverter);
 
     //从配置恢复窗口大小
     restoreWindowSize();
@@ -273,6 +276,7 @@ void MainWindow::init()
         return;
     }
     m_VideoFrameCapture = new VideoFrameCapture(this);
+    m_VideoFrameCapture->setFrameConverter(m_frameConverter);
     m_VideoFrameCapture->captureFrame(m_CameraCapture->getCamera());
 
     //多线程 - 将人脸识别移到独立线程

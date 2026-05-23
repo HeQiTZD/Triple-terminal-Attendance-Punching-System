@@ -5,6 +5,7 @@
 #include "FaceRecognition/arcfaceengine.h"
 #include "FaceRecognition/facerecognizer.h"
 #include "UI/setwindow.h"
+class VideoFrameConverter;
 #include "LocalStorage/localstorage.h"
 #include "Sync/SyncManager.h"
 #include "Command/CommandHandler.h"
@@ -133,6 +134,7 @@ private:
     QThread* m_networkThread = nullptr;
     QTimer* m_timeTimer = nullptr;
     SetWindow* setwindow = nullptr;
+    VideoFrameConverter* m_frameConverter = nullptr;
     QPoint m_dragPosition; //记录拖拽时的鼠标位置
     bool m_isDragging = false; //是否正在被拖拽
     bool m_isResizing = false;
