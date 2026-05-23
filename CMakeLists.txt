@@ -55,7 +55,7 @@ qt_add_qml_module(appAttendanceAdmin
         ui/components/PermissionChipRow.qml
         ui/components/PageAccessPlaceholder.qml
         ui/components/AttendanceStatusPieChart.qml
-        ui/components/LineChart.qml
+        ui/components/RecentPunchList.qml
         ui/components/BarChart.qml
         ui/components/ChartLegend.qml
         ui/components/ChartContainer.qml
@@ -67,7 +67,6 @@ qt_add_qml_module(appAttendanceAdmin
         ui/pages/PageConfigDeploy.qml
         ui/pages/PageAttendance.qml
         ui/pages/PageFace.qml
-        ui/pages/PageSettings.qml
         ui/pages/PageUser.qml
         ui/pages/PageRbac.qml
     SOURCES

@@ -8,50 +8,72 @@ Item {
     id: page
 
     required property var rbacServer
+    required property var userServer
     required property var sessionManager
     property var deniedDialog: null
     signal serviceResult(string apiType, int code, string message)
 
-    property string selectedRoleKey: ""
-    property var selectedPermKeys: ({})
+    property int selectedUserId: -1
+    property string selectedUserName: ""
+    property string selectedUserEmployeeId: ""
+    property var selectedRoles: ({})
+    property var originalRoles: ({})
+    property bool rolesDirty: false
 
-    function _permChecked(key) {
-        return !!selectedPermKeys[key]
+    function _roleChecked(roleKey) {
+        return !!selectedRoles[roleKey]
     }
 
-    function _setPerm(key, on) {
-        const next = Object.assign({}, selectedPermKeys)
-        if (on)
-            next[key] = true
-        else
-            delete next[key]
-        selectedPermKeys = next
-    }
-
-    function _collectPerms() {
-        const list = []
-        for (const k in selectedPermKeys)
-            if (selectedPermKeys[k])
-                list.push(k)
-        return list
-    }
-
-    function _loadRolePerms(row) {
-        selectedPermKeys = {}
-        if (!row || !row.permissions)
+    function _setRole(roleKey, on) {
+        if (page.selectedUserId < 0)
             return
-        const arr = row.permissions
+        if (!!selectedRoles[roleKey] === on)
+            return
+        const next = Object.assign({}, selectedRoles)
+        if (on)
+            next[roleKey] = true
+        else
+            delete next[roleKey]
+        selectedRoles = next
+        rolesDirty = true
+    }
+
+    function _loadUserRoles(roleKeys) {
         const next = {}
-        if (Array.isArray(arr)) {
-            for (let i = 0; i < arr.length; ++i)
-                next[arr[i]] = true
+        const orig = {}
+        if (Array.isArray(roleKeys)) {
+            for (let i = 0; i < roleKeys.length; ++i) {
+                next[roleKeys[i]] = true
+                orig[roleKeys[i]] = true
+            }
         }
-        selectedPermKeys = next
+        selectedRoles = next
+        originalRoles = orig
+        rolesDirty = false
+    }
+
+    function _saveRoles() {
+        if (page.selectedUserId < 0)
+            return
+        const allKeys = {}
+        for (const k in selectedRoles) { if (selectedRoles[k]) allKeys[k] = true }
+        for (const k in originalRoles) { if (originalRoles[k]) allKeys[k] = true }
+
+        const keys = Object.keys(allKeys)
+        for (let i = 0; i < keys.length; ++i) {
+            const key = keys[i]
+            const was = !!originalRoles[key]
+            const now = !!selectedRoles[key]
+            if (now && !was)
+                rbacServer.assignUserRole(page.selectedUserId, key)
+            else if (!now && was)
+                rbacServer.revokeUserRole(page.selectedUserId, key)
+        }
     }
 
     Component.onCompleted: {
+        userServer.queryUsers("", "")
         rbacServer.queryRoles()
-        rbacServer.queryPermissions()
     }
 
     RowLayout {
@@ -62,56 +84,52 @@ Item {
         Card {
             Layout.preferredWidth: 320
             Layout.fillHeight: true
-            title: qsTr("角色列表")
+            stretchContent: true
+            title: qsTr("用户列表")
 
             ColumnLayout {
-                width: parent.width
+                anchors.fill: parent
                 spacing: Theme.spacingSm
 
-                Row {
-                    spacing: Theme.spacingSm
-                    PermissionButton {
-                        sessionManager: page.sessionManager
-                        requiredRole: "super_admin"
-                        deniedDialog: page.deniedDialog
-                        text: qsTr("刷新")
-                        enabled: !rbacServer.busy
-                        onClicked: guardedClick(function() { rbacServer.queryRoles() })
-                    }
-                    PermissionButton {
-                        sessionManager: page.sessionManager
-                        requiredRole: "super_admin"
-                        deniedDialog: page.deniedDialog
-                        text: qsTr("新建")
-                        enabled: !rbacServer.busy
-                        onClicked: guardedClick(function() {
-                            roleDlg.mode = "create"
-                            roleDlg.open()
-                        })
-                    }
+                PermissionButton {
+                    sessionManager: page.sessionManager
+                    requiredPermission: "user.read"
+                    deniedDialog: page.deniedDialog
+                    text: qsTr("刷新")
+                    enabled: !userServer.busy
+                    onClicked: guardedClick(function() { userServer.queryUsers("", "") })
                 }
 
                 ListView {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     clip: true
-                    model: rbacServer.roleRecords
+                    model: userServer.records
+                    ScrollBar.vertical: ScrollBar { policy: ScrollBar.AsNeeded }
                     delegate: Rectangle {
                         required property int index
                         required property var modelData
                         width: ListView.view.width
                         height: 40
-                        color: page.selectedRoleKey === modelData.roleKey
+                        color: page.selectedUserId === (modelData.id != null ? modelData.id : -1)
                                ? Theme.selected : (ma.containsMouse ? Theme.hover : "transparent")
                         radius: Theme.radiusSm
 
-                        Label {
+                        Column {
                             anchors.left: parent.left
                             anchors.leftMargin: Theme.spacingSm
                             anchors.verticalCenter: parent.verticalCenter
-                            text: (modelData.roleName || modelData.roleKey || "")
-                            color: Theme.text
-                            font.pixelSize: Theme.fontSm
+
+                            Label {
+                                text: (modelData.name || modelData.employeeId || "")
+                                color: Theme.text
+                                font.pixelSize: Theme.fontSm
+                            }
+                            Label {
+                                text: modelData.employeeId || ""
+                                color: Theme.textMuted
+                                font.pixelSize: Theme.fontXs
+                            }
                         }
 
                         MouseArea {
@@ -119,23 +137,13 @@ Item {
                             anchors.fill: parent
                             hoverEnabled: true
                             onClicked: {
-                                page.selectedRoleKey = modelData.roleKey || ""
-                                roleKeyField.text = modelData.roleKey || ""
-                                roleNameField.text = modelData.roleName || ""
-                                roleDescField.text = modelData.description || ""
-                                page._loadRolePerms(modelData)
+                                page.selectedUserId = modelData.id != null ? modelData.id : -1
+                                page.selectedUserName = modelData.name || ""
+                                page.selectedUserEmployeeId = modelData.employeeId || ""
+                                rbacServer.queryUserRoles(page.selectedUserId)
                             }
                         }
                     }
-                }
-
-                PermissionButton {
-                    sessionManager: page.sessionManager
-                    requiredRole: "super_admin"
-                    deniedDialog: page.deniedDialog
-                    text: qsTr("删除角色")
-                    enabled: page.selectedRoleKey.length > 0 && !rbacServer.busy
-                    onClicked: guardedClick(function() { delRoleConfirm.open() })
                 }
             }
         }
@@ -143,55 +151,88 @@ Item {
         Card {
             Layout.fillWidth: true
             Layout.fillHeight: true
-            title: qsTr("权限与用户角色")
+            stretchContent: true
+            title: qsTr("用户权限")
 
             ColumnLayout {
-                width: parent.width
+                anchors.fill: parent
                 spacing: Theme.spacingMd
 
+                Label {
+                    visible: page.selectedUserId < 0
+                    text: qsTr("请在左侧选择一个用户")
+                    color: Theme.textMuted
+                    font.pixelSize: Theme.fontMd
+                    font.family: Theme.fontFamily
+                    Layout.fillWidth: true
+                }
+
                 GridLayout {
+                    visible: page.selectedUserId >= 0
                     Layout.fillWidth: true
                     columns: 2
                     rowSpacing: Theme.spacingSm
                     columnSpacing: Theme.spacingMd
 
-                    LabeledField { label: qsTr("roleKey"); Layout.fillWidth: true
-                        TextField { id: roleKeyField; readOnly: true; Layout.fillWidth: true }
-                    }
-                    LabeledField { label: qsTr("roleName"); Layout.fillWidth: true
-                        TextField { id: roleNameField; Layout.fillWidth: true }
-                    }
-                    LabeledField { label: qsTr("描述"); Layout.columnSpan: 2; Layout.fillWidth: true
-                        TextField { id: roleDescField; Layout.fillWidth: true }
-                    }
-                }
-
-                PermissionButton {
-                    sessionManager: page.sessionManager
-                    requiredRole: "super_admin"
-                    deniedDialog: page.deniedDialog
-                    text: qsTr("保存角色权限")
-                    highlighted: true
-                    enabled: page.selectedRoleKey.length > 0 && !rbacServer.busy
-                    onClicked: guardedClick(function() {
-                        const fields = {
-                            roleName: roleNameField.text.trim(),
-                            description: roleDescField.text.trim(),
-                            permissions: page._collectPerms()
+                    LabeledField {
+                        label: qsTr("用户 ID")
+                        Layout.fillWidth: true
+                        Label {
+                            text: page.selectedUserEmployeeId || "—"
+                            color: Theme.text
+                            font.pixelSize: Theme.fontSm
+                            font.family: Theme.fontFamily
+                            Layout.fillWidth: true
                         }
-                        rbacServer.updateRole(page.selectedRoleKey, fields)
-                    })
+                    }
+                    LabeledField {
+                        label: qsTr("姓名")
+                        Layout.fillWidth: true
+                        Label {
+                            text: page.selectedUserName || "—"
+                            color: Theme.text
+                            font.pixelSize: Theme.fontSm
+                            font.family: Theme.fontFamily
+                            Layout.fillWidth: true
+                        }
+                    }
                 }
 
                 Label {
-                    text: qsTr("权限列表（勾选后保存）")
+                    visible: page.selectedUserId >= 0
+                    text: {
+                        const keys = Object.keys(selectedRoles).filter(k => selectedRoles[k])
+                        if (keys.length === 0)
+                            return qsTr("当前角色：无")
+                        const names = keys.map(k => {
+                            const rec = rbacServer.roleRecords
+                            for (let i = 0; i < rec.length; ++i) {
+                                if (rec[i].roleKey === k)
+                                    return rec[i].roleName || k
+                            }
+                            return k
+                        })
+                        return qsTr("当前角色：") + names.join("、")
+                    }
+                    color: Theme.text
+                    font.pixelSize: Theme.fontSm
+                    font.family: Theme.fontFamily
+                    wrapMode: Text.WordWrap
+                    Layout.fillWidth: true
+                }
+
+                Label {
+                    visible: page.selectedUserId >= 0
+                    text: qsTr("角色列表")
                     color: Theme.textMuted
                     font.pixelSize: Theme.fontSm
+                    font.family: Theme.fontFamily
                 }
 
                 ScrollView {
+                    visible: page.selectedUserId >= 0
                     Layout.fillWidth: true
-                    Layout.preferredHeight: 200
+                    Layout.fillHeight: true
                     clip: true
                     ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
 
@@ -200,138 +241,49 @@ Item {
                         spacing: Theme.spacingXs
 
                         Repeater {
-                            model: rbacServer.permissionRecords
+                            model: rbacServer.roleRecords
                             delegate: CheckBox {
                                 required property var modelData
-                                text: modelData.permKey || ""
-                                checked: page._permChecked(modelData.permKey || "")
-                                onCheckedChanged: page._setPerm(modelData.permKey || "", checked)
+                                text: {
+                                    const name = modelData.roleName || ""
+                                    const key = modelData.roleKey || ""
+                                    if (name && key)
+                                        return name + " (" + key + ")"
+                                    return name || key
+                                }
+                                checked: page._roleChecked(modelData.roleKey || "")
+                                onCheckedChanged: page._setRole(modelData.roleKey || "", checked)
                             }
                         }
                     }
                 }
 
-                Rectangle { Layout.fillWidth: true; height: 1; color: Theme.border }
-
-                RowLayout {
-                    Layout.fillWidth: true
-                    spacing: Theme.spacingMd
-
-                    LabeledField {
-                        label: qsTr("用户 ID")
-                        Layout.preferredWidth: 120
-                        SpinBox {
-                            id: userIdSpin
-                            from: 1
-                            to: 999999
-                            editable: true
-                            value: 1
-                        }
-                    }
-                    PermissionButton {
-                        sessionManager: page.sessionManager
-                        requiredPermission: "user.read"
-                        deniedDialog: page.deniedDialog
-                        text: qsTr("查询用户角色")
-                        enabled: !rbacServer.busy
-                        onClicked: guardedClick(function() {
-                            rbacServer.queryUserRoles(userIdSpin.value)
-                        })
-                    }
-                }
-
-                Label {
-                    text: qsTr("当前角色：") + rbacServer.userRoleKeys.join(", ")
-                    color: Theme.text
-                    font.pixelSize: Theme.fontSm
-                    wrapMode: Text.WordWrap
-                    Layout.fillWidth: true
-                }
-
-                Row {
-                    spacing: Theme.spacingSm
-                    PermissionButton {
-                        sessionManager: page.sessionManager
-                        requiredRole: "super_admin"
-                        deniedDialog: page.deniedDialog
-                        text: qsTr("分配角色")
-                        enabled: page.selectedRoleKey.length > 0 && !rbacServer.busy
-                        onClicked: guardedClick(function() {
-                            rbacServer.assignUserRole(userIdSpin.value, page.selectedRoleKey)
-                        })
-                    }
-                    PermissionButton {
-                        sessionManager: page.sessionManager
-                        requiredRole: "super_admin"
-                        deniedDialog: page.deniedDialog
-                        text: qsTr("撤销角色")
-                        enabled: page.selectedRoleKey.length > 0 && !rbacServer.busy
-                        onClicked: guardedClick(function() {
-                            rbacServer.revokeUserRole(userIdSpin.value, page.selectedRoleKey)
-                        })
-                    }
+                PermissionButton {
+                    visible: page.selectedUserId >= 0
+                    sessionManager: page.sessionManager
+                    requiredRole: "super_admin"
+                    deniedDialog: page.deniedDialog
+                    text: qsTr("保存角色变更")
+                    highlighted: true
+                    enabled: page.rolesDirty && !rbacServer.busy
+                    onClicked: guardedClick(function() { page._saveRoles() })
                 }
             }
         }
     }
 
-    BusyOverlay { busy: rbacServer.busy }
-
-    ConfirmDialog {
-        id: delRoleConfirm
-        message: qsTr("确认删除角色 ") + page.selectedRoleKey + "？"
-        onAccepted: rbacServer.deleteRole(page.selectedRoleKey)
-    }
-
-    Dialog {
-        id: roleDlg
-        modal: true
-        anchors.centerIn: Overlay.overlay
-        title: mode === "create" ? qsTr("新建角色") : qsTr("编辑角色")
-        standardButtons: Dialog.Ok | Dialog.Cancel
-        property string mode: "create"
-
-        property string inpKey: ""
-        property string inpName: ""
-        property string inpDesc: ""
-
-        onAccepted: {
-            if (mode === "create")
-                rbacServer.createRole(inpKey, inpName, inpDesc)
-        }
-
-        contentItem: ColumnLayout {
-            spacing: Theme.spacingSm
-            TextField {
-                placeholderText: qsTr("roleKey")
-                text: roleDlg.inpKey
-                onTextChanged: roleDlg.inpKey = text
-                Layout.fillWidth: true
-            }
-            TextField {
-                placeholderText: qsTr("roleName")
-                text: roleDlg.inpName
-                onTextChanged: roleDlg.inpName = text
-                Layout.fillWidth: true
-            }
-            TextField {
-                placeholderText: qsTr("description")
-                text: roleDlg.inpDesc
-                onTextChanged: roleDlg.inpDesc = text
-                Layout.fillWidth: true
-            }
-        }
-    }
+    BusyOverlay { busy: rbacServer.busy || userServer.busy }
 
     Connections {
         target: rbacServer
+        function onUserRoleKeysChanged() {
+            page._loadUserRoles(rbacServer.userRoleKeys)
+        }
         function onOperationSucceeded(apiType, message) {
             page.serviceResult(apiType, 0, message)
-            // 仅写操作后刷新；role.query / user.role.query 也会触发 operationSucceeded，不能再次 query
-            if (apiType === "role.create" || apiType === "role.update" || apiType === "role.delete")
-                rbacServer.queryRoles()
-            if (apiType === "user.role.assign" || apiType === "user.role.revoke")
-                rbacServer.queryUserRoles(userIdSpin.value)
+            if (apiType === "user.role.assign" || apiType === "user.role.revoke") {
+                rbacServer.queryUserRoles(page.selectedUserId)
+            }
         }
         function onOperationFailed(apiType, code, message) {
             page.serviceResult(apiType, code, message)

@@ -7,7 +7,7 @@ QtObject {
 
     readonly property var pageOrder: [
         "dashboard", "person", "device", "configDeploy", "attendance", "face",
-        "user", "rbac", "settings"
+        "user", "rbac"
     ]
 
     function roleDisplayName(roleKey) {
@@ -120,7 +120,6 @@ QtObject {
         case "face":       return permissionDisplayName("face.read")
         case "user":       return permissionDisplayName("user.read")
         case "rbac":       return roleDisplayName("super_admin")
-        case "settings":   return qsTr("已登录")
         default:           return ""
         }
     }
@@ -151,7 +150,6 @@ QtObject {
             return false
         switch (key) {
         case "dashboard":
-        case "settings":
             return true
         case "person":
             return hasPerm(sessionManager, "person.read")

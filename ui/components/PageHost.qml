@@ -48,7 +48,6 @@ Item {
             case "face":       return compFace
             case "user":       return compUser
             case "rbac":       return compRbac
-            case "settings":   return compSettings
             default:           return null
             }
         }
@@ -142,6 +141,7 @@ Item {
         id: compRbac
         PageRbac {
             rbacServer: host.rbacServer
+            userServer: host.userServer
             sessionManager: host.sessionManager
             deniedDialog: host.deniedDialog
             onServiceResult: (apiType, code, msg) =>
@@ -149,11 +149,4 @@ Item {
         }
     }
 
-    Component {
-        id: compSettings
-        PageSettings {
-            sessionManager: host.sessionManager
-            deniedDialog: host.deniedDialog
-        }
-    }
 }

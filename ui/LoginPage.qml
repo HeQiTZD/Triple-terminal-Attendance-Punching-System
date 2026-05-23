@@ -83,36 +83,12 @@ Item {
                 Layout.alignment: Qt.AlignHCenter
                 spacing: Theme.spacingSm
 
-                Rectangle {
-                    Layout.alignment: Qt.AlignHCenter
-                    width: 48
-                    height: 48
-                    radius: Theme.radiusLg
-                    color: Theme.accent
-
-                    Label {
-                        anchors.centerIn: parent
-                        text: "A"
-                        color: "white"
-                        font.bold: true
-                        font.pixelSize: 22
-                    }
-                }
-
                 Label {
                     Layout.alignment: Qt.AlignHCenter
                     text: qsTr("考勤管理系统")
                     color: Theme.text
                     font.pixelSize: Theme.fontXl
                     font.bold: true
-                    font.family: Theme.fontFamily
-                }
-
-                Label {
-                    Layout.alignment: Qt.AlignHCenter
-                    text: qsTr("登录后按角色自动加载可用功能")
-                    color: Theme.textMuted
-                    font.pixelSize: Theme.fontXs
                     font.family: Theme.fontFamily
                 }
             }
@@ -174,11 +150,6 @@ Item {
                         anchors.horizontalCenter: parent.horizontalCenter
                         spacing: Theme.spacingSm
 
-                        BusyIndicator {
-                            visible: root.loggingIn
-                            running: root.loggingIn
-                        }
-
                         Button {
                             id: loginBtn
                             text: root.loggingIn ? qsTr("登录中…") : qsTr("登录")
@@ -232,8 +203,20 @@ Item {
             Logger.error(root.loginError)
         }
         function onErrorOccurred(error) {
-            if (root.loggingIn && !root.sessionManager.isLoggedIn)
-                root.loginError = error
+            // 仅在已断开连接时显示"未连接服务器"，避免"Connecting to..."等消息干扰
+            if (root.loggingIn && !root.sessionManager.isLoggedIn
+                && root.sessionManager.connectionState === 0) {
+                root.loggingIn = false
+                root.loginError = qsTr("未连接服务器")
+            }
+        }
+        function onConnectionStateChanged() {
+            // 连接断开且正在登录：socket error 先于 state 变化到达，此处兜底
+            if (root.loggingIn && !root.sessionManager.isLoggedIn
+                && root.sessionManager.connectionState === 0) {
+                root.loggingIn = false
+                root.loginError = qsTr("未连接服务器")
+            }
         }
         function onLoggedOut() {
             root._resetForm()

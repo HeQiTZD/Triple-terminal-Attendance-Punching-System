@@ -41,14 +41,6 @@ Item {
     readonly property int todayPunchCount: countTodayUniquePunches(
         attendanceService ? attendanceService.records : [])
 
-    readonly property var todayAttendanceRows: {
-        if (!page.canReadAttendance || !attendanceService)
-            return []
-        const _records = attendanceService.records
-        void _records
-        return page.buildTodayAttendanceRows()
-    }
-
     readonly property var statusPieSlices: {
         if (!page.canReadAttendance || !attendanceService)
             return []
@@ -63,19 +55,17 @@ Item {
 
     readonly property bool hasTodayAttendanceData: page.statusPieSlices.length > 0
 
-    readonly property var weeklyTrendData: {
+    readonly property var recentPunchRecords: {
         if (!page.canReadAttendance || !attendanceService)
             return []
-        return page.buildWeeklyTrendData()
+        const _records = attendanceService.records
+        void _records
+        if (page.canReadPerson && personServer) {
+            const _persons = personServer.records
+            void _persons
+        }
+        return page.buildRecentPunchRecords()
     }
-
-    readonly property var departmentComparisonData: {
-        if (!page.canReadAttendance || !attendanceService)
-            return []
-        return page.buildDepartmentComparisonData()
-    }
-
-    readonly property bool hasTrendData: page.weeklyTrendData.length > 0
 
     function todayRecords(records) {
         const prefix = page.todayDatePrefix
@@ -97,29 +87,6 @@ Item {
                 return rec[i].name || "—"
         }
         return "—"
-    }
-
-    function buildTodayAttendanceRows() {
-        if (!page.canReadAttendance || !attendanceService)
-            return []
-        const today = page.todayRecords(attendanceService.records)
-        today.sort(function(a, b) {
-            return (b.checkTime || "").localeCompare(a.checkTime || "")
-        })
-        const limited = today.slice(0, 20)
-        const rows = []
-        for (let i = 0; i < limited.length; ++i) {
-            const r = limited[i]
-            rows.push({
-                employeeId: r.employeeId || "",
-                personName: page.personNameByEmployeeId(r.employeeId || ""),
-                checkTime: r.checkTime || "",
-                status: r.status || "",
-                statusLabel: Theme.formatAttendanceStatus(r.status),
-                deviceId: r.deviceId || ""
-            })
-        }
-        return rows
     }
 
     function pieChartStatusKey(status) {
@@ -194,90 +161,30 @@ Item {
         return n
     }
 
-    function buildWeeklyTrendData() {
+    function buildRecentPunchRecords() {
         if (!page.canReadAttendance || !attendanceService)
             return []
-
-        const records = attendanceService.records
-        const days = []
-        const today = new Date()
-
-        for (let i = 6; i >= 0; i--) {
-            const date = new Date(today)
-            date.setDate(date.getDate() - i)
-            const dateStr = Qt.formatDateTime(date, "yyyy-MM-dd")
-            days.push({
-                date: dateStr,
-                label: Qt.formatDateTime(date, "MM/dd"),
-                value: 0
-            })
-        }
-
-        const prefix = Qt.formatDateTime(new Date(today), "yyyy-MM-dd")
-        const weekAgo = days[0].date
-
-        for (let i = 0; i < records.length; ++i) {
-            const r = records[i]
-            const checkTime = r.checkTime || ""
-            if (checkTime < weekAgo || checkTime >= prefix + " 24:00:00")
-                continue
-
-            for (let j = 0; j < days.length; ++j) {
-                if (checkTime.startsWith(days[j].date)) {
-                    days[j].value++
-                    break
-                }
-            }
-        }
-
-        return days
-    }
-
-    function buildDepartmentComparisonData() {
-        if (!page.canReadAttendance || !attendanceService || !page.canReadPerson || !personServer)
-            return []
-
-        const records = attendanceService.records
-        const departmentCounts = {}
-
-        for (let i = 0; i < records.length; ++i) {
-            const r = records[i]
-            const empId = r.employeeId || ""
-            const person = page.findPersonByEmployeeId(empId)
-            const dept = person ? (person.department || qsTr("未分配")) : qsTr("未分配")
-
-            if (!departmentCounts[dept]) {
-                departmentCounts[dept] = 0
-            }
-            departmentCounts[dept]++
-        }
-
-        const result = []
-        const keys = Object.keys(departmentCounts)
-        for (let i = 0; i < keys.length && i < 8; i++) {
-            result.push({
-                label: keys[i],
-                value: departmentCounts[keys[i]],
-                color: Theme.chartColor(i)
-            })
-        }
-
-        result.sort(function(a, b) {
-            return b.value - a.value
+        const rec = attendanceService.records.slice()
+        rec.sort(function(a, b) {
+            return (b.checkTime || "").localeCompare(a.checkTime || "")
         })
-
-        return result
-    }
-
-    function findPersonByEmployeeId(empId) {
-        if (!empId || !personServer)
-            return null
-        const rec = personServer.records
-        for (let i = 0; i < rec.length; ++i) {
-            if (rec[i].employeeId === empId)
-                return rec[i]
+        const limited = rec.slice(0, 100)
+        const rows = []
+        for (let i = 0; i < limited.length; ++i) {
+            const r = limited[i]
+            const checkTime = r.checkTime || ""
+            const dateGroup = checkTime.length >= 10 ? checkTime.substring(0, 10) : ""
+            rows.push({
+                employeeId: r.employeeId || "",
+                personName: page.personNameByEmployeeId(r.employeeId || ""),
+                checkTime: checkTime,
+                dateGroup: dateGroup,
+                status: r.status || "",
+                statusLabel: Theme.formatAttendanceStatus(r.status),
+                deviceId: r.deviceId || ""
+            })
         }
-        return null
+        return rows
     }
 
     function refreshStats() {
@@ -389,59 +296,32 @@ Item {
         }
 
         RowLayout {
-            id: middleRow
+            id: trendRow
             Layout.fillWidth: true
-            Layout.fillHeight: true
+            Layout.preferredHeight: 280
             spacing: Theme.spacingMd
+            visible: page.canReadAttendance
 
             Card {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                Layout.preferredWidth: middleRow.width * 0.62
+                Layout.preferredWidth: trendRow.width * 0.55
                 stretchContent: true
-                title: qsTr("今日打卡动态")
+                title: qsTr("最近打卡记录")
 
-                Item {
+                RecentPunchList {
                     anchors.fill: parent
-
-                    Label {
-                        anchors.centerIn: parent
-                        visible: page.attendanceSectionPlaceholder().length > 0
-                        text: page.attendanceSectionPlaceholder()
-                        color: Theme.textMuted
-                        font.pixelSize: Theme.fontMd
-                        font.family: Theme.fontFamily
-                    }
-
-                    DataTable {
-                        anchors.fill: parent
-                        visible: page.canReadAttendance
-                        rows: page.todayAttendanceRows
-                        emptyText: qsTr("今日暂无打卡记录")
-                        columns: [
-                            { key: "employeeId", title: qsTr("工号"), width: 100 },
-                            { key: "personName", title: qsTr("姓名"), width: 100 },
-                            { key: "checkTime", title: qsTr("打卡时间"), width: 170 },
-                            {
-                                key: "statusLabel",
-                                title: qsTr("状态"),
-                                width: 80,
-                                formatter: function(v, row) {
-                                    return row.statusLabel || Theme.formatAttendanceStatus(row.status)
-                                }
-                            },
-                            { key: "deviceId", title: qsTr("设备 ID") }
-                        ]
-                    }
+                    anchors.margins: Theme.spacingMd
+                    records: page.recentPunchRecords
                 }
             }
 
             Card {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                Layout.preferredWidth: middleRow.width * 0.38
+                Layout.preferredWidth: trendRow.width * 0.45
                 stretchContent: true
-                title: qsTr("今日打卡分布")
+                title: qsTr("今日打卡类型")
 
                 Item {
                     anchors.fill: parent
@@ -468,64 +348,6 @@ Item {
                         anchors.fill: parent
                         visible: page.canReadAttendance && page.hasTodayAttendanceData
                         slices: page.statusPieSlices
-                    }
-                }
-            }
-        }
-
-        RowLayout {
-            id: trendRow
-            Layout.fillWidth: true
-            Layout.preferredHeight: 280
-            spacing: Theme.spacingMd
-            visible: page.canReadAttendance && page.hasTrendData
-
-            Card {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                Layout.preferredWidth: trendRow.width * 0.55
-                stretchContent: true
-                title: qsTr("近 7 天打卡趋势")
-
-                LineChart {
-                    anchors.fill: parent
-                    anchors.margins: Theme.spacingMd
-                    chartData: page.weeklyTrendData
-                    xAxisLabel: qsTr("日期")
-                    yAxisLabel: qsTr("打卡次数")
-                    showGrid: true
-                    showPoints: true
-                    showArea: true
-                    title: ""
-                }
-            }
-
-            Card {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                Layout.preferredWidth: trendRow.width * 0.45
-                stretchContent: true
-                title: qsTr("部门打卡分布")
-
-                ColumnLayout {
-                    anchors.fill: parent
-                    anchors.margins: Theme.spacingMd
-                    spacing: Theme.spacingMd
-
-                    BarChart {
-                        Layout.fillWidth: true
-                        Layout.fillHeight: true
-                        chartData: page.departmentComparisonData
-                        horizontal: false
-                        showGrid: true
-                        showValues: true
-                        title: ""
-                    }
-
-                    ChartLegend {
-                        Layout.alignment: Qt.AlignHCenter
-                        items: page.departmentComparisonData
-                        horizontal: true
                     }
                 }
             }
