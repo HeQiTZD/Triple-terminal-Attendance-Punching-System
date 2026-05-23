@@ -6,6 +6,7 @@
 #include <QStyleFactory>
 #include <QPalette>
 #include <QFile>
+#include "UI/Theme/ThemeManager.h"
 
 #ifdef Q_OS_WIN
 #include <windows.h>
@@ -46,6 +47,10 @@ int main(int argc, char *argv[])
     palette.setColor(QPalette::Mid,             QColor(0x21, 0x26, 0x2d));
     palette.setColor(QPalette::Shadow,          QColor(0x00, 0x00, 0x00));
     a.setPalette(palette);
+
+    // 初始化 UI 令牌系统
+    ThemeManager::instance()->initialize();
+    ThemeManager::instance()->loadSupplementalQss();
 
     // 加载QSS样式文件
     QFile styleFile(":/qss/mainwindow.qss");

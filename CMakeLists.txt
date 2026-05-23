@@ -81,6 +81,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         UI/setwindow.h UI/setwindow.cpp UI/setwindow.ui
         Config/configmanager.h Config/configmanager.cpp
         UI/facevideowidget.h UI/facevideowidget.cpp
+        UI/Theme/ThemeManager.h UI/Theme/ThemeManager.cpp
         Sync/SyncManager.h Sync/SyncManager.cpp
         Command/CommandHandler.h Command/CommandHandler.cpp
         Attendance/AttendanceConfigParser.h Attendance/AttendanceConfigParser.cpp
