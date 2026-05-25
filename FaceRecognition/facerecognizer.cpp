@@ -2,6 +2,9 @@
 #include "../Attendance/AttendanceRuleEngine.h"
 #include "../Config/configmanager.h"
 
+#include <QElapsedTimer>
+#include <QTime>
+
 FaceRecognizer::FaceRecognizer()
 {
     //初始化冷却定时器
@@ -51,11 +54,13 @@ void FaceRecognizer::WanZhengYeWuLiuCheng(QImage image)
 
     // 引擎未初始化时跳过处理
     if (!arcEngine || !arcEngine->isInitialized()) {
+        emit faceProcessingCompleted();
         return;
     }
 
     // 确保图像有效
     if (image.isNull()) {
+        emit faceProcessingCompleted();
         return;
     }
 
@@ -79,26 +84,36 @@ void FaceRecognizer::WanZhengYeWuLiuCheng(QImage image)
         handleLostState();
         break;
     }
+
+    emit faceProcessingCompleted();
 }
 
 //状态1：空闲 - 等待检测到人脸
 void FaceRecognizer::handleIdleState(QImage &image)
 {
+    qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
+             << "[开始] 人脸检测";
+
+    QElapsedTimer timer;
+    timer.start();
     m_FaceInfo = arcEngine->detectFace(image);
+    qint64 elapsed = timer.elapsed();
 
     // 发射人脸检测信号
     emit faceDetected(m_FaceInfo);
 
+    qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
+             << "[完成] 人脸检测"
+             << "数量=" << m_FaceInfo.size()
+             << "耗时=" << elapsed << "ms";
+
     if(m_FaceInfo.isEmpty()){
+        qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
+                 << "[失败] 人脸检测"
+                 << "原因=未检测到人脸";
         // 没有检测到人脸，保持IDLE状态
         return;
     }
-
-    // 启动流程计时器
-    m_processTimer.start();
-
-    qDebug() << "[打卡流程] 检测到人脸:" << m_FaceInfo.size() << "个"
-             << "位置:" << m_FaceInfo[0].rect;
 
     // 检测到人脸，切换到检测中状态
     setState(RecognitionState::DETECTING);
@@ -143,46 +158,62 @@ void FaceRecognizer::handleLostState()
 // 执行完整识别流程
 void FaceRecognizer::perfromRecognition(QImage &image)
 {
-    qint64 t0 = m_processTimer.elapsed();
-    qDebug() << "[打卡流程] 开始特征提取...";
-
     //特征提取
+    qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
+             << "[开始] 特征提取";
+
+    QElapsedTimer extractTimer;
+    extractTimer.start();
     m_FaceFeature = arcEngine->extractFeature(image,m_FaceInfo[0]);
+    qint64 extractElapsed = extractTimer.elapsed();
+
+    qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
+             << "[完成] 特征提取"
+             << "大小=" << m_FaceFeature.data.size() << "bytes"
+             << "耗时=" << extractElapsed << "ms";
+
     if(m_FaceFeature.data.isEmpty()){
-        qWarning() << "[打卡流程] 特征提取失败";
+        qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
+                 << "[失败] 特征提取"
+                 << "原因=特征数据为空";
+        qWarning() << "特征提取失败";
         setState(RecognitionState::IDLE);  // 失败，回到空闲
         return;
     }
 
-    qint64 t1 = m_processTimer.elapsed();
-    qDebug() << "[打卡流程] 特征提取成功, 大小:" << m_FaceFeature.data.size() 
-             << "bytes, 耗时:" << (t1 - t0) << "ms";
-
     //特征比对
+    qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
+             << "[开始] 特征比对";
+
+    QElapsedTimer matchTimer;
+    matchTimer.start();
     m_bestMatch = dataBase->findBestMatch(m_FaceFeature);
-    qint64 t2 = m_processTimer.elapsed();
+    qint64 matchElapsed = matchTimer.elapsed();
 
     //从配置文件读取相似度阈值（转换为0-1范围）
     ConfigManager* config = ConfigManager::instance();
     float threshold = config->getFaceThreshold() / 100.0f;
 
-    qDebug() << "[打卡流程] 特征比对完成"
+    qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
+             << "[完成] 特征比对"
              << "employeeId=" << m_bestMatch.first
              << "相似度=" << m_bestMatch.second
              << "阈值=" << threshold
-             << "耗时:" << (t2 - t1) << "ms";
+             << "耗时=" << matchElapsed << "ms";
 
     //相似度检查
     if(m_bestMatch.second < threshold){
-        qWarning() << "[打卡流程] 相似度低于阈值, 未匹配到人员";
+        qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
+                 << "[失败] 特征比对"
+                 << "原因=相似度低于阈值"
+                 << "相似度=" << m_bestMatch.second
+                 << "阈值=" << threshold;
         emit recognitionFailed("未匹配到人员");
         setState(RecognitionState::IDLE);  // 失败，回到空闲
         return;
     }
 
     QString employeeId = m_bestMatch.first;
-    qDebug() << "[打卡流程] 人员识别成功, employeeId=" << employeeId;
-
     QDateTime currentCheckTime = QDateTime::currentDateTime();
     AttendanceCheckResult checkResult = AttendanceRuleEngine::instance()->evaluateWithEmployee(employeeId, currentCheckTime);
     QString status = checkResult.status;
@@ -200,7 +231,6 @@ void FaceRecognizer::perfromRecognition(QImage &image)
     }
 
     if (!checkResult.isValid) {
-        qWarning() << "[打卡流程] 考勤规则判定无效:" << checkResult.message;
         emit recognitionFailed(checkResult.message);
         setState(RecognitionState::IDLE);
         return;
@@ -208,16 +238,11 @@ void FaceRecognizer::perfromRecognition(QImage &image)
 
     // 检查是否重复识别
     if(isSamePerson(employeeId)){
-        qDebug() << "[打卡流程] 同一人冷却期内, 仅更新UI, 总耗时:" << m_processTimer.elapsed() << "ms";
         emit recognitionSuccess(employeeId, employeeId, status, checkTime, faceImage);
         setState(RecognitionState::RECOGNIZED);
         return;
     }
 
-    qint64 t3 = m_processTimer.elapsed();
-    qDebug() << "[打卡流程] 发送保存打卡请求, employeeId=" << employeeId 
-             << "status=" << status
-             << "总耗时:" << t3 << "ms";
     emit requestSaveAttendance(employeeId,status);
 
     // 更新本地状态

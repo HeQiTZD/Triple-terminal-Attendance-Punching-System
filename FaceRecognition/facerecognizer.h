@@ -21,7 +21,6 @@
 #include <QMutex>
 #include <QDateTime>
 #include <QTimer>
-#include <QElapsedTimer>
 
 #include "../LocalStorage/localstorage.h"
 #include "../NetworkClient/networkclient.h"
@@ -62,6 +61,9 @@ signals:
     // 人脸检测信号（用于绘制人脸框）
     void faceDetected(const QVector<arcfaceengine::FaceInfo> &faceInfos);
 
+    // 当前帧处理完成（用于帧丢弃计数）
+    void faceProcessingCompleted();
+
 private:
     //状态处理函数
     void handleIdleState(QImage &image);
@@ -101,7 +103,6 @@ public:
 
 private:
     QMutex m_mutex;
-    QElapsedTimer m_processTimer;  // 流程计时器
 };
 
 #endif // FACERECOGNIZER_H
