@@ -97,11 +97,14 @@ QString Networkclient::uploadAttendance(const QString& employeeId,
 
     AttendanceOutboxRepository &outbox = LocalStorage::instance()->outbox();
     if (!outbox.enqueue(record)) {
-        qWarning() << "Networkclient: outbox 写入失败";
+        qWarning() << "[打卡流程] outbox 写入失败";
         return clientMsgId; // 仍返回 msgId，调用方可追踪
     }
 
-    qDebug() << "Networkclient: 考勤记录已写入 outbox, msgId=" << clientMsgId;
+    qDebug() << "[打卡流程] 打卡记录已写入 outbox"
+             << "msgId=" << clientMsgId
+             << "employeeId=" << employeeId
+             << "status=" << status;
 
     // 2. 如果已认证且连接中，通过 invokeMethod 将发送操作排队到网络线程
     if (m_isAuthenticated && m_writer) {
@@ -147,12 +150,14 @@ QString Networkclient::uploadAttendanceWithPhoto(const QString& employeeId,
 
     AttendanceOutboxRepository &outbox = LocalStorage::instance()->outbox();
     if (!outbox.enqueue(record)) {
-        qWarning() << "Networkclient: outbox 写入失败（带照片）";
+        qWarning() << "[打卡流程] outbox 写入失败（带照片）";
         return clientMsgId;
     }
 
-    qDebug() << "Networkclient: 考勤记录（带照片）已写入 outbox, msgId=" << clientMsgId
-             << "photo size=" << photoJpeg.size();
+    qDebug() << "[打卡流程] 打卡记录已写入 outbox（带照片）"
+             << "msgId=" << clientMsgId
+             << "employeeId=" << employeeId
+             << "photoSize=" << photoJpeg.size() << "bytes";
 
     // 2. 通过 invokeMethod 将 awaitPhoto 发送流程排队到网络线程
     if (m_isAuthenticated && m_writer) {
@@ -830,7 +835,8 @@ void Networkclient::handleUploadResponse(const QJsonObject &message)
         code = d.value(QStringLiteral("code")).toInt(0);
     }
 
-    qDebug() << "Networkclient: 收到 attendance.report.response, inReplyTo=" << inReplyTo
+    qDebug() << "[打卡流程] 收到服务器响应"
+             << "msgId=" << inReplyTo
              << "code=" << code;
 
     if (inReplyTo.isEmpty()) {
@@ -846,7 +852,7 @@ void Networkclient::handleUploadResponse(const QJsonObject &message)
 
     if (record.id == 0) {
         // outbox 中未找到（可能已被清理），仅发信号
-        qDebug() << "Networkclient: outbox 中未找到 msgId=" << inReplyTo;
+        qDebug() << "[打卡流程] outbox 中未找到记录, msgId=" << inReplyTo;
         bool success = (code == ServerProtocol::kCodeOk);
         emit uploadFinished(success, message.value(QStringLiteral("msg")).toString());
         return;
@@ -856,6 +862,9 @@ void Networkclient::handleUploadResponse(const QJsonObject &message)
         // ---------- 成功：删除 outbox 记录 ----------
         outbox.remove(record.id);
         LOG_INFO(QStringLiteral("考勤上报成功, employeeId=%1").arg(record.employeeId));
+
+        qDebug() << "[打卡流程] 服务器确认成功, 已删除 outbox 记录"
+                 << "employeeId=" << record.employeeId;
 
         emit attendanceReportResult(record.employeeId, true, QString());
         emit uploadFinished(true, QStringLiteral("ok"));
@@ -867,6 +876,9 @@ void Networkclient::handleUploadResponse(const QJsonObject &message)
         // ---------- 4011：员工不存在 → dead ----------
         outbox.markDead(record.id, QStringLiteral("employee not found (4011)"));
         LOG_WARNING(QStringLiteral("员工不存在, 标记 dead, employeeId=%1").arg(record.employeeId));
+
+        qWarning() << "[打卡流程] 员工不存在, 标记 dead"
+                   << "employeeId=" << record.employeeId;
 
         emit attendanceReportResult(record.employeeId, false, QStringLiteral("employee not found"));
         emit uploadFinished(false, QStringLiteral("employee not found"));
@@ -882,10 +894,17 @@ void Networkclient::handleUploadResponse(const QJsonObject &message)
         if (newRetryCount >= m_maxRetryCount) {
             outbox.markDead(record.id, QStringLiteral("max retry after error"));
             LOG_ERROR(QStringLiteral("达到最大重试次数, 标记 dead, employeeId=%1").arg(record.employeeId));
+            qWarning() << "[打卡流程] 达到最大重试次数, 标记 dead"
+                       << "employeeId=" << record.employeeId
+                       << "retryCount=" << newRetryCount;
         } else {
             outbox.markState(record.id, QStringLiteral("failed"),
                              QStringLiteral("code=%1").arg(code));
             LOG_WARNING(QStringLiteral("考勤上报失败, 将重试, retry=%1").arg(newRetryCount));
+            qWarning() << "[打卡流程] 上报失败, 将重试"
+                       << "employeeId=" << record.employeeId
+                       << "code=" << code
+                       << "retryCount=" << newRetryCount;
         }
 
         emit attendanceReportResult(record.employeeId, false,

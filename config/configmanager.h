@@ -239,7 +239,7 @@ private:
     static constexpr bool DEFAULT_FLEXIBLE_WORK_ENABLED = false;
     static constexpr int DEFAULT_FLEXIBLE_RANGE = 30;
     static constexpr bool DEFAULT_LUNCH_BREAK_ENABLED = true;
-    static constexpr int DEFAULT_MIN_CHECK_INTERVAL = 60;
+    static constexpr int DEFAULT_MIN_CHECK_INTERVAL = 1800;
     static constexpr bool DEFAULT_ALLOW_CROSS_DAY = false;
     static constexpr int DEFAULT_MAX_WORK_HOURS = 12;
     static constexpr int DEFAULT_MAIN_WINDOW_WIDTH = 1200;

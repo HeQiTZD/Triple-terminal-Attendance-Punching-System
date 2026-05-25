@@ -4287,6 +4287,7 @@ D:/QTproject/AttendanceSystem/FaceRecognition/facerecognizer.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QByteArray
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QDateTime
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QDebug
+ mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QElapsedTimer
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonArray
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonObject
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QMutex
@@ -4343,6 +4344,7 @@ D:/QTproject/AttendanceSystem/FaceRecognition/facerecognizer.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qdatetime.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qdeadlinetimer.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qdebug.h
+ mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qelapsedtimer.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qendian.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qeventloop.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qexceptionhandling.h
@@ -11448,6 +11450,7 @@ D:/QTproject/AttendanceSystem/mainwindow.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QByteArray
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QDateTime
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QDebug
+ mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QElapsedTimer
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonArray
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonObject
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/QList
@@ -11512,6 +11515,7 @@ D:/QTproject/AttendanceSystem/mainwindow.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qdatetime.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qdeadlinetimer.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qdebug.h
+ mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qelapsedtimer.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qendian.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qeventloop.h
  mdp:C:/Qt/6.10.2/mingw_64/include/QtCore/qexceptionhandling.h

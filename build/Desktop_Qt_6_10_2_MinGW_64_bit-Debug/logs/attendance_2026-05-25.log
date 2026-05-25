@@ -1,0 +1,2 @@
+[2026-05-25 10:49:06.747] [INFO] [main.cpp:82 int main(int, char**)] AttendanceSystem starting
+[2026-05-25 10:49:06.758] [INFO] [networkclient.cpp:612 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=DEV000-text

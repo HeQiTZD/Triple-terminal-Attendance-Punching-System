@@ -35,16 +35,32 @@ AttendanceCheckResult AttendanceRuleEngine::evaluate(const QDateTime &checkTime)
 AttendanceCheckResult AttendanceRuleEngine::evaluateWithEmployee(const QString &employeeId,
                                                                   const QDateTime &checkTime) const
 {
+    qDebug() << "[打卡流程] 开始考勤规则判定"
+             << "employeeId=" << employeeId
+             << "checkTime=" << checkTime.toString("yyyy-MM-dd HH:mm:ss");
+
     if (isDuplicateCheck(employeeId, checkTime)) {
         AttendanceCheckResult result;
         result.status = QStringLiteral("duplicate");
         result.isDuplicate = true;
         result.message = QStringLiteral("重复打卡");
         result.workDate = checkTime.date();
+
+        qWarning() << "[打卡流程] 重复打卡被拒绝"
+                   << "employeeId=" << employeeId
+                   << "reason=" << result.message;
+
         return result;
     }
 
-    return evaluate(checkTime);
+    AttendanceCheckResult result = evaluate(checkTime);
+
+    qDebug() << "[打卡流程] 考勤规则判定完成"
+             << "status=" << result.status
+             << "isValid=" << result.isValid
+             << "message=" << result.message;
+
+    return result;
 }
 
 bool AttendanceRuleEngine::isInCheckInRange(const QTime &time) const
@@ -71,6 +87,7 @@ bool AttendanceRuleEngine::isDuplicateCheck(const QString &employeeId, const QDa
 
     const OutboxRecord lastRecord = LocalStorage::instance()->outbox().findLatestByEmployeeId(employeeId);
     if (lastRecord.id <= 0 || lastRecord.checkTime.isEmpty()) {
+        qDebug() << "[打卡流程] 重复检测: 无历史打卡记录";
         return false;
     }
 
@@ -83,7 +100,15 @@ bool AttendanceRuleEngine::isDuplicateCheck(const QString &employeeId, const QDa
     }
 
     const int minInterval = qMax(0, ConfigManager::instance()->getMinCheckInterval());
-    return lastCheck.secsTo(checkTime) >= 0 && lastCheck.secsTo(checkTime) < minInterval;
+    const qint64 secondsDiff = lastCheck.secsTo(checkTime);
+
+    qDebug() << "[打卡流程] 重复检测:"
+             << "上次打卡=" << lastCheck.toString("yyyy-MM-dd HH:mm:ss")
+             << "本次打卡=" << checkTime.toString("yyyy-MM-dd HH:mm:ss")
+             << "时间差=" << secondsDiff << "秒"
+             << "最小间隔=" << minInterval << "秒";
+
+    return secondsDiff >= 0 && secondsDiff < minInterval;
 }
 
 AttendanceCheckResult AttendanceRuleEngine::evaluateStandard(const QDateTime &checkTime) const

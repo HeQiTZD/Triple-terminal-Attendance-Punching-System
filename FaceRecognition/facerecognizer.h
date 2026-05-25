@@ -21,6 +21,7 @@
 #include <QMutex>
 #include <QDateTime>
 #include <QTimer>
+#include <QElapsedTimer>
 
 #include "../LocalStorage/localstorage.h"
 #include "../NetworkClient/networkclient.h"
@@ -100,6 +101,7 @@ public:
 
 private:
     QMutex m_mutex;
+    QElapsedTimer m_processTimer;  // 流程计时器
 };
 
 #endif // FACERECOGNIZER_H

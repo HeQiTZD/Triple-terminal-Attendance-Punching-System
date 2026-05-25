@@ -442,6 +442,14 @@ void MainWindow::onRecognitionSuccess(const QString &employeeId,
                                       const QString &checkTime,
                                       const QImage &faceImage)
 {
+    qDebug() << "[打卡流程] ════════════════════════════════════════";
+    qDebug() << "[打卡流程] 打卡成功";
+    qDebug() << "[打卡流程] employeeId=" << employeeId;
+    qDebug() << "[打卡流程] name=" << name;
+    qDebug() << "[打卡流程] status=" << status;
+    qDebug() << "[打卡流程] checkTime=" << checkTime;
+    qDebug() << "[打卡流程] ════════════════════════════════════════";
+
     if (m_fieldEmployeeId) m_fieldEmployeeId->setValue(employeeId);
     if (m_fieldName)       m_fieldName->setValue(name);
     if (m_fieldStatus)     m_fieldStatus->setValue(status);
@@ -451,9 +459,13 @@ void MainWindow::onRecognitionSuccess(const QString &employeeId,
 //处理保存打卡记录请求
 void MainWindow::onSaveAttendanceRequest(const QString &employeeId, const QString &status)
 {
+    qDebug() << "[打卡流程] 收到保存打卡请求"
+             << "employeeId=" << employeeId
+             << "status=" << status;
+
     // 通过 AttendanceReporter 上报（outbox 持久化 + 异步发送 + 重试）
     const QString msgId = m_attendanceReporter->report(employeeId, status, QDateTime::currentDateTime());
-    qDebug() << "打卡记录已提交:" << employeeId << "msgId:" << msgId;
+    qDebug() << "[打卡流程] 打卡记录已提交, msgId=" << msgId;
 }
 
 //更新时间显示

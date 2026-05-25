@@ -86,6 +86,14 @@ public:
     QHBoxLayout *sdkKeyLayout;
     QLabel *sdkKeyLabel;
     QLineEdit *lineEditSdkKey;
+    QGroupBox *rotationGroup;
+    QVBoxLayout *rotationGroupLayout;
+    QHBoxLayout *rotationLayout;
+    QLabel *labelRotation;
+    QLineEdit *lineEditRotation;
+    QPushButton *btnRotate;
+    QSpacerItem *rotationSpacer;
+    QLabel *labelRotationHint;
     QSpacerItem *faceSpacer;
     QWidget *pageAttendance;
     QVBoxLayout *attendancePageLayout;
@@ -460,6 +468,49 @@ public:
 
         facePageLayout->addWidget(arcfaceGroup);
 
+        rotationGroup = new QGroupBox(pageFace);
+        rotationGroup->setObjectName("rotationGroup");
+        rotationGroupLayout = new QVBoxLayout(rotationGroup);
+        rotationGroupLayout->setSpacing(10);
+        rotationGroupLayout->setObjectName("rotationGroupLayout");
+        rotationLayout = new QHBoxLayout();
+        rotationLayout->setObjectName("rotationLayout");
+        labelRotation = new QLabel(rotationGroup);
+        labelRotation->setObjectName("labelRotation");
+        labelRotation->setMinimumSize(QSize(120, 0));
+
+        rotationLayout->addWidget(labelRotation);
+
+        lineEditRotation = new QLineEdit(rotationGroup);
+        lineEditRotation->setObjectName("lineEditRotation");
+        lineEditRotation->setReadOnly(true);
+        lineEditRotation->setMaximumSize(QSize(80, 16777215));
+        lineEditRotation->setAlignment(Qt::AlignmentFlag::AlignCenter);
+
+        rotationLayout->addWidget(lineEditRotation);
+
+        btnRotate = new QPushButton(rotationGroup);
+        btnRotate->setObjectName("btnRotate");
+        btnRotate->setMinimumSize(QSize(100, 0));
+
+        rotationLayout->addWidget(btnRotate);
+
+        rotationSpacer = new QSpacerItem(0, 0, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        rotationLayout->addItem(rotationSpacer);
+
+
+        rotationGroupLayout->addLayout(rotationLayout);
+
+        labelRotationHint = new QLabel(rotationGroup);
+        labelRotationHint->setObjectName("labelRotationHint");
+        labelRotationHint->setStyleSheet(QString::fromUtf8("color: #888888; font-size: 11px;"));
+
+        rotationGroupLayout->addWidget(labelRotationHint);
+
+
+        facePageLayout->addWidget(rotationGroup);
+
         faceSpacer = new QSpacerItem(0, 0, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
         facePageLayout->addItem(faceSpacer);
@@ -827,6 +878,10 @@ public:
         lineEditAppId->setPlaceholderText(QCoreApplication::translate("SetWindow", "\350\257\267\350\276\223\345\205\245ArcFace App ID", nullptr));
         sdkKeyLabel->setText(QCoreApplication::translate("SetWindow", "SDK Key", nullptr));
         lineEditSdkKey->setPlaceholderText(QCoreApplication::translate("SetWindow", "\350\257\267\350\276\223\345\205\245ArcFace SDK Key", nullptr));
+        rotationGroup->setTitle(QCoreApplication::translate("SetWindow", "\346\221\204\345\203\217\345\244\264\346\226\271\345\220\221", nullptr));
+        labelRotation->setText(QCoreApplication::translate("SetWindow", "\345\275\223\345\211\215\350\247\222\345\272\246", nullptr));
+        btnRotate->setText(QCoreApplication::translate("SetWindow", "\346\227\213\350\275\254 90\302\260", nullptr));
+        labelRotationHint->setText(QCoreApplication::translate("SetWindow", "\346\257\217\346\254\241\347\202\271\345\207\273\346\227\213\350\275\254 90\302\260\357\274\2100\302\260 \342\206\222 90\302\260 \342\206\222 180\302\260 \342\206\222 270\302\260 \345\276\252\347\216\257\357\274\211", nullptr));
         attendanceGroup->setTitle(QCoreApplication::translate("SetWindow", "\350\200\203\345\213\244\350\247\204\345\210\231\350\256\276\347\275\256", nullptr));
         workStartLabel->setText(QCoreApplication::translate("SetWindow", "\344\270\212\347\217\255\346\227\266\351\227\264", nullptr));
         timeEditWorkStart->setDisplayFormat(QCoreApplication::translate("SetWindow", "HH:mm", nullptr));
