@@ -72,6 +72,7 @@ qt_add_qml_module(appAttendanceAdmin
         ui/pages/PageFace.qml
         ui/pages/PageUser.qml
         ui/pages/PageRbac.qml
+        ui/pages/PageLogViewer.qml
     SOURCES
         src/Models/Person.h src/Models/Person.cpp
         src/Models/attendancerecord.h src/Models/attendancerecord.cpp
@@ -88,6 +89,8 @@ qt_add_qml_module(appAttendanceAdmin
         src/Device/DeviceServer.h src/Device/DeviceServer.cpp
         src/Config/ConfigDeployServer.h src/Config/ConfigDeployServer.cpp
         src/User/UserServer.h src/User/UserServer.cpp
+        src/Log/LogWriter.h src/Log/LogWriter.cpp
+        src/Log/FileService.h src/Log/FileService.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
