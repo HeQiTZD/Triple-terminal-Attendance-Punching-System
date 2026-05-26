@@ -264,6 +264,14 @@ Item {
                                         archDept.text.trim(), "", "", "", "", "", "", "")
                                 })
                             }
+                            PermissionButton {
+                                sessionManager: page.sessionManager
+                                requiredPermission: "attendance.archive.delete"
+                                deniedDialog: page.deniedDialog
+                                text: qsTr("删除归档记录")
+                                enabled: !attendanceService.busy && archEmp.text.trim() !== ""
+                                onClicked: guardedClick(function() { confirmDeleteArchive.open() })
+                            }
                         }
                     }
                 }
@@ -296,6 +304,12 @@ Item {
                 }
             }
         }
+    }
+
+    ConfirmDialog {
+        id: confirmDeleteArchive
+        message: qsTr("确认删除工号 ") + archEmp.text.trim() + qsTr(" 的所有归档记录？")
+        onAccepted: attendanceService.deleteArchive(archEmp.text.trim())
     }
 
     BusyOverlay { busy: attendanceService.busy }
