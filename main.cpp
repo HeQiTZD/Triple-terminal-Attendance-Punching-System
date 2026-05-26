@@ -10,6 +10,21 @@
 #include <windows.h>
 #endif
 
+#include "src/Log/LogWriter.h"
+#include "src/Log/FileService.h"
+#include "src/Attendance/AttendanceService.h"
+#include "src/Auth/SessionManager.h"
+#include "src/Config/ConfigDeployServer.h"
+#include "src/Device/DeviceServer.h"
+#include "src/Event/EventSubscriptionService.h"
+#include "src/Face/FaceServer.h"
+#include "src/Network/TcpConnectionManager.h"
+#include "src/Person/PersonServer.h"
+#include "src/Rbac/RbacServer.h"
+#include "src/User/UserServer.h"
+
+LogWriter *g_logWriter = nullptr;
+
 static void qtMessageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     Q_UNUSED(context)
@@ -22,23 +37,21 @@ static void qtMessageHandler(QtMsgType type, const QMessageLogContext &context, 
     case QtCriticalMsg: full = "[QT CRIT]  " + localMsg + "\n"; break;
     case QtFatalMsg:    full = "[QT FATAL] " + localMsg + "\n"; break;
     }
+    if (g_logWriter) {
+        if (type == QtWarningMsg) {
+            g_logWriter->logError(QStringLiteral("QT_WARN"), msg);
+        } else if (type == QtCriticalMsg) {
+            g_logWriter->logError(QStringLiteral("QT_CRIT"), msg);
+        } else if (type == QtFatalMsg) {
+            g_logWriter->logError(QStringLiteral("QT_FATAL"), msg);
+        }
+    }
 #ifdef Q_OS_WIN
     OutputDebugStringA(full.constData());
 #endif
     fprintf(stderr, "%s", full.constData());
     fflush(stderr);
 }
-
-#include "src/Attendance/AttendanceService.h"
-#include "src/Auth/SessionManager.h"
-#include "src/Config/ConfigDeployServer.h"
-#include "src/Device/DeviceServer.h"
-#include "src/Event/EventSubscriptionService.h"
-#include "src/Face/FaceServer.h"
-#include "src/Network/TcpConnectionManager.h"
-#include "src/Person/PersonServer.h"
-#include "src/Rbac/RbacServer.h"
-#include "src/User/UserServer.h"
 
 int main(int argc, char *argv[])
 {
@@ -70,6 +83,10 @@ int main(int argc, char *argv[])
     sessionManager->setTcpManager(tcpManager);
     fprintf(stderr, "DEBUG: 5 SessionManager created\n");
     fflush(stderr);
+
+    auto *logWriter = new LogWriter(&app);
+    auto *fileService = new FileService(&app);
+    g_logWriter = logWriter;
 
     auto *personServer = new PersonServer(&app);
     personServer->setTcpManager(tcpManager);
@@ -128,6 +145,8 @@ int main(int argc, char *argv[])
         { QStringLiteral("rbacServer"), QVariant::fromValue(rbacServer) },
         { QStringLiteral("eventService"), QVariant::fromValue(eventService) },
         { QStringLiteral("userServer"), QVariant::fromValue(userServer) },
+        { QStringLiteral("logWriter"), QVariant::fromValue(logWriter) },
+        { QStringLiteral("fileService"), QVariant::fromValue(fileService) },
     });
     fprintf(stderr, "DEBUG: 8 Properties set, loading module...\n");
     fflush(stderr);
