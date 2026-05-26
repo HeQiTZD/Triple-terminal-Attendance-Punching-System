@@ -20,6 +20,7 @@ set_source_files_properties(
     ui/models/ErrorCatalog.qml
     ui/models/PermissionCatalog.qml
     ui/models/PushFeed.qml
+    ui/models/LogReader.qml
     PROPERTIES
         QT_QML_SINGLETON_TYPE TRUE
 )
@@ -36,6 +37,7 @@ qt_add_qml_module(appAttendanceAdmin
         ui/models/ErrorCatalog.qml
         ui/models/PermissionCatalog.qml
         ui/models/PushFeed.qml
+        ui/models/LogReader.qml
         ui/components/Card.qml
         ui/components/BusyOverlay.qml
         ui/components/SideBar.qml
