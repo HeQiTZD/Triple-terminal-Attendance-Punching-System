@@ -1,4 +1,5 @@
-#pragma once
+#ifndef LOGWRITER_H
+#define LOGWRITER_H
 
 #include <QObject>
 #include <QString>
@@ -8,6 +9,7 @@
 
 class LogWriter : public QObject {
     Q_OBJECT
+    Q_DISABLE_COPY(LogWriter)
 public:
     explicit LogWriter(QObject *parent = nullptr);
 
@@ -19,6 +21,9 @@ public:
     Q_INVOKABLE void logError(const QString &type, const QString &message,
                                const QVariantMap &details = {});
 
+signals:
+    void logWriteFailed(const QString &error);
+
 private:
     void writeLog(const QString &level, const QString &type,
                   const QString &message, const QVariantMap &details);
@@ -29,3 +34,5 @@ private:
     QDir m_logDir;
     QMutex m_mutex;
 };
+
+#endif // LOGWRITER_H
