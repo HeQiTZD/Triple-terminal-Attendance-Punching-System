@@ -9,6 +9,7 @@ Dialog {
     title: qsTr("确认")
     modal: true
     standardButtons: Dialog.Yes | Dialog.No
+    anchors.centerIn: Overlay.overlay
 
     readonly property real _maxW: Overlay.overlay && Overlay.overlay.width > 0
         ? Math.max(320, Overlay.overlay.width - 48)
