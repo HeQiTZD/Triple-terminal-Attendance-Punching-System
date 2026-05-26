@@ -34,6 +34,8 @@ ApplicationWindow {
     required property var rbacServer
     required property var eventService
     required property var userServer
+    required property var logWriter
+    required property var fileService
 
     color: Theme.bg
     palette.window:           Theme.bg
@@ -246,6 +248,8 @@ ApplicationWindow {
                     userServer: win.userServer
                     rbacServer: win.rbacServer
                     eventService: win.eventService
+                    logWriter: win.logWriter
+                    fileService: win.fileService
                     deniedDialog: permissionDenied
                     onServiceResult: (apiType, code, msg, category) =>
                         win._handleServiceOp(apiType, code, msg, category)

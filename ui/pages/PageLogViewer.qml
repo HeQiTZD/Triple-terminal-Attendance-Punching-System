@@ -8,6 +8,15 @@ import AttendanceAdmin
 Item {
     id: page
 
+    required property var sessionManager
+    required property var fileService
+
+    Component.onCompleted: {
+        if (fileService) {
+            LogReader.init(fileService)
+        }
+    }
+
     ColumnLayout {
         anchors.fill: parent
         anchors.margins: Theme.spacingLg
