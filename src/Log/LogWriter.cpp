@@ -1,7 +1,9 @@
 #include "LogWriter.h"
+#include <QCoreApplication>
 #include <QFile>
 #include <QTextStream>
 #include <QDateTime>
+#include <QDate>
 #include <QFileInfo>
 #include <QDirIterator>
 
@@ -54,9 +56,11 @@ void LogWriter::writeLog(const QString &level, const QString &type,
         emit logWriteFailed(QString("Failed to open log file: %1").arg(filePath));
     }
 
-    // 每次写入时检查是否需要清理旧日志
-    static int writeCount = 0;
-    if (++writeCount % 100 == 0) {
+    ++m_writeCount;
+    locker.unlock();
+
+    // 每次写入时检查是否需要清理旧日志（在锁外执行，避免阻塞其他线程）
+    if (m_writeCount % 100 == 0) {
         cleanOldLogs();
     }
 }
@@ -75,12 +79,16 @@ void LogWriter::rotateLogs()
 
 void LogWriter::cleanOldLogs()
 {
-    QDateTime cutoff = QDateTime::currentDateTime().addDays(-30);
+    QDate cutoff = QDate::currentDate().addDays(-30);
     QDirIterator it(m_logDir.path(), {"app-*.log"}, QDir::Files);
     while (it.hasNext()) {
         it.next();
         QFileInfo fi = it.fileInfo();
-        if (fi.lastModified() < cutoff) {
+        // 从文件名解析日期（格式：app-yyyy-MM-dd.log）
+        QString baseName = fi.completeBaseName(); // "app-yyyy-MM-dd"
+        QString dateStr = baseName.mid(4);        // "yyyy-MM-dd"
+        QDate fileDate = QDate::fromString(dateStr, "yyyy-MM-dd");
+        if (fileDate.isValid() && fileDate < cutoff) {
             QFile::remove(fi.filePath());
         }
     }

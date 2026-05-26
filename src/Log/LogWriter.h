@@ -33,6 +33,7 @@ private:
 
     QDir m_logDir;
     QMutex m_mutex;
+    int m_writeCount = 0;
 };
 
 #endif // LOGWRITER_H
