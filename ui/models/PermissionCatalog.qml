@@ -120,6 +120,7 @@ QtObject {
         case "face":       return permissionDisplayName("face.read")
         case "user":       return permissionDisplayName("user.read")
         case "rbac":       return roleDisplayName("super_admin")
+        case "logViewer":  return roleDisplayName("super_admin")
         default:           return ""
         }
     }
@@ -142,6 +143,9 @@ QtObject {
         { group: qsTr("系统") },
         { key: "events", label: qsTr("事件中心"), icon: "⚡" },
         { key: "history", label: qsTr("调用历史"), icon: "≡" },
+
+        { group: qsTr("其它") },
+        { key: "logViewer", label: qsTr("日志查看"), icon: "📋" },
     ]
 
     function canAccessNav(key, sessionManager) {
@@ -164,6 +168,8 @@ QtObject {
         case "user":
             return hasPerm(sessionManager, "user.read")
         case "rbac":
+            return hasRoleKey(sessionManager, "super_admin")
+        case "logViewer":
             return hasRoleKey(sessionManager, "super_admin")
         default:
             return false
