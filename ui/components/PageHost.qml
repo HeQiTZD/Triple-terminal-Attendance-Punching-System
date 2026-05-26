@@ -19,6 +19,8 @@ Item {
     property var userServer
     property var rbacServer
     property var eventService
+    property var logWriter
+    property var fileService
     property var deniedDialog: null
 
     signal serviceResult(string apiType, int code, string msg, string category)
@@ -48,6 +50,7 @@ Item {
             case "face":       return compFace
             case "user":       return compUser
             case "rbac":       return compRbac
+            case "logViewer":  return compLogViewer
             default:           return null
             }
         }
@@ -146,6 +149,14 @@ Item {
             deniedDialog: host.deniedDialog
             onServiceResult: (apiType, code, msg) =>
                 host.serviceResult(apiType, code, msg, "rbac")
+        }
+    }
+
+    Component {
+        id: compLogViewer
+        PageLogViewer {
+            sessionManager: host.sessionManager
+            fileService: host.fileService
         }
     }
 
