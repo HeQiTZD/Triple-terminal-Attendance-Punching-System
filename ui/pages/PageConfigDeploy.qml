@@ -307,6 +307,22 @@ Item {
                     Layout.preferredWidth: 520
                     title: qsTr("目标设备")
                     headerRight: [
+                        FaceSyncButton {
+                            id: faceSyncBtn
+                            deviceServer: page.deviceServer
+                            sessionManager: page.sessionManager
+                            selectedDevices: page.selectedDevices
+                            deniedDialog: page.deniedDialog
+
+                            onSyncCompleted: function(success, fail) {
+                                const msg = qsTr("人脸同步完成：成功 %1 台，失败 %2 台").arg(success).arg(fail)
+                                page.serviceResult("face.sync", fail > 0 ? -1 : 0, msg)
+                            }
+
+                            onSyncFailed: function(code, message) {
+                                page.serviceResult("face.sync", code, message)
+                            }
+                        },
                         Button { text: qsTr("全选在线"); onClicked: page._selectOnlineDevices() },
                         Button { text: qsTr("清空"); onClicked: page._clearSelectedDevices() }
                     ]

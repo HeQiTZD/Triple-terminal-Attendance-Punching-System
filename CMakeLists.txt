@@ -61,6 +61,7 @@ qt_add_qml_module(appAttendanceAdmin
         ui/components/ChartContainer.qml
         ui/components/StatCard.qml
         ui/components/PageHost.qml
+        ui/components/FaceSyncButton.qml
         ui/pages/PageDashboard.qml
         ui/pages/PagePerson.qml
         ui/pages/PageDevice.qml
