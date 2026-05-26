@@ -14,6 +14,7 @@ Item {
     signal serviceResult(string apiType, int code, string message)
 
     property int tabIndex: 0
+    property string _pendingDeleteEmpId: ""
 
     readonly property bool hasLiveRead: PermissionCatalog.hasPerm(sessionManager, "attendance.read")
     readonly property bool hasArchiveRead: PermissionCatalog.hasPerm(sessionManager, "attendance.archive.read")
@@ -270,7 +271,10 @@ Item {
                                 deniedDialog: page.deniedDialog
                                 text: qsTr("删除归档记录")
                                 enabled: !attendanceService.busy && archEmp.text.trim() !== ""
-                                onClicked: guardedClick(function() { confirmDeleteArchive.open() })
+                                onClicked: guardedClick(function() {
+                                    _pendingDeleteEmpId = archEmp.text.trim()
+                                    confirmDeleteArchive.open()
+                                })
                             }
                         }
                     }
@@ -308,8 +312,8 @@ Item {
 
     ConfirmDialog {
         id: confirmDeleteArchive
-        message: qsTr("确认删除工号 ") + archEmp.text.trim() + qsTr(" 的所有归档记录？")
-        onAccepted: attendanceService.deleteArchive(archEmp.text.trim())
+        message: qsTr("确认删除工号 ") + _pendingDeleteEmpId + qsTr(" 的所有归档记录？")
+        onAccepted: attendanceService.deleteArchive(_pendingDeleteEmpId)
     }
 
     BusyOverlay { busy: attendanceService.busy }
@@ -318,6 +322,12 @@ Item {
         target: attendanceService
         function onOperationSucceeded(apiType, message) {
             page.serviceResult(apiType, 0, message)
+            // 删除归档成功后刷新列表
+            if (apiType === "attendance.archive.delete") {
+                attendanceService.queryArchive(
+                    -1, archEmp.text.trim(), archName.text.trim(),
+                    archDept.text.trim(), "", "", "", "", "", "", "")
+            }
         }
         function onOperationFailed(apiType, code, message) {
             page.serviceResult(apiType, code, message)
