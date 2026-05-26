@@ -2,26 +2,15 @@
 
 #include <QJsonDocument>
 
-// ---------------------------------------------------------------------------
-// Construction
-// ---------------------------------------------------------------------------
-
 Messagewriter::Messagewriter(QTcpSocket *socket, QObject *parent)
     : QObject(parent)
     , m_socket(socket)
 {
-    if (!m_socket)
-        qWarning() << "Messagewriter: socket为空";
 }
-
-// ---------------------------------------------------------------------------
-// Sanity check helper
-// ---------------------------------------------------------------------------
 
 static bool socketReady(QTcpSocket *s, Messagewriter *w)
 {
     if (!s) {
-        qWarning() << "Messagewriter: socket未初始化";
         emit w->sendError(QStringLiteral("socket未初始化"));
         return false;
     }
@@ -31,10 +20,6 @@ static bool socketReady(QTcpSocket *s, Messagewriter *w)
     }
     return true;
 }
-
-// ---------------------------------------------------------------------------
-// JSON with \n delimiter
-// ---------------------------------------------------------------------------
 
 bool Messagewriter::send(const QJsonObject &message)
 {
@@ -55,10 +40,6 @@ bool Messagewriter::send(const QJsonObject &message)
     return true;
 }
 
-// ---------------------------------------------------------------------------
-// Raw bytes with \n delimiter (heartbeat etc.)
-// ---------------------------------------------------------------------------
-
 bool Messagewriter::send(const QByteArray &data)
 {
     if (!socketReady(m_socket, this))
@@ -77,10 +58,6 @@ bool Messagewriter::send(const QByteArray &data)
     m_socket->flush();
     return true;
 }
-
-// ---------------------------------------------------------------------------
-// Binary frame: 4-byte BE length prefix + payload (4+L format)
-// ---------------------------------------------------------------------------
 
 bool Messagewriter::sendBinaryFrame(const QByteArray &payload)
 {
@@ -107,10 +84,6 @@ bool Messagewriter::sendBinaryFrame(const QByteArray &payload)
     return true;
 }
 
-// ---------------------------------------------------------------------------
-// Raw bytes — no prefix, no delimiter (photo upload)
-// ---------------------------------------------------------------------------
-
 bool Messagewriter::sendRawBytes(const QByteArray &data)
 {
     if (!socketReady(m_socket, this))
@@ -126,10 +99,6 @@ bool Messagewriter::sendRawBytes(const QByteArray &data)
     return true;
 }
 
-// ---------------------------------------------------------------------------
-// Batch
-// ---------------------------------------------------------------------------
-
 int Messagewriter::sendBatch(const QVector<QJsonObject> &messages)
 {
     int successCount = 0;
@@ -142,17 +111,12 @@ int Messagewriter::sendBatch(const QVector<QJsonObject> &messages)
     return successCount;
 }
 
-// ---------------------------------------------------------------------------
-// Internal: JSON without \n delimiter
-// ---------------------------------------------------------------------------
-
 bool Messagewriter::sendRawJson(const QJsonObject &msg)
 {
     if (!socketReady(m_socket, this))
         return false;
 
     const QByteArray data = QJsonDocument(msg).toJson(QJsonDocument::Compact);
-    // 不追加 \n
 
     const qint64 written = m_socket->write(data);
     if (written == -1) {

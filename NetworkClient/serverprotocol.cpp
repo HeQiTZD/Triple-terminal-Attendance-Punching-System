@@ -26,11 +26,7 @@ QJsonObject Envelope::toJson() const
 {
     QJsonObject obj;
 
-    // Merge data fields first (payload at root)
-    for (auto it = data.begin(); it != data.end(); ++it)
-        obj[it.key()] = it.value();
-
-    // Envelope keys overwrite any data field with same key
+    // Envelope fields
     obj[QStringLiteral("type")]  = type;
     obj[QStringLiteral("role")]  = role;
     obj[QStringLiteral("from")]  = from;
@@ -45,6 +41,10 @@ QJsonObject Envelope::toJson() const
         obj[QStringLiteral("code")] = code;
     if (!msg.isEmpty())
         obj[QStringLiteral("msg")] = msg;
+
+    // 将 data 作为嵌套对象
+    if (!data.isEmpty())
+        obj[QStringLiteral("data")] = data;
 
     return obj;
 }

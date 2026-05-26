@@ -74,7 +74,7 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 124,
+				"line" : 125,
 				"parent" : 0
 			},
 			{
@@ -236,7 +236,7 @@
 			{
 				"command" : 10,
 				"file" : 1,
-				"line" : 119,
+				"line" : 120,
 				"parent" : 0
 			}
 		]
@@ -401,8 +401,8 @@
 				34,
 				36,
 				38,
-				39,
-				42,
+				41,
+				43,
 				45,
 				47,
 				49,
@@ -423,18 +423,19 @@
 				80,
 				82,
 				84,
-				89
+				86,
+				91
 			]
 		}
 	],
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 0,
-			"id" : "AttendanceSystem_autogen::@6890427a1f51a3e7e1df"
+			"id" : "AttendanceSystem_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		},
 		{
-			"id" : "AttendanceSystem_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+			"backtrace" : 0,
+			"id" : "AttendanceSystem_autogen::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "AttendanceSystem::@6890427a1f51a3e7e1df",
@@ -565,8 +566,8 @@
 				34,
 				36,
 				38,
-				39,
-				42,
+				41,
+				43,
 				45,
 				47,
 				49,
@@ -587,7 +588,8 @@
 				80,
 				82,
 				84,
-				89
+				86,
+				91
 			]
 		},
 		{
@@ -612,9 +614,9 @@
 				33,
 				35,
 				37,
+				39,
 				40,
-				41,
-				43,
+				42,
 				44,
 				46,
 				48,
@@ -635,8 +637,9 @@
 				79,
 				81,
 				83,
-				86,
-				87
+				85,
+				88,
+				89
 			]
 		},
 		{
@@ -651,22 +654,22 @@
 			"name" : "Resources",
 			"sourceIndexes" : 
 			[
-				85
+				87
 			]
 		},
 		{
 			"name" : "",
 			"sourceIndexes" : 
 			[
-				88
+				90
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				90,
-				91
+				92,
+				93
 			]
 		}
 	],
@@ -890,12 +893,6 @@
 		},
 		{
 			"backtrace" : 4,
-			"compileGroupIndex" : 0,
-			"path" : "FaceRecognition/facerecognizer.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 4,
 			"path" : "third_party/arcface/include/merror.h",
 			"sourceGroupIndex" : 1
 		},
@@ -914,6 +911,12 @@
 			"backtrace" : 4,
 			"path" : "FaceRecognition/facerecognizer.h",
 			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "FaceRecognition/facerecognizer.cpp",
+			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 4,
@@ -1138,6 +1141,17 @@
 			"backtrace" : 4,
 			"compileGroupIndex" : 0,
 			"path" : "UI/Components/SectionPanel.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "UI/Components/ToastNotification.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "UI/Components/ToastNotification.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

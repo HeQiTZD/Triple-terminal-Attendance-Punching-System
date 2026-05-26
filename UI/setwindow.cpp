@@ -110,7 +110,6 @@ void SetWindow::setupConnections()
     // 导航按钮信号连接
     connect(ui->btnNetwork, &QPushButton::clicked, this, &SetWindow::onNavButtonClicked);
     connect(ui->btnFace, &QPushButton::clicked, this, &SetWindow::onNavButtonClicked);
-    connect(ui->btnAttendance, &QPushButton::clicked, this, &SetWindow::onNavButtonClicked);
     connect(ui->btnStorage, &QPushButton::clicked, this, &SetWindow::onNavButtonClicked);
     connect(ui->btnDevice, &QPushButton::clicked, this, &SetWindow::onNavButtonClicked);
     connect(ui->btnSync, &QPushButton::clicked, this, &SetWindow::onNavButtonClicked);
@@ -138,14 +137,12 @@ void SetWindow::onNavButtonClicked()
         switchToPage(0);
     } else if (btn == ui->btnFace) {
         switchToPage(1);
-    } else if (btn == ui->btnAttendance) {
-        switchToPage(2);
     } else if (btn == ui->btnStorage) {
-        switchToPage(3);
+        switchToPage(2);
     } else if (btn == ui->btnDevice) {
-        switchToPage(4);
+        switchToPage(3);
     } else if (btn == ui->btnSync) {
-        switchToPage(5);
+        switchToPage(4);
     }
 }
 
@@ -156,10 +153,9 @@ void SetWindow::switchToPage(int index)
     // 更新按钮选中状态
     ui->btnNetwork->setChecked(index == 0);
     ui->btnFace->setChecked(index == 1);
-    ui->btnAttendance->setChecked(index == 2);
-    ui->btnStorage->setChecked(index == 3);
-    ui->btnDevice->setChecked(index == 4);
-    ui->btnSync->setChecked(index == 5);
+    ui->btnStorage->setChecked(index == 2);
+    ui->btnDevice->setChecked(index == 3);
+    ui->btnSync->setChecked(index == 4);
 }
 
 void SetWindow::onBtnRestoreClicked()
@@ -208,12 +204,6 @@ void SetWindow::restoreDefaults()
     m_faceThreshold = DEFAULT_FACE_THRESHOLD;
     m_maxFaceCount = DEFAULT_MAX_FACE_COUNT;
     m_recognizeTimeout = DEFAULT_RECOGNIZE_TIMEOUT;
-
-    // 恢复考勤规则设置
-    m_workStartTime = QTime(9, 0);
-    m_workEndTime = QTime(18, 0);
-    m_lateAllowance = DEFAULT_LATE_ALLOWANCE;
-    m_earlyLeaveAllowance = DEFAULT_EARLY_LEAVE_ALLOWANCE;
 
     // 恢复存储设置（路径不清空）
     // m_databasePath, m_logPath 保持当前值
@@ -328,52 +318,6 @@ void SetWindow::setSdkKey(const QString &sdkKey)
     ui->lineEditSdkKey->setText(sdkKey);
 }
 
-// 考勤规则设置 - Getter
-QTime SetWindow::getWorkStartTime() const
-{
-    return m_workStartTime;
-}
-
-QTime SetWindow::getWorkEndTime() const
-{
-    return m_workEndTime;
-}
-
-int SetWindow::getLateAllowance() const
-{
-    return m_lateAllowance;
-}
-
-int SetWindow::getEarlyLeaveAllowance() const
-{
-    return m_earlyLeaveAllowance;
-}
-
-// 考勤规则设置 - Setter
-void SetWindow::setWorkStartTime(const QTime &time)
-{
-    m_workStartTime = time;
-    ui->timeEditWorkStart->setTime(time);
-}
-
-void SetWindow::setWorkEndTime(const QTime &time)
-{
-    m_workEndTime = time;
-    ui->timeEditWorkEnd->setTime(time);
-}
-
-void SetWindow::setLateAllowance(int minutes)
-{
-    m_lateAllowance = minutes;
-    ui->spinBoxLate->setValue(minutes);
-}
-
-void SetWindow::setEarlyLeaveAllowance(int minutes)
-{
-    m_earlyLeaveAllowance = minutes;
-    ui->spinBoxEarly->setValue(minutes);
-}
-
 // 存储设置 - Getter
 QString SetWindow::getDatabasePath() const
 {
@@ -419,12 +363,6 @@ void SetWindow::loadFromUI()
     m_appId = ui->lineEditAppId->text();
     m_sdkKey = ui->lineEditSdkKey->text();
 
-    // 考勤规则设置
-    m_workStartTime = ui->timeEditWorkStart->time();
-    m_workEndTime = ui->timeEditWorkEnd->time();
-    m_lateAllowance = ui->spinBoxLate->value();
-    m_earlyLeaveAllowance = ui->spinBoxEarly->value();
-
     // 存储设置
     m_databasePath = ui->lineEditDbPath->text();
     m_logPath = ui->lineEditLogPath->text();
@@ -457,12 +395,6 @@ void SetWindow::saveToUI()
     // ArcFace SDK配置
     ui->lineEditAppId->setText(m_appId);
     ui->lineEditSdkKey->setText(m_sdkKey);
-
-    // 考勤规则设置
-    ui->timeEditWorkStart->setTime(m_workStartTime);
-    ui->timeEditWorkEnd->setTime(m_workEndTime);
-    ui->spinBoxLate->setValue(m_lateAllowance);
-    ui->spinBoxEarly->setValue(m_earlyLeaveAllowance);
 
     // 存储设置
     ui->lineEditDbPath->setText(m_databasePath);
@@ -499,12 +431,6 @@ void SetWindow::loadFromConfig()
     // ArcFace SDK配置
     m_appId = config->getAppId();
     m_sdkKey = config->getSdkKey();
-
-    // 考勤规则设置
-    m_workStartTime = config->getWorkStartTime();
-    m_workEndTime = config->getWorkEndTime();
-    m_lateAllowance = config->getLateAllowance();
-    m_earlyLeaveAllowance = config->getEarlyLeaveAllowance();
 
     // 存储设置
     m_databasePath = config->getDatabasePath();
@@ -552,12 +478,6 @@ void SetWindow::saveToConfig()
     // ArcFace SDK配置
     config->setAppId(m_appId);
     config->setSdkKey(m_sdkKey);
-
-    // 考勤规则设置
-    config->setWorkStartTime(m_workStartTime);
-    config->setWorkEndTime(m_workEndTime);
-    config->setLateAllowance(m_lateAllowance);
-    config->setEarlyLeaveAllowance(m_earlyLeaveAllowance);
 
     // 存储设置
     config->setDatabasePath(m_databasePath);

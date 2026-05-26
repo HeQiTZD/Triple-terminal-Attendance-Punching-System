@@ -53,8 +53,6 @@ ConfigManager::ConfigManager(QObject *parent)
 
     m_settings = new QSettings(configPath, QSettings::IniFormat, this);
     m_localSettings = new QSettings(localConfigPath, QSettings::IniFormat, this);
-    qDebug() << "配置文件路径:" << configPath;
-    qDebug() << "本地配置文件路径:" << localConfigPath;
 
     // 加载配置
     loadConfig();
@@ -155,8 +153,6 @@ void ConfigManager::loadConfig()
         m_mainWindowHeight = m_localSettings->value("Height", DEFAULT_MAIN_WINDOW_HEIGHT).toInt();
         m_localSettings->endGroup();
     }
-
-    qDebug() << "配置加载完成";
 }
 
 void ConfigManager::saveConfig()
@@ -230,8 +226,6 @@ void ConfigManager::saveConfig()
 
         m_localSettings->sync();
     }
-
-    qDebug() << "配置保存完成";
 }
 
 QString ConfigManager::getDefaultDatabasePath()
@@ -304,27 +298,15 @@ void ConfigManager::ensureDirectoriesExist()
         QString dbDir = dbFileInfo.path();
         QDir dir;
         if(!dir.exists(dbDir)){
-            if(dir.mkpath(dbDir)){
-                qDebug() << "数据库目录创建成功:" << dbDir;
-            }else{
-                qDebug() << "数据库目录创建失败:" << dbDir;
-            }
-        }else{
-            qDebug() << "数据库目录已存在:" << dbDir;
+            dir.mkpath(dbDir);
         }
     }
-    
+
     // 检查并创建日志目录
     if(!m_logPath.isEmpty()){
         QDir dir;
         if(!dir.exists(m_logPath)){
-            if(dir.mkpath(m_logPath)){
-                qDebug() << "日志目录创建成功:" << m_logPath;
-            }else{
-                qDebug() << "日志目录创建失败:" << m_logPath;
-            }
-        }else{
-            qDebug() << "日志目录已存在:" << m_logPath;
+            dir.mkpath(m_logPath);
         }
     }
 }
@@ -338,7 +320,6 @@ bool ConfigManager::applyRemoteConfig(const QString &configContent,
         if (errorMessage) {
             *errorMessage = message;
         }
-        qWarning() << message;
         return false;
     };
 
@@ -440,6 +421,5 @@ bool ConfigManager::applyRemoteConfig(const QString &configContent,
     m_settings->endGroup();
     m_settings->sync();
 
-    qDebug() << "远程配置应用成功";
     return true;
 }

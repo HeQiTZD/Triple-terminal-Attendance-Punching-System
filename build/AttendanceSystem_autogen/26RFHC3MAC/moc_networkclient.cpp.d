@@ -9,6 +9,7 @@ D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/26RFHC3MAC/moc_netw
   C:/Qt/6.10.2/mingw_64/include/QtCore/QObject \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QQueue \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QRect \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/QSettings \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QString \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QTimer \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QVector \
@@ -110,6 +111,7 @@ D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/26RFHC3MAC/moc_netw
   C:/Qt/6.10.2/mingw_64/include/QtCore/qscopedpointer.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qscopeguard.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qset.h \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/qsettings.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qshareddata.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qshareddata_impl.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qsharedpointer.h \
@@ -403,6 +405,8 @@ D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/26RFHC3MAC/moc_netw
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/time.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
+  D:/QTproject/AttendanceSystem/Auth/tokenmanager.h \
+  D:/QTproject/AttendanceSystem/Auth/tokenrefresher.h \
   D:/QTproject/AttendanceSystem/FaceRecognition/arcfaceengine.h \
   D:/QTproject/AttendanceSystem/FaceRecognition/facedatabasemanager.h \
   D:/QTproject/AttendanceSystem/LocalStorage/AttendanceOutboxRepository.h \

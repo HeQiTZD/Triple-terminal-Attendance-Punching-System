@@ -9,7 +9,7 @@ class VideoFrameConverter
 public:
     VideoFrameConverter();
 
-    QImage convertToQImage(const QVideoFrame frame);
+    QImage convertToQImage(const QVideoFrame &frame);
 
     void setRotation(int degrees);
     int rotation() const;

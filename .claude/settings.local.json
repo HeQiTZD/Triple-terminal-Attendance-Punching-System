@@ -6,7 +6,8 @@
       "Bash(git commit -m ' *)",
       "Bash(git -C \"D:\\\\QTproject\\\\AttendanceSystem\" add \"docs/superpowers/plans/2026-05-23-camera-rotation-button.md\")",
       "Bash(git -C 'D:\\\\QTproject\\\\AttendanceSystem' commit -m ' *)",
-      "Bash(git *)"
+      "Bash(git *)",
+      "Bash(cmake --build . --target AttendanceSystem)"
     ]
   }
 }

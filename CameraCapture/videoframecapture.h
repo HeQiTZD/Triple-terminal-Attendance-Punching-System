@@ -7,6 +7,7 @@
 #include <QVideoFrameFormat>
 #include <QDebug>
 #include <QVideoSink>
+#include <QAtomicInt>
 
 #include "cameracapture.h"
 #include "../UI/facevideowidget.h"
@@ -27,6 +28,9 @@ public:
     QWidget* getVideoWidget() const;//对外提供摄像头预览接口
     void setFrameConverter(VideoFrameConverter *converter);
 
+public slots:
+    void onFaceProcessingDone(); // 人脸识别线程完成一帧处理后回调
+
 private:
     QMediaCaptureSession *captureSession;//媒体捕获会话
     QVideoSink *videoSink;//视频接收器
@@ -35,6 +39,8 @@ private:
     FaceVideoWidget* videoWidget;//预览控件，返回捕获帧实例
     CameraCapture cameraCaptrue;//摄像头类的实例化
     VideoFrameConverter *m_converter = nullptr;
+    QAtomicInt m_pendingFrames{0};
+    static constexpr int kMaxPendingFrames = 2;
 
 private slots:
     void processFrame(const QVideoFrame &frame);//处理捕获到的帧

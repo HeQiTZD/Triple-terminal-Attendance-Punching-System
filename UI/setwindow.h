@@ -3,7 +3,6 @@
 
 #include <QWidget>
 #include <QString>
-#include <QTime>
 
 class VideoFrameConverter;
 
@@ -46,18 +45,6 @@ public:
     // ArcFace SDK配置 - Setter
     void setAppId(const QString &appId);
     void setSdkKey(const QString &sdkKey);
-
-    // 考勤规则设置 - Getter
-    QTime getWorkStartTime() const;
-    QTime getWorkEndTime() const;
-    int getLateAllowance() const;
-    int getEarlyLeaveAllowance() const;
-
-    // 考勤规则设置 - Setter
-    void setWorkStartTime(const QTime &time);
-    void setWorkEndTime(const QTime &time);
-    void setLateAllowance(int minutes);
-    void setEarlyLeaveAllowance(int minutes);
 
     // 存储设置 - Getter
     QString getDatabasePath() const;
@@ -138,12 +125,6 @@ private:
     QString m_appId;                        // App ID
     QString m_sdkKey;                       // SDK Key
 
-    // 考勤规则设置
-    QTime m_workStartTime = QTime(9, 0);    // 上班时间
-    QTime m_workEndTime = QTime(18, 0);     // 下班时间
-    int m_lateAllowance = 15;               // 迟到允许时间(分钟)
-    int m_earlyLeaveAllowance = 15;         // 早退允许时间(分钟)
-
     // 存储设置
     QString m_databasePath;                 // 数据库路径
     QString m_logPath;                      // 日志路径
@@ -167,8 +148,6 @@ private:
     static constexpr int DEFAULT_FACE_THRESHOLD = 80;
     static constexpr int DEFAULT_MAX_FACE_COUNT = 5;
     static constexpr int DEFAULT_RECOGNIZE_TIMEOUT = 10;
-    static constexpr int DEFAULT_LATE_ALLOWANCE = 15;
-    static constexpr int DEFAULT_EARLY_LEAVE_ALLOWANCE = 15;
 };
 
 #endif // SETWINDOW_H

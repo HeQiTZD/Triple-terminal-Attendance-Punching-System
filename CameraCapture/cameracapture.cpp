@@ -15,7 +15,6 @@ bool CameraCapture::initCamera()
 {
     //是否存在可用摄像头
     if(cameras.isEmpty()){
-        qDebug()<<"无可用摄像头";
         return false;
     }
 

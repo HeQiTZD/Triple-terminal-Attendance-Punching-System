@@ -1,7 +1,6 @@
 #include "facedatabasemanager.h"
 #include "../LocalStorage/localstorage.h"
 
-#include <QDebug>
 #include <QSqlError>
 #include <QSqlQuery>
 
@@ -29,7 +28,6 @@ bool FaceDatabaseManager::loadFromDatabase()
 
     m_faceRecords.clear();
 
-    // Read current_generation from sync_meta
     int generation = 1;
     {
         auto &syncMeta = LocalStorage::instance()->syncMeta();
@@ -39,14 +37,11 @@ bool FaceDatabaseManager::loadFromDatabase()
         }
     }
 
-    // Load from face_feature table by generation
     auto &faceRepo = LocalStorage::instance()->faceFeatures();
     auto features = faceRepo.loadByGeneration(generation);
 
     for (const auto &f : features) {
         if (f.featureSize != f.featureBlob.size()) {
-            qWarning() << "FaceDatabaseManager: feature_size mismatch for" << f.employeeId
-                       << "expected" << f.featureSize << "got" << f.featureBlob.size();
             continue;
         }
         FaceRecord record;
@@ -56,8 +51,6 @@ bool FaceDatabaseManager::loadFromDatabase()
         m_faceRecords.append(record);
     }
 
-    qDebug() << "FaceDatabaseManager: loaded" << m_faceRecords.size()
-             << "face records (generation" << generation << ")";
     return true;
 }
 

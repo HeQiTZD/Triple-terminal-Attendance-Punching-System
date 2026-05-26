@@ -13,11 +13,7 @@ Logger *Logger::instance()
 
 Logger::Logger()
 {
-    // Log path will be set later via setLogFilePath() or fall back to default
-    QString logDir;
-    // Try to read from ConfigManager, but since ConfigManager may not be initialized yet,
-    // use a reasonable default and let setLogFilePath() be called after config loads.
-    logDir = QCoreApplication::applicationDirPath() + QStringLiteral("/logs");
+    QString logDir = QCoreApplication::applicationDirPath() + QStringLiteral("/logs");
     m_logDir = logDir;
 }
 
@@ -40,6 +36,39 @@ void Logger::setLogFilePath(const QString &dirPath)
     openLogFile();
 }
 
+void Logger::setRetentionDays(int days)
+{
+    QMutexLocker locker(&m_mutex);
+    m_retentionDays = days;
+}
+
+void Logger::cleanOldLogs()
+{
+    QMutexLocker locker(&m_mutex);
+
+    QDir logDir(m_logDir);
+    if (!logDir.exists())
+        return;
+
+    const QDate cutoffDate = QDate::currentDate().addDays(-m_retentionDays);
+    const QStringList filters = {QStringLiteral("attendance_*.log")};
+    const QFileInfoList fileList = logDir.entryInfoList(filters, QDir::Files, QDir::Name);
+
+    for (const QFileInfo &fileInfo : fileList) {
+        const QString baseName = fileInfo.baseName();
+        const QString dateStr = baseName.mid(11);
+        const QDate fileDate = QDate::fromString(dateStr, QStringLiteral("yyyy-MM-dd"));
+
+        if (fileDate.isValid() && fileDate < cutoffDate) {
+            if (QFile::remove(fileInfo.absoluteFilePath())) {
+                qDebug() << "已删除过期日志文件:" << fileInfo.fileName();
+            } else {
+                qWarning() << "删除日志文件失败:" << fileInfo.fileName();
+            }
+        }
+    }
+}
+
 void Logger::openLogFile()
 {
     QDir dir;
@@ -58,47 +87,53 @@ void Logger::openLogFile()
 QString Logger::levelToString(Level level)
 {
     switch (level) {
-    case Debug:   return QStringLiteral("DEBUG");
-    case Info:    return QStringLiteral("INFO");
-    case Warning: return QStringLiteral("WARNING");
-    case Error:   return QStringLiteral("ERROR");
+    case Info:  return QStringLiteral("INFO");
+    case Warn:  return QStringLiteral("WARN");
+    case Error: return QStringLiteral("ERROR");
     }
     return QStringLiteral("UNKNOWN");
 }
 
-void Logger::log(Level level, const QString &message,
-                 const char *file, int line, const char *func)
+QString Logger::categoryToString(Category category)
+{
+    switch (category) {
+    case System:     return QStringLiteral("SYSTEM");
+    case Login:      return QStringLiteral("LOGIN");
+    case Data:       return QStringLiteral("DATA");
+    case Config:     return QStringLiteral("CONFIG");
+    case Network:    return QStringLiteral("NETWORK");
+    case Attendance: return QStringLiteral("ATTENDANCE");
+    case Sync:       return QStringLiteral("SYNC");
+    case Recognition:return QStringLiteral("RECOGNITION");
+    case Command:    return QStringLiteral("COMMAND");
+    }
+    return QStringLiteral("UNKNOWN");
+}
+
+void Logger::log(Level level, Category category, const QString &message,
+                 const QString &detail)
 {
     QMutexLocker locker(&m_mutex);
 
-    const QString timestamp = QDateTime::currentDateTime().toString(QStringLiteral("yyyy-MM-dd hh:mm:ss.zzz"));
+    const QString timestamp = QDateTime::currentDateTime().toString(QStringLiteral("yyyy-MM-dd hh:mm:ss"));
     const QString levelStr  = levelToString(level);
+    const QString categoryStr = categoryToString(category);
 
     QString formatted;
-    if (file && func) {
-        // Extract just the filename (without full path)
-        const char *shortFile = strrchr(file, '/');
-        if (!shortFile) shortFile = strrchr(file, '\\');
-        formatted = QStringLiteral("[%1] [%2] [%3:%4 %5] %6")
-                        .arg(timestamp, levelStr)
-                        .arg(shortFile ? shortFile + 1 : file)
-                        .arg(line)
-                        .arg(QString::fromLatin1(func))
-                        .arg(message);
+    if (detail.isEmpty()) {
+        formatted = QStringLiteral("[%1] [%2] [%3] %4")
+                        .arg(timestamp, levelStr, categoryStr, message);
     } else {
-        formatted = QStringLiteral("[%1] [%2] %3")
-                        .arg(timestamp, levelStr, message);
+        formatted = QStringLiteral("[%1] [%2] [%3] %4 | %5")
+                        .arg(timestamp, levelStr, categoryStr, message, detail);
     }
 
     // Write to console
     switch (level) {
-    case Debug:
-        qDebug().noquote() << formatted;
-        break;
     case Info:
         qInfo().noquote() << formatted;
         break;
-    case Warning:
+    case Warn:
         qWarning().noquote() << formatted;
         break;
     case Error:
@@ -116,7 +151,6 @@ void Logger::log(Level level, const QString &message,
             (void)m_logFile.open(QIODevice::Append | QIODevice::Text);
         }
     } else {
-        // Try to reopen
         openLogFile();
     }
 

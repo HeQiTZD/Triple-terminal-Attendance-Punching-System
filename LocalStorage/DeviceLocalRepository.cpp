@@ -2,7 +2,6 @@
 #include "../Utils/DatabaseManager.h"
 #include <QSqlError>
 #include <QSqlQuery>
-#include <QDebug>
 
 DeviceLocalRepository::DeviceLocalRepository(const QString &dbPath)
     : m_dbPath(dbPath)
@@ -21,9 +20,7 @@ void DeviceLocalRepository::ensureRow(const QString &deviceId,
     query.bindValue(":dn",  deviceName.isEmpty() ? deviceId : deviceName);
     query.bindValue(":fw",  fwVersion);
 
-    if (!query.exec()) {
-        qWarning() << "DeviceLocalRepository ensureRow failed:" << query.lastError().text();
-    }
+    query.exec();
 }
 
 DeviceLocalInfo DeviceLocalRepository::get()
@@ -49,7 +46,6 @@ bool DeviceLocalRepository::updateDeviceId(const QString &deviceId)
     query.prepare("UPDATE device_local SET device_id = :v WHERE id = 1");
     query.bindValue(":v", deviceId);
     if (!query.exec()) {
-        qWarning() << "DeviceLocalRepository updateDeviceId failed:" << query.lastError().text();
         return false;
     }
     return true;
@@ -62,7 +58,6 @@ bool DeviceLocalRepository::updateDeviceName(const QString &deviceName)
     query.prepare("UPDATE device_local SET device_name = :v WHERE id = 1");
     query.bindValue(":v", deviceName);
     if (!query.exec()) {
-        qWarning() << "DeviceLocalRepository updateDeviceName failed:" << query.lastError().text();
         return false;
     }
     return true;
@@ -75,7 +70,6 @@ bool DeviceLocalRepository::updateIpAddress(const QString &ipAddress)
     query.prepare("UPDATE device_local SET ip_address = :v WHERE id = 1");
     query.bindValue(":v", ipAddress);
     if (!query.exec()) {
-        qWarning() << "DeviceLocalRepository updateIpAddress failed:" << query.lastError().text();
         return false;
     }
     return true;
@@ -88,7 +82,6 @@ bool DeviceLocalRepository::updateFwVersion(const QString &fwVersion)
     query.prepare("UPDATE device_local SET fw_version = :v WHERE id = 1");
     query.bindValue(":v", fwVersion);
     if (!query.exec()) {
-        qWarning() << "DeviceLocalRepository updateFwVersion failed:" << query.lastError().text();
         return false;
     }
     return true;

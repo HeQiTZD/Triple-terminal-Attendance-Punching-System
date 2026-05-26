@@ -1,0 +1,57 @@
+[2026-05-26 10:57:39.345] [INFO] [main.cpp:82 int main(int, char**)] AttendanceSystem starting
+[2026-05-26 10:57:39.354] [INFO] [networkclient.cpp:643 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=DEV000-text
+[2026-05-26 10:57:39.357] [INFO] [networkclient.cpp:274 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-26 10:57:39.364] [WARNING] [networkclient.cpp:978 void Networkclient::handleServerError(const QJsonObject&)] server error, code=2002
+[2026-05-26 10:58:12.978] [INFO] [main.cpp:82 int main(int, char**)] AttendanceSystem starting
+[2026-05-26 10:58:12.986] [INFO] [networkclient.cpp:643 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=DEV000-text
+[2026-05-26 10:58:13.007] [INFO] [networkclient.cpp:274 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-26 10:58:13.010] [WARNING] [networkclient.cpp:978 void Networkclient::handleServerError(const QJsonObject&)] server error, code=2002
+[2026-05-26 10:59:43.872] [INFO] [main.cpp:82 int main(int, char**)] AttendanceSystem starting
+[2026-05-26 10:59:43.880] [INFO] [networkclient.cpp:643 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=DEV001
+[2026-05-26 10:59:43.894] [INFO] [networkclient.cpp:274 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-26 10:59:43.902] [INFO] [networkclient.cpp:466 void Networkclient::handleAuthResponse(const QJsonObject&)] JWT 令牌已存储, expiresIn=3600
+[2026-05-26 10:59:43.902] [INFO] [networkclient.cpp:501 void Networkclient::handleAuthResponse(const QJsonObject&)] auth 成功, deviceId=DEV001 heartbeatSec=30
+[2026-05-26 10:59:43.919] [DEBUG] [networkclient.cpp:376 void Networkclient::onMessageReceived(const QJsonObject&)] 收到服务器心跳响应
+[2026-05-26 10:59:43.919] [WARNING] [networkclient.cpp:978 void Networkclient::handleServerError(const QJsonObject&)] server error, code=4000
+[2026-05-26 10:59:43.927] [WARNING] [networkclient.cpp:978 void Networkclient::handleServerError(const QJsonObject&)] server error, code=4000
+[2026-05-26 10:59:43.931] [WARNING] [networkclient.cpp:978 void Networkclient::handleServerError(const QJsonObject&)] server error, code=4000
+[2026-05-26 11:00:13.889] [DEBUG] [networkclient.cpp:376 void Networkclient::onMessageReceived(const QJsonObject&)] 收到服务器心跳响应
+[2026-05-26 11:00:34.129] [WARNING] [networkclient.cpp:978 void Networkclient::handleServerError(const QJsonObject&)] server error, code=4000
+[2026-05-26 11:00:43.890] [DEBUG] [networkclient.cpp:376 void Networkclient::onMessageReceived(const QJsonObject&)] 收到服务器心跳响应
+[2026-05-26 11:42:48.698] [INFO] [main.cpp:82 int main(int, char**)] AttendanceSystem starting
+[2026-05-26 11:42:48.707] [INFO] [networkclient.cpp:643 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=DEV001
+[2026-05-26 11:42:48.721] [INFO] [networkclient.cpp:274 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-26 11:42:48.757] [INFO] [networkclient.cpp:466 void Networkclient::handleAuthResponse(const QJsonObject&)] JWT 令牌已存储, expiresIn=3600
+[2026-05-26 11:42:48.758] [INFO] [networkclient.cpp:501 void Networkclient::handleAuthResponse(const QJsonObject&)] auth 成功, deviceId=DEV001 heartbeatSec=30
+[2026-05-26 11:42:48.776] [DEBUG] [networkclient.cpp:376 void Networkclient::onMessageReceived(const QJsonObject&)] 收到服务器心跳响应
+[2026-05-26 11:42:48.776] [WARNING] [networkclient.cpp:978 void Networkclient::handleServerError(const QJsonObject&)] server error, code=4000
+[2026-05-26 11:42:48.787] [WARNING] [networkclient.cpp:978 void Networkclient::handleServerError(const QJsonObject&)] server error, code=4000
+[2026-05-26 11:42:48.793] [WARNING] [networkclient.cpp:978 void Networkclient::handleServerError(const QJsonObject&)] server error, code=4000
+[2026-05-26 11:42:48.802] [WARNING] [networkclient.cpp:978 void Networkclient::handleServerError(const QJsonObject&)] server error, code=4000
+[2026-05-26 11:43:18.753] [DEBUG] [networkclient.cpp:376 void Networkclient::onMessageReceived(const QJsonObject&)] 收到服务器心跳响应
+[2026-05-26 17:02:55.757] [INFO] [main.cpp:82 int main(int, char**)] AttendanceSystem starting
+[2026-05-26 17:02:55.767] [INFO] [networkclient.cpp:643 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=DEV001
+[2026-05-26 17:02:55.770] [INFO] [networkclient.cpp:274 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-26 17:02:55.845] [INFO] [networkclient.cpp:466 void Networkclient::handleAuthResponse(const QJsonObject&)] JWT 令牌已存储, expiresIn=3600
+[2026-05-26 17:02:55.845] [INFO] [networkclient.cpp:501 void Networkclient::handleAuthResponse(const QJsonObject&)] auth 成功, deviceId=DEV001 heartbeatSec=30
+[2026-05-26 17:02:55.870] [DEBUG] [networkclient.cpp:376 void Networkclient::onMessageReceived(const QJsonObject&)] 收到服务器心跳响应
+[2026-05-26 17:02:55.870] [WARNING] [networkclient.cpp:978 void Networkclient::handleServerError(const QJsonObject&)] server error, code=4000
+[2026-05-26 17:02:55.883] [WARNING] [networkclient.cpp:978 void Networkclient::handleServerError(const QJsonObject&)] server error, code=4000
+[2026-05-26 17:02:55.890] [WARNING] [networkclient.cpp:978 void Networkclient::handleServerError(const QJsonObject&)] server error, code=4000
+[2026-05-26 17:02:55.894] [WARNING] [networkclient.cpp:978 void Networkclient::handleServerError(const QJsonObject&)] server error, code=4000
+[2026-05-26 17:22:02.062] [INFO] [main.cpp:82 int main(int, char**)] AttendanceSystem starting
+[2026-05-26 17:22:02.077] [INFO] [networkclient.cpp:643 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=DEV001
+[2026-05-26 17:22:02.092] [INFO] [networkclient.cpp:274 void Networkclient::onConnectionConnected()] TCP 已连接，发送认证
+[2026-05-26 17:22:02.156] [INFO] [networkclient.cpp:466 void Networkclient::handleAuthResponse(const QJsonObject&)] JWT 令牌已存储, expiresIn=3600
+[2026-05-26 17:22:02.157] [INFO] [networkclient.cpp:501 void Networkclient::handleAuthResponse(const QJsonObject&)] auth 成功, deviceId=DEV001 heartbeatSec=30
+[2026-05-26 17:22:02.174] [DEBUG] [networkclient.cpp:376 void Networkclient::onMessageReceived(const QJsonObject&)] 收到服务器心跳响应
+[2026-05-26 17:22:02.227] [INFO] [networkclient.cpp:898 void Networkclient::handleUploadResponse(const QJsonObject&)] 考勤上报成功, employeeId=EMP001
+[2026-05-26 17:22:02.234] [INFO] [networkclient.cpp:898 void Networkclient::handleUploadResponse(const QJsonObject&)] 考勤上报成功, employeeId=EMP001
+[2026-05-26 17:22:02.244] [INFO] [networkclient.cpp:898 void Networkclient::handleUploadResponse(const QJsonObject&)] 考勤上报成功, employeeId=EMP001
+[2026-05-26 17:22:02.253] [INFO] [networkclient.cpp:898 void Networkclient::handleUploadResponse(const QJsonObject&)] 考勤上报成功, employeeId=EMP001
+[2026-05-26 21:21:32] [INFO] [SYSTEM] 系统启动
+[2026-05-26 21:21:32] [INFO] [NETWORK] 网络客户端初始化完成 | deviceId=DEV001
+[2026-05-26 21:23:02] [INFO] [SYSTEM] 系统启动
+[2026-05-26 21:23:02] [INFO] [NETWORK] 网络客户端初始化完成 | deviceId=DEV001
+[2026-05-26 21:28:36] [INFO] [SYSTEM] 系统启动
+[2026-05-26 21:28:36] [INFO] [NETWORK] 网络客户端初始化完成 | deviceId=DEV001

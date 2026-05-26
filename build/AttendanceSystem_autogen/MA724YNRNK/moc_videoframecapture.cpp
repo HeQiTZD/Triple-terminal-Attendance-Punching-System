@@ -43,6 +43,8 @@ template <> constexpr inline auto VideoFrameCapture::qt_create_metaobjectdata<qt
         "",
         "QImage",
         "image",
+        "frameForDisplay",
+        "onFaceProcessingDone",
         "processFrame",
         "QVideoFrame",
         "frame"
@@ -53,9 +55,15 @@ template <> constexpr inline auto VideoFrameCapture::qt_create_metaobjectdata<qt
         QtMocHelpers::SignalData<void(QImage)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
             { 0x80000000 | 3, 4 },
         }}),
+        // Signal 'frameForDisplay'
+        QtMocHelpers::SignalData<void(QImage)>(5, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 3, 4 },
+        }}),
+        // Slot 'onFaceProcessingDone'
+        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'processFrame'
-        QtMocHelpers::SlotData<void(const QVideoFrame &)>(5, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { 0x80000000 | 6, 7 },
+        QtMocHelpers::SlotData<void(const QVideoFrame &)>(7, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 8, 9 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -81,14 +89,16 @@ void VideoFrameCapture::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->frameCaptured((*reinterpret_cast<std::add_pointer_t<QImage>>(_a[1]))); break;
-        case 1: _t->processFrame((*reinterpret_cast<std::add_pointer_t<QVideoFrame>>(_a[1]))); break;
+        case 1: _t->frameForDisplay((*reinterpret_cast<std::add_pointer_t<QImage>>(_a[1]))); break;
+        case 2: _t->onFaceProcessingDone(); break;
+        case 3: _t->processFrame((*reinterpret_cast<std::add_pointer_t<QVideoFrame>>(_a[1]))); break;
         default: ;
         }
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-        case 1:
+        case 3:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
             case 0:
@@ -99,6 +109,8 @@ void VideoFrameCapture::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
     }
     if (_c == QMetaObject::IndexOfMethod) {
         if (QtMocHelpers::indexOfMethod<void (VideoFrameCapture::*)(QImage )>(_a, &VideoFrameCapture::frameCaptured, 0))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (VideoFrameCapture::*)(QImage )>(_a, &VideoFrameCapture::frameForDisplay, 1))
             return;
     }
 }
@@ -122,14 +134,14 @@ int VideoFrameCapture::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 4;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 4;
     }
     return _id;
 }
@@ -138,5 +150,11 @@ int VideoFrameCapture::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 void VideoFrameCapture::frameCaptured(QImage _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1);
+}
+
+// SIGNAL 1
+void VideoFrameCapture::frameForDisplay(QImage _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 1, nullptr, _t1);
 }
 QT_WARNING_POP

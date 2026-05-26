@@ -486,6 +486,18 @@
 			null
 		],
 		[
+			"D:/QTproject/AttendanceSystem/Auth/tokenmanager.h",
+			"MU",
+			"6VUZMYBDM6/moc_tokenmanager.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/Auth/tokenrefresher.h",
+			"MU",
+			"6VUZMYBDM6/moc_tokenrefresher.cpp",
+			null
+		],
+		[
 			"D:/QTproject/AttendanceSystem/CameraCapture/cameracapture.h",
 			"MU",
 			"MA724YNRNK/moc_cameracapture.cpp",
@@ -618,6 +630,54 @@
 			null
 		],
 		[
+			"D:/QTproject/AttendanceSystem/UI/Components/ActionButton.h",
+			"MU",
+			"BURH55ZNO4/moc_ActionButton.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/UI/Components/IconButton.h",
+			"MU",
+			"BURH55ZNO4/moc_IconButton.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/UI/Components/InfoCard.h",
+			"MU",
+			"BURH55ZNO4/moc_InfoCard.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/UI/Components/InfoField.h",
+			"MU",
+			"BURH55ZNO4/moc_InfoField.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/UI/Components/SectionPanel.h",
+			"MU",
+			"BURH55ZNO4/moc_SectionPanel.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/UI/Components/StatusIndicator.h",
+			"MU",
+			"BURH55ZNO4/moc_StatusIndicator.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/UI/Components/ToastNotification.h",
+			"MU",
+			"BURH55ZNO4/moc_ToastNotification.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/UI/Theme/ThemeManager.h",
+			"MU",
+			"YV3ZDDT3MK/moc_ThemeManager.cpp",
+			null
+		],
+		[
 			"D:/QTproject/AttendanceSystem/UI/facevideowidget.h",
 			"MU",
 			"KRKR4BN5RM/moc_facevideowidget.cpp",
@@ -677,6 +737,7 @@
 	],
 	"MOC_INCLUDES" : 
 	[
+		"D:/QTproject/AttendanceSystem",
 		"D:/QTproject/AttendanceSystem/third_party/arcface/include",
 		"C:/Qt/6.10.2/mingw_64/include/QtCore",
 		"C:/Qt/6.10.2/mingw_64/include",
@@ -752,6 +813,8 @@
 			"MU",
 			null
 		],
+		[ "D:/QTproject/AttendanceSystem/Auth/tokenmanager.cpp", "MU", null ],
+		[ "D:/QTproject/AttendanceSystem/Auth/tokenrefresher.cpp", "MU", null ],
 		[
 			"D:/QTproject/AttendanceSystem/CameraCapture/cameracapture.cpp",
 			"MU",
@@ -854,6 +917,42 @@
 			null
 		],
 		[ "D:/QTproject/AttendanceSystem/Sync/SyncManager.cpp", "MU", null ],
+		[
+			"D:/QTproject/AttendanceSystem/UI/Components/ActionButton.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/UI/Components/IconButton.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/UI/Components/InfoCard.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/UI/Components/InfoField.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/UI/Components/SectionPanel.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/UI/Components/StatusIndicator.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/UI/Components/ToastNotification.cpp",
+			"MU",
+			null
+		],
+		[ "D:/QTproject/AttendanceSystem/UI/Theme/ThemeManager.cpp", "MU", null ],
 		[ "D:/QTproject/AttendanceSystem/UI/facevideowidget.cpp", "MU", null ],
 		[ "D:/QTproject/AttendanceSystem/UI/setwindow.cpp", "MU", null ],
 		[ "D:/QTproject/AttendanceSystem/Utils/Logger.cpp", "MU", null ],

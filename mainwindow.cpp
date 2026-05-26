@@ -158,15 +158,10 @@ void MainWindow::startNetworkConnection()
     ConfigManager* config = ConfigManager::instance();
     QString serverIp = config->getServerIP();
     quint16 serverPort = static_cast<quint16>(config->getServerPort());
-    qDebug() << "从配置文件读取服务器地址:" << serverIp << ":" << serverPort;
 
     //使用Qt::QueuedConnection异步调用连接（因为networkClient已在另一个线程）
     QMetaObject::invokeMethod(networkClient, [=](){
-        if(networkClient->connectToServer(serverIp, serverPort)){
-            qDebug() << "正在连接服务器...";
-        } else {
-            qWarning() << "连接服务器失败";
-        }
+        networkClient->connectToServer(serverIp, serverPort);
     }, Qt::QueuedConnection);
 }
 
@@ -213,7 +208,6 @@ void MainWindow::init()
         ConfigManager *cfg = ConfigManager::instance();
         const QString newKey = cfg->getDeviceKey();
         if (newKey != networkClient->deviceKey() && !newKey.isEmpty()) {
-            qDebug() << "Config applied: DeviceKey changed, scheduling reconnect";
             networkClient->setDeviceKey(newKey);
             QMetaObject::invokeMethod(networkClient, [=]() {
                 networkClient->scheduleReconnect();
@@ -272,7 +266,6 @@ void MainWindow::init()
     //摄像头初始化
     m_CameraCapture = new CameraCapture();
     if(!m_CameraCapture->initCamera()){
-        qWarning() << "摄像头初始化失败";
         m_VideoFrameCapture = nullptr;
         return;
     }
@@ -290,7 +283,6 @@ void MainWindow::init()
 void MainWindow::InfoWidget()
 {
     if (!m_VideoFrameCapture) {
-        qWarning() << "InfoWidget: VideoFrameCapture 未初始化";
         return;
     }
     m_VideoWidget = m_VideoFrameCapture->getVideoWidget();
@@ -329,7 +321,6 @@ void MainWindow::initInfoFields()
 void MainWindow::FaceFeatureStart()
 {
     if (!m_FaceRecognizer || !m_VideoFrameCapture) {
-        qWarning() << "FaceFeatureStart: FaceRecognizer 或 VideoFrameCapture 未初始化";
         return;
     }
 
@@ -384,6 +375,10 @@ void MainWindow::FaceFeatureStart()
         }
     });
 
+    // 连接帧丢弃反馈：FaceRecognizer 处理完一帧后通知 VideoFrameCapture 递减计数
+    connect(m_FaceRecognizer, &FaceRecognizer::faceProcessingCompleted,
+            m_VideoFrameCapture, &VideoFrameCapture::onFaceProcessingDone);
+
     // 连接显示用信号（已旋转），更新当前帧
     connect(m_VideoFrameCapture,&VideoFrameCapture::frameForDisplay,this,[=](const QImage &frame){
         FaceVideoWidget* faceWidget = qobject_cast<FaceVideoWidget*> (m_VideoWidget);
@@ -425,12 +420,6 @@ void MainWindow::initNetWorkStatus()
     // 连接信号
     connect(networkClient, &Networkclient::networkStateChanged,
             this, &MainWindow::onNetworkStateChanged, Qt::QueuedConnection);
-    connect(networkClient, &Networkclient::connected, this, [=](){
-        qDebug() << "网络已连接";
-    }, Qt::QueuedConnection);
-    connect(networkClient, &Networkclient::disconnected, this, [=](){
-        qDebug() << "网络已断开";
-    }, Qt::QueuedConnection);
 
     onNetworkStateChanged(false);
 }
@@ -442,14 +431,6 @@ void MainWindow::onRecognitionSuccess(const QString &employeeId,
                                       const QString &checkTime,
                                       const QImage &faceImage)
 {
-    qDebug() << "[打卡流程] ════════════════════════════════════════";
-    qDebug() << "[打卡流程] 打卡成功";
-    qDebug() << "[打卡流程] employeeId=" << employeeId;
-    qDebug() << "[打卡流程] name=" << name;
-    qDebug() << "[打卡流程] status=" << status;
-    qDebug() << "[打卡流程] checkTime=" << checkTime;
-    qDebug() << "[打卡流程] ════════════════════════════════════════";
-
     if (m_fieldEmployeeId) m_fieldEmployeeId->setValue(employeeId);
     if (m_fieldName)       m_fieldName->setValue(name);
     if (m_fieldStatus)     m_fieldStatus->setValue(status);
@@ -459,13 +440,8 @@ void MainWindow::onRecognitionSuccess(const QString &employeeId,
 //处理保存打卡记录请求
 void MainWindow::onSaveAttendanceRequest(const QString &employeeId, const QString &status)
 {
-    qDebug() << "[打卡流程] 收到保存打卡请求"
-             << "employeeId=" << employeeId
-             << "status=" << status;
-
     // 通过 AttendanceReporter 上报（outbox 持久化 + 异步发送 + 重试）
-    const QString msgId = m_attendanceReporter->report(employeeId, status, QDateTime::currentDateTime());
-    qDebug() << "[打卡流程] 打卡记录已提交, msgId=" << msgId;
+    m_attendanceReporter->report(employeeId, status, QDateTime::currentDateTime());
 }
 
 //更新时间显示
@@ -534,7 +510,6 @@ void MainWindow::restoreWindowSize()
     if (height > 1080) height = 1080;
 
     this->resize(width, height);
-    qDebug() << "恢复窗口大小:" << width << "x" << height;
 }
 
 //保存窗口大小到配置
@@ -544,7 +519,6 @@ void MainWindow::saveWindowSize()
     config->setMainWindowWidth(this->width());
     config->setMainWindowHeight(this->height());
     config->saveConfig();
-    qDebug() << "保存窗口大小:" << this->width() << "x" << this->height();
 }
 
 //窗口大小改变事件

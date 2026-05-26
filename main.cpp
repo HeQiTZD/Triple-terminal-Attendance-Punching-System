@@ -79,7 +79,8 @@ int main(int argc, char *argv[])
 
     // 初始化日志系统
     Logger::instance()->setLogFilePath(config->getLogPath());
-    LOG_INFO("AttendanceSystem starting");
+    Logger::instance()->cleanOldLogs();
+    LOG_SYS(Logger::Info, "系统启动");
 
     MainWindow w;
     w.show();

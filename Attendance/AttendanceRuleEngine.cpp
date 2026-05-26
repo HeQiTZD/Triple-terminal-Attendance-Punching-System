@@ -3,10 +3,6 @@
 #include "../Config/configmanager.h"
 #include "../LocalStorage/localstorage.h"
 
-#include <QDebug>
-#include <QElapsedTimer>
-#include <QTime>
-
 AttendanceRuleEngine* AttendanceRuleEngine::instance()
 {
     static AttendanceRuleEngine engine;
@@ -36,16 +32,7 @@ AttendanceCheckResult AttendanceRuleEngine::evaluate(const QDateTime &checkTime)
 AttendanceCheckResult AttendanceRuleEngine::evaluateWithEmployee(const QString &employeeId,
                                                                   const QDateTime &checkTime) const
 {
-    qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
-             << "[开始] 考勤规则判定";
-
-    QElapsedTimer timer;
-    timer.start();
-
     const bool isDuplicate = isDuplicateCheck(employeeId, checkTime);
-    qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
-             << "[进行中] 重复检测"
-             << "结果=" << (isDuplicate ? "已存在" : "无历史记录");
 
     if (isDuplicate) {
         AttendanceCheckResult result;
@@ -53,27 +40,10 @@ AttendanceCheckResult AttendanceRuleEngine::evaluateWithEmployee(const QString &
         result.isDuplicate = true;
         result.message = QStringLiteral("重复打卡");
         result.workDate = checkTime.date();
-
-        qint64 elapsed = timer.elapsed();
-        qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
-                 << "[完成] 考勤规则判定"
-                 << "status=" << result.status
-                 << "isValid=" << result.isValid
-                 << "message=" << result.message
-                 << "耗时=" << elapsed << "ms";
         return result;
     }
 
-    AttendanceCheckResult result = evaluate(checkTime);
-
-    qint64 elapsed = timer.elapsed();
-    qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
-             << "[完成] 考勤规则判定"
-             << "status=" << result.status
-             << "isValid=" << result.isValid
-             << "message=" << result.message
-             << "耗时=" << elapsed << "ms";
-    return result;
+    return evaluate(checkTime);
 }
 
 bool AttendanceRuleEngine::isInCheckInRange(const QTime &time) const
@@ -126,8 +96,6 @@ AttendanceCheckResult AttendanceRuleEngine::evaluateStandard(const QDateTime &ch
     if (!workStart.isValid() || !workEnd.isValid()
         || (!config->isCrossDayAllowed() && workStart >= workEnd)) {
         result.message = QStringLiteral("考勤规则配置无效");
-        qWarning() << "AttendanceRuleEngine: invalid work time config"
-                   << workStart << workEnd;
         return result;
     }
 
@@ -144,9 +112,6 @@ AttendanceCheckResult AttendanceRuleEngine::evaluateStandard(const QDateTime &ch
     const QTime workMiddle = workStart.addSecs(workSecs / 2);
 
     const bool inFullRange = isTimeInRange(timeOfDay, checkInStart, checkOutEnd);
-    qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
-             << "[进行中] 时间范围判定"
-             << "结果=" << (inFullRange ? "在范围内" : "不在范围内");
     if (!inFullRange) {
         result.message = QStringLiteral("不在有效打卡时间范围内");
         return result;

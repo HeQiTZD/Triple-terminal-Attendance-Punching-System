@@ -1,13 +1,11 @@
 #include "videoframeconverter.h"
 #include <QTransform>
-#include <QDebug>
 
 VideoFrameConverter::VideoFrameConverter() {}
 
-QImage VideoFrameConverter::convertToQImage(const QVideoFrame frame)
+QImage VideoFrameConverter::convertToQImage(const QVideoFrame &frame)
 {
     if (!frame.isValid()) {
-        qWarning() << "视频帧无效";
         return QImage();
     }
 
@@ -15,7 +13,6 @@ QImage VideoFrameConverter::convertToQImage(const QVideoFrame frame)
     QImage image = cloneFrame.toImage();
 
     if (image.isNull() || image.width() == 0 || image.height() == 0) {
-        qWarning() << "视频帧转换失败，格式:" << frame.pixelFormat();
         return QImage();
     }
 

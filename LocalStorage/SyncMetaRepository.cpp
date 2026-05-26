@@ -2,7 +2,6 @@
 #include "../Utils/DatabaseManager.h"
 #include <QSqlError>
 #include <QSqlQuery>
-#include <QDebug>
 
 SyncMetaRepository::SyncMetaRepository(const QString &dbPath)
     : m_dbPath(dbPath)
@@ -45,7 +44,6 @@ bool SyncMetaRepository::beginStaging(int stagingGeneration, const QString &requ
     query.bindValue(":msg",     requestMsgId);
 
     if (!query.exec()) {
-        qWarning() << "SyncMetaRepository beginStaging failed:" << query.lastError().text();
         return false;
     }
     return true;
@@ -56,21 +54,17 @@ bool SyncMetaRepository::commitGeneration(int &outCurrentGeneration, int faceCou
     SyncMeta meta = get();
     int staging = meta.stagingGeneration;
     if (staging <= 0) {
-        qWarning() << "SyncMetaRepository::commitGeneration: staging_generation is 0, nothing to commit";
         return false;
     }
 
-    // Delete features belonging to old generations
     QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
     QSqlQuery delQuery(db);
     delQuery.prepare("DELETE FROM face_feature WHERE sync_generation != :staging");
     delQuery.bindValue(":staging", staging);
     if (!delQuery.exec()) {
-        qWarning() << "SyncMetaRepository commitGeneration delete failed:" << delQuery.lastError().text();
         return false;
     }
 
-    // Switch current_generation to staging
     QSqlQuery updQuery(db);
     updQuery.prepare("UPDATE sync_meta SET current_generation = :curr, "
                      "staging_generation = 0, face_count = :fc, "
@@ -79,12 +73,10 @@ bool SyncMetaRepository::commitGeneration(int &outCurrentGeneration, int faceCou
     updQuery.bindValue(":fc",   faceCount);
 
     if (!updQuery.exec()) {
-        qWarning() << "SyncMetaRepository commitGeneration update failed:" << updQuery.lastError().text();
         return false;
     }
 
     outCurrentGeneration = staging;
-    qDebug() << "SyncMetaRepository: generation switched to" << staging << "face_count:" << faceCount;
     return true;
 }
 
@@ -95,7 +87,6 @@ bool SyncMetaRepository::updateStatus(const QString &status)
     query.prepare("UPDATE sync_meta SET last_sync_status = :st WHERE id = 1");
     query.bindValue(":st", status);
     if (!query.exec()) {
-        qWarning() << "SyncMetaRepository updateStatus failed:" << query.lastError().text();
         return false;
     }
     return true;
@@ -108,7 +99,6 @@ bool SyncMetaRepository::updateFaceCount(int count)
     query.prepare("UPDATE sync_meta SET face_count = :fc WHERE id = 1");
     query.bindValue(":fc", count);
     if (!query.exec()) {
-        qWarning() << "SyncMetaRepository updateFaceCount failed:" << query.lastError().text();
         return false;
     }
     return true;

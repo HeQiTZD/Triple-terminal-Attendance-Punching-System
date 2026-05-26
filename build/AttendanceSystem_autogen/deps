@@ -37,9 +37,11 @@ AttendanceSystem_autogen/timestamp: \
 	C:/Program\ Files/CMake/share/cmake-4.2/Modules/Platform/Windows-windres.cmake \
 	C:/Program\ Files/CMake/share/cmake-4.2/Modules/Platform/Windows.cmake \
 	C:/Program\ Files/CMake/share/cmake-4.2/Modules/Platform/WindowsPaths.cmake \
+	C:/Qt/6.10.2/mingw_64/include/QtCore/QAtomicInt \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QByteArray \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QDateTime \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QDebug \
+	C:/Qt/6.10.2/mingw_64/include/QtCore/QHash \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonArray \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonObject \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/QList \
@@ -214,6 +216,8 @@ AttendanceSystem_autogen/timestamp: \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qversiontagging.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qxptype_traits.h \
 	C:/Qt/6.10.2/mingw_64/include/QtCore/qyieldcpu.h \
+	C:/Qt/6.10.2/mingw_64/include/QtGui/QColor \
+	C:/Qt/6.10.2/mingw_64/include/QtGui/QFont \
 	C:/Qt/6.10.2/mingw_64/include/QtGui/QImage \
 	C:/Qt/6.10.2/mingw_64/include/QtGui/QMouseEvent \
 	C:/Qt/6.10.2/mingw_64/include/QtGui/QPainter \
@@ -289,8 +293,11 @@ AttendanceSystem_autogen/timestamp: \
 	C:/Qt/6.10.2/mingw_64/include/QtSql/qtsqlexports.h \
 	C:/Qt/6.10.2/mingw_64/include/QtSql/qtsqlglobal.h \
 	C:/Qt/6.10.2/mingw_64/include/QtWidgets/QMainWindow \
+	C:/Qt/6.10.2/mingw_64/include/QtWidgets/QPushButton \
 	C:/Qt/6.10.2/mingw_64/include/QtWidgets/QWidget \
+	C:/Qt/6.10.2/mingw_64/include/QtWidgets/qabstractbutton.h \
 	C:/Qt/6.10.2/mingw_64/include/QtWidgets/qmainwindow.h \
+	C:/Qt/6.10.2/mingw_64/include/QtWidgets/qpushbutton.h \
 	C:/Qt/6.10.2/mingw_64/include/QtWidgets/qsizepolicy.h \
 	C:/Qt/6.10.2/mingw_64/include/QtWidgets/qtabwidget.h \
 	C:/Qt/6.10.2/mingw_64/include/QtWidgets/qtwidgets-config.h \
@@ -793,6 +800,10 @@ AttendanceSystem_autogen/timestamp: \
 	D:/QTproject/AttendanceSystem/Attendance/AttendanceReporter.h \
 	D:/QTproject/AttendanceSystem/Attendance/AttendanceRuleEngine.cpp \
 	D:/QTproject/AttendanceSystem/Attendance/AttendanceRuleEngine.h \
+	D:/QTproject/AttendanceSystem/Auth/tokenmanager.cpp \
+	D:/QTproject/AttendanceSystem/Auth/tokenmanager.h \
+	D:/QTproject/AttendanceSystem/Auth/tokenrefresher.cpp \
+	D:/QTproject/AttendanceSystem/Auth/tokenrefresher.h \
 	D:/QTproject/AttendanceSystem/CMakeLists.txt \
 	D:/QTproject/AttendanceSystem/CameraCapture/cameracapture.cpp \
 	D:/QTproject/AttendanceSystem/CameraCapture/cameracapture.h \
@@ -838,6 +849,22 @@ AttendanceSystem_autogen/timestamp: \
 	D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h \
 	D:/QTproject/AttendanceSystem/Sync/SyncManager.cpp \
 	D:/QTproject/AttendanceSystem/Sync/SyncManager.h \
+	D:/QTproject/AttendanceSystem/UI/Components/ActionButton.cpp \
+	D:/QTproject/AttendanceSystem/UI/Components/ActionButton.h \
+	D:/QTproject/AttendanceSystem/UI/Components/IconButton.cpp \
+	D:/QTproject/AttendanceSystem/UI/Components/IconButton.h \
+	D:/QTproject/AttendanceSystem/UI/Components/InfoCard.cpp \
+	D:/QTproject/AttendanceSystem/UI/Components/InfoCard.h \
+	D:/QTproject/AttendanceSystem/UI/Components/InfoField.cpp \
+	D:/QTproject/AttendanceSystem/UI/Components/InfoField.h \
+	D:/QTproject/AttendanceSystem/UI/Components/SectionPanel.cpp \
+	D:/QTproject/AttendanceSystem/UI/Components/SectionPanel.h \
+	D:/QTproject/AttendanceSystem/UI/Components/StatusIndicator.cpp \
+	D:/QTproject/AttendanceSystem/UI/Components/StatusIndicator.h \
+	D:/QTproject/AttendanceSystem/UI/Components/ToastNotification.cpp \
+	D:/QTproject/AttendanceSystem/UI/Components/ToastNotification.h \
+	D:/QTproject/AttendanceSystem/UI/Theme/ThemeManager.cpp \
+	D:/QTproject/AttendanceSystem/UI/Theme/ThemeManager.h \
 	D:/QTproject/AttendanceSystem/UI/facevideowidget.cpp \
 	D:/QTproject/AttendanceSystem/UI/facevideowidget.h \
 	D:/QTproject/AttendanceSystem/UI/setwindow.cpp \

@@ -2,7 +2,6 @@
 #include "../Utils/DatabaseManager.h"
 #include <QSqlError>
 #include <QSqlQuery>
-#include <QDebug>
 
 AttendanceOutboxRepository::AttendanceOutboxRepository(const QString &dbPath)
     : m_dbPath(dbPath)
@@ -25,7 +24,6 @@ bool AttendanceOutboxRepository::enqueue(const OutboxRecord &record)
     query.bindValue(":state", record.state.isEmpty() ? QStringLiteral("pending") : record.state);
 
     if (!query.exec()) {
-        qWarning() << "AttendanceOutboxRepository enqueue failed:" << query.lastError().text();
         return false;
     }
     return true;
@@ -43,7 +41,6 @@ QVector<OutboxRecord> AttendanceOutboxRepository::fetchPending(int limit)
     query.bindValue(":lim", limit);
 
     if (!query.exec()) {
-        qWarning() << "AttendanceOutboxRepository fetchPending failed:" << query.lastError().text();
         return result;
     }
 
@@ -75,7 +72,6 @@ bool AttendanceOutboxRepository::markState(int id, const QString &state,
     query.bindValue(":id",  id);
 
     if (!query.exec()) {
-        qWarning() << "AttendanceOutboxRepository markState failed:" << query.lastError().text();
         return false;
     }
     return true;
@@ -91,7 +87,6 @@ bool AttendanceOutboxRepository::incrementRetry(int id, const QString &lastError
     query.bindValue(":id",  id);
 
     if (!query.exec()) {
-        qWarning() << "AttendanceOutboxRepository incrementRetry failed:" << query.lastError().text();
         return false;
     }
     return true;
@@ -106,7 +101,6 @@ bool AttendanceOutboxRepository::markDead(int id, const QString &reason)
     query.bindValue(":id",  id);
 
     if (!query.exec()) {
-        qWarning() << "AttendanceOutboxRepository markDead failed:" << query.lastError().text();
         return false;
     }
     return true;
@@ -120,7 +114,6 @@ bool AttendanceOutboxRepository::remove(int id)
     query.bindValue(":id", id);
 
     if (!query.exec()) {
-        qWarning() << "AttendanceOutboxRepository remove failed:" << query.lastError().text();
         return false;
     }
     return true;
@@ -134,7 +127,6 @@ bool AttendanceOutboxRepository::removeByClientMsgId(const QString &clientMsgId)
     query.bindValue(":cid", clientMsgId);
 
     if (!query.exec()) {
-        qWarning() << "AttendanceOutboxRepository removeByClientMsgId failed:" << query.lastError().text();
         return false;
     }
     return true;

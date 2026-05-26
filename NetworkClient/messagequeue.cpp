@@ -2,7 +2,6 @@
 
 Messagequeue::Messagequeue(QObject *parent): QObject(parent) {
     //队列和互斥锁自动初始化
-    qDebug()<<"MessageQueue:消息队列已创建";
 }
 
 void Messagequeue::enqueue(const QJsonObject &message)
@@ -12,20 +11,16 @@ void Messagequeue::enqueue(const QJsonObject &message)
     QMutexLocker locker(&m_mutex);
 
     m_queue.enqueue(message);
-
-    qDebug()<<"MessageQueue:消息已入队，当前队列大小："<<m_queue.size();
 }
 
 QJsonObject Messagequeue::dequeue()
 {
     QMutexLocker locker(&m_mutex);
     if(m_queue.isEmpty()){
-        qWarning()<<"MessageQueue:队列为空，无法出队";
         return QJsonObject();
     }
 
     QJsonObject message = m_queue.dequeue();
-    qDebug()<<"MessageQueue:消息已出队，当前队列大小："<<m_queue.size();
 
     return message;
 }
@@ -59,10 +54,7 @@ void Messagequeue::clear()
 {
     QMutexLocker locker(&m_mutex);
 
-    int oldSize = m_queue.size();
     m_queue.clear();
-
-    qDebug()<<"MessageQueue:d队列已清空，清除"<<oldSize<<"条消息";
 }
 
 

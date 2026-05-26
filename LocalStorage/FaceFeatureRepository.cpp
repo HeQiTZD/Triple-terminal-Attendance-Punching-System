@@ -2,7 +2,6 @@
 #include "../Utils/DatabaseManager.h"
 #include <QSqlError>
 #include <QSqlQuery>
-#include <QDebug>
 
 FaceFeatureRepository::FaceFeatureRepository(const QString &dbPath)
     : m_dbPath(dbPath)
@@ -25,7 +24,6 @@ bool FaceFeatureRepository::insertOrReplace(const QString &employeeId,
     query.bindValue(":gen", syncGeneration);
 
     if (!query.exec()) {
-        qWarning() << "FaceFeatureRepository insertOrReplace failed:" << query.lastError().text();
         return false;
     }
     return true;
@@ -46,7 +44,6 @@ bool FaceFeatureRepository::insertOrReplaceBatch(const QVector<FaceFeatureRecord
         query.bindValue(":size", r.featureSize);
         query.bindValue(":gen", syncGeneration);
         if (!query.exec()) {
-            qWarning() << "FaceFeatureRepository batch insert failed:" << query.lastError().text();
             return false;
         }
     }
@@ -63,7 +60,6 @@ QVector<FaceFeatureRecord> FaceFeatureRepository::loadByGeneration(int generatio
     query.bindValue(":gen", generation);
 
     if (!query.exec()) {
-        qWarning() << "FaceFeatureRepository loadByGeneration failed:" << query.lastError().text();
         return result;
     }
 
@@ -74,8 +70,6 @@ QVector<FaceFeatureRecord> FaceFeatureRepository::loadByGeneration(int generatio
         r.featureSize = query.value(2).toInt();
 
         if (r.featureSize != r.featureBlob.size()) {
-            qWarning() << "FaceFeatureRepository: feature_size mismatch for" << r.employeeId
-                       << "expected" << r.featureSize << "got" << r.featureBlob.size();
             continue;
         }
         result.append(r);
@@ -91,10 +85,8 @@ bool FaceFeatureRepository::deleteStale(int currentGeneration)
     query.bindValue(":gen", currentGeneration);
 
     if (!query.exec()) {
-        qWarning() << "FaceFeatureRepository deleteStale failed:" << query.lastError().text();
         return false;
     }
-    qDebug() << "FaceFeatureRepository: deleted stale features, affected" << query.numRowsAffected();
     return true;
 }
 
@@ -116,7 +108,6 @@ bool FaceFeatureRepository::clearAll()
     QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
     QSqlQuery query(db);
     if (!query.exec("DELETE FROM face_feature")) {
-        qWarning() << "FaceFeatureRepository clearAll failed:" << query.lastError().text();
         return false;
     }
     return true;

@@ -6,7 +6,6 @@
 #include <QCoreApplication>
 #include <QCryptographicHash>
 #include <QDateTime>
-#include <QDebug>
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
@@ -25,7 +24,6 @@ AttendanceConfigSyncHandler::AttendanceConfigSyncHandler(QObject *parent)
 
 void AttendanceConfigSyncHandler::requestConfig()
 {
-    qDebug() << "AttendanceConfigSyncHandler: requestConfig is waiting for server command support";
 }
 
 bool AttendanceConfigSyncHandler::initialize()
@@ -116,7 +114,6 @@ bool AttendanceConfigSyncHandler::saveToFile(const QJsonObject &config)
     const QString filePath = getConfigFilePath();
     QDir dir = QFileInfo(filePath).dir();
     if (!dir.exists() && !dir.mkpath(QStringLiteral("."))) {
-        qWarning() << "AttendanceConfigSyncHandler: cannot create config dir" << dir.absolutePath();
         return false;
     }
 
@@ -128,7 +125,6 @@ bool AttendanceConfigSyncHandler::saveToFile(const QJsonObject &config)
 
     QFile file(filePath);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
-        qWarning() << "AttendanceConfigSyncHandler: cannot write" << filePath << file.errorString();
         return false;
     }
 
@@ -146,7 +142,6 @@ QJsonObject AttendanceConfigSyncHandler::loadFromFile() const
     QJsonParseError error;
     const QJsonDocument doc = QJsonDocument::fromJson(file.readAll(), &error);
     if (error.error != QJsonParseError::NoError || !doc.isObject()) {
-        qWarning() << "AttendanceConfigSyncHandler: config json parse failed" << error.errorString();
         return {};
     }
 

@@ -64,12 +64,7 @@ void Networkclient::setDeviceKey(const QString &deviceKey)
 
 bool Networkclient::syncPersonData()
 {
-    if (!isConnected()) {
-        qWarning() << "Networkclient: 未连接，无法同步人员数据";
-        return false;
-    }
-    if (!m_writer) {
-        qWarning() << "Networkclient: writer未初始化，无法同步人员数据";
+    if (!isConnected() || !m_writer) {
         return false;
     }
 
@@ -98,13 +93,9 @@ QString Networkclient::uploadAttendance(const QString& employeeId,
 
     AttendanceOutboxRepository &outbox = LocalStorage::instance()->outbox();
     if (!outbox.enqueue(record)) {
-        qWarning() << "Networkclient: outbox 写入失败";
-        return clientMsgId; // 仍返回 msgId，调用方可追踪
+        return clientMsgId;
     }
 
-    qDebug() << "Networkclient: 考勤记录已写入 outbox, msgId=" << clientMsgId;
-
-    // 2. 如果已认证且连接中，通过 invokeMethod 将发送操作排队到网络线程
     if (m_isAuthenticated && m_writer) {
         QMetaObject::invokeMethod(this, [this, clientMsgId, employeeId, checkTime, status]() {
             AttendanceOutboxRepository &outbox = LocalStorage::instance()->outbox();
@@ -113,44 +104,21 @@ QString Networkclient::uploadAttendance(const QString& employeeId,
                 outbox.markState(stored.id, QStringLiteral("sending"));
             }
 
-            qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
-                     << "[开始] 发送打卡请求"
-                     << "employeeId=" << employeeId;
-
             const QJsonObject msg = ServerProtocol::buildAttendanceReport(
                 employeeId, checkTime, m_deviceId, status,
-                /*awaitPhoto=*/false, clientMsgId);
+                false, clientMsgId);
 
             if (!m_writer) {
-                qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
-                         << "[失败] 网络发送"
-                         << "msgId=" << clientMsgId
-                         << "原因=发送失败";
                 if (stored.id > 0)
                     outbox.markState(stored.id, QStringLiteral("pending"));
-                qWarning() << "Networkclient: 考勤发送失败，等待重试";
                 return;
             }
-
-            qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
-                     << "[进行中] 网络发送"
-                     << "msgId=" << clientMsgId;
 
             bool sent = m_writer->send(msg);
 
             if (!sent) {
-                qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
-                         << "[失败] 网络发送"
-                         << "msgId=" << clientMsgId
-                         << "原因=发送失败";
-                // 发送失败，退回 pending 等待重试
                 if (stored.id > 0)
                     outbox.markState(stored.id, QStringLiteral("pending"));
-                qWarning() << "Networkclient: 考勤发送失败，等待重试";
-            } else {
-                qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
-                         << "[完成] 网络发送"
-                         << "msgId=" << clientMsgId;
             }
         }, Qt::QueuedConnection);
     }
@@ -178,12 +146,8 @@ QString Networkclient::uploadAttendanceWithPhoto(const QString& employeeId,
 
     AttendanceOutboxRepository &outbox = LocalStorage::instance()->outbox();
     if (!outbox.enqueue(record)) {
-        qWarning() << "Networkclient: outbox 写入失败（带照片）";
         return clientMsgId;
     }
-
-    qDebug() << "Networkclient: 考勤记录（带照片）已写入 outbox, msgId=" << clientMsgId
-             << "photo size=" << photoJpeg.size();
 
     // 2. 通过 invokeMethod 将 awaitPhoto 发送流程排队到网络线程
     if (m_isAuthenticated && m_writer) {
@@ -203,7 +167,6 @@ QString Networkclient::uploadAttendanceWithPhoto(const QString& employeeId,
 
             if (!m_writer->send(reportMsg)) {
                 outbox.markState(stored.id, QStringLiteral("pending"));
-                qWarning() << "Networkclient: awaitPhoto report 发送失败";
                 return;
             }
 
@@ -213,14 +176,12 @@ QString Networkclient::uploadAttendanceWithPhoto(const QString& employeeId,
 
             if (!m_writer->send(headerMsg)) {
                 outbox.markState(stored.id, QStringLiteral("pending"));
-                qWarning() << "Networkclient: photo.header 发送失败";
                 return;
             }
 
             // 2c. 原始 JPEG 字节（无前缀）
             if (!m_writer->sendRawBytes(photoJpeg)) {
                 outbox.markState(stored.id, QStringLiteral("pending"));
-                qWarning() << "Networkclient: 照片原始字节发送失败";
                 return;
             }
         }, Qt::QueuedConnection);
@@ -232,7 +193,6 @@ QString Networkclient::uploadAttendanceWithPhoto(const QString& employeeId,
 bool Networkclient::uploadAttendanceBatch(const QVector<QJsonObject> &records)
 {
     if (!m_queue) {
-        qWarning() << "Networkclient: queue未初始化";
         return false;
     }
 
@@ -271,7 +231,7 @@ void Networkclient::reportDeviceStatus(const QJsonObject &status)
 
 void Networkclient::onConnectionConnected()
 {
-    LOG_INFO("TCP 已连接，发送认证");
+    LOG_NET(Logger::Info, "TCP连接成功", "操作=发送认证");
 
     QTcpSocket *socket = m_connection->socket();
     m_writer = new Messagewriter(socket);
@@ -303,7 +263,7 @@ void Networkclient::onConnectionConnected()
 
 void Networkclient::onConnectionDisconnected()
 {
-    LOG_INFO("连接断开，清理资源");
+    LOG_NET(Logger::Info, "连接断开", "操作=清理资源");
 
     m_heartbeat->stop();
 
@@ -373,7 +333,6 @@ void Networkclient::onMessageReceived(const QJsonObject &message)
         handleAuthResponse(message);
         break;
     case ServerProtocol::MessageType::HeartbeatResponse:
-        LOG_DEBUG("收到服务器心跳响应");
         m_heartbeat->onHeartbeatResponse();
         break;
     case ServerProtocol::MessageType::PersonSync:
@@ -381,21 +340,19 @@ void Networkclient::onMessageReceived(const QJsonObject &message)
         emit personSyncReceived(message);
         break;
     case ServerProtocol::MessageType::FaceSyncBegin:
-        qDebug() << "Networkclient: 收到人脸同步开始";
+        LOG_SYNC(Logger::Info, "人脸同步开始");
         emit faceSyncBeginReceived(message);
         break;
     case ServerProtocol::MessageType::FaceSyncEnd:
-        qDebug() << "Networkclient: 收到人脸同步结束";
+        LOG_SYNC(Logger::Info, "人脸同步结束");
         emit faceSyncEndReceived(message);
         break;
     case ServerProtocol::MessageType::AttendanceReportResponse:
         handleUploadResponse(message);
         break;
     case ServerProtocol::MessageType::DeviceStatusReportResponse:
-        qDebug() << "Networkclient: 收到设备状态上报响应";
         break;
     case ServerProtocol::MessageType::DeviceCommand:
-        qDebug() << "Networkclient: 收到远程指令";
         emit deviceCommandReceived(message);
         break;
     case ServerProtocol::MessageType::TokenRefreshResponse:
@@ -405,8 +362,6 @@ void Networkclient::onMessageReceived(const QJsonObject &message)
         handleServerError(message);
         break;
     default:
-        qWarning() << "Networkclient: 未知服务器消息"
-                   << message.value(ServerProtocol::kType).toString();
         break;
     }
 }
@@ -414,12 +369,6 @@ void Networkclient::onMessageReceived(const QJsonObject &message)
 void Networkclient::onBinaryFrameReceived(const QJsonObject &header, const QByteArray &payload)
 {
     m_heartbeat->onAnyMessage();
-
-    const QJsonObject frameData = header.value(QStringLiteral("data")).toObject();
-    qDebug() << "Networkclient: 收到二进制帧, employeeId="
-             << frameData.value(QStringLiteral("employeeId")).toString()
-             << "payload size=" << payload.size();
-
     emit faceSyncItemReceived(header, payload);
 }
 
@@ -463,7 +412,7 @@ void Networkclient::handleAuthResponse(const QJsonObject &message)
             // 启动自动刷新
             m_tokenRefresher->startAutoRefresh();
 
-            LOG_INFO(QStringLiteral("JWT 令牌已存储, expiresIn=%1").arg(expiresIn));
+            LOG_NET(Logger::Info, "JWT令牌已存储", QStringLiteral("expiresIn=%1").arg(expiresIn));
         }
 
         // 新增：检查是否收到新密钥
@@ -475,8 +424,7 @@ void Networkclient::handleAuthResponse(const QJsonObject &message)
             ConfigManager::instance()->setDeviceKey(newDeviceKey);
             ConfigManager::instance()->saveConfig();
 
-            LOG_INFO(QStringLiteral("Device key updated from server: %1 old: %2 - scheduling reconnect to verify")
-                         .arg(newDeviceKey, oldKey));
+            LOG_NET(Logger::Info, "设备密钥已更新", QStringLiteral("新密钥=%1 | 旧密钥=%2 | 操作=计划重连").arg(newDeviceKey, oldKey));
 
             // 延迟断开重连，让新密钥立即接受服务端验证
             QTimer::singleShot(300, this, &Networkclient::scheduleReconnect);
@@ -498,8 +446,7 @@ void Networkclient::handleAuthResponse(const QJsonObject &message)
         // 认证成功后启动心跳
         m_heartbeat->start(heartbeatSec > 0 ? heartbeatSec : 30);
 
-        LOG_INFO(QStringLiteral("auth 成功, deviceId=%1 heartbeatSec=%2")
-                     .arg(m_deviceId).arg(heartbeatSec));
+        LOG_NET(Logger::Info, "认证成功", QStringLiteral("deviceId=%1 | 心跳间隔=%2秒").arg(m_deviceId).arg(heartbeatSec));
 
         // 按需发送设备状态上报
         sendDeviceStatusReport();
@@ -519,11 +466,10 @@ void Networkclient::handleAuthResponse(const QJsonObject &message)
 
         // 新增：检查是否为设备待审核状态
         if (msgText.contains(QStringLiteral("pending authorization"))) {
-            // 设备待审核提示
-            qDebug() << "Device pending authorization, waiting for admin approval";
+            LOG_NET(Logger::Warn, "设备待审核", "状态=等待管理员审批");
             emit devicePendingAuth();
         } else {
-            LOG_ERROR(QStringLiteral("auth 失败 (2002), 凭据无效: %1").arg(msgText));
+            LOG_NET(Logger::Error, "认证失败", QStringLiteral("错误码=2002 | 详情=凭据无效: %1").arg(msgText));
             emit authFailed(code, msgText);
         }
 
@@ -531,7 +477,7 @@ void Networkclient::handleAuthResponse(const QJsonObject &message)
         // ---------- 2003：重复会话 ----------
         m_isAuthenticated = false;
         const QString msg = message.value(QStringLiteral("msg")).toString();
-        LOG_WARNING(QStringLiteral("auth 失败 (2003), 重复会话: %1").arg(msg));
+        LOG_NET(Logger::Warn, "认证失败", QStringLiteral("错误码=2003 | 详情=重复会话: %1").arg(msg));
         m_connection->disconnect();
         emit authFailed(code, msg);
 
@@ -540,7 +486,7 @@ void Networkclient::handleAuthResponse(const QJsonObject &message)
         m_isAuthenticated = false;
         m_connection->setAuthenticated(false);
         const QString msg = message.value(QStringLiteral("msg")).toString();
-        LOG_ERROR(QStringLiteral("auth 失败, code=%1 %2").arg(code).arg(msg));
+        LOG_NET(Logger::Error, "认证失败", QStringLiteral("错误码=%1 | 详情=%2").arg(code).arg(msg));
         emit authFailed(code, msg);
     }
 }
@@ -574,7 +520,6 @@ void Networkclient::sendDeviceStatusReport()
 
     if (!ipAddress.isEmpty() && ipAddress != lastIp) {
         devRepo.updateIpAddress(ipAddress);
-        qDebug() << "Networkclient: IP 变更" << lastIp << "→" << ipAddress;
     }
 
     // 构建并发送
@@ -587,8 +532,6 @@ void Networkclient::sendDeviceStatusReport()
 
     if (m_writer)
         m_writer->send(msg);
-
-    qDebug() << "Networkclient: 已发送 device.status.report, ip=" << reportIp;
 }
 
 // ---------------------------------------------------------------------------
@@ -597,21 +540,19 @@ void Networkclient::sendDeviceStatusReport()
 
 void Networkclient::onHeartbeatTimeout()
 {
-    LOG_WARNING("心跳超时，触发重连");
+    LOG_NET(Logger::Warn, "心跳超时", "操作=触发重连");
     m_connection->disconnect();
 }
 
 void Networkclient::onSendError()
 {
-    LOG_WARNING("消息发送错误");
+    LOG_NET(Logger::Warn, "消息发送失败");
 }
 
 void Networkclient::onSendHeartbeat(const QByteArray &data)
 {
     if (m_writer) {
         m_writer->send(data);
-    } else {
-        qWarning() << "Networkclient: writer未初始化，无法发送心跳";
     }
 }
 
@@ -640,7 +581,7 @@ Networkclient::Networkclient(QObject *parent)
     // 初始化令牌刷新器（延迟初始化，因为需要 this 指针）
     m_tokenRefresher = new TokenRefresher(this, m_tokenManager, this);
 
-    LOG_INFO(QStringLiteral("Networkclient 初始化完成, deviceId=%1").arg(m_deviceId));
+    LOG_NET(Logger::Info, "网络客户端初始化完成", QStringLiteral("deviceId=%1").arg(m_deviceId));
 }
 
 void Networkclient::setupConnections()
@@ -683,11 +624,8 @@ void Networkclient::processQueue()
     if (m_queue->isEmpty()) return;
 
     if (!m_writer) {
-        qWarning() << "Networkclient: writer未初始化，无法处理队列";
         return;
     }
-
-    qDebug() << "Networkclient: 处理队列" << m_queue->size() << "条消息等待发送";
 
     QVector<QJsonObject> message = m_queue->dequeueAll();
     int sent = m_writer->sendBatch(message);
@@ -695,8 +633,6 @@ void Networkclient::processQueue()
     if (sent < message.size()) {
         for (int i = sent; i < message.size(); ++i)
             m_queue->enqueue(message[i]);
-        qWarning() << "Networkclient: 队列处理中断"
-                   << (message.size() - sent) << "条重新入队";
     }
 }
 
@@ -711,7 +647,6 @@ void Networkclient::retryOutbox()
 bool Networkclient::sendJson(const QJsonObject &message)
 {
     if (!m_writer) {
-        qWarning() << "Networkclient::sendJson: writer 未初始化";
         return false;
     }
     // 自动添加 JWT 令牌（认证消息除外）
@@ -730,7 +665,6 @@ bool Networkclient::sendJson(const QJsonObject &message)
 void Networkclient::processOutbox()
 {
     if (!m_isAuthenticated || !m_writer) {
-        qDebug() << "Networkclient: processOutbox 跳过，未认证或无 writer";
         return;
     }
 
@@ -741,14 +675,13 @@ void Networkclient::processOutbox()
     for (const auto &r : allPending) {
         if (r.retryCount >= m_maxRetryCount && r.state != QLatin1String("dead")) {
             outbox.markDead(r.id, QStringLiteral("max retry %1 exceeded").arg(m_maxRetryCount));
-            LOG_WARNING(QStringLiteral("outbox 记录标记 dead, msgId=%1").arg(r.clientMsgId));
+            LOG_ATT(Logger::Warn, "记录标记为死信", QStringLiteral("msgId=%1 | 原因=达到最大重试次数").arg(r.clientMsgId));
         }
     }
 
     // 获取待发送记录（pending + failed，不含 dead）
     auto records = outbox.fetchPending(50);
     if (records.isEmpty()) {
-        qDebug() << "Networkclient: outbox 无待发送记录";
         m_outboxRetryRound = 0;
         return;
     }
@@ -776,7 +709,6 @@ void Networkclient::processOutbox()
 
         m_writer->send(msg);
         outbox.markState(r.id, QStringLiteral("sending"));
-        qDebug() << "Networkclient: outbox 重试发送, msgId=" << r.clientMsgId;
     }
 
     // 带照片记录：逐个发送完整 awaitPhoto 流程
@@ -787,7 +719,7 @@ void Networkclient::processOutbox()
             QDateTime::fromString(r.checkTime, QStringLiteral("yyyy-MM-dd HH:mm:ss")),
             m_deviceId,
             r.status,
-            /*awaitPhoto=*/true,
+            true,
             r.clientMsgId);
 
         m_writer->send(reportMsg);
@@ -802,14 +734,11 @@ void Networkclient::processOutbox()
         m_writer->sendRawBytes(r.photoBlob);
 
         outbox.markState(r.id, QStringLiteral("sending"));
-        qDebug() << "Networkclient: outbox 重试发送（带照片）, msgId=" << r.clientMsgId;
     }
 }
 
 void Networkclient::onOutboxRetryTick()
 {
-    qDebug() << "Networkclient: outbox 退避重试, round=" << m_outboxRetryRound;
-
     if (m_isAuthenticated && m_writer) {
         processOutbox();
     }
@@ -817,7 +746,7 @@ void Networkclient::onOutboxRetryTick()
 
 void Networkclient::scheduleReconnect()
 {
-    LOG_INFO("密钥已更新，正在断开并重连以验证新密钥...");
+    LOG_NET(Logger::Info, "密钥已更新", "操作=断开重连以验证新密钥");
     m_connection->scheduleReconnect();
 }
 
@@ -840,13 +769,13 @@ void Networkclient::handlePersonSynResponse(const QJsonObject &message)
         persons.push_back(p);
     }
 
-    qDebug() << "Networkclient: 收到人员数据：" << persons.size() << "条";
+    LOG_SYNC(Logger::Info, "收到人员数据", QStringLiteral("数量=%1条").arg(persons.size()));
 
     if (LocalStorage::instance()->syncPersons(persons)) {
         FaceDatabaseManager::instance()->loadFromDatabase();
         emit personDataReceived(persons);
     } else {
-        qWarning() << "人员数据同步到本地数据库失败";
+        LOG_SYNC(Logger::Error, "人员数据同步失败", "详情=写入本地数据库失败");
     }
 }
 
@@ -861,13 +790,6 @@ void Networkclient::handleUploadResponse(const QJsonObject &message)
         code = d.value(QStringLiteral("code")).toInt(0);
     }
 
-    qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
-             << "[收到] 服务器响应"
-             << "msgId=" << inReplyTo;
-
-    qDebug() << "Networkclient: 收到 attendance.report.response, inReplyTo=" << inReplyTo
-             << "code=" << code;
-
     if (inReplyTo.isEmpty()) {
         // 无 inReplyTo，无法匹配 outbox 记录，按旧逻辑处理
         bool success = (code == ServerProtocol::kCodeOk);
@@ -881,32 +803,15 @@ void Networkclient::handleUploadResponse(const QJsonObject &message)
 
     if (record.id == 0) {
         // outbox 中未找到（可能已被清理），仅发信号
-        qDebug() << "Networkclient: outbox 中未找到 msgId=" << inReplyTo;
         bool success = (code == ServerProtocol::kCodeOk);
         emit uploadFinished(success, message.value(QStringLiteral("msg")).toString());
         return;
     }
 
-    qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
-             << "[完成] 收到服务器响应"
-             << "msgId=" << inReplyTo
-             << "code=" << code;
-
     if (code == ServerProtocol::kCodeOk) {
         // ---------- 成功：删除 outbox 记录 ----------
         outbox.remove(record.id);
-        LOG_INFO(QStringLiteral("考勤上报成功, employeeId=%1").arg(record.employeeId));
-
-        qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
-                 << "[完成] 更新Outbox状态"
-                 << "msgId=" << inReplyTo
-                 << "新状态=confirmed";
-
-        qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
-                 << "[完成] 打卡记录上传"
-                 << "employeeId=" << record.employeeId
-                 << "msgId=" << inReplyTo
-                 << "状态=成功";
+        LOG_ATT(Logger::Info, "考勤上报成功", QStringLiteral("employeeId=%1 | msgId=%2").arg(record.employeeId, inReplyTo));
 
         emit attendanceReportResult(record.employeeId, true, QString());
         emit uploadFinished(true, QStringLiteral("ok"));
@@ -917,13 +822,7 @@ void Networkclient::handleUploadResponse(const QJsonObject &message)
     } else if (code == ServerProtocol::kCodeEmployeeNotFound) {
         // ---------- 4011：员工不存在 → dead ----------
         outbox.markDead(record.id, QStringLiteral("employee not found (4011)"));
-        LOG_WARNING(QStringLiteral("员工不存在, 标记 dead, employeeId=%1").arg(record.employeeId));
-
-        qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
-                 << "[失败] 打卡记录上传"
-                 << "employeeId=" << record.employeeId
-                 << "msgId=" << inReplyTo
-                 << "原因=employee not found";
+        LOG_ATT(Logger::Error, "考勤上报失败", QStringLiteral("employeeId=%1 | msgId=%2 | 原因=员工不存在").arg(record.employeeId, inReplyTo));
 
         emit attendanceReportResult(record.employeeId, false, QStringLiteral("employee not found"));
         emit uploadFinished(false, QStringLiteral("employee not found"));
@@ -938,23 +837,12 @@ void Networkclient::handleUploadResponse(const QJsonObject &message)
         const int newRetryCount = record.retryCount + 1;
         if (newRetryCount >= m_maxRetryCount) {
             outbox.markDead(record.id, QStringLiteral("max retry after error"));
-            LOG_ERROR(QStringLiteral("达到最大重试次数, 标记 dead, employeeId=%1").arg(record.employeeId));
+            LOG_ATT(Logger::Error, "考勤上报失败", QStringLiteral("employeeId=%1 | msgId=%2 | 原因=达到最大重试次数").arg(record.employeeId, inReplyTo));
         } else {
             outbox.markState(record.id, QStringLiteral("failed"),
                              QStringLiteral("code=%1").arg(code));
-            LOG_WARNING(QStringLiteral("考勤上报失败, 将重试, retry=%1").arg(newRetryCount));
+            LOG_ATT(Logger::Warn, "考勤上报失败", QStringLiteral("employeeId=%1 | msgId=%2 | 错误码=%3 | 重试次数=%4").arg(record.employeeId, inReplyTo).arg(code).arg(newRetryCount));
         }
-
-        qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
-                 << "[完成] 更新Outbox状态"
-                 << "msgId=" << inReplyTo
-                 << "新状态=" << (newRetryCount >= m_maxRetryCount ? "dead" : "failed");
-
-        qDebug() << "[打卡流程]" << QTime::currentTime().toString("HH:mm:ss.zzz")
-                 << "[失败] 打卡记录上传"
-                 << "employeeId=" << record.employeeId
-                 << "msgId=" << inReplyTo
-                 << "原因=" << message.value(QStringLiteral("msg")).toString();
 
         emit attendanceReportResult(record.employeeId, false,
                                     QStringLiteral("code=%1").arg(code));
@@ -965,7 +853,7 @@ void Networkclient::handleUploadResponse(const QJsonObject &message)
             m_outboxRetryRound++;
             int delay = m_retryBackoffBaseMs * (1 << qMin(m_outboxRetryRound, 4));
             m_outboxRetryTimer->start(delay);
-            qDebug() << "Networkclient: outbox 退避重试 scheduled, delay=" << delay << "ms";
+            LOG_ATT(Logger::Info, "计划退避重试", QStringLiteral("延迟=%1ms").arg(delay));
         }
     }
 }
@@ -975,7 +863,7 @@ void Networkclient::handleServerError(const QJsonObject &message)
     const QString inReplyTo = message.value(QStringLiteral("inReplyTo")).toString();
     int code = message.value(QStringLiteral("code")).toInt(-1);
 
-    LOG_WARNING(QStringLiteral("server error, code=%1").arg(code));
+    LOG_NET(Logger::Warn, "服务器错误", QStringLiteral("错误码=%1").arg(code));
 
     // 如果 error 消息关联了考勤上报，按同样的逻辑处理
     if (!inReplyTo.isEmpty()) {
@@ -1002,7 +890,6 @@ void Networkclient::handleServerError(const QJsonObject &message)
 
 void Networkclient::handleTokenRefreshResponse(const QJsonObject &message)
 {
-    qDebug() << "Networkclient: 收到令牌刷新响应";
     emit tokenRefreshResponse(message);
 }
 

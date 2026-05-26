@@ -1,2 +1,10 @@
 [2026-05-25 10:49:06.747] [INFO] [main.cpp:82 int main(int, char**)] AttendanceSystem starting
 [2026-05-25 10:49:06.758] [INFO] [networkclient.cpp:612 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=DEV000-text
+[2026-05-25 15:17:54.720] [INFO] [main.cpp:82 int main(int, char**)] AttendanceSystem starting
+[2026-05-25 15:17:54.727] [INFO] [networkclient.cpp:612 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=DEV000-text
+[2026-05-25 15:20:49.725] [INFO] [main.cpp:82 int main(int, char**)] AttendanceSystem starting
+[2026-05-25 15:20:49.735] [INFO] [networkclient.cpp:612 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=DEV000-text
+[2026-05-25 15:44:47.398] [INFO] [main.cpp:82 int main(int, char**)] AttendanceSystem starting
+[2026-05-25 15:44:47.407] [INFO] [networkclient.cpp:612 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=DEV000-text
+[2026-05-25 22:50:48.514] [INFO] [main.cpp:82 int main(int, char**)] AttendanceSystem starting
+[2026-05-25 22:50:48.526] [INFO] [networkclient.cpp:643 Networkclient::Networkclient(QObject*)] Networkclient 初始化完成, deviceId=DEV000-text

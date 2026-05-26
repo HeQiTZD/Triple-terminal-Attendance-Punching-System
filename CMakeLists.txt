@@ -64,7 +64,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 
         FaceRecognition/arcfaceengine.h FaceRecognition/arcfaceengine.cpp
 
-        FaceRecognition/facerecognizer.cpp
+        
         third_party/arcface/include/merror.h
         FaceRecognition/facedatabasemanager.h FaceRecognition/facedatabasemanager.cpp
         FaceRecognition/facerecognizer.h FaceRecognition/facerecognizer.cpp

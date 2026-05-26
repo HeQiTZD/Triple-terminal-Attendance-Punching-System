@@ -1,5 +1,6 @@
 D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/EWIEGA46WW/moc_mainwindow.cpp: D:/QTproject/AttendanceSystem/mainwindow.h \
   D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/moc_predefs.h \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/QAtomicInt \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QByteArray \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QDateTime \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QDebug \
@@ -11,6 +12,7 @@ D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/EWIEGA46WW/moc_main
   C:/Qt/6.10.2/mingw_64/include/QtCore/QPair \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QQueue \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QRect \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/QSettings \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QSize \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QSizeF \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QString \
@@ -120,6 +122,7 @@ D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/EWIEGA46WW/moc_main
   C:/Qt/6.10.2/mingw_64/include/QtCore/qscopedpointer.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qscopeguard.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qset.h \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/qsettings.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qshareddata.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qshareddata_impl.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qsharedpointer.h \
@@ -249,8 +252,11 @@ D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/EWIEGA46WW/moc_main
   C:/Qt/6.10.2/mingw_64/include/QtSql/qtsqlexports.h \
   C:/Qt/6.10.2/mingw_64/include/QtSql/qtsqlglobal.h \
   C:/Qt/6.10.2/mingw_64/include/QtWidgets/QMainWindow \
+  C:/Qt/6.10.2/mingw_64/include/QtWidgets/QPushButton \
   C:/Qt/6.10.2/mingw_64/include/QtWidgets/QWidget \
+  C:/Qt/6.10.2/mingw_64/include/QtWidgets/qabstractbutton.h \
   C:/Qt/6.10.2/mingw_64/include/QtWidgets/qmainwindow.h \
+  C:/Qt/6.10.2/mingw_64/include/QtWidgets/qpushbutton.h \
   C:/Qt/6.10.2/mingw_64/include/QtWidgets/qsizepolicy.h \
   C:/Qt/6.10.2/mingw_64/include/QtWidgets/qtabwidget.h \
   C:/Qt/6.10.2/mingw_64/include/QtWidgets/qtwidgets-config.h \
@@ -478,10 +484,13 @@ D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/EWIEGA46WW/moc_main
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
   D:/QTproject/AttendanceSystem/Attendance/AttendanceReporter.h \
+  D:/QTproject/AttendanceSystem/Auth/tokenmanager.h \
+  D:/QTproject/AttendanceSystem/Auth/tokenrefresher.h \
   D:/QTproject/AttendanceSystem/CameraCapture/cameracapture.h \
   D:/QTproject/AttendanceSystem/CameraCapture/videoframecapture.h \
   D:/QTproject/AttendanceSystem/CameraCapture/videoframeconverter.h \
   D:/QTproject/AttendanceSystem/Command/CommandHandler.h \
+  D:/QTproject/AttendanceSystem/Config/configmanager.h \
   D:/QTproject/AttendanceSystem/FaceRecognition/arcfaceengine.h \
   D:/QTproject/AttendanceSystem/FaceRecognition/facedatabasemanager.h \
   D:/QTproject/AttendanceSystem/FaceRecognition/facerecognizer.h \
@@ -498,6 +507,10 @@ D:/QTproject/AttendanceSystem/build/AttendanceSystem_autogen/EWIEGA46WW/moc_main
   D:/QTproject/AttendanceSystem/NetworkClient/networkclient.h \
   D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h \
   D:/QTproject/AttendanceSystem/Sync/SyncManager.h \
+  D:/QTproject/AttendanceSystem/UI/Components/ActionButton.h \
+  D:/QTproject/AttendanceSystem/UI/Components/IconButton.h \
+  D:/QTproject/AttendanceSystem/UI/Components/InfoField.h \
+  D:/QTproject/AttendanceSystem/UI/Components/StatusIndicator.h \
   D:/QTproject/AttendanceSystem/UI/facevideowidget.h \
   D:/QTproject/AttendanceSystem/UI/setwindow.h \
   D:/QTproject/AttendanceSystem/third_party/arcface/include/amcomdef.h \

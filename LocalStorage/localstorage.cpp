@@ -3,7 +3,6 @@
 #include "../Utils/DatabaseManager.h"
 
 #include <QCoreApplication>
-#include <QDebug>
 #include <QDir>
 #include <QFileInfo>
 #include <QSqlError>
@@ -13,9 +12,6 @@
 LocalStorage* LocalStorage::s_instance = nullptr;
 QMutex LocalStorage::s_mutex;
 
-// ============================================================
-// Initial schema DDL — mirrors 001_initial.sql
-// ============================================================
 static const char* kInitialSchema = R"SQL(
 CREATE TABLE IF NOT EXISTS face_feature (
     employee_id     TEXT NOT NULL PRIMARY KEY,
@@ -96,8 +92,6 @@ LocalStorage::~LocalStorage()
     }
 }
 
-// ---- Repository accessors ----
-
 FaceFeatureRepository& LocalStorage::faceFeatures()
 {
     return *m_faceFeatures;
@@ -118,10 +112,6 @@ DeviceLocalRepository& LocalStorage::deviceLocal()
     return *m_deviceLocal;
 }
 
-// ============================================================
-// Database connection & migration
-// ============================================================
-
 bool LocalStorage::connectDatabse()
 {
     ConfigManager* config = ConfigManager::instance();
@@ -133,17 +123,13 @@ bool LocalStorage::connectDatabse()
         config->saveConfig();
     }
 
-    qDebug() << "数据库路径:" << dbFilePath;
-
     QFileInfo dbFileInfo(dbFilePath);
     QString dbDir = dbFileInfo.path();
     QDir dataDir;
     if (!dataDir.exists(dbDir)) {
         if (!dataDir.mkpath(dbDir)) {
-            qDebug() << "数据库目录创建失败:" << dbDir;
             return false;
         }
-        qDebug() << "数据库目录创建成功:" << dbDir;
     }
 
     m_dbPath = dbFilePath;
@@ -152,11 +138,9 @@ bool LocalStorage::connectDatabse()
     m_db.setDatabaseName(dbFilePath);
 
     if (!m_db.open()) {
-        qDebug() << "数据库打开失败:" << m_db.lastError().text();
         return false;
     }
 
-    // Enable WAL mode for concurrent read (face recognition) + write (sync)
     {
         QSqlQuery q(m_db);
         q.exec("PRAGMA journal_mode=WAL");
@@ -164,27 +148,22 @@ bool LocalStorage::connectDatabse()
         q.exec("PRAGMA encoding='UTF-8'");
     }
 
-    // Run schema migrations
     if (!runMigrations()) {
-        qDebug() << "Schema 迁移失败";
         m_db.close();
         return false;
     }
 
-    // Create repositories
     m_faceFeatures = new FaceFeatureRepository(m_dbPath);
     m_outbox       = new AttendanceOutboxRepository(m_dbPath);
     m_syncMeta     = new SyncMetaRepository(m_dbPath);
     m_deviceLocal  = new DeviceLocalRepository(m_dbPath);
 
-    // Ensure single-row tables have their rows
     m_syncMeta->ensureRow();
     m_deviceLocal->ensureRow(
         config->getDeviceId().isEmpty() ? QStringLiteral("device_001") : config->getDeviceId(),
         config->getDeviceId(),
         config->getFwVersion());
 
-    qDebug() << "数据库初始化成功";
     return true;
 }
 
@@ -202,7 +181,6 @@ bool LocalStorage::runMigrations()
         return false;
     }
 
-    // Read current version
     int currentVersion = 0;
     {
         QSqlQuery q(m_db);
@@ -211,8 +189,6 @@ bool LocalStorage::runMigrations()
         }
     }
 
-    qDebug() << "当前 Schema 版本:" << currentVersion;
-
     if (currentVersion < 1) {
         if (!runInitialSchema()) {
             return false;
@@ -220,18 +196,11 @@ bool LocalStorage::runMigrations()
         currentVersion = 1;
     }
 
-    // Future migrations go here:
-    // if (currentVersion < 2) { runMigration2(); }
-
-    qDebug() << "Schema 迁移完成，版本:" << currentVersion;
     return true;
 }
 
 bool LocalStorage::runInitialSchema()
 {
-    qDebug() << "执行初始 Schema 建表...";
-
-    // Drop all tables (since we're doing a fresh start)
     {
         QSqlQuery q(m_db);
         q.exec("DROP TABLE IF EXISTS face_feature");
@@ -243,7 +212,6 @@ bool LocalStorage::runInitialSchema()
         q.exec("DROP TABLE IF EXISTS Person");
     }
 
-    // Execute each statement separately (SQLite doesn't support multiple statements in one exec)
     QStringList statements = {
         R"SQL(
         CREATE TABLE IF NOT EXISTS face_feature (
@@ -307,8 +275,6 @@ bool LocalStorage::runInitialSchema()
     QSqlQuery q(m_db);
     for (const QString &stmt : statements) {
         if (!q.exec(stmt)) {
-            qWarning() << "初始 Schema 执行失败:" << q.lastError().text();
-            qWarning() << "失败的SQL:" << stmt.left(50) << "...";
             return false;
         }
     }
@@ -316,28 +282,21 @@ bool LocalStorage::runInitialSchema()
     return true;
 }
 
-// ============================================================
-// Backward-compatible API
-// ============================================================
-
 bool LocalStorage::syncPersons(const QVector<ServerProtocol::PersonData> &persons)
 {
     QMutexLocker locker(&s_mutex);
 
     QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
     if (!db.isOpen()) {
-        qDebug() << "数据库未连接";
         emit personsSyncFailed("数据库未连接");
         return false;
     }
 
     if (!db.transaction()) {
-        qDebug() << "开启事务失败:" << db.lastError().text();
         emit personsSyncFailed("开启事务失败");
         return false;
     }
 
-    // Only persist face features to device — personal info stays on server
     QSqlQuery query(db);
     query.prepare("INSERT OR REPLACE INTO face_feature "
                   "(employee_id, feature_blob, feature_size, updated_at, sync_generation) "
@@ -353,8 +312,6 @@ bool LocalStorage::syncPersons(const QVector<ServerProtocol::PersonData> &person
         query.bindValue(":size", person.featureSize);
 
         if (!query.exec()) {
-            qWarning() << "插入人脸特征失败:" << query.lastError().text()
-                       << "employeeId:" << person.employeeId;
             db.rollback();
             emit personsSyncFailed(QString("插入人脸特征失败: %1").arg(person.employeeId));
             return false;
@@ -363,13 +320,11 @@ bool LocalStorage::syncPersons(const QVector<ServerProtocol::PersonData> &person
     }
 
     if (!db.commit()) {
-        qWarning() << "提交事务失败:" << db.lastError().text();
         db.rollback();
         emit personsSyncFailed("提交事务失败");
         return false;
     }
 
-    qDebug() << "人脸特征同步成功: 有效" << successCount << "条 / 总" << persons.size() << "条";
     emit personsSyncCompleted(successCount);
     return true;
 }
@@ -379,7 +334,6 @@ bool LocalStorage::addAttendanceRecord(const QString &employeeId, const QString 
     QMutexLocker locker(&s_mutex);
 
     if (!m_db.isOpen()) {
-        qDebug() << "数据库未连接";
         return false;
     }
 

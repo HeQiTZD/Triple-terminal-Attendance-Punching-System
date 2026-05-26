@@ -1,5 +1,6 @@
 D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceSystem_autogen/MA724YNRNK/moc_videoframecapture.cpp: D:/QTproject/AttendanceSystem/CameraCapture/videoframecapture.h \
   D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceSystem_autogen/moc_predefs.h \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/QAtomicInt \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QDebug \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QMutex \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QObject \

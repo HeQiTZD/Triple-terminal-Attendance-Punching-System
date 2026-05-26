@@ -1,5 +1,6 @@
 ﻿#include "videoframecapture.h"
 #include "videoframeconverter.h"
+#include <QTransform>
 
 VideoFrameCapture::VideoFrameCapture(QObject *parent)
     : QObject(parent)
@@ -51,22 +52,36 @@ QWidget *VideoFrameCapture::getVideoWidget() const
 //处理视频帧
 void VideoFrameCapture::processFrame(const QVideoFrame &frame)
 {
-    // 始终用无旋转转换 → 给 FaceRecognizer（人脸检测需要正立图像）
-    QImage rawImage = VideoFrameConverter().convertToQImage(frame);
-
-    if (!rawImage.isNull() && rawImage.width() > 0 && rawImage.height() > 0) {
-        currentFrame = rawImage;
-        emit frameCaptured(currentFrame);
-
-        // 显示用：应用旋转
-        QImage displayImage;
-        if (m_converter && m_converter->rotation() != 0) {
-            displayImage = m_converter->convertToQImage(frame);
-        } else {
-            displayImage = rawImage;
-        }
-        emit frameForDisplay(displayImage);
+    // 帧丢弃：人脸识别线程来不及处理时跳过当前帧，防止事件队列堆积导致内存持续增长
+    if (m_pendingFrames.loadRelaxed() >= kMaxPendingFrames) {
+        return;
     }
+
+    // 转换为 QImage（始终无旋转，给 FaceRecognizer 做人脸检测）
+    QVideoFrame cloneFrame = frame;
+    QImage rawImage = cloneFrame.toImage();
+
+    if (rawImage.isNull() || rawImage.width() <= 0 || rawImage.height() <= 0) {
+        return;
+    }
+
+    currentFrame = rawImage;
+    m_pendingFrames.ref();
+    emit frameCaptured(currentFrame);
+
+    // 显示用：在 QImage 上直接旋转（避免第二次昂贵的 QVideoFrame→QImage 转换）
+    QImage displayImage;
+    if (m_converter && m_converter->rotation() != 0) {
+        displayImage = rawImage.transformed(QTransform().rotate(m_converter->rotation()));
+    } else {
+        displayImage = rawImage;
+    }
+    emit frameForDisplay(displayImage);
+}
+
+void VideoFrameCapture::onFaceProcessingDone()
+{
+    m_pendingFrames.deref();
 }
 
 void VideoFrameCapture::setFrameConverter(VideoFrameConverter *converter)

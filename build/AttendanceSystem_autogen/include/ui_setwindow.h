@@ -21,7 +21,6 @@
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStackedWidget>
-#include <QtWidgets/QTimeEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -35,7 +34,6 @@ public:
     QVBoxLayout *navLayout;
     QPushButton *btnNetwork;
     QPushButton *btnFace;
-    QPushButton *btnAttendance;
     QPushButton *btnStorage;
     QPushButton *btnDevice;
     QPushButton *btnSync;
@@ -86,26 +84,15 @@ public:
     QHBoxLayout *sdkKeyLayout;
     QLabel *sdkKeyLabel;
     QLineEdit *lineEditSdkKey;
+    QGroupBox *rotationGroup;
+    QVBoxLayout *rotationGroupLayout;
+    QHBoxLayout *rotationLayout;
+    QLabel *labelRotation;
+    QLineEdit *lineEditRotation;
+    QPushButton *btnRotate;
+    QSpacerItem *rotationSpacer;
+    QLabel *labelRotationHint;
     QSpacerItem *faceSpacer;
-    QWidget *pageAttendance;
-    QVBoxLayout *attendancePageLayout;
-    QGroupBox *attendanceGroup;
-    QVBoxLayout *attendanceLayout;
-    QHBoxLayout *workTimeLayout;
-    QLabel *workStartLabel;
-    QTimeEdit *timeEditWorkStart;
-    QLabel *workEndLabel;
-    QTimeEdit *timeEditWorkEnd;
-    QSpacerItem *workTimeSpacer;
-    QHBoxLayout *lateLayout;
-    QLabel *lateLabel;
-    QSpinBox *spinBoxLate;
-    QSpacerItem *lateSpacer;
-    QHBoxLayout *earlyLayout;
-    QLabel *earlyLabel;
-    QSpinBox *spinBoxEarly;
-    QSpacerItem *earlySpacer;
-    QSpacerItem *attendanceSpacer;
     QWidget *pageStorage;
     QVBoxLayout *storagePageLayout;
     QGroupBox *storageGroup;
@@ -186,14 +173,6 @@ public:
         btnFace->setAutoExclusive(true);
 
         navLayout->addWidget(btnFace);
-
-        btnAttendance = new QPushButton(navWidget);
-        btnAttendance->setObjectName("btnAttendance");
-        btnAttendance->setMinimumSize(QSize(0, 45));
-        btnAttendance->setCheckable(true);
-        btnAttendance->setAutoExclusive(true);
-
-        navLayout->addWidget(btnAttendance);
 
         btnStorage = new QPushButton(navWidget);
         btnStorage->setObjectName("btnStorage");
@@ -302,14 +281,12 @@ public:
         testLayout->setObjectName("testLayout");
         btnTestConnection = new QPushButton(networkGroup);
         btnTestConnection->setObjectName("btnTestConnection");
-        btnTestConnection->setStyleSheet(QString::fromUtf8("background-color: #4CAF50; color: white;"));
 
         testLayout->addWidget(btnTestConnection);
 
         btnDisconnect = new QPushButton(networkGroup);
         btnDisconnect->setObjectName("btnDisconnect");
         btnDisconnect->setEnabled(false);
-        btnDisconnect->setStyleSheet(QString::fromUtf8("background-color: #f44336; color: white;"));
 
         testLayout->addWidget(btnDisconnect);
 
@@ -462,108 +439,54 @@ public:
 
         facePageLayout->addWidget(arcfaceGroup);
 
+        rotationGroup = new QGroupBox(pageFace);
+        rotationGroup->setObjectName("rotationGroup");
+        rotationGroupLayout = new QVBoxLayout(rotationGroup);
+        rotationGroupLayout->setSpacing(10);
+        rotationGroupLayout->setObjectName("rotationGroupLayout");
+        rotationLayout = new QHBoxLayout();
+        rotationLayout->setObjectName("rotationLayout");
+        labelRotation = new QLabel(rotationGroup);
+        labelRotation->setObjectName("labelRotation");
+        labelRotation->setMinimumSize(QSize(120, 0));
+
+        rotationLayout->addWidget(labelRotation);
+
+        lineEditRotation = new QLineEdit(rotationGroup);
+        lineEditRotation->setObjectName("lineEditRotation");
+        lineEditRotation->setReadOnly(true);
+        lineEditRotation->setMaximumSize(QSize(80, 16777215));
+        lineEditRotation->setAlignment(Qt::AlignmentFlag::AlignCenter);
+
+        rotationLayout->addWidget(lineEditRotation);
+
+        btnRotate = new QPushButton(rotationGroup);
+        btnRotate->setObjectName("btnRotate");
+        btnRotate->setMinimumSize(QSize(100, 0));
+
+        rotationLayout->addWidget(btnRotate);
+
+        rotationSpacer = new QSpacerItem(0, 0, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        rotationLayout->addItem(rotationSpacer);
+
+
+        rotationGroupLayout->addLayout(rotationLayout);
+
+        labelRotationHint = new QLabel(rotationGroup);
+        labelRotationHint->setObjectName("labelRotationHint");
+        labelRotationHint->setStyleSheet(QString::fromUtf8("color: #888888; font-size: 11px;"));
+
+        rotationGroupLayout->addWidget(labelRotationHint);
+
+
+        facePageLayout->addWidget(rotationGroup);
+
         faceSpacer = new QSpacerItem(0, 0, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
         facePageLayout->addItem(faceSpacer);
 
         stackedWidget->addWidget(pageFace);
-        pageAttendance = new QWidget();
-        pageAttendance->setObjectName("pageAttendance");
-        attendancePageLayout = new QVBoxLayout(pageAttendance);
-        attendancePageLayout->setSpacing(20);
-        attendancePageLayout->setObjectName("attendancePageLayout");
-        attendancePageLayout->setContentsMargins(0, 0, 0, 0);
-        attendanceGroup = new QGroupBox(pageAttendance);
-        attendanceGroup->setObjectName("attendanceGroup");
-        attendanceLayout = new QVBoxLayout(attendanceGroup);
-        attendanceLayout->setSpacing(15);
-        attendanceLayout->setObjectName("attendanceLayout");
-        workTimeLayout = new QHBoxLayout();
-        workTimeLayout->setObjectName("workTimeLayout");
-        workStartLabel = new QLabel(attendanceGroup);
-        workStartLabel->setObjectName("workStartLabel");
-        workStartLabel->setMinimumSize(QSize(100, 0));
-
-        workTimeLayout->addWidget(workStartLabel);
-
-        timeEditWorkStart = new QTimeEdit(attendanceGroup);
-        timeEditWorkStart->setObjectName("timeEditWorkStart");
-        timeEditWorkStart->setTime(QTime(9, 0, 0));
-
-        workTimeLayout->addWidget(timeEditWorkStart);
-
-        workEndLabel = new QLabel(attendanceGroup);
-        workEndLabel->setObjectName("workEndLabel");
-
-        workTimeLayout->addWidget(workEndLabel);
-
-        timeEditWorkEnd = new QTimeEdit(attendanceGroup);
-        timeEditWorkEnd->setObjectName("timeEditWorkEnd");
-        timeEditWorkEnd->setTime(QTime(18, 0, 0));
-
-        workTimeLayout->addWidget(timeEditWorkEnd);
-
-        workTimeSpacer = new QSpacerItem(0, 0, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
-
-        workTimeLayout->addItem(workTimeSpacer);
-
-
-        attendanceLayout->addLayout(workTimeLayout);
-
-        lateLayout = new QHBoxLayout();
-        lateLayout->setObjectName("lateLayout");
-        lateLabel = new QLabel(attendanceGroup);
-        lateLabel->setObjectName("lateLabel");
-        lateLabel->setMinimumSize(QSize(100, 0));
-
-        lateLayout->addWidget(lateLabel);
-
-        spinBoxLate = new QSpinBox(attendanceGroup);
-        spinBoxLate->setObjectName("spinBoxLate");
-        spinBoxLate->setMinimum(0);
-        spinBoxLate->setMaximum(60);
-        spinBoxLate->setValue(15);
-
-        lateLayout->addWidget(spinBoxLate);
-
-        lateSpacer = new QSpacerItem(0, 0, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
-
-        lateLayout->addItem(lateSpacer);
-
-
-        attendanceLayout->addLayout(lateLayout);
-
-        earlyLayout = new QHBoxLayout();
-        earlyLayout->setObjectName("earlyLayout");
-        earlyLabel = new QLabel(attendanceGroup);
-        earlyLabel->setObjectName("earlyLabel");
-        earlyLabel->setMinimumSize(QSize(100, 0));
-
-        earlyLayout->addWidget(earlyLabel);
-
-        spinBoxEarly = new QSpinBox(attendanceGroup);
-        spinBoxEarly->setObjectName("spinBoxEarly");
-        spinBoxEarly->setMinimum(0);
-        spinBoxEarly->setMaximum(60);
-        spinBoxEarly->setValue(15);
-
-        earlyLayout->addWidget(spinBoxEarly);
-
-        earlySpacer = new QSpacerItem(0, 0, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
-
-        earlyLayout->addItem(earlySpacer);
-
-
-        attendanceLayout->addLayout(earlyLayout);
-
-
-        attendancePageLayout->addWidget(attendanceGroup);
-
-        attendanceSpacer = new QSpacerItem(0, 0, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
-
-        attendancePageLayout->addItem(attendanceSpacer);
-
-        stackedWidget->addWidget(pageAttendance);
         pageStorage = new QWidget();
         pageStorage->setObjectName("pageStorage");
         storagePageLayout = new QVBoxLayout(pageStorage);
@@ -648,7 +571,6 @@ public:
 
         lineEditDeviceId = new QLineEdit(deviceGroup);
         lineEditDeviceId->setObjectName("lineEditDeviceId");
-        lineEditDeviceId->setReadOnly(true);
 
         deviceIdLayout->addWidget(lineEditDeviceId);
 
@@ -806,7 +728,6 @@ public:
         SetWindow->setWindowTitle(QCoreApplication::translate("SetWindow", "\347\263\273\347\273\237\350\256\276\347\275\256", nullptr));
         btnNetwork->setText(QCoreApplication::translate("SetWindow", "\347\275\221\347\273\234\350\277\236\346\216\245", nullptr));
         btnFace->setText(QCoreApplication::translate("SetWindow", "\344\272\272\350\204\270\350\257\206\345\210\253", nullptr));
-        btnAttendance->setText(QCoreApplication::translate("SetWindow", "\350\200\203\345\213\244\350\247\204\345\210\231", nullptr));
         btnStorage->setText(QCoreApplication::translate("SetWindow", "\345\255\230\345\202\250\350\256\276\347\275\256", nullptr));
         btnDevice->setText(QCoreApplication::translate("SetWindow", "\350\256\276\345\244\207\344\277\241\346\201\257", nullptr));
         btnSync->setText(QCoreApplication::translate("SetWindow", "\345\220\214\346\255\245\350\256\276\347\275\256", nullptr));
@@ -830,15 +751,10 @@ public:
         lineEditAppId->setPlaceholderText(QCoreApplication::translate("SetWindow", "\350\257\267\350\276\223\345\205\245ArcFace App ID", nullptr));
         sdkKeyLabel->setText(QCoreApplication::translate("SetWindow", "SDK Key", nullptr));
         lineEditSdkKey->setPlaceholderText(QCoreApplication::translate("SetWindow", "\350\257\267\350\276\223\345\205\245ArcFace SDK Key", nullptr));
-        attendanceGroup->setTitle(QCoreApplication::translate("SetWindow", "\350\200\203\345\213\244\350\247\204\345\210\231\350\256\276\347\275\256", nullptr));
-        workStartLabel->setText(QCoreApplication::translate("SetWindow", "\344\270\212\347\217\255\346\227\266\351\227\264", nullptr));
-        timeEditWorkStart->setDisplayFormat(QCoreApplication::translate("SetWindow", "HH:mm", nullptr));
-        workEndLabel->setText(QCoreApplication::translate("SetWindow", "\344\270\213\347\217\255\346\227\266\351\227\264", nullptr));
-        timeEditWorkEnd->setDisplayFormat(QCoreApplication::translate("SetWindow", "HH:mm", nullptr));
-        lateLabel->setText(QCoreApplication::translate("SetWindow", "\350\277\237\345\210\260\345\205\201\350\256\270", nullptr));
-        spinBoxLate->setSuffix(QCoreApplication::translate("SetWindow", " \345\210\206\351\222\237", nullptr));
-        earlyLabel->setText(QCoreApplication::translate("SetWindow", "\346\227\251\351\200\200\345\205\201\350\256\270", nullptr));
-        spinBoxEarly->setSuffix(QCoreApplication::translate("SetWindow", " \345\210\206\351\222\237", nullptr));
+        rotationGroup->setTitle(QCoreApplication::translate("SetWindow", "\346\221\204\345\203\217\345\244\264\346\226\271\345\220\221", nullptr));
+        labelRotation->setText(QCoreApplication::translate("SetWindow", "\345\275\223\345\211\215\350\247\222\345\272\246", nullptr));
+        btnRotate->setText(QCoreApplication::translate("SetWindow", "\346\227\213\350\275\254 90\302\260", nullptr));
+        labelRotationHint->setText(QCoreApplication::translate("SetWindow", "\346\257\217\346\254\241\347\202\271\345\207\273\346\227\213\350\275\254 90\302\260\357\274\2100\302\260 \342\206\222 90\302\260 \342\206\222 180\302\260 \342\206\222 270\302\260 \345\276\252\347\216\257\357\274\211", nullptr));
         storageGroup->setTitle(QCoreApplication::translate("SetWindow", "\345\255\230\345\202\250\350\256\276\347\275\256", nullptr));
         dbPathLabel->setText(QCoreApplication::translate("SetWindow", "\346\225\260\346\215\256\345\272\223\350\267\257\345\276\204", nullptr));
         lineEditDbPath->setPlaceholderText(QCoreApplication::translate("SetWindow", "\350\257\267\351\200\211\346\213\251\346\225\260\346\215\256\345\272\223\346\226\207\344\273\266\350\267\257\345\276\204", nullptr));
