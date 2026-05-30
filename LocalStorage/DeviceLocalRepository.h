@@ -1,5 +1,6 @@
 #pragma once
 
+#include "BaseRepository.h"
 #include <QString>
 
 struct DeviceLocalInfo {
@@ -9,7 +10,7 @@ struct DeviceLocalInfo {
     QString fwVersion;
 };
 
-class DeviceLocalRepository {
+class DeviceLocalRepository : public BaseRepository {
 public:
     explicit DeviceLocalRepository(const QString &dbPath);
 
@@ -23,7 +24,4 @@ public:
     bool updateDeviceName(const QString &deviceName);
     bool updateIpAddress(const QString &ipAddress);
     bool updateFwVersion(const QString &fwVersion);
-
-private:
-    QString m_dbPath;
 };

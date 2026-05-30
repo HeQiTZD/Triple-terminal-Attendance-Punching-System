@@ -9,8 +9,8 @@
 #include <QSqlQuery>
 #include <QUuid>
 
-LocalStorage* LocalStorage::s_instance = nullptr;
-QMutex LocalStorage::s_mutex;
+// s_mutex 已移除：SQLite WAL 模式 + DatabaseManager per-thread 连接池已提供并发安全保证
+// s_instance 已改为 local static（C++11 线程安全初始化）
 
 static const char* kInitialSchema = R"SQL(
 CREATE TABLE IF NOT EXISTS face_feature (
@@ -67,13 +67,9 @@ INSERT OR REPLACE INTO schema_version (version) VALUES (1);
 
 LocalStorage* LocalStorage::instance()
 {
-    if (!s_instance) {
-        QMutexLocker locker(&s_mutex);
-        if (!s_instance) {
-            s_instance = new LocalStorage();
-        }
-    }
-    return s_instance;
+    // C++11 保证 local static 对象的线程安全初始化
+    static LocalStorage s_instance;
+    return &s_instance;
 }
 
 LocalStorage::LocalStorage(QObject *parent)
@@ -112,7 +108,7 @@ DeviceLocalRepository& LocalStorage::deviceLocal()
     return *m_deviceLocal;
 }
 
-bool LocalStorage::connectDatabse()
+bool LocalStorage::connectDatabase()
 {
     ConfigManager* config = ConfigManager::instance();
     QString dbFilePath = config->getDatabasePath();
@@ -284,8 +280,7 @@ bool LocalStorage::runInitialSchema()
 
 bool LocalStorage::syncPersons(const QVector<ServerProtocol::PersonData> &persons)
 {
-    QMutexLocker locker(&s_mutex);
-
+    // 不再使用全局锁：SQLite WAL 模式 + DatabaseManager per-thread 连接池已提供并发安全
     QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
     if (!db.isOpen()) {
         emit personsSyncFailed("数据库未连接");
@@ -331,8 +326,7 @@ bool LocalStorage::syncPersons(const QVector<ServerProtocol::PersonData> &person
 
 bool LocalStorage::addAttendanceRecord(const QString &employeeId, const QString &status)
 {
-    QMutexLocker locker(&s_mutex);
-
+    // 不再使用全局锁：SQLite WAL 模式 + DatabaseManager per-thread 连接池已提供并发安全
     if (!m_db.isOpen()) {
         return false;
     }
@@ -349,7 +343,6 @@ bool LocalStorage::addAttendanceRecord(const QString &employeeId, const QString 
 
 QVector<ServerProtocol::AttendanceRecord> LocalStorage::getUnuploadedRecords()
 {
-    QMutexLocker locker(&s_mutex);
     QVector<ServerProtocol::AttendanceRecord> records;
 
     if (!m_db.isOpen()) {
@@ -370,8 +363,6 @@ QVector<ServerProtocol::AttendanceRecord> LocalStorage::getUnuploadedRecords()
 
 bool LocalStorage::markAsUploaded(int recordId)
 {
-    QMutexLocker locker(&s_mutex);
-
     if (!m_db.isOpen()) {
         return false;
     }
@@ -381,8 +372,6 @@ bool LocalStorage::markAsUploaded(int recordId)
 
 bool LocalStorage::markBatchAsUploaded(const QVector<int> &recordIds)
 {
-    QMutexLocker locker(&s_mutex);
-
     if (!m_db.isOpen()) {
         return false;
     }

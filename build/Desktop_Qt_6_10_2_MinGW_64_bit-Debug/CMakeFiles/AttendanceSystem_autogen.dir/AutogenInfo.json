@@ -559,6 +559,12 @@
 			null
 		],
 		[
+			"D:/QTproject/AttendanceSystem/LocalStorage/BaseRepository.h",
+			"MU",
+			"S44JC2R4SP/moc_BaseRepository.cpp",
+			null
+		],
+		[
 			"D:/QTproject/AttendanceSystem/LocalStorage/DeviceLocalRepository.h",
 			"MU",
 			"S44JC2R4SP/moc_DeviceLocalRepository.cpp",
@@ -580,6 +586,12 @@
 			"D:/QTproject/AttendanceSystem/LocalStorage/localstorage.h",
 			"MU",
 			"S44JC2R4SP/moc_localstorage.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/NetworkClient/authenticator.h",
+			"MU",
+			"26RFHC3MAC/moc_authenticator.cpp",
 			null
 		],
 		[
@@ -616,6 +628,12 @@
 			"D:/QTproject/AttendanceSystem/NetworkClient/networkclient.h",
 			"MU",
 			"26RFHC3MAC/moc_networkclient.cpp",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/NetworkClient/outboxmanager.h",
+			"MU",
+			"26RFHC3MAC/moc_outboxmanager.cpp",
 			null
 		],
 		[
@@ -888,6 +906,11 @@
 			null
 		],
 		[
+			"D:/QTproject/AttendanceSystem/NetworkClient/authenticator.cpp",
+			"MU",
+			null
+		],
+		[
 			"D:/QTproject/AttendanceSystem/NetworkClient/connectionmanager.cpp",
 			"MU",
 			null
@@ -914,6 +937,11 @@
 		],
 		[
 			"D:/QTproject/AttendanceSystem/NetworkClient/networkclient.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/QTproject/AttendanceSystem/NetworkClient/outboxmanager.cpp",
 			"MU",
 			null
 		],

@@ -5,12 +5,12 @@
 #include <QJsonObject>
 #include <QQueue>
 #include <QMutex>
-class Messagequeue : public QObject
+class MessageQueue : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit Messagequeue(QObject *parent = nullptr);
+    explicit MessageQueue(QObject *parent = nullptr);
 
     //入队
     void enqueue(const QJsonObject &meaage);

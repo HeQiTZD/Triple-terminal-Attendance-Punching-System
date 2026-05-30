@@ -7,6 +7,7 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonArray \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonObject \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QList \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/QMap \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QMutex \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QObject \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QPair \
@@ -19,6 +20,8 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtCore/QThread \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QTime \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QTimer \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/QVariant \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/QVariantMap \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QVector \
   C:/Qt/6.10.2/mingw_64/include/QtCore/q17memory.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/q20functional.h \
@@ -172,6 +175,7 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtCore/qutf8stringview.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/quuid.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qvariant.h \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/qvariantmap.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qvarlengtharray.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qvector.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qversiontagging.h \
@@ -247,7 +251,11 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtNetwork/qtnetworkexports.h \
   C:/Qt/6.10.2/mingw_64/include/QtNetwork/qtnetworkglobal.h \
   C:/Qt/6.10.2/mingw_64/include/QtSql/QSqlDatabase \
+  C:/Qt/6.10.2/mingw_64/include/QtSql/QSqlError \
+  C:/Qt/6.10.2/mingw_64/include/QtSql/QSqlQuery \
   C:/Qt/6.10.2/mingw_64/include/QtSql/qsqldatabase.h \
+  C:/Qt/6.10.2/mingw_64/include/QtSql/qsqlerror.h \
+  C:/Qt/6.10.2/mingw_64/include/QtSql/qsqlquery.h \
   C:/Qt/6.10.2/mingw_64/include/QtSql/qtsql-config.h \
   C:/Qt/6.10.2/mingw_64/include/QtSql/qtsqlexports.h \
   C:/Qt/6.10.2/mingw_64/include/QtSql/qtsqlglobal.h \
@@ -495,16 +503,19 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   D:/QTproject/AttendanceSystem/FaceRecognition/facedatabasemanager.h \
   D:/QTproject/AttendanceSystem/FaceRecognition/facerecognizer.h \
   D:/QTproject/AttendanceSystem/LocalStorage/AttendanceOutboxRepository.h \
+  D:/QTproject/AttendanceSystem/LocalStorage/BaseRepository.h \
   D:/QTproject/AttendanceSystem/LocalStorage/DeviceLocalRepository.h \
   D:/QTproject/AttendanceSystem/LocalStorage/FaceFeatureRepository.h \
   D:/QTproject/AttendanceSystem/LocalStorage/SyncMetaRepository.h \
   D:/QTproject/AttendanceSystem/LocalStorage/localstorage.h \
+  D:/QTproject/AttendanceSystem/NetworkClient/authenticator.h \
   D:/QTproject/AttendanceSystem/NetworkClient/connectionmanager.h \
   D:/QTproject/AttendanceSystem/NetworkClient/heartbeatmanager.h \
   D:/QTproject/AttendanceSystem/NetworkClient/messagequeue.h \
   D:/QTproject/AttendanceSystem/NetworkClient/messagereader.h \
   D:/QTproject/AttendanceSystem/NetworkClient/messagewriter.h \
   D:/QTproject/AttendanceSystem/NetworkClient/networkclient.h \
+  D:/QTproject/AttendanceSystem/NetworkClient/outboxmanager.h \
   D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h \
   D:/QTproject/AttendanceSystem/Sync/SyncManager.h \
   D:/QTproject/AttendanceSystem/UI/Components/ActionButton.h \
@@ -513,6 +524,7 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   D:/QTproject/AttendanceSystem/UI/Components/StatusIndicator.h \
   D:/QTproject/AttendanceSystem/UI/facevideowidget.h \
   D:/QTproject/AttendanceSystem/UI/setwindow.h \
+  D:/QTproject/AttendanceSystem/Utils/DatabaseManager.h \
   D:/QTproject/AttendanceSystem/third_party/arcface/include/amcomdef.h \
   D:/QTproject/AttendanceSystem/third_party/arcface/include/arcsoft_face_sdk.h \
   D:/QTproject/AttendanceSystem/third_party/arcface/include/asvloffscreen.h \

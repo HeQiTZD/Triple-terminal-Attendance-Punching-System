@@ -27,7 +27,7 @@ public:
     State state() const { return m_state; }
 
 public slots:
-    /// 发起同步请求（需要 Networkclient 已连接且已认证）
+    /// 发起同步请求（需要 NetworkClient 已连接且已认证）
     void requestSync();
 
     /// 接收 person.sync 消息
@@ -50,7 +50,7 @@ signals:
     void personSyncProgress(int count);
     void faceSyncProgress(int count);
 
-    /// 需要发送 JSON 消息（连接到 Networkclient::send）
+    /// 需要发送 JSON 消息（连接到 NetworkClient::send）
     void sendMessage(const QJsonObject &message);
 
     /// 同步完成后触发人脸库重载

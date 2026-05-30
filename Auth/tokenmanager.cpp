@@ -2,7 +2,7 @@
 
 TokenManager::TokenManager(QObject *parent)
     : QObject(parent)
-    , m_settings("AttendanceSystem", "DeviceToken")
+    , m_settings(std::make_unique<QSettings>("AttendanceSystem", "DeviceToken"))
 {
     loadFromSettings();
 }
@@ -54,14 +54,14 @@ void TokenManager::clearTokens()
 
 void TokenManager::loadFromSettings()
 {
-    m_accessToken = m_settings.value("accessToken").toString();
-    m_refreshToken = m_settings.value("refreshToken").toString();
-    m_expiresAt = m_settings.value("expiresAt").toDateTime();
+    m_accessToken = m_settings->value("accessToken").toString();
+    m_refreshToken = m_settings->value("refreshToken").toString();
+    m_expiresAt = m_settings->value("expiresAt").toDateTime();
 }
 
 void TokenManager::saveToSettings()
 {
-    m_settings.setValue("accessToken", m_accessToken);
-    m_settings.setValue("refreshToken", m_refreshToken);
-    m_settings.setValue("expiresAt", m_expiresAt);
+    m_settings->setValue("accessToken", m_accessToken);
+    m_settings->setValue("refreshToken", m_refreshToken);
+    m_settings->setValue("expiresAt", m_expiresAt);
 }

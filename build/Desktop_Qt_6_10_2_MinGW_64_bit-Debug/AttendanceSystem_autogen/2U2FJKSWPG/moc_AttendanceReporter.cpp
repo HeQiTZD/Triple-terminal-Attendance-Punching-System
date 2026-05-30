@@ -46,10 +46,6 @@ template <> constexpr inline auto AttendanceReporter::qt_create_metaobjectdata<q
         "message",
         "pendingCountChanged",
         "count",
-        "sendMessage",
-        "QJsonObject",
-        "sendRawBytes",
-        "data",
         "onReportResult",
         "onConnectionStateChanged",
         "isOnline"
@@ -64,21 +60,13 @@ template <> constexpr inline auto AttendanceReporter::qt_create_metaobjectdata<q
         QtMocHelpers::SignalData<void(int)>(6, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::Int, 7 },
         }}),
-        // Signal 'sendMessage'
-        QtMocHelpers::SignalData<void(const QJsonObject &)>(8, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { 0x80000000 | 9, 5 },
-        }}),
-        // Signal 'sendRawBytes'
-        QtMocHelpers::SignalData<void(const QByteArray &)>(10, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QByteArray, 11 },
-        }}),
         // Slot 'onReportResult'
-        QtMocHelpers::SlotData<void(const QString &, bool, const QString &)>(12, 2, QMC::AccessPublic, QMetaType::Void, {{
+        QtMocHelpers::SlotData<void(const QString &, bool, const QString &)>(8, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::QString, 3 }, { QMetaType::Bool, 4 }, { QMetaType::QString, 5 },
         }}),
         // Slot 'onConnectionStateChanged'
-        QtMocHelpers::SlotData<void(bool)>(13, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Bool, 14 },
+        QtMocHelpers::SlotData<void(bool)>(9, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Bool, 10 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -105,10 +93,8 @@ void AttendanceReporter::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
         switch (_id) {
         case 0: _t->reportCompleted((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<bool>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3]))); break;
         case 1: _t->pendingCountChanged((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
-        case 2: _t->sendMessage((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
-        case 3: _t->sendRawBytes((*reinterpret_cast<std::add_pointer_t<QByteArray>>(_a[1]))); break;
-        case 4: _t->onReportResult((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<bool>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3]))); break;
-        case 5: _t->onConnectionStateChanged((*reinterpret_cast<std::add_pointer_t<bool>>(_a[1]))); break;
+        case 2: _t->onReportResult((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<bool>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3]))); break;
+        case 3: _t->onConnectionStateChanged((*reinterpret_cast<std::add_pointer_t<bool>>(_a[1]))); break;
         default: ;
         }
     }
@@ -116,10 +102,6 @@ void AttendanceReporter::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
         if (QtMocHelpers::indexOfMethod<void (AttendanceReporter::*)(const QString & , bool , const QString & )>(_a, &AttendanceReporter::reportCompleted, 0))
             return;
         if (QtMocHelpers::indexOfMethod<void (AttendanceReporter::*)(int )>(_a, &AttendanceReporter::pendingCountChanged, 1))
-            return;
-        if (QtMocHelpers::indexOfMethod<void (AttendanceReporter::*)(const QJsonObject & )>(_a, &AttendanceReporter::sendMessage, 2))
-            return;
-        if (QtMocHelpers::indexOfMethod<void (AttendanceReporter::*)(const QByteArray & )>(_a, &AttendanceReporter::sendRawBytes, 3))
             return;
     }
 }
@@ -143,14 +125,14 @@ int AttendanceReporter::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 4;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 4)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 6;
+        _id -= 4;
     }
     return _id;
 }
@@ -165,17 +147,5 @@ void AttendanceReporter::reportCompleted(const QString & _t1, bool _t2, const QS
 void AttendanceReporter::pendingCountChanged(int _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 1, nullptr, _t1);
-}
-
-// SIGNAL 2
-void AttendanceReporter::sendMessage(const QJsonObject & _t1)
-{
-    QMetaObject::activate<void>(this, &staticMetaObject, 2, nullptr, _t1);
-}
-
-// SIGNAL 3
-void AttendanceReporter::sendRawBytes(const QByteArray & _t1)
-{
-    QMetaObject::activate<void>(this, &staticMetaObject, 3, nullptr, _t1);
 }
 QT_WARNING_POP

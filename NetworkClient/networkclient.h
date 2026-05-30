@@ -12,25 +12,28 @@
 #include "messagewriter.h"
 #include "messagereader.h"
 #include "messagequeue.h"
+#include "authenticator.h"
+#include "outboxmanager.h"
 #include <QDebug>
 
-#include "../LocalStorage/localstorage.h"
-#include "../FaceRecognition/facedatabasemanager.h"
 #include "../Auth/tokenmanager.h"
 #include "../Auth/tokenrefresher.h"
 
-class Networkclient : public QObject
+class NetworkClient : public QObject
 {
     Q_OBJECT
 
 public:
-    static Networkclient* instance();
+    static NetworkClient* instance();
 
     // 连接管理
     bool connectToServer(const QString &ip, quint16 port);
     void disconnect();
     bool isConnected() const;
-    bool isAuthenticated() const { return m_isAuthenticated; }
+
+    // 认证（委托给 Authenticator）
+    bool isAuthenticated() const;
+    Authenticator* authenticator() const { return m_authenticator; }
 
     // 业务接口
     bool syncPersonData();
@@ -58,7 +61,7 @@ public:
     QString deviceId() const { return m_deviceId; }
     void setDeviceKey(const QString& deviceKey);
     QString deviceKey() const { return m_deviceKey; }
-    QString sessionToken() const { return m_sessionToken; }
+    QString sessionToken() const;
 
     void setDeviceName(const QString& name) { m_deviceName = name; }
     QString deviceName() const { return m_deviceName; }
@@ -66,16 +69,19 @@ public:
     // JWT 令牌
     TokenManager* tokenManager() const { return m_tokenManager; }
 
+    // Outbox 管理
+    OutboxManager* outboxManager() const { return m_outboxManager; }
+
 signals:
     // 连接状态
     void connected();
     void disconnected();
     void networkStateChanged(bool isOnline);
 
-    // 认证
+    // 认证（转发 Authenticator 信号）
     void authSuccess();
     void authFailed(int code, const QString &message);
-    void devicePendingAuth();  // 设备待审核信号
+    void devicePendingAuth();
 
     // 业务数据
     void personDataReceived(const QVector<ServerProtocol::PersonData> &persons);
@@ -109,53 +115,41 @@ private slots:
     void onHeartbeatTimeout();
     void onSendError();
     void onSendHeartbeat(const QByteArray &data);
-    void onOutboxRetryTick();
 
 private:
-    explicit Networkclient(QObject *parent = nullptr);
+    explicit NetworkClient(QObject *parent = nullptr);
     void setupConnections();
     void processQueue();
     void loadDeviceConfig();
 
-    void handleAuthResponse(const QJsonObject &message);
     void handlePersonSynResponse(const QJsonObject &message);
-    void handleUploadResponse(const QJsonObject &message);
-    void handleServerError(const QJsonObject& message);
     void handleTokenRefreshResponse(const QJsonObject &message);
     void sendDeviceStatusReport();
 
     // 添加令牌到消息
     QJsonObject addTokenToMessage(const QJsonObject &message);
 
-    // ---- outbox 处理 ----
-    void processOutbox();
-
 private:
-    Connectionmanager *m_connection;
-    Heartbeatmanager   *m_heartbeat;
-    Messagewriter      *m_writer;
-    Messagereader      *m_ready;
-    Messagequeue       *m_queue;
+    ConnectionManager *m_connection;
+    HeartbeatManager   *m_heartbeat;
+    MessageWriter      *m_writer;
+    MessageReader      *m_ready;
+    MessageQueue       *m_queue;
 
     // JWT 令牌管理
     TokenManager    *m_tokenManager;
     TokenRefresher  *m_tokenRefresher;
 
+    // 新增：认证和 Outbox 管理
+    Authenticator   *m_authenticator;
+    OutboxManager   *m_outboxManager;
+
     QString m_deviceId    = QStringLiteral("device_001");
     QString m_deviceKey;
-    QString m_sessionToken;
     QString m_deviceName;
     QString m_fwVersion   = QStringLiteral("1.0.0");
 
-    bool m_isAuthenticated = false;
     bool m_isOnline        = false;
-
-    // outbox 重试
-    QTimer *m_outboxRetryTimer = nullptr;
-    int     m_outboxRetryRound = 0;
-
-    int m_maxRetryCount      = 5;
-    int m_retryBackoffBaseMs = 2000;
 };
 
 #endif // NETWORKCLIENT_H

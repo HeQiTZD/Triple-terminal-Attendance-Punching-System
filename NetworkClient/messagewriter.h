@@ -5,12 +5,12 @@
 #include <QTcpSocket>
 #include <QJsonObject>
 
-class Messagewriter : public QObject
+class MessageWriter : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit Messagewriter(QTcpSocket *socket, QObject *parent = nullptr);
+    explicit MessageWriter(QTcpSocket *socket, QObject *parent = nullptr);
 
     // ---- JSON 消息（自动追加 \n 分隔符） ----
     bool send(const QJsonObject &message);

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "BaseRepository.h"
 #include <QByteArray>
 #include <QDateTime>
 #include <QString>
@@ -18,7 +19,7 @@ struct OutboxRecord {
     QString state; // pending / sending / failed / dead
 };
 
-class AttendanceOutboxRepository {
+class AttendanceOutboxRepository : public BaseRepository {
 public:
     explicit AttendanceOutboxRepository(const QString &dbPath);
 
@@ -39,7 +40,4 @@ public:
     OutboxRecord findLatestByEmployeeId(const QString &employeeId);
 
     int pendingCount();
-
-private:
-    QString m_dbPath;
 };

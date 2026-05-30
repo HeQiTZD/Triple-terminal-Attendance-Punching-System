@@ -7,8 +7,6 @@
 #include <QStringList>
 #include <QTextStream>
 
-ConfigManager* ConfigManager::s_instance = nullptr;
-
 namespace {
 QString calculateConfigHash(const QString &configContent)
 {
@@ -28,16 +26,13 @@ bool hasRequiredSections(const QSettings &settings)
 
 ConfigManager* ConfigManager::instance()
 {
-    if (!s_instance) {
-        s_instance = new ConfigManager();
-    }
-    return s_instance;
+    // C++11 保证 local static 对象的线程安全初始化
+    static ConfigManager s_instance;
+    return &s_instance;
 }
 
 ConfigManager::ConfigManager(QObject *parent)
     : QObject(parent)
-    , m_settings(nullptr)
-    , m_localSettings(nullptr)
 {
     // 初始化默认值
     restoreDefaults();
@@ -51,22 +46,15 @@ ConfigManager::ConfigManager(QObject *parent)
         dir.mkpath(configDir);
     }
 
-    m_settings = new QSettings(configPath, QSettings::IniFormat, this);
-    m_localSettings = new QSettings(localConfigPath, QSettings::IniFormat, this);
+    // 不传 this 作为 parent，由 unique_ptr 管理生命周期
+    m_settings = std::make_unique<QSettings>(configPath, QSettings::IniFormat);
+    m_localSettings = std::make_unique<QSettings>(localConfigPath, QSettings::IniFormat);
 
     // 加载配置
     loadConfig();
 }
 
-ConfigManager::~ConfigManager()
-{
-    if (m_settings) {
-        delete m_settings;
-    }
-    if (m_localSettings) {
-        delete m_localSettings;
-    }
-}
+ConfigManager::~ConfigManager() = default;
 
 QString ConfigManager::getConfigFilePath() const
 {
@@ -242,18 +230,31 @@ QString ConfigManager::getDefaultLogPath()
 
 void ConfigManager::restoreDefaults()
 {
-    // 恢复网络连接设置
+    restoreNetworkDefaults();
+    restoreFaceRecognitionDefaults();
+    restoreAttendanceDefaults();
+    restoreDeviceDefaults();
+    restoreSyncDefaults();
+    restoreRetryDefaults();
+}
+
+void ConfigManager::restoreNetworkDefaults()
+{
     m_serverIP = DEFAULT_SERVER_IP;
     m_serverPort = DEFAULT_SERVER_PORT;
     m_connectionTimeout = DEFAULT_CONNECTION_TIMEOUT;
+}
 
-    // 恢复人脸识别设置
+void ConfigManager::restoreFaceRecognitionDefaults()
+{
     m_faceThreshold = DEFAULT_FACE_THRESHOLD;
     m_maxFaceCount = DEFAULT_MAX_FACE_COUNT;
     m_recognizeTimeout = DEFAULT_RECOGNIZE_TIMEOUT;
     m_cameraRotation = DEFAULT_CAMERA_ROTATION;
+}
 
-    // 恢复考勤规则设置
+void ConfigManager::restoreAttendanceDefaults()
+{
     m_workStartTime = QTime(9, 0);
     m_workEndTime = QTime(18, 0);
     m_checkInStartOffset = DEFAULT_CHECK_IN_START_OFFSET;
@@ -270,24 +271,27 @@ void ConfigManager::restoreDefaults()
     m_minCheckInterval = DEFAULT_MIN_CHECK_INTERVAL;
     m_allowCrossDay = DEFAULT_ALLOW_CROSS_DAY;
     m_maxWorkHours = DEFAULT_MAX_WORK_HOURS;
+}
 
-    // 设备信息默认值
+void ConfigManager::restoreDeviceDefaults()
+{
     if (m_deviceId.isEmpty()) m_deviceId = QStringLiteral("device_001");
     m_deviceName = QString();
     m_fwVersion = QStringLiteral("1.0.0");
     m_configVersion = QString();
     m_configHash = QString();
+}
 
-    // 同步设置默认值
+void ConfigManager::restoreSyncDefaults()
+{
     m_autoSyncOnConnect = DEFAULT_AUTO_SYNC_ON_CONNECT;
     m_syncTimeout = DEFAULT_SYNC_TIMEOUT;
+}
 
-    // 考勤重试默认值
+void ConfigManager::restoreRetryDefaults()
+{
     m_maxRetryCount = DEFAULT_MAX_RETRY_COUNT;
     m_retryBackoffBaseMs = DEFAULT_RETRY_BACKOFF_BASE_MS;
-
-    // 存储设置路径不清空
-    // m_databasePath, m_logPath 保持当前值
 }
 
 void ConfigManager::ensureDirectoriesExist()
@@ -377,14 +381,11 @@ bool ConfigManager::applyRemoteConfig(const QString &configContent,
     }
 
     // 用新配置覆盖原文件
-    if (m_settings) {
-        delete m_settings;
-        m_settings = nullptr;
-    }
+    m_settings.reset();
 
     auto restoreSettings = [this, &configPath]() {
         if (!m_settings) {
-            m_settings = new QSettings(configPath, QSettings::IniFormat, this);
+            m_settings = std::make_unique<QSettings>(configPath, QSettings::IniFormat);
             loadConfig();
         }
     };
@@ -410,7 +411,7 @@ bool ConfigManager::applyRemoteConfig(const QString &configContent,
     }
 
     // 重新加载配置
-    m_settings = new QSettings(configPath, QSettings::IniFormat, this);
+    m_settings = std::make_unique<QSettings>(configPath, QSettings::IniFormat);
     loadConfig();
 
     m_configVersion = configVersion.trimmed();

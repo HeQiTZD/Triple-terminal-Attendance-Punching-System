@@ -2,7 +2,7 @@
 #include "../NetworkClient/networkclient.h"
 #include "../NetworkClient/serverprotocol.h"
 
-TokenRefresher::TokenRefresher(Networkclient *client, TokenManager *tokenManager,
+TokenRefresher::TokenRefresher(NetworkClient *client, TokenManager *tokenManager,
                                QObject *parent)
     : QObject(parent)
     , m_client(client)
@@ -72,6 +72,6 @@ void TokenRefresher::onTokenRefreshResponse(const QJsonObject &response)
 
 void TokenRefresher::setupConnections()
 {
-    connect(m_client, &Networkclient::tokenRefreshResponse,
+    connect(m_client, &NetworkClient::tokenRefreshResponse,
             this, &TokenRefresher::onTokenRefreshResponse);
 }

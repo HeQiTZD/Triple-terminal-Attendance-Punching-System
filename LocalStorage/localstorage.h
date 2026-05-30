@@ -2,7 +2,6 @@
 
 #include <QObject>
 #include <QSqlDatabase>
-#include <QMutex>
 
 #include "../NetworkClient/serverprotocol.h"
 #include "FaceFeatureRepository.h"
@@ -17,7 +16,7 @@ class LocalStorage : public QObject
 public:
     static LocalStorage* instance();
 
-    bool connectDatabse();
+    bool connectDatabase();
 
     // ---- Repository accessors (for phase-3 code) ----
     FaceFeatureRepository&      faceFeatures();
@@ -46,8 +45,6 @@ private:
 
     QSqlDatabase m_db;
     QString m_dbPath;
-    static QMutex s_mutex;
-    static LocalStorage* s_instance;
 
     FaceFeatureRepository*      m_faceFeatures = nullptr;
     AttendanceOutboxRepository* m_outbox = nullptr;

@@ -3,31 +3,31 @@
 #include <QJsonDocument>
 #include <QJsonParseError>
 
-Messagereader::Messagereader(QTcpSocket *socket, QObject *parent)
+MessageReader::MessageReader(QTcpSocket *socket, QObject *parent)
     : QObject(parent)
     , m_socket(socket)
 {
 }
 
-void Messagereader::start()
+void MessageReader::start()
 {
     if (!m_socket) {
         return;
     }
 
-    connect(m_socket, &QTcpSocket::readyRead, this, &Messagereader::onReadyRead);
+    connect(m_socket, &QTcpSocket::readyRead, this, &MessageReader::onReadyRead);
 }
 
-void Messagereader::stop()
+void MessageReader::stop()
 {
-    disconnect(m_socket, &QTcpSocket::readyRead, this, &Messagereader::onReadyRead);
+    disconnect(m_socket, &QTcpSocket::readyRead, this, &MessageReader::onReadyRead);
 
     m_buffer.clear();
     m_mode = Mode::Line;
     m_pendingBinaryHeader = QJsonObject();
 }
 
-void Messagereader::onReadyRead()
+void MessageReader::onReadyRead()
 {
     if (!m_socket || m_socket->state() != QAbstractSocket::ConnectedState)
         return;
@@ -62,7 +62,7 @@ void Messagereader::onReadyRead()
     }
 }
 
-bool Messagereader::tryParseLine(QJsonObject *outMessage)
+bool MessageReader::tryParseLine(QJsonObject *outMessage)
 {
     const int nl = m_buffer.indexOf('\n');
     if (nl == -1)
@@ -93,7 +93,7 @@ bool Messagereader::tryParseLine(QJsonObject *outMessage)
     return true;
 }
 
-bool Messagereader::tryParseBinaryFrame()
+bool MessageReader::tryParseBinaryFrame()
 {
     if (m_buffer.size() < kLengthPrefixLen)
         return false;

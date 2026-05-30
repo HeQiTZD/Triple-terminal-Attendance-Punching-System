@@ -5,7 +5,7 @@
 #include <QTcpSocket>
 #include <QTimer>
 
-class Connectionmanager : public QObject
+class ConnectionManager : public QObject
 {
     Q_OBJECT
 
@@ -18,7 +18,7 @@ public:
     };
     Q_ENUM(ConnectionState)
 
-    explicit Connectionmanager(QObject *parent = nullptr);
+    explicit ConnectionManager(QObject *parent = nullptr);
 
     // 连接控制
     bool connectToHost(const QString &ip, quint16 port);
@@ -27,7 +27,7 @@ public:
     bool isConnect() const;
     ConnectionState state() const;
 
-    // 由上层（Networkclient）在 auth 成功后调用
+    // 由上层（NetworkClient）在 auth 成功后调用
     void setAuthenticated(bool authenticated);
 
     // 获取 socket 用于数据传输

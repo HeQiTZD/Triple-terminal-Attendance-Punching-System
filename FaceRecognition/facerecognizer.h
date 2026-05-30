@@ -22,8 +22,6 @@
 #include <QDateTime>
 #include <QTimer>
 
-#include "../LocalStorage/localstorage.h"
-#include "../NetworkClient/networkclient.h"
 
 enum class RecognitionState{
     IDLE,      // 空闲，等待检测
@@ -43,7 +41,7 @@ public:
     void init();
 
 public slots:
-    void WanZhengYeWuLiuCheng(QImage image);//人脸识别整体流程
+    void processFrame(QImage image);//人脸识别整体流程
 
 signals:
     // 识别成功信号 - 只通知，不保存
@@ -72,7 +70,7 @@ private:
     void handleLostState();
 
     //执行识别
-    void perfromRecognition(QImage &image);
+    void performRecognition(QImage &image);
     //切换状态
     void setState(RecognitionState newState);
     //检查是否是同一人脸（简单实现）
@@ -85,11 +83,12 @@ private:
 private:
     //状态机相关
     RecognitionState m_currentState = RecognitionState::IDLE;
-    QString m_lastRecognizedId;// 上次识别的人员ID
-    QDateTime m_recognitionTime;// 上次识别时间
-    QTimer* m_cooldownTimer = nullptr;// 冷却定时器
-    const int COOLDOWN_MS = 3000;// 冷却时间3秒
-    const int LOST_TIMEOUT_MS = 3000;// 人脸丢失检测间隔
+    QString m_lastRecognizedId;           // 上次识别的人员ID
+    QDateTime m_recognitionTime;          // 上次识别时间
+    QDateTime m_detectingStartTime;       // 检测状态起始时间（替代 static 局部变量，线程安全）
+    QTimer* m_cooldownTimer = nullptr;   // 冷却定时器
+    const int COOLDOWN_MS = 3000;         // 冷却时间3秒
+    const int LOST_TIMEOUT_MS = 3000;     // 人脸丢失检测间隔
 
 private:
     QVector<arcfaceengine::FaceInfo> m_FaceInfo;//人脸检测信息

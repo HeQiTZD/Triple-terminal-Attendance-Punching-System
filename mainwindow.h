@@ -7,6 +7,7 @@
 #include "UI/setwindow.h"
 class VideoFrameConverter;
 #include "LocalStorage/localstorage.h"
+#include "NetworkClient/networkclient.h"
 #include "Sync/SyncManager.h"
 #include "Command/CommandHandler.h"
 #include "Attendance/AttendanceReporter.h"
@@ -123,7 +124,7 @@ protected:
 private:
     LocalStorage* m_db = nullptr;
     FaceRecognizer* m_FaceRecognizer = nullptr;
-    Networkclient* networkClient = nullptr;
+    NetworkClient* networkClient = nullptr;
     SyncManager* m_syncManager = nullptr;
     CommandHandler* m_commandHandler = nullptr;
     AttendanceReporter* m_attendanceReporter = nullptr;

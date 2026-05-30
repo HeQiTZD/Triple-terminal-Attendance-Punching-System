@@ -17,7 +17,7 @@ public slots:
     void handleCommand(const QJsonObject &message);
 
 signals:
-    /// 需要发送 JSON 消息（连接到 Networkclient）
+    /// 需要发送 JSON 消息（连接到 NetworkClient）
     void sendMessage(const QJsonObject &message);
 
     /// 触发同步（resync 指令）

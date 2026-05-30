@@ -31,15 +31,15 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 QT_WARNING_DISABLE_GCC("-Wuseless-cast")
 namespace {
-struct qt_meta_tag_ZN16HeartbeatmanagerE_t {};
+struct qt_meta_tag_ZN16HeartbeatManagerE_t {};
 } // unnamed namespace
 
-template <> constexpr inline auto Heartbeatmanager::qt_create_metaobjectdata<qt_meta_tag_ZN16HeartbeatmanagerE_t>()
+template <> constexpr inline auto HeartbeatManager::qt_create_metaobjectdata<qt_meta_tag_ZN16HeartbeatManagerE_t>()
 {
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
-        "Heartbeatmanager",
-        "heartbeattimeout",
+        "HeartbeatManager",
+        "heartbeatTimeout",
         "",
         "sendHeartbeat",
         "data",
@@ -47,7 +47,7 @@ template <> constexpr inline auto Heartbeatmanager::qt_create_metaobjectdata<qt_
     };
 
     QtMocHelpers::UintData qt_methods {
-        // Signal 'heartbeattimeout'
+        // Signal 'heartbeatTimeout'
         QtMocHelpers::SignalData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
         // Signal 'sendHeartbeat'
         QtMocHelpers::SignalData<void(const QByteArray &)>(3, 2, QMC::AccessPublic, QMetaType::Void, {{
@@ -60,52 +60,52 @@ template <> constexpr inline auto Heartbeatmanager::qt_create_metaobjectdata<qt_
     };
     QtMocHelpers::UintData qt_enums {
     };
-    return QtMocHelpers::metaObjectData<Heartbeatmanager, qt_meta_tag_ZN16HeartbeatmanagerE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+    return QtMocHelpers::metaObjectData<HeartbeatManager, qt_meta_tag_ZN16HeartbeatManagerE_t>(QMC::MetaObjectFlag{}, qt_stringData,
             qt_methods, qt_properties, qt_enums);
 }
-Q_CONSTINIT const QMetaObject Heartbeatmanager::staticMetaObject = { {
+Q_CONSTINIT const QMetaObject HeartbeatManager::staticMetaObject = { {
     QMetaObject::SuperData::link<QObject::staticMetaObject>(),
-    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN16HeartbeatmanagerE_t>.stringdata,
-    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN16HeartbeatmanagerE_t>.data,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN16HeartbeatManagerE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN16HeartbeatManagerE_t>.data,
     qt_static_metacall,
     nullptr,
-    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN16HeartbeatmanagerE_t>.metaTypes,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN16HeartbeatManagerE_t>.metaTypes,
     nullptr
 } };
 
-void Heartbeatmanager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void HeartbeatManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    auto *_t = static_cast<Heartbeatmanager *>(_o);
+    auto *_t = static_cast<HeartbeatManager *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->heartbeattimeout(); break;
+        case 0: _t->heartbeatTimeout(); break;
         case 1: _t->sendHeartbeat((*reinterpret_cast<std::add_pointer_t<QByteArray>>(_a[1]))); break;
         case 2: _t->onTimeout(); break;
         default: ;
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
-        if (QtMocHelpers::indexOfMethod<void (Heartbeatmanager::*)()>(_a, &Heartbeatmanager::heartbeattimeout, 0))
+        if (QtMocHelpers::indexOfMethod<void (HeartbeatManager::*)()>(_a, &HeartbeatManager::heartbeatTimeout, 0))
             return;
-        if (QtMocHelpers::indexOfMethod<void (Heartbeatmanager::*)(const QByteArray & )>(_a, &Heartbeatmanager::sendHeartbeat, 1))
+        if (QtMocHelpers::indexOfMethod<void (HeartbeatManager::*)(const QByteArray & )>(_a, &HeartbeatManager::sendHeartbeat, 1))
             return;
     }
 }
 
-const QMetaObject *Heartbeatmanager::metaObject() const
+const QMetaObject *HeartbeatManager::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *Heartbeatmanager::qt_metacast(const char *_clname)
+void *HeartbeatManager::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN16HeartbeatmanagerE_t>.strings))
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN16HeartbeatManagerE_t>.strings))
         return static_cast<void*>(this);
     return QObject::qt_metacast(_clname);
 }
 
-int Heartbeatmanager::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int HeartbeatManager::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QObject::qt_metacall(_c, _id, _a);
     if (_id < 0)
@@ -124,13 +124,13 @@ int Heartbeatmanager::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void Heartbeatmanager::heartbeattimeout()
+void HeartbeatManager::heartbeatTimeout()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 
 // SIGNAL 1
-void Heartbeatmanager::sendHeartbeat(const QByteArray & _t1)
+void HeartbeatManager::sendHeartbeat(const QByteArray & _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 1, nullptr, _t1);
 }

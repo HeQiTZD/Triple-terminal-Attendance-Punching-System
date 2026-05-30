@@ -40,14 +40,8 @@ signals:
     /// 待发送数量变化
     void pendingCountChanged(int count);
 
-    /// 需要发送 JSON（连接至 Networkclient）
-    void sendMessage(const QJsonObject &message);
-
-    /// 需要发送原始字节（连接至 Networkclient）
-    void sendRawBytes(const QByteArray &data);
-
 public slots:
-    /// 接收来自 Networkclient 的上报结果
+    /// 接收来自 NetworkClient 的上报结果
     void onReportResult(const QString &employeeId, bool success, const QString &message);
 
     /// 连接状态变化时更新内部状态

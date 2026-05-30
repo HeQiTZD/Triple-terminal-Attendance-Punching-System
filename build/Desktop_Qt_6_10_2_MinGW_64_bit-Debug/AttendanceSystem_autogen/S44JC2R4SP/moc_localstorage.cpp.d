@@ -4,9 +4,12 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtCore/QDateTime \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonArray \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonObject \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/QMutex \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/QMap \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QObject \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QString \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/QThread \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/QVariant \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/QVariantMap \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QVector \
   C:/Qt/6.10.2/mingw_64/include/QtCore/q17memory.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/q20functional.h \
@@ -80,7 +83,6 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtCore/qmetaobject.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qmetatype.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qminmax.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/qmutex.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qnamespace.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qnumeric.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qobject.h \
@@ -125,11 +127,11 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtCore/qtenvironmentvariables.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qtextstream.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qtformat_impl.h \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/qthread.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qtmetamacros.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qtnoop.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qtpreprocessorsupport.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qtresource.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/qtsan_impl.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qttranslation.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qttypetraits.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qtversion.h \
@@ -140,13 +142,18 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtCore/qutf8stringview.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/quuid.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qvariant.h \
+  C:/Qt/6.10.2/mingw_64/include/QtCore/qvariantmap.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qvarlengtharray.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qvector.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qversiontagging.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qxptype_traits.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qyieldcpu.h \
   C:/Qt/6.10.2/mingw_64/include/QtSql/QSqlDatabase \
+  C:/Qt/6.10.2/mingw_64/include/QtSql/QSqlError \
+  C:/Qt/6.10.2/mingw_64/include/QtSql/QSqlQuery \
   C:/Qt/6.10.2/mingw_64/include/QtSql/qsqldatabase.h \
+  C:/Qt/6.10.2/mingw_64/include/QtSql/qsqlerror.h \
+  C:/Qt/6.10.2/mingw_64/include/QtSql/qsqlquery.h \
   C:/Qt/6.10.2/mingw_64/include/QtSql/qtsql-config.h \
   C:/Qt/6.10.2/mingw_64/include/QtSql/qtsqlexports.h \
   C:/Qt/6.10.2/mingw_64/include/QtSql/qtsqlglobal.h \
@@ -162,6 +169,7 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/allocated_ptr.h \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/allocator.h \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/atomic_base.h \
+  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/atomic_futex.h \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/atomic_lockfree_defines.h \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/basic_string.h \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/basic_string.tcc \
@@ -208,6 +216,8 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/specfun.h \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/std_abs.h \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/std_function.h \
+  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/std_mutex.h \
+  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/std_thread.h \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_algo.h \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_algobase.h \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_bvector.h \
@@ -236,6 +246,7 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/string_view.tcc \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stringfwd.h \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/uniform_int_dist.h \
+  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/unique_lock.h \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/unique_ptr.h \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/unordered_map.h \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/unordered_set.h \
@@ -250,6 +261,7 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/clocale \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cmath \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/compare \
+  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/condition_variable \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cstddef \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cstdint \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cstdio \
@@ -268,6 +280,7 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/string_conversions.h \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/type_traits.h \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/functional \
+  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/future \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/initializer_list \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/iosfwd \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/iterator \
@@ -275,6 +288,7 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/list \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/map \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/memory \
+  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/mutex \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/new \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/numeric \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/optional \
@@ -363,7 +377,9 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
   D:/QTproject/AttendanceSystem/LocalStorage/AttendanceOutboxRepository.h \
+  D:/QTproject/AttendanceSystem/LocalStorage/BaseRepository.h \
   D:/QTproject/AttendanceSystem/LocalStorage/DeviceLocalRepository.h \
   D:/QTproject/AttendanceSystem/LocalStorage/FaceFeatureRepository.h \
   D:/QTproject/AttendanceSystem/LocalStorage/SyncMetaRepository.h \
-  D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h
+  D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h \
+  D:/QTproject/AttendanceSystem/Utils/DatabaseManager.h

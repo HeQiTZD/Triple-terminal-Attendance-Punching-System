@@ -3,9 +3,10 @@
 ## 文档信息
 
 - **日期：** 2026-05-28
-- **版本：** 1.0
-- **状态：** 待审批
+- **版本：** 1.1
+- **状态：** 已审核（可行性验证通过，已根据项目实际代码逐项修正）
 - **作者：** Claude Code
+- **审核：** Reasonix Code（2026-05-28，基于实际代码逐项验证）
 
 ---
 
@@ -15,7 +16,7 @@
 
 AttendanceSystem 是一个基于 Qt6 的人脸识别考勤设备端应用。经过代码分析，发现以下可维护性问题：
 
-- **NetworkClient 模块职责过重**（2427行）：连接管理、认证、消息收发、业务接口、Outbox 处理、JWT 令牌管理全在一个类
+- **NetworkClient 模块职责过重**（~906行，33KB）：连接管理、认证、消息收发、业务接口、Outbox 处理、JWT 令牌管理全在一个类
 - **FaceRecognition 模块命名问题**：拼音方法名、拼写错误
 - **类名命名不一致**：`Networkclient` vs `Heartbeatmanager` vs `Connectionmanager`
 - **LocalStorage 模块重复代码**：Repository 类中大量重复的数据库操作模式
@@ -49,6 +50,20 @@ AttendanceSystem 是一个基于 Qt6 的人脸识别考勤设备端应用。经�
 | `facerecognizer.h/cpp` | `perfromRecognition` | `performRecognition` | 拼写错误 |
 | `localstorage.h/cpp` | `connectDatabse` | `connectDatabase` | 拼写错误 |
 
+### 2.1b 文件名修正
+
+`CameraCapture/` 目录下两个文件名存在拼写错误（`fram` 应为 `frame`）：
+
+| 文件 | 当前名称 | 修正后 | 说明 |
+|------|----------|--------|------|
+| `CameraCapture/videoframecapture.h` | `videoframecapture.h` | `videoframecapture.h` | 拼写错误（fram→frame） |
+| `CameraCapture/videoframecapture.cpp` | `videoframecapture.cpp` | `videoframecapture.cpp` | 同上 |
+| `CameraCapture/videoframeconverter.h` | `videoframeconverter.h` | `videoframeconverter.h` | 同上 |
+| `CameraCapture/videoframeconverter.cpp` | `videoframeconverter.cpp` | `videoframeconverter.cpp` | 同上 |
+| `FaceRecognition/facerecognizer.h:5-6` | `#include "../CameraCapture/videoframecapture.h"` | `#include "../CameraCapture/videoframecapture.h"` | 更新 include 路径 |
+
+同时检查 `CMakeLists.txt` 中是否有显式列出这些文件，如有则同步更新。
+
 ### 2.2 类名统一（PascalCase）
 
 | 当前名称 | 修正后 | 影响文件 |
@@ -62,10 +77,12 @@ AttendanceSystem 是一个基于 Qt6 的人脸识别考勤设备端应用。经�
 
 ### 2.3 信号名修正
 
-| 文件 | 当前名称 | 修正后 |
-|------|----------|--------|
-| `heartbeatmanager.h` | `heartbeattimeout` | `heartbeatTimeout` |
-| `heartbeatmanager.h` | `sendHeartbeat` | `sendHeartbeatData`（更清晰） |
+| 文件 | 当前名称 | 修正后 | 说明 |
+|------|----------|--------|------|
+| `heartbeatmanager.h` | `heartbeattimeout` | `heartbeatTimeout` | 驼峰规范化 |
+
+> **注意**：`sendHeartbeat` 信号**不执行重命名**。
+> 当前 `sendHeartbeat(const QByteArray &data)` → `onSendHeartbeat(const QByteArray &data)` 的信号/槽对仗已经足够清晰，参数类型已表明传递的是心跳数据。重命名为 `sendHeartbeatData` 会导致信号/槽命名不对称，且零语义收益——保持原样。
 
 ### 2.4 影响范围
 
@@ -106,41 +123,63 @@ AttendanceSystem 是一个基于 Qt6 的人脸识别考勤设备端应用。经�
 
 ### 3.2 Authenticator 类设计
 
+> **设计修正**（v1.1）：Authenticator 定位为**认证流程协调者**，不取代已有的 `TokenManager`（令牌存取/过期判断/持久化）和 `TokenRefresher`（定时器驱动自动刷新）。TokenManager 和 TokenRefresher 仍由 NetworkClient 持有所有权，Authenticator 以指针引用它们。
+
+**职责边界：**
+
+| 类 | 负责 | 不负责 |
+|---|---|---|
+| `Authenticator` | 发送 auth 请求、解析 auth 响应、编排认证成功后的后续动作（启动心跳/处理队列/outbox） | 令牌存取、定时刷新 |
+| `TokenManager` | 令牌 CRUD、过期判断、QSettings 持久化 | 网络通信 |
+| `TokenRefresher` | 定时器驱动自动刷新、调用 NetworkClient 发送刷新请求 | 认证流程 |
+
 ```cpp
 // NetworkClient/authenticator.h
 class Authenticator : public QObject {
     Q_OBJECT
 public:
-    explicit Authenticator(QObject *parent = nullptr);
-    
-    void setDeviceCredentials(const QString &deviceId, const QString &deviceKey);
-    void authenticate(QTcpSocket *socket);
-    void refreshToken();
-    bool isAuthenticated() const;
-    QString sessionToken() const;
-    
+    // TokenManager 和 TokenRefresher 由 NetworkClient 持有所有权，这里只引用
+    explicit Authenticator(TokenManager *tokenManager,
+                          TokenRefresher *tokenRefresher,
+                          QObject *parent = nullptr);
+
+    // 由 NetworkClient::onConnectionConnected() 调用，发送首包 auth 请求
+    void sendAuthRequest(const QString &deviceId, const QString &deviceKey,
+                         MessageWriter *writer);
+
+    // 由 NetworkClient::onMessageReceived() 路由过来
+    void handleAuthResponse(const QJsonObject &message,
+                            HeartbeatManager *heartbeat);
+
+    bool isAuthenticated() const { return m_isAuthenticated; }
+
 signals:
-    void authSuccess(const QString &sessionToken);
+    void authSuccess();
     void authFailed(int code, const QString &message);
-    void tokenRefreshed(const QString &newToken);
-    
-public slots:
-    void handleMessage(const QJsonObject &message);
-    
+    void devicePendingAuth();
+    void deviceKeyUpdated();   // 密钥轮换时通知 NetworkClient 重连
+
 private:
-    void handleAuthResponse(const QJsonObject &message);
-    void handleTokenRefreshResponse(const QJsonObject &message);
-    
-    QString m_deviceId;
-    QString m_deviceKey;
-    QString m_sessionToken;
+    TokenManager   *m_tokenManager;    // 不持有所有权
+    TokenRefresher *m_tokenRefresher;  // 不持有所有权
     bool m_isAuthenticated = false;
-    TokenManager *m_tokenManager;
-    TokenRefresher *m_tokenRefresher;
 };
 ```
 
+NetworkClient 构造函数中的持有关系：
+
+```
+NetworkClient
+  ├── owns TokenManager
+  ├── owns TokenRefresher (依赖 TokenManager)
+  ├── owns Authenticator  (引用 TokenManager + TokenRefresher)
+  ├── owns Connectionmanager, Heartbeatmanager, MessageWriter, Messagereader, Messagequeue
+  └── owns OutboxManager
+```
+
 ### 3.3 OutboxManager 类设计
+
+> **设计修正**（v1.1）：OutboxManager 定位为**业务调度层**，持久化全部委托给 `AttendanceOutboxRepository`。不持有 `MessageWriter*` 和 `deviceId`，而是在 `processOutbox()` 时作为参数传入，保持与 NetworkClient 核心发送通道的松耦合，也方便单元测试。
 
 ```cpp
 // NetworkClient/outboxmanager.h
@@ -148,25 +187,37 @@ class OutboxManager : public QObject {
     Q_OBJECT
 public:
     explicit OutboxManager(QObject *parent = nullptr);
-    
+
+    // ── 入队（委托 AttendanceOutboxRepository，只做业务校验）──
     QString enqueue(const QString &employeeId, const QString &status,
                     const QDateTime &checkTime);
     QString enqueueWithPhoto(const QString &employeeId, const QString &status,
                              const QByteArray &photoJpeg, const QDateTime &checkTime);
-    void retryAll();
-    void processOutbox();
+
+    // ── 调度发送（Writer 和 deviceId 作为参数传入，不持有）──
+    void processOutbox(MessageWriter *writer, const QString &deviceId);
+
+    // ── 响应处理 ──
+    void handleUploadResponse(const QJsonObject &message);
+    void handleServerError(const QJsonObject &message);
+
+    // ── 重试控制 ──
+    void retryAll(MessageWriter *writer, const QString &deviceId);
+    void rollbackSendingToPending();  // 断连时调用
     int pendingCount() const;
-    
+
+    void setMaxRetryCount(int count)       { m_maxRetryCount = count; }
+    void setRetryBackoffBaseMs(int ms)     { m_retryBackoffBaseMs = ms; }
+
 signals:
-    void recordEnqueued(const QString &msgId);
-    void recordSent(const QString &msgId);
-    void recordConfirmed(const QString &msgId);
-    void recordFailed(const QString &msgId, const QString &error);
+    void attendanceReportResult(const QString &employeeId, bool success,
+                                const QString &message);
+    void uploadFinished(bool success, const QString &message);
     void pendingCountChanged(int count);
-    
-public slots:
-    void handleResponse(const QJsonObject &message);
-    
+
+private slots:
+    void onRetryTick();  // QTimer::timeout → processOutbox
+
 private:
     QTimer *m_retryTimer;
     int m_retryRound = 0;
@@ -258,8 +309,10 @@ private:
     MessageWriter *m_writer;
     MessageReader *m_reader;
     MessageQueue *m_queue;
-    Authenticator *m_authenticator;
-    OutboxManager *m_outboxManager;
+    TokenManager    *m_tokenManager;     // 持有所有权
+    TokenRefresher  *m_tokenRefresher;   // 持有所有权，依赖 TokenManager
+    Authenticator   *m_authenticator;   // 引用 TokenManager + TokenRefresher
+    OutboxManager   *m_outboxManager;
     
     QString m_deviceId = QStringLiteral("device_001");
     QString m_deviceKey;
@@ -339,10 +392,12 @@ void FaceRecognizer::handleDetectingState()
 **改进：** 移除不必要的 include，降低编译依赖。
 
 ```cpp
-// 移除这些 include
+// 从 facerecognizer.h 中移除以下不使用的 include
 // #include "../LocalStorage/localstorage.h"
 // #include "../NetworkClient/networkclient.h"
 ```
+
+> **传递依赖注意**：删除 include 后，如果有其他文件通过 `facerecognizer.h` 间接拿到了这些头文件，编译会报错。此时应在报错的文件中**显式添加**缺失的 include，而非恢复删除。这是打破传递依赖的标准重构手法。
 
 ### 4.4 实施步骤
 
@@ -379,33 +434,58 @@ return true;
 
 ### 5.2 解决方案：抽取基类
 
+> **设计修正**（v1.1）：
+> 1. `executeQuery` 返回 `QSqlQuery` 存在生命周期陷阱——`QSqlQuery` 依赖 `QSqlDatabase`，若在方法内部创建 `QSqlDatabase` 并在返回前析构，返回的 `QSqlQuery` 将悬空。改用**回调模式 `executeReader`**，`QSqlDatabase` 生命周期由方法保证。
+> 2. 删除事务方法（`beginTransaction` / `commitTransaction` / `rollbackTransaction`）——当前 4 个 Repository 的所有操作都是单条 SQL 语句，SQLite 默认每条语句自带隐式事务，遵循 YAGNI 原则。
+
 ```cpp
 // LocalStorage/BaseRepository.h
 class BaseRepository {
 public:
     explicit BaseRepository(const QString &dbPath);
     virtual ~BaseRepository() = default;
-    
+
 protected:
-    // 通用查询执行
-    bool executeNonQuery(const QString &sql, 
+    // INSERT / UPDATE / DELETE — 返回是否成功
+    bool executeNonQuery(const QString &sql,
                         const QVariantMap &params = {});
-    
-    QSqlQuery executeQuery(const QString &sql, 
-                          const QVariantMap &params = {});
-    
-    // 事务管理
-    bool beginTransaction();
-    bool commitTransaction();
-    bool rollbackTransaction();
-    
+
+    // SELECT 单值（如 COUNT(*)）
+    QVariant executeScalar(const QString &sql,
+                          const QVariantMap &params = {},
+                          const QVariant &defaultValue = {});
+
+    // SELECT 多行 — 回调模式，QSqlDatabase 生命周期由 executeReader 保证
+    template<typename RowFunc>
+    bool executeReader(const QString &sql,
+                      const QVariantMap &params,
+                      RowFunc &&rowHandler);
+
     QString m_dbPath;
 };
+
+// 模板实现（放在头文件中）
+template<typename RowFunc>
+bool BaseRepository::executeReader(const QString &sql,
+                                    const QVariantMap &params,
+                                    RowFunc &&rowHandler)
+{
+    QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
+    QSqlQuery query(db);
+    query.prepare(sql);
+    for (auto it = params.begin(); it != params.end(); ++it)
+        query.bindValue(it.key(), it.value());
+    if (!query.exec())
+        return false;
+    while (query.next())
+        rowHandler(query);   // QSqlDatabase db 在此作用域内始终存活
+    return true;
+}
 ```
 
 ### 5.3 代码简化示例
 
-**重构前（FaceFeatureRepository.cpp）：**
+**INSERT 示例 — 重构前（FaceFeatureRepository.cpp）：**
 ```cpp
 bool FaceFeatureRepository::insertOrReplace(...) {
     QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
@@ -422,16 +502,58 @@ bool FaceFeatureRepository::insertOrReplace(...) {
 }
 ```
 
-**重构后：**
+**INSERT 示例 — 重构后：**
 ```cpp
 bool FaceFeatureRepository::insertOrReplace(...) {
     return executeNonQuery(
         "INSERT OR REPLACE INTO face_feature "
         "(employee_id, feature_blob, feature_size, updated_at, sync_generation) "
         "VALUES (:eid, :blob, :size, datetime('now'), :gen)",
-        {{":eid", employeeId}, {":blob", featureBlob}, 
+        {{":eid", employeeId}, {":blob", featureBlob},
          {":size", featureSize}, {":gen", syncGeneration}}
     );
+}
+```
+
+**SELECT 多行示例 — 重构前（FaceFeatureRepository::loadByGeneration）：**
+```cpp
+QVector<FaceFeatureRecord> FaceFeatureRepository::loadByGeneration(int generation) {
+    QVector<FaceFeatureRecord> result;
+    QSqlDatabase db = DatabaseManager::getDatabase(m_dbPath);
+    QSqlQuery query(db);
+    query.prepare("SELECT employee_id, feature_blob, feature_size "
+                  "FROM face_feature WHERE sync_generation = :gen");
+    query.bindValue(":gen", generation);
+    if (!query.exec()) return result;
+    while (query.next()) {
+        FaceFeatureRecord r;
+        r.employeeId  = query.value(0).toString();
+        r.featureBlob = query.value(1).toByteArray();
+        r.featureSize = query.value(2).toInt();
+        if (r.featureSize == r.featureBlob.size())
+            result.append(r);
+    }
+    return result;
+}
+```
+
+**SELECT 多行示例 — 重构后：**
+```cpp
+QVector<FaceFeatureRecord> FaceFeatureRepository::loadByGeneration(int generation) {
+    QVector<FaceFeatureRecord> result;
+    executeReader(
+        "SELECT employee_id, feature_blob, feature_size "
+        "FROM face_feature WHERE sync_generation = :gen",
+        {{":gen", generation}},
+        [&](QSqlQuery &q) {
+            FaceFeatureRecord r;
+            r.employeeId  = q.value(0).toString();
+            r.featureBlob = q.value(1).toByteArray();
+            r.featureSize = q.value(2).toInt();
+            if (r.featureSize == r.featureBlob.size())
+                result.append(r);
+        });
+    return result;
 }
 ```
 
@@ -575,6 +697,10 @@ private:
 };
 ```
 
+> **双重删除警告**（v1.1）：原方案在 `std::make_unique<QSettings>(..., this)` 中传递了 `this` 作为 QObject parent。这会导致 `unique_ptr` 析构和 QObject parent-child 机制**双重删除同一个 QSettings**。修正方案：**不传 parent**，让 `unique_ptr` 全权管理生命周期。
+
+**析构顺序安全性分析**：ConfigManager 析构时，C++ 按声明逆序销毁成员：先 `m_localSettings` unique_ptr（delete QSettings），再 `m_settings` unique_ptr（delete QSettings），最后 `~QObject()` 运行。因为两个 QSettings 都不是 QObject child，`~QObject()` 不会尝试 delete 它们——无冲突。
+
 需要更新构造函数和析构函数：
 
 ```cpp
@@ -591,14 +717,15 @@ ConfigManager::ConfigManager(QObject *parent)
         dir.mkpath(configDir);
     }
     
-    m_settings = std::make_unique<QSettings>(configPath, QSettings::IniFormat, this);
-    m_localSettings = std::make_unique<QSettings>(localConfigPath, QSettings::IniFormat, this);
+    // ★ 不传 this 作为 parent，由 unique_ptr 管理生命周期
+    m_settings      = std::make_unique<QSettings>(configPath, QSettings::IniFormat);
+    m_localSettings = std::make_unique<QSettings>(localConfigPath, QSettings::IniFormat);
     
     loadConfig();
 }
 
-// 移除析构函数中的手动 delete
-// ConfigManager::~ConfigManager() = default;
+// 析构函数直接 = default，unique_ptr 自动释放
+ConfigManager::~ConfigManager() = default;
 ```
 
 ### 7.3 实施步骤
@@ -711,9 +838,38 @@ ConfigManager::ConfigManager(QObject *parent)
 
 ---
 
-## 12. 总结
+## 12. 可行性验证记录
 
-本重构计划采用分阶段策略，从低风险的命名修正开始，逐步推进到更复杂的架构重构。每个阶段都有明确的目标、实施步骤和验证标准，确保重构过程可控、可验证。
+以下问题在 v1.0 方案审核中通过对照实际代码逐项验证，结果如下：
+
+| 方案断言 | 验证结果 | 实际代码证据 |
+|---|---|---|
+| `WanZhengYeWuLiuCheng` 拼音方法名 | ✅ 确认 | `FaceRecognition/facerecognizer.h:46` |
+| `perfromRecognition` 拼写错误 | ✅ 确认 | `FaceRecognition/facerecognizer.cpp:112` |
+| `connectDatabse` 拼写错误 | ✅ 确认 | `LocalStorage/localstorage.h:20` |
+| 6个类名 PascalCase 不规范 | ✅ 确认 | `Networkclient`, `Heartbeatmanager`, `Connectionmanager`, `Messagewriter`, `Messagereader`, `Messagequeue` |
+| `heartbeattimeout` 信号名 | ✅ 确认 | `NetworkClient/heartbeatmanager.h:34` |
+| `handleDetectingState()` 空实现 | ✅ 确认 | `FaceRecognition/facerecognizer.cpp:89-90` |
+| facerecognizer.h 不必要 include | ✅ 确认 | 文件 include 了 `localstorage.h` 和 `networkclient.h`，但 FaceRecognizer 全程未使用这两个类的任何符号 |
+| `sendMessage` / `sendRawBytes` 未使用信号 | ✅ 确认 | `Attendance/AttendanceReporter.h:44-47` 声明但 `.cpp` 从未 emit，实际直接调用 `Networkclient::instance()` |
+| `restoreDefaults()` 约70行 | ✅ 确认 | `Config/configmanager.cpp:243-310` |
+| `QSettings*` 裸指针 | ✅ 确认 | `Config/configmanager.h:164-165`，手动 delete 在析构函数中 |
+| Repository 重复代码模式 | ✅ 确认 | 4个 Repository 共20+方法，均为相同 QSqlDatabase→QSqlQuery→prepare→bindValue→exec→return 模式 |
+| `videoframecapture.h` 文件名拼写 | ✅ 确认 | `CameraCapture/` 目录下文件名 `fram` 缺少 'e' |
+| `sendHeartbeat` 重命名价值 | ⚠️ 不执行 | 当前 `sendHeartbeat`→`onSendHeartbeat` 对仗已清晰，重命名为 `sendHeartbeatData` 零收益且破坏信号/槽对称 |
+| TokenManager / TokenRefresher 已是独立类 | ✅ 确认 | `Auth/tokenmanager.h` 和 `Auth/tokenrefresher.h` 已在 NetworkClient 外部独立存在 |
+| AttendanceOutboxRepository 已是独立持久化层 | ✅ 确认 | `LocalStorage/AttendanceOutboxRepository.h` |
+
+---
+
+## 13. 总结
+
+本重构计划采用分阶段策略，从低风险的命名修正开始，逐步推进到更复杂的架构重构。v1.1 版本经过实际代码逐项验证，修正了以下关键问题：
+
+- **阶段2**：Authenticator 改为协调者模式（不取代 TokenManager/TokenRefresher）；OutboxManager 定位为业务调度层（持久化委托 Repository）
+- **阶段4**：BaseRepository 改用回调模式消除 QSqlQuery 生命周期陷阱；删除未使用的事务方法
+- **阶段6**：unique_ptr 不传 QObject parent，避免 QObject parent-child 与 unique_ptr 双重删除
+- **阶段1**：追加 CameraCapture 文件名拼写修正；取消 sendHeartbeat 重命名（零收益）
 
 **关键原则：**
 
@@ -721,6 +877,7 @@ ConfigManager::ConfigManager(QObject *parent)
 2. **分阶段实施：** 小步快跑，降低风险
 3. **持续验证：** 每阶段后编译和测试
 4. **文档同步：** 及时更新文档
+5. **YAGNI：** 不引入当前不需要的抽象（如事务方法）
 
 **预期收益：**
 

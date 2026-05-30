@@ -6,14 +6,14 @@
 
 #include "tokenmanager.h"
 
-class Networkclient;
+class NetworkClient;
 
 class TokenRefresher : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit TokenRefresher(Networkclient *client, TokenManager *tokenManager,
+    explicit TokenRefresher(NetworkClient *client, TokenManager *tokenManager,
                            QObject *parent = nullptr);
     ~TokenRefresher() = default;
 
@@ -35,7 +35,7 @@ private slots:
     void onTokenRefreshResponse(const QJsonObject &response);
 
 private:
-    Networkclient *m_client;
+    NetworkClient *m_client;
     TokenManager *m_tokenManager;
     QTimer *m_refreshTimer;
 

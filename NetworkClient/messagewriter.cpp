@@ -2,13 +2,13 @@
 
 #include <QJsonDocument>
 
-Messagewriter::Messagewriter(QTcpSocket *socket, QObject *parent)
+MessageWriter::MessageWriter(QTcpSocket *socket, QObject *parent)
     : QObject(parent)
     , m_socket(socket)
 {
 }
 
-static bool socketReady(QTcpSocket *s, Messagewriter *w)
+static bool socketReady(QTcpSocket *s, MessageWriter *w)
 {
     if (!s) {
         emit w->sendError(QStringLiteral("socket未初始化"));
@@ -21,7 +21,7 @@ static bool socketReady(QTcpSocket *s, Messagewriter *w)
     return true;
 }
 
-bool Messagewriter::send(const QJsonObject &message)
+bool MessageWriter::send(const QJsonObject &message)
 {
     if (!socketReady(m_socket, this))
         return false;
@@ -40,7 +40,7 @@ bool Messagewriter::send(const QJsonObject &message)
     return true;
 }
 
-bool Messagewriter::send(const QByteArray &data)
+bool MessageWriter::send(const QByteArray &data)
 {
     if (!socketReady(m_socket, this))
         return false;
@@ -59,7 +59,7 @@ bool Messagewriter::send(const QByteArray &data)
     return true;
 }
 
-bool Messagewriter::sendBinaryFrame(const QByteArray &payload)
+bool MessageWriter::sendBinaryFrame(const QByteArray &payload)
 {
     if (!socketReady(m_socket, this))
         return false;
@@ -84,7 +84,7 @@ bool Messagewriter::sendBinaryFrame(const QByteArray &payload)
     return true;
 }
 
-bool Messagewriter::sendRawBytes(const QByteArray &data)
+bool MessageWriter::sendRawBytes(const QByteArray &data)
 {
     if (!socketReady(m_socket, this))
         return false;
@@ -99,7 +99,7 @@ bool Messagewriter::sendRawBytes(const QByteArray &data)
     return true;
 }
 
-int Messagewriter::sendBatch(const QVector<QJsonObject> &messages)
+int MessageWriter::sendBatch(const QVector<QJsonObject> &messages)
 {
     int successCount = 0;
     for (const QJsonObject &msg : messages) {
@@ -111,7 +111,7 @@ int Messagewriter::sendBatch(const QVector<QJsonObject> &messages)
     return successCount;
 }
 
-bool Messagewriter::sendRawJson(const QJsonObject &msg)
+bool MessageWriter::sendRawJson(const QJsonObject &msg)
 {
     if (!socketReady(m_socket, this))
         return false;

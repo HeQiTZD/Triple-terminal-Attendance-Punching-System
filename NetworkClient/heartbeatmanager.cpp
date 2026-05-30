@@ -3,21 +3,21 @@
 
 #include <QJsonDocument>
 
-Heartbeatmanager::Heartbeatmanager(QObject *parent)
+HeartbeatManager::HeartbeatManager(QObject *parent)
     : QObject(parent)
     , m_timer(new QTimer(this))
     , m_timeoutTimer(new QTimer(this))
 {
-    connect(m_timer, &QTimer::timeout, this, &Heartbeatmanager::onTimeout);
+    connect(m_timer, &QTimer::timeout, this, &HeartbeatManager::onTimeout);
 
     m_timeoutTimer->setSingleShot(true);
     connect(m_timeoutTimer, &QTimer::timeout, this, [this]() {
         m_waitingResponse = false;
-        emit heartbeattimeout();
+        emit heartbeatTimeout();
     });
 }
 
-void Heartbeatmanager::setSocket(QTcpSocket *socket)
+void HeartbeatManager::setSocket(QTcpSocket *socket)
 {
     m_socket = socket;
     if (socket) {
@@ -27,7 +27,7 @@ void Heartbeatmanager::setSocket(QTcpSocket *socket)
     }
 }
 
-void Heartbeatmanager::start(int heartbeatSec)
+void HeartbeatManager::start(int heartbeatSec)
 {
     if (!m_socket) {
         return;
@@ -45,19 +45,19 @@ void Heartbeatmanager::start(int heartbeatSec)
     onTimeout();
 }
 
-void Heartbeatmanager::stop()
+void HeartbeatManager::stop()
 {
     m_timer->stop();
     m_timeoutTimer->stop();
     m_waitingResponse = false;
 }
 
-bool Heartbeatmanager::isRunning() const
+bool HeartbeatManager::isRunning() const
 {
     return m_timer->isActive();
 }
 
-void Heartbeatmanager::setHeartbeatInterval(int heartbeatSec)
+void HeartbeatManager::setHeartbeatInterval(int heartbeatSec)
 {
     if (heartbeatSec < 5)
         heartbeatSec = 5;
@@ -73,31 +73,31 @@ void Heartbeatmanager::setHeartbeatInterval(int heartbeatSec)
     }
 }
 
-void Heartbeatmanager::onAnyMessage()
+void HeartbeatManager::onAnyMessage()
 {
     if (m_timeoutTimer->isActive())
         m_timeoutTimer->start(m_timeoutThresholdMs);
 }
 
-void Heartbeatmanager::onHeartbeatResponse()
+void HeartbeatManager::onHeartbeatResponse()
 {
     m_waitingResponse = false;
     m_timeoutTimer->stop();
 }
 
-QByteArray Heartbeatmanager::buildHeartbeatData()
+QByteArray HeartbeatManager::buildHeartbeatData()
 {
     QJsonObject message = ServerProtocol::buildHeartbeat();
     return QJsonDocument(message).toJson(QJsonDocument::Compact);
 }
 
-void Heartbeatmanager::onTimeout()
+void HeartbeatManager::onTimeout()
 {
     if (!m_socket || m_socket->state() != QAbstractSocket::ConnectedState)
         return;
 
     if (m_waitingResponse) {
-        emit heartbeattimeout();
+        emit heartbeatTimeout();
         m_waitingResponse = false;
         return;
     }

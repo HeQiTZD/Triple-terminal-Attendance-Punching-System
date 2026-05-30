@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QDateTime>
 #include <QSettings>
+#include <memory>
 
 class TokenManager : public QObject
 {
@@ -51,7 +52,7 @@ private:
     QString m_accessToken;
     QString m_refreshToken;
     QDateTime m_expiresAt;
-    QSettings m_settings;
+    std::unique_ptr<QSettings> m_settings;  // 延迟初始化，降低耦合
 };
 
 #endif // TOKENMANAGER_H

@@ -5,12 +5,12 @@
 #include <QTimer>
 #include <QTcpSocket>
 
-class Heartbeatmanager : public QObject
+class HeartbeatManager : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit Heartbeatmanager(QObject *parent = nullptr);
+    explicit HeartbeatManager(QObject *parent = nullptr);
 
     void setSocket(QTcpSocket *socket);
 
@@ -19,7 +19,7 @@ public:
     void stop();
     bool isRunning() const;
 
-    /// 动态更新心跳间隔（auth 成功后由 Networkclient 调用）
+    /// 动态更新心跳间隔（auth 成功后由 NetworkClient 调用）
     void setHeartbeatInterval(int heartbeatSec);
 
     /// 收到任意消息时调用 —— 重置超时计时器
@@ -31,7 +31,7 @@ public:
     QByteArray buildHeartbeatData();
 
 signals:
-    void heartbeattimeout();
+    void heartbeatTimeout();
     void sendHeartbeat(const QByteArray &data);
 
 private slots:

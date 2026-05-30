@@ -127,7 +127,7 @@ MainWindow::~MainWindow()
 void MainWindow::initNetworkClient()
 {
     //网络客户端
-    networkClient = Networkclient::instance();
+    networkClient = NetworkClient::instance();
     
     //多线程 - 将网络客户端移到独立线程
     m_networkThread = new QThread(this);
@@ -135,7 +135,7 @@ void MainWindow::initNetworkClient()
     m_networkThread->start();
 
     // 新增：处理设备待审核信号
-    connect(networkClient, &Networkclient::devicePendingAuth,
+    connect(networkClient, &NetworkClient::devicePendingAuth,
             this, [this]() {
                 // 显示待审核提示
                 QMessageBox::information(this, tr("设备待审核"),
@@ -170,7 +170,7 @@ void MainWindow::init()
 {
     //数据库初始化
     m_db = LocalStorage::instance();
-    if(!m_db->connectDatabse()){
+    if(!m_db->connectDatabase()){
         return;
     };
 
@@ -217,47 +217,47 @@ void MainWindow::init()
 
     // AttendanceReporter
     m_attendanceReporter = new AttendanceReporter(this);
-    connect(networkClient, &Networkclient::attendanceReportResult,
+    connect(networkClient, &NetworkClient::attendanceReportResult,
             m_attendanceReporter, &AttendanceReporter::onReportResult, Qt::QueuedConnection);
-    connect(networkClient, &Networkclient::networkStateChanged,
+    connect(networkClient, &NetworkClient::networkStateChanged,
             m_attendanceReporter, &AttendanceReporter::onConnectionStateChanged, Qt::QueuedConnection);
 
-    // 将 Networkclient 信号路由到 SyncManager / CommandHandler
-    // person.sync (Networkclient 已有 personDataReceived，直接连接到 SyncManager)
-    connect(networkClient, &Networkclient::personDataReceived, this, [=](const QVector<ServerProtocol::PersonData> &) {
+    // 将 NetworkClient 信号路由到 SyncManager / CommandHandler
+    // person.sync (NetworkClient 已有 personDataReceived，直接连接到 SyncManager)
+    connect(networkClient, &NetworkClient::personDataReceived, this, [=](const QVector<ServerProtocol::PersonData> &) {
         // person.sync 的处理已在 handlePersonSynResponse 中完成持久化
         // SyncManager 通过直接调用 handlePersonSync 处理
     });
-    // face sync 信号由 Networkclient::faceSyncItemReceived 连接
-    connect(networkClient, &Networkclient::faceSyncItemReceived, this, [=](const QJsonObject &header, const QByteArray &payload) {
+    // face sync 信号由 NetworkClient::faceSyncItemReceived 连接
+    connect(networkClient, &NetworkClient::faceSyncItemReceived, this, [=](const QJsonObject &header, const QByteArray &payload) {
         QMetaObject::invokeMethod(m_syncManager, [=]() {
             m_syncManager->handleFaceItem(header, payload);
         }, Qt::QueuedConnection);
     });
     // device.command
-    connect(networkClient, &Networkclient::deviceCommandReceived, this, [=](const QJsonObject &msg) {
+    connect(networkClient, &NetworkClient::deviceCommandReceived, this, [=](const QJsonObject &msg) {
         QMetaObject::invokeMethod(m_commandHandler, [=]() {
             m_commandHandler->handleCommand(msg);
         }, Qt::QueuedConnection);
     });
 
     // 认证成功后触发同步
-    connect(networkClient, &Networkclient::authSuccess, this, [=]() {
+    connect(networkClient, &NetworkClient::authSuccess, this, [=]() {
         QMetaObject::invokeMethod(m_syncManager, "requestSync", Qt::QueuedConnection);
     });
 
     // 同步流路由到 SyncManager
-    connect(networkClient, &Networkclient::personSyncReceived, this, [=](const QJsonObject &msg) {
+    connect(networkClient, &NetworkClient::personSyncReceived, this, [=](const QJsonObject &msg) {
         QMetaObject::invokeMethod(m_syncManager, [=]() {
             m_syncManager->handlePersonSync(msg);
         }, Qt::QueuedConnection);
     });
-    connect(networkClient, &Networkclient::faceSyncBeginReceived, this, [=](const QJsonObject &msg) {
+    connect(networkClient, &NetworkClient::faceSyncBeginReceived, this, [=](const QJsonObject &msg) {
         QMetaObject::invokeMethod(m_syncManager, [=]() {
             m_syncManager->handleFaceSyncBegin(msg);
         }, Qt::QueuedConnection);
     });
-    connect(networkClient, &Networkclient::faceSyncEndReceived, this, [=](const QJsonObject &msg) {
+    connect(networkClient, &NetworkClient::faceSyncEndReceived, this, [=](const QJsonObject &msg) {
         QMetaObject::invokeMethod(m_syncManager, [=]() {
             m_syncManager->handleFaceSyncEnd(msg);
         }, Qt::QueuedConnection);
@@ -326,7 +326,7 @@ void MainWindow::FaceFeatureStart()
 
     // 连接视频帧捕获到人脸识别器
     connect(m_VideoFrameCapture, &VideoFrameCapture::frameCaptured,
-            m_FaceRecognizer, &FaceRecognizer::WanZhengYeWuLiuCheng);
+            m_FaceRecognizer, &FaceRecognizer::processFrame);
 
     // 连接识别成功信号到UI更新槽
     connect(m_FaceRecognizer, &FaceRecognizer::recognitionSuccess,
@@ -418,7 +418,7 @@ void MainWindow::initNetWorkStatus()
     }
 
     // 连接信号
-    connect(networkClient, &Networkclient::networkStateChanged,
+    connect(networkClient, &NetworkClient::networkStateChanged,
             this, &MainWindow::onNetworkStateChanged, Qt::QueuedConnection);
 
     onNetworkStateChanged(false);

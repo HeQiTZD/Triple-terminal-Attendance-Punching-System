@@ -31,14 +31,14 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 QT_WARNING_DISABLE_GCC("-Wuseless-cast")
 namespace {
-struct qt_meta_tag_ZN17ConnectionmanagerE_t {};
+struct qt_meta_tag_ZN17ConnectionManagerE_t {};
 } // unnamed namespace
 
-template <> constexpr inline auto Connectionmanager::qt_create_metaobjectdata<qt_meta_tag_ZN17ConnectionmanagerE_t>()
+template <> constexpr inline auto ConnectionManager::qt_create_metaobjectdata<qt_meta_tag_ZN17ConnectionManagerE_t>()
 {
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
-        "Connectionmanager",
+        "ConnectionManager",
         "connected",
         "",
         "disconnected",
@@ -101,22 +101,22 @@ template <> constexpr inline auto Connectionmanager::qt_create_metaobjectdata<qt
             {   21, ConnectionState::Authenticated },
         }),
     };
-    return QtMocHelpers::metaObjectData<Connectionmanager, qt_meta_tag_ZN17ConnectionmanagerE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+    return QtMocHelpers::metaObjectData<ConnectionManager, qt_meta_tag_ZN17ConnectionManagerE_t>(QMC::MetaObjectFlag{}, qt_stringData,
             qt_methods, qt_properties, qt_enums);
 }
-Q_CONSTINIT const QMetaObject Connectionmanager::staticMetaObject = { {
+Q_CONSTINIT const QMetaObject ConnectionManager::staticMetaObject = { {
     QMetaObject::SuperData::link<QObject::staticMetaObject>(),
-    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN17ConnectionmanagerE_t>.stringdata,
-    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN17ConnectionmanagerE_t>.data,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN17ConnectionManagerE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN17ConnectionManagerE_t>.data,
     qt_static_metacall,
     nullptr,
-    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN17ConnectionmanagerE_t>.metaTypes,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN17ConnectionManagerE_t>.metaTypes,
     nullptr
 } };
 
-void Connectionmanager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void ConnectionManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    auto *_t = static_cast<Connectionmanager *>(_o);
+    auto *_t = static_cast<ConnectionManager *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->connected(); break;
@@ -144,33 +144,33 @@ void Connectionmanager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
-        if (QtMocHelpers::indexOfMethod<void (Connectionmanager::*)()>(_a, &Connectionmanager::connected, 0))
+        if (QtMocHelpers::indexOfMethod<void (ConnectionManager::*)()>(_a, &ConnectionManager::connected, 0))
             return;
-        if (QtMocHelpers::indexOfMethod<void (Connectionmanager::*)()>(_a, &Connectionmanager::disconnected, 1))
+        if (QtMocHelpers::indexOfMethod<void (ConnectionManager::*)()>(_a, &ConnectionManager::disconnected, 1))
             return;
-        if (QtMocHelpers::indexOfMethod<void (Connectionmanager::*)(bool )>(_a, &Connectionmanager::stateChanged, 2))
+        if (QtMocHelpers::indexOfMethod<void (ConnectionManager::*)(bool )>(_a, &ConnectionManager::stateChanged, 2))
             return;
-        if (QtMocHelpers::indexOfMethod<void (Connectionmanager::*)(ConnectionState , ConnectionState )>(_a, &Connectionmanager::connectionStateChanged, 3))
+        if (QtMocHelpers::indexOfMethod<void (ConnectionManager::*)(ConnectionState , ConnectionState )>(_a, &ConnectionManager::connectionStateChanged, 3))
             return;
-        if (QtMocHelpers::indexOfMethod<void (Connectionmanager::*)(const QString & )>(_a, &Connectionmanager::errorOccurred, 4))
+        if (QtMocHelpers::indexOfMethod<void (ConnectionManager::*)(const QString & )>(_a, &ConnectionManager::errorOccurred, 4))
             return;
     }
 }
 
-const QMetaObject *Connectionmanager::metaObject() const
+const QMetaObject *ConnectionManager::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *Connectionmanager::qt_metacast(const char *_clname)
+void *ConnectionManager::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN17ConnectionmanagerE_t>.strings))
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN17ConnectionManagerE_t>.strings))
         return static_cast<void*>(this);
     return QObject::qt_metacast(_clname);
 }
 
-int Connectionmanager::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int ConnectionManager::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QObject::qt_metacall(_c, _id, _a);
     if (_id < 0)
@@ -189,31 +189,31 @@ int Connectionmanager::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void Connectionmanager::connected()
+void ConnectionManager::connected()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 
 // SIGNAL 1
-void Connectionmanager::disconnected()
+void ConnectionManager::disconnected()
 {
     QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
 }
 
 // SIGNAL 2
-void Connectionmanager::stateChanged(bool _t1)
+void ConnectionManager::stateChanged(bool _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 2, nullptr, _t1);
 }
 
 // SIGNAL 3
-void Connectionmanager::connectionStateChanged(ConnectionState _t1, ConnectionState _t2)
+void ConnectionManager::connectionStateChanged(ConnectionState _t1, ConnectionState _t2)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 3, nullptr, _t1, _t2);
 }
 
 // SIGNAL 4
-void Connectionmanager::errorOccurred(const QString & _t1)
+void ConnectionManager::errorOccurred(const QString & _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 4, nullptr, _t1);
 }

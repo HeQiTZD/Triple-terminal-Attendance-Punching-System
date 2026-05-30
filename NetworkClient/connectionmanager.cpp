@@ -4,24 +4,24 @@
 // Construction
 // ---------------------------------------------------------------------------
 
-Connectionmanager::Connectionmanager(QObject *parent)
+ConnectionManager::ConnectionManager(QObject *parent)
     : QObject(parent)
     , m_socket(new QTcpSocket(this))
     , m_reconnectTimer(new QTimer(this))
 {
-    connect(m_socket, &QTcpSocket::connected,       this, &Connectionmanager::onSocketConnected);
-    connect(m_socket, &QTcpSocket::disconnected,    this, &Connectionmanager::onSocketDisconnected);
-    connect(m_socket, &QTcpSocket::errorOccurred,   this, &Connectionmanager::onSocketError);
+    connect(m_socket, &QTcpSocket::connected,       this, &ConnectionManager::onSocketConnected);
+    connect(m_socket, &QTcpSocket::disconnected,    this, &ConnectionManager::onSocketDisconnected);
+    connect(m_socket, &QTcpSocket::errorOccurred,   this, &ConnectionManager::onSocketError);
 
     m_reconnectTimer->setSingleShot(true);
-    connect(m_reconnectTimer, &QTimer::timeout, this, &Connectionmanager::onReconnectTimeout);
+    connect(m_reconnectTimer, &QTimer::timeout, this, &ConnectionManager::onReconnectTimeout);
 }
 
 // ---------------------------------------------------------------------------
 // Public API
 // ---------------------------------------------------------------------------
 
-bool Connectionmanager::connectToHost(const QString &ip, quint16 port)
+bool ConnectionManager::connectToHost(const QString &ip, quint16 port)
 {
     m_ip   = ip;
     m_port = port;
@@ -38,7 +38,7 @@ bool Connectionmanager::connectToHost(const QString &ip, quint16 port)
         || m_socket->state() == QAbstractSocket::ConnectedState;
 }
 
-void Connectionmanager::disconnect()
+void ConnectionManager::disconnect()
 {
     m_manualDisconnect = true;
     m_reconnectTimer->stop();
@@ -47,7 +47,7 @@ void Connectionmanager::disconnect()
     setState(ConnectionState::Disconnected);
 }
 
-void Connectionmanager::scheduleReconnect()
+void ConnectionManager::scheduleReconnect()
 {
     m_manualDisconnect = false;
     m_reconnectCount   = 0;
@@ -60,18 +60,18 @@ void Connectionmanager::scheduleReconnect()
     }
 }
 
-bool Connectionmanager::isConnect() const
+bool ConnectionManager::isConnect() const
 {
     return m_state == ConnectionState::Connected
         || m_state == ConnectionState::Authenticated;
 }
 
-Connectionmanager::ConnectionState Connectionmanager::state() const
+ConnectionManager::ConnectionState ConnectionManager::state() const
 {
     return m_state;
 }
 
-void Connectionmanager::setAuthenticated(bool authenticated)
+void ConnectionManager::setAuthenticated(bool authenticated)
 {
     if (authenticated && m_state == ConnectionState::Connected) {
         setState(ConnectionState::Authenticated);
@@ -80,7 +80,7 @@ void Connectionmanager::setAuthenticated(bool authenticated)
     }
 }
 
-QTcpSocket* Connectionmanager::socket() const
+QTcpSocket* ConnectionManager::socket() const
 {
     return m_socket;
 }
@@ -89,7 +89,7 @@ QTcpSocket* Connectionmanager::socket() const
 // State machine
 // ---------------------------------------------------------------------------
 
-void Connectionmanager::setState(ConnectionState newState)
+void ConnectionManager::setState(ConnectionState newState)
 {
     if (m_state == newState)
         return;
@@ -115,13 +115,13 @@ void Connectionmanager::setState(ConnectionState newState)
 // Socket callbacks
 // ---------------------------------------------------------------------------
 
-void Connectionmanager::onSocketConnected()
+void ConnectionManager::onSocketConnected()
 {
     m_reconnectCount = 0;
     setState(ConnectionState::Connected);
 }
 
-void Connectionmanager::onSocketDisconnected()
+void ConnectionManager::onSocketDisconnected()
 {
     // 已经在 setAuthenticated 或 主动 disconnect 中设置过状态就不再重复
     if (m_state != ConnectionState::Disconnected)
@@ -134,7 +134,7 @@ void Connectionmanager::onSocketDisconnected()
     }
 }
 
-void Connectionmanager::onSocketError(QAbstractSocket::SocketError error)
+void ConnectionManager::onSocketError(QAbstractSocket::SocketError error)
 {
     QString errorStr;
     switch (error) {
@@ -155,7 +155,7 @@ void Connectionmanager::onSocketError(QAbstractSocket::SocketError error)
     emit errorOccurred(errorStr);
 }
 
-void Connectionmanager::onReconnectTimeout()
+void ConnectionManager::onReconnectTimeout()
 {
     m_reconnectCount++;
     setState(ConnectionState::Connecting);

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "BaseRepository.h"
 #include <QString>
 
 struct SyncMeta {
@@ -11,7 +12,7 @@ struct SyncMeta {
     int     faceCount = 0;
 };
 
-class SyncMetaRepository {
+class SyncMetaRepository : public BaseRepository {
 public:
     explicit SyncMetaRepository(const QString &dbPath);
 
@@ -26,7 +27,4 @@ public:
     bool updateStatus(const QString &status);
 
     bool updateFaceCount(int count);
-
-private:
-    QString m_dbPath;
 };

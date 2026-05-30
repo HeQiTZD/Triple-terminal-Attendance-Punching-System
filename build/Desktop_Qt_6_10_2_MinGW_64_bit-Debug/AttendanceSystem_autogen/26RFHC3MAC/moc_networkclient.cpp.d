@@ -1,6 +1,5 @@
 D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceSystem_autogen/26RFHC3MAC/moc_networkclient.cpp: D:/QTproject/AttendanceSystem/NetworkClient/networkclient.h \
   D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/AttendanceSystem_autogen/moc_predefs.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/QByteArray \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QDateTime \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QDebug \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QJsonArray \
@@ -8,7 +7,6 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtCore/QMutex \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QObject \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QQueue \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/QRect \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QSettings \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QString \
   C:/Qt/6.10.2/mingw_64/include/QtCore/QTimer \
@@ -42,7 +40,6 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtCore/qcborcommon.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qcborvalue.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qchar.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/qcheckedint_impl.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qcompare.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qcompare_impl.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qcomparehelpers.h \
@@ -81,16 +78,13 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtCore/qjsonparseerror.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qjsonvalue.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qlatin1stringview.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/qline.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qlist.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qlocale.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qlogging.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qmalloc.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qmap.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/qmargins.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qmath.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qmetacontainer.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/qmetaobject.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qmetatype.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qminmax.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qmutex.h \
@@ -102,10 +96,8 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtCore/qobjectdefs_impl.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qoverload.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qpair.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/qpoint.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qprocessordetection.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qqueue.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/qrect.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qrefcount.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qregularexpression.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qscopedpointer.h \
@@ -116,7 +108,6 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtCore/qshareddata_impl.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qsharedpointer.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qsharedpointer_impl.h \
-  C:/Qt/6.10.2/mingw_64/include/QtCore/qsize.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qspan.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qstdlibdetection.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qstring.h \
@@ -165,21 +156,6 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtCore/qversiontagging.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qxptype_traits.h \
   C:/Qt/6.10.2/mingw_64/include/QtCore/qyieldcpu.h \
-  C:/Qt/6.10.2/mingw_64/include/QtGui/QImage \
-  C:/Qt/6.10.2/mingw_64/include/QtGui/qcolor.h \
-  C:/Qt/6.10.2/mingw_64/include/QtGui/qimage.h \
-  C:/Qt/6.10.2/mingw_64/include/QtGui/qpaintdevice.h \
-  C:/Qt/6.10.2/mingw_64/include/QtGui/qpixelformat.h \
-  C:/Qt/6.10.2/mingw_64/include/QtGui/qpolygon.h \
-  C:/Qt/6.10.2/mingw_64/include/QtGui/qregion.h \
-  C:/Qt/6.10.2/mingw_64/include/QtGui/qrgb.h \
-  C:/Qt/6.10.2/mingw_64/include/QtGui/qrgba64.h \
-  C:/Qt/6.10.2/mingw_64/include/QtGui/qtgui-config.h \
-  C:/Qt/6.10.2/mingw_64/include/QtGui/qtguiexports.h \
-  C:/Qt/6.10.2/mingw_64/include/QtGui/qtguiglobal.h \
-  C:/Qt/6.10.2/mingw_64/include/QtGui/qtransform.h \
-  C:/Qt/6.10.2/mingw_64/include/QtGui/qwindowdefs.h \
-  C:/Qt/6.10.2/mingw_64/include/QtGui/qwindowdefs_win.h \
   C:/Qt/6.10.2/mingw_64/include/QtNetwork/QTcpSocket \
   C:/Qt/6.10.2/mingw_64/include/QtNetwork/qabstractsocket.h \
   C:/Qt/6.10.2/mingw_64/include/QtNetwork/qhostaddress.h \
@@ -187,11 +163,6 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/6.10.2/mingw_64/include/QtNetwork/qtnetwork-config.h \
   C:/Qt/6.10.2/mingw_64/include/QtNetwork/qtnetworkexports.h \
   C:/Qt/6.10.2/mingw_64/include/QtNetwork/qtnetworkglobal.h \
-  C:/Qt/6.10.2/mingw_64/include/QtSql/QSqlDatabase \
-  C:/Qt/6.10.2/mingw_64/include/QtSql/qsqldatabase.h \
-  C:/Qt/6.10.2/mingw_64/include/QtSql/qtsql-config.h \
-  C:/Qt/6.10.2/mingw_64/include/QtSql/qtsqlexports.h \
-  C:/Qt/6.10.2/mingw_64/include/QtSql/qtsqlglobal.h \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/algorithm \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/array \
   C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/atomic \
@@ -407,20 +378,11 @@ D:/QTproject/AttendanceSystem/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/Attenda
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
   D:/QTproject/AttendanceSystem/Auth/tokenmanager.h \
   D:/QTproject/AttendanceSystem/Auth/tokenrefresher.h \
-  D:/QTproject/AttendanceSystem/FaceRecognition/arcfaceengine.h \
-  D:/QTproject/AttendanceSystem/FaceRecognition/facedatabasemanager.h \
-  D:/QTproject/AttendanceSystem/LocalStorage/AttendanceOutboxRepository.h \
-  D:/QTproject/AttendanceSystem/LocalStorage/DeviceLocalRepository.h \
-  D:/QTproject/AttendanceSystem/LocalStorage/FaceFeatureRepository.h \
-  D:/QTproject/AttendanceSystem/LocalStorage/SyncMetaRepository.h \
-  D:/QTproject/AttendanceSystem/LocalStorage/localstorage.h \
+  D:/QTproject/AttendanceSystem/NetworkClient/authenticator.h \
   D:/QTproject/AttendanceSystem/NetworkClient/connectionmanager.h \
   D:/QTproject/AttendanceSystem/NetworkClient/heartbeatmanager.h \
   D:/QTproject/AttendanceSystem/NetworkClient/messagequeue.h \
   D:/QTproject/AttendanceSystem/NetworkClient/messagereader.h \
   D:/QTproject/AttendanceSystem/NetworkClient/messagewriter.h \
-  D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h \
-  D:/QTproject/AttendanceSystem/third_party/arcface/include/amcomdef.h \
-  D:/QTproject/AttendanceSystem/third_party/arcface/include/arcsoft_face_sdk.h \
-  D:/QTproject/AttendanceSystem/third_party/arcface/include/asvloffscreen.h \
-  D:/QTproject/AttendanceSystem/third_party/arcface/include/merror.h
+  D:/QTproject/AttendanceSystem/NetworkClient/outboxmanager.h \
+  D:/QTproject/AttendanceSystem/NetworkClient/serverprotocol.h

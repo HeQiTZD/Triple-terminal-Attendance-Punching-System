@@ -23,6 +23,7 @@ set(PROJECT_SOURCES
         mainwindow.ui
         LocalStorage/localstorage.cpp
         LocalStorage/localstorage.h
+        LocalStorage/BaseRepository.h
         LocalStorage/FaceFeatureRepository.cpp
         LocalStorage/FaceFeatureRepository.h
         LocalStorage/AttendanceOutboxRepository.cpp
@@ -75,6 +76,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         NetworkClient/messagewriter.h NetworkClient/messagewriter.cpp
         NetworkClient/messagereader.h NetworkClient/messagereader.cpp
         NetworkClient/messagequeue.h NetworkClient/messagequeue.cpp
+        NetworkClient/authenticator.h NetworkClient/authenticator.cpp
+        NetworkClient/outboxmanager.h NetworkClient/outboxmanager.cpp
         NetworkClient/serverprotocol.h NetworkClient/serverprotocol.cpp
         Auth/tokenmanager.h Auth/tokenmanager.cpp
         Auth/tokenrefresher.h Auth/tokenrefresher.cpp

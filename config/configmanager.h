@@ -5,6 +5,7 @@
 #include <QString>
 #include <QSettings>
 #include <QTime>
+#include <memory>
 
 // 应用程序配置管理类
 // 使用QSettings管理配置文件的读写
@@ -162,10 +163,17 @@ private:
     QString getConfigFilePath() const;
     QString getLocalConfigFilePath() const;
 
+    // restoreDefaults 拆分的子方法
+    void restoreNetworkDefaults();
+    void restoreFaceRecognitionDefaults();
+    void restoreAttendanceDefaults();
+    void restoreDeviceDefaults();
+    void restoreSyncDefaults();
+    void restoreRetryDefaults();
+
 private:
-    static ConfigManager* s_instance;
-    QSettings* m_settings;      // config.ini - 可远程覆盖的配置
-    QSettings* m_localSettings; // local.ini - 本机配置
+    std::unique_ptr<QSettings> m_settings;      // config.ini - 可远程覆盖的配置
+    std::unique_ptr<QSettings> m_localSettings; // local.ini - 本机配置
 
     // 网络连接设置
     QString m_serverIP;

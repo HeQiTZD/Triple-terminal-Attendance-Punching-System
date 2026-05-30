@@ -5,12 +5,12 @@
 #include <QJsonObject>
 #include <QTcpSocket>
 
-class Messagereader : public QObject
+class MessageReader : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit Messagereader(QTcpSocket *socket, QObject *parent = nullptr);
+    explicit MessageReader(QTcpSocket *socket, QObject *parent = nullptr);
 
     void start();
     void stop();

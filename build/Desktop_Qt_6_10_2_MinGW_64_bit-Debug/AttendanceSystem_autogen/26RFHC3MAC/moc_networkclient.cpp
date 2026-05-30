@@ -32,14 +32,14 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 QT_WARNING_DISABLE_GCC("-Wuseless-cast")
 namespace {
-struct qt_meta_tag_ZN13NetworkclientE_t {};
+struct qt_meta_tag_ZN13NetworkClientE_t {};
 } // unnamed namespace
 
-template <> constexpr inline auto Networkclient::qt_create_metaobjectdata<qt_meta_tag_ZN13NetworkclientE_t>()
+template <> constexpr inline auto NetworkClient::qt_create_metaobjectdata<qt_meta_tag_ZN13NetworkClientE_t>()
 {
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
-        "Networkclient",
+        "NetworkClient",
         "connected",
         "",
         "disconnected",
@@ -75,8 +75,7 @@ template <> constexpr inline auto Networkclient::qt_create_metaobjectdata<qt_met
         "onHeartbeatTimeout",
         "onSendError",
         "onSendHeartbeat",
-        "data",
-        "onOutboxRetryTick"
+        "data"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -158,29 +157,27 @@ template <> constexpr inline auto Networkclient::qt_create_metaobjectdata<qt_met
         QtMocHelpers::SlotData<void(const QByteArray &)>(35, 2, QMC::AccessPrivate, QMetaType::Void, {{
             { QMetaType::QByteArray, 36 },
         }}),
-        // Slot 'onOutboxRetryTick'
-        QtMocHelpers::SlotData<void()>(37, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
     QtMocHelpers::UintData qt_enums {
     };
-    return QtMocHelpers::metaObjectData<Networkclient, qt_meta_tag_ZN13NetworkclientE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+    return QtMocHelpers::metaObjectData<NetworkClient, qt_meta_tag_ZN13NetworkClientE_t>(QMC::MetaObjectFlag{}, qt_stringData,
             qt_methods, qt_properties, qt_enums);
 }
-Q_CONSTINIT const QMetaObject Networkclient::staticMetaObject = { {
+Q_CONSTINIT const QMetaObject NetworkClient::staticMetaObject = { {
     QMetaObject::SuperData::link<QObject::staticMetaObject>(),
-    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN13NetworkclientE_t>.stringdata,
-    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN13NetworkclientE_t>.data,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN13NetworkClientE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN13NetworkClientE_t>.data,
     qt_static_metacall,
     nullptr,
-    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN13NetworkclientE_t>.metaTypes,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN13NetworkClientE_t>.metaTypes,
     nullptr
 } };
 
-void Networkclient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void NetworkClient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    auto *_t = static_cast<Networkclient *>(_o);
+    auto *_t = static_cast<NetworkClient *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->connected(); break;
@@ -207,161 +204,160 @@ void Networkclient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 21: _t->onHeartbeatTimeout(); break;
         case 22: _t->onSendError(); break;
         case 23: _t->onSendHeartbeat((*reinterpret_cast<std::add_pointer_t<QByteArray>>(_a[1]))); break;
-        case 24: _t->onOutboxRetryTick(); break;
         default: ;
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
-        if (QtMocHelpers::indexOfMethod<void (Networkclient::*)()>(_a, &Networkclient::connected, 0))
+        if (QtMocHelpers::indexOfMethod<void (NetworkClient::*)()>(_a, &NetworkClient::connected, 0))
             return;
-        if (QtMocHelpers::indexOfMethod<void (Networkclient::*)()>(_a, &Networkclient::disconnected, 1))
+        if (QtMocHelpers::indexOfMethod<void (NetworkClient::*)()>(_a, &NetworkClient::disconnected, 1))
             return;
-        if (QtMocHelpers::indexOfMethod<void (Networkclient::*)(bool )>(_a, &Networkclient::networkStateChanged, 2))
+        if (QtMocHelpers::indexOfMethod<void (NetworkClient::*)(bool )>(_a, &NetworkClient::networkStateChanged, 2))
             return;
-        if (QtMocHelpers::indexOfMethod<void (Networkclient::*)()>(_a, &Networkclient::authSuccess, 3))
+        if (QtMocHelpers::indexOfMethod<void (NetworkClient::*)()>(_a, &NetworkClient::authSuccess, 3))
             return;
-        if (QtMocHelpers::indexOfMethod<void (Networkclient::*)(int , const QString & )>(_a, &Networkclient::authFailed, 4))
+        if (QtMocHelpers::indexOfMethod<void (NetworkClient::*)(int , const QString & )>(_a, &NetworkClient::authFailed, 4))
             return;
-        if (QtMocHelpers::indexOfMethod<void (Networkclient::*)()>(_a, &Networkclient::devicePendingAuth, 5))
+        if (QtMocHelpers::indexOfMethod<void (NetworkClient::*)()>(_a, &NetworkClient::devicePendingAuth, 5))
             return;
-        if (QtMocHelpers::indexOfMethod<void (Networkclient::*)(const QVector<ServerProtocol::PersonData> & )>(_a, &Networkclient::personDataReceived, 6))
+        if (QtMocHelpers::indexOfMethod<void (NetworkClient::*)(const QVector<ServerProtocol::PersonData> & )>(_a, &NetworkClient::personDataReceived, 6))
             return;
-        if (QtMocHelpers::indexOfMethod<void (Networkclient::*)(bool , const QString & )>(_a, &Networkclient::uploadFinished, 7))
+        if (QtMocHelpers::indexOfMethod<void (NetworkClient::*)(bool , const QString & )>(_a, &NetworkClient::uploadFinished, 7))
             return;
-        if (QtMocHelpers::indexOfMethod<void (Networkclient::*)(const QJsonObject & , const QByteArray & )>(_a, &Networkclient::faceSyncItemReceived, 8))
+        if (QtMocHelpers::indexOfMethod<void (NetworkClient::*)(const QJsonObject & , const QByteArray & )>(_a, &NetworkClient::faceSyncItemReceived, 8))
             return;
-        if (QtMocHelpers::indexOfMethod<void (Networkclient::*)(const QString & , bool , const QString & )>(_a, &Networkclient::attendanceReportResult, 9))
+        if (QtMocHelpers::indexOfMethod<void (NetworkClient::*)(const QString & , bool , const QString & )>(_a, &NetworkClient::attendanceReportResult, 9))
             return;
-        if (QtMocHelpers::indexOfMethod<void (Networkclient::*)(const QJsonObject & )>(_a, &Networkclient::deviceCommandReceived, 10))
+        if (QtMocHelpers::indexOfMethod<void (NetworkClient::*)(const QJsonObject & )>(_a, &NetworkClient::deviceCommandReceived, 10))
             return;
-        if (QtMocHelpers::indexOfMethod<void (Networkclient::*)(const QJsonObject & )>(_a, &Networkclient::personSyncReceived, 11))
+        if (QtMocHelpers::indexOfMethod<void (NetworkClient::*)(const QJsonObject & )>(_a, &NetworkClient::personSyncReceived, 11))
             return;
-        if (QtMocHelpers::indexOfMethod<void (Networkclient::*)(const QJsonObject & )>(_a, &Networkclient::faceSyncBeginReceived, 12))
+        if (QtMocHelpers::indexOfMethod<void (NetworkClient::*)(const QJsonObject & )>(_a, &NetworkClient::faceSyncBeginReceived, 12))
             return;
-        if (QtMocHelpers::indexOfMethod<void (Networkclient::*)(const QJsonObject & )>(_a, &Networkclient::faceSyncEndReceived, 13))
+        if (QtMocHelpers::indexOfMethod<void (NetworkClient::*)(const QJsonObject & )>(_a, &NetworkClient::faceSyncEndReceived, 13))
             return;
-        if (QtMocHelpers::indexOfMethod<void (Networkclient::*)(const QJsonObject & )>(_a, &Networkclient::tokenRefreshResponse, 14))
+        if (QtMocHelpers::indexOfMethod<void (NetworkClient::*)(const QJsonObject & )>(_a, &NetworkClient::tokenRefreshResponse, 14))
             return;
     }
 }
 
-const QMetaObject *Networkclient::metaObject() const
+const QMetaObject *NetworkClient::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *Networkclient::qt_metacast(const char *_clname)
+void *NetworkClient::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN13NetworkclientE_t>.strings))
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN13NetworkClientE_t>.strings))
         return static_cast<void*>(this);
     return QObject::qt_metacast(_clname);
 }
 
-int Networkclient::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int NetworkClient::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QObject::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 25)
+        if (_id < 24)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 25;
+        _id -= 24;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 25)
+        if (_id < 24)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 25;
+        _id -= 24;
     }
     return _id;
 }
 
 // SIGNAL 0
-void Networkclient::connected()
+void NetworkClient::connected()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 
 // SIGNAL 1
-void Networkclient::disconnected()
+void NetworkClient::disconnected()
 {
     QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
 }
 
 // SIGNAL 2
-void Networkclient::networkStateChanged(bool _t1)
+void NetworkClient::networkStateChanged(bool _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 2, nullptr, _t1);
 }
 
 // SIGNAL 3
-void Networkclient::authSuccess()
+void NetworkClient::authSuccess()
 {
     QMetaObject::activate(this, &staticMetaObject, 3, nullptr);
 }
 
 // SIGNAL 4
-void Networkclient::authFailed(int _t1, const QString & _t2)
+void NetworkClient::authFailed(int _t1, const QString & _t2)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 4, nullptr, _t1, _t2);
 }
 
 // SIGNAL 5
-void Networkclient::devicePendingAuth()
+void NetworkClient::devicePendingAuth()
 {
     QMetaObject::activate(this, &staticMetaObject, 5, nullptr);
 }
 
 // SIGNAL 6
-void Networkclient::personDataReceived(const QVector<ServerProtocol::PersonData> & _t1)
+void NetworkClient::personDataReceived(const QVector<ServerProtocol::PersonData> & _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 6, nullptr, _t1);
 }
 
 // SIGNAL 7
-void Networkclient::uploadFinished(bool _t1, const QString & _t2)
+void NetworkClient::uploadFinished(bool _t1, const QString & _t2)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 7, nullptr, _t1, _t2);
 }
 
 // SIGNAL 8
-void Networkclient::faceSyncItemReceived(const QJsonObject & _t1, const QByteArray & _t2)
+void NetworkClient::faceSyncItemReceived(const QJsonObject & _t1, const QByteArray & _t2)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 8, nullptr, _t1, _t2);
 }
 
 // SIGNAL 9
-void Networkclient::attendanceReportResult(const QString & _t1, bool _t2, const QString & _t3)
+void NetworkClient::attendanceReportResult(const QString & _t1, bool _t2, const QString & _t3)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 9, nullptr, _t1, _t2, _t3);
 }
 
 // SIGNAL 10
-void Networkclient::deviceCommandReceived(const QJsonObject & _t1)
+void NetworkClient::deviceCommandReceived(const QJsonObject & _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 10, nullptr, _t1);
 }
 
 // SIGNAL 11
-void Networkclient::personSyncReceived(const QJsonObject & _t1)
+void NetworkClient::personSyncReceived(const QJsonObject & _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 11, nullptr, _t1);
 }
 
 // SIGNAL 12
-void Networkclient::faceSyncBeginReceived(const QJsonObject & _t1)
+void NetworkClient::faceSyncBeginReceived(const QJsonObject & _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 12, nullptr, _t1);
 }
 
 // SIGNAL 13
-void Networkclient::faceSyncEndReceived(const QJsonObject & _t1)
+void NetworkClient::faceSyncEndReceived(const QJsonObject & _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 13, nullptr, _t1);
 }
 
 // SIGNAL 14
-void Networkclient::tokenRefreshResponse(const QJsonObject & _t1)
+void NetworkClient::tokenRefreshResponse(const QJsonObject & _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 14, nullptr, _t1);
 }

@@ -3,8 +3,15 @@
 #include "../Config/configmanager.h"
 
 FaceRecognizer::FaceRecognizer()
+    : m_currentState(RecognitionState::IDLE)
+    , m_lastRecognizedId()
+    , m_recognitionTime()
+    , m_detectingStartTime()
+    , m_cooldownTimer(new QTimer(this))
+    , m_FaceInfo()
+    , m_FaceFeature()
+    , m_bestMatch()
 {
-    m_cooldownTimer = new QTimer(this);
     m_cooldownTimer->setSingleShot(true);
     connect(m_cooldownTimer,&QTimer::timeout,this,[this](){
         if(m_currentState == RecognitionState::RECOGNIZED){
@@ -37,8 +44,11 @@ void FaceRecognizer::init()
     dataBase->loadFromDatabase();
 }
 
-void FaceRecognizer::WanZhengYeWuLiuCheng(QImage image)
+void FaceRecognizer::processFrame(QImage image)
 {
+    // 注意：此方法持有 m_mutex 锁期间会 emit 信号（recognitionSuccess、recognitionFailed 等）。
+    // 所有连接到此对象信号的槽必须使用 Qt::QueuedConnection，否则会导致死锁。
+    // 当前 mainwindow.cpp 中所有相关 connect 均已使用 Qt::QueuedConnection。
     QMutexLocker locker(&m_mutex);
 
     if (!arcEngine || !arcEngine->isInitialized()) {
@@ -83,11 +93,22 @@ void FaceRecognizer::handleIdleState(QImage &image)
     }
 
     setState(RecognitionState::DETECTING);
-    perfromRecognition(image);
+    performRecognition(image);
 }
 
 void FaceRecognizer::handleDetectingState()
 {
+    // 检测超时：如果在检测状态停留太久，回到 IDLE
+    // 使用成员变量 m_detectingStartTime 替代 static 局部变量，受 m_mutex 保护，线程安全
+    if (!m_detectingStartTime.isValid()) {
+        m_detectingStartTime = QDateTime::currentDateTime();
+    }
+
+    int elapsed = m_detectingStartTime.msecsTo(QDateTime::currentDateTime());
+    if (elapsed > LOST_TIMEOUT_MS) {
+        setState(RecognitionState::IDLE);
+        m_detectingStartTime = QDateTime();  // 重置
+    }
 }
 
 void FaceRecognizer::handleRecognizedState(QImage &image)
@@ -109,7 +130,7 @@ void FaceRecognizer::handleLostState()
     }
 }
 
-void FaceRecognizer::perfromRecognition(QImage &image)
+void FaceRecognizer::performRecognition(QImage &image)
 {
     m_FaceFeature = arcEngine->extractFeature(image,m_FaceInfo[0]);
 

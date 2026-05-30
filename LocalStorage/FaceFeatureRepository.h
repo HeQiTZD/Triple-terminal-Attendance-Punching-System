@@ -1,5 +1,6 @@
 #pragma once
 
+#include "BaseRepository.h"
 #include <QByteArray>
 #include <QString>
 #include <QVector>
@@ -10,7 +11,7 @@ struct FaceFeatureRecord {
     int        featureSize = 0;
 };
 
-class FaceFeatureRepository {
+class FaceFeatureRepository : public BaseRepository {
 public:
     explicit FaceFeatureRepository(const QString &dbPath);
 
@@ -29,7 +30,4 @@ public:
     int countByGeneration(int generation);
 
     bool clearAll();
-
-private:
-    QString m_dbPath;
 };

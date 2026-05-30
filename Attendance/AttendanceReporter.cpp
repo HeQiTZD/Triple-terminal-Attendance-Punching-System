@@ -16,7 +16,7 @@ QString AttendanceReporter::report(const QString &employeeId,
         return {};
     }
 
-    const QString msgId = Networkclient::instance()->uploadAttendance(employeeId, status, checkTime);
+    const QString msgId = NetworkClient::instance()->uploadAttendance(employeeId, status, checkTime);
 
     emit pendingCountChanged(pendingCount());
     return msgId;
@@ -34,7 +34,7 @@ QString AttendanceReporter::reportWithPhoto(const QString &employeeId,
         return report(employeeId, status, checkTime);
     }
 
-    const QString msgId = Networkclient::instance()->uploadAttendanceWithPhoto(
+    const QString msgId = NetworkClient::instance()->uploadAttendanceWithPhoto(
         employeeId, status, photoJpeg, checkTime);
 
     emit pendingCountChanged(pendingCount());
@@ -43,7 +43,7 @@ QString AttendanceReporter::reportWithPhoto(const QString &employeeId,
 
 void AttendanceReporter::retryAll()
 {
-    Networkclient::instance()->retryOutbox();
+    NetworkClient::instance()->retryOutbox();
     emit pendingCountChanged(pendingCount());
 }
 
@@ -54,7 +54,7 @@ int AttendanceReporter::pendingCount() const
 
 bool AttendanceReporter::canReport() const
 {
-    return m_isOnline && Networkclient::instance()->isAuthenticated();
+    return m_isOnline && NetworkClient::instance()->isAuthenticated();
 }
 
 void AttendanceReporter::onReportResult(const QString &employeeId, bool success,

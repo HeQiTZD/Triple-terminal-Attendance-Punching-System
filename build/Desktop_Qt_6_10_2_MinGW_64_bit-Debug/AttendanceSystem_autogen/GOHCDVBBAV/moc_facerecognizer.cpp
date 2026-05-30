@@ -55,7 +55,7 @@ template <> constexpr inline auto FaceRecognizer::qt_create_metaobjectdata<qt_me
         "QList<arcfaceengine::FaceInfo>",
         "faceInfos",
         "faceProcessingCompleted",
-        "WanZhengYeWuLiuCheng",
+        "processFrame",
         "image"
     };
 
@@ -79,7 +79,7 @@ template <> constexpr inline auto FaceRecognizer::qt_create_metaobjectdata<qt_me
         }}),
         // Signal 'faceProcessingCompleted'
         QtMocHelpers::SignalData<void()>(15, 2, QMC::AccessPublic, QMetaType::Void),
-        // Slot 'WanZhengYeWuLiuCheng'
+        // Slot 'processFrame'
         QtMocHelpers::SlotData<void(QImage)>(16, 2, QMC::AccessPublic, QMetaType::Void, {{
             { 0x80000000 | 7, 17 },
         }}),
@@ -111,7 +111,7 @@ void FaceRecognizer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 2: _t->requestSaveAttendance((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2]))); break;
         case 3: _t->faceDetected((*reinterpret_cast<std::add_pointer_t<QList<arcfaceengine::FaceInfo>>>(_a[1]))); break;
         case 4: _t->faceProcessingCompleted(); break;
-        case 5: _t->WanZhengYeWuLiuCheng((*reinterpret_cast<std::add_pointer_t<QImage>>(_a[1]))); break;
+        case 5: _t->processFrame((*reinterpret_cast<std::add_pointer_t<QImage>>(_a[1]))); break;
         default: ;
         }
     }

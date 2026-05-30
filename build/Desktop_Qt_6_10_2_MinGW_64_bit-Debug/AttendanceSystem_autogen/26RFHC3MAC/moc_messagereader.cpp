@@ -31,14 +31,14 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 QT_WARNING_DISABLE_GCC("-Wuseless-cast")
 namespace {
-struct qt_meta_tag_ZN13MessagereaderE_t {};
+struct qt_meta_tag_ZN13MessageReaderE_t {};
 } // unnamed namespace
 
-template <> constexpr inline auto Messagereader::qt_create_metaobjectdata<qt_meta_tag_ZN13MessagereaderE_t>()
+template <> constexpr inline auto MessageReader::qt_create_metaobjectdata<qt_meta_tag_ZN13MessageReaderE_t>()
 {
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
-        "Messagereader",
+        "MessageReader",
         "messageReceived",
         "",
         "QJsonObject",
@@ -71,22 +71,22 @@ template <> constexpr inline auto Messagereader::qt_create_metaobjectdata<qt_met
     };
     QtMocHelpers::UintData qt_enums {
     };
-    return QtMocHelpers::metaObjectData<Messagereader, qt_meta_tag_ZN13MessagereaderE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+    return QtMocHelpers::metaObjectData<MessageReader, qt_meta_tag_ZN13MessageReaderE_t>(QMC::MetaObjectFlag{}, qt_stringData,
             qt_methods, qt_properties, qt_enums);
 }
-Q_CONSTINIT const QMetaObject Messagereader::staticMetaObject = { {
+Q_CONSTINIT const QMetaObject MessageReader::staticMetaObject = { {
     QMetaObject::SuperData::link<QObject::staticMetaObject>(),
-    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN13MessagereaderE_t>.stringdata,
-    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN13MessagereaderE_t>.data,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN13MessageReaderE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN13MessageReaderE_t>.data,
     qt_static_metacall,
     nullptr,
-    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN13MessagereaderE_t>.metaTypes,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN13MessageReaderE_t>.metaTypes,
     nullptr
 } };
 
-void Messagereader::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void MessageReader::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    auto *_t = static_cast<Messagereader *>(_o);
+    auto *_t = static_cast<MessageReader *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->messageReceived((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
@@ -97,29 +97,29 @@ void Messagereader::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
-        if (QtMocHelpers::indexOfMethod<void (Messagereader::*)(const QJsonObject & )>(_a, &Messagereader::messageReceived, 0))
+        if (QtMocHelpers::indexOfMethod<void (MessageReader::*)(const QJsonObject & )>(_a, &MessageReader::messageReceived, 0))
             return;
-        if (QtMocHelpers::indexOfMethod<void (Messagereader::*)(const QJsonObject & , const QByteArray & )>(_a, &Messagereader::binaryFrameReceived, 1))
+        if (QtMocHelpers::indexOfMethod<void (MessageReader::*)(const QJsonObject & , const QByteArray & )>(_a, &MessageReader::binaryFrameReceived, 1))
             return;
-        if (QtMocHelpers::indexOfMethod<void (Messagereader::*)(const QString )>(_a, &Messagereader::parseError, 2))
+        if (QtMocHelpers::indexOfMethod<void (MessageReader::*)(const QString )>(_a, &MessageReader::parseError, 2))
             return;
     }
 }
 
-const QMetaObject *Messagereader::metaObject() const
+const QMetaObject *MessageReader::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *Messagereader::qt_metacast(const char *_clname)
+void *MessageReader::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN13MessagereaderE_t>.strings))
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN13MessageReaderE_t>.strings))
         return static_cast<void*>(this);
     return QObject::qt_metacast(_clname);
 }
 
-int Messagereader::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int MessageReader::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QObject::qt_metacall(_c, _id, _a);
     if (_id < 0)
@@ -138,19 +138,19 @@ int Messagereader::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void Messagereader::messageReceived(const QJsonObject & _t1)
+void MessageReader::messageReceived(const QJsonObject & _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1);
 }
 
 // SIGNAL 1
-void Messagereader::binaryFrameReceived(const QJsonObject & _t1, const QByteArray & _t2)
+void MessageReader::binaryFrameReceived(const QJsonObject & _t1, const QByteArray & _t2)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 1, nullptr, _t1, _t2);
 }
 
 // SIGNAL 2
-void Messagereader::parseError(const QString _t1)
+void MessageReader::parseError(const QString _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 2, nullptr, _t1);
 }

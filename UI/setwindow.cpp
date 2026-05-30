@@ -516,10 +516,10 @@ void SetWindow::onBtnTestConnectionClicked()
     ui->labelConnectionStatus->setStyleSheet("color: orange;");
     
     // 获取NetworkClient实例（注意：它在另一个线程中，必须通过 QueuedConnection 调用）
-    Networkclient *client = Networkclient::instance();
+    NetworkClient *client = NetworkClient::instance();
 
     // 连接信号（一次性连接，用于本次测试）
-    connect(client, &Networkclient::connected, this, [=]() {
+    connect(client, &NetworkClient::connected, this, [=]() {
         ui->labelConnectionStatus->setText("✓ 已连接");
         ui->labelConnectionStatus->setStyleSheet("color: green; font-weight: bold;");
         ui->btnTestConnection->setText("已连接");
@@ -529,7 +529,7 @@ void SetWindow::onBtnTestConnectionClicked()
             QString("已成功连接到服务器\n地址: %1:%2").arg(serverIP).arg(serverPort));
     }, Qt::SingleShotConnection);
 
-    connect(client, &Networkclient::disconnected, this, [=]() {
+    connect(client, &NetworkClient::disconnected, this, [=]() {
         ui->labelConnectionStatus->setText("未连接");
         ui->labelConnectionStatus->setStyleSheet("color: red; font-weight: bold;");
         ui->btnTestConnection->setEnabled(true);
@@ -597,7 +597,7 @@ void SetWindow::setSyncTimeout(int seconds) {
 // 断开连接按钮槽函数
 void SetWindow::onBtnDisconnectClicked()
 {
-    Networkclient *client = Networkclient::instance();
+    NetworkClient *client = NetworkClient::instance();
 
     // 异步调用 disconnect（client 在另一个线程）
     QMetaObject::invokeMethod(client, [=]() {

@@ -31,14 +31,14 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 QT_WARNING_DISABLE_GCC("-Wuseless-cast")
 namespace {
-struct qt_meta_tag_ZN13MessagewriterE_t {};
+struct qt_meta_tag_ZN13MessageWriterE_t {};
 } // unnamed namespace
 
-template <> constexpr inline auto Messagewriter::qt_create_metaobjectdata<qt_meta_tag_ZN13MessagewriterE_t>()
+template <> constexpr inline auto MessageWriter::qt_create_metaobjectdata<qt_meta_tag_ZN13MessageWriterE_t>()
 {
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
-        "Messagewriter",
+        "MessageWriter",
         "messageSent",
         "",
         "QJsonObject",
@@ -61,22 +61,22 @@ template <> constexpr inline auto Messagewriter::qt_create_metaobjectdata<qt_met
     };
     QtMocHelpers::UintData qt_enums {
     };
-    return QtMocHelpers::metaObjectData<Messagewriter, qt_meta_tag_ZN13MessagewriterE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+    return QtMocHelpers::metaObjectData<MessageWriter, qt_meta_tag_ZN13MessageWriterE_t>(QMC::MetaObjectFlag{}, qt_stringData,
             qt_methods, qt_properties, qt_enums);
 }
-Q_CONSTINIT const QMetaObject Messagewriter::staticMetaObject = { {
+Q_CONSTINIT const QMetaObject MessageWriter::staticMetaObject = { {
     QMetaObject::SuperData::link<QObject::staticMetaObject>(),
-    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN13MessagewriterE_t>.stringdata,
-    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN13MessagewriterE_t>.data,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN13MessageWriterE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN13MessageWriterE_t>.data,
     qt_static_metacall,
     nullptr,
-    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN13MessagewriterE_t>.metaTypes,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN13MessageWriterE_t>.metaTypes,
     nullptr
 } };
 
-void Messagewriter::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void MessageWriter::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    auto *_t = static_cast<Messagewriter *>(_o);
+    auto *_t = static_cast<MessageWriter *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->messageSent((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
@@ -85,27 +85,27 @@ void Messagewriter::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
-        if (QtMocHelpers::indexOfMethod<void (Messagewriter::*)(const QJsonObject & )>(_a, &Messagewriter::messageSent, 0))
+        if (QtMocHelpers::indexOfMethod<void (MessageWriter::*)(const QJsonObject & )>(_a, &MessageWriter::messageSent, 0))
             return;
-        if (QtMocHelpers::indexOfMethod<void (Messagewriter::*)(const QString & )>(_a, &Messagewriter::sendError, 1))
+        if (QtMocHelpers::indexOfMethod<void (MessageWriter::*)(const QString & )>(_a, &MessageWriter::sendError, 1))
             return;
     }
 }
 
-const QMetaObject *Messagewriter::metaObject() const
+const QMetaObject *MessageWriter::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *Messagewriter::qt_metacast(const char *_clname)
+void *MessageWriter::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN13MessagewriterE_t>.strings))
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN13MessageWriterE_t>.strings))
         return static_cast<void*>(this);
     return QObject::qt_metacast(_clname);
 }
 
-int Messagewriter::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int MessageWriter::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QObject::qt_metacall(_c, _id, _a);
     if (_id < 0)
@@ -124,13 +124,13 @@ int Messagewriter::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void Messagewriter::messageSent(const QJsonObject & _t1)
+void MessageWriter::messageSent(const QJsonObject & _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1);
 }
 
 // SIGNAL 1
-void Messagewriter::sendError(const QString & _t1)
+void MessageWriter::sendError(const QString & _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 1, nullptr, _t1);
 }
