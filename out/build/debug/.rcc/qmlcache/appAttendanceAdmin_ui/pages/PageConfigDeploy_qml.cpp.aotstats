@@ -96,17 +96,17 @@
                         {
                             "codegenResult": 2,
                             "column": 5,
-                            "durationMicroseconds": 10000,
+                            "durationMicroseconds": 5000,
                             "functionName": "_deploy",
-                            "line": 117,
+                            "line": 114,
                             "message": "Cannot load property length from call to method _validate, returning QVariant."
                         },
                         {
                             "codegenResult": 2,
                             "column": 28,
-                            "durationMicroseconds": 7000,
+                            "durationMicroseconds": 2000,
                             "functionName": "onCompleted",
-                            "line": 130,
+                            "line": 124,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
                         },
                         {
@@ -114,7 +114,7 @@
                             "column": 17,
                             "durationMicroseconds": 0,
                             "functionName": "target",
-                            "line": 136,
+                            "line": 130,
                             "message": "Cannot access value for name configDeployServer"
                         },
                         {
@@ -122,7 +122,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onOperationSucceeded",
-                            "line": 137,
+                            "line": 131,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -130,7 +130,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onOperationFailed",
-                            "line": 140,
+                            "line": 134,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -138,7 +138,7 @@
                             "column": 17,
                             "durationMicroseconds": 0,
                             "functionName": "target",
-                            "line": 146,
+                            "line": 140,
                             "message": "Cannot access value for name deviceServer"
                         },
                         {
@@ -146,15 +146,15 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onOperationFailed",
-                            "line": 147,
+                            "line": 141,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
                             "codegenResult": 0,
                             "column": 18,
-                            "durationMicroseconds": 9000,
+                            "durationMicroseconds": 8000,
                             "functionName": "spacing",
-                            "line": 156,
+                            "line": 150,
                             "message": ""
                         },
                         {
@@ -162,7 +162,7 @@
                             "column": 23,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 154,
+                            "line": 148,
                             "message": ""
                         },
                         {
@@ -170,7 +170,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "margins",
-                            "line": 155,
+                            "line": 149,
                             "message": ""
                         },
                         {
@@ -178,7 +178,7 @@
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "sessionManager",
-                            "line": 172,
+                            "line": 165,
                             "message": ""
                         },
                         {
@@ -186,7 +186,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "deniedDialog",
-                            "line": 174,
+                            "line": 167,
                             "message": ""
                         },
                         {
@@ -194,7 +194,7 @@
                             "column": 30,
                             "durationMicroseconds": 0,
                             "functionName": "enabled",
-                            "line": 177,
+                            "line": 170,
                             "message": "Could not find property \"enabled\"."
                         },
                         {
@@ -202,7 +202,7 @@
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 178,
+                            "line": 171,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -210,7 +210,7 @@
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "sessionManager",
-                            "line": 164,
+                            "line": 157,
                             "message": ""
                         },
                         {
@@ -218,7 +218,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "deniedDialog",
-                            "line": 166,
+                            "line": 159,
                             "message": ""
                         },
                         {
@@ -226,7 +226,7 @@
                             "column": 30,
                             "durationMicroseconds": 0,
                             "functionName": "enabled",
-                            "line": 168,
+                            "line": 161,
                             "message": "Could not find property \"enabled\"."
                         },
                         {
@@ -234,7 +234,7 @@
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 169,
+                            "line": 162,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -242,7 +242,7 @@
                             "column": 24,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 190,
+                            "line": 183,
                             "message": "Cannot retrieve a non-object type by ID: scroll"
                         },
                         {
@@ -250,7 +250,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "spacing",
-                            "line": 191,
+                            "line": 184,
                             "message": ""
                         },
                         {
@@ -258,7 +258,7 @@
                             "column": 30,
                             "durationMicroseconds": 0,
                             "functionName": "spacing",
-                            "line": 195,
+                            "line": 188,
                             "message": ""
                         },
                         {
@@ -266,7 +266,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 201,
+                            "line": 194,
                             "message": ""
                         },
                         {
@@ -274,7 +274,7 @@
                             "column": 41,
                             "durationMicroseconds": 0,
                             "functionName": "rowSpacing",
-                            "line": 203,
+                            "line": 196,
                             "message": ""
                         },
                         {
@@ -282,7 +282,7 @@
                             "column": 44,
                             "durationMicroseconds": 0,
                             "functionName": "columnSpacing",
-                            "line": 204,
+                            "line": 197,
                             "message": ""
                         },
                         {
@@ -290,7 +290,7 @@
                             "column": 67,
                             "durationMicroseconds": 0,
                             "functionName": "echoMode",
-                            "line": 219,
+                            "line": 212,
                             "message": "Could not find property \"echoMode\"."
                         },
                         {
@@ -298,7 +298,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 228,
+                            "line": 221,
                             "message": ""
                         },
                         {
@@ -306,7 +306,7 @@
                             "column": 41,
                             "durationMicroseconds": 0,
                             "functionName": "rowSpacing",
-                            "line": 230,
+                            "line": 223,
                             "message": ""
                         },
                         {
@@ -314,7 +314,7 @@
                             "column": 44,
                             "durationMicroseconds": 0,
                             "functionName": "columnSpacing",
-                            "line": 231,
+                            "line": 224,
                             "message": ""
                         },
                         {
@@ -322,7 +322,7 @@
                             "column": 70,
                             "durationMicroseconds": 0,
                             "functionName": "echoMode",
-                            "line": 237,
+                            "line": 230,
                             "message": "Could not find property \"echoMode\"."
                         },
                         {
@@ -330,7 +330,7 @@
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 253,
+                            "line": 246,
                             "message": ""
                         },
                         {
@@ -338,7 +338,7 @@
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "rowSpacing",
-                            "line": 255,
+                            "line": 248,
                             "message": ""
                         },
                         {
@@ -346,231 +346,215 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "columnSpacing",
-                            "line": 256,
+                            "line": 249,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 63,
+                            "durationMicroseconds": 0,
+                            "functionName": "onClicked",
+                            "line": 327,
+                            "message": "Could not find signal \"clicked\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 65,
+                            "durationMicroseconds": 0,
+                            "functionName": "onClicked",
+                            "line": 326,
+                            "message": "Could not find signal \"clicked\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 43,
+                            "durationMicroseconds": 0,
+                            "functionName": "deviceServer",
+                            "line": 312,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
-                            "column": 30,
+                            "column": 45,
                             "durationMicroseconds": 0,
-                            "functionName": "spacing",
+                            "functionName": "sessionManager",
+                            "line": 313,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 46,
+                            "durationMicroseconds": 0,
+                            "functionName": "selectedDevices",
                             "line": 314,
                             "message": ""
                         },
                         {
-                            "codegenResult": 2,
-                            "column": 67,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 322,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 69,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 321,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
                             "codegenResult": 0,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "width",
-                            "line": 326,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 38,
-                            "durationMicroseconds": 0,
-                            "functionName": "spacing",
-                            "line": 327,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 39,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 330,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 40,
-                            "durationMicroseconds": 0,
-                            "functionName": "color",
-                            "line": 331,
-                            "message": "Could not find property \"color\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 49,
-                            "durationMicroseconds": 0,
-                            "functionName": "pixelSize",
-                            "line": 332,
-                            "message": "Could not find property \"pixelSize\"."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 40,
-                            "durationMicroseconds": 0,
-                            "functionName": "color",
-                            "line": 338,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 41,
-                            "durationMicroseconds": 0,
-                            "functionName": "radius",
-                            "line": 340,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 47,
-                            "durationMicroseconds": 0,
-                            "functionName": "color",
-                            "line": 339,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 44,
-                            "durationMicroseconds": 0,
-                            "functionName": "model",
-                            "line": 345,
-                            "message": "Cannot access value for name deviceServer"
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 51,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 344,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 77,
-                            "durationMicroseconds": 0,
-                            "functionName": "policy",
-                            "line": 347,
-                            "message": "Could not find property \"policy\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 48,
-                            "durationMicroseconds": 0,
-                            "functionName": "width",
-                            "line": 350,
-                            "message": "Could not find property \"width\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 47,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 351,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 50,
-                            "durationMicroseconds": 0,
-                            "functionName": "checked",
-                            "line": 352,
-                            "message": "Could not find property \"checked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 52,
-                            "durationMicroseconds": 0,
-                            "functionName": "onToggled",
-                            "line": 353,
-                            "message": "Could not find signal \"toggled\"."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "width",
-                            "line": 364,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 41,
-                            "durationMicroseconds": 0,
-                            "functionName": "rowSpacing",
-                            "line": 366,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 44,
-                            "durationMicroseconds": 0,
-                            "functionName": "columnSpacing",
-                            "line": 367,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 39,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 378,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 40,
-                            "durationMicroseconds": 0,
-                            "functionName": "color",
-                            "line": 382,
-                            "message": "Could not find property \"color\"."
-                        },
-                        {
-                            "codegenResult": 2,
                             "column": 43,
                             "durationMicroseconds": 0,
-                            "functionName": "wrapMode",
-                            "line": 383,
-                            "message": "Could not find property \"wrapMode\"."
+                            "functionName": "deniedDialog",
+                            "line": 315,
+                            "message": ""
                         },
                         {
-                            "codegenResult": 2,
+                            "codegenResult": 0,
+                            "column": 46,
+                            "durationMicroseconds": 0,
+                            "functionName": "onSyncCompleted",
+                            "line": 317,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 46,
+                            "durationMicroseconds": 0,
+                            "functionName": "onSyncCompleted",
+                            "line": 317,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 43,
+                            "durationMicroseconds": 0,
+                            "functionName": "onSyncFailed",
+                            "line": 322,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 43,
+                            "durationMicroseconds": 0,
+                            "functionName": "onSyncFailed",
+                            "line": 322,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 394,
-                            "message": "Could not find property \"width\"."
+                            "line": 331,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 34,
+                            "durationMicroseconds": 0,
+                            "functionName": "spacing",
+                            "line": 332,
+                            "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 35,
                             "durationMicroseconds": 0,
-                            "functionName": "wrapMode",
-                            "line": 397,
-                            "message": "Could not find property \"wrapMode\"."
+                            "functionName": "text",
+                            "line": 335,
+                            "message": "Could not find property \"text\"."
                         },
                         {
                             "codegenResult": 2,
-                            "column": 31,
+                            "column": 36,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 336,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 45,
+                            "durationMicroseconds": 0,
+                            "functionName": "pixelSize",
+                            "line": 337,
+                            "message": "Could not find property \"pixelSize\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 36,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 343,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 37,
+                            "durationMicroseconds": 0,
+                            "functionName": "radius",
+                            "line": 345,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 43,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 344,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 40,
+                            "durationMicroseconds": 0,
+                            "functionName": "model",
+                            "line": 350,
+                            "message": "Cannot access value for name deviceServer"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 47,
+                            "durationMicroseconds": 0,
+                            "functionName": "fill",
+                            "line": 349,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 73,
+                            "durationMicroseconds": 0,
+                            "functionName": "policy",
+                            "line": 352,
+                            "message": "Could not find property \"policy\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 44,
+                            "durationMicroseconds": 0,
+                            "functionName": "width",
+                            "line": 355,
+                            "message": "Could not find property \"width\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 43,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 398,
+                            "line": 356,
                             "message": "Could not find property \"text\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 46,
+                            "durationMicroseconds": 0,
+                            "functionName": "checked",
+                            "line": 357,
+                            "message": "Could not find property \"checked\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 48,
+                            "durationMicroseconds": 0,
+                            "functionName": "onToggled",
+                            "line": 358,
+                            "message": "Could not find signal \"toggled\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "rows",
-                            "line": 410,
+                            "line": 373,
                             "message": "Cannot access value for name configDeployServer"
                         },
                         {
@@ -578,7 +562,7 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "columns",
-                            "line": 412,
+                            "line": 375,
                             "message": "Cannot generate efficient code for storing an array in a non-sequence type"
                         },
                         {
@@ -586,7 +570,7 @@
                             "column": 39,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 409,
+                            "line": 372,
                             "message": ""
                         },
                         {
@@ -594,7 +578,7 @@
                             "column": 25,
                             "durationMicroseconds": 0,
                             "functionName": "busy",
-                            "line": 423,
+                            "line": 385,
                             "message": "Cannot access value for name configDeployServer"
                         }
                     ],

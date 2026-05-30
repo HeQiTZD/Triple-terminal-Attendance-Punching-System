@@ -71,18 +71,10 @@
                         },
                         {
                             "codegenResult": 2,
-                            "column": 48,
-                            "durationMicroseconds": 0,
-                            "functionName": "todayAttendanceRows",
-                            "line": 44,
-                            "message": "Cannot load property records from (component in E:/project/AttendanceServer/ui/pages/PageDashboard.qml)::attendanceService with type QVariant."
-                        },
-                        {
-                            "codegenResult": 2,
                             "column": 44,
                             "durationMicroseconds": 0,
                             "functionName": "statusPieSlices",
-                            "line": 52,
+                            "line": 44,
                             "message": "Cannot load property records from (component in E:/project/AttendanceServer/ui/pages/PageDashboard.qml)::attendanceService with type QVariant."
                         },
                         {
@@ -90,15 +82,23 @@
                             "column": 52,
                             "durationMicroseconds": 0,
                             "functionName": "hasTodayAttendanceData",
-                            "line": 64,
+                            "line": 56,
                             "message": "Cannot load property length from (component in E:/project/AttendanceServer/ui/pages/PageDashboard.qml)::statusPieSlices with type QVariant."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 47,
+                            "durationMicroseconds": 0,
+                            "functionName": "recentPunchRecords",
+                            "line": 58,
+                            "message": "Cannot load property records from (component in E:/project/AttendanceServer/ui/pages/PageDashboard.qml)::attendanceService with type QVariant."
                         },
                         {
                             "codegenResult": 2,
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "todayRecords",
-                            "line": 66,
+                            "line": 70,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -106,31 +106,23 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "personNameByEmployeeId",
-                            "line": 77,
+                            "line": 81,
                             "message": "Functions without type annotations won't be compiled"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 5,
-                            "durationMicroseconds": 22000,
-                            "functionName": "buildTodayAttendanceRows",
-                            "line": 88,
-                            "message": "function without return type annotation returns QVariantList. This may prevent proper compilation to Cpp."
                         },
                         {
                             "codegenResult": 2,
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "pieChartStatusKey",
-                            "line": 111,
+                            "line": 92,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
                             "codegenResult": 2,
                             "column": 5,
-                            "durationMicroseconds": 8000,
+                            "durationMicroseconds": 15000,
                             "functionName": "buildStatusPieSlices",
-                            "line": 118,
+                            "line": 99,
                             "message": "function without return type annotation returns QVariantList. This may prevent proper compilation to Cpp."
                         },
                         {
@@ -138,15 +130,23 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "countTodayUniquePunches",
-                            "line": 166,
+                            "line": 147,
                             "message": "Functions without type annotations won't be compiled"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 5,
+                            "durationMicroseconds": 5000,
+                            "functionName": "buildRecentPunchRecords",
+                            "line": 164,
+                            "message": "function without return type annotation returns QVariantList. This may prevent proper compilation to Cpp."
                         },
                         {
                             "codegenResult": 2,
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "refreshStats",
-                            "line": 183,
+                            "line": 190,
                             "message": "Cannot load property isLoggedIn from (component in E:/project/AttendanceServer/ui/pages/PageDashboard.qml)::sessionManager with type QVariant."
                         },
                         {
@@ -154,7 +154,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "statDisplayText",
-                            "line": 194,
+                            "line": 201,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -162,7 +162,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "attendanceSectionPlaceholder",
-                            "line": 202,
+                            "line": 209,
                             "message": "function without return type annotation returns call to method statDisplayText, returning QJSValue. This may prevent proper compilation to Cpp."
                         },
                         {
@@ -170,7 +170,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "onCompleted",
-                            "line": 206,
+                            "line": 213,
                             "message": ""
                         },
                         {
@@ -178,7 +178,7 @@
                             "column": 17,
                             "durationMicroseconds": 0,
                             "functionName": "target",
-                            "line": 209,
+                            "line": 216,
                             "message": "Cannot access value for name sessionManager"
                         },
                         {
@@ -186,7 +186,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onLoggedInChanged",
-                            "line": 210,
+                            "line": 217,
                             "message": "Cannot access value for name sessionManager"
                         },
                         {
@@ -194,7 +194,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onConnectionStateChanged",
-                            "line": 214,
+                            "line": 221,
                             "message": "Cannot access value for name sessionManager"
                         },
                         {
@@ -202,7 +202,7 @@
                             "column": 18,
                             "durationMicroseconds": 0,
                             "functionName": "spacing",
-                            "line": 223,
+                            "line": 230,
                             "message": ""
                         },
                         {
@@ -210,7 +210,7 @@
                             "column": 23,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 221,
+                            "line": 228,
                             "message": ""
                         },
                         {
@@ -218,7 +218,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "margins",
-                            "line": 222,
+                            "line": 229,
                             "message": ""
                         },
                         {
@@ -226,7 +226,7 @@
                             "column": 20,
                             "durationMicroseconds": 0,
                             "functionName": "title",
-                            "line": 227,
+                            "line": 234,
                             "message": "Cannot access value for name sessionManager"
                         },
                         {
@@ -234,7 +234,7 @@
                             "column": 25,
                             "durationMicroseconds": 0,
                             "functionName": "rowSpacing",
-                            "line": 233,
+                            "line": 240,
                             "message": ""
                         },
                         {
@@ -242,7 +242,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "columnSpacing",
-                            "line": 234,
+                            "line": 241,
                             "message": ""
                         },
                         {
@@ -250,31 +250,7 @@
                             "column": 27,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 242,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 28,
-                            "durationMicroseconds": 0,
-                            "functionName": "color",
-                            "line": 248,
-                            "message": "Could not find property \"color\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 37,
-                            "durationMicroseconds": 0,
-                            "functionName": "pixelSize",
                             "line": 249,
-                            "message": "Could not find property \"pixelSize\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 27,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 260,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -282,7 +258,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 266,
+                            "line": 255,
                             "message": "Could not find property \"color\"."
                         },
                         {
@@ -290,15 +266,15 @@
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "pixelSize",
+                            "line": 256,
+                            "message": "Could not find property \"pixelSize\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 27,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
                             "line": 267,
-                            "message": "Could not find property \"pixelSize\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 27,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 278,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -306,7 +282,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 284,
+                            "line": 273,
                             "message": "Could not find property \"color\"."
                         },
                         {
@@ -314,7 +290,31 @@
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "pixelSize",
+                            "line": 274,
+                            "message": "Could not find property \"pixelSize\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 27,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
                             "line": 285,
+                            "message": "Could not find property \"text\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 28,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 291,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 37,
+                            "durationMicroseconds": 0,
+                            "functionName": "pixelSize",
+                            "line": 292,
                             "message": "Could not find property \"pixelSize\"."
                         },
                         {
@@ -322,7 +322,15 @@
                             "column": 22,
                             "durationMicroseconds": 0,
                             "functionName": "spacing",
-                            "line": 295,
+                            "line": 302,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 22,
+                            "durationMicroseconds": 0,
+                            "functionName": "visible",
+                            "line": 303,
                             "message": ""
                         },
                         {
@@ -330,103 +338,15 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "preferredWidth",
-                            "line": 300,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 35,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 305,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 34,
-                            "durationMicroseconds": 0,
-                            "functionName": "visible",
-                            "line": 309,
-                            "message": "Could not find property \"visible\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 31,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 310,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 32,
-                            "durationMicroseconds": 0,
-                            "functionName": "color",
-                            "line": 311,
-                            "message": "Could not find property \"color\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 43,
-                            "durationMicroseconds": 0,
-                            "functionName": "centerIn",
                             "line": 308,
-                            "message": "Could not find property \"centerIn\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 41,
-                            "durationMicroseconds": 0,
-                            "functionName": "pixelSize",
-                            "line": 312,
-                            "message": "Could not find property \"pixelSize\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 38,
-                            "durationMicroseconds": 0,
-                            "functionName": "family",
-                            "line": 313,
-                            "message": "Could not find property \"family\"."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 34,
-                            "durationMicroseconds": 0,
-                            "functionName": "visible",
-                            "line": 318,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
-                            "column": 31,
+                            "column": 30,
                             "durationMicroseconds": 0,
-                            "functionName": "rows",
-                            "line": 319,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 34,
-                            "durationMicroseconds": 1000,
-                            "functionName": "columns",
-                            "line": 321,
-                            "message": "Cannot generate efficient code for LoadClosure"
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 39,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 317,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 40,
-                            "durationMicroseconds": 0,
-                            "functionName": "preferredWidth",
-                            "line": 342,
+                            "functionName": "records",
+                            "line": 315,
                             "message": ""
                         },
                         {
@@ -434,7 +354,31 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 347,
+                            "line": 313,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 38,
+                            "durationMicroseconds": 0,
+                            "functionName": "margins",
+                            "line": 314,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 40,
+                            "durationMicroseconds": 0,
+                            "functionName": "preferredWidth",
+                            "line": 322,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 35,
+                            "durationMicroseconds": 0,
+                            "functionName": "fill",
+                            "line": 327,
                             "message": ""
                         },
                         {
@@ -442,7 +386,7 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 351,
+                            "line": 331,
                             "message": "Could not find property \"visible\"."
                         },
                         {
@@ -450,7 +394,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 352,
+                            "line": 332,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -458,7 +402,7 @@
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 353,
+                            "line": 333,
                             "message": "Could not find property \"color\"."
                         },
                         {
@@ -466,7 +410,7 @@
                             "column": 43,
                             "durationMicroseconds": 0,
                             "functionName": "centerIn",
-                            "line": 350,
+                            "line": 330,
                             "message": "Could not find property \"centerIn\"."
                         },
                         {
@@ -474,7 +418,7 @@
                             "column": 41,
                             "durationMicroseconds": 0,
                             "functionName": "pixelSize",
-                            "line": 354,
+                            "line": 334,
                             "message": "Could not find property \"pixelSize\"."
                         },
                         {
@@ -482,7 +426,7 @@
                             "column": 38,
                             "durationMicroseconds": 0,
                             "functionName": "family",
-                            "line": 355,
+                            "line": 335,
                             "message": "Could not find property \"family\"."
                         },
                         {
@@ -490,7 +434,7 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 360,
+                            "line": 340,
                             "message": "Could not find property \"visible\"."
                         },
                         {
@@ -498,7 +442,7 @@
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 362,
+                            "line": 342,
                             "message": "Could not find property \"color\"."
                         },
                         {
@@ -506,7 +450,7 @@
                             "column": 43,
                             "durationMicroseconds": 0,
                             "functionName": "centerIn",
-                            "line": 359,
+                            "line": 339,
                             "message": "Could not find property \"centerIn\"."
                         },
                         {
@@ -514,7 +458,7 @@
                             "column": 41,
                             "durationMicroseconds": 0,
                             "functionName": "pixelSize",
-                            "line": 363,
+                            "line": 343,
                             "message": "Could not find property \"pixelSize\"."
                         },
                         {
@@ -522,7 +466,7 @@
                             "column": 38,
                             "durationMicroseconds": 0,
                             "functionName": "family",
-                            "line": 364,
+                            "line": 344,
                             "message": "Could not find property \"family\"."
                         },
                         {
@@ -530,7 +474,7 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 369,
+                            "line": 349,
                             "message": ""
                         },
                         {
@@ -538,7 +482,7 @@
                             "column": 33,
                             "durationMicroseconds": 0,
                             "functionName": "slices",
-                            "line": 370,
+                            "line": 350,
                             "message": ""
                         },
                         {
@@ -546,7 +490,7 @@
                             "column": 39,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 368,
+                            "line": 348,
                             "message": ""
                         }
                     ],

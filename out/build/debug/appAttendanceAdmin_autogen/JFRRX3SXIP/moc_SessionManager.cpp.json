@@ -28,8 +28,8 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 16,
-                    "lineNumber": 34,
+                    "index": 23,
+                    "lineNumber": 38,
                     "name": "login",
                     "returnType": "void"
                 },
@@ -53,16 +53,16 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 17,
+                    "index": 24,
                     "isCloned": true,
-                    "lineNumber": 34,
+                    "lineNumber": 38,
                     "name": "login",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
-                    "index": 18,
-                    "lineNumber": 37,
+                    "index": 25,
+                    "lineNumber": 41,
                     "name": "logout",
                     "returnType": "void"
                 },
@@ -74,9 +74,9 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 19,
+                    "index": 26,
                     "isConst": true,
-                    "lineNumber": 38,
+                    "lineNumber": 42,
                     "name": "hasPermission",
                     "returnType": "bool"
                 },
@@ -88,16 +88,16 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 20,
+                    "index": 27,
                     "isConst": true,
-                    "lineNumber": 39,
+                    "lineNumber": 43,
                     "name": "hasRole",
                     "returnType": "bool"
                 },
                 {
                     "access": "public",
-                    "index": 21,
-                    "lineNumber": 40,
+                    "index": 28,
+                    "lineNumber": 44,
                     "name": "refreshPermissions",
                     "returnType": "void"
                 }
@@ -140,6 +140,36 @@
                     "final": false,
                     "index": 2,
                     "lineNumber": 17,
+                    "name": "accessToken",
+                    "notify": "accessTokenChanged",
+                    "read": "accessToken",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "QString",
+                    "user": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 3,
+                    "lineNumber": 18,
+                    "name": "refreshToken",
+                    "notify": "refreshTokenChanged",
+                    "read": "refreshToken",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "QString",
+                    "user": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 4,
+                    "lineNumber": 19,
                     "name": "roles",
                     "notify": "rolesChanged",
                     "read": "roles",
@@ -153,8 +183,8 @@
                     "constant": false,
                     "designable": true,
                     "final": false,
-                    "index": 3,
-                    "lineNumber": 18,
+                    "index": 5,
+                    "lineNumber": 20,
                     "name": "permissions",
                     "notify": "permissionsChanged",
                     "read": "permissions",
@@ -168,8 +198,8 @@
                     "constant": false,
                     "designable": true,
                     "final": false,
-                    "index": 4,
-                    "lineNumber": 19,
+                    "index": 6,
+                    "lineNumber": 21,
                     "name": "currentUsername",
                     "notify": "currentUsernameChanged",
                     "read": "currentUsername",
@@ -183,8 +213,8 @@
                     "constant": false,
                     "designable": true,
                     "final": false,
-                    "index": 5,
-                    "lineNumber": 20,
+                    "index": 7,
+                    "lineNumber": 22,
                     "name": "connectionState",
                     "notify": "connectionStateChanged",
                     "read": "connectionState",
@@ -200,42 +230,56 @@
                 {
                     "access": "public",
                     "index": 0,
-                    "lineNumber": 43,
+                    "lineNumber": 47,
                     "name": "loggedInChanged",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
                     "index": 1,
-                    "lineNumber": 44,
+                    "lineNumber": 48,
                     "name": "sessionTokenChanged",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
                     "index": 2,
-                    "lineNumber": 45,
-                    "name": "rolesChanged",
+                    "lineNumber": 49,
+                    "name": "accessTokenChanged",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
                     "index": 3,
-                    "lineNumber": 46,
-                    "name": "permissionsChanged",
+                    "lineNumber": 50,
+                    "name": "refreshTokenChanged",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
                     "index": 4,
-                    "lineNumber": 47,
-                    "name": "currentUsernameChanged",
+                    "lineNumber": 51,
+                    "name": "rolesChanged",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
                     "index": 5,
-                    "lineNumber": 48,
+                    "lineNumber": 52,
+                    "name": "permissionsChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 6,
+                    "lineNumber": 53,
+                    "name": "currentUsernameChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 7,
+                    "lineNumber": 54,
                     "name": "connectionStateChanged",
                     "returnType": "void"
                 },
@@ -255,15 +299,15 @@
                             "type": "QStringList"
                         }
                     ],
-                    "index": 6,
-                    "lineNumber": 50,
+                    "index": 8,
+                    "lineNumber": 56,
                     "name": "loggedIn",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
-                    "index": 7,
-                    "lineNumber": 53,
+                    "index": 9,
+                    "lineNumber": 59,
                     "name": "loggedOut",
                     "returnType": "void"
                 },
@@ -279,9 +323,43 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 8,
-                    "lineNumber": 54,
+                    "index": 10,
+                    "lineNumber": 60,
                     "name": "loginFailed",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "accessToken",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "refreshToken",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 11,
+                    "lineNumber": 61,
+                    "name": "tokenRefreshed",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "code",
+                            "type": "int"
+                        },
+                        {
+                            "name": "message",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 12,
+                    "lineNumber": 62,
+                    "name": "tokenRefreshFailed",
                     "returnType": "void"
                 },
                 {
@@ -292,8 +370,8 @@
                             "type": "QStringList"
                         }
                     ],
-                    "index": 9,
-                    "lineNumber": 55,
+                    "index": 13,
+                    "lineNumber": 63,
                     "name": "permissionsRefreshed",
                     "returnType": "void"
                 },
@@ -305,13 +383,20 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 10,
-                    "lineNumber": 56,
+                    "index": 14,
+                    "lineNumber": 64,
                     "name": "errorOccurred",
                     "returnType": "void"
                 }
             ],
             "slots": [
+                {
+                    "access": "public",
+                    "index": 15,
+                    "lineNumber": 67,
+                    "name": "refreshTokens",
+                    "returnType": "void"
+                },
                 {
                     "access": "private",
                     "arguments": [
@@ -324,8 +409,8 @@
                             "type": "int"
                         }
                     ],
-                    "index": 11,
-                    "lineNumber": 59,
+                    "index": 16,
+                    "lineNumber": 70,
                     "name": "onTcpStateChanged",
                     "returnType": "void"
                 },
@@ -345,8 +430,8 @@
                             "type": "QStringList"
                         }
                     ],
-                    "index": 12,
-                    "lineNumber": 60,
+                    "index": 17,
+                    "lineNumber": 71,
                     "name": "onTcpAuthenticated",
                     "returnType": "void"
                 },
@@ -362,9 +447,43 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 13,
-                    "lineNumber": 63,
+                    "index": 18,
+                    "lineNumber": 74,
                     "name": "onTcpAuthFailed",
+                    "returnType": "void"
+                },
+                {
+                    "access": "private",
+                    "arguments": [
+                        {
+                            "name": "accessToken",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "refreshToken",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 19,
+                    "lineNumber": 75,
+                    "name": "onTcpTokenRefreshed",
+                    "returnType": "void"
+                },
+                {
+                    "access": "private",
+                    "arguments": [
+                        {
+                            "name": "code",
+                            "type": "int"
+                        },
+                        {
+                            "name": "msg",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 20,
+                    "lineNumber": 76,
+                    "name": "onTcpTokenRefreshFailed",
                     "returnType": "void"
                 },
                 {
@@ -375,8 +494,8 @@
                             "type": "QJsonObject"
                         }
                     ],
-                    "index": 14,
-                    "lineNumber": 64,
+                    "index": 21,
+                    "lineNumber": 77,
                     "name": "onTcpMessageReceived",
                     "returnType": "void"
                 },
@@ -388,8 +507,8 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 15,
-                    "lineNumber": 65,
+                    "index": 22,
+                    "lineNumber": 78,
                     "name": "onTcpError",
                     "returnType": "void"
                 }

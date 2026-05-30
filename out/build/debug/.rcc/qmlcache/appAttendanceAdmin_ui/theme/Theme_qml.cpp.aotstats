@@ -7,10 +7,42 @@
                     "entries": [
                         {
                             "codegenResult": 2,
+                            "column": 43,
+                            "durationMicroseconds": 0,
+                            "functionName": "shadowLight",
+                            "line": 47,
+                            "message": "Cannot generate efficient code for internal conversion with incompatible or ambiguous types: call to method rgba, returning QVariant -> QColor stored as QVariant"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 43,
+                            "durationMicroseconds": 0,
+                            "functionName": "shadowMedium",
+                            "line": 48,
+                            "message": "Cannot generate efficient code for internal conversion with incompatible or ambiguous types: call to method rgba, returning QVariant -> QColor stored as QVariant"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 43,
+                            "durationMicroseconds": 0,
+                            "functionName": "shadowStrong",
+                            "line": 49,
+                            "message": "Cannot generate efficient code for internal conversion with incompatible or ambiguous types: call to method rgba, returning QVariant -> QColor stored as QVariant"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 40,
+                            "durationMicroseconds": 0,
+                            "functionName": "chartColors",
+                            "line": 82,
+                            "message": "Cannot generate efficient code for storing an array in a non-sequence type"
+                        },
+                        {
+                            "codegenResult": 2,
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "statusColor",
-                            "line": 63,
+                            "line": 94,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -18,7 +50,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "attendancePieColor",
-                            "line": 76,
+                            "line": 108,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -26,8 +58,48 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "formatAttendanceStatus",
-                            "line": 89,
+                            "line": 122,
                             "message": "Functions without type annotations won't be compiled"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 5,
+                            "durationMicroseconds": 0,
+                            "functionName": "chartColor",
+                            "line": 138,
+                            "message": "Functions without type annotations won't be compiled"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 47,
+                            "durationMicroseconds": 0,
+                            "functionName": "darkShadowLight",
+                            "line": 157,
+                            "message": "Cannot generate efficient code for internal conversion with incompatible or ambiguous types: call to method rgba, returning QVariant -> QColor stored as QVariant"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 47,
+                            "durationMicroseconds": 0,
+                            "functionName": "darkShadowMedium",
+                            "line": 158,
+                            "message": "Cannot generate efficient code for internal conversion with incompatible or ambiguous types: call to method rgba, returning QVariant -> QColor stored as QVariant"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 47,
+                            "durationMicroseconds": 0,
+                            "functionName": "darkShadowStrong",
+                            "line": 159,
+                            "message": "Cannot generate efficient code for internal conversion with incompatible or ambiguous types: call to method rgba, returning QVariant -> QColor stored as QVariant"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 44,
+                            "durationMicroseconds": 0,
+                            "functionName": "darkChartColors",
+                            "line": 161,
+                            "message": "Cannot generate efficient code for storing an array in a non-sequence type"
                         }
                     ],
                     "filePath": "E:/project/AttendanceServer/ui/theme/Theme.qml"

@@ -46,12 +46,14 @@ template <> constexpr inline auto Device::qt_create_metaobjectdata<qt_meta_tag_Z
         "ipAddressChanged",
         "lastOnlineChanged",
         "statusChanged",
+        "deviceKeyChanged",
         "id",
         "deviceId",
         "deviceName",
         "ipAddress",
         "lastOnline",
-        "status"
+        "status",
+        "deviceKey"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -67,20 +69,24 @@ template <> constexpr inline auto Device::qt_create_metaobjectdata<qt_meta_tag_Z
         QtMocHelpers::SignalData<void()>(6, 2, QMC::AccessPublic, QMetaType::Void),
         // Signal 'statusChanged'
         QtMocHelpers::SignalData<void()>(7, 2, QMC::AccessPublic, QMetaType::Void),
+        // Signal 'deviceKeyChanged'
+        QtMocHelpers::SignalData<void()>(8, 2, QMC::AccessPublic, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
         // property 'id'
-        QtMocHelpers::PropertyData<int>(8, QMetaType::Int, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 0),
+        QtMocHelpers::PropertyData<int>(9, QMetaType::Int, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 0),
         // property 'deviceId'
-        QtMocHelpers::PropertyData<QString>(9, QMetaType::QString, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 1),
+        QtMocHelpers::PropertyData<QString>(10, QMetaType::QString, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 1),
         // property 'deviceName'
-        QtMocHelpers::PropertyData<QString>(10, QMetaType::QString, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 2),
+        QtMocHelpers::PropertyData<QString>(11, QMetaType::QString, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 2),
         // property 'ipAddress'
-        QtMocHelpers::PropertyData<QString>(11, QMetaType::QString, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 3),
+        QtMocHelpers::PropertyData<QString>(12, QMetaType::QString, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 3),
         // property 'lastOnline'
-        QtMocHelpers::PropertyData<QDateTime>(12, QMetaType::QDateTime, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 4),
+        QtMocHelpers::PropertyData<QDateTime>(13, QMetaType::QDateTime, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 4),
         // property 'status'
-        QtMocHelpers::PropertyData<QString>(13, QMetaType::QString, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 5),
+        QtMocHelpers::PropertyData<QString>(14, QMetaType::QString, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 5),
+        // property 'deviceKey'
+        QtMocHelpers::PropertyData<QString>(15, QMetaType::QString, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 6),
     };
     QtMocHelpers::UintData qt_enums {
     };
@@ -108,6 +114,7 @@ void Device::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 3: _t->ipAddressChanged(); break;
         case 4: _t->lastOnlineChanged(); break;
         case 5: _t->statusChanged(); break;
+        case 6: _t->deviceKeyChanged(); break;
         default: ;
         }
     }
@@ -124,6 +131,8 @@ void Device::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
             return;
         if (QtMocHelpers::indexOfMethod<void (Device::*)()>(_a, &Device::statusChanged, 5))
             return;
+        if (QtMocHelpers::indexOfMethod<void (Device::*)()>(_a, &Device::deviceKeyChanged, 6))
+            return;
     }
     if (_c == QMetaObject::ReadProperty) {
         void *_v = _a[0];
@@ -134,6 +143,7 @@ void Device::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 3: *reinterpret_cast<QString*>(_v) = _t->ipAddress(); break;
         case 4: *reinterpret_cast<QDateTime*>(_v) = _t->lastOnline(); break;
         case 5: *reinterpret_cast<QString*>(_v) = _t->status(); break;
+        case 6: *reinterpret_cast<QString*>(_v) = _t->deviceKey(); break;
         default: break;
         }
     }
@@ -146,6 +156,7 @@ void Device::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 3: _t->setIpAddress(*reinterpret_cast<QString*>(_v)); break;
         case 4: _t->setLastOnline(*reinterpret_cast<QDateTime*>(_v)); break;
         case 5: _t->setStatus(*reinterpret_cast<QString*>(_v)); break;
+        case 6: _t->setDeviceKey(*reinterpret_cast<QString*>(_v)); break;
         default: break;
         }
     }
@@ -170,20 +181,20 @@ int Device::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 7;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 7)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 6;
+        _id -= 7;
     }
     if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::BindableProperty
             || _c == QMetaObject::RegisterPropertyMetaType) {
         qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 7;
     }
     return _id;
 }
@@ -222,5 +233,11 @@ void Device::lastOnlineChanged()
 void Device::statusChanged()
 {
     QMetaObject::activate(this, &staticMetaObject, 5, nullptr);
+}
+
+// SIGNAL 6
+void Device::deviceKeyChanged()
+{
+    QMetaObject::activate(this, &staticMetaObject, 6, nullptr);
 }
 QT_WARNING_POP

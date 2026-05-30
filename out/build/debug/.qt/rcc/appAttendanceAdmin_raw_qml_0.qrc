@@ -9,6 +9,7 @@
     <file alias="ui/models/ErrorCatalog.qml">E:/project/AttendanceServer/ui/models/ErrorCatalog.qml</file>
     <file alias="ui/models/PermissionCatalog.qml">E:/project/AttendanceServer/ui/models/PermissionCatalog.qml</file>
     <file alias="ui/models/PushFeed.qml">E:/project/AttendanceServer/ui/models/PushFeed.qml</file>
+    <file alias="ui/models/LogReader.qml">E:/project/AttendanceServer/ui/models/LogReader.qml</file>
     <file alias="ui/components/Card.qml">E:/project/AttendanceServer/ui/components/Card.qml</file>
     <file alias="ui/components/BusyOverlay.qml">E:/project/AttendanceServer/ui/components/BusyOverlay.qml</file>
     <file alias="ui/components/SideBar.qml">E:/project/AttendanceServer/ui/components/SideBar.qml</file>
@@ -28,18 +29,22 @@
     <file alias="ui/components/PermissionChipRow.qml">E:/project/AttendanceServer/ui/components/PermissionChipRow.qml</file>
     <file alias="ui/components/PageAccessPlaceholder.qml">E:/project/AttendanceServer/ui/components/PageAccessPlaceholder.qml</file>
     <file alias="ui/components/AttendanceStatusPieChart.qml">E:/project/AttendanceServer/ui/components/AttendanceStatusPieChart.qml</file>
+    <file alias="ui/components/RecentPunchList.qml">E:/project/AttendanceServer/ui/components/RecentPunchList.qml</file>
+    <file alias="ui/components/BarChart.qml">E:/project/AttendanceServer/ui/components/BarChart.qml</file>
+    <file alias="ui/components/ChartLegend.qml">E:/project/AttendanceServer/ui/components/ChartLegend.qml</file>
+    <file alias="ui/components/ChartContainer.qml">E:/project/AttendanceServer/ui/components/ChartContainer.qml</file>
+    <file alias="ui/components/StatCard.qml">E:/project/AttendanceServer/ui/components/StatCard.qml</file>
     <file alias="ui/components/PageHost.qml">E:/project/AttendanceServer/ui/components/PageHost.qml</file>
+    <file alias="ui/components/FaceSyncButton.qml">E:/project/AttendanceServer/ui/components/FaceSyncButton.qml</file>
     <file alias="ui/pages/PageDashboard.qml">E:/project/AttendanceServer/ui/pages/PageDashboard.qml</file>
     <file alias="ui/pages/PagePerson.qml">E:/project/AttendanceServer/ui/pages/PagePerson.qml</file>
     <file alias="ui/pages/PageDevice.qml">E:/project/AttendanceServer/ui/pages/PageDevice.qml</file>
     <file alias="ui/pages/PageConfigDeploy.qml">E:/project/AttendanceServer/ui/pages/PageConfigDeploy.qml</file>
     <file alias="ui/pages/PageAttendance.qml">E:/project/AttendanceServer/ui/pages/PageAttendance.qml</file>
     <file alias="ui/pages/PageFace.qml">E:/project/AttendanceServer/ui/pages/PageFace.qml</file>
-    <file alias="ui/pages/PageHistory.qml">E:/project/AttendanceServer/ui/pages/PageHistory.qml</file>
-    <file alias="ui/pages/PageSettings.qml">E:/project/AttendanceServer/ui/pages/PageSettings.qml</file>
     <file alias="ui/pages/PageUser.qml">E:/project/AttendanceServer/ui/pages/PageUser.qml</file>
     <file alias="ui/pages/PageRbac.qml">E:/project/AttendanceServer/ui/pages/PageRbac.qml</file>
-    <file alias="ui/pages/PageEvents.qml">E:/project/AttendanceServer/ui/pages/PageEvents.qml</file>
+    <file alias="ui/pages/PageLogViewer.qml">E:/project/AttendanceServer/ui/pages/PageLogViewer.qml</file>
   </qresource>
 </RCC>
 

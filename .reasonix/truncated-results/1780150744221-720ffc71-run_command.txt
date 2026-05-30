@@ -1,0 +1,480 @@
+$ cmake --build D:\attendanceServer\build --config Debug --target attendanceServer 2>&1
+[exit 1]
+适用于 .NET Framework MSBuild 版本 18.7.1+024f5b037
+
+  AttendanceRecordRepository.cpp
+  DbClient.cpp
+  Schema.cpp
+  main.cpp
+D:\attendanceServer\db\ConnectionPool.hpp(24,21): error C2039: "connectionUrl": 不是 "db::DbClient" 的成员 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+      D:\attendanceServer\db\DbClient.hpp(12,7):
+      参见“db::DbClient”的声明
+  
+D:\attendanceServer\db\ConnectionPool.hpp(24,21): error C3861: “connectionUrl”: 找不到标识符 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\db\ConnectionPool.hpp(63,23): error C2039: "connectionUrl": 不是 "db::DbClient" 的成员 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+      D:\attendanceServer\db\DbClient.hpp(12,7):
+      参见“db::DbClient”的声明
+  
+D:\attendanceServer\db\ConnectionPool.hpp(63,23): error C3861: “connectionUrl”: 找不到标识符 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x3a5 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x3a7 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x3a9 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x3d4 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x3d7 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x3de 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x3df 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x3e1 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x3e3 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x3ec 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x3ed 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x3f9 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x3fa 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x3fb 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x3fc 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x400 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x405 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x406 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x407 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x408 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x40a 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x40f 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x411 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x421 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x422 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x44f 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x451 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x452 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x453 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x455 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x47a 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x47c 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x47d 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x4a3 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x4a5 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x4a6 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x4d2 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x4d5 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x4ff 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x500 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x52e 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x52f 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x53d 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x53e 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x590 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x591 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x594 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x595 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x598 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x59a 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x59b 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x59e 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x59f 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x5a0 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x5a2 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x5a3 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x5d9 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x5da 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x5dd 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x5de 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x5e1 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x5e3 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x5e4 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x5e9 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x5ec 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x5ed 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x5f0 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x601 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x602 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x607 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x608 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x60c 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x60d 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x612 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x614 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x618 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x619 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x61a 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x61b 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x61d 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x61f 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x620 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x621 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x623 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x624 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x628 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x629 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x62c 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x62e 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x630 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x632 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x637 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x639 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x63a 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x63b 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x63d 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x640 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x67a 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x67b 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x67c 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x67d 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x680 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x681 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x682 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x684 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x686 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x687 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x688 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x6a8 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x6a9 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x6aa 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x6ad 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x6ae 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x6b3 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x6b5 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x6bb 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x6bc 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x6bf 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x6c0 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x6c1 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x6e2 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x6e3 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x6e4 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x6e7 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x6e8 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x6ed 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x6ef 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x6f6 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x6f7 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x6fa 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x6fb 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x6fc 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x71d 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x71e 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x71f 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x722 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x723 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x72b 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x72c 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x72f 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x730 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x731 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x733 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x734 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x735 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x739 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x73b 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x73c 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x741 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x745 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 文件包含在偏移 0x746 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。 [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (编译源文件“../main.cpp”)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1)
+
+[… truncated 155074 chars …]

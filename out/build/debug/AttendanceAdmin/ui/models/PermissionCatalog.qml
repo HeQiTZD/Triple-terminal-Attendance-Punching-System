@@ -7,7 +7,7 @@ QtObject {
 
     readonly property var pageOrder: [
         "dashboard", "person", "device", "configDeploy", "attendance", "face",
-        "user", "rbac", "events", "history", "settings"
+        "user", "rbac"
     ]
 
     function roleDisplayName(roleKey) {
@@ -120,9 +120,7 @@ QtObject {
         case "face":       return permissionDisplayName("face.read")
         case "user":       return permissionDisplayName("user.read")
         case "rbac":       return roleDisplayName("super_admin")
-        case "events":     return permissionDisplayName("event.subscribe")
-        case "history":    return qsTr("任一业务模块读取权限或用户查询权限")
-        case "settings":   return qsTr("已登录")
+        case "logViewer":  return roleDisplayName("super_admin")
         default:           return ""
         }
     }
@@ -132,20 +130,22 @@ QtObject {
         { key: "dashboard", label: qsTr("仪表盘"), icon: "◆" },
 
         { group: qsTr("数据管理") },
-        { key: "person", label: qsTr("人员管理"), icon: "👤" },
+        { key: "person", label: qsTr("人员管理"), icon: "☺" },
         { key: "device", label: qsTr("设备管理"), icon: "⬡" },
-        { key: "configDeploy", label: qsTr("配置下发"), icon: "⇪" },
-        { key: "attendance", label: qsTr("考勤记录"), icon: "📋" },
+        { key: "configDeploy", label: qsTr("配置下发"), icon: "⇧" },
+        { key: "attendance", label: qsTr("考勤记录"), icon: "☰" },
         { key: "face", label: qsTr("人脸库"), icon: "◎" },
 
         { group: qsTr("账号与权限") },
-        { key: "user", label: qsTr("用户账号"), icon: "🔑" },
-        { key: "rbac", label: qsTr("角色权限"), icon: "🛡" },
+        { key: "user", label: qsTr("用户账号"), icon: "⚿" },
+        { key: "rbac", label: qsTr("用户权限"), icon: "⛨" },
 
         { group: qsTr("系统") },
         { key: "events", label: qsTr("事件中心"), icon: "⚡" },
         { key: "history", label: qsTr("调用历史"), icon: "≡" },
-        { key: "settings", label: qsTr("连接与预设"), icon: "⚙" }
+
+        { group: qsTr("其它") },
+        { key: "logViewer", label: qsTr("日志查看"), icon: "📋" },
     ]
 
     function canAccessNav(key, sessionManager) {
@@ -153,11 +153,7 @@ QtObject {
             return false
         switch (key) {
         case "dashboard":
-        case "settings":
             return true
-        case "history":
-            return hasPerm(sessionManager, "user.read")
-                || hasAnyModuleRead(sessionManager)
         case "person":
             return hasPerm(sessionManager, "person.read")
         case "device":
@@ -173,8 +169,8 @@ QtObject {
             return hasPerm(sessionManager, "user.read")
         case "rbac":
             return hasRoleKey(sessionManager, "super_admin")
-        case "events":
-            return hasPerm(sessionManager, "event.subscribe")
+        case "logViewer":
+            return hasRoleKey(sessionManager, "super_admin")
         default:
             return false
         }
@@ -279,7 +275,6 @@ QtObject {
         if (hasPerm(sessionManager, "face.read")) labels.push(qsTr("人脸"))
         if (hasPerm(sessionManager, "user.read")) labels.push(qsTr("用户"))
         if (hasRoleKey(sessionManager, "super_admin")) labels.push(qsTr("RBAC"))
-        if (hasPerm(sessionManager, "event.subscribe")) labels.push(qsTr("事件"))
         return labels.length ? labels.join(" · ") : qsTr("仅概览与连接设置")
     }
 

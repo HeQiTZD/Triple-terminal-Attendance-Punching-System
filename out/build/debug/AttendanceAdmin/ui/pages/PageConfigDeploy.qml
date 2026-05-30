@@ -108,9 +108,6 @@ Item {
             return qsTr("时间字段必须为 HH:mm，且范围为 00:00-23:59")
         if (fwVersion.text.trim().length === 0)
             return qsTr("固件版本不能为空")
-        const version = configVersion.text.trim()
-        if (version.length > 0 && !/^\d{4}\.\d{2}\.\d{2}\.\d{3}$/.test(version))
-            return qsTr("配置版本格式应为 YYYY.MM.DD.NNN")
         return ""
     }
 
@@ -121,10 +118,7 @@ Item {
             Logger.warn(error)
             return
         }
-        iniPreview.text = _buildIni()
-        configDeployServer.deployConfig(selectedDevices, iniPreview.text,
-                                        configVersion.text.trim(),
-                                        description.text.trim())
+        configDeployServer.deployConfig(selectedDevices, _buildIni(), "", "")
     }
 
     Component.onCompleted: {
@@ -158,7 +152,6 @@ Item {
         ToolBarRow {
             Layout.fillWidth: true
             title: qsTr("配置下发")
-            subtitle: qsTr("编辑远程 config.ini · 选择设备 · 提交 config.deploy")
             actions: [
                 PermissionButton {
                     sessionManager: page.sessionManager
@@ -309,93 +302,63 @@ Item {
                     }
                 }
 
-                RowLayout {
+                Card {
                     Layout.fillWidth: true
-                    spacing: Theme.spacingMd
+                    Layout.preferredWidth: 520
+                    title: qsTr("目标设备")
+                    headerRight: [
+                        FaceSyncButton {
+                            id: faceSyncBtn
+                            deviceServer: page.deviceServer
+                            sessionManager: page.sessionManager
+                            selectedDevices: page.selectedDevices
+                            deniedDialog: page.deniedDialog
 
-                    Card {
-                        Layout.fillWidth: true
-                        Layout.preferredWidth: 520
-                        title: qsTr("目标设备")
-                        headerRight: [
-                            Button { text: qsTr("全选在线"); onClicked: page._selectOnlineDevices() },
-                            Button { text: qsTr("清空"); onClicked: page._clearSelectedDevices() }
-                        ]
-
-                        ColumnLayout {
-                            width: parent.width
-                            spacing: Theme.spacingSm
-
-                            Label {
-                                text: qsTr("已选择 %1 台").arg(page.selectedDevices.length)
-                                color: Theme.textMuted
-                                font.pixelSize: Theme.fontSm
+                            onSyncCompleted: function(success, fail) {
+                                const msg = qsTr("人脸同步完成：成功 %1 台，失败 %2 台").arg(success).arg(fail)
+                                page.serviceResult("face.sync", fail > 0 ? -1 : 0, msg)
                             }
 
-                            Rectangle {
-                                Layout.fillWidth: true
-                                Layout.preferredHeight: 210
-                                color: Theme.bg
-                                border.color: Theme.border
-                                radius: Theme.radiusSm
-                                clip: true
+                            onSyncFailed: function(code, message) {
+                                page.serviceResult("face.sync", code, message)
+                            }
+                        },
+                        Button { text: qsTr("全选在线"); onClicked: page._selectOnlineDevices() },
+                        Button { text: qsTr("清空"); onClicked: page._clearSelectedDevices() }
+                    ]
 
-                                ListView {
-                                    anchors.fill: parent
-                                    model: deviceServer.records
-                                    clip: true
-                                    ScrollBar.vertical: ScrollBar { policy: ScrollBar.AsNeeded }
-                                    delegate: CheckBox {
-                                        required property var modelData
-                                        width: ListView.view.width
-                                        text: (modelData.deviceId || "") + "  " + (modelData.deviceName || "") + "  [" + (modelData.status || "") + "]"
-                                        checked: page._isSelected(modelData.deviceId || "")
-                                        onToggled: page._setSelected(modelData.deviceId || "", checked)
-                                    }
+                    ColumnLayout {
+                        width: parent.width
+                        spacing: Theme.spacingSm
+
+                        Label {
+                            text: qsTr("已选择 %1 台").arg(page.selectedDevices.length)
+                            color: Theme.textMuted
+                            font.pixelSize: Theme.fontSm
+                        }
+
+                        Rectangle {
+                            Layout.fillWidth: true
+                            Layout.preferredHeight: 210
+                            color: Theme.bg
+                            border.color: Theme.border
+                            radius: Theme.radiusSm
+                            clip: true
+
+                            ListView {
+                                anchors.fill: parent
+                                model: deviceServer.records
+                                clip: true
+                                ScrollBar.vertical: ScrollBar { policy: ScrollBar.AsNeeded }
+                                delegate: CheckBox {
+                                    required property var modelData
+                                    width: ListView.view.width
+                                    text: (modelData.deviceId || "") + "  " + (modelData.deviceName || "") + "  [" + (modelData.status || "") + "]"
+                                    checked: page._isSelected(modelData.deviceId || "")
+                                    onToggled: page._setSelected(modelData.deviceId || "", checked)
                                 }
                             }
                         }
-                    }
-
-                    Card {
-                        Layout.fillWidth: true
-                        title: qsTr("部署信息")
-                        GridLayout {
-                            width: parent.width
-                            columns: 2
-                            rowSpacing: Theme.spacingSm
-                            columnSpacing: Theme.spacingMd
-
-                            LabeledField { label: qsTr("配置版本")
-                                TextField { id: configVersion; placeholderText: qsTr("留空由服务端生成"); Layout.fillWidth: true }
-                            }
-                            LabeledField { label: qsTr("变更说明")
-                                TextField { id: description; placeholderText: qsTr("例如：调整阈值和上班时间"); Layout.fillWidth: true }
-                            }
-                            Label {
-                                Layout.columnSpan: 2
-                                Layout.fillWidth: true
-                                text: qsTr("服务端返回：deployId=%1，version=%2，hash=%3")
-                                      .arg(configDeployServer.lastDeployId || "-")
-                                      .arg(configDeployServer.configVersion || "-")
-                                      .arg(configDeployServer.configHash || "-")
-                                color: Theme.textMuted
-                                wrapMode: Text.Wrap
-                            }
-                        }
-                    }
-                }
-
-                Card {
-                    Layout.fillWidth: true
-                    title: qsTr("INI 预览")
-                    TextArea {
-                        id: iniPreview
-                        width: parent.width
-                        height: 180
-                        readOnly: false
-                        wrapMode: TextEdit.NoWrap
-                        text: page._buildIni()
                     }
                 }
 
@@ -411,8 +374,7 @@ Item {
                         emptyText: qsTr("尚未下发")
                         columns: [
                             { key: "deviceId", title: qsTr("设备 ID"), width: 180 },
-                            { key: "status", title: qsTr("状态"), width: 120 },
-                            { key: "forwardMsgId", title: qsTr("转发消息 ID") }
+                            { key: "status", title: qsTr("状态"), width: 120 }
                         ]
                     }
                 }

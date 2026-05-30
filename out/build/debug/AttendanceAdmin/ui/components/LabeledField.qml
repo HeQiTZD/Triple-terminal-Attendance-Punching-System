@@ -13,7 +13,7 @@ RowLayout {
     property string label: ""
     property int labelWidth: 80
     property bool labelBold: false
-    spacing: Theme.spacingSm
+    spacing: Theme.spacingXs
 
     Label {
         text: root.label

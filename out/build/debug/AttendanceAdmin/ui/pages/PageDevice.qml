@@ -13,8 +13,6 @@ Item {
     signal serviceResult(string apiType, int code, string message)
 
     readonly property bool canUpdate: PermissionCatalog.hasPerm(sessionManager, "device.update")
-    readonly property bool isPendingAuthSelected: dStatus.currentText === "pending_auth"
-
     function _query() {
         deviceServer.queryDevices(dId.text.trim(), dName.text.trim(), dIp.text.trim())
     }
@@ -36,7 +34,6 @@ Item {
         ToolBarRow {
             Layout.fillWidth: true
             title: qsTr("设备管理")
-            subtitle: qsTr("注册 / 修改设备 · 状态查看 · 远程指令")
             actions: [
                 PermissionButton {
                     sessionManager: page.sessionManager
@@ -67,7 +64,6 @@ Item {
                         TextField {
                             id: dId
                             readOnly: !page.canUpdate
-                            placeholderText: qsTr("DEV001")
                             Layout.fillWidth: true
                         }
                     }
@@ -85,11 +81,19 @@ Item {
                             Layout.fillWidth: true
                         }
                     }
+                    LabeledField { label: qsTr("密钥"); Layout.fillWidth: true
+                        TextField {
+                            id: dKey
+                            readOnly: !page.canUpdate
+                            echoMode: TextInput.Password
+                            Layout.fillWidth: true
+                        }
+                    }
                     LabeledField { label: qsTr("状态"); Layout.fillWidth: true
                         ComboBox {
                             id: dStatus
                             enabled: page.canUpdate
-                            model: ["pending_auth", "online", "offline", "maintenance"]
+                            model: ["online", "offline", "maintenance"]
                             Layout.fillWidth: true
                         }
                     }
@@ -106,7 +110,7 @@ Item {
                         enabled: !deviceServer.busy
                         onClicked: guardedClick(function() {
                             deviceServer.createDevice(dId.text.trim(), dName.text.trim(),
-                                                      dIp.text.trim(), page._statusText())
+                                                      dKey.text.trim(), dIp.text.trim(), page._statusText())
                         })
                     }
                     PermissionButton {
@@ -136,68 +140,6 @@ Item {
                         enabled: !deviceServer.busy
                         onClicked: guardedClick(function() { confirm.open() })
                     }
-                    PermissionButton {
-                        sessionManager: page.sessionManager
-                        requiredPermission: "device.update"
-                        deniedDialog: page.deniedDialog
-                        text: qsTr("认证通过")
-                        highlighted: true
-                        enabled: !deviceServer.busy
-                                 && page.isPendingAuthSelected
-                                 && dId.text.trim().length > 0
-                        onClicked: guardedClick(function() {
-                            deviceServer.approveDevice(dId.text.trim())
-                        })
-                    }
-                }
-            }
-        }
-
-        Card {
-            Layout.fillWidth: true
-            visible: PermissionCatalog.hasPerm(sessionManager, "device.command")
-            title: qsTr("设备指令")
-
-            ColumnLayout {
-                width: parent.width
-                spacing: Theme.spacingSm
-
-                RowLayout {
-                    Layout.fillWidth: true
-                    spacing: Theme.spacingMd
-                    LabeledField {
-                        label: qsTr("指令")
-                        Layout.preferredWidth: 200
-                        TextField {
-                            id: cmdName
-                            placeholderText: qsTr("reboot")
-                            Layout.fillWidth: true
-                        }
-                    }
-                    PermissionButton {
-                        sessionManager: page.sessionManager
-                        requiredPermission: "device.command"
-                        deniedDialog: page.deniedDialog
-                        text: qsTr("发送指令")
-                        highlighted: true
-                        enabled: !deviceServer.busy && dId.text.trim().length > 0
-                        onClicked: guardedClick(function() {
-                            deviceServer.sendCommand(dId.text.trim(), cmdName.text.trim(), cmdParams.text)
-                        })
-                    }
-                }
-
-                Label {
-                    text: qsTr("params（JSON 对象，可为空 {}）")
-                    color: Theme.textMuted
-                    font.pixelSize: Theme.fontXs
-                }
-
-                JsonEditor {
-                    id: cmdParams
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: 100
-                    text: "{}"
                 }
             }
         }
@@ -212,7 +154,8 @@ Item {
                 anchors.fill: parent
                 rows: deviceServer.records
                 columns: [
-                    { key: "id", title: "ID", width: 60, align: "right" },
+                    { key: "id", title: qsTr("序号"), width: 60, align: "right",
+                      formatter: function(v, row, idx) { return String(idx + 1) } },
                     { key: "deviceId", title: qsTr("设备 ID"), width: 130 },
                     { key: "deviceName", title: qsTr("名称"), width: 160 },
                     { key: "ipAddress", title: qsTr("IP"), width: 130 },
@@ -243,7 +186,7 @@ Item {
         function onOperationSucceeded(apiType, message) {
             page.serviceResult(apiType, 0, message)
             if (apiType.indexOf("create") >= 0 || apiType.indexOf("update") >= 0
-                    || apiType.indexOf("delete") >= 0 || apiType.indexOf("auth.approve") >= 0)
+                    || apiType.indexOf("delete") >= 0)
                 page._query()
         }
         function onOperationFailed(apiType, code, message) {

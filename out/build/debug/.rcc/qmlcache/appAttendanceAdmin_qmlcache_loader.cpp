@@ -68,6 +68,13 @@ namespace _qt_qml_AttendanceAdmin_ui_models_PushFeed_qml {
         reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
     };
 }
+namespace _qt_qml_AttendanceAdmin_ui_models_LogReader_qml { 
+    extern const unsigned char qmlData[];
+    extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
+    };
+}
 namespace _qt_qml_AttendanceAdmin_ui_components_Card_qml { 
     extern const unsigned char qmlData[];
     extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
@@ -201,7 +208,49 @@ namespace _qt_qml_AttendanceAdmin_ui_components_AttendanceStatusPieChart_qml {
         reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
     };
 }
+namespace _qt_qml_AttendanceAdmin_ui_components_RecentPunchList_qml { 
+    extern const unsigned char qmlData[];
+    extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
+    };
+}
+namespace _qt_qml_AttendanceAdmin_ui_components_BarChart_qml { 
+    extern const unsigned char qmlData[];
+    extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
+    };
+}
+namespace _qt_qml_AttendanceAdmin_ui_components_ChartLegend_qml { 
+    extern const unsigned char qmlData[];
+    extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
+    };
+}
+namespace _qt_qml_AttendanceAdmin_ui_components_ChartContainer_qml { 
+    extern const unsigned char qmlData[];
+    extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
+    };
+}
+namespace _qt_qml_AttendanceAdmin_ui_components_StatCard_qml { 
+    extern const unsigned char qmlData[];
+    extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
+    };
+}
 namespace _qt_qml_AttendanceAdmin_ui_components_PageHost_qml { 
+    extern const unsigned char qmlData[];
+    extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
+    };
+}
+namespace _qt_qml_AttendanceAdmin_ui_components_FaceSyncButton_qml { 
     extern const unsigned char qmlData[];
     extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
     const QQmlPrivate::CachedQmlUnit unit = {
@@ -250,20 +299,6 @@ namespace _qt_qml_AttendanceAdmin_ui_pages_PageFace_qml {
         reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
     };
 }
-namespace _qt_qml_AttendanceAdmin_ui_pages_PageHistory_qml { 
-    extern const unsigned char qmlData[];
-    extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
-    const QQmlPrivate::CachedQmlUnit unit = {
-        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
-    };
-}
-namespace _qt_qml_AttendanceAdmin_ui_pages_PageSettings_qml { 
-    extern const unsigned char qmlData[];
-    extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
-    const QQmlPrivate::CachedQmlUnit unit = {
-        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
-    };
-}
 namespace _qt_qml_AttendanceAdmin_ui_pages_PageUser_qml { 
     extern const unsigned char qmlData[];
     extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
@@ -278,7 +313,7 @@ namespace _qt_qml_AttendanceAdmin_ui_pages_PageRbac_qml {
         reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
     };
 }
-namespace _qt_qml_AttendanceAdmin_ui_pages_PageEvents_qml { 
+namespace _qt_qml_AttendanceAdmin_ui_pages_PageLogViewer_qml { 
     extern const unsigned char qmlData[];
     extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
     const QQmlPrivate::CachedQmlUnit unit = {
@@ -308,6 +343,7 @@ Registry::Registry() {
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/models/ErrorCatalog.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_models_ErrorCatalog_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/models/PermissionCatalog.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_models_PermissionCatalog_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/models/PushFeed.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_models_PushFeed_qml::unit);
+    resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/models/LogReader.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_models_LogReader_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/components/Card.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_components_Card_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/components/BusyOverlay.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_components_BusyOverlay_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/components/SideBar.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_components_SideBar_qml::unit);
@@ -327,18 +363,22 @@ Registry::Registry() {
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/components/PermissionChipRow.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_components_PermissionChipRow_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/components/PageAccessPlaceholder.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_components_PageAccessPlaceholder_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/components/AttendanceStatusPieChart.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_components_AttendanceStatusPieChart_qml::unit);
+    resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/components/RecentPunchList.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_components_RecentPunchList_qml::unit);
+    resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/components/BarChart.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_components_BarChart_qml::unit);
+    resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/components/ChartLegend.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_components_ChartLegend_qml::unit);
+    resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/components/ChartContainer.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_components_ChartContainer_qml::unit);
+    resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/components/StatCard.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_components_StatCard_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/components/PageHost.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_components_PageHost_qml::unit);
+    resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/components/FaceSyncButton.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_components_FaceSyncButton_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/pages/PageDashboard.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_pages_PageDashboard_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/pages/PagePerson.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_pages_PagePerson_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/pages/PageDevice.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_pages_PageDevice_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/pages/PageConfigDeploy.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_pages_PageConfigDeploy_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/pages/PageAttendance.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_pages_PageAttendance_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/pages/PageFace.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_pages_PageFace_qml::unit);
-    resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/pages/PageHistory.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_pages_PageHistory_qml::unit);
-    resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/pages/PageSettings.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_pages_PageSettings_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/pages/PageUser.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_pages_PageUser_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/pages/PageRbac.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_pages_PageRbac_qml::unit);
-    resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/pages/PageEvents.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_pages_PageEvents_qml::unit);
+    resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AttendanceAdmin/ui/pages/PageLogViewer.qml"), &QmlCacheGeneratedCode::_qt_qml_AttendanceAdmin_ui_pages_PageLogViewer_qml::unit);
     QQmlPrivate::RegisterQmlUnitCacheHook registration;
     registration.structVersion = 0;
     registration.lookupCachedQmlUnit = &lookupCachedUnit;

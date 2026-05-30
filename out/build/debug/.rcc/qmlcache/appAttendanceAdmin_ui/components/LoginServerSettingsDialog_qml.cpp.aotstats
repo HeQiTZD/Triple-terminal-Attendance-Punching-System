@@ -88,7 +88,7 @@
                         {
                             "codegenResult": 0,
                             "column": 16,
-                            "durationMicroseconds": 16000,
+                            "durationMicroseconds": 8000,
                             "functionName": "color",
                             "line": 45,
                             "message": ""

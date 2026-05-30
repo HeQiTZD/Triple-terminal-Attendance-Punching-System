@@ -26,7 +26,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "withAlpha",
-                            "line": 207,
+                            "line": 161,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -34,7 +34,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "formatPercent",
-                            "line": 212,
+                            "line": 166,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -42,7 +42,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "percentValue",
-                            "line": 219,
+                            "line": 173,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -50,7 +50,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "clearHighlightSlice",
-                            "line": 225,
+                            "line": 179,
                             "message": ""
                         },
                         {
@@ -58,15 +58,15 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "showHighlightSlice",
-                            "line": 229,
+                            "line": 183,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
                             "codegenResult": 2,
                             "column": 5,
-                            "durationMicroseconds": 12000,
+                            "durationMicroseconds": 11000,
                             "functionName": "rebuild",
-                            "line": 244,
+                            "line": 198,
                             "message": "Cannot load property length from (component in E:/project/AttendanceServer/ui/components/AttendanceStatusPieChart.qml)::slices with type QVariant."
                         },
                         {
@@ -74,7 +74,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "scheduleRebuild",
-                            "line": 305,
+                            "line": 259,
                             "message": "Cannot generate efficient code for LoadClosure"
                         },
                         {
@@ -82,7 +82,7 @@
                             "column": 22,
                             "durationMicroseconds": 0,
                             "functionName": "onSlicesChanged",
-                            "line": 313,
+                            "line": 267,
                             "message": ""
                         },
                         {
@@ -280,7 +280,7 @@
                         {
                             "codegenResult": 2,
                             "column": 32,
-                            "durationMicroseconds": 9000,
+                            "durationMicroseconds": 8000,
                             "functionName": "color",
                             "line": 118,
                             "message": "Cannot load property length from (component in E:/project/AttendanceServer/ui/components/AttendanceStatusPieChart.qml)::sliceMeta with type QVariant."
@@ -447,122 +447,10 @@
                         },
                         {
                             "codegenResult": 0,
-                            "column": 18,
-                            "durationMicroseconds": 0,
-                            "functionName": "spacing",
-                            "line": 167,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 18,
-                            "durationMicroseconds": 0,
-                            "functionName": "visible",
-                            "line": 168,
-                            "message": "Cannot load property length from (component in E:/project/AttendanceServer/ui/components/AttendanceStatusPieChart.qml)::slices with type QVariant."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 23,
-                            "durationMicroseconds": 0,
-                            "functionName": "left",
-                            "line": 163,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 24,
-                            "durationMicroseconds": 0,
-                            "functionName": "right",
-                            "line": 164,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 25,
-                            "durationMicroseconds": 0,
-                            "functionName": "bottom",
-                            "line": 165,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 20,
-                            "durationMicroseconds": 0,
-                            "functionName": "model",
-                            "line": 175,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 26,
-                            "durationMicroseconds": 0,
-                            "functionName": "spacing",
-                            "line": 181,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 28,
-                            "durationMicroseconds": 0,
-                            "functionName": "color",
-                            "line": 187,
-                            "message": "Cannot load property color from (component in E:/project/AttendanceServer/ui/components/AttendanceStatusPieChart.qml)::modelData with type QVariant."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 39,
-                            "durationMicroseconds": 0,
-                            "functionName": "alignment",
-                            "line": 188,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 27,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 192,
-                            "message": "Cannot load property label from (component in E:/project/AttendanceServer/ui/components/AttendanceStatusPieChart.qml)::modelData with type QVariant."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 28,
-                            "durationMicroseconds": 0,
-                            "functionName": "color",
-                            "line": 193,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 28,
-                            "durationMicroseconds": 0,
-                            "functionName": "elide",
-                            "line": 196,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 37,
-                            "durationMicroseconds": 0,
-                            "functionName": "pixelSize",
-                            "line": 194,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 34,
-                            "durationMicroseconds": 0,
-                            "functionName": "family",
-                            "line": 195,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
                             "column": 17,
                             "durationMicroseconds": 0,
                             "functionName": "target",
-                            "line": 316,
+                            "line": 270,
                             "message": ""
                         },
                         {
@@ -570,7 +458,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onWidthChanged",
-                            "line": 317,
+                            "line": 271,
                             "message": ""
                         },
                         {
@@ -578,7 +466,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onHeightChanged",
-                            "line": 318,
+                            "line": 272,
                             "message": ""
                         },
                         {
@@ -586,7 +474,7 @@
                             "column": 17,
                             "durationMicroseconds": 0,
                             "functionName": "target",
-                            "line": 322,
+                            "line": 276,
                             "message": ""
                         },
                         {
@@ -594,7 +482,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onWidthChanged",
-                            "line": 323,
+                            "line": 277,
                             "message": ""
                         },
                         {
@@ -602,7 +490,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onHeightChanged",
-                            "line": 324,
+                            "line": 278,
                             "message": ""
                         },
                         {
@@ -610,7 +498,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "onCompleted",
-                            "line": 327,
+                            "line": 281,
                             "message": ""
                         }
                     ],

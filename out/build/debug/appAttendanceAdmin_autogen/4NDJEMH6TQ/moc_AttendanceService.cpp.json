@@ -157,6 +157,23 @@
                     "lineNumber": 56,
                     "name": "deleteArchive",
                     "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "fileUrl",
+                            "type": "QUrl"
+                        },
+                        {
+                            "name": "content",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 11,
+                    "lineNumber": 59,
+                    "name": "exportToFile",
+                    "returnType": "void"
                 }
             ],
             "object": true,
@@ -212,21 +229,21 @@
                 {
                     "access": "public",
                     "index": 0,
-                    "lineNumber": 59,
+                    "lineNumber": 62,
                     "name": "busyChanged",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
                     "index": 1,
-                    "lineNumber": 60,
+                    "lineNumber": 63,
                     "name": "recordsChanged",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
                     "index": 2,
-                    "lineNumber": 61,
+                    "lineNumber": 64,
                     "name": "archiveRecordsChanged",
                     "returnType": "void"
                 },
@@ -243,7 +260,7 @@
                         }
                     ],
                     "index": 3,
-                    "lineNumber": 63,
+                    "lineNumber": 66,
                     "name": "operationSucceeded",
                     "returnType": "void"
                 },
@@ -264,7 +281,7 @@
                         }
                     ],
                     "index": 4,
-                    "lineNumber": 64,
+                    "lineNumber": 67,
                     "name": "operationFailed",
                     "returnType": "void"
                 }

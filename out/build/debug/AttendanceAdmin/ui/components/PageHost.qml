@@ -19,6 +19,8 @@ Item {
     property var userServer
     property var rbacServer
     property var eventService
+    property var logWriter
+    property var fileService
     property var deniedDialog: null
 
     signal serviceResult(string apiType, int code, string msg, string category)
@@ -48,9 +50,7 @@ Item {
             case "face":       return compFace
             case "user":       return compUser
             case "rbac":       return compRbac
-            case "events":     return compEvents
-            case "history":    return compHistory
-            case "settings":   return compSettings
+            case "logViewer":  return compLogViewer
             default:           return null
             }
         }
@@ -144,6 +144,7 @@ Item {
         id: compRbac
         PageRbac {
             rbacServer: host.rbacServer
+            userServer: host.userServer
             sessionManager: host.sessionManager
             deniedDialog: host.deniedDialog
             onServiceResult: (apiType, code, msg) =>
@@ -152,26 +153,11 @@ Item {
     }
 
     Component {
-        id: compEvents
-        PageEvents {
-            eventService: host.eventService
+        id: compLogViewer
+        PageLogViewer {
             sessionManager: host.sessionManager
-            deniedDialog: host.deniedDialog
-            onServiceResult: (apiType, code, msg) =>
-                host.serviceResult(apiType, code, msg, "event")
+            fileService: host.fileService
         }
     }
 
-    Component {
-        id: compHistory
-        PageHistory {}
-    }
-
-    Component {
-        id: compSettings
-        PageSettings {
-            sessionManager: host.sessionManager
-            deniedDialog: host.deniedDialog
-        }
-    }
 }

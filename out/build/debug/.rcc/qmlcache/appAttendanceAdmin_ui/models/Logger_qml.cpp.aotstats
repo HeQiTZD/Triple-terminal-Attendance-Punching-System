@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 2,
                             "column": 5,
-                            "durationMicroseconds": 1000,
+                            "durationMicroseconds": 0,
                             "functionName": "_ts",
                             "line": 27,
                             "message": "function without return type annotation returns call to method formatDateTime, returning QString. This may prevent proper compilation to Cpp."

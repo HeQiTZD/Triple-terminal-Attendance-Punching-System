@@ -69,6 +69,10 @@ template <> constexpr inline auto AttendanceService::qt_create_metaobjectdata<qt
         "archivedAt",
         "archiveReason",
         "deleteArchive",
+        "exportToFile",
+        "QUrl",
+        "fileUrl",
+        "content",
         "busy",
         "records",
         "QVariantList",
@@ -117,14 +121,18 @@ template <> constexpr inline auto AttendanceService::qt_create_metaobjectdata<qt
         QtMocHelpers::MethodData<void(const QString &)>(30, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::QString, 12 },
         }}),
+        // Method 'exportToFile'
+        QtMocHelpers::MethodData<void(const QUrl &, const QString &)>(31, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 32, 33 }, { QMetaType::QString, 34 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
         // property 'busy'
-        QtMocHelpers::PropertyData<bool>(31, QMetaType::Bool, QMC::DefaultPropertyFlags, 0),
+        QtMocHelpers::PropertyData<bool>(35, QMetaType::Bool, QMC::DefaultPropertyFlags, 0),
         // property 'records'
-        QtMocHelpers::PropertyData<QVariantList>(32, 0x80000000 | 33, QMC::DefaultPropertyFlags | QMC::EnumOrFlag, 1),
+        QtMocHelpers::PropertyData<QVariantList>(36, 0x80000000 | 37, QMC::DefaultPropertyFlags | QMC::EnumOrFlag, 1),
         // property 'archiveRecords'
-        QtMocHelpers::PropertyData<QVariantList>(34, 0x80000000 | 33, QMC::DefaultPropertyFlags | QMC::EnumOrFlag, 2),
+        QtMocHelpers::PropertyData<QVariantList>(38, 0x80000000 | 37, QMC::DefaultPropertyFlags | QMC::EnumOrFlag, 2),
     };
     QtMocHelpers::UintData qt_enums {
     };
@@ -157,6 +165,7 @@ void AttendanceService::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         case 8: _t->deleteRecord((*reinterpret_cast<std::add_pointer_t<QVariantMap>>(_a[1]))); break;
         case 9: _t->queryArchive((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[4])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[5])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[6])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[7])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[8])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[9])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[10])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[11]))); break;
         case 10: _t->deleteArchive((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 11: _t->exportToFile((*reinterpret_cast<std::add_pointer_t<QUrl>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2]))); break;
         default: ;
         }
     }
@@ -202,14 +211,14 @@ int AttendanceService::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 11)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 12;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 11)
+        if (_id < 12)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 11;
+        _id -= 12;
     }
     if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::BindableProperty

@@ -30,27 +30,11 @@
                             "message": ""
                         },
                         {
-                            "codegenResult": 2,
-                            "column": 40,
-                            "durationMicroseconds": 0,
-                            "functionName": "userName",
-                            "line": 25,
-                            "message": "Cannot load property isLoggedIn from (component in E:/project/AttendanceServer/ui/components/SideBar.qml)::sessionManager with type QVariant."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 43,
-                            "durationMicroseconds": 10000,
-                            "functionName": "roleSummary",
-                            "line": 31,
-                            "message": "Cannot load property isLoggedIn from (component in E:/project/AttendanceServer/ui/components/SideBar.qml)::sessionManager with type QVariant."
-                        },
-                        {
                             "codegenResult": 0,
                             "column": 23,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 44,
+                            "line": 26,
                             "message": ""
                         },
                         {
@@ -58,7 +42,7 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "acceptedButtons",
-                            "line": 53,
+                            "line": 35,
                             "message": ""
                         },
                         {
@@ -66,7 +50,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "onPressed",
-                            "line": 54,
+                            "line": 36,
                             "message": "Cannot generate efficient code for TypeofValue"
                         },
                         {
@@ -74,7 +58,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "onPressed",
-                            "line": 54,
+                            "line": 36,
                             "message": ""
                         },
                         {
@@ -82,7 +66,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 52,
+                            "line": 34,
                             "message": ""
                         },
                         {
@@ -90,7 +74,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "spacing",
-                            "line": 66,
+                            "line": 48,
                             "message": ""
                         },
                         {
@@ -98,7 +82,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 63,
+                            "line": 45,
                             "message": ""
                         },
                         {
@@ -106,7 +90,7 @@
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "leftMargin",
-                            "line": 64,
+                            "line": 46,
                             "message": ""
                         },
                         {
@@ -114,79 +98,47 @@
                             "column": 38,
                             "durationMicroseconds": 0,
                             "functionName": "rightMargin",
-                            "line": 65,
+                            "line": 47,
                             "message": ""
                         },
                         {
-                            "codegenResult": 0,
+                            "codegenResult": 2,
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 71,
+                            "line": 52,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 37,
+                            "durationMicroseconds": 0,
+                            "functionName": "pixelSize",
+                            "line": 53,
+                            "message": "Could not find property \"pixelSize\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 34,
+                            "durationMicroseconds": 0,
+                            "functionName": "family",
+                            "line": 55,
+                            "message": "Could not find property \"family\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 39,
+                            "durationMicroseconds": 0,
+                            "functionName": "alignment",
+                            "line": 56,
                             "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 43,
-                            "durationMicroseconds": 0,
-                            "functionName": "centerIn",
-                            "line": 73,
-                            "message": "Could not find property \"centerIn\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 32,
-                            "durationMicroseconds": 0,
-                            "functionName": "color",
-                            "line": 85,
-                            "message": "Could not find property \"color\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 41,
-                            "durationMicroseconds": 0,
-                            "functionName": "pixelSize",
-                            "line": 86,
-                            "message": "Could not find property \"pixelSize\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 38,
-                            "durationMicroseconds": 0,
-                            "functionName": "family",
-                            "line": 88,
-                            "message": "Could not find property \"family\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 32,
-                            "durationMicroseconds": 0,
-                            "functionName": "color",
-                            "line": 92,
-                            "message": "Could not find property \"color\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 41,
-                            "durationMicroseconds": 0,
-                            "functionName": "pixelSize",
-                            "line": 93,
-                            "message": "Could not find property \"pixelSize\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 38,
-                            "durationMicroseconds": 0,
-                            "functionName": "family",
-                            "line": 94,
-                            "message": "Could not find property \"family\"."
                         },
                         {
                             "codegenResult": 0,
                             "column": 63,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 100,
+                            "line": 61,
                             "message": ""
                         },
                         {
@@ -194,7 +146,7 @@
                             "column": 20,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 107,
+                            "line": 68,
                             "message": ""
                         },
                         {
@@ -202,7 +154,7 @@
                             "column": 27,
                             "durationMicroseconds": 0,
                             "functionName": "currentIndex",
-                            "line": 108,
+                            "line": 69,
                             "message": ""
                         },
                         {
@@ -210,7 +162,7 @@
                             "column": 24,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 116,
+                            "line": 77,
                             "message": ""
                         },
                         {
@@ -218,7 +170,7 @@
                             "column": 25,
                             "durationMicroseconds": 0,
                             "functionName": "height",
-                            "line": 117,
+                            "line": 78,
                             "message": "Cannot load property group from (component in E:/project/AttendanceServer/ui/components/SideBar.qml)::modelData with type QVariant."
                         },
                         {
@@ -226,7 +178,7 @@
                             "column": 30,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 120,
+                            "line": 81,
                             "message": "Could not find property \"visible\"."
                         },
                         {
@@ -234,7 +186,7 @@
                             "column": 27,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 121,
+                            "line": 82,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -242,7 +194,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 122,
+                            "line": 83,
                             "message": "Could not find property \"color\"."
                         },
                         {
@@ -250,7 +202,7 @@
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "pixelSize",
-                            "line": 123,
+                            "line": 84,
                             "message": "Could not find property \"pixelSize\"."
                         },
                         {
@@ -258,7 +210,7 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "family",
-                            "line": 124,
+                            "line": 85,
                             "message": "Could not find property \"family\"."
                         },
                         {
@@ -266,7 +218,7 @@
                             "column": 42,
                             "durationMicroseconds": 0,
                             "functionName": "capitalization",
-                            "line": 125,
+                            "line": 86,
                             "message": "Could not find property \"capitalization\"."
                         },
                         {
@@ -274,7 +226,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "left",
-                            "line": 126,
+                            "line": 87,
                             "message": "Could not find property \"left\"."
                         },
                         {
@@ -282,7 +234,7 @@
                             "column": 41,
                             "durationMicroseconds": 0,
                             "functionName": "leftMargin",
-                            "line": 127,
+                            "line": 88,
                             "message": "Could not find property \"leftMargin\"."
                         },
                         {
@@ -290,7 +242,7 @@
                             "column": 45,
                             "durationMicroseconds": 0,
                             "functionName": "verticalCenter",
-                            "line": 128,
+                            "line": 89,
                             "message": "Could not find property \"verticalCenter\"."
                         },
                         {
@@ -298,7 +250,7 @@
                             "column": 30,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 132,
+                            "line": 93,
                             "message": "Cannot load property group from (component in E:/project/AttendanceServer/ui/components/SideBar.qml)::modelData with type QVariant."
                         },
                         {
@@ -306,7 +258,7 @@
                             "column": 29,
                             "durationMicroseconds": 0,
                             "functionName": "radius",
-                            "line": 136,
+                            "line": 97,
                             "message": ""
                         },
                         {
@@ -314,7 +266,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 137,
+                            "line": 98,
                             "message": "Cannot access value for name root"
                         },
                         {
@@ -322,7 +274,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 133,
+                            "line": 94,
                             "message": ""
                         },
                         {
@@ -330,7 +282,7 @@
                             "column": 33,
                             "durationMicroseconds": 0,
                             "functionName": "height",
-                            "line": 143,
+                            "line": 104,
                             "message": ""
                         },
                         {
@@ -338,7 +290,7 @@
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 147,
+                            "line": 108,
                             "message": "Cannot access value for name root"
                         },
                         {
@@ -346,7 +298,7 @@
                             "column": 39,
                             "durationMicroseconds": 0,
                             "functionName": "left",
-                            "line": 144,
+                            "line": 105,
                             "message": ""
                         },
                         {
@@ -354,15 +306,23 @@
                             "column": 49,
                             "durationMicroseconds": 0,
                             "functionName": "verticalCenter",
-                            "line": 145,
+                            "line": 106,
                             "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 52,
+                            "durationMicroseconds": 0,
+                            "functionName": "isLargeIcon",
+                            "line": 117,
+                            "message": "Cannot load property key from (component in E:/project/AttendanceServer/ui/components/SideBar.qml)::modelData with type QVariant."
                         },
                         {
                             "codegenResult": 0,
                             "column": 39,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 151,
+                            "line": 112,
                             "message": ""
                         },
                         {
@@ -370,7 +330,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 157,
+                            "line": 122,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -378,7 +338,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 158,
+                            "line": 123,
                             "message": "Could not find property \"color\"."
                         },
                         {
@@ -386,15 +346,23 @@
                             "column": 45,
                             "durationMicroseconds": 0,
                             "functionName": "pixelSize",
-                            "line": 159,
+                            "line": 124,
                             "message": "Could not find property \"pixelSize\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 52,
+                            "durationMicroseconds": 0,
+                            "functionName": "preferredWidth",
+                            "line": 125,
+                            "message": "Cannot access value for name isLargeIcon"
                         },
                         {
                             "codegenResult": 2,
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 163,
+                            "line": 128,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -402,7 +370,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 164,
+                            "line": 129,
                             "message": "Could not find property \"color\"."
                         },
                         {
@@ -410,7 +378,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "elide",
-                            "line": 169,
+                            "line": 134,
                             "message": "Could not find property \"elide\"."
                         },
                         {
@@ -418,7 +386,7 @@
                             "column": 45,
                             "durationMicroseconds": 0,
                             "functionName": "pixelSize",
-                            "line": 165,
+                            "line": 130,
                             "message": "Could not find property \"pixelSize\"."
                         },
                         {
@@ -426,7 +394,7 @@
                             "column": 42,
                             "durationMicroseconds": 0,
                             "functionName": "family",
-                            "line": 166,
+                            "line": 131,
                             "message": "Could not find property \"family\"."
                         },
                         {
@@ -434,7 +402,7 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "bold",
-                            "line": 167,
+                            "line": 132,
                             "message": "Could not find property \"bold\"."
                         },
                         {
@@ -442,7 +410,7 @@
                             "column": 38,
                             "durationMicroseconds": 0,
                             "functionName": "cursorShape",
-                            "line": 177,
+                            "line": 142,
                             "message": ""
                         },
                         {
@@ -450,7 +418,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 178,
+                            "line": 143,
                             "message": "Cannot access value for name root"
                         },
                         {
@@ -458,191 +426,15 @@
                             "column": 39,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 175,
+                            "line": 140,
                             "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 20,
-                            "durationMicroseconds": 0,
-                            "functionName": "color",
-                            "line": 190,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 22,
-                            "durationMicroseconds": 0,
-                            "functionName": "visible",
-                            "line": 191,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 22,
-                            "durationMicroseconds": 0,
-                            "functionName": "visible",
-                            "line": 199,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 21,
-                            "durationMicroseconds": 0,
-                            "functionName": "radius",
-                            "line": 200,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 20,
-                            "durationMicroseconds": 0,
-                            "functionName": "color",
-                            "line": 201,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 32,
-                            "durationMicroseconds": 0,
-                            "functionName": "leftMargin",
-                            "line": 196,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 33,
-                            "durationMicroseconds": 0,
-                            "functionName": "rightMargin",
-                            "line": 197,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 37,
-                            "durationMicroseconds": 0,
-                            "functionName": "preferredHeight",
-                            "line": 198,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 27,
-                            "durationMicroseconds": 0,
-                            "functionName": "color",
-                            "line": 202,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 31,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 207,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 34,
-                            "durationMicroseconds": 0,
-                            "functionName": "margins",
-                            "line": 208,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 27,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 212,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 28,
-                            "durationMicroseconds": 0,
-                            "functionName": "color",
-                            "line": 213,
-                            "message": "Could not find property \"color\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 28,
-                            "durationMicroseconds": 0,
-                            "functionName": "elide",
-                            "line": 217,
-                            "message": "Could not find property \"elide\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 37,
-                            "durationMicroseconds": 0,
-                            "functionName": "pixelSize",
-                            "line": 214,
-                            "message": "Could not find property \"pixelSize\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 34,
-                            "durationMicroseconds": 0,
-                            "functionName": "family",
-                            "line": 216,
-                            "message": "Could not find property \"family\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 27,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 221,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 28,
-                            "durationMicroseconds": 0,
-                            "functionName": "color",
-                            "line": 222,
-                            "message": "Could not find property \"color\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 31,
-                            "durationMicroseconds": 0,
-                            "functionName": "wrapMode",
-                            "line": 225,
-                            "message": "Could not find property \"wrapMode\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 28,
-                            "durationMicroseconds": 0,
-                            "functionName": "elide",
-                            "line": 227,
-                            "message": "Could not find property \"elide\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 37,
-                            "durationMicroseconds": 0,
-                            "functionName": "pixelSize",
-                            "line": 223,
-                            "message": "Could not find property \"pixelSize\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 34,
-                            "durationMicroseconds": 0,
-                            "functionName": "family",
-                            "line": 224,
-                            "message": "Could not find property \"family\"."
                         },
                         {
                             "codegenResult": 0,
                             "column": 63,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 233,
+                            "line": 152,
                             "message": ""
                         },
                         {
@@ -650,7 +442,7 @@
                             "column": 22,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 240,
+                            "line": 159,
                             "message": "Could not find property \"visible\"."
                         },
                         {
@@ -658,7 +450,7 @@
                             "column": 24,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 243,
+                            "line": 162,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -666,7 +458,7 @@
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "leftMargin",
-                            "line": 237,
+                            "line": 156,
                             "message": ""
                         },
                         {
@@ -674,7 +466,7 @@
                             "column": 33,
                             "durationMicroseconds": 0,
                             "functionName": "rightMargin",
-                            "line": 238,
+                            "line": 157,
                             "message": ""
                         },
                         {
@@ -682,7 +474,7 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "bottomMargin",
-                            "line": 239,
+                            "line": 158,
                             "message": ""
                         },
                         {
@@ -690,7 +482,7 @@
                             "column": 20,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 250,
+                            "line": 169,
                             "message": "Could not find property \"color\"."
                         },
                         {
@@ -698,7 +490,7 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "horizontalAlignment",
-                            "line": 253,
+                            "line": 172,
                             "message": "Could not find property \"horizontalAlignment\"."
                         },
                         {
@@ -706,7 +498,7 @@
                             "column": 29,
                             "durationMicroseconds": 0,
                             "functionName": "margins",
-                            "line": 248,
+                            "line": 167,
                             "message": ""
                         },
                         {
@@ -714,7 +506,7 @@
                             "column": 29,
                             "durationMicroseconds": 0,
                             "functionName": "pixelSize",
-                            "line": 251,
+                            "line": 170,
                             "message": "Could not find property \"pixelSize\"."
                         },
                         {
@@ -722,7 +514,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "family",
-                            "line": 252,
+                            "line": 171,
                             "message": "Could not find property \"family\"."
                         }
                     ],

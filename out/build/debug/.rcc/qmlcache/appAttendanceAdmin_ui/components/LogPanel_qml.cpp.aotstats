@@ -176,7 +176,7 @@
                         {
                             "codegenResult": 0,
                             "column": 20,
-                            "durationMicroseconds": 11000,
+                            "durationMicroseconds": 8000,
                             "functionName": "model",
                             "line": 88,
                             "message": ""

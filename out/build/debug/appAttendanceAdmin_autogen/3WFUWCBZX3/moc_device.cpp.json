@@ -100,6 +100,22 @@
                     "type": "QString",
                     "user": false,
                     "write": "setStatus"
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 6,
+                    "lineNumber": 17,
+                    "name": "deviceKey",
+                    "notify": "deviceKeyChanged",
+                    "read": "deviceKey",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "QString",
+                    "user": false,
+                    "write": "setDeviceKey"
                 }
             ],
             "qualifiedClassName": "Device",
@@ -107,43 +123,50 @@
                 {
                     "access": "public",
                     "index": 0,
-                    "lineNumber": 43,
+                    "lineNumber": 47,
                     "name": "idChanged",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
                     "index": 1,
-                    "lineNumber": 44,
+                    "lineNumber": 48,
                     "name": "deviceIdChanged",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
                     "index": 2,
-                    "lineNumber": 45,
+                    "lineNumber": 49,
                     "name": "deviceNameChanged",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
                     "index": 3,
-                    "lineNumber": 46,
+                    "lineNumber": 50,
                     "name": "ipAddressChanged",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
                     "index": 4,
-                    "lineNumber": 47,
+                    "lineNumber": 51,
                     "name": "lastOnlineChanged",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
                     "index": 5,
-                    "lineNumber": 48,
+                    "lineNumber": 52,
                     "name": "statusChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 6,
+                    "lineNumber": 54,
+                    "name": "deviceKeyChanged",
                     "returnType": "void"
                 }
             ],

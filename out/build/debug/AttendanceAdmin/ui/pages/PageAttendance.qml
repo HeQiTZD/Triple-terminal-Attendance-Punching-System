@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtQuick.Dialogs
 
 import AttendanceAdmin
 
@@ -13,6 +14,7 @@ Item {
     signal serviceResult(string apiType, int code, string message)
 
     property int tabIndex: 0
+    property string _pendingDeleteEmpId: ""
 
     readonly property bool hasLiveRead: PermissionCatalog.hasPerm(sessionManager, "attendance.read")
     readonly property bool hasArchiveRead: PermissionCatalog.hasPerm(sessionManager, "attendance.archive.read")
@@ -20,6 +22,35 @@ Item {
     function _liveQuery() {
         attendanceService.query(-1, empId.text.trim(), checkTime.text.trim(),
                                 devId.text.trim(), status.currentValue, "")
+    }
+
+    function _generateCsv() {
+        const records = attendanceService.records
+        if (!records || !records.length)
+            return ""
+        // UTF-8 BOM
+        var csv = "﻿"
+        // Header
+        csv += qsTr("序号") + "," + qsTr("工号") + "," + qsTr("打卡时间") + ","
+            + qsTr("设备ID") + "," + qsTr("状态") + "\n"
+        for (var i = 0; i < records.length; i++) {
+            var r = records[i]
+            var row = [
+                String(i + 1),
+                r.employeeId || "",
+                r.checkTime || "",
+                r.deviceId || "",
+                Theme.formatAttendanceStatus(r.status)
+            ]
+            // Escape commas and quotes
+            for (var j = 0; j < row.length; j++) {
+                if (row[j].indexOf(",") >= 0 || row[j].indexOf("\"") >= 0) {
+                    row[j] = "\"" + row[j].replace(/"/g, "\"\"") + "\""
+                }
+            }
+            csv += row.join(",") + "\n"
+        }
+        return csv
     }
 
     ColumnLayout {
@@ -30,7 +61,6 @@ Item {
         ToolBarRow {
             Layout.fillWidth: true
             title: qsTr("考勤记录")
-            subtitle: qsTr("实时考勤与归档查询")
         }
 
         TabBar {
@@ -70,17 +100,16 @@ Item {
                             columnSpacing: Theme.spacingMd
 
                             LabeledField { label: qsTr("员工工号"); Layout.fillWidth: true
-                                TextField { id: empId; text: Presets.defaultEmployeeId; Layout.fillWidth: true }
+                                TextField { id: empId; Layout.fillWidth: true }
                             }
                             LabeledField { label: qsTr("打卡时间"); Layout.fillWidth: true
                                 TextField {
                                     id: checkTime
-                                    text: Qt.formatDateTime(new Date(), "yyyy-MM-dd HH:mm:ss")
                                     Layout.fillWidth: true
                                 }
                             }
                             LabeledField { label: qsTr("设备 ID"); Layout.fillWidth: true
-                                TextField { id: devId; text: Presets.defaultDeviceId; Layout.fillWidth: true }
+                                TextField { id: devId; Layout.fillWidth: true }
                             }
                             LabeledField { label: qsTr("状态"); Layout.fillWidth: true
                                 ComboBox {
@@ -142,11 +171,26 @@ Item {
                     stretchContent: true
                     title: qsTr("实时记录")
 
+                    headerRight: Row {
+                        spacing: Theme.spacingSm
+                        PermissionButton {
+                            sessionManager: page.sessionManager
+                            requiredPermission: "attendance.read"
+                            deniedDialog: page.deniedDialog
+                            text: qsTr("导出 CSV")
+                            enabled: attendanceService.records
+                                     && attendanceService.records.length > 0
+                                     && !attendanceService.busy
+                            onClicked: guardedClick(function() { exportDialog.open() })
+                        }
+                    }
+
                     DataTable {
                         anchors.fill: parent
                         rows: attendanceService.records
                         columns: [
-                            { key: "id", title: "ID", width: 60, align: "right" },
+                            { key: "id", title: qsTr("序号"), width: 60, align: "right",
+                              formatter: function(v, row, idx) { return String(idx + 1) } },
                             { key: "employeeId", title: qsTr("工号"), width: 100 },
                             { key: "checkTime", title: qsTr("打卡时间"), width: 170 },
                             { key: "deviceId", title: qsTr("设备 ID"), width: 130 },
@@ -158,6 +202,21 @@ Item {
                             },
                             { key: "receivedTime", title: qsTr("接收时间") }
                         ]
+                    }
+                }
+
+                FileDialog {
+                    id: exportDialog
+                    title: qsTr("导出 CSV")
+                    nameFilters: [qsTr("CSV 文件 (*.csv)")]
+                    fileMode: FileDialog.SaveFile
+                    defaultSuffix: "csv"
+                    currentFile: "attendance_" + qsTr("实时记录") + "_"
+                                 + Qt.formatDateTime(new Date(), "yyyyMMdd") + ".csv"
+                    onAccepted: {
+                        const csv = page._generateCsv()
+                        if (csv.length > 0)
+                            attendanceService.exportToFile(selectedFile, csv)
                     }
                 }
             }
@@ -206,6 +265,17 @@ Item {
                                         archDept.text.trim(), "", "", "", "", "", "", "")
                                 })
                             }
+                            PermissionButton {
+                                sessionManager: page.sessionManager
+                                requiredPermission: "attendance.archive.delete"
+                                deniedDialog: page.deniedDialog
+                                text: qsTr("删除归档记录")
+                                enabled: !attendanceService.busy && archEmp.text.trim() !== ""
+                                onClicked: guardedClick(function() {
+                                    _pendingDeleteEmpId = archEmp.text.trim()
+                                    confirmDeleteArchive.open()
+                                })
+                            }
                         }
                     }
                 }
@@ -220,18 +290,30 @@ Item {
                         anchors.fill: parent
                         rows: attendanceService.archiveRecords
                         columns: [
-                            { key: "id", title: "ID", width: 60, align: "right" },
+                            { key: "id", title: qsTr("序号"), width: 60, align: "right",
+                              formatter: function(v, row, idx) { return String(idx + 1) } },
                             { key: "employeeId", title: qsTr("工号"), width: 100 },
                             { key: "personName", title: qsTr("姓名"), width: 100 },
                             { key: "department", title: qsTr("部门"), width: 100 },
                             { key: "checkTime", title: qsTr("打卡时间"), width: 160 },
                             { key: "archivedAt", title: qsTr("归档时间"), width: 160 },
-                            { key: "archiveReason", title: qsTr("原因") }
+                            { key: "archiveReason", title: qsTr("原因"),
+                                formatter: function(v) {
+                                    if (v === "employee_deleted") return qsTr("员工离职")
+                                    return v || "—"
+                                }
+                            }
                         ]
                     }
                 }
             }
         }
+    }
+
+    ConfirmDialog {
+        id: confirmDeleteArchive
+        message: qsTr("确认删除工号 ") + _pendingDeleteEmpId + qsTr(" 的所有归档记录？")
+        onAccepted: attendanceService.deleteArchive(_pendingDeleteEmpId)
     }
 
     BusyOverlay { busy: attendanceService.busy }
@@ -240,6 +322,12 @@ Item {
         target: attendanceService
         function onOperationSucceeded(apiType, message) {
             page.serviceResult(apiType, 0, message)
+            // 删除归档成功后刷新列表
+            if (apiType === "attendance.archive.delete") {
+                attendanceService.queryArchive(
+                    -1, archEmp.text.trim(), archName.text.trim(),
+                    archDept.text.trim(), "", "", "", "", "", "", "")
+            }
         }
         function onOperationFailed(apiType, code, message) {
             page.serviceResult(apiType, code, message)

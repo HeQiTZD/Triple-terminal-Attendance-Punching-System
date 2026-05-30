@@ -1,0 +1,655 @@
+multi_edit: applied 1 edit across 1 file (+20367 chars)
+# D:/attendanceServer/docs/refactoring-plan.md
+@@ -1443,29 +1443,634 @@
+  ## 9. 总结
+  
+- 本重构规划文档详细分析了考勤服务器项目的现状，识别了架构、代码质量、性能和可维护性等方面的问题，并提出了全面的重构方案。
++ ### 9.1 审查发现（v1.1）
+  
+- **关键要点**：
++ 基于对整个代码库的逐文件分析（78 个源文件、~12,500 行代码），主要发现：
+  
+- 1. **渐进式重构**：采用小步快跑的方式，逐步改进现有代码
+- 2. **测试驱动**：在重构前先编写测试，确保重构不引入新问题
+- 3. **优先级管理**：根据问题严重程度，优先解决高优先级问题
+- 4. **持续改进**：重构是一个持续的过程，需要建立长效机制
++ | 发现 | 文档初版 | 实测/审查 | 影响 |
++ |------|----------|-----------|------|
++ | `on_line` 行数 | 100+ 行 | **835 行** | 拆分工作量 5× 于预估 |
++ | `AdminCrudService` 行数 | 1800 行 | **1548 行** | 略高估，影响不大 |
++ | 单元测试 | 0 | **0**（确证） | 重构前必须先建测试 |
++ | 锁竞争严重性 | 中优先级 | **低**（缺乏 profiling 数据） | 下调优先级 |
++ | 内存池 ROI | 中优先级 | **不明确**（与 shared_ptr 冲突） | 搁置 |
++ | 插件机制 | 长期目标 | **过度设计** | 移除 |
+  
+- **预期收益**：
++ ### 9.2 修正后的优先级排序
+  
+- - 代码质量显著提升
+- - 系统性能优化
+- - 可维护性增强
+- - 开发效率提高
++ ```
++ P0（立即）：搭建 GTest + 为 on_line 核心路径写集成测试
++ P1（第3-5周）：拆分 on_line（835→40行）+ 提取 SessionBase
++ P2（第6-8周）：拆分 AdminCrudService + DI 接口抽象
++ P3（第9-10周）：连接池 + 统一错误处理（AppError）
++ P4（第11周）：命名统一 + 文档
++ 搁置：锁优化 / 内存池 / 插件机制
++ ```
+  
+- **下一步行动**：
++ ### 9.3 关键原则
+  
+- 1. 评审本文档
+- 2. 确认重构范围和优先级
+- 3. 分配资源和任务
+- 4. 开始第一阶段重构
++ 1. **测试先行** — 不在没有测试保护的情况下重构任何核心逻辑
++ 2. **单轨错误处理** — 用 `AppError` 异常体系，不并行 Result<T>
++ 3. **模板优于虚函数** — `SessionBase<Stream>` 模板消除重复且零开销
++ 4. **注册表优于 if-else** — `MessageHandlerRegistry` 替代 30+ if 分支
++ 5. **搁置需 profiling 的优化** — 不在没有数据的情况下做性能优化
+  
+  ---
+  
+- *文档版本: 1.0*
+- *最后更新: 2026-05-30*
++ ## 10. 代码级解决方案
++ 
++ > 本章提供每个问题的具体 C++ 代码方案。所有方案已针对现有代码结构设计，最小化侵入。
++ 
++ ### 10.1 P0：搭建测试防线
++ 
++ **目标**：在重构前建立安全网，覆盖 `on_line` 的所有认证/鉴权/消息分发路径。
++ 
++ ```cpp
++ // tests/integration/gateway_on_line_test.cpp
++ // 策略：不 Mock 内部逻辑，直接测试真实的 GatewaySessionHandler
++ class GatewayOnLineTest : public ::testing::Test {
++ protected:
++     void SetUp() override {
++         GatewayConfig cfg;
++         cfg.jwt_secret = "test-secret-32-bytes-long-key!!";
++         cfg.access_token_ttl = 3600;
++         handler_ = std::make_unique<GatewaySessionHandler>(
++             *mock_devices_, *mock_db_, cfg, *mock_admins_, *mock_subs_);
++     }
++     std::string send_line(const std::string& json) {
++         auto sess = std::make_shared<MockSession>();
++         handler_->on_line(*sess, json);
++         return sess->last_written_line();
++     }
++     std::unique_ptr<GatewaySessionHandler> handler_;
++     std::unique_ptr<DeviceRegistry> mock_devices_;
++     std::unique_ptr<MockDbExecutor> mock_db_;
++     // ...
++ };
++ 
++ // 覆盖"未认证拒绝"路径（30+ 消息类型各一条）
++ TEST_F(GatewayOnLineTest, UnauthenticatedHeartbeat_ReturnsError) {
++     auto resp = send_line(R"({"type":"heartbeat","role":"device","ts":123})");
++     EXPECT_TRUE(resp.contains("\"code\":2001"));  // kCodeNotAuthenticated
++ }
++ 
++ TEST_F(GatewayOnLineTest, UnauthenticatedPersonCreate_ReturnsError) {
++     auto resp = send_line(R"({"type":"person.create","role":"admin","ts":123})");
++     EXPECT_TRUE(resp.contains("\"code\":2001"));
++ }
++ 
++ // 覆盖认证成功路径
++ TEST_F(GatewayOnLineTest, DeviceAuth_Success_ReturnsTokens) {
++     mock_db_->will_return_device_key("dev-001", "secret-key");
++     auto resp = send_line(R"({
++         "type":"auth","role":"device",
++         "data":{"deviceId":"dev-001","deviceKey":"secret-key"}
++     })");
++     EXPECT_TRUE(resp.contains("accessToken"));
++     EXPECT_TRUE(resp.contains("refreshToken"));
++ }
++ 
++ // 覆盖 RBAC 权限拒绝
++ TEST_F(GatewayOnLineTest, DeviceRole_AttemptsAdminCrud_ReturnsForbidden) {
++     authenticate_as_device("dev-001");
++     auto resp = send_line(R"({
++         "type":"person.create","role":"admin","data":{},"accessToken":"..."})");
++     EXPECT_TRUE(resp.contains("\"code\":3001"));  // kCodeForbidden
++ }
++ ```
++ 
++ ### 10.2 P1：on_line 拆分（注册表模式）
++ 
++ **目标**：`on_line` 从 835 行降至 ~40 行。不引入虚函数开销，用 `unordered_map<string, function>` 做消息分发。
++ 
++ ```cpp
++ // protocol/MessageHandlerRegistry.hpp（新文件）
++ #pragma once
++ #include <functional>
++ #include <string>
++ #include <unordered_map>
++ #include "protocol/ConnContext.hpp"
++ #include "protocol/Envelope.hpp"
++ 
++ namespace net { class ISession; }
++ 
++ namespace protocol {
++ 
++ using MessageHandler = std::function<void(
++     net::ISession&, const ParsedEnvelope&, ConnContext&, const std::string& reply_to)>;
++ 
++ class MessageHandlerRegistry {
++ public:
++     void register_handler(const std::string& type, MessageHandler handler) {
++         handlers_[type] = std::move(handler);
++     }
++     const MessageHandler* find(const std::string& type) const {
++         auto it = handlers_.find(type);
++         return it != handlers_.end() ? &it->second : nullptr;
++     }
++ private:
++     std::unordered_map<std::string, MessageHandler> handlers_;
++ };
++ 
++ } // namespace protocol
++ ```
++ 
++ ```cpp
++ // protocol/GatewaySessionHandler.cpp — 重构后的 on_line（~40 行）
++ void GatewaySessionHandler::on_line(net::ISession& session, std::string line) {
++     // 1. JSON 解析
++     std::optional<nlohmann::json> jopt = parse_json_line(line);
++     if (!jopt) { log_parse_failure(line); return; }
++     std::optional<ParsedEnvelope> envopt = try_parse_envelope(*jopt);
++     if (!envopt) return;
++ 
++     ParsedEnvelope env = std::move(*envopt);
++     const std::string reply_to = effective_client_route(env);
++ 
++     // 2. 认证消息特殊处理
++     if (env.type == std::string(kTypeAuth)) { handle_auth(session, env); return; }
++     if (env.type == "token.refresh")    { handleTokenRefresh(session, env); return; }
++ 
++     // 3. 验证认证 + 令牌
++     std::unique_lock<std::mutex> lk(mu_);
++     ConnContext& ctx = connections_[&session];
++     if (!ctx.authenticated) {
++         lk.unlock();
++         session.write_line(build_error(kCodeNotAuthenticated, "not authenticated",
++                                        env.msg_id, reply_to));
++         return;
++     }
++     if (!verifyTokenInEnvelope(env, ctx)) {
++         lk.unlock();
++         session.write_line(build_error(kCodeTokenInvalid, "invalid token",
++                                        env.msg_id, reply_to));
++         return;
++     }
++ 
++     // 4. 查表分发
++     const auto* handler = registry_.find(env.type);
++     if (!handler) {
++         lk.unlock();
++         session.write_line(build_error(kCodeBusinessValidation, "unknown type",
++                                        env.msg_id, reply_to));
++         return;
++     }
++     lk.unlock();
++     (*handler)(session, env, ctx, reply_to);
++ }
++ ```
++ 
++ ```cpp
++ // protocol/handlers/HeartbeatHandler.cpp（新文件，每种消息一个文件，约 15 行）
++ namespace protocol::handlers {
++ void handle_heartbeat(net::ISession& session, const ParsedEnvelope& env,
++                       ConnContext& ctx, const std::string& reply_to) {
++     arm_heartbeat(session, ctx);
++     session.write_line(build_heartbeat_response(env.msg_id, reply_to));
++ }
++ } // namespace protocol::handlers
++ ```
++ 
++ ```cpp
++ // protocol/handlers/PersonCreateHandler.cpp（管理员权限消息，约 20 行）
++ namespace protocol::handlers {
++ void handle_person_create(net::ISession& session, const ParsedEnvelope& env,
++                           ConnContext& ctx, const std::string& reply_to) {
++     if (!has_permission(ctx, "person.create")) {
++         session.write_line(build_error(kCodeForbidden, "forbidden", env.msg_id, reply_to));
++         return;
++     }
++     auto self = session.shared_from_this();
++     service::AuditContext audit{ctx.user_id, ctx.employee_id, remote_ip_string(session)};
++     service::admin_person_create(env, reply_to, db_, self, audit);
++ }
++ } // namespace protocol::handlers
++ ```
++ 
++ ```cpp
++ // GatewaySessionHandler 构造函数中注册所有处理器
++ GatewaySessionHandler::GatewaySessionHandler(...) {
++     // ... jwt 初始化 ...
++     using namespace protocol::handlers;
++     registry_.register_handler(std::string(kTypeHeartbeat),    handle_heartbeat);
++     registry_.register_handler(std::string(kTypePersonCreate), handle_person_create);
++     registry_.register_handler(std::string(kTypePersonQuery),  handle_person_query);
++     registry_.register_handler(std::string(kTypePersonUpdate), handle_person_update);
++     registry_.register_handler(std::string(kTypePersonDelete), handle_person_delete);
++     // ... 30+ 条注册（一行一条）
++ }
++ ```
++ 
++ ### 10.3 P1：SessionBase 模板基类消除重复
++ 
++ **目标**：`Session`（359 行）和 `TlsSession`（244 行）共享 ~300 行协议逻辑。提取为模板基类 `SessionBase<Stream>`。
++ 
++ ```cpp
++ // net/SessionBase.hpp（新文件，约 200 行共享逻辑）
++ #pragma once
++ #include <array>
++ #include <cstdint>
++ #include <deque>
++ #include <string>
++ #include <vector>
++ #include <boost/asio.hpp>
++ #include "net/Session.hpp"  // ISession, ISessionHandler
++ #include "net/Framing.hpp"
++ #include "util/DebugLog.hpp"
++ 
++ namespace net {
++ 
++ inline constexpr std::size_t kMaxJsonLineBytes = 1024 * 1024;
++ inline constexpr std::size_t kMaxBinaryPayloadBytes = 16 * 1024 * 1024;
++ 
++ template <typename Stream>
++ class SessionBase : public ISession {
++ public:
++     SessionBase(Stream stream, ISessionHandler& handler)
++         : stream_(std::move(stream)),
++           strand_(boost::asio::make_strand(stream_.lowest_layer().get_executor())),
++           handler_(handler) {}
++ 
++     void write_line(std::string text) override {
++         auto self = this->shared_from_this();
++         boost::asio::post(strand_, [self, t = std::move(text)]() mutable {
++             if (self->closed_) return;
++             while (!t.empty() && (t.back() == '\n' || t.back() == '\r')) t.pop_back();
++             t.push_back('\n');
++             self->enqueue_write(std::vector<char>(t.begin(), t.end()));
++         });
++     }
++ 
++     void write_binary(std::vector<char> payload) override {
++         auto self = this->shared_from_this();
++         boost::asio::post(strand_, [self, p = std::move(payload)]() mutable {
++             if (self->closed_ || p.size() > kMaxBinaryPayloadBytes) return;
++             auto len32 = static_cast<std::uint32_t>(p.size());
++             std::uint8_t be[4];
++             encode_be32(len32, be);
++             std::vector<char> packet(be, be + 4);
++             packet.insert(packet.end(), p.begin(), p.end());
++             self->enqueue_write(std::move(packet));
++         });
++     }
++ 
++     void begin_expect_binary(std::uint32_t byte_count) override {
++         auto self = this->shared_from_this();
++         boost::asio::post(strand_, [self, byte_count]() {
++             if (self->closed_ || self->rx_mode_ != RxMode::Lines) return;
++             if (byte_count > kMaxBinaryPayloadBytes) { self->fail("binary_expect_too_large"); return; }
++             self->rx_mode_ = RxMode::Binary;
++             self->binary_remaining_ = byte_count;
++             self->binary_accum_.clear();
++             self->binary_accum_.reserve(byte_count);
++             if (byte_count == 0) self->complete_binary_message();
++             else self->consume_recv_into_binary();
++         });
++     }
++ 
++     void request_close(const char* reason) override {
++         auto self = this->shared_from_this();
++         boost::asio::post(strand_, [self, r = reason ? reason : "request_close"]() {
++             if (!self->closed_) self->fail(r);
++         });
++     }
++ 
++     strand_type& strand() override { return strand_; }
++ 
++ protected:
++     void process_received_bytes(const char* data, std::size_t len) {
++         if (!append_bytes(recv_buffer_, data, len)) { fail("recv_buffer_overflow"); return; }
++         if (rx_mode_ == RxMode::Binary) consume_recv_into_binary();
++         else process_line_frames();
++     }
++ 
++     void process_line_frames() {
++         while (!closed_ && rx_mode_ == RxMode::Lines) {
++             PopLineResult r = try_pop_line(recv_buffer_);
++             if (r.status == PopLineResult::Status::None) break;
++             if (r.status == PopLineResult::Status::TooLong) { fail("line_too_long"); return; }
++             if (!r.line.empty()) { handler_.on_line(*this, std::move(r.line)); if (closed_) return; }
++         }
++     }
++ 
++     void consume_recv_into_binary() {
++         while (!closed_ && binary_remaining_ > 0 && !recv_buffer_.empty()) {
++             std::size_t take = std::min(recv_buffer_.size(), static_cast<std::size_t>(binary_remaining_));
++             binary_accum_.insert(binary_accum_.end(), recv_buffer_.begin(), recv_buffer_.begin() + take);
++             recv_buffer_.erase(0, take);
++             binary_remaining_ -= static_cast<std::uint32_t>(take);
++         }
++         if (!closed_ && binary_remaining_ == 0) complete_binary_message();
++     }
++ 
++     void complete_binary_message() {
++         rx_mode_ = RxMode::Lines; binary_remaining_ = 0;
++         std::vector<char> payload = std::move(binary_accum_); binary_accum_.clear();
++         handler_.on_binary(*this, std::move(payload));
++         if (!closed_ && !recv_buffer_.empty()) process_line_frames();
++     }
++ 
++     void enqueue_write(std::vector<char> chunk) {
++         if (closed_ || chunk.empty()) return;
++         bool idle = !write_in_progress_;
++         write_queue_.push_back(std::move(chunk));
++         if (idle) { write_in_progress_ = true; do_write_front(); }
++     }
++ 
++     void fail(const char* reason) {
++         if (closed_) return;
++         closed_ = true; reset_writes(); reset_rx_for_close();
++         boost::system::error_code ec; stream_.lowest_layer().close(ec);
++         handler_.on_error(*this, reason); handler_.on_close(*this);
++     }
++ 
++     void clean_close() {
++         if (closed_) return;
++         closed_ = true; reset_writes(); reset_rx_for_close();
++         boost::system::error_code ec; stream_.lowest_layer().close(ec);
++         handler_.on_close(*this);
++     }
++ 
++     virtual void do_read() = 0;
++     virtual void do_write_front() = 0;
++ 
++     Stream stream_;
++     boost::asio::strand<typename Stream::lowest_layer_type::executor_type> strand_;
++     ISessionHandler& handler_;
++     std::string recv_buffer_;
++     std::array<char, 8192> read_buf_{};
++     std::deque<std::vector<char>> write_queue_;
++     bool write_in_progress_ = false;
++     enum class RxMode { Lines, Binary };
++     RxMode rx_mode_ = RxMode::Lines;
++     std::uint32_t binary_remaining_ = 0;
++     std::vector<char> binary_accum_;
++     bool closed_ = false;
++ };
++ 
++ } // namespace net
++ ```
++ 
++ ```cpp
++ // net/Session.hpp — 重构后（~55 行，仅保留 TCP 读/写适配）
++ #pragma once
++ #include "net/SessionBase.hpp"
++ 
++ namespace net {
++ class Session : public SessionBase<boost::asio::ip::tcp::socket> {
++ public:
++     using SessionBase::SessionBase;
++     void start() override { if (!closed_) do_read(); }
++     boost::asio::ip::tcp::socket& socket() override { return stream_; }
++     const boost::asio::ip::tcp::socket& socket() const override { return stream_; }
++ protected:
++     void do_read() override {
++         auto self = std::static_pointer_cast<Session>(shared_from_this());
++         stream_.async_read_some(boost::asio::buffer(read_buf_),
++             boost::asio::bind_executor(strand_, [self](auto& ec, std::size_t n) {
++                 if (self->closed_) return;
++                 if (ec) { self->clean_close(); return; }
++                 self->process_received_bytes(self->read_buf_.data(), n);
++                 if (!self->closed_) self->do_read();
++             }));
++     }
++     void do_write_front() override {
++         if (closed_ || write_queue_.empty()) { write_in_progress_ = false; return; }
++         auto self = std::static_pointer_cast<Session>(shared_from_this());
++         auto& buf = write_queue_.front();
++         boost::asio::async_write(stream_, boost::asio::buffer(buf),
++             boost::asio::bind_executor(strand_, [self](auto& ec, std::size_t) {
++                 if (self->closed_) { self->reset_writes(); return; }
++                 if (ec) { self->fail("tcp_write_error"); return; }
++                 self->write_queue_.pop_front(); self->do_write_front();
++             }));
++     }
++ };
++ } // namespace net
++ ```
++ 
++ ### 10.4 P2：AdminCrudService 拆分
++ 
++ **策略**：按业务域拆为 6 个子文件，保留聚合头保持向后兼容。
++ 
++ ```
++ service/admin/
++ ├── PersonService.hpp / .cpp       # admin_person_create/query/update/delete
++ ├── AttendanceService.hpp / .cpp   # admin_attendance_*
++ ├── DeviceService.hpp / .cpp       # admin_device_*
++ ├── UserService.hpp / .cpp         # admin_user_* + user_role_*
++ ├── RoleService.hpp / .cpp         # admin_role_* + admin_permission_*
++ └── FaceService.hpp / .cpp         # admin_face_*
++ ```
++ 
++ ```cpp
++ // service/AdminCrudService.hpp — 改为聚合头（向后兼容）
++ #pragma once
++ #include "service/admin/PersonService.hpp"
++ #include "service/admin/AttendanceService.hpp"
++ #include "service/admin/DeviceService.hpp"
++ #include "service/admin/UserService.hpp"
++ #include "service/admin/RoleService.hpp"
++ #include "service/admin/FaceService.hpp"
++ // 已有调用方（GatewaySessionHandler）无需修改任何 include
++ ```
++ 
++ ### 10.5 P2：依赖注入接口抽象
++ 
++ **策略**：仅为需要 Mock 测试的核心类引入虚接口（`IDbExecutor`、`IDeviceRegistry`），不全面接口化。
++ 
++ ```cpp
++ // service/IDbExecutor.hpp（新文件）
++ #pragma once
++ #include <functional>
++ #include <exception>
++ 
++ namespace mysqlx { class Session; }
++ 
++ namespace service {
++ class IDbExecutor {
++ public:
++     virtual ~IDbExecutor() = default;
++     using Work = std::function<void(mysqlx::Session&)>;
++     using Done = std::function<void(std::exception_ptr)>;
++     virtual void dispatch(Work work, Done done) = 0;
++ };
++ } // namespace service
++ ```
++ 
++ ```cpp
++ // service/DbExecutor.hpp — 加上继承（仅加一行）
++ #include "service/IDbExecutor.hpp"
++ class DbExecutor : public IDbExecutor {
++     void dispatch(Work work, Done done) override;  // 已有实现
++ };
++ ```
++ 
++ ```cpp
++ // service/MessageRouter.hpp — 构造函数改为依赖接口
++ class MessageRouter {
++ public:
++     explicit MessageRouter(boost::asio::io_context& ioc, IDeviceRegistry& devices);
++     // ...
++ private:
++     IDeviceRegistry& devices_;  // 原先是 DeviceRegistry&
++ };
++ ```
++ 
++ ### 10.6 P3：数据库连接池
++ 
++ **策略**：用预建连接池替换 `thread_local` 模式，连接数 = 配置的 `pool_size`，可小于线程数。
++ 
++ ```cpp
++ // db/ConnectionPool.hpp（新文件）
++ #pragma once
++ #include <condition_variable>
++ #include <memory>
++ #include <mutex>
++ #include <queue>
++ 
++ #include <mysqlx/xdevapi.h>
++ #include "db/DbConfig.hpp"
++ #include "db/DbClient.hpp"
++ 
++ namespace db {
++ 
++ class ConnectionPool {
++ public:
++     ConnectionPool(const DbConfig& cfg, std::size_t pool_size)
++         : cfg_(cfg), max_size_(std::max<std::size_t>(1, pool_size)) {
++         for (std::size_t i = 0; i < max_size_; ++i)
++             pool_.push(std::make_unique<mysqlx::Session>(DbClient::connectionUrl(cfg)));
++     }
++ 
++     std::unique_ptr<mysqlx::Session> acquire() {
++         std::unique_lock<std::mutex> lk(mu_);
++         cv_.wait(lk, [this] { return !pool_.empty(); });
++         auto sess = std::move(pool_.front());
++         pool_.pop();
++         return sess;
++     }
++ 
++     void release(std::unique_ptr<mysqlx::Session> sess) {
++         if (!sess) return;
++         try { sess->sql("SELECT 1").execute(); }  // 快速健康检查
++         catch (...) {
++             try { sess = std::make_unique<mysqlx::Session>(DbClient::connectionUrl(cfg_)); }
++             catch (...) { return; }
++         }
++         std::lock_guard<std::mutex> lk(mu_);
++         pool_.push(std::move(sess));
++         cv_.notify_one();
++     }
++ 
++ private:
++     DbConfig cfg_;
++     std::size_t max_size_;
++     mutable std::mutex mu_;
++     std::condition_variable cv_;
++     std::queue<std::unique_ptr<mysqlx::Session>> pool_;
++ };
++ 
++ } // namespace db
++ ```
++ 
++ ```cpp
++ // service/DbExecutor.cpp — 适配连接池（仅改 dispatch 方法）
++ void DbExecutor::dispatch(Work work, Done done) {
++     boost::asio::post(*pool_, [this, work = std::move(work),
++                                done = std::move(done)]() mutable {
++         auto session = connection_pool_->acquire();
++         std::exception_ptr ep;
++         try { work(*session); }
++         catch (...) { ep = std::current_exception(); }
++         connection_pool_->release(std::move(session));
++         if (static_cast<bool>(done)) {
++             try { done(ep); }
++             catch (...) { /* 同上 */ }
++         }
++     });
++ }
++ ```
++ 
++ ### 10.7 P3：错误处理统一（AppError）
++ 
++ **策略**：不引入 `Result<T>`（避免双轨制），用 `AppError` 继承 `std::runtime_error` + 错误码，现有 try-catch 全部兼容。
++ 
++ ```cpp
++ // protocol/AppError.hpp（新文件）
++ #pragma once
++ #include <stdexcept>
++ #include <string>
++ 
++ namespace protocol {
++ 
++ enum class ErrorCode {
++     Success = 0,
++     ParseError = 1001,  PayloadTooLarge = 1002,
++     NotAuthenticated = 2001,  AuthFailed = 2002,
++     TokenInvalid = 2003,  TokenExpired = 2004,
++     Forbidden = 3001,
++     EmployeeNotFound = 4001,  DeviceNotFound = 4002,
++     DbError = 5001,  ArcFaceError = 6001,
++ };
++ 
++ class AppError : public std::runtime_error {
++ public:
++     AppError(ErrorCode code, std::string message)
++         : std::runtime_error(message), code_(code) {}
++     ErrorCode code() const { return code_; }
++     int http_style_code() const { return static_cast<int>(code_); }
++ private:
++     ErrorCode code_;
++ };
++ 
++ } // namespace protocol
++ ```
++ 
++ ```cpp
++ // 使用示例 — Repository 层
++ void PersonRepository::insert(mysqlx::Session& session, const PersonCreateInput& input) {
++     if (input.name.empty() || input.employee_id.empty())
++         throw protocol::AppError(ErrorCode::ParseError, "name and employee_id are required");
++     try {
++         // ... MySQL 操作 ...
++     } catch (const mysqlx::Error& e) {
++         throw protocol::AppError(ErrorCode::DbError,
++             std::string("Person insert failed: ") + e.what());
++     }
++ }
++ ```
++ 
++ ### 10.8 P4：命名统一
++ 
++ **策略**：全项目 `snake_case`，`clang-tidy` 辅助。以 `ConnContext` 为例：
++ 
++ ```cpp
++ // protocol/ConnContext.hpp — 统一后
++ struct ConnContext {
++     EndpointRole endpoint_role = EndpointRole::Unknown;
++     bool authenticated = false;
++     std::string device_id;
++     std::string bound_from;
++     int user_id = 0;
++     std::string employee_id;
++     std::string username;
++     std::vector<std::string> roles;
++     std::unordered_set<std::string> permissions;
++ 
++     std::string access_token;          // 原 accessToken
++     std::string refresh_token;         // 原 refreshToken
++     int64_t token_expires_at = 0;      // 原 tokenExpiresAt
++     std::string jti;
++     int heartbeat_sec = 30;
++     std::shared_ptr<boost::asio::steady_timer> heartbeat_timer;
++     PendingBinaryKind pending_binary = PendingBinaryKind::None;
++     std::uint32_t expected_binary_length = 0;
++     std::optional<PendingAttendance> pending_attendance;
++     std::shared_ptr<SyncPushGate> sync_gate = std::make_shared<SyncPushGate>();
++ };
++ ```
++ 
++ ---
++ 
++ *文档版本: 1.1*
++ *最后更新: 2026-06-04（审查修订版）*

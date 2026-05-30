@@ -47,15 +47,16 @@ template <> constexpr inline auto DeviceServer::qt_create_metaobjectdata<qt_meta
         "message",
         "operationFailed",
         "code",
-        "createDevice",
+        "deviceStatusChanged",
         "deviceId",
-        "deviceName",
-        "ipAddress",
         "status",
+        "ipAddress",
+        "createDevice",
+        "deviceName",
+        "deviceKey",
         "queryDevices",
         "updateDevice",
         "deleteDevice",
-        "approveDevice",
         "sendCommand",
         "command",
         "paramsJson",
@@ -77,36 +78,37 @@ template <> constexpr inline auto DeviceServer::qt_create_metaobjectdata<qt_meta
         QtMocHelpers::SignalData<void(const QString &, int, const QString &)>(7, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::QString, 5 }, { QMetaType::Int, 8 }, { QMetaType::QString, 6 },
         }}),
-        // Method 'createDevice'
-        QtMocHelpers::MethodData<void(const QString &, const QString &, const QString &, const QString &)>(9, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 10 }, { QMetaType::QString, 11 }, { QMetaType::QString, 12 }, { QMetaType::QString, 13 },
-        }}),
-        // Method 'queryDevices'
-        QtMocHelpers::MethodData<void(const QString &, const QString &, const QString &)>(14, 2, QMC::AccessPublic, QMetaType::Void, {{
+        // Signal 'deviceStatusChanged'
+        QtMocHelpers::SignalData<void(const QString &, const QString &, const QString &)>(9, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::QString, 10 }, { QMetaType::QString, 11 }, { QMetaType::QString, 12 },
         }}),
+        // Method 'createDevice'
+        QtMocHelpers::MethodData<void(const QString &, const QString &, const QString &, const QString &, const QString &)>(13, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 10 }, { QMetaType::QString, 14 }, { QMetaType::QString, 15 }, { QMetaType::QString, 12 },
+            { QMetaType::QString, 11 },
+        }}),
+        // Method 'queryDevices'
+        QtMocHelpers::MethodData<void(const QString &, const QString &, const QString &)>(16, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 10 }, { QMetaType::QString, 14 }, { QMetaType::QString, 12 },
+        }}),
         // Method 'updateDevice'
-        QtMocHelpers::MethodData<void(const QString &, const QString &, const QString &, const QString &)>(15, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 10 }, { QMetaType::QString, 11 }, { QMetaType::QString, 12 }, { QMetaType::QString, 13 },
+        QtMocHelpers::MethodData<void(const QString &, const QString &, const QString &, const QString &)>(17, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 10 }, { QMetaType::QString, 14 }, { QMetaType::QString, 12 }, { QMetaType::QString, 11 },
         }}),
         // Method 'deleteDevice'
-        QtMocHelpers::MethodData<void(const QString &)>(16, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 10 },
-        }}),
-        // Method 'approveDevice'
-        QtMocHelpers::MethodData<void(const QString &)>(17, 2, QMC::AccessPublic, QMetaType::Void, {{
+        QtMocHelpers::MethodData<void(const QString &)>(18, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::QString, 10 },
         }}),
         // Method 'sendCommand'
-        QtMocHelpers::MethodData<void(const QString &, const QString &, const QString &)>(18, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 10 }, { QMetaType::QString, 19 }, { QMetaType::QString, 20 },
+        QtMocHelpers::MethodData<void(const QString &, const QString &, const QString &)>(19, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 10 }, { QMetaType::QString, 20 }, { QMetaType::QString, 21 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
         // property 'busy'
-        QtMocHelpers::PropertyData<bool>(21, QMetaType::Bool, QMC::DefaultPropertyFlags, 0),
+        QtMocHelpers::PropertyData<bool>(22, QMetaType::Bool, QMC::DefaultPropertyFlags, 0),
         // property 'records'
-        QtMocHelpers::PropertyData<QVariantList>(22, 0x80000000 | 23, QMC::DefaultPropertyFlags | QMC::EnumOrFlag, 1),
+        QtMocHelpers::PropertyData<QVariantList>(23, 0x80000000 | 24, QMC::DefaultPropertyFlags | QMC::EnumOrFlag, 1),
     };
     QtMocHelpers::UintData qt_enums {
     };
@@ -132,11 +134,11 @@ void DeviceServer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 1: _t->recordsChanged(); break;
         case 2: _t->operationSucceeded((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2]))); break;
         case 3: _t->operationFailed((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<int>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3]))); break;
-        case 4: _t->createDevice((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[4]))); break;
-        case 5: _t->queryDevices((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3]))); break;
-        case 6: _t->updateDevice((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[4]))); break;
-        case 7: _t->deleteDevice((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
-        case 8: _t->approveDevice((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 4: _t->deviceStatusChanged((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3]))); break;
+        case 5: _t->createDevice((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[4])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[5]))); break;
+        case 6: _t->queryDevices((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3]))); break;
+        case 7: _t->updateDevice((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[4]))); break;
+        case 8: _t->deleteDevice((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
         case 9: _t->sendCommand((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[3]))); break;
         default: ;
         }
@@ -149,6 +151,8 @@ void DeviceServer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         if (QtMocHelpers::indexOfMethod<void (DeviceServer::*)(const QString & , const QString & )>(_a, &DeviceServer::operationSucceeded, 2))
             return;
         if (QtMocHelpers::indexOfMethod<void (DeviceServer::*)(const QString & , int , const QString & )>(_a, &DeviceServer::operationFailed, 3))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (DeviceServer::*)(const QString & , const QString & , const QString & )>(_a, &DeviceServer::deviceStatusChanged, 4))
             return;
     }
     if (_c == QMetaObject::ReadProperty) {
@@ -220,5 +224,11 @@ void DeviceServer::operationSucceeded(const QString & _t1, const QString & _t2)
 void DeviceServer::operationFailed(const QString & _t1, int _t2, const QString & _t3)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 3, nullptr, _t1, _t2, _t3);
+}
+
+// SIGNAL 4
+void DeviceServer::deviceStatusChanged(const QString & _t1, const QString & _t2, const QString & _t3)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 4, nullptr, _t1, _t2, _t3);
 }
 QT_WARNING_POP

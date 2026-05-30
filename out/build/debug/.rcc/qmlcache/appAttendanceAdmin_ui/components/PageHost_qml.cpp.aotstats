@@ -10,7 +10,7 @@
                             "column": 41,
                             "durationMicroseconds": 8000,
                             "functionName": "pageAllowed",
-                            "line": 26,
+                            "line": 28,
                             "message": "Cannot load property permissions from (component in E:/project/AttendanceServer/ui/components/PageHost.qml)::sessionManager with type QVariant."
                         },
                         {
@@ -18,7 +18,7 @@
                             "column": 17,
                             "durationMicroseconds": 0,
                             "functionName": "active",
-                            "line": 39,
+                            "line": 41,
                             "message": ""
                         },
                         {
@@ -26,7 +26,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "sourceComponent",
-                            "line": 41,
+                            "line": 43,
                             "message": ""
                         },
                         {
@@ -34,7 +34,7 @@
                             "column": 23,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 38,
+                            "line": 40,
                             "message": ""
                         },
                         {
@@ -359,10 +359,18 @@
                         },
                         {
                             "codegenResult": 2,
+                            "column": 25,
+                            "durationMicroseconds": 0,
+                            "functionName": "userServer",
+                            "line": 147,
+                            "message": "Cannot access value for name host"
+                        },
+                        {
+                            "codegenResult": 2,
                             "column": 29,
                             "durationMicroseconds": 0,
                             "functionName": "sessionManager",
-                            "line": 147,
+                            "line": 148,
                             "message": "Cannot access value for name host"
                         },
                         {
@@ -370,7 +378,7 @@
                             "column": 27,
                             "durationMicroseconds": 0,
                             "functionName": "deniedDialog",
-                            "line": 148,
+                            "line": 149,
                             "message": "Cannot access value for name host"
                         },
                         {
@@ -378,7 +386,7 @@
                             "column": 30,
                             "durationMicroseconds": 0,
                             "functionName": "onServiceResult",
-                            "line": 149,
+                            "line": 150,
                             "message": "Cannot access value for name host"
                         },
                         {
@@ -386,16 +394,8 @@
                             "column": 30,
                             "durationMicroseconds": 0,
                             "functionName": "onServiceResult",
-                            "line": 149,
+                            "line": 150,
                             "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 27,
-                            "durationMicroseconds": 0,
-                            "functionName": "eventService",
-                            "line": 157,
-                            "message": "Cannot access value for name host"
                         },
                         {
                             "codegenResult": 2,
@@ -407,42 +407,10 @@
                         },
                         {
                             "codegenResult": 2,
-                            "column": 27,
+                            "column": 26,
                             "durationMicroseconds": 0,
-                            "functionName": "deniedDialog",
+                            "functionName": "fileService",
                             "line": 159,
-                            "message": "Cannot access value for name host"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 30,
-                            "durationMicroseconds": 0,
-                            "functionName": "onServiceResult",
-                            "line": 160,
-                            "message": "Cannot access value for name host"
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 30,
-                            "durationMicroseconds": 0,
-                            "functionName": "onServiceResult",
-                            "line": 160,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 29,
-                            "durationMicroseconds": 0,
-                            "functionName": "sessionManager",
-                            "line": 173,
-                            "message": "Cannot access value for name host"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 27,
-                            "durationMicroseconds": 0,
-                            "functionName": "deniedDialog",
-                            "line": 174,
                             "message": "Cannot access value for name host"
                         }
                     ],

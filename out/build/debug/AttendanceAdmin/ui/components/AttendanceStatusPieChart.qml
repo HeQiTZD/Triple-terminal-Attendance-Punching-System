@@ -34,7 +34,7 @@ Item {
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.bottom: legendRow.top
+        anchors.bottom: parent.bottom
         color: "transparent"
 
         ChartView {
@@ -155,52 +155,6 @@ Item {
                     Layout.alignment: Qt.AlignHCenter
                 }
             }
-        }
-    }
-
-    RowLayout {
-        id: legendRow
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        height: 26
-        spacing: Theme.spacingMd
-        visible: root.slices && root.slices.length > 0
-
-        Item {
-            Layout.fillWidth: true
-        }
-
-        Repeater {
-            model: root.slices
-
-            delegate: RowLayout {
-                id: legendDelegate
-                required property var modelData
-
-                spacing: Theme.spacingXs
-
-                Rectangle {
-                    width: 10
-                    height: 10
-                    radius: 5
-                    color: legendDelegate.modelData.color
-                    Layout.alignment: Qt.AlignVCenter
-                }
-
-                Text {
-                    text: legendDelegate.modelData.label || legendDelegate.modelData.status || ""
-                    color: Theme.textMuted
-                    font.pixelSize: Theme.fontSm
-                    font.family: Theme.fontFamily
-                    elide: Text.ElideRight
-                    Layout.maximumWidth: 56
-                }
-            }
-        }
-
-        Item {
-            Layout.fillWidth: true
         }
     }
 

@@ -5,6 +5,8 @@
 #include "36EFMRHJCM/moc_DeviceServer.cpp"
 #include "L7XNPA7IOY/moc_EventSubscriptionService.cpp"
 #include "G4Z6WUC56G/moc_FaceServer.cpp"
+#include "6SUWAM5NBQ/moc_FileService.cpp"
+#include "6SUWAM5NBQ/moc_LogWriter.cpp"
 #include "3WFUWCBZX3/moc_Person.cpp"
 #include "3WFUWCBZX3/moc_attendancerecord.cpp"
 #include "3WFUWCBZX3/moc_device.cpp"

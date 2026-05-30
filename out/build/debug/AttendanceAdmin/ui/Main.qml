@@ -1,4 +1,4 @@
-﻿import QtQuick
+import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
@@ -14,10 +14,10 @@ ApplicationWindow {
 
     width: sessionManager.isLoggedIn ? mainWindowWidth : loginWindowWidth
     height: sessionManager.isLoggedIn ? mainWindowHeight : loginWindowHeight
-    minimumWidth: sessionManager.isLoggedIn ? 1100 : loginWindowWidth
-    minimumHeight: sessionManager.isLoggedIn ? 700 : loginWindowHeight
-    maximumWidth: sessionManager.isLoggedIn ? 16777215 : loginWindowWidth
-    maximumHeight: sessionManager.isLoggedIn ? 16777215 : loginWindowHeight
+    minimumWidth: sessionManager.isLoggedIn ? mainWindowWidth : loginWindowWidth
+    minimumHeight: sessionManager.isLoggedIn ? mainWindowHeight : loginWindowHeight
+    maximumWidth: sessionManager.isLoggedIn ? mainWindowWidth : loginWindowWidth
+    maximumHeight: sessionManager.isLoggedIn ? mainWindowHeight : loginWindowHeight
     flags: Qt.Window | Qt.FramelessWindowHint
     visible: true
     title: sessionManager.isLoggedIn
@@ -34,6 +34,8 @@ ApplicationWindow {
     required property var rbacServer
     required property var eventService
     required property var userServer
+    required property var logWriter
+    required property var fileService
 
     color: Theme.bg
     palette.window:           Theme.bg
@@ -124,13 +126,12 @@ ApplicationWindow {
 
     function _applyWindowMode() {
         if (sessionManager.isLoggedIn) {
-            minimumWidth = 1100
-            minimumHeight = 700
-            maximumWidth = 16777215
-            maximumHeight = 16777215
+            minimumWidth = mainWindowWidth
+            minimumHeight = mainWindowHeight
+            maximumWidth = mainWindowWidth
+            maximumHeight = mainWindowHeight
             width = mainWindowWidth
             height = mainWindowHeight
-            flags = Qt.Window | Qt.FramelessWindowHint
         } else {
             minimumWidth = loginWindowWidth
             minimumHeight = loginWindowHeight
@@ -138,7 +139,6 @@ ApplicationWindow {
             maximumHeight = loginWindowHeight
             width = loginWindowWidth
             height = loginWindowHeight
-            flags = Qt.Window | Qt.FramelessWindowHint
         }
     }
 
@@ -205,18 +205,13 @@ ApplicationWindow {
         SplitView {
             Layout.fillWidth: true
             Layout.fillHeight: true
-            orientation: Qt.Vertical
-
-        SplitView {
-            SplitView.fillWidth: true
-            SplitView.fillHeight: true
-            SplitView.preferredHeight: 700
             orientation: Qt.Horizontal
 
             SideBar {
                 id: side
                 SplitView.preferredWidth: Theme.sideBarWidth
                 SplitView.minimumWidth: 180
+                SplitView.maximumWidth: 350
                 items: win.filteredNavItems
                 currentIndex: win.sidebarCurrentIndex
                 sessionManager: win.sessionManager
@@ -237,8 +232,6 @@ ApplicationWindow {
                 StatusBar {
                     Layout.fillWidth: true
                     sessionManager: win.sessionManager
-                    lastError: Logger.lastError
-                    lastInfo: Logger.lastInfo
                 }
 
                 PageHost {
@@ -255,18 +248,14 @@ ApplicationWindow {
                     userServer: win.userServer
                     rbacServer: win.rbacServer
                     eventService: win.eventService
+                    logWriter: win.logWriter
+                    fileService: win.fileService
                     deniedDialog: permissionDenied
                     onServiceResult: (apiType, code, msg, category) =>
                         win._handleServiceOp(apiType, code, msg, category)
                 }
             }
         }
-
-        LogPanel {
-            SplitView.preferredHeight: 200
-            SplitView.minimumHeight: 100
-            SplitView.maximumHeight: 600
-        }
-        }
     }
+
 }

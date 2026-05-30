@@ -1,0 +1,432 @@
+$ cmake --build D:\attendanceServer\build --config Debug --clean-first 2>&1
+[killed after timeout]
+閫傜敤浜� .NET Framework MSBuild 鐗堟湰 18.7.1+024f5b037
+
+閫傜敤浜� .NET Framework MSBuild 鐗堟湰 18.7.1+024f5b037
+
+  1>Checking Build System
+  Building Custom Rule D:/attendanceServer/third_party/googletest/googletest/CMakeLists.txt
+  gtest-all.cc
+  gtest.vcxproj -> D:\attendanceServer\build\lib\Debug\gtest.lib
+  Building Custom Rule D:/attendanceServer/third_party/googletest/googletest/CMakeLists.txt
+  gtest_main.cc
+  gtest_main.vcxproj -> D:\attendanceServer\build\lib\Debug\gtest_main.lib
+  Building Custom Rule D:/attendanceServer/tests/CMakeLists.txt
+  AppError_test.cpp
+  app_error_test.vcxproj -> D:\attendanceServer\build\tests\Debug\app_error_test.exe
+  Building Custom Rule D:/attendanceServer/CMakeLists.txt
+  main.cpp
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x3a5 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x3a7 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x3a9 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x3d4 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x3d7 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x3de 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x3df 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x3e1 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x3e3 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x3ec 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x3ed 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x3f9 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x3fa 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x3fb 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x3fc 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x400 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x405 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x406 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x407 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x408 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x40a 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x40f 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x411 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x421 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x422 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x44f 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x451 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x452 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x453 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x455 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x47a 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x47c 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x47d 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x4a3 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x4a5 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x4a6 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x4d2 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x4d5 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x4ff 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x500 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x52e 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x52f 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x53d 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x53e 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x590 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x591 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x594 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x595 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x598 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x59a 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x59b 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x59e 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x59f 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x5a0 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x5a2 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x5a3 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x5d9 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x5da 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x5dd 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x5de 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x5e1 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x5e3 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x5e4 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x5e9 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x5ec 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x5ed 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x5f0 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x601 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x602 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x607 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x608 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x60c 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x60d 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x612 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x614 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x618 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x619 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x61a 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x61b 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x61d 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x61f 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x620 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x621 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x623 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x624 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x628 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x629 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x62c 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x62e 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x630 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x632 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x637 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x639 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x63a 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x63b 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x63d 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x640 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x67a 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x67b 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x67c 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x67d 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x680 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x681 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x682 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x684 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x686 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x687 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x688 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x6a8 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x6a9 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x6aa 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x6ad 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x6ae 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x6b3 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x6b5 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x6bb 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x6bc 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x6bf 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x6c0 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x6c1 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x6e2 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x6e3 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x6e4 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x6e7 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x6e8 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x6ed 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x6ef 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x6f6 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x6f7 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x6fa 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x6fb 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x6fc 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x71d 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x71e 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x71f 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x722 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x723 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\build\attendanceServer.vcxproj]
+  (缂栬瘧婧愭枃浠垛€�../main.cpp鈥�)
+  
+D:\attendanceServer\arcface\include\arcsoft_face_sdk.h(1,1): warning C4828: 鏂囦欢鍖呭惈鍦ㄥ亸绉� 0x72b 澶勫紑濮嬬殑瀛楃锛岃瀛楃鍦ㄥ綋鍓嶆簮瀛楃闆嗕腑鏃犳晥(浠ｇ爜椤� 65001)銆� [D:\attendanceServer\bui
+
+[… truncated 175053 chars …]

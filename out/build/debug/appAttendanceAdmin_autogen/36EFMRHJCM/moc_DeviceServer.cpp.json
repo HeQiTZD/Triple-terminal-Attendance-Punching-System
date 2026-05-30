@@ -16,6 +16,10 @@
                             "type": "QString"
                         },
                         {
+                            "name": "deviceKey",
+                            "type": "QString"
+                        },
+                        {
                             "name": "ipAddress",
                             "type": "QString"
                         },
@@ -24,7 +28,7 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 4,
+                    "index": 5,
                     "lineNumber": 23,
                     "name": "createDevice",
                     "returnType": "void"
@@ -45,8 +49,8 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 5,
-                    "lineNumber": 27,
+                    "index": 6,
+                    "lineNumber": 28,
                     "name": "queryDevices",
                     "returnType": "void"
                 },
@@ -70,22 +74,9 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 6,
-                    "lineNumber": 30,
-                    "name": "updateDevice",
-                    "returnType": "void"
-                },
-                {
-                    "access": "public",
-                    "arguments": [
-                        {
-                            "name": "deviceId",
-                            "type": "QString"
-                        }
-                    ],
                     "index": 7,
-                    "lineNumber": 34,
-                    "name": "deleteDevice",
+                    "lineNumber": 31,
+                    "name": "updateDevice",
                     "returnType": "void"
                 },
                 {
@@ -98,7 +89,7 @@
                     ],
                     "index": 8,
                     "lineNumber": 35,
-                    "name": "approveDevice",
+                    "name": "deleteDevice",
                     "returnType": "void"
                 },
                 {
@@ -161,14 +152,14 @@
                 {
                     "access": "public",
                     "index": 0,
-                    "lineNumber": 41,
+                    "lineNumber": 44,
                     "name": "busyChanged",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
                     "index": 1,
-                    "lineNumber": 42,
+                    "lineNumber": 45,
                     "name": "recordsChanged",
                     "returnType": "void"
                 },
@@ -185,7 +176,7 @@
                         }
                     ],
                     "index": 2,
-                    "lineNumber": 43,
+                    "lineNumber": 46,
                     "name": "operationSucceeded",
                     "returnType": "void"
                 },
@@ -206,8 +197,29 @@
                         }
                     ],
                     "index": 3,
-                    "lineNumber": 44,
+                    "lineNumber": 47,
                     "name": "operationFailed",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "deviceId",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "status",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "ipAddress",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 4,
+                    "lineNumber": 48,
+                    "name": "deviceStatusChanged",
                     "returnType": "void"
                 }
             ],

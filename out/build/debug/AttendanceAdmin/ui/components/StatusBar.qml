@@ -12,9 +12,6 @@ Rectangle {
     implicitHeight: Theme.statusBarHeight
 
     property var sessionManager
-    property string lastError: ""
-    property string lastInfo: ""
-
     readonly property int connState: sessionManager ? sessionManager.connectionState : 0
     readonly property bool serverConnected: root.connState === 3
 
@@ -65,18 +62,6 @@ Rectangle {
             font.family: Theme.fontFamily
             elide: Text.ElideRight
             Layout.maximumWidth: 360
-        }
-
-        Label {
-            visible: root.lastError.length > 0 || root.lastInfo.length > 0
-            text: root.lastError.length
-                  ? (qsTr("错误：") + root.lastError)
-                  : (qsTr("提示：") + root.lastInfo)
-            color: root.lastError.length ? Theme.danger : Theme.textMuted
-            font.pixelSize: Theme.fontSm
-            font.family: Theme.fontFamily
-            elide: Text.ElideRight
-            Layout.maximumWidth: 480
         }
 
         Item { Layout.fillWidth: true }

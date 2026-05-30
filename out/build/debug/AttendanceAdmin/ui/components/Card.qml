@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 
 import AttendanceAdmin
+import QtQuick.Effects
 
 /*
   统一面板：标题栏 + 内容区。
@@ -17,11 +18,22 @@ Rectangle {
     radius: Theme.radiusMd
     clip: true
 
+    layer.enabled: root.elevation > 0
+    layer.effect: MultiEffect {
+        shadowEnabled: root.elevation > 0
+        shadowBlur: root.elevation <= 1 ? 0.15 :
+                    root.elevation === 2 ? 0.3 : 0.5
+        shadowVerticalOffset: root.elevation <= 1 ? 1 :
+                              root.elevation === 2 ? 2 : 4
+        shadowColor: Theme.shadowLight
+    }
+
     property string title: ""
     property string subtitle: ""
     property int padding: Theme.spacingMd
     /// false：高度随表单等内容增长（表单页）；true：纵向占满占位，便于 DataTable/JsonViewer anchors.fill。
     property bool stretchContent: false
+    property int elevation: 0  // 0=none, 1=light, 2=medium, 3=strong
     property alias headerRight: headerRightSlot.data
     default property alias contentChildren: contentItem.data
 

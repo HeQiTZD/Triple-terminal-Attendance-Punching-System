@@ -8,25 +8,17 @@
                         {
                             "codegenResult": 2,
                             "column": 39,
-                            "durationMicroseconds": 12000,
+                            "durationMicroseconds": 11000,
                             "functionName": "canUpdate",
                             "line": 15,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
                         },
                         {
                             "codegenResult": 2,
-                            "column": 51,
-                            "durationMicroseconds": 0,
-                            "functionName": "isPendingAuthSelected",
-                            "line": 16,
-                            "message": "Cannot retrieve a non-object type by ID: dStatus"
-                        },
-                        {
-                            "codegenResult": 2,
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "_query",
-                            "line": 18,
+                            "line": 16,
                             "message": "Cannot retrieve a non-object type by ID: dId"
                         },
                         {
@@ -34,7 +26,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "_statusText",
-                            "line": 22,
+                            "line": 20,
                             "message": "Cannot retrieve a non-object type by ID: dStatus"
                         },
                         {
@@ -42,15 +34,15 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "_setStatusFromRow",
-                            "line": 26,
+                            "line": 24,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
                             "codegenResult": 0,
                             "column": 18,
-                            "durationMicroseconds": 9000,
+                            "durationMicroseconds": 11000,
                             "functionName": "spacing",
-                            "line": 34,
+                            "line": 32,
                             "message": ""
                         },
                         {
@@ -58,7 +50,7 @@
                             "column": 23,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 32,
+                            "line": 30,
                             "message": ""
                         },
                         {
@@ -66,7 +58,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "margins",
-                            "line": 33,
+                            "line": 31,
                             "message": ""
                         },
                         {
@@ -74,7 +66,7 @@
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "sessionManager",
-                            "line": 42,
+                            "line": 39,
                             "message": ""
                         },
                         {
@@ -82,7 +74,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "deniedDialog",
-                            "line": 44,
+                            "line": 41,
                             "message": ""
                         },
                         {
@@ -90,7 +82,7 @@
                             "column": 30,
                             "durationMicroseconds": 0,
                             "functionName": "enabled",
-                            "line": 46,
+                            "line": 43,
                             "message": "Could not find property \"enabled\"."
                         },
                         {
@@ -98,7 +90,7 @@
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 47,
+                            "line": 44,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -106,7 +98,7 @@
                             "column": 24,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 57,
+                            "line": 54,
                             "message": ""
                         },
                         {
@@ -114,7 +106,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "spacing",
-                            "line": 58,
+                            "line": 55,
                             "message": ""
                         },
                         {
@@ -122,7 +114,7 @@
                             "column": 33,
                             "durationMicroseconds": 0,
                             "functionName": "rowSpacing",
-                            "line": 63,
+                            "line": 60,
                             "message": ""
                         },
                         {
@@ -130,7 +122,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "columnSpacing",
-                            "line": 64,
+                            "line": 61,
                             "message": ""
                         },
                         {
@@ -138,7 +130,7 @@
                             "column": 39,
                             "durationMicroseconds": 0,
                             "functionName": "readOnly",
-                            "line": 69,
+                            "line": 66,
                             "message": "Could not find property \"readOnly\"."
                         },
                         {
@@ -146,7 +138,7 @@
                             "column": 39,
                             "durationMicroseconds": 0,
                             "functionName": "readOnly",
-                            "line": 77,
+                            "line": 73,
                             "message": "Could not find property \"readOnly\"."
                         },
                         {
@@ -154,15 +146,31 @@
                             "column": 39,
                             "durationMicroseconds": 0,
                             "functionName": "readOnly",
-                            "line": 84,
+                            "line": 80,
                             "message": "Could not find property \"readOnly\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 39,
+                            "durationMicroseconds": 0,
+                            "functionName": "readOnly",
+                            "line": 87,
+                            "message": "Could not find property \"readOnly\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 39,
+                            "durationMicroseconds": 0,
+                            "functionName": "echoMode",
+                            "line": 88,
+                            "message": "Could not find property \"echoMode\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 38,
                             "durationMicroseconds": 0,
                             "functionName": "enabled",
-                            "line": 91,
+                            "line": 95,
                             "message": "Could not find property \"enabled\"."
                         },
                         {
@@ -170,7 +178,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 92,
+                            "line": 96,
                             "message": "Could not find property \"model\"."
                         },
                         {
@@ -178,55 +186,23 @@
                             "column": 30,
                             "durationMicroseconds": 0,
                             "functionName": "spacing",
-                            "line": 99,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 41,
-                            "durationMicroseconds": 0,
-                            "functionName": "sessionManager",
-                            "line": 101,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 39,
-                            "durationMicroseconds": 0,
-                            "functionName": "deniedDialog",
                             "line": 103,
                             "message": ""
                         },
                         {
-                            "codegenResult": 2,
-                            "column": 34,
+                            "codegenResult": 0,
+                            "column": 41,
                             "durationMicroseconds": 0,
-                            "functionName": "enabled",
-                            "line": 106,
-                            "message": "Could not find property \"enabled\"."
+                            "functionName": "sessionManager",
+                            "line": 105,
+                            "message": ""
                         },
                         {
-                            "codegenResult": 2,
-                            "column": 36,
+                            "codegenResult": 0,
+                            "column": 39,
                             "durationMicroseconds": 0,
-                            "functionName": "onClicked",
+                            "functionName": "deniedDialog",
                             "line": 107,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 41,
-                            "durationMicroseconds": 0,
-                            "functionName": "sessionManager",
-                            "line": 113,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 39,
-                            "durationMicroseconds": 0,
-                            "functionName": "deniedDialog",
-                            "line": 115,
                             "message": ""
                         },
                         {
@@ -234,23 +210,23 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "enabled",
+                            "line": 110,
+                            "message": "Could not find property \"enabled\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 36,
+                            "durationMicroseconds": 0,
+                            "functionName": "onClicked",
+                            "line": 111,
+                            "message": "Could not find signal \"clicked\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 41,
+                            "durationMicroseconds": 0,
+                            "functionName": "sessionManager",
                             "line": 117,
-                            "message": "Could not find property \"enabled\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 118,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 41,
-                            "durationMicroseconds": 0,
-                            "functionName": "sessionManager",
-                            "line": 124,
                             "message": ""
                         },
                         {
@@ -258,7 +234,7 @@
                             "column": 39,
                             "durationMicroseconds": 0,
                             "functionName": "deniedDialog",
-                            "line": 126,
+                            "line": 119,
                             "message": ""
                         },
                         {
@@ -266,71 +242,71 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "enabled",
+                            "line": 121,
+                            "message": "Could not find property \"enabled\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 36,
+                            "durationMicroseconds": 0,
+                            "functionName": "onClicked",
+                            "line": 122,
+                            "message": "Could not find signal \"clicked\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 41,
+                            "durationMicroseconds": 0,
+                            "functionName": "sessionManager",
                             "line": 128,
-                            "message": "Could not find property \"enabled\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 129,
-                            "message": "Could not find signal \"clicked\"."
+                            "message": ""
                         },
                         {
                             "codegenResult": 0,
-                            "column": 41,
+                            "column": 39,
                             "durationMicroseconds": 0,
-                            "functionName": "sessionManager",
+                            "functionName": "deniedDialog",
+                            "line": 130,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 34,
+                            "durationMicroseconds": 0,
+                            "functionName": "enabled",
                             "line": 132,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 39,
-                            "durationMicroseconds": 0,
-                            "functionName": "deniedDialog",
-                            "line": 134,
-                            "message": ""
+                            "message": "Could not find property \"enabled\"."
                         },
                         {
                             "codegenResult": 2,
-                            "column": 34,
+                            "column": 36,
                             "durationMicroseconds": 0,
-                            "functionName": "enabled",
+                            "functionName": "onClicked",
+                            "line": 133,
+                            "message": "Could not find signal \"clicked\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 41,
+                            "durationMicroseconds": 0,
+                            "functionName": "sessionManager",
                             "line": 136,
-                            "message": "Could not find property \"enabled\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 137,
-                            "message": "Could not find signal \"clicked\"."
+                            "message": ""
                         },
                         {
                             "codegenResult": 0,
-                            "column": 41,
+                            "column": 39,
                             "durationMicroseconds": 0,
-                            "functionName": "sessionManager",
+                            "functionName": "deniedDialog",
+                            "line": 138,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 34,
+                            "durationMicroseconds": 0,
+                            "functionName": "enabled",
                             "line": 140,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 39,
-                            "durationMicroseconds": 0,
-                            "functionName": "deniedDialog",
-                            "line": 142,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 34,
-                            "durationMicroseconds": 0,
-                            "functionName": "enabled",
-                            "line": 145,
                             "message": "Could not find property \"enabled\"."
                         },
                         {
@@ -338,111 +314,31 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 148,
+                            "line": 141,
                             "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 22,
-                            "durationMicroseconds": 0,
-                            "functionName": "visible",
-                            "line": 158,
-                            "message": "Cannot access value for name sessionManager"
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 24,
-                            "durationMicroseconds": 0,
-                            "functionName": "width",
-                            "line": 162,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 26,
-                            "durationMicroseconds": 0,
-                            "functionName": "spacing",
-                            "line": 163,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 30,
-                            "durationMicroseconds": 0,
-                            "functionName": "spacing",
-                            "line": 167,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 41,
-                            "durationMicroseconds": 0,
-                            "functionName": "sessionManager",
-                            "line": 178,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 39,
-                            "durationMicroseconds": 0,
-                            "functionName": "deniedDialog",
-                            "line": 180,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 34,
-                            "durationMicroseconds": 0,
-                            "functionName": "enabled",
-                            "line": 183,
-                            "message": "Could not find property \"enabled\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 184,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 28,
-                            "durationMicroseconds": 0,
-                            "functionName": "color",
-                            "line": 192,
-                            "message": "Could not find property \"color\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 37,
-                            "durationMicroseconds": 0,
-                            "functionName": "pixelSize",
-                            "line": 193,
-                            "message": "Could not find property \"pixelSize\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 23,
                             "durationMicroseconds": 0,
                             "functionName": "rows",
-                            "line": 213,
+                            "line": 155,
                             "message": "Cannot access value for name deviceServer"
                         },
                         {
                             "codegenResult": 2,
                             "column": 26,
-                            "durationMicroseconds": 1000,
+                            "durationMicroseconds": 0,
                             "functionName": "columns",
-                            "line": 214,
-                            "message": "Cannot generate efficient code for storing an array in a non-sequence type"
+                            "line": 156,
+                            "message": "Cannot generate efficient code for LoadClosure"
                         },
                         {
                             "codegenResult": 2,
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "onRowClicked",
-                            "line": 222,
+                            "line": 165,
                             "message": "Cannot retrieve a non-object type by ID: dId"
                         },
                         {
@@ -450,7 +346,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "onRowClicked",
-                            "line": 222,
+                            "line": 165,
                             "message": ""
                         },
                         {
@@ -458,7 +354,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 212,
+                            "line": 154,
                             "message": ""
                         },
                         {
@@ -466,7 +362,7 @@
                             "column": 25,
                             "durationMicroseconds": 0,
                             "functionName": "busy",
-                            "line": 233,
+                            "line": 176,
                             "message": "Cannot access value for name deviceServer"
                         },
                         {
@@ -474,7 +370,7 @@
                             "column": 18,
                             "durationMicroseconds": 0,
                             "functionName": "message",
-                            "line": 237,
+                            "line": 180,
                             "message": "Cannot retrieve a non-object type by ID: dId"
                         },
                         {
@@ -482,7 +378,7 @@
                             "column": 21,
                             "durationMicroseconds": 0,
                             "functionName": "onAccepted",
-                            "line": 238,
+                            "line": 181,
                             "message": "Could not find signal \"accepted\"."
                         },
                         {
@@ -490,7 +386,7 @@
                             "column": 17,
                             "durationMicroseconds": 0,
                             "functionName": "target",
-                            "line": 242,
+                            "line": 185,
                             "message": "Cannot access value for name deviceServer"
                         },
                         {
@@ -498,7 +394,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onOperationSucceeded",
-                            "line": 243,
+                            "line": 186,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -506,7 +402,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onOperationFailed",
-                            "line": 249,
+                            "line": 192,
                             "message": "Functions without type annotations won't be compiled"
                         }
                     ],
