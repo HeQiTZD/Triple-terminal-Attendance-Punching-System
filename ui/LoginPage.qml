@@ -159,7 +159,7 @@ Item {
                         width: 64
                         height: 64
                         radius: 16
-                        color: Theme.primaryLight
+                        color: Theme.primarySubtle
 
                         Text {
                             anchors.centerIn: parent
