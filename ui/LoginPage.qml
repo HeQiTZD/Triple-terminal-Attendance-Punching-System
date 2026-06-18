@@ -60,12 +60,12 @@ Item {
             contentItem: Image {
                 source: "qrc:/images/settings.svg"
                 sourceSize: Qt.size(16, 16)
-                opacity: settingsBtn.enabled ? (settingsBtn.hovered ? 1.0 : 0.6) : 0.3
+                opacity: settingsBtn.enabled ? (settingsBtn.hovered ? 0.8 : 0.4) : 0.2
                 Behavior on opacity { NumberAnimation { duration: 120 } }
             }
             background: Rectangle {
-                radius: 6
-                color: settingsBtn.hovered ? Theme.hover : "transparent"
+                radius: 4
+                color: settingsBtn.hovered ? Qt.rgba(0, 0, 0, 0.05) : "transparent"
             }
         }
 
@@ -78,12 +78,12 @@ Item {
             contentItem: Image {
                 source: "qrc:/images/minied.svg"
                 sourceSize: Qt.size(16, 16)
-                opacity: minimizeBtn.hovered ? 1.0 : 0.6
+                opacity: minimizeBtn.hovered ? 0.8 : 0.4
                 Behavior on opacity { NumberAnimation { duration: 120 } }
             }
             background: Rectangle {
-                radius: 6
-                color: minimizeBtn.hovered ? Theme.hover : "transparent"
+                radius: 4
+                color: minimizeBtn.hovered ? Qt.rgba(0, 0, 0, 0.05) : "transparent"
             }
         }
 
@@ -96,11 +96,11 @@ Item {
             contentItem: Image {
                 source: "qrc:/images/close.svg"
                 sourceSize: Qt.size(16, 16)
-                opacity: closeBtn.hovered ? 1.0 : 0.6
+                opacity: closeBtn.hovered ? 0.8 : 0.4
                 Behavior on opacity { NumberAnimation { duration: 120 } }
             }
             background: Rectangle {
-                radius: 6
+                radius: 4
                 color: closeBtn.hovered ? Qt.rgba(0.78, 0.16, 0.16, 0.1) : "transparent"
             }
         }
@@ -523,11 +523,11 @@ Item {
     // ── 底部版权信息 ──
     Label {
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 20
+        anchors.bottomMargin: 16
         anchors.horizontalCenter: parent.horizontalCenter
         text: "© 2026 AttendanceAdmin"
-        color: Theme.textSubtle
-        font.pixelSize: 12
+        color: Theme.loginTextMuted
+        font.pixelSize: 11
         font.family: Theme.fontFamily
     }
 
