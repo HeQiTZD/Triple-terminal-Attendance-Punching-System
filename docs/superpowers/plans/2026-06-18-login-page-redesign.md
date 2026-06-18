@@ -91,7 +91,7 @@ import QtCore
 
 ```qml
 function _loadSavedUsername() {
-    var settings = new Settings()
+    var settings = Qt.createQmlObject('import QtCore; Settings {}', root)
     var saved = settings.value("rememberedUsername", "")
     if (saved) {
         userField.text = saved
@@ -104,7 +104,7 @@ function _loadSavedUsername() {
 
 ```qml
 function _saveUsername() {
-    var settings = new Settings()
+    var settings = Qt.createQmlObject('import QtCore; Settings {}', root)
     if (root.rememberUsername && userField.text.trim().length > 0) {
         settings.setValue("rememberedUsername", userField.text.trim())
     } else {
