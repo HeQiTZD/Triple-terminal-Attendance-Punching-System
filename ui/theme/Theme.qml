@@ -48,6 +48,18 @@ QtObject {
     readonly property color shadowMedium: Qt.rgba(0, 0, 0, 0.12)
     readonly property color shadowStrong: Qt.rgba(0, 0, 0, 0.20)
 
+    // ===== 登录页面颜色 =====
+    readonly property color loginBgStart:      "#F8FAFC"
+    readonly property color loginBgEnd:        "#F1F5F9"
+    readonly property color loginCardBg:       "#FFFFFF"
+    readonly property color loginCardBorder:   "#E2E8F0"
+    readonly property color loginTextPrimary:  "#1E293B"
+    readonly property color loginTextSecondary:"#64748B"
+    readonly property color loginTextMuted:    "#94A3B8"
+    readonly property color loginInputBg:      "#F9FAFB"
+    readonly property color loginInputBorder:  "#D1D5DB"
+    readonly property color loginInputFocus:   "#2563EB"
+
     // ===== 间距系统 =====
     readonly property int spacingXs: 4
     readonly property int spacingSm: 6
