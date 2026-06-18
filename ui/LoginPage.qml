@@ -569,6 +569,11 @@ Item {
         }
     }
 
+    // ── 键盘快捷键 ──
+    Keys.onEscapePressed: {
+        root.loginError = ""
+    }
+
     // ── 逻辑函数 ──
     function _resetForm() {
         userField.text = ""
