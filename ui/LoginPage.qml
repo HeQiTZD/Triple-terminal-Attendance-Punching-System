@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtCore
 
 import AttendanceAdmin
 
@@ -11,15 +12,69 @@ Item {
 
     property bool loggingIn: false
     property string loginError: ""
+    property bool passwordVisible: false
+    property bool rememberUsername: false
 
-    readonly property real cardWidth: Math.min(420, Math.max(320, width - Theme.spacingXl * 2))
+    readonly property real cardWidth: Math.min(420, Math.max(340, width - 60))
 
+    // ── 深色渐变背景 ──
     Rectangle {
         anchors.fill: parent
-        color: Theme.bg
+        gradient: Gradient {
+            orientation: Gradient.Vertical
+            GradientStop { position: 0.0; color: "#0B1120" }
+            GradientStop { position: 0.5; color: "#131C31" }
+            GradientStop { position: 1.0; color: "#0B1120" }
+        }
     }
 
-    // 无边框窗口：顶部拖拽移动
+    // ── 装饰：微妙的网格纹理 ──
+    Canvas {
+        anchors.fill: parent
+        opacity: 0.03
+        onPaint: {
+            var ctx = getContext("2d")
+            ctx.strokeStyle = "#FFFFFF"
+            ctx.lineWidth = 0.5
+            var step = 40
+            for (var x = 0; x < width; x += step) {
+                ctx.beginPath()
+                ctx.moveTo(x, 0)
+                ctx.lineTo(x, height)
+                ctx.stroke()
+            }
+            for (var y = 0; y < height; y += step) {
+                ctx.beginPath()
+                ctx.moveTo(0, y)
+                ctx.lineTo(width, y)
+                ctx.stroke()
+            }
+        }
+    }
+
+    // ── 装饰：浮动光点 ──
+    Repeater {
+        model: 8
+        Rectangle {
+            readonly property real _ox: [0.15, 0.85, 0.1, 0.9, 0.5, 0.25, 0.75, 0.5][index]
+            readonly property real _oy: [0.2, 0.25, 0.75, 0.8, 0.1, 0.5, 0.5, 0.9][index]
+            readonly property real _sz: [3, 4, 3, 4, 5, 3, 4, 3][index]
+            x: parent.width * _ox - _sz / 2
+            y: parent.height * _oy - _sz / 2
+            width: _sz; height: _sz
+            radius: _sz / 2
+            color: "#60A5FA"
+            opacity: 0.5
+
+            SequentialAnimation on opacity {
+                loops: Animation.Infinite
+                NumberAnimation { from: 0.2; to: 0.6; duration: 2500 + index * 400 }
+                NumberAnimation { from: 0.6; to: 0.2; duration: 2500 + index * 400 }
+            }
+        }
+    }
+
+    // ── 无边框窗口拖拽 ──
     MouseArea {
         id: windowDragArea
         z: 0
@@ -35,8 +90,9 @@ Item {
         }
     }
 
+    // ── 顶部按钮：设置 + 关闭 ──
     Row {
-        z: 1
+        z: 2
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.margins: Theme.spacingMd
@@ -44,20 +100,53 @@ Item {
 
         ToolButton {
             id: settingsBtn
-            text: "\u2699"
-            font.pixelSize: Theme.fontLg
             enabled: !root.loggingIn
             onClicked: serverSettingsDialog.open()
+            contentItem: Image {
+                source: "qrc:/images/settings.svg"
+                sourceSize: Qt.size(16, 16)
+                opacity: settingsBtn.enabled ? (settingsBtn.hovered ? 1.0 : 0.6) : 0.3
+                Behavior on opacity { NumberAnimation { duration: 120 } }
+            }
+            background: Rectangle {
+                radius: 6
+                color: settingsBtn.hovered ? Qt.rgba(255, 255, 255, 0.08) : "transparent"
+            }
+        }
+
+        ToolButton {
+            id: minimizeBtn
+            onClicked: {
+                const w = Window.window
+                if (w) w.showMinimized()
+            }
+            contentItem: Image {
+                source: "qrc:/images/minied.svg"
+                sourceSize: Qt.size(16, 16)
+                opacity: minimizeBtn.hovered ? 1.0 : 0.6
+                Behavior on opacity { NumberAnimation { duration: 120 } }
+            }
+            background: Rectangle {
+                radius: 6
+                color: minimizeBtn.hovered ? Qt.rgba(255, 255, 255, 0.08) : "transparent"
+            }
         }
 
         ToolButton {
             id: closeBtn
-            text: "\u00d7"
-            font.pixelSize: Theme.fontXl
             onClicked: {
                 const w = Window.window
-                if (w)
-                    w.close()
+                if (w) w.close()
+            }
+            contentItem: Image {
+                source: "qrc:/images/close.svg"
+                sourceSize: Qt.size(16, 16)
+                opacity: closeBtn.hovered ? 1.0 : 0.6
+                Behavior on opacity { NumberAnimation { duration: 120 } }
+            }
+            background: Rectangle {
+                radius: 6
+                color: closeBtn.hovered ? Qt.rgba(239, 68, 68, 0.15) : "transparent"
             }
         }
     }
@@ -67,114 +156,430 @@ Item {
         ownerWindow: Window.window
     }
 
-    // 登录主体：相对整个窗口上下左右居中
+    // ── 登录卡片 ──
     Item {
         id: loginBlock
         anchors.centerIn: parent
         width: root.cardWidth
-        height: loginColumn.implicitHeight
+        height: cardBg.height
 
-        ColumnLayout {
-            id: loginColumn
+        // 卡片阴影
+        Rectangle {
+            anchors.fill: cardBg
+            anchors.margins: -1
+            radius: 20
+            color: Qt.rgba(0, 0, 0, 0.4)
+            y: 10
+        }
+
+        // 卡片主体
+        Rectangle {
+            id: cardBg
+            anchors.horizontalCenter: parent.horizontalCenter
             width: parent.width
-            spacing: Theme.spacingLg
+            height: loginColumn.implicitHeight + 56
+            radius: 20
+            color: "#1E293B"
+            border.width: 1
+            border.color: Qt.rgba(59, 130, 246, 0.2)
 
             ColumnLayout {
-                Layout.alignment: Qt.AlignHCenter
-                spacing: Theme.spacingSm
+                id: loginColumn
+                anchors.top: parent.top
+                anchors.topMargin: 36
+                anchors.left: parent.left
+                anchors.leftMargin: 32
+                anchors.right: parent.right
+                anchors.rightMargin: 32
+                spacing: 24
 
-                Label {
+                // ── 标题区 ──
+                ColumnLayout {
                     Layout.alignment: Qt.AlignHCenter
-                    text: qsTr("考勤管理系统")
-                    color: Theme.text
-                    font.pixelSize: Theme.fontXl
-                    font.bold: true
-                    font.family: Theme.fontFamily
-                }
-            }
+                    spacing: 12
 
-            ColumnLayout {
-                Layout.fillWidth: true
-                spacing: Theme.spacingMd
+                    // Logo图标
+                    Rectangle {
+                        Layout.alignment: Qt.AlignHCenter
+                        width: 72
+                        height: 72
+                        radius: 18
+                        color: Qt.rgba(59, 130, 246, 0.15)
 
-                GridLayout {
-                    Layout.fillWidth: true
-                    columns: 2
-                    rowSpacing: Theme.spacingSm
-                    columnSpacing: Theme.spacingMd
-
-                    LabeledField {
-                        label: qsTr("工号 / 用户名")
-                        Layout.fillWidth: true
-                        Layout.columnSpan: 2
-                        TextField {
-                            id: userField
-                            Layout.fillWidth: true
-                            placeholderText: qsTr("请输入用户名或工号")
-                            enabled: !root.loggingIn
+                        Text {
+                            anchors.centerIn: parent
+                            text: "⏱"
+                            font.pixelSize: 32
                         }
                     }
-                    LabeledField {
-                        label: qsTr("密码")
-                        Layout.fillWidth: true
-                        Layout.columnSpan: 2
-                        TextField {
-                            id: passField
-                            Layout.fillWidth: true
-                            echoMode: TextInput.Password
-                            placeholderText: qsTr("请输入密码")
-                            enabled: !root.loggingIn
-                            onAccepted: loginBtn.clicked()
-                        }
+
+                    Label {
+                        Layout.alignment: Qt.AlignHCenter
+                        text: qsTr("考勤管理系统")
+                        color: "#F8FAFC"
+                        font.pixelSize: 26
+                        font.bold: true
+                        font.family: Theme.fontFamily
+                    }
+
+                    Label {
+                        Layout.alignment: Qt.AlignHCenter
+                        text: qsTr("Attendance Management System")
+                        color: "#64748B"
+                        font.pixelSize: 12
+                        font.family: Theme.fontFamily
                     }
                 }
 
-                Label {
+                // ── 表单区 ──
+                ColumnLayout {
                     Layout.fillWidth: true
-                    Layout.alignment: Qt.AlignHCenter
-                    horizontalAlignment: Text.AlignHCenter
+                    spacing: 16
+
+                    // 用户名
+                    ColumnLayout {
+                        Layout.fillWidth: true
+                        spacing: 8
+
+                        Label {
+                            text: qsTr("工号 / 用户名")
+                            color: "#CBD5E1"
+                            font.pixelSize: 14
+                            font.family: Theme.fontFamily
+                        }
+
+                        Rectangle {
+                            Layout.fillWidth: true
+                            height: 50
+                            radius: 12
+                            color: userField.activeFocus ? Qt.rgba(30, 41, 59, 0.9) : "#0F172A"
+                            border.width: 1.5
+                            border.color: userField.activeFocus ? "#3B82F6" : "#334155"
+
+                            Behavior on border.color { ColorAnimation { duration: 200 } }
+
+                            RowLayout {
+                                anchors.fill: parent
+                                anchors.leftMargin: 16
+                                anchors.rightMargin: 16
+                                spacing: 12
+
+                                Text {
+                                    text: "👤"
+                                    font.pixelSize: 18
+                                    opacity: 0.7
+                                }
+
+                                TextField {
+                                    id: userField
+                                    Layout.fillWidth: true
+                                    placeholderText: qsTr("请输入用户名或工号")
+                                    enabled: !root.loggingIn
+                                    background: null
+                                    font.pixelSize: 15
+                                    font.family: Theme.fontFamily
+                                    color: "#F1F5F9"
+                                    placeholderTextColor: "#475569"
+                                }
+                            }
+                        }
+                    }
+
+                    // 密码
+                    ColumnLayout {
+                        Layout.fillWidth: true
+                        spacing: 8
+
+                        Label {
+                            text: qsTr("密码")
+                            color: "#CBD5E1"
+                            font.pixelSize: 14
+                            font.family: Theme.fontFamily
+                        }
+
+                        Rectangle {
+                            Layout.fillWidth: true
+                            height: 50
+                            radius: 12
+                            color: passField.activeFocus ? Qt.rgba(30, 41, 59, 0.9) : "#0F172A"
+                            border.width: 1.5
+                            border.color: passField.activeFocus ? "#3B82F6" : "#334155"
+
+                            Behavior on border.color { ColorAnimation { duration: 200 } }
+
+                            RowLayout {
+                                anchors.fill: parent
+                                anchors.leftMargin: 16
+                                anchors.rightMargin: 12
+                                spacing: 8
+
+                                Text {
+                                    text: "🔒"
+                                    font.pixelSize: 18
+                                    opacity: 0.7
+                                }
+
+                                TextField {
+                                    id: passField
+                                    Layout.fillWidth: true
+                                    echoMode: root.passwordVisible ? TextInput.Normal : TextInput.Password
+                                    placeholderText: qsTr("请输入密码")
+                                    enabled: !root.loggingIn
+                                    background: null
+                                    font.pixelSize: 15
+                                    font.family: Theme.fontFamily
+                                    color: "#F1F5F9"
+                                    placeholderTextColor: "#475569"
+                                    onAccepted: loginBtn.clicked()
+                                }
+
+                                // 密码可见性切换
+                                Rectangle {
+                                    width: 36
+                                    height: 36
+                                    radius: 8
+                                    color: passwordToggleMouse.containsMouse ? Qt.rgba(255, 255, 255, 0.08) : "transparent"
+
+                                    Image {
+                                        anchors.centerIn: parent
+                                        source: root.passwordVisible ? "qrc:/images/visibility.svg" : "qrc:/images/visibility_off.svg"
+                                        sourceSize: Qt.size(20, 20)
+                                        opacity: passwordToggleMouse.containsMouse ? 1.0 : 0.5
+                                    }
+
+                                    MouseArea {
+                                        id: passwordToggleMouse
+                                        anchors.fill: parent
+                                        hoverEnabled: true
+                                        cursorShape: Qt.PointingHandCursor
+                                        onClicked: root.passwordVisible = !root.passwordVisible
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // ── 错误提示 ──
+                Rectangle {
+                    Layout.fillWidth: true
+                    height: errorLabel.implicitHeight + 20
+                    radius: 10
+                    color: Qt.rgba(239, 68, 68, 0.12)
+                    border.width: 1
+                    border.color: Qt.rgba(239, 68, 68, 0.25)
                     visible: root.loginError.length > 0
-                    wrapMode: Text.WordWrap
-                    text: root.loginError
-                    color: Theme.danger
-                    font.pixelSize: Theme.fontSm
-                    font.family: Theme.fontFamily
+
+                    RowLayout {
+                        anchors.fill: parent
+                        anchors.leftMargin: 14
+                        anchors.rightMargin: 14
+                        spacing: 10
+
+                        Text {
+                            text: "⚠️"
+                            font.pixelSize: 15
+                        }
+
+                        Label {
+                            id: errorLabel
+                            Layout.fillWidth: true
+                            wrapMode: Text.WordWrap
+                            text: root.loginError
+                            color: "#FCA5A5"
+                            font.pixelSize: 13
+                            font.family: Theme.fontFamily
+                        }
+                    }
                 }
 
-                Item {
+                // ── 按钮区 ──
+                ColumnLayout {
                     Layout.fillWidth: true
-                    Layout.preferredHeight: loginBtnRow.implicitHeight
+                    spacing: 12
 
-                    Row {
-                        id: loginBtnRow
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        spacing: Theme.spacingSm
+                    // 登录按钮
+                    Rectangle {
+                        id: loginBtn
+                        Layout.fillWidth: true
+                        height: 52
+                        radius: 12
+                        enabled: !root.loggingIn
+                               && userField.text.trim().length > 0
+                               && passField.text.length > 0
+                        opacity: enabled ? 1.0 : 0.5
 
-                        Button {
-                            id: loginBtn
-                            text: root.loggingIn ? qsTr("登录中…") : qsTr("登录")
-                            highlighted: true
-                            enabled: !root.loggingIn
-                                   && userField.text.trim().length > 0
-                                   && passField.text.length > 0
+                        Behavior on opacity { NumberAnimation { duration: 200 } }
+
+                        gradient: Gradient {
+                            GradientStop {
+                                position: 0.0;
+                                color: loginBtnMouse.containsMouse ? "#60A5FA" : "#3B82F6"
+                            }
+                            GradientStop {
+                                position: 1.0;
+                                color: loginBtnMouse.containsMouse ? "#2563EB" : "#1D4ED8"
+                            }
+                        }
+
+                        // 按下效果
+                        Rectangle {
+                            anchors.fill: parent
+                            radius: 12
+                            color: Qt.rgba(0, 0, 0, 0.15)
+                            visible: loginBtnMouse.pressed
+                        }
+
+                        RowLayout {
+                            anchors.centerIn: parent
+                            spacing: 10
+
+                            // 加载动画
+                            Rectangle {
+                                width: 20; height: 20
+                                radius: 10
+                                border.width: 2.5
+                                border.color: "#FFFFFF"
+                                color: "transparent"
+                                visible: root.loggingIn
+
+                                Rectangle {
+                                    x: parent.width / 2 - 1.25
+                                    y: 2
+                                    width: 2.5; height: 7
+                                    radius: 1.25
+                                    color: "#FFFFFF"
+
+                                    NumberAnimation on rotation {
+                                        from: 0; to: 360
+                                        duration: 750
+                                        loops: Animation.Infinite
+                                        running: root.loggingIn
+                                    }
+                                    transformOrigin: Item.Bottom
+                                }
+                            }
+
+                            Label {
+                                text: root.loggingIn ? qsTr("登录中…") : qsTr("登 录")
+                                color: "#FFFFFF"
+                                font.pixelSize: 16
+                                font.bold: true
+                                font.family: Theme.fontFamily
+                            }
+                        }
+
+                        MouseArea {
+                            id: loginBtnMouse
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            enabled: loginBtn.enabled
+                            cursorShape: Qt.PointingHandCursor
                             onClicked: root._submitLogin()
                         }
+                    }
+
+                    // 跳过登录按钮
+                    Rectangle {
+                        id: devLoginBtn
+                        Layout.fillWidth: true
+                        height: 44
+                        radius: 10
+                        color: devLoginBtnMouse.containsMouse ? Qt.rgba(255, 255, 255, 0.06) : "transparent"
+                        enabled: !root.loggingIn
+
+                        Behavior on color { ColorAnimation { duration: 200 } }
+
+                        Label {
+                            anchors.centerIn: parent
+                            text: qsTr("跳过登录（开发模式）")
+                            color: devLoginBtnMouse.containsMouse ? "#60A5FA" : "#64748B"
+                            font.pixelSize: 13
+                            font.family: Theme.fontFamily
+
+                            Behavior on color { ColorAnimation { duration: 200 } }
+                        }
+
+                        MouseArea {
+                            id: devLoginBtnMouse
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            cursorShape: Qt.PointingHandCursor
+                            onClicked: root.sessionManager.devLogin()
+                        }
+
+                        ToolTip.text: qsTr("开发模式：跳过服务器验证，直接进入主界面")
+                        ToolTip.visible: devLoginBtnMouse.containsMouse
                     }
                 }
             }
         }
     }
 
+    // ── 底部版权信息 ──
+    Label {
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 20
+        anchors.horizontalCenter: parent.horizontalCenter
+        text: "© 2026 AttendanceAdmin"
+        color: "#475569"
+        font.pixelSize: 12
+        font.family: Theme.fontFamily
+    }
+
+    // ── 入场动画 ──
+    PropertyAnimation {
+        id: cardEnterAnim
+        target: loginBlock
+        property: "opacity"
+        from: 0; to: 1
+        duration: 500
+        easing.type: Easing.OutCubic
+    }
+    PropertyAnimation {
+        id: cardSlideAnim
+        target: loginBlock
+        property: "y"
+        from: loginBlock.y + 30
+        to: loginBlock.y
+        duration: 500
+        easing.type: Easing.OutCubic
+    }
+
+    // ── 记住用户名功能 ──
+    function _loadSavedUsername() {
+        var settings = Qt.createQmlObject('import QtCore; Settings {}', root)
+        var saved = settings.value("rememberedUsername", "")
+        if (saved) {
+            userField.text = saved
+            root.rememberUsername = true
+        }
+    }
+
+    function _saveUsername() {
+        var settings = Qt.createQmlObject('import QtCore; Settings {}', root)
+        if (root.rememberUsername && userField.text.trim().length > 0) {
+            settings.setValue("rememberedUsername", userField.text.trim())
+        } else {
+            settings.remove("rememberedUsername")
+        }
+    }
+
+    // ── 逻辑函数 ──
     function _resetForm() {
         userField.text = ""
         passField.text = ""
         root.loginError = ""
         root.loggingIn = false
+        root.passwordVisible = false
+        root.rememberUsername = false
+        _loadSavedUsername()
     }
 
     function _submitLogin() {
         root.loginError = ""
         root.loggingIn = true
+        _saveUsername()
         root.sessionManager.login(
             Presets.serverHost,
             Presets.serverPort,
@@ -183,7 +588,11 @@ Item {
         )
     }
 
-    Component.onCompleted: _resetForm()
+    Component.onCompleted: {
+        _resetForm()
+        cardEnterAnim.start()
+        cardSlideAnim.start()
+    }
 
     onVisibleChanged: {
         if (visible)
@@ -203,7 +612,6 @@ Item {
             Logger.error(root.loginError)
         }
         function onErrorOccurred(error) {
-            // 仅在已断开连接时显示"未连接服务器"，避免"Connecting to..."等消息干扰
             if (root.loggingIn && !root.sessionManager.isLoggedIn
                 && root.sessionManager.connectionState === 0) {
                 root.loggingIn = false
@@ -211,7 +619,6 @@ Item {
             }
         }
         function onConnectionStateChanged() {
-            // 连接断开且正在登录：socket error 先于 state 变化到达，此处兜底
             if (root.loggingIn && !root.sessionManager.isLoggedIn
                 && root.sessionManager.connectionState === 0) {
                 root.loggingIn = false
