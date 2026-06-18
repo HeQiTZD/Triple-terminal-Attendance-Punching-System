@@ -17,62 +17,17 @@ Item {
 
     readonly property real cardWidth: Math.min(420, Math.max(340, width - 60))
 
-    // ── 深色渐变背景 ──
+    // ── 浅色渐变背景 ──
     Rectangle {
         anchors.fill: parent
         gradient: Gradient {
             orientation: Gradient.Vertical
-            GradientStop { position: 0.0; color: "#0B1120" }
-            GradientStop { position: 0.5; color: "#131C31" }
-            GradientStop { position: 1.0; color: "#0B1120" }
+            GradientStop { position: 0.0; color: Theme.loginBgStart }
+            GradientStop { position: 1.0; color: Theme.loginBgEnd }
         }
     }
 
-    // ── 装饰：微妙的网格纹理 ──
-    Canvas {
-        anchors.fill: parent
-        opacity: 0.03
-        onPaint: {
-            var ctx = getContext("2d")
-            ctx.strokeStyle = "#FFFFFF"
-            ctx.lineWidth = 0.5
-            var step = 40
-            for (var x = 0; x < width; x += step) {
-                ctx.beginPath()
-                ctx.moveTo(x, 0)
-                ctx.lineTo(x, height)
-                ctx.stroke()
-            }
-            for (var y = 0; y < height; y += step) {
-                ctx.beginPath()
-                ctx.moveTo(0, y)
-                ctx.lineTo(width, y)
-                ctx.stroke()
-            }
-        }
-    }
 
-    // ── 装饰：浮动光点 ──
-    Repeater {
-        model: 8
-        Rectangle {
-            readonly property real _ox: [0.15, 0.85, 0.1, 0.9, 0.5, 0.25, 0.75, 0.5][index]
-            readonly property real _oy: [0.2, 0.25, 0.75, 0.8, 0.1, 0.5, 0.5, 0.9][index]
-            readonly property real _sz: [3, 4, 3, 4, 5, 3, 4, 3][index]
-            x: parent.width * _ox - _sz / 2
-            y: parent.height * _oy - _sz / 2
-            width: _sz; height: _sz
-            radius: _sz / 2
-            color: "#60A5FA"
-            opacity: 0.5
-
-            SequentialAnimation on opacity {
-                loops: Animation.Infinite
-                NumberAnimation { from: 0.2; to: 0.6; duration: 2500 + index * 400 }
-                NumberAnimation { from: 0.6; to: 0.2; duration: 2500 + index * 400 }
-            }
-        }
-    }
 
     // ── 无边框窗口拖拽 ──
     MouseArea {
@@ -110,7 +65,7 @@ Item {
             }
             background: Rectangle {
                 radius: 6
-                color: settingsBtn.hovered ? Qt.rgba(255, 255, 255, 0.08) : "transparent"
+                color: settingsBtn.hovered ? Theme.hover : "transparent"
             }
         }
 
@@ -128,7 +83,7 @@ Item {
             }
             background: Rectangle {
                 radius: 6
-                color: minimizeBtn.hovered ? Qt.rgba(255, 255, 255, 0.08) : "transparent"
+                color: minimizeBtn.hovered ? Theme.hover : "transparent"
             }
         }
 
@@ -146,7 +101,7 @@ Item {
             }
             background: Rectangle {
                 radius: 6
-                color: closeBtn.hovered ? Qt.rgba(239, 68, 68, 0.15) : "transparent"
+                color: closeBtn.hovered ? Qt.rgba(198, 40, 40, 0.1) : "transparent"
             }
         }
     }
@@ -167,9 +122,9 @@ Item {
         Rectangle {
             anchors.fill: cardBg
             anchors.margins: -1
-            radius: 20
-            color: Qt.rgba(0, 0, 0, 0.4)
-            y: 10
+            radius: 16
+            color: Qt.rgba(0, 0, 0, 0.08)
+            y: 6
         }
 
         // 卡片主体
@@ -178,20 +133,20 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             width: parent.width
             height: loginColumn.implicitHeight + 56
-            radius: 20
-            color: "#1E293B"
+            radius: 16
+            color: Theme.loginCardBg
             border.width: 1
-            border.color: Qt.rgba(59, 130, 246, 0.2)
+            border.color: Theme.loginCardBorder
 
             ColumnLayout {
                 id: loginColumn
                 anchors.top: parent.top
-                anchors.topMargin: 36
+                anchors.topMargin: 32
                 anchors.left: parent.left
                 anchors.leftMargin: 32
                 anchors.right: parent.right
                 anchors.rightMargin: 32
-                spacing: 24
+                spacing: 20
 
                 // ── 标题区 ──
                 ColumnLayout {
@@ -204,7 +159,7 @@ Item {
                         width: 72
                         height: 72
                         radius: 18
-                        color: Qt.rgba(59, 130, 246, 0.15)
+                        color: Theme.accentSubtle
 
                         Text {
                             anchors.centerIn: parent
@@ -216,7 +171,7 @@ Item {
                     Label {
                         Layout.alignment: Qt.AlignHCenter
                         text: qsTr("考勤管理系统")
-                        color: "#F8FAFC"
+                        color: Theme.loginTextPrimary
                         font.pixelSize: 26
                         font.bold: true
                         font.family: Theme.fontFamily
@@ -225,7 +180,7 @@ Item {
                     Label {
                         Layout.alignment: Qt.AlignHCenter
                         text: qsTr("Attendance Management System")
-                        color: "#64748B"
+                        color: Theme.loginTextSecondary
                         font.pixelSize: 12
                         font.family: Theme.fontFamily
                     }
@@ -243,7 +198,7 @@ Item {
 
                         Label {
                             text: qsTr("工号 / 用户名")
-                            color: "#CBD5E1"
+                            color: Theme.loginTextSecondary
                             font.pixelSize: 14
                             font.family: Theme.fontFamily
                         }
@@ -252,9 +207,9 @@ Item {
                             Layout.fillWidth: true
                             height: 50
                             radius: 12
-                            color: userField.activeFocus ? Qt.rgba(30, 41, 59, 0.9) : "#0F172A"
+                            color: userField.activeFocus ? Theme.loginInputBg : Theme.loginInputBg
                             border.width: 1.5
-                            border.color: userField.activeFocus ? "#3B82F6" : "#334155"
+                            border.color: userField.activeFocus ? Theme.loginInputFocus : Theme.loginInputBorder
 
                             Behavior on border.color { ColorAnimation { duration: 200 } }
 
@@ -278,8 +233,8 @@ Item {
                                     background: null
                                     font.pixelSize: 15
                                     font.family: Theme.fontFamily
-                                    color: "#F1F5F9"
-                                    placeholderTextColor: "#475569"
+                                    color: Theme.loginTextPrimary
+                                    placeholderTextColor: Theme.loginTextMuted
                                 }
                             }
                         }
@@ -292,7 +247,7 @@ Item {
 
                         Label {
                             text: qsTr("密码")
-                            color: "#CBD5E1"
+                            color: Theme.loginTextSecondary
                             font.pixelSize: 14
                             font.family: Theme.fontFamily
                         }
@@ -301,9 +256,9 @@ Item {
                             Layout.fillWidth: true
                             height: 50
                             radius: 12
-                            color: passField.activeFocus ? Qt.rgba(30, 41, 59, 0.9) : "#0F172A"
+                            color: passField.activeFocus ? Theme.loginInputBg : Theme.loginInputBg
                             border.width: 1.5
-                            border.color: passField.activeFocus ? "#3B82F6" : "#334155"
+                            border.color: passField.activeFocus ? Theme.loginInputFocus : Theme.loginInputBorder
 
                             Behavior on border.color { ColorAnimation { duration: 200 } }
 
@@ -328,8 +283,8 @@ Item {
                                     background: null
                                     font.pixelSize: 15
                                     font.family: Theme.fontFamily
-                                    color: "#F1F5F9"
-                                    placeholderTextColor: "#475569"
+                                    color: Theme.loginTextPrimary
+                                    placeholderTextColor: Theme.loginTextMuted
                                     onAccepted: loginBtn.clicked()
                                 }
 
@@ -338,7 +293,7 @@ Item {
                                     width: 36
                                     height: 36
                                     radius: 8
-                                    color: passwordToggleMouse.containsMouse ? Qt.rgba(255, 255, 255, 0.08) : "transparent"
+                                    color: passwordToggleMouse.containsMouse ? Theme.surfaceAlt : "transparent"
 
                                     Image {
                                         anchors.centerIn: parent
@@ -386,7 +341,7 @@ Item {
                             Layout.fillWidth: true
                             wrapMode: Text.WordWrap
                             text: root.loginError
-                            color: "#FCA5A5"
+                            color: Theme.danger
                             font.pixelSize: 13
                             font.family: Theme.fontFamily
                         }
@@ -403,8 +358,8 @@ Item {
                         height: 18
                         radius: 4
                         border.width: 1.5
-                        border.color: root.rememberUsername ? "#2563EB" : "#D1D5DB"
-                        color: root.rememberUsername ? "#2563EB" : "transparent"
+                        border.color: root.rememberUsername ? Theme.loginInputFocus : Theme.loginInputBorder
+                        color: root.rememberUsername ? Theme.loginInputFocus : "transparent"
 
                         Behavior on border.color { ColorAnimation { duration: 150 } }
                         Behavior on color { ColorAnimation { duration: 150 } }
@@ -427,7 +382,7 @@ Item {
 
                     Label {
                         text: qsTr("记住工号")
-                        color: "#94A3B8"
+                        color: Theme.loginTextMuted
                         font.pixelSize: 13
                         font.family: Theme.fontFamily
 
@@ -460,11 +415,11 @@ Item {
                         gradient: Gradient {
                             GradientStop {
                                 position: 0.0;
-                                color: loginBtnMouse.containsMouse ? "#60A5FA" : "#3B82F6"
+                                color: loginBtnMouse.containsMouse ? Theme.primaryHover : Theme.primary
                             }
                             GradientStop {
                                 position: 1.0;
-                                color: loginBtnMouse.containsMouse ? "#2563EB" : "#1D4ED8"
+                                color: loginBtnMouse.containsMouse ? Theme.primary : Theme.accent
                             }
                         }
 
@@ -531,7 +486,7 @@ Item {
                         Layout.fillWidth: true
                         height: 44
                         radius: 10
-                        color: devLoginBtnMouse.containsMouse ? Qt.rgba(255, 255, 255, 0.06) : "transparent"
+                        color: devLoginBtnMouse.containsMouse ? Theme.surfaceAlt : "transparent"
                         enabled: !root.loggingIn
 
                         Behavior on color { ColorAnimation { duration: 200 } }
@@ -539,7 +494,7 @@ Item {
                         Label {
                             anchors.centerIn: parent
                             text: qsTr("跳过登录（开发模式）")
-                            color: devLoginBtnMouse.containsMouse ? "#60A5FA" : "#64748B"
+                            color: devLoginBtnMouse.containsMouse ? Theme.primary : Theme.textSubtle
                             font.pixelSize: 13
                             font.family: Theme.fontFamily
 
@@ -568,7 +523,7 @@ Item {
         anchors.bottomMargin: 20
         anchors.horizontalCenter: parent.horizontalCenter
         text: "© 2026 AttendanceAdmin"
-        color: "#475569"
+        color: Theme.textSubtle
         font.pixelSize: 12
         font.family: Theme.fontFamily
     }
