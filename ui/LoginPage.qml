@@ -320,22 +320,23 @@ Item {
                 // ── 错误提示 ──
                 Rectangle {
                     Layout.fillWidth: true
-                    height: errorLabel.implicitHeight + 20
-                    radius: 10
-                    color: Qt.rgba(239, 68, 68, 0.12)
+                    height: errorLabel.implicitHeight + 16
+                    radius: 8
+                    color: "#FEF2F2"
                     border.width: 1
-                    border.color: Qt.rgba(239, 68, 68, 0.25)
+                    border.color: "#FECACA"
                     visible: root.loginError.length > 0
 
                     RowLayout {
                         anchors.fill: parent
-                        anchors.leftMargin: 14
-                        anchors.rightMargin: 14
-                        spacing: 10
+                        anchors.leftMargin: 12
+                        anchors.rightMargin: 12
+                        spacing: 8
 
                         Text {
                             text: "⚠️"
-                            font.pixelSize: 15
+                            font.pixelSize: 14
+                            color: "#DC2626"
                         }
 
                         Label {
@@ -343,7 +344,7 @@ Item {
                             Layout.fillWidth: true
                             wrapMode: Text.WordWrap
                             text: root.loginError
-                            color: Theme.danger
+                            color: "#DC2626"
                             font.pixelSize: 13
                             font.family: Theme.fontFamily
                         }
@@ -405,57 +406,57 @@ Item {
                     Rectangle {
                         id: loginBtn
                         Layout.fillWidth: true
-                        height: 52
-                        radius: 12
+                        height: 44
+                        radius: 8
                         enabled: !root.loggingIn
                                && userField.text.trim().length > 0
                                && passField.text.length > 0
                         opacity: enabled ? 1.0 : 0.5
 
-                        Behavior on opacity { NumberAnimation { duration: 200 } }
+                        Behavior on opacity { NumberAnimation { duration: 150 } }
 
                         gradient: Gradient {
                             GradientStop {
                                 position: 0.0;
-                                color: loginBtnMouse.containsMouse ? Theme.primaryHover : Theme.primary
+                                color: loginBtnMouse.containsMouse ? "#3B82F6" : Theme.primary
                             }
                             GradientStop {
                                 position: 1.0;
-                                color: loginBtnMouse.containsMouse ? Theme.primary : Theme.accent
+                                color: loginBtnMouse.containsMouse ? "#2563EB" : "#1D4ED8"
                             }
                         }
 
                         // 按下效果
                         Rectangle {
                             anchors.fill: parent
-                            radius: 12
-                            color: Qt.rgba(0, 0, 0, 0.15)
+                            radius: 8
+                            color: Qt.rgba(0, 0, 0, 0.1)
                             visible: loginBtnMouse.pressed
                         }
 
                         RowLayout {
                             anchors.centerIn: parent
-                            spacing: 10
+                            spacing: 8
 
                             // 加载动画
                             Rectangle {
-                                width: 20; height: 20
-                                radius: 10
-                                border.width: 2.5
+                                width: 16; height: 16
+                                radius: 8
+                                border.width: 2
                                 border.color: "#FFFFFF"
                                 color: "transparent"
                                 visible: root.loggingIn
 
                                 Rectangle {
-                                    x: parent.width / 2 - 1.25
-                                    y: 2
-                                    width: 2.5; height: 7
-                                    radius: 1.25
+                                    x: parent.width / 2 - 1
+                                    y: 0
+                                    width: 2; height: 6
+                                    radius: 1
                                     color: "#FFFFFF"
 
                                     NumberAnimation on rotation {
                                         from: 0; to: 360
-                                        duration: 750
+                                        duration: 800
                                         loops: Animation.Infinite
                                         running: root.loggingIn
                                     }
@@ -466,7 +467,7 @@ Item {
                             Label {
                                 text: root.loggingIn ? qsTr("登录中…") : qsTr("登 录")
                                 color: "#FFFFFF"
-                                font.pixelSize: 16
+                                font.pixelSize: 15
                                 font.bold: true
                                 font.family: Theme.fontFamily
                             }
@@ -486,21 +487,21 @@ Item {
                     Rectangle {
                         id: devLoginBtn
                         Layout.fillWidth: true
-                        height: 44
-                        radius: 10
-                        color: devLoginBtnMouse.containsMouse ? Theme.surfaceAlt : "transparent"
+                        height: 36
+                        radius: 6
+                        color: devLoginBtnMouse.containsMouse ? "#F3F4F6" : "transparent"
                         enabled: !root.loggingIn
 
-                        Behavior on color { ColorAnimation { duration: 200 } }
+                        Behavior on color { ColorAnimation { duration: 150 } }
 
                         Label {
                             anchors.centerIn: parent
                             text: qsTr("跳过登录（开发模式）")
-                            color: devLoginBtnMouse.containsMouse ? Theme.primary : Theme.textSubtle
-                            font.pixelSize: 13
+                            color: devLoginBtnMouse.containsMouse ? Theme.primary : Theme.loginTextMuted
+                            font.pixelSize: 12
                             font.family: Theme.fontFamily
 
-                            Behavior on color { ColorAnimation { duration: 200 } }
+                            Behavior on color { ColorAnimation { duration: 150 } }
                         }
 
                         MouseArea {
