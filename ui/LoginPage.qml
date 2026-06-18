@@ -393,6 +393,52 @@ Item {
                     }
                 }
 
+                // ── 记住工号 ──
+                RowLayout {
+                    Layout.fillWidth: true
+                    spacing: 8
+
+                    Rectangle {
+                        width: 18
+                        height: 18
+                        radius: 4
+                        border.width: 1.5
+                        border.color: root.rememberUsername ? "#2563EB" : "#D1D5DB"
+                        color: root.rememberUsername ? "#2563EB" : "transparent"
+
+                        Behavior on border.color { ColorAnimation { duration: 150 } }
+                        Behavior on color { ColorAnimation { duration: 150 } }
+
+                        Text {
+                            anchors.centerIn: parent
+                            text: "✓"
+                            color: "#FFFFFF"
+                            font.pixelSize: 12
+                            font.bold: true
+                            visible: root.rememberUsername
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            cursorShape: Qt.PointingHandCursor
+                            onClicked: root.rememberUsername = !root.rememberUsername
+                        }
+                    }
+
+                    Label {
+                        text: qsTr("记住工号")
+                        color: "#94A3B8"
+                        font.pixelSize: 13
+                        font.family: Theme.fontFamily
+
+                        MouseArea {
+                            anchors.fill: parent
+                            cursorShape: Qt.PointingHandCursor
+                            onClicked: root.rememberUsername = !root.rememberUsername
+                        }
+                    }
+                }
+
                 // ── 按钮区 ──
                 ColumnLayout {
                     Layout.fillWidth: true
