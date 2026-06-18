@@ -101,7 +101,7 @@ Item {
             }
             background: Rectangle {
                 radius: 6
-                color: closeBtn.hovered ? Qt.rgba(198, 40, 40, 0.1) : "transparent"
+                color: closeBtn.hovered ? Qt.rgba(0.78, 0.16, 0.16, 0.1) : "transparent"
             }
         }
     }
