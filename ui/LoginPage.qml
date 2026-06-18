@@ -151,20 +151,20 @@ Item {
                 // ── 标题区 ──
                 ColumnLayout {
                     Layout.alignment: Qt.AlignHCenter
-                    spacing: 12
+                    spacing: 8
 
                     // Logo图标
                     Rectangle {
                         Layout.alignment: Qt.AlignHCenter
-                        width: 72
-                        height: 72
-                        radius: 18
-                        color: Theme.accentSubtle
+                        width: 64
+                        height: 64
+                        radius: 16
+                        color: Theme.primaryLight
 
                         Text {
                             anchors.centerIn: parent
                             text: "⏱"
-                            font.pixelSize: 32
+                            font.pixelSize: 28
                         }
                     }
 
@@ -172,16 +172,16 @@ Item {
                         Layout.alignment: Qt.AlignHCenter
                         text: qsTr("考勤管理系统")
                         color: Theme.loginTextPrimary
-                        font.pixelSize: 26
+                        font.pixelSize: 24
                         font.bold: true
                         font.family: Theme.fontFamily
                     }
 
                     Label {
                         Layout.alignment: Qt.AlignHCenter
-                        text: qsTr("Attendance Management System")
+                        text: qsTr("管理端登录")
                         color: Theme.loginTextSecondary
-                        font.pixelSize: 12
+                        font.pixelSize: 13
                         font.family: Theme.fontFamily
                     }
                 }
@@ -194,35 +194,36 @@ Item {
                     // 用户名
                     ColumnLayout {
                         Layout.fillWidth: true
-                        spacing: 8
+                        spacing: 6
 
                         Label {
                             text: qsTr("工号 / 用户名")
                             color: Theme.loginTextSecondary
-                            font.pixelSize: 14
+                            font.pixelSize: 13
                             font.family: Theme.fontFamily
                         }
 
                         Rectangle {
                             Layout.fillWidth: true
-                            height: 50
-                            radius: 12
-                            color: userField.activeFocus ? Theme.loginInputBg : Theme.loginInputBg
-                            border.width: 1.5
+                            height: 44
+                            radius: 8
+                            color: userField.activeFocus ? "#FFFFFF" : Theme.loginInputBg
+                            border.width: userField.activeFocus ? 2 : 1
                             border.color: userField.activeFocus ? Theme.loginInputFocus : Theme.loginInputBorder
 
-                            Behavior on border.color { ColorAnimation { duration: 200 } }
+                            Behavior on border.color { ColorAnimation { duration: 150 } }
+                            Behavior on border.width { NumberAnimation { duration: 150 } }
 
                             RowLayout {
                                 anchors.fill: parent
-                                anchors.leftMargin: 16
-                                anchors.rightMargin: 16
-                                spacing: 12
+                                anchors.leftMargin: 12
+                                anchors.rightMargin: 12
+                                spacing: 8
 
                                 Text {
                                     text: "👤"
-                                    font.pixelSize: 18
-                                    opacity: 0.7
+                                    font.pixelSize: 16
+                                    color: Theme.loginTextMuted
                                 }
 
                                 TextField {
@@ -231,7 +232,7 @@ Item {
                                     placeholderText: qsTr("请输入用户名或工号")
                                     enabled: !root.loggingIn
                                     background: null
-                                    font.pixelSize: 15
+                                    font.pixelSize: 14
                                     font.family: Theme.fontFamily
                                     color: Theme.loginTextPrimary
                                     placeholderTextColor: Theme.loginTextMuted
@@ -243,35 +244,36 @@ Item {
                     // 密码
                     ColumnLayout {
                         Layout.fillWidth: true
-                        spacing: 8
+                        spacing: 6
 
                         Label {
                             text: qsTr("密码")
                             color: Theme.loginTextSecondary
-                            font.pixelSize: 14
+                            font.pixelSize: 13
                             font.family: Theme.fontFamily
                         }
 
                         Rectangle {
                             Layout.fillWidth: true
-                            height: 50
-                            radius: 12
-                            color: passField.activeFocus ? Theme.loginInputBg : Theme.loginInputBg
-                            border.width: 1.5
+                            height: 44
+                            radius: 8
+                            color: passField.activeFocus ? "#FFFFFF" : Theme.loginInputBg
+                            border.width: passField.activeFocus ? 2 : 1
                             border.color: passField.activeFocus ? Theme.loginInputFocus : Theme.loginInputBorder
 
-                            Behavior on border.color { ColorAnimation { duration: 200 } }
+                            Behavior on border.color { ColorAnimation { duration: 150 } }
+                            Behavior on border.width { NumberAnimation { duration: 150 } }
 
                             RowLayout {
                                 anchors.fill: parent
-                                anchors.leftMargin: 16
-                                anchors.rightMargin: 12
+                                anchors.leftMargin: 12
+                                anchors.rightMargin: 8
                                 spacing: 8
 
                                 Text {
                                     text: "🔒"
-                                    font.pixelSize: 18
-                                    opacity: 0.7
+                                    font.pixelSize: 16
+                                    color: Theme.loginTextMuted
                                 }
 
                                 TextField {
@@ -281,7 +283,7 @@ Item {
                                     placeholderText: qsTr("请输入密码")
                                     enabled: !root.loggingIn
                                     background: null
-                                    font.pixelSize: 15
+                                    font.pixelSize: 14
                                     font.family: Theme.fontFamily
                                     color: Theme.loginTextPrimary
                                     placeholderTextColor: Theme.loginTextMuted
@@ -290,16 +292,16 @@ Item {
 
                                 // 密码可见性切换
                                 Rectangle {
-                                    width: 36
-                                    height: 36
-                                    radius: 8
-                                    color: passwordToggleMouse.containsMouse ? Theme.surfaceAlt : "transparent"
+                                    width: 32
+                                    height: 32
+                                    radius: 6
+                                    color: passwordToggleMouse.containsMouse ? Qt.rgba(0, 0, 0, 0.05) : "transparent"
 
                                     Image {
                                         anchors.centerIn: parent
                                         source: root.passwordVisible ? "qrc:/images/visibility.svg" : "qrc:/images/visibility_off.svg"
-                                        sourceSize: Qt.size(20, 20)
-                                        opacity: passwordToggleMouse.containsMouse ? 1.0 : 0.5
+                                        sourceSize: Qt.size(18, 18)
+                                        opacity: passwordToggleMouse.containsMouse ? 0.8 : 0.4
                                     }
 
                                     MouseArea {
