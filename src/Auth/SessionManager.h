@@ -39,6 +39,7 @@ public:
                            const QString &username, const QString &password,
                            const QString &clientId = QString());
     Q_INVOKABLE void logout();
+    Q_INVOKABLE void devLogin();
     Q_INVOKABLE bool hasPermission(const QString &permKey) const;
     Q_INVOKABLE bool hasRole(const QString &roleKey) const;
     Q_INVOKABLE void refreshPermissions();
@@ -83,6 +84,7 @@ private:
 
     TcpConnectionManager *m_tcp = nullptr;
     bool m_isLoggedIn = false;
+    bool m_isDevSession = false;
     QString m_sessionToken;
     QString m_accessToken;
     QString m_refreshToken;

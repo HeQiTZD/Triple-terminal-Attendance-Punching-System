@@ -12,6 +12,20 @@ qt_add_executable(appAttendanceAdmin
     main.cpp
 )
 
+# 图片资源
+qt_add_resources(appAttendanceAdmin "images"
+    PREFIX "/"
+    BASE "image"
+    FILES
+        image/close.svg
+        image/lock.svg
+        image/minied.svg
+        image/person.svg
+        image/settings.svg
+        image/visibility.svg
+        image/visibility_off.svg
+)
+
 set_source_files_properties(
     ui/theme/Theme.qml
     ui/models/Logger.qml

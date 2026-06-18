@@ -123,11 +123,60 @@ void SessionManager::logout()
 {
     ++m_authEpoch;
 
-    if (m_tcp) {
+    if (m_tcp && !m_isDevSession) {
         m_tcp->disconnectFromServer();
     }
+    m_isDevSession = false;
     clearSession();
     emit loggedOut();
+}
+
+void SessionManager::devLogin()
+{
+    ++m_authEpoch;
+    clearSession();
+
+    m_isDevSession = true;
+    m_currentUsername = QStringLiteral("dev_admin");
+    m_isLoggedIn = true;
+
+    // 超级管理员角色 + 全部权限，方便开发调试
+    m_roles = QStringList{QStringLiteral("super_admin")};
+    m_permissions = QStringList{
+        QStringLiteral("person.create"),
+        QStringLiteral("person.read"),
+        QStringLiteral("person.update"),
+        QStringLiteral("person.delete"),
+        QStringLiteral("attendance.create"),
+        QStringLiteral("attendance.read"),
+        QStringLiteral("attendance.update"),
+        QStringLiteral("attendance.delete"),
+        QStringLiteral("attendance.archive.read"),
+        QStringLiteral("attendance.archive.delete"),
+        QStringLiteral("device.create"),
+        QStringLiteral("device.read"),
+        QStringLiteral("device.update"),
+        QStringLiteral("device.delete"),
+        QStringLiteral("device.command"),
+        QStringLiteral("config.deploy"),
+        QStringLiteral("user.create"),
+        QStringLiteral("user.read"),
+        QStringLiteral("user.update"),
+        QStringLiteral("user.delete"),
+        QStringLiteral("face.register"),
+        QStringLiteral("face.read"),
+        QStringLiteral("face.delete"),
+        QStringLiteral("event.subscribe"),
+    };
+
+    emit sessionTokenChanged();
+    emit accessTokenChanged();
+    emit refreshTokenChanged();
+    emit rolesChanged();
+    emit permissionsChanged();
+    emit currentUsernameChanged();
+    emit loggedInChanged();
+    emit loggedIn(m_sessionToken, m_roles, m_permissions);
 }
 
 bool SessionManager::hasPermission(const QString &permKey) const
