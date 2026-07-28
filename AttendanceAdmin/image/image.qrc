@@ -1,0 +1,12 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource prefix="/images">
+        <file alias="close.svg">close.svg</file>
+        <file alias="lock.svg">lock.svg</file>
+        <file alias="minied.svg">minied.svg</file>
+        <file alias="person.svg">person.svg</file>
+        <file alias="settings.svg">settings.svg</file>
+        <file alias="visibility.svg">visibility.svg</file>
+        <file alias="visibility_off.svg">visibility_off.svg</file>
+    </qresource>
+</RCC>
