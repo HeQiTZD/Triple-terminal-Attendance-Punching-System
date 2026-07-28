@@ -1,0 +1,81 @@
+/* ============================================================
+   ThemeManager 补充 QSS — 仅处理组件 API 不便覆盖的全局样式
+   ============================================================ */
+
+/* ---------- 全局滚动条 ---------- */
+QScrollBar:vertical {
+    background-color: #1f2b3b;
+    width: 8px;
+    border-radius: 4px;
+    margin: 0px;
+}
+QScrollBar::handle:vertical {
+    background-color: #3d4e64;
+    border-radius: 4px;
+    min-height: 30px;
+}
+QScrollBar::handle:vertical:hover {
+    background-color: #475569;
+}
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+QScrollBar:horizontal {
+    background-color: #1f2b3b;
+    height: 8px;
+    border-radius: 4px;
+    margin: 0px;
+}
+QScrollBar::handle:horizontal {
+    background-color: #3d4e64;
+    border-radius: 4px;
+    min-width: 30px;
+}
+QScrollBar::handle:horizontal:hover {
+    background-color: #475569;
+}
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal {
+    width: 0px;
+}
+QScrollBar::add-page:horizontal,
+QScrollBar::sub-page:horizontal {
+    background: none;
+}
+
+/* ---------- Tooltip ---------- */
+QToolTip {
+    background-color: #2d3c50;
+    color: #f8fafc;
+    border: 1px solid #3d4e64;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 12px;
+}
+
+/* ---------- 焦点轮廓 ---------- */
+QPushButton:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 1px;
+}
+
+/* ---------- 菜单 ---------- */
+QMenu {
+    background-color: #1f2b3b;
+    color: #f8fafc;
+    border: 1px solid #3d4e64;
+    border-radius: 6px;
+    padding: 4px 0;
+}
+QMenu::item {
+    padding: 6px 24px;
+}
+QMenu::item:selected {
+    background-color: #2d3c50;
+}

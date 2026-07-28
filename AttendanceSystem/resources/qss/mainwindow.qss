@@ -1,0 +1,179 @@
+/* ======================================================
+   考勤打卡系统 - 中灰蓝专业主题
+   配色：背景#151e2b / 面板#1f2b3b / 强调#00d4ff
+   ====================================================== */
+
+/* 主窗口 */
+QMainWindow {
+    background-color: #151e2b;
+}
+
+/* 中央部件 */
+QWidget#centralwidget {
+    background-color: #151e2b;
+}
+
+/* ==================== 顶部工具栏 ==================== */
+QWidget#topWidget {
+    background-color: #1f2b3b;
+    border-bottom: 1px solid #00d4ff;
+    padding: 0px 4px;
+}
+
+/* 时间标签 - 白色加粗等宽字体 */
+QLabel#timeLabel {
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 700;
+    font-family: "Consolas", "Courier New", monospace;
+    padding: 6px 14px;
+    background-color: rgba(255, 255, 255, 0.06);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    letter-spacing: 1px;
+}
+
+/* ==================== 按钮 ==================== */
+
+/* 通用按钮 */
+QPushButton {
+    background-color: #1f6feb;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    min-width: 60px;
+}
+
+QPushButton:hover {
+    background-color: #388bfd;
+}
+
+QPushButton:pressed {
+    background-color: #1158c7;
+}
+
+/* ==================== 上层：识别信息横条 ==================== */
+QWidget#infoWidget {
+    background-color: #1f2b3b;
+    border-radius: 10px;
+    border: 1px solid #2d3c50;
+}
+
+/* ==================== 标签 ==================== */
+
+/* 通用标签 - 强制白色，防止被系统调色板覆盖 */
+QLabel {
+    color: #ffffff;
+    font-size: 13px;
+    background-color: transparent;
+}
+
+/* 摄像头区域小标题 */
+QLabel#cameraLabel {
+    color: #adb5bd;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    background-color: transparent;
+    border: none;
+    padding: 2px 0px;
+}
+
+/* ==================== 输入框（只读） ==================== */
+QLineEdit {
+    background-color: #151e2b;
+    border: none;
+    border-bottom: 1px solid #3d4e64;
+    border-radius: 3px;
+    padding: 8px 6px;
+    color: #e6edf3;
+    font-size: 14px;
+    font-weight: 500;
+    selection-background-color: rgba(0, 212, 255, 0.2);
+}
+
+QLineEdit:focus {
+    border-bottom: 1px solid #00d4ff;
+    background-color: rgba(0, 212, 255, 0.03);
+}
+
+QLineEdit:read-only {
+    background-color: #1f2b3b;
+    border-bottom: 1px solid #2d3c50;
+    color: #c9d1d9;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* ==================== 下层：摄像头面板 ==================== */
+QWidget#cameraWidget {
+    background-color: #1f2b3b;
+    border-radius: 10px;
+    border: 1px solid #2d3c50;
+    margin: 0px 0px 0px 4px;
+}
+
+/* 摄像头显示区域 - 移除边框 */
+QLabel#cameraDisplay {
+    background-color: #151e2b;
+    color: #3d4e64;
+    border: none;
+}
+
+/* ==================== 滚动条 ==================== */
+QScrollBar:vertical {
+    background-color: #1f2b3b;
+    width: 8px;
+    border-radius: 4px;
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #3d4e64;
+    border-radius: 4px;
+    min-height: 30px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #484f58;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+QScrollBar:horizontal {
+    background-color: #1f2b3b;
+    height: 8px;
+    border-radius: 4px;
+    margin: 0px;
+}
+
+QScrollBar::handle:horizontal {
+    background-color: #3d4e64;
+    border-radius: 4px;
+    min-width: 30px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background-color: #484f58;
+}
+
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal {
+    width: 0px;
+}
+
+QScrollBar::add-page:horizontal,
+QScrollBar::sub-page:horizontal {
+    background: none;
+}
