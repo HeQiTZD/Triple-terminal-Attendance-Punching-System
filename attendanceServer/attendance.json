@@ -1,0 +1,28 @@
+{
+  "db": {
+    "host": "localhost",
+    "port": 33060,
+    "user": "root",
+    "password": "root",
+    "schema": "attendanceserver"
+  },
+  "tcp": {
+    "enabled": true,
+    "bind": "0.0.0.0",
+    "port": 8080,
+    "worker_threads": 0
+  },
+  "db_pool_threads": 0,
+  "gateway": {
+    "heartbeat_sec": 30,
+    "heartbeat_grace_multiplier": 3,
+    "duplicate_policy": "kick_old",
+    "default_device_key": "changeme"
+  },
+  "arcface": {
+    "enabled": false,
+    "app_id": "",
+    "sdk_key": "",
+    "min_face_size": 80
+  }
+}

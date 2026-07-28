@@ -1,0 +1,67 @@
+# =========== IDE and tool config ===========
+.reasonix/
+.claude/
+.codegraph/
+.cursor/
+.qoder/
+.superpowers/
+.vs/
+.vscode/
+.qt/
+.qtc_clangd/
+.qtcreator/
+
+# =========== Build output ===========
+out/
+build*/
+build/
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+
+# =========== CMake generated ===========
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CMakePresets.json
+Makefile
+
+# =========== OS files ===========
+Thumbs.db
+.DS_Store
+*.swp
+*.swo
+*~
+
+# =========== Logs / data ===========
+logs/
+*.log
+data/
+
+# =========== Binaries ===========
+*.exe
+*.dll
+*.obj
+*.ilk
+*.pdb
+*.lib
+*.exp
+
+# =========== Generated ===========
+.moc/
+.rcc/
+.uic/
+.obj/
+.pch/
+moc_*.cpp
+ui_*.h
+qrc_*.cpp
+*_autogen/
+
+# =========== IDE project files ===========
+*.user
+*.suo
+*.sln.docstates
